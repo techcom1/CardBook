@@ -73,6 +73,8 @@ Translations by:
 * André BAÇÃO (pt-PT)
 * Alexander YAVORSKY (ru)
 
+Trailblazer:
+* [Thomas McWork](https://github.com/thomas-mc-work): midwife for the public git repository
 
 ### License
 
