@@ -4,7 +4,7 @@
 
 ### Features
 
-* **Autocompletion** in mail address fields and Lightning calendar fields! 
+* **Autocompletion** in mail address fields and Lightning calendar fields!
 * Easy **CardDAV synchronisation**!
 * Access to **all vCard data**!
 * **Customizable** data fields!
@@ -70,7 +70,7 @@ Translations by:
 * Agnese MORETTINI (it)
 * Han KNOLS (nl)
 * Adam GORZKIEWICZ (pl)
-* André BAÇÃO (pt-PT)
+* André BAÇÃO (pt-PT) - https://github.com/abacao/CardBook
 * Alexander YAVORSKY (ru)
 
 
