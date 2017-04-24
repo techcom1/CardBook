@@ -18,7 +18,7 @@
 <!ENTITY exclusiveLabel "CardBook como fonte unica de contactos">
 <!ENTITY exclusiveAccesskey "U">
 <!ENTITY exclusiveTooltip "Se não seleccionado, a opção pertmite que sejam utilizados contactos das agendas do próprio Thunderbird.">
-<!ENTITY accountsRestrictionsLabel "??Mail Account Restrictions??">
+<!ENTITY accountsRestrictionsLabel "Restrições da conta de email">
 <!ENTITY accountsRestrictionsEnabledLabel "Activo">
 <!ENTITY accountsRestrictionsMailNameLabel "Conta de email">
 <!ENTITY accountsRestrictionsABNameLabel "Agenda">
@@ -65,11 +65,11 @@
 <!ENTITY localizeTargetInAccesskey "D">
 <!ENTITY localizeTargetOutLabel "Fora do Thunderbird">
 <!ENTITY localizeTargetOutAccesskey "F">
-<!ENTITY fnLabelExplanation "??It is possible to customize the way CardBook generates its Display Name. This formula consists in blocks enclosed by '()'. In these blocks, there are two parts delimited by '|'. 
-								The first part applies when the term involved, for example {{1}}, is not null, the second part applies when the term involved is null.??">
-<!ENTITY fnFormulaLabel "??Generate Display Name??">
+<!ENTITY fnLabelExplanation "É possivel determinar como o CardBook gera o nome. A formula consiste num bloco dentro de '()'. Nesse bloco existem 2 partes delimitadas por '|'.
+								A primeira é aplicada quando o termo envolvido (ex: {{1}}), não é nulo e a segunda parte é aplicada quando o termo é nulo">
+<!ENTITY fnFormulaLabel "Gerar Nome">
 <!ENTITY fnFormulaAccesskey "P">
-<!ENTITY resetfnFormulaLabel "??Restore to Default??">
+<!ENTITY resetfnFormulaLabel "Restaurar para origem">
 <!ENTITY resetFnFormulaAccesskey "R">
 <!ENTITY miscEdittingGroupboxLabel "Diversos">
 <!ENTITY cardCreationVersionLabel "Versão do vCard por omissão:">

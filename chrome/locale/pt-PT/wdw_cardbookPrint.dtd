@@ -3,9 +3,9 @@
 <!ENTITY titleAccesskey "T">
 <!ENTITY displayHeadersLabel "Mostrar cabeçalho">
 <!ENTITY displayHeadersAccesskey "c">
-<!ENTITY displayFieldNamesLabel "??Field names??">
+<!ENTITY displayFieldNamesLabel "Nomes dos campos">
 <!ENTITY displayFieldNamesAccesskey "F">
-<!ENTITY displayTypesLabel "??Types and Preferences??">
+<!ENTITY displayTypesLabel "Tipos e preferências">
 <!ENTITY displayTypesAccesskey "y">
 <!ENTITY whatToPrintGroupboxLabel "O que imprimir">
 <!ENTITY displayLabel "Nome de apresentação">
