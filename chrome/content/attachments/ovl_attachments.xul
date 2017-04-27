@@ -10,6 +10,7 @@
 
 	<script src="chrome://cardbook/content/cardbookUtils.js"/>
 	<script src="chrome://cardbook/content/wdw_log.js"/>
+	<script src="chrome://cardbook/content/mailContact/ovl_cardbookMailContacts.js"/>
 	<script src="chrome://cardbook/content/attachments/ovl_attachments.js"/>
 
 	<menupopup id="attachmentSaveAllMultipleMenu" >

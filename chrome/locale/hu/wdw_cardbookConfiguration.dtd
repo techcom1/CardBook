@@ -31,10 +31,18 @@
 <!ENTITY deleteRestrictionLabel "Törlés...">
 <!ENTITY deleteRestrictionAccesskey "T">
 <!ENTITY emailsCollectionLabel "Gyűjt kimenő e-mail">
-<!ENTITY emailsCollectionAccesskey "G">
-<!ENTITY emailsCollectionCatLabel "A kategória hozzáadása a begyűjtött névjegyekhez">
-<!ENTITY emailsCollectionCatAccesskey "k">
 <!ENTITY emailsCollectionTooltip "Kiterjeszti a Thunderbird szabványos kimenő email cím gyűjteménye. Ha engedélyezve van, e-mail címek nincs jelen semmilyen CardBook címjegyzéket bekerül a kiválasztott névjegytár(ok).">
+<!ENTITY emailsCollectionEnabledLabel "Engedélyezve">
+<!ENTITY emailsCollectionMailNameLabel "Postafiók">
+<!ENTITY emailsCollectionABNameLabel "Névjegyzék">
+<!ENTITY emailsCollectionCatNameLabel "Kategória">
+<!ENTITY emailsCollectionIncludeNameLabel "Típus">
+<!ENTITY addEmailsCollectionLabel "Új...">
+<!ENTITY addEmailsCollectionAccesskey "j">
+<!ENTITY renameEmailsCollectionLabel "Szerkesztés...">
+<!ENTITY renameEmailsCollectionAccesskey "z">
+<!ENTITY deleteEmailsCollectionLabel "Törlés...">
+<!ENTITY deleteEmailsCollectionAccesskey "T">
 <!ENTITY logGroupboxLabel "Naplófájl">
 <!ENTITY debugModeLabel "Hibakeresés mód">
 <!ENTITY debugModeAccesskey "H">

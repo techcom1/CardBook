@@ -1,7 +1,28 @@
 if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 	var ovl_cardbookMailContacts = {
 		knownContacts: false,
-		
+
+		// used by ovl_cardbookMailContacts.isEmailRegistered to apply the mail account restrictions
+		// used by ovl_attachments.setCardBookMenus to apply the mail account restrictions
+		getIdentityKey: function() {
+			var result = "";
+			if (gFolderDisplay.displayedFolder.server) {
+				var identity = accountManager.getFirstIdentityForServer(gFolderDisplay.displayedFolder.server);
+				if (identity) {
+				 result = identity.key;
+				}
+			}
+			return result;
+		},
+
+		addToCardBookMenuSubMenu: function(aMenuName) {
+			cardbookUtils.addToCardBookMenuSubMenu(aMenuName, ovl_cardbookMailContacts.getIdentityKey(), ovl_cardbookMailContacts.addToCardBook);
+		},
+
+		isEmailRegistered: function(aEmail) {
+			return cardbookRepository.isEmailRegistered(aEmail, ovl_cardbookMailContacts.getIdentityKey());
+		},
+
 		getCardBookDisplayNameFromEmail: function(aEmail, aDefaultDisplay) {
 			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			cardbookRepository.jsInclude(["chrome://cardbook/content/cardbookUtils.js"]);
@@ -109,7 +130,7 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 			var myPopupNode = document.popupNode;
 			var myEmailNode = findEmailNodeFromPopupNode(myPopupNode, 'emailAddressPopup');
 			var myEmail = myEmailNode.getAttribute('emailAddress');
-			var isEmailRegistered = cardbookRepository.isEmailRegistered(myEmail);
+			var isEmailRegistered = ovl_cardbookMailContacts.isEmailRegistered(myEmail);
 	
 			if (isEmailRegistered) {
 				var myCard = ovl_cardbookMailContacts.getCardFromEmail(myEmail);
@@ -129,7 +150,7 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 			var myPopupNode = document.popupNode;
 			var myEmailNode = findEmailNodeFromPopupNode(myPopupNode, 'emailAddressPopup');
 			var myEmail = myEmailNode.getAttribute('emailAddress');
-			var isEmailRegistered = cardbookRepository.isEmailRegistered(myEmail);
+			var isEmailRegistered = ovl_cardbookMailContacts.isEmailRegistered(myEmail);
 	
 			if (isEmailRegistered) {
 				var myCard = ovl_cardbookMailContacts.getCardFromEmail(myEmail);
@@ -149,7 +170,7 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 			var myPopupNode = document.popupNode;
 			var myEmailNode = findEmailNodeFromPopupNode(myPopupNode, 'emailAddressPopup');
 			var myEmail = myEmailNode.getAttribute('emailAddress');
-			var isEmailRegistered = cardbookRepository.isEmailRegistered(myEmail);
+			var isEmailRegistered = ovl_cardbookMailContacts.isEmailRegistered(myEmail);
 	
 			if (isEmailRegistered) {
 				var myCard = ovl_cardbookMailContacts.getCardFromEmail(myEmail);
@@ -191,7 +212,7 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 			var myPopupNode = document.popupNode;
 			var myEmailNode = findEmailNodeFromPopupNode(myPopupNode, 'emailAddressPopup');
 			var myEmail = myEmailNode.getAttribute('emailAddress');
-			var isEmailRegistered = cardbookRepository.isEmailRegistered(myEmail);
+			var isEmailRegistered = ovl_cardbookMailContacts.isEmailRegistered(myEmail);
 			if (isEmailRegistered) {
 				var myCard = ovl_cardbookMailContacts.getCardFromEmail(myEmail);
 				ovl_cardbookMailContacts.findEvents(null, [myEmail], myEmail, "mailto:" + myEmail, myCard.fn);
@@ -205,7 +226,7 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 			var myPopupNode = document.popupNode;
 			var myEmailNode = findEmailNodeFromPopupNode(myPopupNode, 'emailAddressPopup');
 			var myEmail = myEmailNode.getAttribute('emailAddress');
-			var isEmailRegistered = cardbookRepository.isEmailRegistered(myEmail);
+			var isEmailRegistered = ovl_cardbookMailContacts.isEmailRegistered(myEmail);
 	
 			if (isEmailRegistered) {
 				var myCard = ovl_cardbookMailContacts.getCardFromEmail(myEmail);
@@ -302,7 +323,7 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 
 		Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 		var myEmail = arguments[0].getAttribute('emailAddress');
-		var isEmailRegistered = cardbookRepository.isEmailRegistered(myEmail);
+		var isEmailRegistered = ovl_cardbookMailContacts.isEmailRegistered(myEmail);
 		ovl_cardbookMailContacts.hideOrShowNewAddressbook(isEmailRegistered);
 
 		if (isEmailRegistered) {
@@ -345,7 +366,7 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 		var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
 		var exclusive = prefs.getBoolPref("extensions.cardbook.exclusive");
 		var showCondensedAddresses = prefs.getBoolPref("mail.showCondensedAddresses");
-		var cardFound = cardbookRepository.isEmailRegistered(arguments[0]);
+		var cardFound = ovl_cardbookMailContacts.isEmailRegistered(arguments[0]);
 		if (exclusive || cardFound) {
 			arguments[1].setAttribute("hascard", cardFound.toString());
 		}

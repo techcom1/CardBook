@@ -159,6 +159,10 @@ cardbookAutocompleteSearch.prototype = {
 		this.ABExclRestrictions = {};
 		this.catInclRestrictions = {};
 		this.catExclRestrictions = {};
+		if (aMsgIdentity == "") {
+			this.ABInclRestrictions["length"] = 0;
+			return;
+		}
 		for (var i = 0; i < result.length; i++) {
 			var resultArray = result[i].split("::");
 			if ((resultArray[0] == "true") && ((resultArray[2] == aMsgIdentity) || (resultArray[2] == "allMailAccounts"))) {
@@ -185,32 +189,6 @@ cardbookAutocompleteSearch.prototype = {
 		this.ABInclRestrictions["length"] = cardbookUtils.sumElements(this.ABInclRestrictions);
 	},
 	
-	verifyABRestrictions: function (aDirPrefId) {
-		if (this.ABExclRestrictions[aDirPrefId]) {
-			return false;
-		}
-		if ((this.ABInclRestrictions.length == 0) || ((this.ABInclRestrictions.length > 0) && (this.ABInclRestrictions[aDirPrefId]))) {
-			return true;
-		} else {
-			return false;
-		}
-	},
-	
-	verifyCatRestrictions: function (aDirPrefId, aCategory, aSearchInput) {
-		if (this.ABExclRestrictions[aDirPrefId]) {
-			return false;
-		}
-		if (this.catExclRestrictions[aDirPrefId] && this.catExclRestrictions[aDirPrefId][aCategory]) {
-			return false;
-		}
-		if (((!(this.catInclRestrictions[aDirPrefId])) && (aCategory.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase().indexOf(aSearchInput) >= 0 || aSearchInput == "")) ||
-				((this.catInclRestrictions[aDirPrefId]) && (this.catInclRestrictions[aDirPrefId][aCategory]))) {
-			return true;
-		} else {
-			return false;
-		}
-	},
-		
     /**
      * Starts a search based on the given parameters.
      *
@@ -255,7 +233,7 @@ cardbookAutocompleteSearch.prototype = {
 			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
 				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] != "SEARCH") {
 					var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
-					if (this.verifyABRestrictions(myDirPrefId)) {
+					if (cardbookRepository.verifyABRestrictions(myDirPrefId, "allAddressBooks", this.ABExclRestrictions, this.ABInclRestrictions)) {
 						var myStyle = cardbookRepository.getIconType(cardbookRepository.cardbookAccounts[i][6]) + " color_" + myDirPrefId;
 						for (var j in cardbookRepository.cardbookCardSearch2[myDirPrefId]) {
 							if (j.indexOf(aSearchString) >= 0 || aSearchString == "") {
@@ -304,7 +282,7 @@ cardbookAutocompleteSearch.prototype = {
 			
 			// add Categories
 			for (var dirPrefId in cardbookRepository.cardbookAccountsCategories) {
-				if (this.verifyABRestrictions(dirPrefId)) {
+				if (cardbookRepository.verifyABRestrictions(dirPrefId, "allAddressBooks", this.ABExclRestrictions, this.ABInclRestrictions)) {
 					var cardbookPrefService = new cardbookPreferenceService(dirPrefId);
 					var myStyle = cardbookRepository.getIconType(cardbookPrefService.getType()) + " color_" + dirPrefId;
 					for (var i = 0; i < cardbookRepository.cardbookAccountsCategories[dirPrefId].length; i++) {
@@ -344,7 +322,7 @@ cardbookAutocompleteSearch.prototype = {
 			var myStyle = "standard-abook";
 			while ( contacts.hasMoreElements() ) {
 				var contact = contacts.getNext().QueryInterface(Components.interfaces.nsIAbDirectory);
-				if (this.verifyABRestrictions(contact.dirPrefId)) {
+				if (cardbookRepository.verifyABRestrictions(contact.dirPrefId, "allAddressBooks", this.ABExclRestrictions, this.ABInclRestrictions)) {
 					var abCardsEnumerator = contact.childCards;
 					while (abCardsEnumerator.hasMoreElements()) {
 						var myABCard = abCardsEnumerator.getNext();

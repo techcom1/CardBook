@@ -1,7 +1,5 @@
 pref("extensions.cardbook.autocompletion", true);
 pref("extensions.cardbook.exclusive", true);
-pref("extensions.cardbook.emailsCollection", "");
-pref("extensions.cardbook.emailsCollectionCat", "");
 pref("extensions.cardbook.requestsTimeout", "120");
 pref("extensions.cardbook.statusInformationLineNumber", "250");
 pref("extensions.cardbook.debugMode", false);

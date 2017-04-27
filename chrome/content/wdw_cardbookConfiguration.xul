@@ -24,7 +24,6 @@
 	<script src="wdw_log.js"/>
 	<script src="chrome://cardbook/content/preferences/cardbookPreferences.js"/>
 	<script src="cardbookSynchronization.js"/>
-	<script src="chrome://cardbook/content/layout/ovl_cardbookLayout.js"/>
 	<script src="chrome://cardbook/content/birthdays/cardbookBirthdaysUtils.js"/>
 	<script src="chrome://cardbook/content/cardbookElementTools.js"/>
 
@@ -35,10 +34,6 @@
 				name="extensions.cardbook.autocompletion" type="bool"/>
 			<preference id="extensions.cardbook.exclusive"
 				name="extensions.cardbook.exclusive" type="bool"/>
-			<preference id="extensions.cardbook.emailsCollection"
-				name="extensions.cardbook.emailsCollection" type="string"/>
-			<preference id="extensions.cardbook.emailsCollectionCat"
-				name="extensions.cardbook.emailsCollectionCat" type="string"/>
 			<preference id="extensions.cardbook.requestsTimeout"
 				name="extensions.cardbook.requestsTimeout" type="string"/>
 			<preference id="extensions.cardbook.debugMode"
@@ -198,18 +193,39 @@
 					</groupbox>
 
 					<groupbox>
-						<caption>
-							<checkbox id="emailsCollectionCheckbox" oncommand="wdw_cardbookConfiguration.changeAddressBooksPref(this.id);" label="&emailsCollectionLabel;" accesskey="&emailsCollectionAccesskey;" tooltiptext="&emailsCollectionTooltip;"/>
-						</caption>
-						<listbox rows="4" id="emailsCollectionListbox"/>
-						<separator class="thin"/>
-						<hbox align="center">
-							<label value="&emailsCollectionCatLabel;"
-								accesskey="&emailsCollectionCatAccesskey;"
-								control="emailsCollectionCatTextBox"
-								id="emailsCollectionCat"/>
-							<textbox id="emailsCollectionCatTextBox"
-								preference="extensions.cardbook.emailsCollectionCat"/>
+						<caption label="&emailsCollectionLabel;" tooltiptext="&emailsCollectionTooltip;"/>
+						<hbox flex="1">
+							<vbox flex="1">
+								<hbox flex="1">
+									<tree id="emailsCollectionTree" class="cardbookTreeChildrenConfigClass" hidecolumnpicker="true" flex="1" seltype="single" enableColumnDrag="false" editable="true" onselect="wdw_cardbookConfiguration.selectEmailsCollection();" sortDirection="ascending" sortResource="emailsCollectionMailName">
+										<treecols id="emailsCollectionTreeCols">
+											<treecol id="emailsCollectionEnabled" label="&emailsCollectionEnabledLabel;" type="checkbox" persist="width ordinal hidden" style="text-align:center" editable="true"/>
+											<splitter class="tree-splitter"/>
+											<treecol id="emailsCollectionId" flex="1" hidden="true" persist="width ordinal hidden" style="text-align:left" editable="false"/>
+											<splitter class="tree-splitter"/>
+											<treecol id="emailsCollectionMailName" label="&emailsCollectionMailNameLabel;" flex="1" persist="width ordinal hidden" onclick="wdw_cardbookConfiguration.sortTreesFromCol(event, this, 'emailsCollectionTree');" style="text-align:left" editable="false"/>
+											<splitter class="tree-splitter"/>
+											<treecol id="emailsCollectionMailId" flex="1" hidden="true" persist="width ordinal hidden" style="text-align:left" editable="false"/>
+											<splitter class="tree-splitter"/>
+											<treecol id="emailsCollectionABName" label="&emailsCollectionABNameLabel;" flex="1" onclick="wdw_cardbookConfiguration.sortTreesFromCol(event, this, 'emailsCollectionTree');" persist="width ordinal hidden" style="text-align:left" editable="false"/>
+											<splitter class="tree-splitter"/>
+											<treecol id="emailsCollectionDirPrefId" flex="1" hidden="true" persist="width ordinal hidden" style="text-align:left" editable="false"/>
+											<splitter class="tree-splitter"/>
+											<treecol id="emailsCollectionCatName" label="&emailsCollectionCatNameLabel;" flex="1" onclick="wdw_cardbookConfiguration.sortTreesFromCol(event, this, 'emailsCollectionTree');" hidden="false" persist="width ordinal hidden" style="text-align:left" editable="false"/>
+											<splitter class="tree-splitter"/>
+											<treecol id="emailsCollectionCatId" flex="1" hidden="true" persist="width ordinal hidden" style="text-align:left" editable="false"/>
+										</treecols>
+										<treechildren id="emailsCollectionTreeChildren" ondblclick="wdw_cardbookConfiguration.doubleClickTree(event, 'emailsCollectionTree');"/>
+									</tree>
+								</hbox>
+							</vbox>
+							<hbox align="top">
+								<vbox flex="1">
+									<button id="addEmailsCollectionLabel" label="&addEmailsCollectionLabel;" accesskey="&addEmailsCollectionAccesskey;" oncommand="wdw_cardbookConfiguration.addEmailsCollection();"/>
+									<button id="renameEmailsCollectionLabel" label="&renameEmailsCollectionLabel;" accesskey="&renameEmailsCollectionAccesskey;" oncommand="wdw_cardbookConfiguration.renameEmailsCollection();" disabled="true"/>
+									<button id="deleteEmailsCollectionLabel" label="&deleteEmailsCollectionLabel;" accesskey="&deleteEmailsCollectionAccesskey;" oncommand="wdw_cardbookConfiguration.deleteEmailsCollection();" disabled="true"/>
+								</vbox>
+							</hbox>
 						</hbox>
 					</groupbox>
 

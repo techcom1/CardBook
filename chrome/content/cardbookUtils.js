@@ -2341,22 +2341,70 @@ if ("undefined" == typeof(cardbookUtils)) {
 			return {result: result, delimiter: myDelimiter};
 		},
 
-		addToCardBookMenuSubMenu: function(aMenuName, aCallback) {
+		addToCardBookMenuSubMenu: function(aMenuName, aIdentityKey, aCallback) {
 			try {
+				var ABInclRestrictions = {};
+				var ABExclRestrictions = {};
+				var catInclRestrictions = {};
+				var catExclRestrictions = {};
+
+				function _loadRestrictions(aIdentityKey) {
+					var cardbookPrefService = new cardbookPreferenceService();
+					var result = [];
+					result = cardbookPrefService.getAllRestrictions();
+					ABInclRestrictions = {};
+					ABExclRestrictions = {};
+					catInclRestrictions = {};
+					catExclRestrictions = {};
+					if (aIdentityKey == "") {
+						ABInclRestrictions["length"] = 0;
+						return;
+					}
+					for (var i = 0; i < result.length; i++) {
+						var resultArray = result[i].split("::");
+						if ((resultArray[0] == "true") && ((resultArray[2] == aIdentityKey) || (resultArray[2] == "allMailAccounts"))) {
+							if (resultArray[1] == "include") {
+								ABInclRestrictions[resultArray[3]] = 1;
+								if (resultArray[4] && resultArray[4] != null && resultArray[4] !== undefined && resultArray[4] != "") {
+									if (!(catInclRestrictions[resultArray[3]])) {
+										catInclRestrictions[resultArray[3]] = {};
+									}
+									catInclRestrictions[resultArray[3]][resultArray[4]] = 1;
+								}
+							} else {
+								if (resultArray[4] && resultArray[4] != null && resultArray[4] !== undefined && resultArray[4] != "") {
+									if (!(catExclRestrictions[resultArray[3]])) {
+										catExclRestrictions[resultArray[3]] = {};
+									}
+									catExclRestrictions[resultArray[3]][resultArray[4]] = 1;
+								} else {
+									ABExclRestrictions[resultArray[3]] = 1;
+								}
+							}
+						}
+					}
+					ABInclRestrictions["length"] = cardbookUtils.sumElements(ABInclRestrictions);
+				};
+
+				_loadRestrictions(aIdentityKey);
+
 				var myPopup = document.getElementById(aMenuName);
 				while (myPopup.hasChildNodes()) {
 					myPopup.removeChild(myPopup.firstChild);
 				}
 				for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
 					if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && !cardbookRepository.cardbookAccounts[i][7] && (cardbookRepository.cardbookAccounts[i][6] != "SEARCH")) {
-						var menuItem = document.createElement("menuitem");
-						menuItem.setAttribute("id", cardbookRepository.cardbookAccounts[i][4]);
-						menuItem.addEventListener("command", function(aEvent) {
-								aCallback(this.id);
-								aEvent.stopPropagation();
-							}, false);
-						menuItem.setAttribute("label", cardbookRepository.cardbookAccounts[i][0]);
-						myPopup.appendChild(menuItem);
+						var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
+						if (cardbookRepository.verifyABRestrictions(myDirPrefId, "allAddressBooks", ABExclRestrictions, ABInclRestrictions)) {
+							var menuItem = document.createElement("menuitem");
+							menuItem.setAttribute("id", cardbookRepository.cardbookAccounts[i][4]);
+							menuItem.addEventListener("command", function(aEvent) {
+									aCallback(this.id);
+									aEvent.stopPropagation();
+								}, false);
+							menuItem.setAttribute("label", cardbookRepository.cardbookAccounts[i][0]);
+							myPopup.appendChild(menuItem);
+						}
 					}
 				}
 			}
@@ -2367,6 +2415,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			}
 		},
 
+		// used from the CardBook tab 
 		addToIMPPMenuSubMenu: function(aMenuName) {
 			try {
 				if (cardbookRepository.cardbookSyncMode === "NOSYNC") {

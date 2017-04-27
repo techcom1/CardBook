@@ -208,6 +208,33 @@ var cardbookRepository = {
 		}
 	},
 		
+    setCollected: function () {
+		try {
+			// for file opened with version <= 18.7
+			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var emailsCollection = prefs.getComplexValue("extensions.cardbook.emailsCollection", Components.interfaces.nsISupportsString).data;
+			var emailsCollectionCat = "";
+			try {
+				emailsCollectionCat = prefs.getComplexValue("extensions.cardbook.emailsCollectionCat", Components.interfaces.nsISupportsString).data;
+			}
+			catch (e) {}
+			if (emailsCollection != "") {
+				var cardbookPrefService = new cardbookPreferenceService();
+				emailsCollectionList = emailsCollection.split(',');
+				for (var i = 0; i < emailsCollectionList.length; i++) {
+					cardbookPrefService.setEmailsCollection(i.toString(), "true::include::allMailAccounts::" + emailsCollectionList[i] + "::" + emailsCollectionCat);
+				}
+				var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
+				str.data = "";
+				prefs.setComplexValue("extensions.cardbook.emailsCollection", Components.interfaces.nsISupportsString, str);
+				prefs.setComplexValue("extensions.cardbook.emailsCollectionCat", Components.interfaces.nsISupportsString, str);
+			}
+		}
+		catch (e) {
+			return "";
+		}
+	},
+		
     setTypes: function () {
 		var cardbookPrefService = new cardbookPreferenceService();
 		var myTypes = [];
@@ -510,32 +537,36 @@ var cardbookRepository = {
 	},
 		
 	removeAccountFromCollected: function (aDirPrefId) {
-		var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-		var emailsCollection = prefs.getComplexValue("extensions.cardbook.emailsCollection", Components.interfaces.nsISupportsString).data;
-		var emailsCollectionList = [];
-		emailsCollectionList = emailsCollection.split(',');
-		function filterAccount(element) {
-			return (element != aDirPrefId);
+		var cardbookPrefService = new cardbookPreferenceService();
+		var result = [];
+		var allEmailsCollections = [];
+		allEmailsCollections = cardbookPrefService.getAllEmailsCollections();
+		for (var i = 0; i < allEmailsCollections.length; i++) {
+			var resultArray = allEmailsCollections[i].split("::");
+			if (aDirPrefId !== resultArray[3]) {
+				result.push([resultArray[0], resultArray[1], resultArray[2], resultArray[3], resultArray[4]]);
+			}
 		}
-		emailsCollectionList = emailsCollectionList.filter(filterAccount);
-		var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-		str.data = emailsCollectionList.join(',');
-		prefs.setComplexValue("extensions.cardbook.emailsCollection", Components.interfaces.nsISupportsString, str);
+		for (var i = 0; i < result.length; i++) {
+			cardbookPrefService.setEmailsCollection(i.toString(), result[0] + "::" + result[1] + "::" + result[2] + "::" + result[3] + "::" + result[4]);
+		}
 	},
 
+	// only used from the import of Thunderbird standard address books 
 	addAccountToCollected: function (aDirPrefId) {
-		var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-		var emailsCollection = prefs.getComplexValue("extensions.cardbook.emailsCollection", Components.interfaces.nsISupportsString).data;
-		var emailsCollectionList = [];
-		emailsCollectionList = emailsCollection.split(',');
-		emailsCollectionList.push(aDirPrefId);
-		function filterAccount(element) {
-			return (element != 'init');
+		var cardbookPrefService = new cardbookPreferenceService();
+		var result = [];
+		var allEmailsCollections = [];
+		allEmailsCollections = cardbookPrefService.getAllEmailsCollections();
+		for (var i = 0; i < allEmailsCollections.length; i++) {
+			var resultArray = allEmailsCollections[i].split("::");
+			result.push([resultArray[0], resultArray[1], resultArray[2], resultArray[3], resultArray[4]]);
 		}
-		emailsCollectionList = emailsCollectionList.filter(filterAccount);
-		var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-		str.data = emailsCollectionList.join(',');
-		prefs.setComplexValue("extensions.cardbook.emailsCollection", Components.interfaces.nsISupportsString, str);
+		result.push(["true", "include", "allMailAccounts", aDirPrefId, ""]);
+
+		for (var i = 0; i < result.length; i++) {
+			cardbookPrefService.setEmailsCollection(i.toString(), result[0] + "::" + result[1] + "::" + result[2] + "::" + result[3] + "::" + result[4]);
+		}
 	},
 
 	removeAccountFromBirthday: function (aDirPrefId) {
@@ -952,21 +983,126 @@ var cardbookRepository = {
 		}
 	},
 
-	isEmailRegistered: function(aEmail) {
+	verifyABRestrictions: function (aDirPrefId, aSearchAB, aABExclRestrictions, aABInclRestrictions) {
+		if (aABExclRestrictions[aDirPrefId]) {
+			return false;
+		}
+		if (((aABInclRestrictions.length == 0) && ((aSearchAB == aDirPrefId) || (aSearchAB === "allAddressBooks"))) ||
+			((aABInclRestrictions.length > 0) && ((aSearchAB == aDirPrefId) || ((aSearchAB === "allAddressBooks") && aABInclRestrictions[aDirPrefId])))) {
+			return true;
+		} else {
+			return false;
+		}
+	},
+	
+	verifyCatRestrictions: function (aDirPrefId, aCategory, aSearchInput, aABExclRestrictions, aCatExclRestrictions, aCatInclRestrictions) {
+		if (aABExclRestrictions[aDirPrefId]) {
+			return false;
+		}
+		if (aCatExclRestrictions[aDirPrefId] && aCatExclRestrictions[aDirPrefId][aCategory]) {
+			return false;
+		}
+		if (((!(aCatInclRestrictions[aDirPrefId])) && (aCategory.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase().indexOf(aSearchInput) >= 0 || aSearchInput == "")) ||
+				((aCatInclRestrictions[aDirPrefId]) && (aCatInclRestrictions[aDirPrefId][aCategory]))) {
+			return true;
+		} else {
+			return false;
+		}
+	},
+
+	isEmailRegistered: function(aEmail, aIdentityKey) {
+		var ABInclRestrictions = {};
+		var ABExclRestrictions = {};
+		var catInclRestrictions = {};
+		var catExclRestrictions = {};
+
+		function _loadRestrictions(aIdentityKey) {
+			var cardbookPrefService = new cardbookPreferenceService();
+			var result = [];
+			result = cardbookPrefService.getAllRestrictions();
+			ABInclRestrictions = {};
+			ABExclRestrictions = {};
+			catInclRestrictions = {};
+			catExclRestrictions = {};
+			if (aIdentityKey == "") {
+				ABInclRestrictions["length"] = 0;
+				return;
+			}
+			for (var i = 0; i < result.length; i++) {
+				var resultArray = result[i].split("::");
+				if ((resultArray[0] == "true") && ((resultArray[2] == aIdentityKey) || (resultArray[2] == "allMailAccounts"))) {
+					if (resultArray[1] == "include") {
+						ABInclRestrictions[resultArray[3]] = 1;
+						if (resultArray[4] && resultArray[4] != null && resultArray[4] !== undefined && resultArray[4] != "") {
+							if (!(catInclRestrictions[resultArray[3]])) {
+								catInclRestrictions[resultArray[3]] = {};
+							}
+							catInclRestrictions[resultArray[3]][resultArray[4]] = 1;
+						}
+					} else {
+						if (resultArray[4] && resultArray[4] != null && resultArray[4] !== undefined && resultArray[4] != "") {
+							if (!(catExclRestrictions[resultArray[3]])) {
+								catExclRestrictions[resultArray[3]] = {};
+							}
+							catExclRestrictions[resultArray[3]][resultArray[4]] = 1;
+						} else {
+							ABExclRestrictions[resultArray[3]] = 1;
+						}
+					}
+				}
+			}
+			ABInclRestrictions["length"] = cardbookUtils.sumElements(ABInclRestrictions);
+		};
+		
+		_loadRestrictions(aIdentityKey);
+		
 		if (aEmail != null && aEmail !== undefined && aEmail != "") {
-			var myTestString = aEmail.toLowerCase();
+			var myEmail = aEmail.toLowerCase();
 			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
 				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && (cardbookRepository.cardbookAccounts[i][6] != "SEARCH")) {
 					var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
-					if (cardbookRepository.isEmailInPrefIdRegistered(myDirPrefId, aEmail)) {
-						return true;
+					if (cardbookRepository.verifyABRestrictions(myDirPrefId, "allAddressBooks", ABExclRestrictions, ABInclRestrictions)) {
+						if (cardbookRepository.cardbookCardEmails[myDirPrefId]) {
+							if (cardbookRepository.cardbookCardEmails[myDirPrefId][myEmail]) {
+								for (var j = 0; j < cardbookRepository.cardbookCardEmails[myDirPrefId][myEmail].length; j++) {
+									var myCard = cardbookRepository.cardbookCardEmails[myDirPrefId][myEmail][j];
+									if (catExclRestrictions[myDirPrefId]) {
+										var add = true;
+										for (var l in catExclRestrictions[myDirPrefId]) {
+											if (cardbookUtils.contains(myCard.categories, l)) {
+												add = false;
+												break;
+											}
+										}
+										if (!add) {
+											continue;
+										}
+									}
+									if (catInclRestrictions[myDirPrefId]) {
+										var add = false;
+										for (var l in catInclRestrictions[myDirPrefId]) {
+											if (cardbookUtils.contains(myCard.categories, l)) {
+												add = true;
+												break;
+											}
+										}
+										if (!add) {
+											continue;
+										}
+									}
+									return true;
+								}
+							}
+						}
 					}
 				}
 			}
 		}
 		return false;
 	},
-		
+
+	// this function is only used by the CardBook filters
+	// as mail account restrictions do not apply to filters
 	isEmailInPrefIdRegistered: function(aDirPrefId, aEmail) {
 		if (aEmail != null && aEmail !== undefined && aEmail != "") {
 			var myTestString = aEmail.toLowerCase();

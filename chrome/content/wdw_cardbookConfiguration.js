@@ -5,6 +5,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		allIMPPs: {},
 		allOrg: [],
 		allRestrictions: [],
+		allEmailsCollections: [],
 		allMailAccounts: [],
 		prefEmailPref: false,
 		
@@ -54,6 +55,18 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				case "accountsRestrictionsIncludeName":
 					columnArray=8;
 					break;
+				case "emailsCollectionMailName":
+					columnArray=2;
+					break;
+				case "emailsCollectionABName":
+					columnArray=4;
+					break;
+				case "emailsCollectionCatName":
+					columnArray=6;
+					break;
+				case "emailsCollectionIncludeName":
+					columnArray=8;
+					break;
 				case "mailAccountsName":
 					columnArray=2;
 					break;
@@ -77,6 +90,8 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				var myData = wdw_cardbookConfiguration.allMailAccounts;
 			} else if (aTreeName == "accountsRestrictionsTree") {
 				var myData = wdw_cardbookConfiguration.allRestrictions;
+			} else if (aTreeName == "emailsCollectionTree") {
+				var myData = wdw_cardbookConfiguration.allEmailsCollections;
 			} else if (aTreeName == "IMPPsTree") {
 				var myData = wdw_cardbookConfiguration.allIMPPs[document.getElementById('imppsCategoryRadiogroup').selectedItem.value];
 			} else {
@@ -95,6 +110,8 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				wdw_cardbookConfiguration.displayMailAccounts();
 			} else if (aTreeName == "accountsRestrictionsTree") {
 				wdw_cardbookConfiguration.displayRestrictions();
+			} else if (aTreeName == "emailsCollectionTree") {
+				wdw_cardbookConfiguration.displayEmailsCollection();
 			} else if (aTreeName == "IMPPsTree") {
 				wdw_cardbookConfiguration.displayIMPPs();
 			} else {
@@ -131,6 +148,8 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 						wdw_cardbookConfiguration.choosevCard();
 					} else if (aTreeName == "accountsRestrictionsTree") {
 						wdw_cardbookConfiguration.renameRestriction();
+					} else if (aTreeName == "emailsCollectionTree") {
+						wdw_cardbookConfiguration.renameEmailsCollection();
 					} else if (aTreeName == "IMPPsTree") {
 						wdw_cardbookConfiguration.renameIMPP();
 					} else {
@@ -468,16 +487,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			}
 		},
 	
-		changeEmailsCollectionCat: function (aLength) {
-			if (aLength === 0) {
-				document.getElementById('emailsCollectionCat').disabled = true;
-				document.getElementById('emailsCollectionCatTextBox').disabled = true;
-			} else {
-				document.getElementById('emailsCollectionCat').disabled = false;
-				document.getElementById('emailsCollectionCatTextBox').disabled = false;
-			}
-		},
-
 		changeAddressBooksPref: function (aCheckboxName) {
 			var aCheckBox = document.getElementById(aCheckboxName);
 			var aListBox = document.getElementById(aCheckboxName.replace('Checkbox', 'Listbox'));
@@ -493,7 +502,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 
 			var aPref = document.getElementById('extensions.cardbook.' + aCheckboxName.replace('Checkbox', ''));
 			aPref.value = addressBooksNameList.join(',');
-			wdw_cardbookConfiguration.changeEmailsCollectionCat(addressBooksNameList.length);
 		},
 
 		changeAddressBookPref: function (aCheckboxName) {
@@ -520,7 +528,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 
 			var aPref = document.getElementById('extensions.cardbook.' + aCheckboxName.replace('Checkbox', ''));
 			aPref.value = addressBooksNameList.join(',');
-			wdw_cardbookConfiguration.changeEmailsCollectionCat(addressBooksNameList.length);
 		},
 		
 		loadAddressBooks: function (aType, aNotReadOnly) {
@@ -564,7 +571,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				aCheckBox.checked = false;
 			}
 			if (aNotReadOnly) {
-				wdw_cardbookConfiguration.changeEmailsCollectionCat(totalChecked);
 			}
 		},
 
@@ -713,17 +719,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			}
 		},
 
-		selectRestriction: function() {
-			var btnEdit = document.getElementById("renameRestrictionLabel");
-			var myTree = document.getElementById("accountsRestrictionsTree");
-			if (myTree.view.selection.getRangeCount() > 0) {
-				btnEdit.disabled = false;
-			} else {
-				btnEdit.disabled = true;
-			}
-			document.getElementById("deleteRestrictionLabel").disabled = btnEdit.disabled;
-		},
-
 		getEmailAccountName: function(aEmailAccountId) {
 			if (aEmailAccountId == "allMailAccounts") {
 				var strBundle = document.getElementById("cardbook-strings");
@@ -763,6 +758,17 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				}
 			}
 			return cardbookUtils.getPrefNameFromPrefId(dirPrefId);
+		},
+
+		selectRestriction: function() {
+			var btnEdit = document.getElementById("renameRestrictionLabel");
+			var myTree = document.getElementById("accountsRestrictionsTree");
+			if (myTree.view.selection.getRangeCount() > 0) {
+				btnEdit.disabled = false;
+			} else {
+				btnEdit.disabled = true;
+			}
+			document.getElementById("deleteRestrictionLabel").disabled = btnEdit.disabled;
 		},
 
 		loadRestrictions: function () {
@@ -827,8 +833,8 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		},
 		
 		addRestriction: function () {
-			var myArgs = {emailAccountId: "", emailAccountName: "", addressBookId: "", addressBookName: "", categoryName: "", includeName: "",  includeCode: "", typeAction: ""};
-			var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookConfigurationAddRestriction.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+			var myArgs = {emailAccountId: "", emailAccountName: "", addressBookId: "", addressBookName: "", categoryName: "", includeName: "",  includeCode: "", typeAction: "", context: "Restriction"};
+			var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookConfigurationAddEmails.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
 			if (myArgs.typeAction == "SAVE") {
 				wdw_cardbookConfiguration.allRestrictions.push([true, wdw_cardbookConfiguration.allRestrictions.length.toString(), myArgs.emailAccountName, myArgs.emailAccountId,
 																myArgs.addressBookName, myArgs.addressBookId, myArgs.categoryName, myArgs.categoryId, myArgs.includeName, myArgs.includeCode]);
@@ -853,8 +859,8 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				var myIncludeName = myTree.view.getCellText(myTree.currentIndex, {id: "accountsRestrictionsIncludeName"});
 				var myIncludeCode = myTree.view.getCellText(myTree.currentIndex, {id: "accountsRestrictionsIncludeCode"});
 				var myArgs = {emailAccountId: myMailId, emailAccountName: myMailName, addressBookId: myABDirPrefId, addressBookName: myABName, categoryId: myCatId, categoryName: myCatName,
-								includeName: myIncludeName, includeCode: myIncludeCode, typeAction: ""};
-				var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookConfigurationAddRestriction.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+								includeName: myIncludeName, includeCode: myIncludeCode, typeAction: "", context: "Restriction"};
+				var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookConfigurationAddEmails.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
 				if (myArgs.typeAction == "SAVE") {
 					var result = [];
 					for (let i = 0; i < wdw_cardbookConfiguration.allRestrictions.length; i++) {
@@ -899,6 +905,150 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			cardbookUtils.notifyObservers("cardbook.restrictionsChanged");
 		},
 
+		selectEmailsCollection: function() {
+			var btnEdit = document.getElementById("renameEmailsCollectionLabel");
+			var myTree = document.getElementById("emailsCollectionTree");
+			if (myTree.view.selection.getRangeCount() > 0) {
+				btnEdit.disabled = false;
+			} else {
+				btnEdit.disabled = true;
+			}
+			document.getElementById("deleteEmailsCollectionLabel").disabled = btnEdit.disabled;
+		},
+
+		loadEmailsCollection: function () {
+			var strBundle = document.getElementById("cardbook-strings");
+			var cardbookPrefService = new cardbookPreferenceService();
+			var result = [];
+			result = cardbookPrefService.getAllEmailsCollections();
+			var count = 0;
+			for (var i = 0; i < result.length; i++) {
+				var resultArray = result[i].split("::");
+				var emailAccountName = wdw_cardbookConfiguration.getEmailAccountName(resultArray[2]);
+				if (emailAccountName != "") {
+					var ABName = wdw_cardbookConfiguration.getABName(resultArray[3]);
+					if (ABName != "") {
+						var index = count++;
+						if (resultArray[4] && resultArray[4] != null && resultArray[4] !== undefined && resultArray[4] != "") {
+							var categoryId = resultArray[3] + "::" + resultArray[4];
+							var categoryName = resultArray[4];
+						} else {
+							var categoryId = "";
+							var categoryName = "";
+						}
+						wdw_cardbookConfiguration.allEmailsCollections.push([(resultArray[0] == "true"), index.toString(), emailAccountName, resultArray[2],
+																		ABName, resultArray[3], categoryName, categoryId, strBundle.getString(resultArray[1] + "Label"), resultArray[1]]);
+					}
+				}
+			}
+		},
+		
+		displayEmailsCollection: function () {
+			var emailsCollectionTreeView = {
+				get rowCount() { return wdw_cardbookConfiguration.allEmailsCollections.length; },
+				isContainer: function(idx) { return false },
+				cycleHeader: function(idx) { return false },
+				isEditable: function(idx, column) {
+					if (column.id == "emailsCollectionEnabled") return true;
+					else return false;
+				},
+				getCellText: function(idx, column) {
+					if (column.id == "emailsCollectionEnabled") return wdw_cardbookConfiguration.allEmailsCollections[idx][0];
+					else if (column.id == "emailsCollectionId") return wdw_cardbookConfiguration.allEmailsCollections[idx][1];
+					else if (column.id == "emailsCollectionMailName") return wdw_cardbookConfiguration.allEmailsCollections[idx][2];
+					else if (column.id == "emailsCollectionMailId") return wdw_cardbookConfiguration.allEmailsCollections[idx][3];
+					else if (column.id == "emailsCollectionABName") return wdw_cardbookConfiguration.allEmailsCollections[idx][4];
+					else if (column.id == "emailsCollectionDirPrefId") return wdw_cardbookConfiguration.allEmailsCollections[idx][5];
+					else if (column.id == "emailsCollectionCatName") return wdw_cardbookConfiguration.allEmailsCollections[idx][6];
+					else if (column.id == "emailsCollectionCatId") return wdw_cardbookConfiguration.allEmailsCollections[idx][7];
+					else if (column.id == "emailsCollectionIncludeName") return wdw_cardbookConfiguration.allEmailsCollections[idx][8];
+					else if (column.id == "emailsCollectionIncludeCode") return wdw_cardbookConfiguration.allEmailsCollections[idx][9];
+				},
+				getCellValue: function(idx, column) {
+					if (column.id == "emailsCollectionEnabled") return wdw_cardbookConfiguration.allEmailsCollections[idx][0];
+				},
+				setCellValue: function(idx, column) {
+					if (column.id == "emailsCollectionEnabled") {
+						wdw_cardbookConfiguration.allEmailsCollections[idx][0] = !wdw_cardbookConfiguration.allEmailsCollections[idx][0];
+					}
+				}
+			}
+			document.getElementById('emailsCollectionTree').view = emailsCollectionTreeView;
+			wdw_cardbookConfiguration.selectEmailsCollection();
+		},
+		
+		addEmailsCollection: function () {
+			var myArgs = {emailAccountId: "", emailAccountName: "", addressBookId: "", addressBookName: "", categoryName: "", includeName: "",  includeCode: "", typeAction: "", context: "Collection"};
+			var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookConfigurationAddEmails.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+			if (myArgs.typeAction == "SAVE") {
+				wdw_cardbookConfiguration.allEmailsCollections.push([true, wdw_cardbookConfiguration.allRestrictions.length.toString(), myArgs.emailAccountName, myArgs.emailAccountId,
+																myArgs.addressBookName, myArgs.addressBookId, myArgs.categoryName, myArgs.categoryId, myArgs.includeName, myArgs.includeCode]);
+				wdw_cardbookConfiguration.allEmailsCollections = cardbookUtils.sortArrayByString(wdw_cardbookConfiguration.allEmailsCollections,1,1);
+				wdw_cardbookConfiguration.sortTrees(null, "emailsCollectionTree");
+			}
+		},
+		
+		renameEmailsCollection: function () {
+			var myTree = document.getElementById('emailsCollectionTree');
+			if (myTree.currentIndex == -1) {
+				return;
+			} else {
+				var myEnabled = myTree.view.getCellText(myTree.currentIndex, {id: "emailsCollectionEnabled"});
+				var myId = myTree.view.getCellText(myTree.currentIndex, {id: "emailsCollectionId"});
+				var myMailId = myTree.view.getCellText(myTree.currentIndex, {id: "emailsCollectionMailId"});
+				var myMailName = myTree.view.getCellText(myTree.currentIndex, {id: "emailsCollectionMailName"});
+				var myABName = myTree.view.getCellText(myTree.currentIndex, {id: "emailsCollectionABName"});
+				var myABDirPrefId = myTree.view.getCellText(myTree.currentIndex, {id: "emailsCollectionDirPrefId"});
+				var myCatName = myTree.view.getCellText(myTree.currentIndex, {id: "emailsCollectionCatName"});
+				var myCatId = myTree.view.getCellText(myTree.currentIndex, {id: "emailsCollectionCatId"});
+				var myIncludeName = myTree.view.getCellText(myTree.currentIndex, {id: "emailsCollectionIncludeName"});
+				var myIncludeCode = myTree.view.getCellText(myTree.currentIndex, {id: "emailsCollectionIncludeCode"});
+				var myArgs = {emailAccountId: myMailId, emailAccountName: myMailName, addressBookId: myABDirPrefId, addressBookName: myABName, categoryId: myCatId, categoryName: myCatName,
+								includeName: myIncludeName, includeCode: myIncludeCode, typeAction: "", context: "Collection"};
+				var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookConfigurationAddEmails.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+				if (myArgs.typeAction == "SAVE") {
+					var result = [];
+					for (let i = 0; i < wdw_cardbookConfiguration.allEmailsCollections.length; i++) {
+						if (myId === wdw_cardbookConfiguration.allEmailsCollections[i][1]) {
+							result.push([myEnabled, myId, myArgs.emailAccountName, myArgs.emailAccountId, myArgs.addressBookName, myArgs.addressBookId, myArgs.categoryName, myArgs.categoryId,
+										myArgs.includeName, myArgs.includeCode]);
+						} else {
+							result.push(wdw_cardbookConfiguration.allEmailsCollections[i]);
+						}
+					}
+					wdw_cardbookConfiguration.allEmailsCollections = JSON.parse(JSON.stringify(result));
+					wdw_cardbookConfiguration.allEmailsCollections = cardbookUtils.sortArrayByString(wdw_cardbookConfiguration.allEmailsCollections,1,1);
+					wdw_cardbookConfiguration.sortTrees(null, "emailsCollectionTree");
+				}
+			}
+		},
+		
+		deleteEmailsCollection: function () {
+			var myTree = document.getElementById('emailsCollectionTree');
+			if (myTree.currentIndex == -1) {
+				return;
+			} else {
+				var myId = myTree.view.getCellText(myTree.currentIndex, {id: "emailsCollectionId"});
+				var result = [];
+				for (let i = 0; i < wdw_cardbookConfiguration.allEmailsCollections.length; i++) {
+					if (myId !== wdw_cardbookConfiguration.allEmailsCollections[i][1]) {
+						result.push(wdw_cardbookConfiguration.allEmailsCollections[i]);
+					}
+				}
+				wdw_cardbookConfiguration.allEmailsCollections = JSON.parse(JSON.stringify(result));
+				wdw_cardbookConfiguration.sortTrees(null, "emailsCollectionTree");
+			}
+		},
+		
+		validateEmailsCollection: function () {
+			var cardbookPrefService = new cardbookPreferenceService();
+			cardbookPrefService.delEmailsCollection();
+			for (var i = 0; i < wdw_cardbookConfiguration.allEmailsCollections.length; i++) {
+				cardbookPrefService.setEmailsCollection(wdw_cardbookConfiguration.allEmailsCollections[i][1], wdw_cardbookConfiguration.allEmailsCollections[i][0].toString() + "::" + wdw_cardbookConfiguration.allEmailsCollections[i][9]
+													+ "::" + wdw_cardbookConfiguration.allEmailsCollections[i][3] + "::" + wdw_cardbookConfiguration.allEmailsCollections[i][5] + "::" + wdw_cardbookConfiguration.allEmailsCollections[i][6]);
+			}
+		},
+		
 		selectTypes: function() {
 			var btnEdit = document.getElementById("renameTypeLabel");
 			var myTree = document.getElementById("typesTree");
@@ -1257,13 +1407,14 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			wdw_cardbookConfiguration.displayOrg();
 			wdw_cardbookConfiguration.loadPeriodicSync();
 			wdw_cardbookConfiguration.loadCustoms();
-			wdw_cardbookConfiguration.loadAddressBooks("emailsCollection", true);
 			wdw_cardbookConfiguration.loadAddressBooks("addressBooksNameList", false);
 			wdw_cardbookConfiguration.loadDateFormats();
 			wdw_cardbookConfiguration.loadMailAccounts();
 			wdw_cardbookConfiguration.sortTrees(null, "mailAccountsTree");
 			wdw_cardbookConfiguration.loadRestrictions();
 			wdw_cardbookConfiguration.sortTrees(null, "accountsRestrictionsTree");
+			wdw_cardbookConfiguration.loadEmailsCollection();
+			wdw_cardbookConfiguration.sortTrees(null, "emailsCollectionTree");
 			wdw_cardbookConfiguration.loadPrefEmailPref();
 			// loadFnFormula() depends on loadOrg()
 			wdw_cardbookConfiguration.loadFnFormula();
@@ -1281,6 +1432,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			wdw_cardbookConfiguration.validateOrg();
 			wdw_cardbookConfiguration.validateMailAccounts();
 			wdw_cardbookConfiguration.validateRestrictions();
+			wdw_cardbookConfiguration.validateEmailsCollection();
 			wdw_cardbookConfiguration.validatePrefEmailPref();
 			wdw_cardbookConfiguration.validateEventEntryTitle();
 			wdw_cardbookConfiguration.validateFnFormula();

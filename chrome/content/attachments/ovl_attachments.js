@@ -8,10 +8,10 @@ if ("undefined" == typeof(ovl_attachments)) {
 			document.getElementById('attachment2CardBookImport').disabled = aValue;
 			if (!aValue) {
 				Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
-				cardbookUtils.addToCardBookMenuSubMenu('attachments1CardBookImportPopup', ovl_attachments.importFileIntoCardBook);
-				cardbookUtils.addToCardBookMenuSubMenu('attachments2CardBookImportPopup', ovl_attachments.importFileIntoCardBook);
-				cardbookUtils.addToCardBookMenuSubMenu('attachment1CardBookImportPopup', ovl_attachments.importFileIntoCardBook);
-				cardbookUtils.addToCardBookMenuSubMenu('attachment2CardBookImportPopup', ovl_attachments.importFileIntoCardBook);
+				cardbookUtils.addToCardBookMenuSubMenu('attachments1CardBookImportPopup', ovl_cardbookMailContacts.getIdentityKey(), ovl_attachments.importFileIntoCardBook);
+				cardbookUtils.addToCardBookMenuSubMenu('attachments2CardBookImportPopup', ovl_cardbookMailContacts.getIdentityKey(), ovl_attachments.importFileIntoCardBook);
+				cardbookUtils.addToCardBookMenuSubMenu('attachment1CardBookImportPopup', ovl_cardbookMailContacts.getIdentityKey(), ovl_attachments.importFileIntoCardBook);
+				cardbookUtils.addToCardBookMenuSubMenu('attachment2CardBookImportPopup', ovl_cardbookMailContacts.getIdentityKey(), ovl_attachments.importFileIntoCardBook);
 			}
 		},
 

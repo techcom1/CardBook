@@ -247,33 +247,6 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 			document.getElementById('abResultsTree').view = abResultsTreeView;
 		},
 		
-		verifyABRestrictions: function (aDirPrefId, aSearchAB) {
-			if (wdw_cardbookContactsSidebar.ABExclRestrictions[aDirPrefId]) {
-				return false;
-			}
-			if (((wdw_cardbookContactsSidebar.ABInclRestrictions.length == 0) && ((aSearchAB == aDirPrefId) || (aSearchAB === "allAddressBooks"))) ||
-				((wdw_cardbookContactsSidebar.ABInclRestrictions.length > 0) && ((aSearchAB == aDirPrefId) || ((aSearchAB === "allAddressBooks") && wdw_cardbookContactsSidebar.ABInclRestrictions[aDirPrefId])))) {
-				return true;
-			} else {
-				return false;
-			}
-		},
-		
-		verifyCatRestrictions: function (aDirPrefId, aCategory, aSearchInput) {
-			if (wdw_cardbookContactsSidebar.ABExclRestrictions[aDirPrefId]) {
-				return false;
-			}
-			if (wdw_cardbookContactsSidebar.catExclRestrictions[aDirPrefId] && wdw_cardbookContactsSidebar.catExclRestrictions[aDirPrefId][aCategory]) {
-				return false;
-			}
-			if (((!(wdw_cardbookContactsSidebar.catInclRestrictions[aDirPrefId])) && (aCategory.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase().indexOf(aSearchInput) >= 0 || aSearchInput == "")) ||
-					((wdw_cardbookContactsSidebar.catInclRestrictions[aDirPrefId]) && (wdw_cardbookContactsSidebar.catInclRestrictions[aDirPrefId][aCategory]))) {
-				return true;
-			} else {
-				return false;
-			}
-		},
-		
 		search: function () {
 			if (document.getElementById('peopleSearchInput').value == "") {
 				var strBundle = document.getElementById("cardbook-strings");
@@ -288,7 +261,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5]) {
 					var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
 					if (cardbookRepository.cardbookAccounts[i][6] != "SEARCH") {
-						if (wdw_cardbookContactsSidebar.verifyABRestrictions(myDirPrefId, searchAB)) {
+						if (cardbookRepository.verifyABRestrictions(myDirPrefId, searchAB, wdw_cardbookContactsSidebar.ABExclRestrictions, wdw_cardbookContactsSidebar.ABInclRestrictions)) {
 							var myDirPrefName = cardbookUtils.getPrefNameFromPrefId(myDirPrefId);
 							// All No Only categories
 							if ((searchCategory === "allCategories") || (searchCategory === "noCategories") || (searchCategory === "onlyCategories")) {
@@ -339,7 +312,8 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 								if (searchCategory !== "noCategories") {
 									for (var j = 0; j < cardbookRepository.cardbookAccountsCategories[myDirPrefId].length; j++) {
 										var myCategory = cardbookRepository.cardbookAccountsCategories[myDirPrefId][j];
-										if (wdw_cardbookContactsSidebar.verifyCatRestrictions(myDirPrefId, myCategory, searchInput)) {
+										if (cardbookRepository.verifyCatRestrictions(myDirPrefId, myCategory, searchInput, wdw_cardbookContactsSidebar.ABExclRestrictions,
+																					wdw_cardbookContactsSidebar.catExclRestrictions, wdw_cardbookContactsSidebar.catInclRestrictions)) {
 											var myEmails = [] ;
 											var myFormattedEmails = [];
 											for (var k = 0; k < cardbookRepository.cardbookDisplayCards[myDirPrefId+"::"+myCategory].length; k++) {
@@ -446,7 +420,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 				var contacts = contactManager.directories;
 				while ( contacts.hasMoreElements() ) {
 					var contact = contacts.getNext().QueryInterface(Components.interfaces.nsIAbDirectory);
-					if (wdw_cardbookContactsSidebar.verifyABRestrictions(contact.dirPrefId, searchAB)) {
+					if (cardbookRepository.verifyABRestrictions(contact.dirPrefId, searchAB, wdw_cardbookContactsSidebar.ABExclRestrictions, wdw_cardbookContactsSidebar.ABInclRestrictions)) {
 						var abCardsEnumerator = contact.childCards;
 						while (abCardsEnumerator.hasMoreElements()) {
 							var myABCard = abCardsEnumerator.getNext();
@@ -823,6 +797,10 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 			wdw_cardbookContactsSidebar.ABExclRestrictions = {};
 			wdw_cardbookContactsSidebar.catInclRestrictions = {};
 			wdw_cardbookContactsSidebar.catExclRestrictions = {};
+			if (msgIdentity == "") {
+				wdw_cardbookContactsSidebar.ABInclRestrictions["length"] = 0;
+				return;
+			}
 			for (var i = 0; i < result.length; i++) {
 				var resultArray = result[i].split("::");
 				if ((resultArray[0] == "true") && ((resultArray[2] == msgIdentity) || (resultArray[2] == "allMailAccounts"))) {

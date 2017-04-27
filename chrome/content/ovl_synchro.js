@@ -14,7 +14,8 @@ if ("undefined" == typeof(ovl_synchro)) {
 	
 				// migration functions (should be removed)
 				// removed : cardbookRepository.setSolveConflicts();
-				// removed : cardbookRepository.setTypes();
+				cardbookRepository.setCollected();
+				cardbookRepository.setTypes();
 				cardbookRepository.loadCustoms();
 				
 				// observers are needed not only UI but also for synchro

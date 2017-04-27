@@ -31,10 +31,18 @@
 <!ENTITY deleteRestrictionLabel "Verwijderen">
 <!ENTITY deleteRestrictionAccesskey "V">
 <!ENTITY emailsCollectionLabel "Contactpersoon toevoegen bij uitgaande berichten">
-<!ENTITY emailsCollectionAccesskey "C">
-<!ENTITY emailsCollectionCatLabel "Categorie koppelen aan verzamelde contactpersonen">
-<!ENTITY emailsCollectionCatAccesskey "C">
 <!ENTITY emailsCollectionTooltip "Contactpersoon toevoegen bij uitgaande berichten als het email adres nog niet in CardBook voorkomt.">
+<!ENTITY emailsCollectionEnabledLabel "Ingeschakeld">
+<!ENTITY emailsCollectionMailNameLabel "Mail account">
+<!ENTITY emailsCollectionABNameLabel "Adresboek">
+<!ENTITY emailsCollectionCatNameLabel "Categorie">
+<!ENTITY emailsCollectionIncludeNameLabel "Type">
+<!ENTITY addEmailsCollectionLabel "Toevoegen">
+<!ENTITY addEmailsCollectionAccesskey "T">
+<!ENTITY renameEmailsCollectionLabel "Bewerken">
+<!ENTITY renameEmailsCollectionAccesskey "B">
+<!ENTITY deleteEmailsCollectionLabel "Verwijderen">
+<!ENTITY deleteEmailsCollectionAccesskey "V">
 <!ENTITY logGroupboxLabel "Logbestand">
 <!ENTITY debugModeLabel "Debug modus">
 <!ENTITY debugModeAccesskey "D">

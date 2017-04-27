@@ -8,6 +8,7 @@ function cardbookPreferenceService(uniqueId) {
     this.prefCardBookCustoms = this.prefCardBookRoot + "customs.";
     this.prefCardBookMailAccount = this.prefCardBookRoot + "mailAccount.";
     this.prefCardBookAccountRestrictions = this.prefCardBookRoot + "accountsRestrictions.";
+    this.prefCardBookEmailsCollection = this.prefCardBookRoot + "emailsCollection.";
     this.prefPath = this.prefCardBookData + uniqueId + ".";
 }
 
@@ -355,7 +356,7 @@ cardbookPreferenceService.prototype = {
 			for (let i = 0; i < result.length; i++) {
 				finalResult.push(this.mPreferencesService.getComplexValue(result[i], Components.interfaces.nsISupportsString).data);
 			}
-			return this._arrayUnique(finalResult);
+			return finalResult;
 		}
 		catch(e) {
 			return [];
@@ -383,6 +384,45 @@ cardbookPreferenceService.prototype = {
 		}
 		catch(e) {
 			dump("cardbookPreferenceService.setRestriction : failed to set" + this.prefCardBookAccountRestrictions + aRestrictionId + "\n" + e + "\n");
+		}
+    },
+
+    getAllEmailsCollections: function () {
+		try {
+			let count = {};
+			let finalResult = [];
+			let result = this.mPreferencesService.getChildList(this.prefCardBookEmailsCollection, count);
+			for (let i = 0; i < result.length; i++) {
+				finalResult.push(this.mPreferencesService.getComplexValue(result[i], Components.interfaces.nsISupportsString).data);
+			}
+			return finalResult;
+		}
+		catch(e) {
+			return [];
+		}
+    },
+
+    delEmailsCollection: function (aRestrictionId) {
+		try {
+			if (aRestrictionId != null && aRestrictionId !== undefined && aRestrictionId != "") {
+				this.mPreferencesService.deleteBranch(this.prefCardBookEmailsCollection + aRestrictionId);
+			} else {
+				this.mPreferencesService.deleteBranch(this.prefCardBookEmailsCollection);
+			}
+		}
+		catch(e) {
+			dump("cardbookPreferenceService.delEmailsCollection : failed to delete" + this.prefCardBookEmailsCollection + "\n" + e + "\n");
+		}
+    },
+
+    setEmailsCollection: function (aRestrictionId, aRestrictionValue) {
+		try {
+			var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
+			str.data = aRestrictionValue;
+			this.mPreferencesService.setComplexValue(this.prefCardBookEmailsCollection + aRestrictionId, Components.interfaces.nsISupportsString, str);
+		}
+		catch(e) {
+			dump("cardbookPreferenceService.setEmailsCollection : failed to set" + this.prefCardBookEmailsCollection + aRestrictionId + "\n" + e + "\n");
 		}
     },
 

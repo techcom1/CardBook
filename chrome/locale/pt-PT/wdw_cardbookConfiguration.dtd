@@ -31,10 +31,18 @@
 <!ENTITY deleteRestrictionLabel "Apagar">
 <!ENTITY deleteRestrictionAccesskey "g">
 <!ENTITY emailsCollectionLabel "Endereços recolhidos de emails enviados">
-<!ENTITY emailsCollectionAccesskey "r">
-<!ENTITY emailsCollectionCatLabel "Adicionar esta categoria à agenda de contactos">
-<!ENTITY emailsCollectionCatAccesskey "C">
 <!ENTITY emailsCollectionTooltip "Melhorar a colecção de emails do Thunderbird. Quando activo, se o email não estiver presente em nenhuma agenda, será adicionado à agenda seleccionada.">
+<!ENTITY emailsCollectionEnabledLabel "Activo">
+<!ENTITY emailsCollectionMailNameLabel "Conta de email">
+<!ENTITY emailsCollectionABNameLabel "Agenda">
+<!ENTITY emailsCollectionCatNameLabel "Categoria">
+<!ENTITY emailsCollectionIncludeNameLabel "Tipo">
+<!ENTITY addEmailsCollectionLabel "Adicionar">
+<!ENTITY addEmailsCollectionAccesskey "A">
+<!ENTITY renameEmailsCollectionLabel "Editar">
+<!ENTITY renameEmailsCollectionAccesskey "E">
+<!ENTITY deleteEmailsCollectionLabel "Apagar">
+<!ENTITY deleteEmailsCollectionAccesskey "g">
 <!ENTITY logGroupboxLabel "Log">
 <!ENTITY debugModeLabel "Modo debug">
 <!ENTITY debugModeAccesskey "M">

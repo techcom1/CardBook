@@ -31,10 +31,18 @@
 <!ENTITY deleteRestrictionLabel "Smazat">
 <!ENTITY deleteRestrictionAccesskey "S">
 <!ENTITY emailsCollectionLabel "Sbírat odchozí e-mail">
-<!ENTITY emailsCollectionAccesskey "o">
-<!ENTITY emailsCollectionCatLabel "Ke sesbíraným kontaktům přidat tuto kategorii">
-<!ENTITY emailsCollectionCatAccesskey "K">
 <!ENTITY emailsCollectionTooltip "Rozšiřuje standardní sběr odchozích adres Thunderbirdu. Pokud je povoleno, e-mailové adresy nevyskytující se v žádném adresáři CardBooku budou přidány do vybraného adresáře(ů).">
+<!ENTITY emailsCollectionEnabledLabel "Povolen">
+<!ENTITY emailsCollectionMailNameLabel "E-mailový účet">
+<!ENTITY emailsCollectionABNameLabel "Adresář">
+<!ENTITY emailsCollectionCatNameLabel "Kategorie">
+<!ENTITY emailsCollectionIncludeNameLabel "Typ">
+<!ENTITY addEmailsCollectionLabel "Přidat">
+<!ENTITY addEmailsCollectionAccesskey "P">
+<!ENTITY renameEmailsCollectionLabel "Upravit">
+<!ENTITY renameEmailsCollectionAccesskey "U">
+<!ENTITY deleteEmailsCollectionLabel "Smazat">
+<!ENTITY deleteEmailsCollectionAccesskey "S">
 <!ENTITY logGroupboxLabel "Protokol">
 <!ENTITY debugModeLabel "Ladící režim">
 <!ENTITY debugModeAccesskey "L">

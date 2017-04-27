@@ -31,10 +31,18 @@
 <!ENTITY deleteRestrictionLabel "Löschen">
 <!ENTITY deleteRestrictionAccesskey "L">
 <!ENTITY emailsCollectionLabel "Sammlung ausgehender Email-Adressen">
-<!ENTITY emailsCollectionAccesskey "S">
-<!ENTITY emailsCollectionCatLabel "Füge diese Kategorie zu den gesammelten Kontakten hinzu">
-<!ENTITY emailsCollectionCatAccesskey "K">
 <!ENTITY emailsCollectionTooltip "Erweitert die standardmäßige Sammlung ausgehender Email-Adressen in Thunderbird. Falls aktiviert, werden Email-Adressen, die nicht in einem Adressbuch von Cardbook vorhanden sind, automatisch den ausgewählten Adressbüchern hinzufügt.">
+<!ENTITY emailsCollectionEnabledLabel "Aktiviert">
+<!ENTITY emailsCollectionMailNameLabel "Email-Konto">
+<!ENTITY emailsCollectionABNameLabel "Adressbuch">
+<!ENTITY emailsCollectionCatNameLabel "Kategorie">
+<!ENTITY emailsCollectionIncludeNameLabel "Art">
+<!ENTITY addEmailsCollectionLabel "Hinzufügen">
+<!ENTITY addEmailsCollectionAccesskey "H">
+<!ENTITY renameEmailsCollectionLabel "Bearbeiten">
+<!ENTITY renameEmailsCollectionAccesskey "B">
+<!ENTITY deleteEmailsCollectionLabel "Löschen">
+<!ENTITY deleteEmailsCollectionAccesskey "L">
 <!ENTITY logGroupboxLabel "Log">
 <!ENTITY debugModeLabel "Debug-Modus">
 <!ENTITY debugModeAccesskey "D">

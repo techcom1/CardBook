@@ -31,10 +31,17 @@
 <!ENTITY deleteRestrictionLabel "Delete">
 <!ENTITY deleteRestrictionAccesskey "D">
 <!ENTITY emailsCollectionLabel "Collect outgoing email">
-<!ENTITY emailsCollectionAccesskey "C">
-<!ENTITY emailsCollectionCatLabel "Add this category to the collected contacts">
-<!ENTITY emailsCollectionCatAccesskey "t">
 <!ENTITY emailsCollectionTooltip "Extends the standard outgoing email address collection of Thunderbird. If enabled, email addresses not present in any CardBook address books will be added to the selected address book(s).">
+<!ENTITY emailsCollectionEnabledLabel "Enabled">
+<!ENTITY emailsCollectionMailNameLabel "Mail Account">
+<!ENTITY emailsCollectionABNameLabel "Address Book">
+<!ENTITY emailsCollectionCatNameLabel "Category">
+<!ENTITY addEmailsCollectionLabel "Add">
+<!ENTITY addEmailsCollectionAccesskey "A">
+<!ENTITY renameEmailsCollectionLabel "Edit">
+<!ENTITY renameEmailsCollectionAccesskey "E">
+<!ENTITY deleteEmailsCollectionLabel "Delete">
+<!ENTITY deleteEmailsCollectionAccesskey "D">
 <!ENTITY logGroupboxLabel "Log">
 <!ENTITY debugModeLabel "Debug mode">
 <!ENTITY debugModeAccesskey "m">

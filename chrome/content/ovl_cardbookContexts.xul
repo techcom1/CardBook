@@ -25,7 +25,7 @@
 	<menupopup id="emailAddressPopup">
 		<menuseparator id="editCardBookSeparator" insertafter="viewContactItem"/>
 		<menu id="addToCardBookMenu" label="&addToCardBookMenuLabel;" accesskey="&addToCardBookMenuAccesskey;" insertafter="editCardBookSeparator">
-			<menupopup id="addToCardBookMenuPopup" onpopupshowing="cardbookUtils.addToCardBookMenuSubMenu(this.id, ovl_cardbookMailContacts.addToCardBook)"/>
+			<menupopup id="addToCardBookMenuPopup" onpopupshowing="ovl_cardbookMailContacts.addToCardBookMenuSubMenu(this.id)"/>
 		</menu>
 		<menuitem id="editInCardBookMenu" label="&editInCardBookMenuLabel;" accesskey="&editInCardBookMenuAccesskey;" insertafter="addToCardBookMenu" onclick="ovl_cardbookMailContacts.editOrViewContact();"/>
 		<menuitem id="deleteInCardBookMenu" label="&deleteInCardBookMenuLabel;" accesskey="&deleteInCardBookMenuAccesskey;" insertafter="editInCardBookMenu" onclick="ovl_cardbookMailContacts.deleteContact();"/>
@@ -47,7 +47,7 @@
 
 	<menupopup id="mailContext">
 		<menu id="mailContext-addToCardBookMenu" label="&mailContext-addToCardBookMenuLabel;" accesskey="&mailContext-addToCardBookMenuAccesskey;" insertafter="mailContext-addemail">
-			<menupopup id="mailContext-addToCardBookMenuPopup" onpopupshowing="cardbookUtils.addToCardBookMenuSubMenu(this.id, ovl_cardbookMailContacts.mailContextAddToCardBook)"/>
+			<menupopup id="mailContext-addToCardBookMenuPopup" onpopupshowing="ovl_cardbookMailContacts.addToCardBookMenuSubMenu(this.id)"/>
 		</menu>
 	</menupopup>
 </overlay>
