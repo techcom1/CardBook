@@ -8,7 +8,7 @@
 <!ENTITY cardbookTabButtonLabel "CardBook">
 <!ENTITY cardbookTabButtonTooltip "Ga naar CardBook-tab">
 
-<!ENTITY newCardBookCardMenuLabel "CardBook contactpersoon...">
+<!ENTITY newCardBookCardMenuLabel "CardBook contactpersoon…">
 <!ENTITY newCardBookCardMenuAccesskey "C">
 <!ENTITY addToCardBookMenuLabel "Toevoegen aan CardBook">
 <!ENTITY addToCardBookMenuAccesskey "o">
@@ -27,11 +27,11 @@
 <!ENTITY findEventsFromEmailMessengerLabel "Zoek agenda-gebeurtenissen gerelateerd aan dit e-mail adres">
 <!ENTITY findEventsFromEmailMessengerAccesskey "a">
 
-<!ENTITY mailContext-addToCardBookMenuLabel "Toevoegen aan CardBook...">
+<!ENTITY mailContext-addToCardBookMenuLabel "Toevoegen aan CardBook…">
 <!ENTITY mailContext-addToCardBookMenuAccesskey "o">
 
-<!ENTITY addAllAttachementsToCardBookMenuLabel "Alle toevoegen aan CardBook...">
-<!ENTITY addAttachementToCardBookMenuLabel "Toevoegen aan CardBook...">
+<!ENTITY addAllAttachementsToCardBookMenuLabel "Alle toevoegen aan CardBook…">
+<!ENTITY addAttachementToCardBookMenuLabel "Toevoegen aan CardBook…">
 
 <!ENTITY cardbookABPaneItemLabel "Adresboek-tab">
 <!ENTITY cardbookABPaneItemAccesskey "A">

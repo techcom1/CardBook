@@ -87,7 +87,7 @@ if ("undefined" == typeof(ovl_cardbookComposeMsg)) {
 	window.addEventListener("load", function(e) { ovl_cardbookComposeMsg.loadMsg(); }, false);
 	
 	// for stopping the observer
-	// don't know how to close the msg observer...
+	// don't know how to close the msg observer…
 	// window.addEventListener("close", function(e) { ovl_cardbookComposeMsg.unloadMsg(); }, false);
 
 };

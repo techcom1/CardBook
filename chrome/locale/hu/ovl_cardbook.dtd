@@ -1,5 +1,5 @@
 <!ENTITY cardbookMenuItemLabel "Névjegyzék">
-<!ENTITY cardbookMenuItemAccesskey "j">
+<!ENTITY cardbookMenuItemAccesskey "N">
 <!ENTITY cardbookMenuItemTooltip "A névjegyzék megjelenítése">
 
 <!ENTITY cardbookToolbarButtonLabel "Névjegyzék">
@@ -8,7 +8,7 @@
 <!ENTITY cardbookTabButtonLabel "Névjegyzék">
 <!ENTITY cardbookTabButtonTooltip "Átváltás a névjegyzék lapra">
 
-<!ENTITY newCardBookCardMenuLabel "Névjegy (Névjegyzék)...">
+<!ENTITY newCardBookCardMenuLabel "Névjegy (Névjegyzék)…">
 <!ENTITY newCardBookCardMenuAccesskey "j">
 <!ENTITY addToCardBookMenuLabel "Felvétel a névjegyzékbe (Névjegyzék)">
 <!ENTITY addToCardBookMenuAccesskey "v">
@@ -27,7 +27,7 @@
 <!ENTITY findEventsFromEmailMessengerLabel "Eseménynaptár az email keresése">
 <!ENTITY findEventsFromEmailMessengerAccesskey "r">
 
-<!ENTITY mailContext-addToCardBookMenuLabel "Felvétel a névjegyzékbe (Névjegyzék)...">
+<!ENTITY mailContext-addToCardBookMenuLabel "Felvétel a névjegyzékbe (Névjegyzék)…">
 <!ENTITY mailContext-addToCardBookMenuAccesskey "v">
 
 <!ENTITY addAllAttachementsToCardBookMenuLabel "Összes mentése névjegyzékbe">

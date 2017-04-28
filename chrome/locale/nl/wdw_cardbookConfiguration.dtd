@@ -127,7 +127,7 @@
 
 <!ENTITY orgWarn "De rubriek ORG kan bestaan uit tekst, gescheiden door puntkomma's. Bijvoorbeeld: bedrijfsnaam;dienstnaam;afdelingsnaam. De rubrieken hieronder beschrijven de namen van de onderdelen daarvan.">
 
-<!ENTITY listPanelLabel "Als de server geen categorieën ondersteunt (zoals Google, Apple, Zimbra, etc...), dan zijn lijsten een goede manier om emails aan groepen contactpersonen te versturen. (In geval van vCard 3.0 werkt dit alleen met eigen rubrieken.)">
+<!ENTITY listPanelLabel "Als de server geen categorieën ondersteunt (zoals Google, Apple, Zimbra, etc…), dan zijn lijsten een goede manier om emails aan groepen contactpersonen te versturen. (In geval van vCard 3.0 werkt dit alleen met eigen rubrieken.)">
 <!ENTITY listGroupboxLabel "Eigen rubrieken voor lijsten">
 <!ENTITY kindCustomLabel "Soort">
 <!ENTITY kindCustomAccesskey "S">

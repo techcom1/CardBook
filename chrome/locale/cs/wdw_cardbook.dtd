@@ -23,7 +23,7 @@
 
 <!ENTITY cardbookToolbarLabel "Panel nástrojů CardBooku">
 <!ENTITY cardbookToolbarAccesskey "C">
-<!ENTITY CustomizeCardBookToolbarLabel "Vlastní...">
+<!ENTITY CustomizeCardBookToolbarLabel "Vlastní…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "V">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Přidat adresář">
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Přidat místní nebo vzdálený adresář">

@@ -9,8 +9,11 @@
 		var rv = _original.apply(null, arguments);
 		
 		// Execute some action afterwards.
-		var sidebar = document.getElementById("sidebar");
-		sidebar.setAttribute("src", "chrome://cardbook/content/contactsSidebar/wdw_cardbookContactsSidebar.xul");
+		var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+		if (prefs.getBoolPref("extensions.cardbook.autocompletion")) {
+			var sidebar = document.getElementById("sidebar");
+			sidebar.setAttribute("src", "chrome://cardbook/content/contactsSidebar/wdw_cardbookContactsSidebar.xul");
+		}
 		
 		// return the original result
 		return rv;

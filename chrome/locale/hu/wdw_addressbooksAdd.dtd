@@ -20,9 +20,9 @@
 <!ENTITY localPage.openDirectory.label "Meglévő névjegytár mappa megnyitása (könyvtár)">
 <!ENTITY localPage.openFile.label "Meglévő névjegytár mappa megnyitása (fájl)">
 <!ENTITY localPage.uri.label "Könyvtár vagy fájl">
-<!ENTITY localPage.uri.description "Kattintson a „Tallózás...” gombra, választ ki a tárolási hely az Ön új névjegytár mappára. Ha új fájl, mellékel „.vcf”">
+<!ENTITY localPage.uri.description "Kattintson a „Tallózás…” gombra, választ ki a tárolási hely az Ön új névjegytár mappára. Ha új fájl, mellékel „.vcf”">
 <!ENTITY locationFirstPage.uri.description "Válaszd ki a tárolási helyet az új helyi névjegytár mappának.">
-<!ENTITY localPage.uributton.label "Tallózás...">
+<!ENTITY localPage.uributton.label "Tallózás…">
 
 <!ENTITY remotePage.wizard.description "Távoli névjegytár mappaformátum és tárolási hely.">
 <!ENTITY remotePage.description "Válassza ki a távoli névjegytár mappaformátum: (Vigyázat: Google végrehajtása a vCard formátum hibás.)">

@@ -127,7 +127,7 @@
 
 <!ENTITY orgWarn "O campo ORG pode conter texto composto por componentes separado por ponto-e-virgula (por exemplo: companhia;serviço;departamento). Os campos abaixo mostram os nomes da nova estrutura.">
 
-<!ENTITY listPanelLabel "Se o servidor não suportar categorias (tal como Google, Apple, Zimbra ...), as listas são a melhor forma de enviar email para grupos de pessoas. vCard 3.0 não suporta nativamente listas mas pode ser conseguido com campos adicionais.">
+<!ENTITY listPanelLabel "Se o servidor não suportar categorias (tal como Google, Apple, Zimbra …), as listas são a melhor forma de enviar email para grupos de pessoas. vCard 3.0 não suporta nativamente listas mas pode ser conseguido com campos adicionais.">
 <!ENTITY listGroupboxLabel "Campos customizaveis para listas">
 <!ENTITY kindCustomLabel "Tipo">
 <!ENTITY kindCustomAccesskey "K">

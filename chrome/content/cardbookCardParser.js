@@ -98,7 +98,7 @@ cardbookCardParser.prototype = {
 
 		if (localDelim0 >= 0) {
 			// 4.0
-			// FROM : PHOTO:data:image/jpeg;base64,R0lGODlhCw...
+			// FROM : PHOTO:data:image/jpeg;base64,R0lGODlhCw…
 			var headerTmp = aString.substr(0,localDelim0);
 			var trailerTmp = aString.substr(localDelim0+1,aString.length);
 			var headerTmpArray = [];
@@ -113,7 +113,7 @@ cardbookCardParser.prototype = {
 			this[aField].extension = cardbookUtils.formatExtension(this[aField].extension, "4.0");
 		} else {
 			// 3.0
-			// FROM : PHOTO;ENCODING=b;TYPE=image/jpeg:R0lGODlhCw...
+			// FROM : PHOTO;ENCODING=b;TYPE=image/jpeg:R0lGODlhCw…
 			// FROM : PHOTO;X-ABCROP-RECTANGLE=ABClipRect_1&0&0&583&583&AbGQEWkRV74gSDvD5j4+wg==;VALUE=uri:https://p44-contacts.icloud.com:443/10151953909/wbs/01a57d0472c3cf027a6d20bb7d690688f17da8fb13
 			// FROM : PHOTO;ENCODING=B;TYPE=JPEG;VALUE=BINARY:/9j/4AAQSkZ
 			// 3.0 and 4.0

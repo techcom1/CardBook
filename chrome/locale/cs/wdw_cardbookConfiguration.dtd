@@ -127,7 +127,7 @@
 
 <!ENTITY orgWarn "Pole ORG může obsahovat strukturovanou textovou hodnotu obsahující komponenty oddělené STŘEDNÍKEM (například : vašespolečnost;vašeslužba;vašeoddělení). Pole níže popisují popisky komponent obsažených v této struktuře.">
 
-<!ENTITY listPanelLabel "Pokud váš server nepodporuje kategorie (jako Google, Apple, Zimbra, atd...), seznamy jsou dobrý způsob, ak posílat e-maily skupinám. vCard 3.0 nativne seznamy nepodporuje, ale to lze obejít pomocí vlastních polí, takže pokud ve vCard 3.0 chcete použít seznamy, musíte definovat tato pole.">
+<!ENTITY listPanelLabel "Pokud váš server nepodporuje kategorie (jako Google, Apple, Zimbra, atd…), seznamy jsou dobrý způsob, ak posílat e-maily skupinám. vCard 3.0 nativne seznamy nepodporuje, ale to lze obejít pomocí vlastních polí, takže pokud ve vCard 3.0 chcete použít seznamy, musíte definovat tato pole.">
 <!ENTITY listGroupboxLabel "Vlastní pole pro seznamy">
 <!ENTITY kindCustomLabel "Druh">
 <!ENTITY kindCustomAccesskey "D">

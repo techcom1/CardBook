@@ -23,7 +23,7 @@
 
 <!ENTITY cardbookToolbarLabel "Barra de ferramentas do Cardbook">
 <!ENTITY cardbookToolbarAccesskey "C">
-<!ENTITY CustomizeCardBookToolbarLabel "Personalizar...">
+<!ENTITY CustomizeCardBookToolbarLabel "Personalizar…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "P">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Adicionar agenda">
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Adicionar uma agenda local ou remota">

@@ -127,7 +127,7 @@
 
 <!ENTITY orgWarn "Le champ ORG peut contenir une valeur structurée composée d'éléments séparés par le caractère POINT VIRGULE (par exemple : votresociété;votreservice;votredépartement). Les champs ci-dessous décrivent les labels de ces éléments.">
 
-<!ENTITY listPanelLabel "Si votre serveur n'utilise pas les catégories (comme Google, Apple, Zimbra, etc...), les listes sont un bon moyen d'envoyer des emails à des groupes. vCard 3.0 ne prend pas en charge nativement les listes, mais cela peut quand même être fait en définissant des champs personnalisés, donc si vous voulez utiliser des listes en vCard 3.0, vous devez définir ces champs.">
+<!ENTITY listPanelLabel "Si votre serveur n'utilise pas les catégories (comme Google, Apple, Zimbra, etc…), les listes sont un bon moyen d'envoyer des emails à des groupes. vCard 3.0 ne prend pas en charge nativement les listes, mais cela peut quand même être fait en définissant des champs personnalisés, donc si vous voulez utiliser des listes en vCard 3.0, vous devez définir ces champs.">
 <!ENTITY listGroupboxLabel "Champs personnalisés pour les listes">
 <!ENTITY kindCustomLabel "Type">
 <!ENTITY kindCustomAccesskey "T">

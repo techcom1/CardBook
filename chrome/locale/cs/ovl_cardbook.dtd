@@ -8,7 +8,7 @@
 <!ENTITY cardbookTabButtonLabel "CardBook">
 <!ENTITY cardbookTabButtonTooltip "Jít na záložku CardBooku">
 
-<!ENTITY newCardBookCardMenuLabel "Kontak CardBooku...">
+<!ENTITY newCardBookCardMenuLabel "Kontak CardBooku…">
 <!ENTITY newCardBookCardMenuAccesskey "C">
 <!ENTITY addToCardBookMenuLabel "Přidat do CardBooku">
 <!ENTITY addToCardBookMenuAccesskey "P">
@@ -27,11 +27,11 @@
 <!ENTITY findEventsFromEmailMessengerLabel "Najít v kalendáři události vztahující se k této e-mailové adrese">
 <!ENTITY findEventsFromEmailMessengerAccesskey "e">
 
-<!ENTITY mailContext-addToCardBookMenuLabel "Přidat do CardBooku...">
+<!ENTITY mailContext-addToCardBookMenuLabel "Přidat do CardBooku…">
 <!ENTITY mailContext-addToCardBookMenuAccesskey "P">
 
-<!ENTITY addAllAttachementsToCardBookMenuLabel "Vše do CardBooku...">
-<!ENTITY addAttachementToCardBookMenuLabel "Do CardBooku...">
+<!ENTITY addAllAttachementsToCardBookMenuLabel "Vše do CardBooku…">
+<!ENTITY addAttachementToCardBookMenuLabel "Do CardBooku…">
 
 <!ENTITY cardbookABPaneItemLabel "Panel adresáře">
 <!ENTITY cardbookABPaneItemAccesskey "A">

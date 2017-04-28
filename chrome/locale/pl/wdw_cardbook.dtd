@@ -23,7 +23,7 @@
 
 <!ENTITY cardbookToolbarLabel "Pasek narzędzi CardBook">
 <!ENTITY cardbookToolbarAccesskey "a">
-<!ENTITY CustomizeCardBookToolbarLabel "Dostosuj...">
+<!ENTITY CustomizeCardBookToolbarLabel "Dostosuj…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "C">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Dodaj książkę adresową">
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Dodaj zdalną lub lokalną książkę adresową">
@@ -163,4 +163,4 @@
 <!ENTITY syncAccountFromAccountsOrCatsLabel "Synchronizuj książkę adresową">
 <!ENTITY removeAccountFromAccountsOrCatsLabel "Usuń książkę adresową">
 
-<!ENTITY IMPPMenuLabel "Połącz z ...">
+<!ENTITY IMPPMenuLabel "Połącz z …">

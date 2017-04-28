@@ -30,7 +30,7 @@
 <!ENTITY renameRestrictionAccesskey "E">
 <!ENTITY deleteRestrictionLabel "Delete">
 <!ENTITY deleteRestrictionAccesskey "D">
-<!ENTITY emailsCollectionLabel "Collect outgoing email">
+<!ENTITY emailsCollectionLabel "Collect Outgoing Email">
 <!ENTITY emailsCollectionTooltip "Extends the standard outgoing email address collection of Thunderbird. If enabled, email addresses not present in any CardBook address books will be added to the selected address book(s).">
 <!ENTITY emailsCollectionEnabledLabel "Enabled">
 <!ENTITY emailsCollectionMailNameLabel "Mail Account">
@@ -127,7 +127,7 @@
 
 <!ENTITY orgWarn "The field ORG may contain a structured text value consisting of components separated by the SEMICOLON character (for example : yourcompany;yourservice;yourdepartment). The fields below describe the component labels of this structure.">
 
-<!ENTITY listPanelLabel "If your server does not support categories (like Google, Apple, Zimbra, etc...), lists are a good way to send emails to groups. vCard 3.0 do not natively support lists, but this may be achieved with custom fields, so if you want to use lists in vCard 3.0, you have to define these fields.">
+<!ENTITY listPanelLabel "If your server does not support categories (like Google, Apple, Zimbra, etc…), lists are a good way to send emails to groups. vCard 3.0 do not natively support lists, but this may be achieved with custom fields, so if you want to use lists in vCard 3.0, you have to define these fields.">
 <!ENTITY listGroupboxLabel "Custom fields for lists">
 <!ENTITY kindCustomLabel "Kind">
 <!ENTITY kindCustomAccesskey "K">

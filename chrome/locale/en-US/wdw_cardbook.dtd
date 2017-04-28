@@ -23,7 +23,7 @@
 
 <!ENTITY cardbookToolbarLabel "CardBook Toolbar">
 <!ENTITY cardbookToolbarAccesskey "a">
-<!ENTITY CustomizeCardBookToolbarLabel "Customize...">
+<!ENTITY CustomizeCardBookToolbarLabel "Customize…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "C">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Add address book">
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Add a remote or local address book">

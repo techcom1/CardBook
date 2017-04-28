@@ -23,7 +23,7 @@
 
 <!ENTITY cardbookToolbarLabel "Barre d'outils CardBook">
 <!ENTITY cardbookToolbarAccesskey "C">
-<!ENTITY CustomizeCardBookToolbarLabel "Personnaliser...">
+<!ENTITY CustomizeCardBookToolbarLabel "Personnaliser…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "P">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Ajouter un carnet d'adresses">
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Ajouter un carnet d'adresses local ou distant">

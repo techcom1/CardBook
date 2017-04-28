@@ -58,7 +58,7 @@ if ("undefined" == typeof(ovl_attachments)) {
 					mFile : myFile,
 					myDirPrefId : aDirPrefId,
 					OnStartRunningUrl: function (aUrl) {
-						wdw_cardbooklog.updateStatusProgressInformationWithDebug2("debug mode : start downloading attachment...");
+						wdw_cardbooklog.updateStatusProgressInformationWithDebug2("debug mode : start downloading attachment…");
 					},
 					OnStopRunningUrl: function (aUrl, aStatus) {
 						if (aStatus == 0) {

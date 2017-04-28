@@ -8,7 +8,7 @@
 <!ENTITY cardbookTabButtonLabel "CardBook">
 <!ENTITY cardbookTabButtonTooltip "Switch to the CardBook tab">
 
-<!ENTITY newCardBookCardMenuLabel "CardBook Contact...">
+<!ENTITY newCardBookCardMenuLabel "CardBook Contact…">
 <!ENTITY newCardBookCardMenuAccesskey "C">
 <!ENTITY addToCardBookMenuLabel "Add CardBook Contact">
 <!ENTITY addToCardBookMenuAccesskey "d">
@@ -27,11 +27,11 @@
 <!ENTITY findEventsFromEmailMessengerLabel "Find calendar events related to this email address">
 <!ENTITY findEventsFromEmailMessengerAccesskey "e">
 
-<!ENTITY mailContext-addToCardBookMenuLabel "Add CardBook Contact...">
+<!ENTITY mailContext-addToCardBookMenuLabel "Add CardBook Contact…">
 <!ENTITY mailContext-addToCardBookMenuAccesskey "d">
 
-<!ENTITY addAllAttachementsToCardBookMenuLabel "To CardBook All...">
-<!ENTITY addAttachementToCardBookMenuLabel "To CardBook...">
+<!ENTITY addAllAttachementsToCardBookMenuLabel "To CardBook All…">
+<!ENTITY addAttachementToCardBookMenuLabel "To CardBook…">
 
 <!ENTITY cardbookABPaneItemLabel "Address Book Pane">
 <!ENTITY cardbookABPaneItemAccesskey "A">

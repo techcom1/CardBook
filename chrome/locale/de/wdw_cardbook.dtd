@@ -23,7 +23,7 @@
 
 <!ENTITY cardbookToolbarLabel "CardBook Symbolleiste">
 <!ENTITY cardbookToolbarAccesskey "C">
-<!ENTITY CustomizeCardBookToolbarLabel "Anpassen...">
+<!ENTITY CustomizeCardBookToolbarLabel "Anpassen…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "A">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Adressbuch hinzufügen">
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Lokales oder auf einem Server gespeichertes Adressbuch hinzufügen">

@@ -2738,7 +2738,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					if (cardbookRepository.statusInformation[cardbookRepository.statusInformation.length - 1][0] == cardbookRepository.statusInformation[cardbookRepository.statusInformation.length - 1][0].substr(0,150)) {
 						wdw_cardbook.setElementLabel('totalMessageCount', cardbookRepository.statusInformation[cardbookRepository.statusInformation.length - 1][0]);
 					} else {
-						wdw_cardbook.setElementLabel('totalMessageCount', cardbookRepository.statusInformation[cardbookRepository.statusInformation.length - 1][0].substr(0,147) + "...");
+						wdw_cardbook.setElementLabel('totalMessageCount', cardbookRepository.statusInformation[cardbookRepository.statusInformation.length - 1][0].substr(0,147) + "…");
 	
 					}
 				}

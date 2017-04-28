@@ -23,7 +23,7 @@
 
 <!ENTITY cardbookToolbarLabel "CardBook knoppenbalk">
 <!ENTITY cardbookToolbarAccesskey "C">
-<!ENTITY CustomizeCardBookToolbarLabel "Aanpassen...">
+<!ENTITY CustomizeCardBookToolbarLabel "Aanpassen…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "A">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Adresboek toevoegen">
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Locaal of internt adresboek toevoegen">

@@ -23,7 +23,7 @@
 
 <!ENTITY cardbookToolbarLabel "Névjegyzék eszköztár">
 <!ENTITY cardbookToolbarAccesskey "N">
-<!ENTITY CustomizeCardBookToolbarLabel "Testreszabás...">
+<!ENTITY CustomizeCardBookToolbarLabel "Testreszabás…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "T">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Új névjegytár">
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Új helyi, távoli vagy mentett kérés névjegytár mappa">

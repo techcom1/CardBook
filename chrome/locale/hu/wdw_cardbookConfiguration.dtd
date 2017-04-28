@@ -24,11 +24,11 @@
 <!ENTITY accountsRestrictionsABNameLabel "Névjegyzék">
 <!ENTITY accountsRestrictionsCatNameLabel "Kategória">
 <!ENTITY accountsRestrictionsIncludeNameLabel "Típus">
-<!ENTITY addRestrictionLabel "Új...">
+<!ENTITY addRestrictionLabel "Új…">
 <!ENTITY addRestrictionAccesskey "j">
-<!ENTITY renameRestrictionLabel "Szerkesztés...">
+<!ENTITY renameRestrictionLabel "Szerkesztés…">
 <!ENTITY renameRestrictionAccesskey "z">
-<!ENTITY deleteRestrictionLabel "Törlés...">
+<!ENTITY deleteRestrictionLabel "Törlés…">
 <!ENTITY deleteRestrictionAccesskey "T">
 <!ENTITY emailsCollectionLabel "Gyűjt kimenő e-mail">
 <!ENTITY emailsCollectionTooltip "Kiterjeszti a Thunderbird szabványos kimenő email cím gyűjteménye. Ha engedélyezve van, e-mail címek nincs jelen semmilyen CardBook címjegyzéket bekerül a kiválasztott névjegytár(ok).">
@@ -37,11 +37,11 @@
 <!ENTITY emailsCollectionABNameLabel "Névjegyzék">
 <!ENTITY emailsCollectionCatNameLabel "Kategória">
 <!ENTITY emailsCollectionIncludeNameLabel "Típus">
-<!ENTITY addEmailsCollectionLabel "Új...">
+<!ENTITY addEmailsCollectionLabel "Új…">
 <!ENTITY addEmailsCollectionAccesskey "j">
-<!ENTITY renameEmailsCollectionLabel "Szerkesztés...">
+<!ENTITY renameEmailsCollectionLabel "Szerkesztés…">
 <!ENTITY renameEmailsCollectionAccesskey "z">
-<!ENTITY deleteEmailsCollectionLabel "Törlés...">
+<!ENTITY deleteEmailsCollectionLabel "Törlés…">
 <!ENTITY deleteEmailsCollectionAccesskey "T">
 <!ENTITY logGroupboxLabel "Naplófájl">
 <!ENTITY debugModeLabel "Hibakeresés mód">
@@ -96,11 +96,11 @@
 <!ENTITY typesCategoryUrlAccesskey "W">
 <!ENTITY typesCodeLabel "Kód">
 <!ENTITY typesLabelLabel "Címke">
-<!ENTITY addTypeLabel "Új...">
+<!ENTITY addTypeLabel "Új…">
 <!ENTITY addTypeAccesskey "j">
-<!ENTITY renameTypeLabel "Szerkesztés...">
+<!ENTITY renameTypeLabel "Szerkesztés…">
 <!ENTITY renameTypeAccesskey "z">
-<!ENTITY deleteTypeLabel "Törlés...">
+<!ENTITY deleteTypeLabel "Törlés…">
 <!ENTITY deleteTypeAccesskey "T">
 <!ENTITY preferenceGroupboxLabel "PREF mező">
 <!ENTITY preferenceLabel "PREF mező címke">
@@ -113,9 +113,9 @@
 <!ENTITY IMPPCodeLabel "Kód">
 <!ENTITY IMPPLabelLabel "Címke">
 <!ENTITY IMPPProtocolLabel "Jegyzőkönyv">
-<!ENTITY addIMPPLabel "Új...">
+<!ENTITY addIMPPLabel "Új…">
 <!ENTITY addIMPPAccesskey "j">
-<!ENTITY renameIMPPLabel "Szerkesztés...">
+<!ENTITY renameIMPPLabel "Szerkesztés…">
 <!ENTITY renameIMPPAccesskey "z">
 <!ENTITY deleteIMPPLabel "Törlés">
 <!ENTITY deleteIMPPAccesskey "T">
