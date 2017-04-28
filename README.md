@@ -70,7 +70,7 @@ Translations by:
 * Agnese MORETTINI (it)
 * Han KNOLS (nl)
 * Adam GORZKIEWICZ (pl)
-* André BAÇÃO (pt-PT) - https://github.com/abacao/CardBook
+* André BAÇÃO (pt-PT) - https://github.com/abacao
 * Alexander YAVORSKY (ru)
 
 Trailblazer:
