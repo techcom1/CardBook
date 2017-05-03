@@ -163,6 +163,8 @@
 <!ENTITY preferEmailPrefLabel "Prefer email addresses marked PREFerred">
 <!ENTITY preferEmailPrefAccesskey "P">
 <!ENTITY preferEmailPrefWarn "If no address is marked 'PREFerred', the message is sent to all of the contact's addresses.">
+<!ENTITY warnEmptyEmailsLabel "Warn me when I attempt to email contacts without an email address">
+<!ENTITY warnEmptyEmailsAccesskey "W">
 <!ENTITY attachvCardWarn "To automatically add a vCard to your emails, select a vCard for each email account. If activated, CardBook will attach this vCard to every outgoing email from this account.">
 <!ENTITY attachvCardGroupboxLabel "Join a vCard">
 <!ENTITY mailAccountsEnabledLabel "Enabled">

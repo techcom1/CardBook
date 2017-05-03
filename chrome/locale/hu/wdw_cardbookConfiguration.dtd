@@ -162,6 +162,8 @@
 <!ENTITY preferEmailPrefLabel "Inkább e-mail címek jelölt részesített">
 <!ENTITY preferEmailPrefAccesskey "r">
 <!ENTITY preferEmailPrefWarn "Ha e-mail cím nincs jelölve 'PREFerált', az üzenetet küldi, hogy minden névjegy email címét.">
+<!ENTITY warnEmptyEmailsLabel "??Warn me when I attempt to email contacts without an email address??">
+<!ENTITY warnEmptyEmailsAccesskey "W">
 <!ENTITY attachvCardWarn "Ahhoz, hogy automatikusan hozzáadni egy vCard e-mailjeit, válasszon ki egy vCard az egyes e-mail fiókhoz. Ha be van kapcsolva, névjegyzéek csatolja ezt vCard minden kimenő e-mail fiókból.">
 <!ENTITY attachvCardGroupboxLabel "vCard-csatlakozásra">
 <!ENTITY mailAccountsEnabledLabel "Engedélyezve">

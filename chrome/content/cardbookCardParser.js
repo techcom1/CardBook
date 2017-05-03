@@ -92,6 +92,10 @@ cardbookCardParser.prototype = {
 		return vString.replace(/\\:/g,":").replace(/\\;/g,";").replace(/\\,/g,",").split(/\\n/i).join("\n");
 	},
 	
+	formatTypes: function (vString) {
+		return vString.replace(/\"/g,"");
+	},
+	
 	mediaParser: function (aField, aString) {
 		var localDelim0 = aString.indexOf(",",0);
 		var cacheDir = cardbookRepository.getLocalDirectory();
@@ -285,7 +289,7 @@ cardbookCardParser.prototype = {
 								vCardDataArrayTrailerArray = [];
 								vCardDataArrayHeaderOptionArray = [];
 								vCardDataArrayHeaderOptionArray = cardbookUtils.cleanArray(vCardDataArrayHeaderOption.split(";"));
-								vCardDataArrayTrailerArray = cardbookUtils.escapeString(vCardDataArrayTrailer).split(";");
+								vCardDataArrayTrailerArray = cardbookUtils.escapeString(this.formatTypes(vCardDataArrayTrailer)).split(";");
 								vCardDataArrayTrailerArray = cardbookUtils.replaceArrayComma(vCardDataArrayTrailerArray);
 								this.adr.push([cardbookUtils.unescapeArray(vCardDataArrayTrailerArray), vCardDataArrayHeaderOptionArray, this.pgname, []]);
 							}
@@ -295,7 +299,7 @@ cardbookCardParser.prototype = {
 								vCardDataArrayTrailerArray = [];
 								vCardDataArrayHeaderOptionArray = [];
 								vCardDataArrayHeaderOptionArray = cardbookUtils.cleanArray(vCardDataArrayHeaderOption.split(";"));
-								vCardDataArrayTrailerArray = cardbookUtils.escapeString(vCardDataArrayTrailer).split(";");
+								vCardDataArrayTrailerArray = cardbookUtils.escapeString(this.formatTypes(vCardDataArrayTrailer)).split(";");
 								this.tel.push([cardbookUtils.unescapeArray(vCardDataArrayTrailerArray), vCardDataArrayHeaderOptionArray, this.pgname, []]);
 							}
 							break;
@@ -304,7 +308,7 @@ cardbookCardParser.prototype = {
 								vCardDataArrayTrailerArray = [];
 								vCardDataArrayHeaderOptionArray = [];
 								vCardDataArrayHeaderOptionArray = cardbookUtils.cleanArray(vCardDataArrayHeaderOption.split(";"));
-								vCardDataArrayTrailerArray = cardbookUtils.escapeString(vCardDataArrayTrailer).split(";");
+								vCardDataArrayTrailerArray = cardbookUtils.escapeString(this.formatTypes(vCardDataArrayTrailer)).split(";");
 								this.email.push([cardbookUtils.unescapeArray(vCardDataArrayTrailerArray), vCardDataArrayHeaderOptionArray, this.pgname, []]);
 							}
 							break;
@@ -346,7 +350,7 @@ cardbookCardParser.prototype = {
 								vCardDataArrayTrailerArray = [];
 								vCardDataArrayHeaderOptionArray = [];
 								vCardDataArrayHeaderOptionArray = cardbookUtils.cleanArray(vCardDataArrayHeaderOption.split(";"));
-								vCardDataArrayTrailerArray = cardbookUtils.escapeString(vCardDataArrayTrailer).split(";");
+								vCardDataArrayTrailerArray = cardbookUtils.escapeString(this.formatTypes(vCardDataArrayTrailer)).split(";");
 								this.url.push([cardbookUtils.unescapeArray(vCardDataArrayTrailerArray), vCardDataArrayHeaderOptionArray, this.pgname, []]);
 							}
 							break;
@@ -385,7 +389,7 @@ cardbookCardParser.prototype = {
 							break;
 						case "IMPP":
 							if (vCardDataArrayTrailer != null && vCardDataArrayTrailer !== undefined && vCardDataArrayTrailer != "") {
-								vCardDataArrayTrailerArray = cardbookUtils.escapeString(vCardDataArrayTrailer).split(";");
+								vCardDataArrayTrailerArray = cardbookUtils.escapeString(this.formatTypes(vCardDataArrayTrailer)).split(";");
 								vCardDataArrayHeaderOptionArray = cardbookUtils.cleanArray(vCardDataArrayHeaderOption.split(";"));
 								this.impp.push([cardbookUtils.unescapeArray(vCardDataArrayTrailerArray), vCardDataArrayHeaderOptionArray, this.pgname, []]);
 							}

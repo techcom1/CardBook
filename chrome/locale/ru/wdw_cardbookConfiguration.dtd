@@ -163,6 +163,8 @@
 <!ENTITY preferEmailPrefLabel "Предпочитать адрес email, помеченный как ПРИОРитетный">
 <!ENTITY preferEmailPrefAccesskey "П">
 <!ENTITY preferEmailPrefWarn "Если адреса, отмеченные как ПРИОРитетные, отсутствуют, отправлять сообщения на все адреса email контакта.">
+<!ENTITY warnEmptyEmailsLabel "??Warn me when I attempt to email contacts without an email address??">
+<!ENTITY warnEmptyEmailsAccesskey "W">
 <!ENTITY attachvCardWarn "Добавлять визитку vCard к отправляемым email. Выберите карточку для каждого из аккаунтов. Если эта настройка включена, CardBook будет вкладывать указанную визитку vCard к каждому исходящему email аккаунта.">
 <!ENTITY attachvCardGroupboxLabel "Добавлять визитку vCard">
 <!ENTITY mailAccountsEnabledLabel "Включено">

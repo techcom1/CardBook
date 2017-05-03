@@ -8,7 +8,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 			var cardbookPrefService = new cardbookPreferenceService();
 			myPrefResults = cardbookPrefService.getAllIMPPs();
 			for (var i = 0; i < myPrefResults.length; i++) {
-				if (aCode == myPrefResults[i][0]) {
+				if (aCode.toLowerCase() == myPrefResults[i][0].toLowerCase()) {
 					serviceLine = [myPrefResults[i][0], myPrefResults[i][1], myPrefResults[i][2]];
 					break;
 				}
@@ -21,7 +21,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 			var cardbookPrefService = new cardbookPreferenceService();
 			myPrefResults = cardbookPrefService.getAllIMPPs();
 			for (var i = 0; i < myPrefResults.length; i++) {
-				if (aProtocol == myPrefResults[i][2]) {
+				if (aProtocol.toLowerCase() == myPrefResults[i][2].toLowerCase()) {
 					serviceLine = [myPrefResults[i][0], myPrefResults[i][1], myPrefResults[i][2]];
 					break;
 				}
@@ -245,15 +245,6 @@ if ("undefined" == typeof(cardbookTypes)) {
 				if (document.getElementById('impp_' + i + '_hbox')) {
 					var lineResult = cardbookTypes.getTypeForLine('impp', i);
 					if (lineResult[0].join("") != "") {
-						var serviceProtocol = "";
-						var value = "";
-						var valueArray = [];
-						for (var j = 0; j < cardbookTypes.allIMPPs.length; j++) {
-							if (cardbookTypes.allIMPPs[j][0] == lineResult[4]) {
-								serviceProtocol = cardbookTypes.allIMPPs[j][2];
-								break;
-							}
-						}
 						function removeServiceType(element) {
 							return (element == element.replace(/^X-SERVICE-TYPE=/i, ""));
 						}
@@ -265,6 +256,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 						if (serviceLine[0]) {
 							var myRegexp = new RegExp("^" + serviceLine[2] + ":");
 							myValue = myValue.replace(myRegexp, "");
+							myValue = serviceLine[2] + ":" + myValue;
 						}
 						myResult.push([[myValue], lineResult[1], "", []]);
 					}

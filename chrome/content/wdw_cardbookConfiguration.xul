@@ -82,6 +82,8 @@
 				name="extensions.cardbook.decodeReport" type="bool"/>
 			<preference id="extensions.cardbook.preferEmailPref"
 				name="extensions.cardbook.preferEmailPref" type="bool"/>
+			<preference id="extensions.cardbook.warnEmptyEmails"
+				name="extensions.cardbook.warnEmptyEmails" type="bool"/>
 			<preference id="extensions.cardbook.addressBooksNameList"
 				name="extensions.cardbook.addressBooksNameList" type="string"/>
 			<preference id="extensions.cardbook.calendarsNameList"
@@ -644,6 +646,12 @@
 						<separator class="thin"/>
 						<hbox align="center">
 							<caption label="&preferEmailPrefWarn;"/>
+						</hbox>
+						<separator class="thin"/>
+						<hbox align="center">
+							<checkbox id="warnEmptyEmailsCheckBox" label="&warnEmptyEmailsLabel;"
+								accesskey="&warnEmptyEmailsAccesskey;"
+								preference="extensions.cardbook.warnEmptyEmails"/>
 						</hbox>
 					</groupbox>
 					<separator class="thin"/>

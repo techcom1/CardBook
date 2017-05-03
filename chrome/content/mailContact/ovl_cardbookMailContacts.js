@@ -6,8 +6,8 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 		// used by ovl_attachments.setCardBookMenus to apply the mail account restrictions
 		getIdentityKey: function() {
 			var result = "";
-			if (gFolderDisplay.displayedFolder.server) {
-				var identity = accountManager.getFirstIdentityForServer(gFolderDisplay.displayedFolder.server);
+			if (gFolderDisplay.selectedCount == 1) {
+				var identity = accountManager.getFirstIdentityForServer(gFolderDisplay.selectedMessage.folder.server);
 				if (identity) {
 				 result = identity.key;
 				}

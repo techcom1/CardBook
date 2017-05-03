@@ -15,15 +15,15 @@ if ("undefined" == typeof(cardbookUtils)) {
 			}
 		},
 
-	formatTelForOpenning: function (aString) {
-		return aString.replace(/\s*/g, "");
-	},
+		formatTelForOpenning: function (aString) {
+			return aString.replace(/\s*/g, "");
+		},
 
-	formatIMPPForOpenning: function (aString) {
-		return aString.replace(/\s*/g, "");
-	},
+		formatIMPPForOpenning: function (aString) {
+			return aString.replace(/\s*/g, "");
+		},
 
-	formatExtension: function (aExtension, aVersion) {
+		formatExtension: function (aExtension, aVersion) {
 			switch (aExtension) {
 				case "JPG":
 				case "jpg":
@@ -2112,19 +2112,29 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		getMimeEmailsFromCardsAndLists: function (aListOfCards) {
 			Components.utils.import("resource:///modules/mailServices.js");
-			var result = [];
+			var result = {};
+			result.emptyResults = [];
+			result.notEmptyResults = [];
 			for (var i = 0; i < aListOfCards.length; i++) {
 				if (aListOfCards[i].isAList) {
 					var listOfEmail = [];
 					listOfEmail = cardbookUtils.getEmailsFromList(aListOfCards[i]);
 					for (var j = 0; j < listOfEmail.length; j++) {
-						for (var k = 0; k < listOfEmail[j][1].length; k++) {
-							result.push(MailServices.headerParser.makeMimeAddress(listOfEmail[j][0], listOfEmail[j][1][k]));
+						if (listOfEmail[j][1].length == 0) {
+							result.emptyResults.push(listOfEmail[j][0]);
+						} else {
+							for (var k = 0; k < listOfEmail[j][1].length; k++) {
+								result.notEmptyResults.push(MailServices.headerParser.makeMimeAddress(listOfEmail[j][0], listOfEmail[j][1][k]));
+							}
 						}
 					}
 				} else {
-					for (var j = 0; j < aListOfCards[i].emails.length; j++) {
-						result.push(MailServices.headerParser.makeMimeAddress(aListOfCards[i].fn, aListOfCards[i].emails[j]));
+					if (aListOfCards[i].emails.length == 0) {
+						result.emptyResults.push(aListOfCards[i].fn);
+					} else {
+						for (var j = 0; j < aListOfCards[i].emails.length; j++) {
+							result.notEmptyResults.push(MailServices.headerParser.makeMimeAddress(aListOfCards[i].fn, aListOfCards[i].emails[j]));
+						}
 					}
 				}
 			}

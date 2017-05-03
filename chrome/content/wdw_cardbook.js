@@ -1032,15 +1032,39 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			wdw_cardbook.localizeCards(listOfSelectedCard, null);
 		},
 
+		warnEmptyEmailContacts: function(aListOfFn) {
+			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			if (prefs.getBoolPref("extensions.cardbook.warnEmptyEmails")) {
+				var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+				var strBundle = document.getElementById("cardbook-strings");
+				var warningTitle = strBundle.getString("warningTitle");
+				if (aListOfFn.length > 1) {
+					var warningMsg = strBundle.getFormattedString("emptyEmailsCardsConfirmMessage", [aListOfFn.join(', ')]);
+				} else {
+					var warningMsg = strBundle.getFormattedString("emptyEmailsCardConfirmMessage", [aListOfFn.join(', ')]);
+				}
+				var rememberFlag = {value: false};
+				var rememberMsg = strBundle.getString("doNotShowAnymore");
+				var returnFlag = false;
+				returnFlag = prompts.alertCheck(window, warningTitle, warningMsg, rememberMsg, rememberFlag);
+				if (rememberFlag.value) {
+					prefs.setBoolPref("extensions.cardbook.warnEmptyEmails", false);
+				}
+			}
+		},
+		
 		emailCards: function (aListOfSelectedCard, aListOfSelectedMails, aMsgField) {
-			var listOfEmail = [];
+			var result = {};
 			if (aListOfSelectedCard != null && aListOfSelectedCard !== undefined && aListOfSelectedCard != "") {
-				listOfEmail = cardbookUtils.getMimeEmailsFromCardsAndLists(aListOfSelectedCard);
+				result = cardbookUtils.getMimeEmailsFromCardsAndLists(aListOfSelectedCard);
 			} else if (aListOfSelectedMails != null && aListOfSelectedMails !== undefined && aListOfSelectedMails != "") {
-				listOfEmail.push(MailServices.headerParser.makeMimeAddress(aListOfSelectedMails[0], aListOfSelectedMails[1]));
+				result.push(MailServices.headerParser.makeMimeAddress(aListOfSelectedMails[0], aListOfSelectedMails[1]));
+			}
+			if (result.emptyResults.length != 0) {
+				wdw_cardbook.warnEmptyEmailContacts(result.emptyResults);
 			}
 			
-			if (listOfEmail.length != 0) {
+			if (result.notEmptyResults.length != 0) {
 				var msgComposeType = Components.interfaces.nsIMsgCompType;
 				var msgComposFormat = Components.interfaces.nsIMsgCompFormat;
 				var msgComposeService = Components.classes["@mozilla.org/messengercompose;1"].getService();
@@ -1051,7 +1075,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					params.format = msgComposFormat.Default;
 					var composeFields = Components.classes["@mozilla.org/messengercompose/composefields;1"].createInstance(Components.interfaces.nsIMsgCompFields);
 					if (composeFields) {
-						composeFields[aMsgField] = listOfEmail.join(" , ");
+						composeFields[aMsgField] = result.notEmptyResults.join(" , ");
 						params.composeFields = composeFields;
 						msgComposeService.OpenComposeWindowWithParams(null, params);
 					}
