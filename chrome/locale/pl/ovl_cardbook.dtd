@@ -1,39 +1,39 @@
 <!ENTITY cardbookMenuItemLabel "CardBook">
 <!ENTITY cardbookMenuItemAccesskey "b">
-<!ENTITY cardbookMenuItemTooltip "Switch to the CardBook tab">
+<!ENTITY cardbookMenuItemTooltip "Przełącz na zakładkę CardBook">
 
 <!ENTITY cardbookToolbarButtonLabel "CardBook">
-<!ENTITY cardbookToolbarButtonTooltip "Switch to the CardBook tab">
+<!ENTITY cardbookToolbarButtonTooltip "Przełącz na zakładkę CardBook">
 
 <!ENTITY cardbookTabButtonLabel "CardBook">
-<!ENTITY cardbookTabButtonTooltip "Switch to the CardBook tab">
+<!ENTITY cardbookTabButtonTooltip "Przełącz na zakładkę CardBook">
 
-<!ENTITY newCardBookCardMenuLabel "CardBook Contact…">
+<!ENTITY newCardBookCardMenuLabel "Wizytówkę CardBook…">
 <!ENTITY newCardBookCardMenuAccesskey "C">
-<!ENTITY addToCardBookMenuLabel "Add CardBook Contact">
-<!ENTITY addToCardBookMenuAccesskey "d">
-<!ENTITY editInCardBookMenuLabel "Edit CardBook Contact">
+<!ENTITY addToCardBookMenuLabel "Dodaj wizytówkę CardBook">
+<!ENTITY addToCardBookMenuAccesskey "D">
+<!ENTITY editInCardBookMenuLabel "Edytuj wizytówkę CardBook">
 <!ENTITY editInCardBookMenuAccesskey "E">
-<!ENTITY deleteInCardBookMenuLabel "Delete CardBook Contact">
-<!ENTITY deleteInCardBookMenuAccesskey "D">
+<!ENTITY deleteInCardBookMenuLabel "Usuń wizytówkę CardBook">
+<!ENTITY deleteInCardBookMenuAccesskey "U">
 <!ENTITY IMPPMenuLabel "Connect To">
 <!ENTITY IMPPMenuAccesskey "o">
-<!ENTITY findAllEmailsFromContactMessengerLabel "Find emails related to this contact">
-<!ENTITY findAllEmailsFromContactMessengerAccesskey "c">
-<!ENTITY findEmailsFromEmailMessengerLabel "Find emails related to this email address">
+<!ENTITY findAllEmailsFromContactMessengerLabel "Znajdź e-maile związane z tą wizytówką">
+<!ENTITY findAllEmailsFromContactMessengerAccesskey "w">
+<!ENTITY findEmailsFromEmailMessengerLabel "Znajdź e-maile związane z tym adresem e-mail">
 <!ENTITY findEmailsFromEmailMessengerAccesskey "e">
-<!ENTITY findAllEventsFromContactMessengerLabel "Find calendar events related to this contact">
-<!ENTITY findAllEventsFromContactMessengerAccesskey "c">
-<!ENTITY findEventsFromEmailMessengerLabel "Find calendar events related to this email address">
+<!ENTITY findAllEventsFromContactMessengerLabel "Znajdź wydarzenia w kalendarzu związane z tą wizytówką">
+<!ENTITY findAllEventsFromContactMessengerAccesskey "w">
+<!ENTITY findEventsFromEmailMessengerLabel "Znajdź wydarzenia w kalendarzu związane z tym adresem e-mail">
 <!ENTITY findEventsFromEmailMessengerAccesskey "e">
 
-<!ENTITY mailContext-addToCardBookMenuLabel "Add CardBook Contact…">
-<!ENTITY mailContext-addToCardBookMenuAccesskey "d">
+<!ENTITY mailContext-addToCardBookMenuLabel "Dodaj wizytówkę CardBook…">
+<!ENTITY mailContext-addToCardBookMenuAccesskey "D">
 
-<!ENTITY addAllAttachementsToCardBookMenuLabel "To CardBook All…">
-<!ENTITY addAttachementToCardBookMenuLabel "To CardBook…">
+<!ENTITY addAllAttachementsToCardBookMenuLabel "Wszystkie do CardBook…">
+<!ENTITY addAttachementToCardBookMenuLabel "Do CardBook…">
 
-<!ENTITY cardbookABPaneItemLabel "Address Book Pane">
+<!ENTITY cardbookABPaneItemLabel "Panel książki adresowej">
 <!ENTITY cardbookABPaneItemAccesskey "A">
-<!ENTITY cardbookContactPaneItemLabel "Contact Pane">
-<!ENTITY cardbookContactPaneItemAccesskey "O">
+<!ENTITY cardbookContactPaneItemLabel "Panel wizytówki">
+<!ENTITY cardbookContactPaneItemAccesskey "w">

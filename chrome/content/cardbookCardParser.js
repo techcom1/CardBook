@@ -92,10 +92,6 @@ cardbookCardParser.prototype = {
 		return vString.replace(/\\:/g,":").replace(/\\;/g,";").replace(/\\,/g,",").split(/\\n/i).join("\n");
 	},
 	
-	formatTypes: function (vString) {
-		return vString.replace(/\"/g,"");
-	},
-	
 	mediaParser: function (aField, aString) {
 		var localDelim0 = aString.indexOf(",",0);
 		var cacheDir = cardbookRepository.getLocalDirectory();
@@ -288,28 +284,28 @@ cardbookCardParser.prototype = {
 							if (vCardDataArrayTrailerTmp != null && vCardDataArrayTrailerTmp !== undefined && vCardDataArrayTrailerTmp != "") {
 								vCardDataArrayTrailerArray = [];
 								vCardDataArrayHeaderOptionArray = [];
-								vCardDataArrayHeaderOptionArray = cardbookUtils.cleanArray(vCardDataArrayHeaderOption.split(";"));
-								vCardDataArrayTrailerArray = cardbookUtils.escapeString(this.formatTypes(vCardDataArrayTrailer)).split(";");
+								vCardDataArrayHeaderOptionArray = cardbookUtils.formatTypes(cardbookUtils.escapeString(vCardDataArrayHeaderOption).split(";"));
+								vCardDataArrayTrailerArray = cardbookUtils.escapeString(vCardDataArrayTrailer).split(";");
 								vCardDataArrayTrailerArray = cardbookUtils.replaceArrayComma(vCardDataArrayTrailerArray);
-								this.adr.push([cardbookUtils.unescapeArray(vCardDataArrayTrailerArray), vCardDataArrayHeaderOptionArray, this.pgname, []]);
+								this.adr.push([cardbookUtils.unescapeArray(vCardDataArrayTrailerArray), cardbookUtils.unescapeArray(vCardDataArrayHeaderOptionArray), this.pgname, []]);
 							}
 							break;
 						case "TEL":
 							if (vCardDataArrayTrailer != null && vCardDataArrayTrailer !== undefined && vCardDataArrayTrailer != "") {
 								vCardDataArrayTrailerArray = [];
 								vCardDataArrayHeaderOptionArray = [];
-								vCardDataArrayHeaderOptionArray = cardbookUtils.cleanArray(vCardDataArrayHeaderOption.split(";"));
-								vCardDataArrayTrailerArray = cardbookUtils.escapeString(this.formatTypes(vCardDataArrayTrailer)).split(";");
-								this.tel.push([cardbookUtils.unescapeArray(vCardDataArrayTrailerArray), vCardDataArrayHeaderOptionArray, this.pgname, []]);
+								vCardDataArrayHeaderOptionArray = cardbookUtils.formatTypes(cardbookUtils.escapeString(vCardDataArrayHeaderOption).split(";"));
+								vCardDataArrayTrailerArray = cardbookUtils.escapeString(vCardDataArrayTrailer).split(";");
+								this.tel.push([cardbookUtils.unescapeArray(vCardDataArrayTrailerArray), cardbookUtils.unescapeArray(vCardDataArrayHeaderOptionArray), this.pgname, []]);
 							}
 							break;
 						case "EMAIL":
 							if (vCardDataArrayTrailer != null && vCardDataArrayTrailer !== undefined && vCardDataArrayTrailer != "") {
 								vCardDataArrayTrailerArray = [];
 								vCardDataArrayHeaderOptionArray = [];
-								vCardDataArrayHeaderOptionArray = cardbookUtils.cleanArray(vCardDataArrayHeaderOption.split(";"));
-								vCardDataArrayTrailerArray = cardbookUtils.escapeString(this.formatTypes(vCardDataArrayTrailer)).split(";");
-								this.email.push([cardbookUtils.unescapeArray(vCardDataArrayTrailerArray), vCardDataArrayHeaderOptionArray, this.pgname, []]);
+								vCardDataArrayHeaderOptionArray = cardbookUtils.formatTypes(cardbookUtils.escapeString(vCardDataArrayHeaderOption).split(";"));
+								vCardDataArrayTrailerArray = cardbookUtils.escapeString(vCardDataArrayTrailer).split(";");
+								this.email.push([cardbookUtils.unescapeArray(vCardDataArrayTrailerArray), cardbookUtils.unescapeArray(vCardDataArrayHeaderOptionArray), this.pgname, []]);
 							}
 							break;
 						case "TITLE":
@@ -349,9 +345,9 @@ cardbookCardParser.prototype = {
 							if (vCardDataArrayTrailer != null && vCardDataArrayTrailer !== undefined && vCardDataArrayTrailer != "") {
 								vCardDataArrayTrailerArray = [];
 								vCardDataArrayHeaderOptionArray = [];
-								vCardDataArrayHeaderOptionArray = cardbookUtils.cleanArray(vCardDataArrayHeaderOption.split(";"));
-								vCardDataArrayTrailerArray = cardbookUtils.escapeString(this.formatTypes(vCardDataArrayTrailer)).split(";");
-								this.url.push([cardbookUtils.unescapeArray(vCardDataArrayTrailerArray), vCardDataArrayHeaderOptionArray, this.pgname, []]);
+								vCardDataArrayHeaderOptionArray = cardbookUtils.formatTypes(cardbookUtils.escapeString(vCardDataArrayHeaderOption).split(";"));
+								vCardDataArrayTrailerArray = cardbookUtils.escapeString(vCardDataArrayTrailer).split(";");
+								this.url.push([cardbookUtils.unescapeArray(vCardDataArrayTrailerArray), cardbookUtils.unescapeArray(vCardDataArrayHeaderOptionArray), this.pgname, []]);
 							}
 							break;
 						case "VERSION":
@@ -389,9 +385,9 @@ cardbookCardParser.prototype = {
 							break;
 						case "IMPP":
 							if (vCardDataArrayTrailer != null && vCardDataArrayTrailer !== undefined && vCardDataArrayTrailer != "") {
-								vCardDataArrayTrailerArray = cardbookUtils.escapeString(this.formatTypes(vCardDataArrayTrailer)).split(";");
-								vCardDataArrayHeaderOptionArray = cardbookUtils.cleanArray(vCardDataArrayHeaderOption.split(";"));
-								this.impp.push([cardbookUtils.unescapeArray(vCardDataArrayTrailerArray), vCardDataArrayHeaderOptionArray, this.pgname, []]);
+								vCardDataArrayTrailerArray = cardbookUtils.escapeString(vCardDataArrayTrailer).split(";");
+								vCardDataArrayHeaderOptionArray = cardbookUtils.formatTypes(cardbookUtils.escapeString(vCardDataArrayHeaderOption).split(";"));
+								this.impp.push([cardbookUtils.unescapeArray(vCardDataArrayTrailerArray), cardbookUtils.unescapeArray(vCardDataArrayHeaderOptionArray), this.pgname, []]);
 							}
 							break;
 						case "X-THUNDERBIRD-ETAG":

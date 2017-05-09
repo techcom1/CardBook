@@ -1,5 +1,5 @@
-<!ENTITY wdw_cardbookConfigurationSearchCardTitle "Choose a vCard">
+<!ENTITY wdw_cardbookConfigurationSearchCardTitle "Wybierz vCard">
 
-<!ENTITY addressbookLabel "Address book">
-<!ENTITY contactLabel "Contact">
-<!ENTITY filenameLabel "File name">
+<!ENTITY addressbookLabel "Książka adresowa">
+<!ENTITY contactLabel "Wizytówka">
+<!ENTITY filenameLabel "Nazwa pliku">

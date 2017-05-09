@@ -1,9 +1,9 @@
-<!ENTITY persTitleLabel "Personal Information">
-<!ENTITY fnLabel "Display Name">
-<!ENTITY lastnameLabel "Family Name">
-<!ENTITY firstnameLabel "Given Name">
-<!ENTITY othernameLabel "Other Name">
-<!ENTITY suffixnameLabel "Suffix">
-<!ENTITY prefixnameLabel "Prefix">
-<!ENTITY nicknameLabel "Nickname">
-<!ENTITY genderLabel "Gender">
+<!ENTITY persTitleLabel "Informacje osobiste">
+<!ENTITY fnLabel "Wyświetlana nazwa">
+<!ENTITY lastnameLabel "Nazwisko">
+<!ENTITY firstnameLabel "Imię">
+<!ENTITY othernameLabel "Drugie imię">
+<!ENTITY suffixnameLabel "Przyrostek">
+<!ENTITY prefixnameLabel "Przedrostek">
+<!ENTITY nicknameLabel "Pseudonim">
+<!ENTITY genderLabel "Płeć">

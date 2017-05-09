@@ -1032,25 +1032,37 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			wdw_cardbook.localizeCards(listOfSelectedCard, null);
 		},
 
-		warnEmptyEmailContacts: function(aListOfFn) {
+		warnEmptyEmailContacts: function(aListOfEmptyFn, aListOfNotEmptyEmails) {
+			var result = true;
 			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
 			if (prefs.getBoolPref("extensions.cardbook.warnEmptyEmails")) {
 				var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
 				var strBundle = document.getElementById("cardbook-strings");
 				var warningTitle = strBundle.getString("warningTitle");
-				if (aListOfFn.length > 1) {
-					var warningMsg = strBundle.getFormattedString("emptyEmailsCardsConfirmMessage", [aListOfFn.join(', ')]);
+				if (aListOfEmptyFn.length > 1) {
+					var warningMsg = strBundle.getFormattedString("emptyEmailsCardsConfirmMessage", [aListOfEmptyFn.join(', ')]);
 				} else {
-					var warningMsg = strBundle.getFormattedString("emptyEmailsCardConfirmMessage", [aListOfFn.join(', ')]);
+					var warningMsg = strBundle.getFormattedString("emptyEmailsCardConfirmMessage", [aListOfEmptyFn.join(', ')]);
 				}
 				var rememberFlag = {value: false};
 				var rememberMsg = strBundle.getString("doNotShowAnymore");
-				var returnFlag = false;
-				returnFlag = prompts.alertCheck(window, warningTitle, warningMsg, rememberMsg, rememberFlag);
+				var result = false;
+				if (aListOfNotEmptyEmails.length == 0) {
+					var flags = prompts.BUTTON_POS_0 * prompts.BUTTON_TITLE_CANCEL;
+					var returnButton = prompts.confirmEx(window, warningTitle, warningMsg, flags, "", "", "", rememberMsg, rememberFlag);
+				} else {
+					var flags = prompts.BUTTON_POS_0 * prompts.BUTTON_TITLE_IS_STRING + prompts.BUTTON_POS_1 * prompts.BUTTON_TITLE_CANCEL;
+					var sendButtonLabel = strBundle.getString("sendButtonLabel");
+					var returnButton = prompts.confirmEx(window, warningTitle, warningMsg, flags, sendButtonLabel, "", "", rememberMsg, rememberFlag);
+					if (returnButton == 0) {
+						var result = true;
+					}
+				}
 				if (rememberFlag.value) {
 					prefs.setBoolPref("extensions.cardbook.warnEmptyEmails", false);
 				}
 			}
+			return result;
 		},
 		
 		emailCards: function (aListOfSelectedCard, aListOfSelectedMails, aMsgField) {
@@ -1060,11 +1072,12 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			} else if (aListOfSelectedMails != null && aListOfSelectedMails !== undefined && aListOfSelectedMails != "") {
 				result.push(MailServices.headerParser.makeMimeAddress(aListOfSelectedMails[0], aListOfSelectedMails[1]));
 			}
+			var warnCheck = true;
 			if (result.emptyResults.length != 0) {
-				wdw_cardbook.warnEmptyEmailContacts(result.emptyResults);
+				warnCheck = wdw_cardbook.warnEmptyEmailContacts(result.emptyResults, result.notEmptyResults);
 			}
 			
-			if (result.notEmptyResults.length != 0) {
+			if (result.notEmptyResults.length != 0 && warnCheck) {
 				var msgComposeType = Components.interfaces.nsIMsgCompType;
 				var msgComposFormat = Components.interfaces.nsIMsgCompFormat;
 				var msgComposeService = Components.classes["@mozilla.org/messengercompose;1"].getService();

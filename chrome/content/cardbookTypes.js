@@ -205,6 +205,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 			
 			if (myLineTypeType.length > 0) {
 				myLineTypeResult = myLineTypeResult.concat(myLineTypeType);
+				myLineTypeResult = cardbookUtils.unescapeArray(cardbookUtils.formatTypes(cardbookUtils.escapeArray(myLineTypeResult)));
 				var myOutputPg = [];
 				var myPgName = "";
 			} else if (myLinepgTypeType.length > 0) {

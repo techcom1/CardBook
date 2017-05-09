@@ -1,9 +1,9 @@
 <!ENTITY wdw_cardbookWindowLabel "CardBook">
 
 <!ENTITY accountsOrCatsTreeLabel "Książki adresowe">
-<!ENTITY enableAccountsTooltip "Enable or disable search and synchronization of address books.">
-<!ENTITY colorAccountsTooltip "Color address books search results (use when searches span multiple address books).">
-<!ENTITY readonlyAccountsTooltip "Ustaw książki adresowe w tryb tylko do odczytu lub odczyt-zapis.">
+<!ENTITY enableAccountsTooltip "Włącz lub wyłącz przeszukiwanie i synchronizację książek adresowych.">
+<!ENTITY colorAccountsTooltip "Zaznaczaj kolorem wyniki wyszukiwania w książkach adresowych (gdy wyszukiwanie obejmuje wiele książek adresowych).">
+<!ENTITY readonlyAccountsTooltip "Ustaw książki adresowe w tryb tylko do odczytu lub odczytu i zapisu.">
 
 <!ENTITY cardbookAccountMenuLabel "Książka adresowa">
 
@@ -16,7 +16,7 @@
 <!ENTITY cardbookContactsMenuLabel "Kontakty">
 
 <!ENTITY cardbookToolsMenuLabel "Narzędzia">
-<!ENTITY cardbookToolsMenuBirthdayListLabel "Przeglądaj listę dat urodziń">
+<!ENTITY cardbookToolsMenuBirthdayListLabel "Przeglądaj listę urodzin">
 <!ENTITY cardbookToolsMenuSyncLightningLabel "Dodaj datę urodzin do kalendarza">
 <!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "Znajdź zdublowane kontakty we wszystkich książkach adresowych">
 <!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "Znajdź zdublowane kontakty w bieżącej książce adresowej">
@@ -31,33 +31,33 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synchronizuj wszystkie zdalne książki adresowe">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Ustawienia">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Ustawienia programu CardBook">
-<!ENTITY cardbookToolbarAddButtonLabel "Dodaj kontakt">
-<!ENTITY cardbookToolbarAddButtonTooltip "Utwórz nowy kontakt">
-<!ENTITY cardbookToolbarEditButtonLabel "Edytuj kontakt">
-<!ENTITY cardbookToolbarEditButtonTooltip "Zmodyfikuj istniejący kontakt">
-<!ENTITY cardbookToolbarRemoveButtonLabel "Usuń kontakt">
-<!ENTITY cardbookToolbarRemoveButtonTooltip "Usuń bierzący kontakt">
-<!ENTITY cardbookToolbarPrintButtonLabel "Print Preview">
-<!ENTITY cardbookToolbarPrintButtonTooltip "Allow to print the selection">
-<!ENTITY cardbookToolbarAppMenuButtonLabel "Menu programu CardBook">
-<!ENTITY cardbookToolbarAppMenuButtonTooltip "Menu programu CardBook">
-<!ENTITY cardbookToolbarSearchBoxLabel "Wyszukaj kontakty">
-<!ENTITY cardbookToolbarSearchBoxTooltip "Wyszukaj kontakty">
+<!ENTITY cardbookToolbarAddButtonLabel "Dodaj wizytówkę">
+<!ENTITY cardbookToolbarAddButtonTooltip "Utwórz nową wizytówkę">
+<!ENTITY cardbookToolbarEditButtonLabel "Edytuj wizytówkę">
+<!ENTITY cardbookToolbarEditButtonTooltip "Zmodyfikuj istniejącą wizytówkę">
+<!ENTITY cardbookToolbarRemoveButtonLabel "Usuń wizytówkę">
+<!ENTITY cardbookToolbarRemoveButtonTooltip "Usuń bieżącą wizytówkę">
+<!ENTITY cardbookToolbarPrintButtonLabel "Podgląd wydruku">
+<!ENTITY cardbookToolbarPrintButtonTooltip "Wydrukuj wybrane elementy">
+<!ENTITY cardbookToolbarAppMenuButtonLabel "Menu CardBook">
+<!ENTITY cardbookToolbarAppMenuButtonTooltip "Menu CardBook">
+<!ENTITY cardbookToolbarSearchBoxLabel "Wyszukaj wizytówki">
+<!ENTITY cardbookToolbarSearchBoxTooltip "Wyszukaj wizytówki">
 <!ENTITY cardbookToolbarComplexSearchLabel "Wyszukiwanie zaawansowane">
 <!ENTITY cardbookToolbarComplexSearchTooltip "Wyszukiwanie z uwzględnieniem wielu warunków">
 <!ENTITY cardbookToolbarThMenuButtonLabel "Menu aplikacji">
-<!ENTITY cardbookToolbarThMenuButtonTooltip "Display the &brandShortName; Menu">
+<!ENTITY cardbookToolbarThMenuButtonTooltip "Pokaż menu &brandShortName;">
 
 <!ENTITY generalTabLabel "Podsumowanie">
-<!ENTITY mailPopularityTabLabel "Mail Popularity">
+<!ENTITY mailPopularityTabLabel "Popularność e-mail">
 <!ENTITY technicalTabLabel "Techniczne">
 <!ENTITY vcardTabLabel "vCard">
 
 <!ENTITY lastnameColumnLabel "Nazwisko">
 <!ENTITY firstnameColumnLabel "Imię">
 <!ENTITY othernameColumnLabel "Drugie imię">
-<!ENTITY prefixnameColumnLabel "Prefix">
-<!ENTITY suffixnameColumnLabel "Suffix">
+<!ENTITY prefixnameColumnLabel "Przedrostek">
+<!ENTITY suffixnameColumnLabel "Przyrostek">
 <!ENTITY fnColumnLabel "Wyświetlana nazwa">
 <!ENTITY nicknameColumnLabel "Pseudonim">
 <!ENTITY genderColumnLabel "Płeć">
@@ -73,7 +73,7 @@
 <!ENTITY disphomeemailColumnLabel "Domowe adresy e-mail">
 <!ENTITY dispworkemailColumnLabel "Służbowe adresy e-mail">
 <!ENTITY mailerColumnLabel "Program pocztowy">
-<!ENTITY tzColumnLabel "TZ">
+<!ENTITY tzColumnLabel "Strefa czasowa">
 <!ENTITY geoColumnLabel "Geo">
 <!ENTITY titleColumnLabel "Tytuł">
 <!ENTITY roleColumnLabel "Stanowisko">
@@ -81,11 +81,11 @@
 <!ENTITY categoriesColumnLabel "Kategorie">
 <!ENTITY noteColumnLabel "Notatki">
 <!ENTITY prodidColumnLabel "Prodid">
-<!ENTITY sortstringColumnLabel "Sort string">
+<!ENTITY sortstringColumnLabel "Sortowanie po">
 <!ENTITY uidColumnLabel "Uid">
 <!ENTITY dispurlColumnLabel "URL">
 <!ENTITY versionColumnLabel "Wersja">
-<!ENTITY class1ColumnLabel "Class">
+<!ENTITY class1ColumnLabel "Klasa">
 <!ENTITY dispimppColumnLabel "Komunikator">
 <!ENTITY cardurlColumnLabel "Card URL">
 <!ENTITY dirPrefIdColumnLabel "DirPrefId">
@@ -123,44 +123,44 @@
 <!ENTITY revLabel "Rev">
 <!ENTITY etagLabel "Etag">
 
-<!ENTITY localizeadrTreeLabel "Localize">
-<!ENTITY toEmailEmailTreeLabel "Email entry">
-<!ENTITY ccEmailEmailTreeLabel "Email entry (copy / cc)">
-<!ENTITY bccemailemailTreeLabel "Email entry (blind copy / bcc)">
-<!ENTITY findemailemailTreeLabel "Find emails related to this email address">
-<!ENTITY findeventemailTreeLabel "Find calendar events related to this email address">
-<!ENTITY openURLTreeLabel "Open URL">
+<!ENTITY localizeadrTreeLabel "Lokalizuj">
+<!ENTITY toEmailEmailTreeLabel "E-mail">
+<!ENTITY ccEmailEmailTreeLabel "E-mail (kopia/cc)">
+<!ENTITY bccemailemailTreeLabel "E-mail (ukryta kopia/bcc)">
+<!ENTITY findemailemailTreeLabel "Znajdź e-maile związane z tym adresem e-mail">
+<!ENTITY findeventemailTreeLabel "Znajdź wydarzenia związane z tym adresem e-mail">
+<!ENTITY openURLTreeLabel "Otwórz adres URL">
 
 <!ENTITY copyCardTreeLabel "Kopiuj pozycję">
 
-<!ENTITY toEmailCardFromAccountsOrCatsLabel "Wyślij kontakty w wiadomości e-mail">
-<!ENTITY toEmailCardFromCardsLabel "Wyślij kontakty w wiadomości e-mail">
-<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Wyślij kontakty w wiadomości e-mail (Kopia [cc])">
-<!ENTITY ccEmailCardFromCardsLabel "Wyślij kontakty w wiadomości e-mail (Kopia [cc])">
-<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Wyślij kontakty w wiadomości e-mail (Ukryta kopia [bcc])">
-<!ENTITY bccEmailCardFromCardsLabel "Wyślij kontakty w wiadomości e-mail (Ukryta kopia [bcc])">
+<!ENTITY toEmailCardFromAccountsOrCatsLabel "Wyślij wizytówki e-mailem">
+<!ENTITY toEmailCardFromCardsLabel "Wyślij wizytówki e-mailem">
+<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Wyślij wizytówki e-mailem (kopia/cc)">
+<!ENTITY ccEmailCardFromCardsLabel "Wyślij wizytówki e-mailem (kopia/cc)">
+<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Wyślij wizytówki e-mailem (ukryta kopia/bcc)">
+<!ENTITY bccEmailCardFromCardsLabel "Wyślij wizytówki e-mailem (ukryta kopia/bcc)">
 <!ENTITY categoryLabel "Kategoria">
-<!ENTITY findEmailsFromCardsLabel "Find emails related to this contact">
-<!ENTITY findEventsFromCardsLabel "Find calendar events related to this contact">
-<!ENTITY localizeCardFromCardsLabel "Localize contact">
-<!ENTITY openURLCardFromCardsLabel "Open URLs from contact">
-<!ENTITY cutCardFromAccountsOrCatsLabel "Wytnij kontakt">
-<!ENTITY cutCardFromCardsLabel "Wytnij kontakt">
-<!ENTITY copyCardFromAccountsOrCatsLabel "Kopiuj kontakt">
-<!ENTITY copyCardFromCardsLabel "Kopiuj kontakt">
-<!ENTITY pasteCardFromAccountsOrCatsLabel "Wklej kontakt">
-<!ENTITY pasteCardFromCardsLabel "Wklej kontakt">
-<!ENTITY exportCardToFileLabel "Eksportuj kontakt z pliku">
-<!ENTITY exportCardToDirLabel "Eksportuj kontakt z katalogu">
-<!ENTITY importCardFromFileLabel "Importuj kontakt z pliku">
-<!ENTITY importCardFromDirLabel "Importuj kontakt z katalogu">
+<!ENTITY findEmailsFromCardsLabel "Znajdź e-maile związane z tą wizytówką">
+<!ENTITY findEventsFromCardsLabel "Znajdź wydarzenia związane z tą wizytówką">
+<!ENTITY localizeCardFromCardsLabel "Lokalizuj wizytówkę">
+<!ENTITY openURLCardFromCardsLabel "Otwórz adresy URL z wizytówki">
+<!ENTITY cutCardFromAccountsOrCatsLabel "Wytnij wizytówkę">
+<!ENTITY cutCardFromCardsLabel "Wytnij wizytówkę">
+<!ENTITY copyCardFromAccountsOrCatsLabel "Kopiuj wizytówkę">
+<!ENTITY copyCardFromCardsLabel "Kopiuj wizytówkę">
+<!ENTITY pasteCardFromAccountsOrCatsLabel "Wklej wizytówkę">
+<!ENTITY pasteCardFromCardsLabel "Wklej wizytówkę">
+<!ENTITY exportCardToFileLabel "Eksportuj wizytówkę do pliku">
+<!ENTITY exportCardToDirLabel "Eksportuj wizytówkę do katalogu">
+<!ENTITY importCardFromFileLabel "Importuj wizytówkę z pliku">
+<!ENTITY importCardFromDirLabel "Importuj wizytówkę z katalogu">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Zmień nazwę kategorii">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Usuń kategorię">
-<!ENTITY mergeCardsFromCardsLabel "Scal kontakty">
-<!ENTITY duplicateCardFromCardsLabel "Powiel kontakt">
-<!ENTITY convertListToCategoryFromCardsLabel "Convert list to category">
+<!ENTITY mergeCardsFromCardsLabel "Połącz wizytówki">
+<!ENTITY duplicateCardFromCardsLabel "Powiel wizytówkę">
+<!ENTITY convertListToCategoryFromCardsLabel "Zamień listę w kategorię">
 <!ENTITY editAccountFromAccountsOrCatsLabel "Edytuj książkę adresową">
 <!ENTITY syncAccountFromAccountsOrCatsLabel "Synchronizuj książkę adresową">
 <!ENTITY removeAccountFromAccountsOrCatsLabel "Usuń książkę adresową">
 
-<!ENTITY IMPPMenuLabel "Połącz z …">
+<!ENTITY IMPPMenuLabel "Połącz z…">

@@ -1,9 +1,9 @@
-<!ENTITY wdw_logEditionTitle "Log viewer">
+<!ENTITY wdw_logEditionTitle "Log">
 
-<!ENTITY logEditionValueLabel "Timestamp Event">
-<!ENTITY flushLogEditionLabel "Clear List">
+<!ENTITY logEditionValueLabel "Czas zdarzenia">
+<!ENTITY flushLogEditionLabel "Wyczyść listę">
 <!ENTITY flushLogEditionAccesskey "C">
-<!ENTITY clipboardLogEditionLabel "Copy to clipboard">
+<!ENTITY clipboardLogEditionLabel "Skopiuj do schowka">
 <!ENTITY clipboardLogEditionAccesskey "p">
 <!ENTITY cancelLogEditionLabel "OK">
 <!ENTITY cancelLogEditionAccesskey "O">

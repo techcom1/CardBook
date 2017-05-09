@@ -6,7 +6,7 @@
 	<Description about="urn:mozilla:install-manifest">
 		<em:id>cardbook@vigneau.philippe</em:id>
 		<em:name>CardBook</em:name>
-		<em:version>18.9</em:version>
+		<em:version>19.0</em:version>
 		<em:type>2</em:type>
 		<em:description>vCard Address Book</em:description>
 		<em:creator>Philippe VIGNEAU</em:creator>
@@ -26,6 +26,7 @@
 		<em:translator>Agnese MORETTINI (it)</em:translator>
 		<em:translator>Han KNOLS (nl)</em:translator>
 		<em:translator>Adam GORZKIEWICZ (pl)</em:translator>
+		<em:translator>Dominik WNĘK (pl)</em:translator>
 		<em:translator>André BAÇÃO (pt-PT)</em:translator>
         <em:translator>Alexander YAVORSKY (ru)</em:translator>
 		<em:optionsURL>chrome://cardbook/content/wdw_cardbookConfiguration.xul</em:optionsURL>
@@ -61,6 +62,7 @@
 				<em:translator>Agnese MORETTINI (it)</em:translator>
 				<em:translator>Han KNOLS (nl)</em:translator>
 				<em:translator>Adam GORZKIEWICZ (pl)</em:translator>
+				<em:translator>Dominik WNĘK (pl)</em:translator>
 				<em:translator>André BAÇÃO (pt-PT)</em:translator>
                 <em:translator>Alexander YAVORSKY (ru)</em:translator>
 			</Description>
@@ -87,6 +89,7 @@
 				<em:translator>Agnese MORETTINI (it)</em:translator>
 				<em:translator>Han KNOLS (nl)</em:translator>
 				<em:translator>Adam GORZKIEWICZ (pl)</em:translator>
+				<em:translator>Dominik WNĘK (pl)</em:translator>
 				<em:translator>André BAÇÃO (pt-PT)</em:translator>
                 <em:translator>Alexander YAVORSKY (ru)</em:translator>
 			</Description>
@@ -113,6 +116,7 @@
 				<em:translator>Agnese MORETTINI (it)</em:translator>
 				<em:translator>Han KNOLS (nl)</em:translator>
 				<em:translator>Adam GORZKIEWICZ (pl)</em:translator>
+				<em:translator>Dominik WNĘK (pl)</em:translator>
 				<em:translator>André BAÇÃO (pt-PT)</em:translator>
                 <em:translator>Alexander YAVORSKY (ru)</em:translator>
 			</Description>
@@ -139,6 +143,7 @@
 				<em:translator>Agnese MORETTINI (it)</em:translator>
 				<em:translator>Han KNOLS (nl)</em:translator>
 				<em:translator>Adam GORZKIEWICZ (pl)</em:translator>
+				<em:translator>Dominik WNĘK (pl)</em:translator>
 				<em:translator>André BAÇÃO (pt-PT)</em:translator>
                 <em:translator>Alexander YAVORSKY (ru)</em:translator>
 			</Description>
@@ -165,6 +170,7 @@
 				<em:translator>Agnese MORETTINI (it)</em:translator>
 				<em:translator>Han KNOLS (nl)</em:translator>
 				<em:translator>Adam GORZKIEWICZ (pl)</em:translator>
+				<em:translator>Dominik WNĘK (pl)</em:translator>
 				<em:translator>André BAÇÃO (pt-PT)</em:translator>
                 <em:translator>Alexander YAVORSKY (ru)</em:translator>
 			</Description>
@@ -191,6 +197,7 @@
 				<em:translator>Agnese MORETTINI (it)</em:translator>
 				<em:translator>Han KNOLS (nl)</em:translator>
 				<em:translator>Adam GORZKIEWICZ (pl)</em:translator>
+				<em:translator>Dominik WNĘK (pl)</em:translator>
 				<em:translator>André BAÇÃO (pt-PT)</em:translator>
                 <em:translator>Alexander YAVORSKY (ru)</em:translator>
 			</Description>
@@ -217,6 +224,7 @@
 				<em:translator>Agnese MORETTINI (it)</em:translator>
 				<em:translator>Han KNOLS (nl)</em:translator>
 				<em:translator>Adam GORZKIEWICZ (pl)</em:translator>
+				<em:translator>Dominik WNĘK (pl)</em:translator>
 				<em:translator>André BAÇÃO (pt-PT)</em:translator>
                 <em:translator>Alexander YAVORSKY (ru)</em:translator>
 			</Description>
@@ -243,6 +251,7 @@
 				<em:translator>Agnese MORETTINI (it)</em:translator>
 				<em:translator>Han KNOLS (nl)</em:translator>
 				<em:translator>Adam GORZKIEWICZ (pl)</em:translator>
+				<em:translator>Dominik WNĘK (pl)</em:translator>
 				<em:translator>André BAÇÃO (pt-PT)</em:translator>
                 <em:translator>Alexander YAVORSKY (ru)</em:translator>
 			</Description>
@@ -269,6 +278,7 @@
 				<em:translator>Agnese MORETTINI (it)</em:translator>
 				<em:translator>Han KNOLS (nl)</em:translator>
 				<em:translator>Adam GORZKIEWICZ (pl)</em:translator>
+				<em:translator>Dominik WNĘK (pl)</em:translator>
 				<em:translator>André BAÇÃO (pt-PT)</em:translator>
                 <em:translator>Alexander YAVORSKY (ru)</em:translator>
 			</Description>
@@ -295,6 +305,7 @@
 				<em:translator>Agnese MORETTINI (it)</em:translator>
 				<em:translator>Han KNOLS (nl)</em:translator>
 				<em:translator>Adam GORZKIEWICZ (pl)</em:translator>
+				<em:translator>Dominik WNĘK (pl)</em:translator>
 				<em:translator>André BAÇÃO (pt-PT)</em:translator>
                 <em:translator>Alexander YAVORSKY (ru)</em:translator>
 			</Description>

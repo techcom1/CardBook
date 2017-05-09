@@ -1,4 +1,4 @@
-<!ENTITY wdw_cardbookAddIMPPTitle "Protocol Editor">
-<!ENTITY IMPPCodeLabel "Code">
-<!ENTITY IMPPLabelLabel "Label">
-<!ENTITY IMPPProtocolLabel "Protocol">
+<!ENTITY wdw_cardbookAddIMPPTitle "Edytor protokołu">
+<!ENTITY IMPPCodeLabel "Kod">
+<!ENTITY IMPPLabelLabel "Etykieta">
+<!ENTITY IMPPProtocolLabel "Protokół">

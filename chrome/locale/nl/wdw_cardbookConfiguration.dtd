@@ -163,7 +163,7 @@
 <!ENTITY preferEmailPrefLabel "Voorkeur voor email adressen die als 'Voorkeur' gemarkeerd zijn">
 <!ENTITY preferEmailPrefAccesskey "V">
 <!ENTITY preferEmailPrefWarn "Als er geen email adres gemarkeerd is, dan worden berichten naar alle adressen van de betreffende contactpersoon verstuurd.">
-<!ENTITY warnEmptyEmailsLabel "??Warn me when I attempt to email contacts without an email address??">
+<!ENTITY warnEmptyEmailsLabel "Waarschuwing als ik een bericht verstuur naar een contactpersoon zonder e-mail adres">
 <!ENTITY warnEmptyEmailsAccesskey "W">
 <!ENTITY attachvCardWarn "Selecteer voor elke email-account een vCard om aan alle uitgaande berichten van die account(s) de betreffende vCard toe te voegen. Dit gebeurt automatisch als deze voorziening ingeschakeld is in de instellingen.">
 <!ENTITY attachvCardGroupboxLabel "vCard aan uitgaande emails toevoegen ">

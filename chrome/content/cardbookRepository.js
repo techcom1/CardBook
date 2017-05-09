@@ -499,7 +499,7 @@ var cardbookRepository = {
 				if (key.indexOf(aAccountId) >= 0) {
 					cardbookRepository.removeCardFromSearch(cardbookRepository.cardbookCards[key]);
 					cardbookRepository.removeCardFromDisplay(cardbookRepository.cardbookCards[key]);
-					if (cardbookRepository.cardbookFileCacheCards[aAccountId][cardbookRepository.cardbookCards[key].cacheuri]) {
+					if (cardbookRepository.cardbookFileCacheCards[aAccountId] && cardbookRepository.cardbookFileCacheCards[aAccountId][cardbookRepository.cardbookCards[key].cacheuri]) {
 						delete cardbookRepository.cardbookFileCacheCards[aAccountId][cardbookRepository.cardbookCards[key].cacheuri];
 					}
 					delete cardbookRepository.cardbookCards[key];

@@ -1,60 +1,60 @@
-<!ENTITY wizard.title "Add a new address book">
-<!ENTITY wizard.label "Add a new address book">
+<!ENTITY wizard.title "Dodaj nową książkę adresową">
+<!ENTITY wizard.label "Dodaj nową książkę adresową">
 
-<!ENTITY welcomePage.wizard.description "Welcome">
-<!ENTITY welcomePage.description "It seems that it is the first time you use CardBook, so we will try to import contacts from Thunderbird's standard address books into CardBook.">
+<!ENTITY welcomePage.wizard.description "Witaj">
+<!ENTITY welcomePage.description "Wygląda na to, że używasz CardBook po raz pierwszy; spróbujemy zaimportować do CardBook kontakty z książek adresowych Thunderbirda.">
 
-<!ENTITY initialPage.wizard.description "Location for the new address book.">
-<!ENTITY initialPage.description "Is your address book local or remote ? :">
-<!ENTITY initialPage.computer.label "Local">
-<!ENTITY initialPage.network.label "Remote">
-<!ENTITY initialPage.standard.label "Import Thunderbird's standard address books">
-<!ENTITY initialPage.search.label "Search into existing address books">
+<!ENTITY initialPage.wizard.description "Położenie nowej książki adresowej.">
+<!ENTITY initialPage.description "Czy książka adresowa jest lokalna czy zdalna?">
+<!ENTITY initialPage.computer.label "Lokalna">
+<!ENTITY initialPage.network.label "Zdalna">
+<!ENTITY initialPage.standard.label "Zaimportuj książki adresowe Thunderbirda">
+<!ENTITY initialPage.search.label "Wyszukaj w istniejących książkach adresowych">
 
-<!ENTITY localPage.wizard.description "Type and location of the new local address book.">
-<!ENTITY localPage.type.description "What is the type of your local address book ? :">
-<!ENTITY localPage.type.label "Type">
-<!ENTITY localPage.createDB.label "Create a new address book">
-<!ENTITY localPage.createDirectory.label "Create a new address book (Directory)">
-<!ENTITY localPage.createFile.label "Create a new address book (File)">
-<!ENTITY localPage.openDirectory.label "Open an existing address book (Directory)">
-<!ENTITY localPage.openFile.label "Open an existing address book (File)">
-<!ENTITY localPage.uri.label "Directory or file">
-<!ENTITY localPage.uri.description "Using the browser, choose the location for your new local address book. If you are creating a new file, specify .vcf as the file extension.">
-<!ENTITY locationFirstPage.uri.description "Choose the location for your new local address books.">
-<!ENTITY localPage.uributton.label "Browse">
+<!ENTITY localPage.wizard.description "Rodzaj i położenie nowej lokalnej książki adresowej.">
+<!ENTITY localPage.type.description "Jakiego rodzaju jest lokalna książka adresowa?">
+<!ENTITY localPage.type.label "Typ">
+<!ENTITY localPage.createDB.label "Stwórz nową książkę adresową">
+<!ENTITY localPage.createDirectory.label "Stwórz nową książkę adresową (katalog)">
+<!ENTITY localPage.createFile.label "Stwórz nową książkę adresową (plik)">
+<!ENTITY localPage.openDirectory.label "Otwórz istniejącą książkę adresową (katalog)">
+<!ENTITY localPage.openFile.label "Otwórz istniejącą książkę adresową (plik)">
+<!ENTITY localPage.uri.label "Katalog lub plik">
+<!ENTITY localPage.uri.description "Wybierz położenie nowej książki adresowej. Jeśli tworzysz nowy plik, nadaj mu rozszerzenie .vcf.">
+<!ENTITY locationFirstPage.uri.description "Wybierz położenie nowych książek adresowych.">
+<!ENTITY localPage.uributton.label "Przeglądaj">
 
-<!ENTITY remotePage.wizard.description "Type and location of the new remote address book.">
-<!ENTITY remotePage.description "What is the type of your remote address book ? : (Caution: Google does NOT conform to vCard standards)">
-<!ENTITY remotePage.type.label "Type">
+<!ENTITY remotePage.wizard.description "Rodzaj i położenie nowej zdalnej książki adresowej.">
+<!ENTITY remotePage.description "Jakiego rodzaju jest książka adresowa? (Uwaga: Google NIE przestrzega standardów vCard)">
+<!ENTITY remotePage.type.label "Typ">
 <!ENTITY remotePage.carddav.label "CardDAV">
 <!ENTITY remotePage.google.label "Google">
 <!ENTITY remotePage.apple.label "Apple">
-<!ENTITY remotePage.connection.label "Connection">
-<!ENTITY remotePage.uri.description "For a CardDAV type, enter the URL of your remote address book. You may try to use a partial URL (example : http(s)://carddav.example.org). For a Google address book, don't specify this field.">
+<!ENTITY remotePage.connection.label "Połączenie">
+<!ENTITY remotePage.uri.description "Dla CardDAV, wpisz URL zdalnej książki adresowej. Możesz spróbować wpisać częściowy URL (np. http(s)://carddav.example.org). Jeśli masz książkę adresową Google, nic tu nie wpisuj.">
 <!ENTITY remotePage.uri.label "URL">
-<!ENTITY remotePage.credentials.description "Enter the credentials for accessing your address book. For a Google address book, the username should be your Google email.">
-<!ENTITY remotePage.validatebutton.label "Validate">
+<!ENTITY remotePage.credentials.description "Wpisz dane logowania do książki adresowej. Jeśli masz książkę adresową Google, nazwa użytkownika to Twój adres e-mail Google.">
+<!ENTITY remotePage.validatebutton.label "Sprawdź">
 
-<!ENTITY locationSearchPage.wizard.description "Definition of the advanced search.">
-<!ENTITY locationSearchPage.label "Advanced Search">
+<!ENTITY locationSearchPage.wizard.description "Definicja wyszukiwania zaawansowanego.">
+<!ENTITY locationSearchPage.label "Wyszukiwanie zaawansowane">
 
-<!ENTITY googleOauthPage.wizard.description "Google Authentication">
+<!ENTITY googleOauthPage.wizard.description "Uwierzytelnie Google">
 
-<!ENTITY namePage.wizard.description "Address book properties">
-<!ENTITY namePage.selected.label "Selected">
-<!ENTITY namePage.name.label "Name">
-<!ENTITY namePage.color.label "Color">
-<!ENTITY namePage.urnuuid.label "Use urn:uuid">
-<!ENTITY namePage.readonly.label "Read-only mode">
+<!ENTITY namePage.wizard.description "Właściwości książki adresowej">
+<!ENTITY namePage.selected.label "Wybrana">
+<!ENTITY namePage.name.label "Nazwa">
+<!ENTITY namePage.color.label "Kolor">
+<!ENTITY namePage.urnuuid.label "Używaj urn:uuid">
+<!ENTITY namePage.readonly.label "Tryb tylko do odczytu">
 <!ENTITY namePage.vCardVersion.label "vCard">
 
-<!ENTITY namesPage.wizard.description "Address books properties">
-<!ENTITY namesPage.name.label "Names">
-<!ENTITY namesPage.name.description "Multiple address books have been discovered. Choose which address books you want to open and their names :">
+<!ENTITY namesPage.wizard.description "Właściwości książek adresowych">
+<!ENTITY namesPage.name.label "Nazwy">
+<!ENTITY namesPage.name.description "Wykryto wiele książek adresowych. Wybierz, które z nich chcesz otworzyć i ich nazwy:">
 
-<!ENTITY finishPage.wizard.description "Address book configured">
-<!ENTITY finishPage.description "Your new address book has been successfully configured.">
+<!ENTITY finishPage.wizard.description "Książka adresowa skonfigurowana">
+<!ENTITY finishPage.description "Nowa książka adresowa została skonfigurowana.">
 
-<!ENTITY finishsPage.wizard.description "Address books configured">
-<!ENTITY finishsPage.description "Your new address books have been successfully configured.">
+<!ENTITY finishsPage.wizard.description "Książki adresowe skonfigurowane">
+<!ENTITY finishsPage.description "Nowe książki adresowe zostały skonfigurowane.">

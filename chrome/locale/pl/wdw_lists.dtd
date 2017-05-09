@@ -1,8 +1,8 @@
-<!ENTITY listTabLabel "List">
-<!ENTITY kindLabel "Kind">
-<!ENTITY kindAccesskey "K">
-<!ENTITY availableCardsGroupboxLabel "Available contacts">
-<!ENTITY addedCardsGroupboxLabel "Contacts list">
-<!ENTITY appendlistTreeLabel "Add to list">
-<!ENTITY deletelistTreeLabel "Remove from list">
-<!ENTITY editCardFromListLabel "Edit this contact">
+<!ENTITY listTabLabel "Lista">
+<!ENTITY kindLabel "Rodzaj">
+<!ENTITY kindAccesskey "R">
+<!ENTITY availableCardsGroupboxLabel "Dostępne wizytówki">
+<!ENTITY addedCardsGroupboxLabel "Lista wizytówek">
+<!ENTITY appendlistTreeLabel "Dodaj do listy">
+<!ENTITY deletelistTreeLabel "Usuń z listy">
+<!ENTITY editCardFromListLabel "Edytuj tę wizytówkę">

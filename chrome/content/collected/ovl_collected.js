@@ -51,8 +51,6 @@ if ("undefined" == typeof(ovl_collected)) {
 				for (var i = 0; i < listToCollect.length; i++) {
 					if (myFields[listToCollect[i]]) {
 						if (myFields[listToCollect[i]] != null && myFields[listToCollect[i]] !== undefined && myFields[listToCollect[i]] != "") {
-							var emailsCollectionList = [];
-							emailsCollectionList = emailsCollection.split(',');
 							var addresses = {}, names = {}, fullAddresses = {};
 							MailServices.headerParser.parseHeadersWithArray(myFields[listToCollect[i]], addresses, names, fullAddresses);
 							for (var j = 0; j < addresses.value.length; j++) {

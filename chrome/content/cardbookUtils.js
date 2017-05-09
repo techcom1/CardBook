@@ -55,6 +55,25 @@ if ("undefined" == typeof(cardbookUtils)) {
 			return cardbookUtils.sortArrayByString(aCategoryList,-1,1).join("    ");
 		},
 
+		// aTypesList should be escaped
+		// TYPE="WORK,VOICE" would be splitted into TYPE=WORK,TYPE=HOME
+		// the duplicate types would also be removed
+		formatTypes: function (aTypesList) {
+			var result = [];
+			for (var i = 0; i < aTypesList.length; i++) {
+				var myTempString = aTypesList[i].replace(/\"/g,"");
+				if ((myTempString.indexOf(",") != -1) && (myTempString.indexOf("TYPE=",0) == 0)) {
+					var myTempArray = myTempString.replace(/^TYPE=/, "").split(",");
+					for (var j = 0; j < myTempArray.length; j++) {
+						result.push("TYPE=" + myTempArray[j]);
+					}
+				} else if (myTempString && myTempString != "") {
+					result.push(myTempString);
+				}
+			}
+			return cardbookRepository.arrayUnique(result);
+		},
+
 		formatAddress: function (aAddress) {
 			function appendElement(aResult, aArrayElement) {
 				var myElement = "";

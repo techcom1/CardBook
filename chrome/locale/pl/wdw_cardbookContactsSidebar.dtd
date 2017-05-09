@@ -1,11 +1,11 @@
-<!ENTITY categoriesPicker.label "Category Filter:">
-<!ENTITY categoriesPicker.accesskey "t">
-<!ENTITY editAddrBookCard.label "Edit">
+<!ENTITY categoriesPicker.label "Filtr kategorii:">
+<!ENTITY categoriesPicker.accesskey "F">
+<!ENTITY editAddrBookCard.label "Edytuj">
 <!ENTITY editAddrBookCard.accesskey "E">
-<!ENTITY searchContacts.label "Search For:">
-<!ENTITY searchContacts.accesskey "o">
-<!ENTITY name.label "Name">
-<!ENTITY addtoReplytoFieldMenu.label "Add to Reply-To field">
-<!ENTITY addtoReplytoFieldMenu.accesskey "l">
-<!ENTITY replytoButton.label "Add to Reply-To:">
-<!ENTITY replytoButton.accesskey "l">
+<!ENTITY searchContacts.label "Szukaj:">
+<!ENTITY searchContacts.accesskey "S">
+<!ENTITY name.label "Nazwa">
+<!ENTITY addtoReplytoFieldMenu.label "Dodaj do pola Zwrotny adres e-mail">
+<!ENTITY addtoReplytoFieldMenu.accesskey "D">
+<!ENTITY replytoButton.label "Dodaj do Zwrotny adres e-mail:">
+<!ENTITY replytoButton.accesskey "D">

@@ -1,12 +1,12 @@
-<!ENTITY daysLeftColumnLabel "Days left">
-<!ENTITY nameColumnLabel "Name">
-<!ENTITY ageColumnLabel "Age">
-<!ENTITY dateOfBirthColumnLabel "Date of birth">
-<!ENTITY dateOfBirthFoundColumnLabel "Date found">
-<!ENTITY emailColumnLabel "Email">
-<!ENTITY sendEmailLabel "Send an email">
-<!ENTITY sendEmailAccesskey "E">
-<!ENTITY syncLightningMenuItemLabel "Sync. with Lightning">
+<!ENTITY daysLeftColumnLabel "Pozostało dni">
+<!ENTITY nameColumnLabel "Imię i nazwisko">
+<!ENTITY ageColumnLabel "Wiek">
+<!ENTITY dateOfBirthColumnLabel "Data urodzenia">
+<!ENTITY dateOfBirthFoundColumnLabel "Znaleziona data">
+<!ENTITY emailColumnLabel "E-mail">
+<!ENTITY sendEmailLabel "Wyślij e-mail">
+<!ENTITY sendEmailAccesskey "W">
+<!ENTITY syncLightningMenuItemLabel "Synchronizuj z Lightning">
 <!ENTITY syncLightningMenuAccesskey "S">
-<!ENTITY configurationButtonLabel "Configuration">
-<!ENTITY configurationButtonAccesskey "o">
+<!ENTITY configurationButtonLabel "Konfiguracja">
+<!ENTITY configurationButtonAccesskey "K">
