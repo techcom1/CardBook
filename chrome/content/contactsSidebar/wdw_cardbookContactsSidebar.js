@@ -264,7 +264,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 						if (cardbookRepository.verifyABRestrictions(myDirPrefId, searchAB, wdw_cardbookContactsSidebar.ABExclRestrictions, wdw_cardbookContactsSidebar.ABInclRestrictions)) {
 							var myDirPrefName = cardbookUtils.getPrefNameFromPrefId(myDirPrefId);
 							// All No Only categories
-							if ((searchCategory === "allCategories") || (searchCategory === "noCategories") || (searchCategory === "onlyCategories")) {
+							if ((searchCategory === "allCategories") || (searchCategory === "noCategory") || (searchCategory === "onlyCategories")) {
 								if (searchCategory !== "onlyCategories") {
 									for (var j in cardbookRepository.cardbookCardSearch2[myDirPrefId]) {
 										if (j.indexOf(searchInput) >= 0 || searchInput == "") {
@@ -309,7 +309,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 										}
 									}
 								}
-								if (searchCategory !== "noCategories") {
+								if (searchCategory !== "noCategory") {
 									for (var j = 0; j < cardbookRepository.cardbookAccountsCategories[myDirPrefId].length; j++) {
 										var myCategory = cardbookRepository.cardbookAccountsCategories[myDirPrefId][j];
 										if (cardbookRepository.verifyCatRestrictions(myDirPrefId, myCategory, searchInput, wdw_cardbookContactsSidebar.ABExclRestrictions,

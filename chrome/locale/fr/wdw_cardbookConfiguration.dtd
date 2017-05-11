@@ -77,7 +77,7 @@
 								La première partie s'applique lorsque le terme impliqué, par exemple {{1}}, n'est pas null, la seconde partie s'applique lorsque le terme impliqué est null.">
 <!ENTITY fnFormulaLabel "Génération du nom affiché">
 <!ENTITY fnFormulaAccesskey "m">
-<!ENTITY resetfnFormulaLabel "Réinitialiser">
+<!ENTITY resetFnFormulaLabel "Réinitialiser">
 <!ENTITY resetFnFormulaAccesskey "R">
 <!ENTITY miscEdittingGroupboxLabel "Divers">
 <!ENTITY cardCreationVersionLabel "Version des vCard par défaut :">
@@ -103,9 +103,9 @@
 <!ENTITY renameTypeAccesskey "M">
 <!ENTITY deleteTypeLabel "Supprimer">
 <!ENTITY deleteTypeAccesskey "S">
+<!ENTITY resetTypeLabel "Réinitialiser">
+<!ENTITY resetTypeAccesskey "R">
 <!ENTITY preferenceGroupboxLabel "Champ PREF">
-<!ENTITY preferenceLabel "Label du champ PREF">
-<!ENTITY preferenceAccesskey "P">
 <!ENTITY preferenceValueLabel "Label de la valeur du champ PREF (seulement pour vCard 4.0)">
 <!ENTITY preferenceValueAccesskey "V">
 

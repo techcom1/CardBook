@@ -204,7 +204,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 					var identity = account.identities.queryElementAt ? account.identities.queryElementAt(j, Components.interfaces.nsIMsgIdentity) : account.identities.GetElementAt(j).QueryInterface(Components.interfaces.nsIMsgIdentity);
 					var mailAccountServer = account.incomingServer;
 					if (mailAccountServer.type == "pop3" || mailAccountServer.type == "imap") {
-						var accountPrettyName = mailAccountServer.prettyName; // gets mail account name
+						var accountPrettyName = identity.email; // gets mail account name
 						var enabled = cardbookPrefService.getMailAccountEnabled(identity.key);
 						var filename = cardbookPrefService.getMailAccountFileName(identity.key);
 						var dirPrefId = cardbookPrefService.getMailAccountDirPrefId(identity.key);
@@ -710,10 +710,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		},
 
 		loadPref: function () {
-			if (document.getElementById('preferenceTextbox').value == "") {
-				var cardbookPrefService = new cardbookPreferenceService();
-				document.getElementById('preferenceTextbox').value = cardbookPrefService.getPrefLabel();
-			}
 			if (document.getElementById('preferenceValueTextbox').value == "") {
 				document.getElementById('preferenceValueTextbox').value = cardbookPrefService.getPrefValueLabel();
 			}
@@ -737,7 +733,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 					var mailAccountServer = account.incomingServer;
 					if (mailAccountServer.type == "pop3" || mailAccountServer.type == "imap") {
 						if (aEmailAccountId == identity.key) {
-							return mailAccountServer.prettyName;
+							return identity.email;
 						}
 					}
 				}
@@ -1092,7 +1088,20 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			var myArgs = {code: "", label: "", typeAction: ""};
 			var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookAddType.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
 			if (myArgs.typeAction == "SAVE") {
-				wdw_cardbookConfiguration.allTypes[type].push([myArgs.code, myArgs.label]);
+				var result = [];
+				var already = false;
+				for (let i = 0; i < wdw_cardbookConfiguration.allTypes[type].length; i++) {
+					if (myArgs.code === wdw_cardbookConfiguration.allTypes[type][i][0]) {
+						result.push([myArgs.code, myArgs.label]);
+						already = true;
+					} else {
+						result.push(wdw_cardbookConfiguration.allTypes[type][i]);
+					}
+				}
+				if (!already) {
+					result.push([myArgs.code, myArgs.label]);
+				}
+				wdw_cardbookConfiguration.allTypes[type] = JSON.parse(JSON.stringify(result));
 				wdw_cardbookConfiguration.allTypes[type] = cardbookUtils.sortArrayByString(wdw_cardbookConfiguration.allTypes[type],1,1);
 				wdw_cardbookConfiguration.sortTrees(null, "typesTree");
 			}
@@ -1111,7 +1120,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				if (myArgs.typeAction == "SAVE") {
 					var result = [];
 					for (let i = 0; i < wdw_cardbookConfiguration.allTypes[type].length; i++) {
-						if (myCode === wdw_cardbookConfiguration.allTypes[type][i][0]) {
+						if (myArgs.code === wdw_cardbookConfiguration.allTypes[type][i][0]) {
 							result.push([myArgs.code, myArgs.label]);
 						} else {
 							result.push(wdw_cardbookConfiguration.allTypes[type][i]);
@@ -1140,6 +1149,19 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				wdw_cardbookConfiguration.allTypes[type] = JSON.parse(JSON.stringify(result));
 				wdw_cardbookConfiguration.sortTrees(null, "typesTree");
 			}
+		},
+		
+		resetType: function () {
+			var result = [];
+			var strBundle = document.getElementById("cardbook-strings");
+			var type = document.getElementById('typesCategoryRadiogroup').selectedItem.value;
+			for (var i = 0; i < cardbookRepository.typesSeed[type].length; i++) {
+				var myCode = cardbookRepository.typesSeed[type][i];
+				var myLabel = strBundle.getString("types." + type + "." + myCode.toLowerCase());
+				result.push([myCode, myLabel]);
+			}
+			wdw_cardbookConfiguration.allTypes[type] = JSON.parse(JSON.stringify(result));
+			wdw_cardbookConfiguration.sortTrees(null, "typesTree");
 		},
 		
 		validateTypes: function () {

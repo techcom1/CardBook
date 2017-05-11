@@ -2,7 +2,7 @@
 <!ENTITY wizard.label "Dodaj nową książkę adresową">
 
 <!ENTITY welcomePage.wizard.description "Witaj">
-<!ENTITY welcomePage.description "Wygląda na to, że używasz CardBook po raz pierwszy; spróbujemy zaimportować do CardBook kontakty z książek adresowych Thunderbirda.">
+<!ENTITY welcomePage.description "Wygląda na to, że używasz CardBook po raz pierwszy; spróbujemy zaimportować do CardBook wizytówki z książek adresowych Thunderbirda.">
 
 <!ENTITY initialPage.wizard.description "Położenie nowej książki adresowej.">
 <!ENTITY initialPage.description "Czy książka adresowa jest lokalna czy zdalna?">

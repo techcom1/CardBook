@@ -76,7 +76,7 @@
 <!ENTITY fnLabelExplanation "Lehetőség van a megszokott módon névjegyzék állítja elő az megjelenített neve. Ez a képlet áll blokkok által közrezárt „()”. Két része van ezekben a blokkokban által határolt „|”. Az első rész alkalmazandó, ha a kifejezés részt, például a {{1}}, nem nulla, a második része alkalmazandó, ha a kifejezés részt null.">
 <!ENTITY fnFormulaLabel "Képlet">
 <!ENTITY fnFormulaAccesskey "P">
-<!ENTITY resetfnFormulaLabel "Alapértelmezés">
+<!ENTITY resetFnFormulaLabel "Alapértelmezés">
 <!ENTITY resetFnFormulaAccesskey "p">
 <!ENTITY miscEdittingGroupboxLabel "Különféle">
 <!ENTITY cardCreationVersionLabel "Alapértelmezett vCard verzió:">
@@ -102,9 +102,9 @@
 <!ENTITY renameTypeAccesskey "z">
 <!ENTITY deleteTypeLabel "Törlés…">
 <!ENTITY deleteTypeAccesskey "T">
+<!ENTITY resetTypeLabel "Alapértelmezés">
+<!ENTITY resetTypeAccesskey "A">
 <!ENTITY preferenceGroupboxLabel "PREF mező">
-<!ENTITY preferenceLabel "PREF mező címke">
-<!ENTITY preferenceAccesskey "P">
 <!ENTITY preferenceValueLabel "PREF mező érték címke (csak vCard 4.0)">
 <!ENTITY preferenceValueAccesskey "é">
 

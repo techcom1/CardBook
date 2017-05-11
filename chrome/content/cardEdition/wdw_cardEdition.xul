@@ -8,7 +8,8 @@
 <?xml-stylesheet href="chrome://calendar/skin/widgets/calendar-widgets.css" type="text/css"?>
 <?xml-stylesheet href="chrome://calendar/content/widgets/calendar-widget-bindings.css" type="text/css"?>
 <?xml-stylesheet href="chrome://calendar-common/skin/widgets/minimonth.css" type="text/css"?>
-
+<!-- for the preference star -->
+<?xml-stylesheet href="chrome://cardbook-os/skin/cardbookPrefStar.css" type="text/css"?>
 
 <?xul-overlay href="chrome://cardbook/content/ovl_cardbookStringBundle.xul"?>
 <!DOCTYPE window [
@@ -86,7 +87,7 @@
 							<vbox flex="1">
 								<groupbox id="addressbookMenulistGroupbox" flex="1">
 									<caption id="addressbookMenulistLabel" class="header"/>
-									<hbox align="center" flex="1">
+									<hbox align="center" flex="1" style="min-height:36px;">
 										<menulist id="addressbookMenulist" flex="1" oncommand="wdw_cardEdition.changeAddressbook();">
 											<menupopup id="addressbookMenupopup" flex="1"/>
 										</menulist>
@@ -94,13 +95,13 @@
 								</groupbox>
 								<groupbox id="categoriesReadOnlyGroupbox">
 									<caption label="&categoriesGroupboxLabel;" class="header"/>
-									<textbox id="categoriesTextBox" flex="1"/>
+									<textbox id="categoriesTextBox" flex="1" style="min-height:36px;"/>
 								</groupbox>
 								<groupbox id="categoriesReadWriteGroupbox" flex="1">
 									<caption label="&categoriesGroupboxLabel;" class="header"/>
-									<hbox align="center" flex="1">
+									<hbox align="center" flex="1" style="min-height:36px;">
 										<menulist id="categoriesMenulist" type="cardbookPanelMenulist" flex="1">
-											<panel id="categoriesPanel" type="cardbookCategoryPanel" onpopuphiding="cardbookUtils.updateCategoryMenulist(this);"/>
+											<panel id="categoriesPanel" type="cardbookItemPanel" onpopuphiding="cardbookUtils.updatePanelMenulist('category', this);"/>
 										</menulist>
 									</hbox>
 								</groupbox>

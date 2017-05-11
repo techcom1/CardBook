@@ -58,8 +58,6 @@
 				name="extensions.cardbook.fnFormula" type="string"/>
 			<preference id="extensions.cardbook.localizeTarget"
 				name="extensions.cardbook.localizeTarget" type="string"/>
-			<preference id="extensions.cardbook.preferenceLabel"
-				name="extensions.cardbook.preferenceLabel" type="string"/>
 			<preference id="extensions.cardbook.preferenceValueLabel"
 				name="extensions.cardbook.preferenceValueLabel" type="string"/>
 			<preference id="extensions.cardbook.kindCustom"
@@ -299,7 +297,7 @@
 										id="fnFormula"/>
 									<textbox id="fnFormulaTextBox"
 										preference="extensions.cardbook.fnFormula"/>
-									<button id="resetFnFormulaButton" label="&resetfnFormulaLabel;" accesskey="&resetFnFormulaAccesskey;" 
+									<button id="resetFnFormulaButton" label="&resetFnFormulaLabel;" accesskey="&resetFnFormulaAccesskey;" 
 										oncommand="wdw_cardbookConfiguration.resetFnFormula();"/>
 								</row>
 								<row align="center">
@@ -379,21 +377,13 @@
 									<button id="addTypeLabel" label="&addTypeLabel;" accesskey="&addTypeAccesskey;" oncommand="wdw_cardbookConfiguration.addType();"/>
 									<button id="renameTypeLabel" label="&renameTypeLabel;" accesskey="&renameTypeAccesskey;" oncommand="wdw_cardbookConfiguration.renameType();" disabled="true"/>
 									<button id="deleteTypeLabel" label="&deleteTypeLabel;" accesskey="&deleteTypeAccesskey;" oncommand="wdw_cardbookConfiguration.deleteType();" disabled="true"/>
+									<button id="resetTypeLabel" label="&resetTypeLabel;" accesskey="&resetTypeAccesskey;" oncommand="wdw_cardbookConfiguration.resetType();"/>
 								</vbox>
 							</hbox>
 						</hbox>
 					</groupbox>
 					<groupbox>
 						<caption label="&preferenceGroupboxLabel;"/>
-						<hbox flex="1" align="center">
-							<label value="&preferenceLabel;"
-								accesskey="&preferenceAccesskey;"
-								control="preferenceTextbox"
-								id="preferenceLabel"/>
-							<textbox id="preferenceTextbox"
-								preference="extensions.cardbook.preferenceLabel"/>
-						</hbox>
-						<separator class="thin"/>
 						<hbox flex="1" align="center">
 							<label value="&preferenceValueLabel;"
 								accesskey="&preferenceValueAccesskey;"

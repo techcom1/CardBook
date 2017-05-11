@@ -77,7 +77,7 @@
 					Het eerste deel is van toepassing als het betreffende deel {{1}} ingevuld is, het tweede deel als het niet ingevuld is.">
 <!ENTITY fnFormulaLabel "'Getoonde naam' samenstellen">
 <!ENTITY fnFormulaAccesskey "s">
-<!ENTITY resetfnFormulaLabel "Herstellen naar standaardwaarde">
+<!ENTITY resetFnFormulaLabel "Herstellen naar standaardwaarde">
 <!ENTITY resetFnFormulaAccesskey "H">
 <!ENTITY miscEdittingGroupboxLabel "Overig">
 <!ENTITY cardCreationVersionLabel "Default vCard versie:">
@@ -103,9 +103,9 @@
 <!ENTITY renameTypeAccesskey "B">
 <!ENTITY deleteTypeLabel "Verwijderen">
 <!ENTITY deleteTypeAccesskey "V">
+<!ENTITY resetTypeLabel "Herstellen naar standaardwaarde">
+<!ENTITY resetTypeAccesskey "H">
 <!ENTITY preferenceGroupboxLabel "Rubriek 'Voorkeur'">
-<!ENTITY preferenceLabel "Naam van de rubriek 'Voorkeur'">
-<!ENTITY preferenceAccesskey "N">
 <!ENTITY preferenceValueLabel "Naam van de rubriek 'Voorkeur' (uitsluitend voor vCard 4.0)">
 <!ENTITY preferenceValueAccesskey "R">
 

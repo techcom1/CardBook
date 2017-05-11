@@ -76,7 +76,7 @@
 <!ENTITY fnLabelExplanation "Można dostosować sposób, w który CardBook tworzy Wyświetlaną nazwę. Formuła zawiera bloki otoczone '()'. Bloki zawierają dwa elementy oddzielone'|'. Pierwszy element jest używany, gdy wybrane pole, na przykład {{1}}, nie jest puste, drugi element jest używany, gdy wybrane pole jest puste.">
 <!ENTITY fnFormulaLabel "Stwórz Wyświetlaną nazwę">
 <!ENTITY fnFormulaAccesskey "S">
-<!ENTITY resetfnFormulaLabel "Przywróć domyślne">
+<!ENTITY resetFnFormulaLabel "Przywróć domyślne">
 <!ENTITY resetFnFormulaAccesskey "P">
 <!ENTITY miscEdittingGroupboxLabel "Różne">
 <!ENTITY cardCreationVersionLabel "Domyślna wersja vCard:">
@@ -102,9 +102,9 @@
 <!ENTITY renameTypeAccesskey "E">
 <!ENTITY deleteTypeLabel "Usuń">
 <!ENTITY deleteTypeAccesskey "U">
+<!ENTITY resetTypeLabel "Przywróć domyślne">
+<!ENTITY resetTypeAccesskey "P">
 <!ENTITY preferenceGroupboxLabel "Pole PREF">
-<!ENTITY preferenceLabel "Etykieta pola PREF">
-<!ENTITY preferenceAccesskey "y">
 <!ENTITY preferenceValueLabel "Etykieta pola wartości PREF (tylko vCard 4.0)">
 <!ENTITY preferenceValueAccesskey "w">
 
@@ -137,7 +137,7 @@
 <!ENTITY syncWarn "Synchronizacja wysyła Twoje zmiany do zdalnego serwera, a zmiany na serwerze do Ciebie.">
 <!ENTITY initialSyncLabel "Wykonaj początkową synchronizację przy uruchomieniu Thunderbirda">
 <!ENTITY initialSyncAccesskey "W">
-<!ENTITY solveConflictsLabel "Jeśli kontakt został zmodyfikoway zarówno na serwerze jak i lokalnie:">
+<!ENTITY solveConflictsLabel "Jeśli wizytówka została zmodyfikowana zarówno na serwerze jak i lokalnie:">
 <!ENTITY solveConflictsLocalLabel "Preferuj zmianę lokalną">
 <!ENTITY solveConflictsLocalAccesskey "l">
 <!ENTITY solveConflictsRemoteLabel "Preferuj zmianę zdalną">

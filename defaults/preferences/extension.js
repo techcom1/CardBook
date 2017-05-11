@@ -22,7 +22,6 @@ pref("extensions.cardbook.decodeReport", true);
 pref("extensions.cardbook.preferEmailPref", true);
 pref("extensions.cardbook.warnEmptyEmails", true);
 
-pref("extensions.cardbook.preferenceLabel", "");
 pref("extensions.cardbook.preferenceValueLabel", "");
 
 pref("extensions.cardbook.firstRun", true);

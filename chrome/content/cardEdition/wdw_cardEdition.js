@@ -219,13 +219,17 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 
 		loadCategories: function (aCategoryList) {
 			var categoryPanel = document.getElementById("categoriesPanel");
-			categoryPanel.loadCategories(wdw_cardEdition.listOfCategories, aCategoryList);
-			cardbookUtils.updateCategoryMenulist(categoryPanel);
+			var itemsList = [];
+			for (var i = 0; i < wdw_cardEdition.listOfCategories.length; i++) {
+				itemsList.push([wdw_cardEdition.listOfCategories[i], wdw_cardEdition.listOfCategories[i]]);
+			}
+			categoryPanel.loadItems("", itemsList, aCategoryList, false);
+			cardbookUtils.updatePanelMenulist("category", categoryPanel);
 		},
 
 		getCategories: function () {
 			var categoryPanel = document.getElementById("categoriesPanel");
-			return categoryPanel.categories;
+			return categoryPanel.itemsLabel;
 		},
 
 		loadSourceCategories: function (aDirPrefId) {

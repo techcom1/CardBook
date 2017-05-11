@@ -116,7 +116,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 					var identity = account.identities.queryElementAt ? account.identities.queryElementAt(k, Components.interfaces.nsIMsgIdentity) : account.identities.GetElementAt(k).QueryInterface(Components.interfaces.nsIMsgIdentity);
 					var mailAccountServer = account.incomingServer;
 					if (mailAccountServer.type == "pop3" || mailAccountServer.type == "imap") {
-						sortedEmailAccounts.push([mailAccountServer.prettyName, identity.key]);
+						sortedEmailAccounts.push([identity.email, identity.key]);
 					}
 				}
 			}
@@ -238,10 +238,10 @@ if ("undefined" == typeof(cardbookElementTools)) {
 					var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
 					var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 					var menuItem = document.createElement("menuitem");
-					menuItem.setAttribute("label", strBundle.GetStringFromName("noCategories"));
-					menuItem.setAttribute("value", "noCategories");
+					menuItem.setAttribute("label", strBundle.GetStringFromName("noCategory"));
+					menuItem.setAttribute("value", "noCategory");
 					myPopup.appendChild(menuItem);
-					if ("noCategories" == aDefaultCatId) {
+					if ("noCategory" == aDefaultCatId) {
 						defaultIndex=j;
 					}
 					j++;
@@ -295,7 +295,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			document.getElementById(aMenuName).selectedIndex = defaultIndex;
 		},
 
-		addMenuIMPPlist: function (aParent, aType, aIndex, aArray, aImppDefault, aCode, aProtocol) {
+		addMenuIMPPlist: function (aParent, aType, aIndex, aArray, aCode, aProtocol) {
 			var aMenulist = document.createElement('menulist');
 			aParent.appendChild(aMenulist);
 			aMenulist.setAttribute('id', aType + '_' + aIndex + '_menulistIMPP');
@@ -310,22 +310,15 @@ if ("undefined" == typeof(cardbookElementTools)) {
 				menuItem.setAttribute("label", aArray[i][1]);
 				menuItem.setAttribute("value", aArray[i][0]);
 				aMenupopup.appendChild(menuItem);
-				if (aImppDefault != null && aImppDefault !== undefined && aImppDefault != "") {
-					if (aImppDefault == aArray[i][0]) {
+				if (aCode != "") {
+					if (aArray[i][0].toLowerCase() == aCode.toLowerCase()) {
 						aMenulist.selectedIndex = i;
 						found = true;
 					}
-				} else {
-					if (aCode != "") {
-						if (aArray[i][0] == aCode) {
-							aMenulist.selectedIndex = i;
-							found = true;
-						}
-					} else if (aProtocol != "") {
-						if (aArray[i][2] == aProtocol) {
-							aMenulist.selectedIndex = i;
-							found = true;
-						}
+				} else if (aProtocol != "") {
+					if (aArray[i][2].toLowerCase() == aProtocol.toLowerCase()) {
+						aMenulist.selectedIndex = i;
+						found = true;
 					}
 				}
 			}
@@ -333,6 +326,58 @@ if ("undefined" == typeof(cardbookElementTools)) {
 				aMenulist.selectedIndex = 0;
 			}
 			return found;
+		},
+
+		addPrefStar: function (aParent, aType, aIndex, aValue) {
+			var strBundle = document.getElementById("cardbook-strings");
+			var aPrefButton = document.createElement('button');
+			aParent.appendChild(aPrefButton);
+			aPrefButton.setAttribute('id', aType + '_' + aIndex + '_PrefImage');
+			aPrefButton.setAttribute('class', 'small-button cardbookPrefStarClass');
+			if (aValue) {
+				aPrefButton.setAttribute('haspref', 'true');
+			} else {
+				aPrefButton.removeAttribute('haspref');
+			}
+			aPrefButton.setAttribute('tooltiptext', strBundle.getString("prefLabel"));
+
+			function firePrefCheckBox(event) {
+				var myIdArray = this.id.split('_');
+				var myPrefWeightBoxLabel = document.getElementById(myIdArray[0] + '_' + myIdArray[1] + '_prefWeightBoxLabel');
+				var myPrefWeightBox = document.getElementById(myIdArray[0] + '_' + myIdArray[1] + '_prefWeightBox');
+				if (this.getAttribute('haspref')) {
+					this.removeAttribute('haspref');
+					myPrefWeightBoxLabel.disabled = false;
+					myPrefWeightBox.disabled = false;
+				} else {
+					this.setAttribute('haspref', 'true');
+					myPrefWeightBoxLabel.disabled = true;
+					myPrefWeightBox.disabled = true;
+				}
+				myPrefWeightBox.value = "";
+			};
+			aPrefButton.addEventListener("command", firePrefCheckBox, false);
+			return aPrefButton;
+		},
+
+		addMenuTypelist: function (aParent, aType, aIndex, aArray, aCheckedArray) {
+			var aMenulist = document.createElement('menulist');
+			aParent.appendChild(aMenulist);
+			aMenulist.setAttribute('id', aType + '_' + aIndex + '_MenulistType');
+			aMenulist.setAttribute('type', 'cardbookPanelMenulist');
+			var aPanel = document.createElement('panel');
+			aPanel.setAttribute('id', aType + '_' + aIndex + '_PanelType');
+			aPanel.setAttribute('type', 'cardbookItemPanel');
+			aMenulist.appendChild(aPanel);
+			// need to wait this end of load to populate
+			aPanel.addEventListener("load", function() {
+				this.loadItems(aType + '_' + aIndex, aArray, aCheckedArray, true);
+				cardbookUtils.updatePanelMenulist("type", this);
+			}, false);
+			function firePopuphiding(event) {
+				cardbookUtils.updatePanelMenulist('type', this);
+			};
+			aPanel.addEventListener("popuphiding", firePopuphiding, false);
 		},
 
 		addMenuCaselist: function (aParent, aType, aIndex, aValue) {

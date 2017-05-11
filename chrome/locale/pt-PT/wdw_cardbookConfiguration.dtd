@@ -77,7 +77,7 @@
 								A primeira é aplicada quando o termo envolvido (ex: {{1}}), não é nulo e a segunda parte é aplicada quando o termo é nulo">
 <!ENTITY fnFormulaLabel "Gerar Nome">
 <!ENTITY fnFormulaAccesskey "P">
-<!ENTITY resetfnFormulaLabel "Restaurar para origem">
+<!ENTITY resetFnFormulaLabel "Restaurar para origem">
 <!ENTITY resetFnFormulaAccesskey "R">
 <!ENTITY miscEdittingGroupboxLabel "Diversos">
 <!ENTITY cardCreationVersionLabel "Versão do vCard por omissão:">
@@ -103,9 +103,9 @@
 <!ENTITY renameTypeAccesskey "E">
 <!ENTITY deleteTypeLabel "Apagar">
 <!ENTITY deleteTypeAccesskey "G">
+<!ENTITY resetTypeLabel "Restaurar para origem">
+<!ENTITY resetTypeAccesskey "R">
 <!ENTITY preferenceGroupboxLabel "Campo PREFerido">
-<!ENTITY preferenceLabel "Etiqueta do campo PREFerido">
-<!ENTITY preferenceAccesskey "P">
 <!ENTITY preferenceValueLabel "Etiqueta do campo PREFerido (só para vCard 4.0)">
 <!ENTITY preferenceValueAccesskey "Q">
 

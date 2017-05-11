@@ -1,4 +1,4 @@
-.categoriesListboxClass {
+.itemsListboxClass {
 	-moz-appearance: none;
 	background-color: Menu;
 	color: MenuText;
@@ -6,11 +6,11 @@
 	border: 0;
 }
 
-.categoriesTextboxClass .textbox-search-icon {
+.addItemTextboxClass .textbox-search-icon {
 	list-style-image: none;
 	cursor:default;
 }
 
-.categoriesTextboxClass {
+.addItemTextboxClass {
 	-moz-appearance: textfield;
 }

@@ -194,11 +194,14 @@
 			<caption label="&locationSearchPage.label;"/>
 				<vbox id="searchTerms" flex="3" persist="height">
 					<vbox>
-						<hbox align="center">
+						<hbox align="center" flex="1">
 							<label value="&abSearchHeading.label;" accesskey="&abSearchHeading.accesskey;" control="abPopup"/>
-							<menulist id="addressbookMenulist">
+							<menulist id="addressbookMenulist" flex="1">
 								<menupopup id="addressbookMenupopup"/>
 							</menulist>
+							<spacer flex="1"/>
+							<spacer flex="1"/>
+							<spacer flex="1"/>
 						</hbox>
 					</vbox>
 					
@@ -210,8 +213,8 @@
 						</hbox>
 					<hbox flex="1">
 						<groupbox id="searchTermsGroupbox" flex="1"/>
-						</hbox>
-						<spacer flex="100"/>
+					</hbox>
+					<spacer flex="100"/>
 				</vbox>
 		</groupbox>
 	</wizardpage>

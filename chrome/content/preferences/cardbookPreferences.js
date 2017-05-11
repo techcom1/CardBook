@@ -107,33 +107,6 @@ cardbookPreferenceService.prototype = {
 		}
     },
 
-    insertAdrSeedTypes: function () {
-		this.setTypes("adr",1,"HOME");
-		this.setTypes("adr",2,"WORK");
-    },
-
-    insertEmailSeedTypes: function () {
-		this.setTypes("email",1,"HOME");
-		this.setTypes("email",2,"WORK");
-    },
-
-    insertImppSeedTypes: function () {
-		this.setTypes("impp",1,"HOME");
-		this.setTypes("impp",2,"WORK");
-    },
-
-    insertTelSeedTypes: function () {
-		this.setTypes("tel",1,"CELL");
-		this.setTypes("tel",2,"FAX");
-		this.setTypes("tel",3,"HOME");
-		this.setTypes("tel",4,"WORK");
-    },
-
-    insertUrlSeedTypes: function () {
-		this.setTypes("url",1,"HOME");
-		this.setTypes("url",2,"WORK");
-    },
-
     insertIMPPsSeed: function () {
 		var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
 		var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
@@ -817,23 +790,6 @@ cardbookPreferenceService.prototype = {
     	this._setBoolPref("urnuuid", aUrnuuid);
     },
 
-   getPrefLabel: function () {
-		let prefLabel = this.mPreferencesService.getComplexValue(this.prefCardBookRoot + "preferenceLabel", Components.interfaces.nsISupportsString).data;
-        if (prefLabel != null && prefLabel !== undefined && prefLabel != "") {
-        	return prefLabel;
-        } else {
-	let stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
-	let strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
-        	return strBundle.GetStringFromName("prefLabel");
-        }
-    },
-
-    setPrefLabel: function (aPrefLabel) {
-		var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-		str.data = aPrefLabel;
-		this.mPreferencesService.setComplexValue(this.prefCardBookRoot + "preferenceLabel", Components.interfaces.nsISupportsString, str);
-    },
-
    getPrefValueLabel: function () {
 		let prefValueLabel = this.mPreferencesService.getComplexValue(this.prefCardBookRoot + "preferenceValueLabel", Components.interfaces.nsISupportsString).data;
         if (prefValueLabel != null && prefValueLabel !== undefined && prefValueLabel != "") {
@@ -843,12 +799,6 @@ cardbookPreferenceService.prototype = {
 	let strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
         	return strBundle.GetStringFromName("prefValueLabel");
         }
-    },
-
-    setPrefValueLabel: function (aPrefValueLabel) {
-		var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-		str.data = aPrefValueLabel;
-		this.mPreferencesService.setComplexValue(this.prefCardBookRoot + "aPrefValueLabel", Components.interfaces.nsISupportsString, str);
     },
 
     delBranch: function () {

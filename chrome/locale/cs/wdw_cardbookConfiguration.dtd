@@ -77,7 +77,7 @@
 				První část se použije, když je zmíněný termín, například {{1}} nenulový, druhá se použije, když je zmíněný termín nulový.">
 <!ENTITY fnFormulaLabel "Vytvořit zobrazované jméno">
 <!ENTITY fnFormulaAccesskey "z">
-<!ENTITY resetfnFormulaLabel "Obnovit na výchozí hodnotu">
+<!ENTITY resetFnFormulaLabel "Obnovit na výchozí hodnotu">
 <!ENTITY resetFnFormulaAccesskey "h">
 <!ENTITY miscEdittingGroupboxLabel "Ost.">
 <!ENTITY cardCreationVersionLabel "Výchozí verze vCard:">
@@ -103,11 +103,11 @@
 <!ENTITY renameTypeAccesskey "U">
 <!ENTITY deleteTypeLabel "Smazat">
 <!ENTITY deleteTypeAccesskey "S">
+<!ENTITY resetTypeLabel "Obnovit na výchozí hodnotu">
+<!ENTITY resetTypeAccesskey "O">
 <!ENTITY preferenceGroupboxLabel "Pole PREF">
-<!ENTITY preferenceLabel "Popisek pro pole PREF">
-<!ENTITY preferenceAccesskey "R">
 <!ENTITY preferenceValueLabel "Popisek hodnotového pole PREF (pouze pro vCard 4.0)">
-<!ENTITY preferenceValueAccesskey "O">
+<!ENTITY preferenceValueAccesskey "k">
 
 <!ENTITY IMPPGroupboxWarn "Toto nastavení umožňuje přímé otevření adresy IM s použitím správného protokolu.">
 <!ENTITY IMPPGroupboxLabel "Adresy IM">

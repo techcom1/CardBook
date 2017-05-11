@@ -63,12 +63,12 @@ if ("undefined" == typeof(cardbookTypes)) {
 					var found = false;
 					for (var j = 0; j < myPrefResults.length; j++) {
 						if (serviceCode != "") {
-							if (myPrefResults[j][0] == serviceCode) {
+							if (myPrefResults[j][0].toLowerCase() == serviceCode.toLowerCase()) {
 								found = true;
 								break;
 							}
 						} else if (serviceProtocol != "") {
-							if (myPrefResults[j][2] == serviceProtocol) {
+							if (myPrefResults[j][2].toLowerCase() == serviceProtocol.toLowerCase()) {
 								found = true;
 								break;
 							}
@@ -159,9 +159,9 @@ if ("undefined" == typeof(cardbookTypes)) {
 			var myLineResult = [];
 			var myLineTypeResult = [];
 			
-			var myPrefBox = document.getElementById(aType + '_' + aIndex + '_prefCheckbox');
+			var myPrefButton = document.getElementById(aType + '_' + aIndex + '_PrefImage');
 			if (document.getElementById('versionTextBox').value === "4.0") {
-				if (myPrefBox.checked) {
+				if (myPrefButton.getAttribute('haspref')) {
 					var aPrefWeightBoxValue = document.getElementById(aType + '_' + aIndex + '_prefWeightBox').value;
 					if (aPrefWeightBoxValue != null && aPrefWeightBoxValue !== undefined && aPrefWeightBoxValue != "") {
 						myLineTypeResult.push("PREF=" + aPrefWeightBoxValue);
@@ -170,47 +170,33 @@ if ("undefined" == typeof(cardbookTypes)) {
 					}
 				}
 			} else {
-				if (myPrefBox.checked) {
+				if (myPrefButton.getAttribute('haspref')) {
 					myLineTypeResult.push("TYPE=PREF");
 				}
 			}
+
 			var myLineOtherType = document.getElementById(aType + '_' + aIndex + '_othersTypesBox').value;
 			if (myLineOtherType != null && myLineOtherType !== undefined && myLineOtherType != "") {
 				myLineTypeResult = myLineTypeResult.concat(myLineOtherType.split(','));
 			}
 			
-			var j = 0;
+			var myPanel = document.getElementById(aType + '_' + aIndex + '_PanelType');
 			var myLineTypeType = [];
-			while (true) {
-				if (document.getElementById(aType + '_' + aIndex + '_typeBox_' + j)) {
-					var myTypeBox = document.getElementById(aType + '_' + aIndex + '_typeBox_' + j);
-					if (myTypeBox.checked) {
-						var cardbookPrefService = new cardbookPreferenceService();
-						var myTypeValue = cardbookPrefService.getTypeCode(aType, myTypeBox.label);
-						myLineTypeType.push("TYPE=" + myTypeValue);
-					}
-					j++;
-				} else {
-					break;
-				}
+			for (var i = 0; i < myPanel.types.length; i++) {
+				myLineTypeType.push("TYPE=" + myPanel.types[i]);
 			}
 			var myLinepgTypeType = [];
-			if (document.getElementById(aType + '_' + aIndex + '_pgtypeBox')) {
-				var mypgTypeBox = document.getElementById(aType + '_' + aIndex + '_pgtypeBox');
-				if (mypgTypeBox.checked) {
-					var mypgTypeValue = document.getElementById(aType + '_' + aIndex + '_pgtypeBox').label;
-					myLinepgTypeType.push(mypgTypeValue);
-				}
+			for (var i = 0; i < myPanel.pg.length; i++) {
+				myLinepgTypeType = JSON.parse(JSON.stringify(myPanel.pg));
 			}
-			
 			if (myLineTypeType.length > 0) {
 				myLineTypeResult = myLineTypeResult.concat(myLineTypeType);
 				myLineTypeResult = cardbookUtils.unescapeArray(cardbookUtils.formatTypes(cardbookUtils.escapeArray(myLineTypeResult)));
 				var myOutputPg = [];
 				var myPgName = "";
 			} else if (myLinepgTypeType.length > 0) {
-				var myOutputPg = myLinepgTypeType;
-				var myPgName = document.getElementById(aType + '_' + aIndex + '_pgNameBox').value;
+				var myOutputPg = [myLinepgTypeType[0][1]];
+				var myPgName = myLinepgTypeType[0][0];
 			} else {
 				var myOutputPg = [];
 				var myPgName = "";
@@ -319,14 +305,10 @@ if ("undefined" == typeof(cardbookTypes)) {
 		constructDynamicRows: function (aType, aArray, aVersion) {
 			var start = cardbookTypes.findNextLine(aType);
 			for (var i = 0; i < aArray.length; i++) {
-				if (aArray[i][4]) {
-					cardbookTypes.loadDynamicTypes(aType, i+start, aArray[i][1], aArray[i][2], aArray[i][3], aArray[i][0], aVersion, aArray[i][4]);
-				} else {
-					cardbookTypes.loadDynamicTypes(aType, i+start, aArray[i][1], aArray[i][2], aArray[i][3], aArray[i][0], aVersion, "");
-				}
+				cardbookTypes.loadDynamicTypes(aType, i+start, aArray[i][1], aArray[i][2], aArray[i][3], aArray[i][0], aVersion);
 			}
 			if (aArray.length == 0) {
-				cardbookTypes.loadDynamicTypes(aType, start, [], "", [], [""], aVersion, "");
+				cardbookTypes.loadDynamicTypes(aType, start, [], "", [], [""], aVersion);
 			}
 		},
 
@@ -367,7 +349,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 								myPrefWeightBoxLabel.setAttribute('hidden', 'true');
 								myPrefWeightBox.setAttribute('hidden', 'true');
 							}
-							if (document.getElementById(typesList[i] + '_' + j + '_prefCheckbox').checked) {
+							if (document.getElementById(typesList[i] + '_' + j + '_PrefImage').getAttribute('haspref')) {
 								myPrefWeightBoxLabel.removeAttribute('readonly');
 							} else {
 								myPrefWeightBoxLabel.setAttribute('readonly', 'true');
@@ -483,7 +465,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 			}
 		},
 
-		loadDynamicTypes: function (aType, aIndex, aInputTypes, aPgName, aPgType, aCardValue, aVersion, aImppDefault) {
+		loadDynamicTypes: function (aType, aIndex, aInputTypes, aPgName, aPgType, aCardValue, aVersion) {
 			var strBundle = document.getElementById("cardbook-strings");
 			var aOrigBox = document.getElementById(aType + 'Groupbox');
 			
@@ -500,36 +482,17 @@ if ("undefined" == typeof(cardbookTypes)) {
 			myInputTypes = cardbookUtils.getOnlyTypesFromTypes(aInputTypes);
 			var myOthersTypes = cardbookUtils.getNotTypesFromTypes(aInputTypes);
 			
-			var aPrefBox = document.createElement('checkbox');
-			aHBox.appendChild(aPrefBox);
-			aPrefBox.setAttribute('id', aType + '_' + aIndex + '_prefCheckbox');
-			aPrefBox.setAttribute('checked', cardbookUtils.getPrefBooleanFromTypes(aInputTypes));
-			aPrefBox.setAttribute('label', cardbookPrefService.getPrefLabel());
-
+			var aPrefButton = cardbookElementTools.addPrefStar(aHBox, aType, aIndex, cardbookUtils.getPrefBooleanFromTypes(aInputTypes))
+			
 			cardbookTypes.addLabel(aHBox, aType + '_' + aIndex + '_prefWeightBoxLabel', cardbookPrefService.getPrefValueLabel(), aType + '_' + aIndex + '_prefWeightBox', {tooltip: strBundle.getString("prefWeightTooltip")});
 			cardbookElementTools.addTextbox(aHBox, aType + '_' + aIndex + '_prefWeightBox', cardbookUtils.getPrefValueFromTypes(aInputTypes, document.getElementById('versionTextBox').value), {size: "5"});
-			if (aPrefBox.checked) {
+			if (aPrefButton.getAttribute('haspref')) {
 				document.getElementById(aType + '_' + aIndex + '_prefWeightBoxLabel').disabled = false;
 				document.getElementById(aType + '_' + aIndex + '_prefWeightBox').disabled = false;
 			} else {
 				document.getElementById(aType + '_' + aIndex + '_prefWeightBoxLabel').disabled = true;
 				document.getElementById(aType + '_' + aIndex + '_prefWeightBox').disabled = true;
 			}
-
-			function firePrefCheckBox(event) {
-				var myIdArray = this.id.split('_');
-				var myPrefWeightBoxLabel = document.getElementById(myIdArray[0] + '_' + myIdArray[1] + '_prefWeightBoxLabel');
-				var myPrefWeightBox = document.getElementById(myIdArray[0] + '_' + myIdArray[1] + '_prefWeightBox');
-				if (this.checked) {
-					myPrefWeightBoxLabel.disabled = false;
-					myPrefWeightBox.disabled = false;
-				} else {
-					myPrefWeightBoxLabel.disabled = true;
-					myPrefWeightBox.disabled = true;
-				}
-				myPrefWeightBox.value = "";
-			};
-			aPrefBox.addEventListener("command", firePrefCheckBox, false);
 
 			if (document.getElementById('versionTextBox').value === "4.0") {
 				document.getElementById(aType + '_' + aIndex + '_prefWeightBoxLabel').removeAttribute('hidden');
@@ -541,53 +504,38 @@ if ("undefined" == typeof(cardbookTypes)) {
 
 			cardbookElementTools.addTextbox(aHBox, aType + '_' + aIndex + '_othersTypesBox', myOthersTypes, {hidden: "true"});
 
-			var checked = false;
+			var myArrayTypes = [];
+			var myCheckedArrayTypes = [];
 			for (var i = 0; i < myPrefTypes.length; i++) {
-				var aCheckbox = document.createElement('checkbox');
-				aHBox.appendChild(aCheckbox);
-				aCheckbox.setAttribute('id', aType + '_' + aIndex + '_typeBox_' + i);
-				aCheckbox.setAttribute('checked', false);
-				aCheckbox.setAttribute('label', myPrefTypes[i][1]);
-				aCheckbox.setAttribute('tooltip', strBundle.getString("typesTooltip"));
+				myArrayTypes.push([myPrefTypes[i][1], myPrefTypes[i][0]]);
 				for (var j = 0; j < myInputTypes.length; j++) {
 					if (myInputTypes[j].toLowerCase() == myPrefTypes[i][0].toLowerCase()) {
-						aCheckbox.setAttribute('checked', true);
+						myCheckedArrayTypes.push(myPrefTypes[i][0]);
 						var removed = myInputTypes.splice(j, 1);
-						checked = true;
 						break;
 					}
 				}
 				for (var j = 0; j < aPgType.length; j++) {
 					if (aPgType[j].toLowerCase() == myPrefTypes[i][0].toLowerCase()) {
-						aCheckbox.setAttribute('checked', true);
-						checked = true;
+						myCheckedArrayTypes.push(myPrefTypes[i][0]);
 						break;
 					}
 				}
 			}
 			for (var j = 0; j < myInputTypes.length; j++) {
-				var index = i+j;
-				var aCheckbox = document.createElement('checkbox');
-				aHBox.appendChild(aCheckbox);
-				aCheckbox.setAttribute('id', aType + '_' + aIndex + '_typeBox_' + index);
-				aCheckbox.setAttribute('checked', true);
-				aCheckbox.setAttribute('label', myInputTypes[j]);
-				aCheckbox.setAttribute('tooltip', strBundle.getString("typesTooltip"));
-				checked = true;
+				myArrayTypes.push([myInputTypes[j], myInputTypes[j]]);
+				myCheckedArrayTypes.push(myInputTypes[j]);
 			}
-			if (!checked && aPgType.length != 0 && aPgName != "") {
-				var aCheckbox = document.createElement('checkbox');
-				aHBox.appendChild(aCheckbox);
-				aCheckbox.setAttribute('id', aType + '_' + aIndex + '_pgtypeBox');
-				aCheckbox.setAttribute('checked', true);
-				aCheckbox.setAttribute('label', aPgType[0]);
-				cardbookElementTools.addTextbox(aHBox, aType + '_' + aIndex + '_pgNameBox', aPgName, {hidden: "true"});
+			if (aPgType.length != 0 && aPgName != "") {
+				myArrayTypes.push([aPgType[0], aPgName, aPgName]);
+				myCheckedArrayTypes.push(aPgName);
 			}
+			cardbookElementTools.addMenuTypelist(aHBox, aType, aIndex, myArrayTypes, myCheckedArrayTypes);
 
 			if (aType == "impp") {
 				var serviceCode = cardbookTypes.getIMPPCode(aInputTypes);
 				var serviceProtocol = cardbookTypes.getIMPPProtocol(aCardValue);
-				cardbookElementTools.addMenuIMPPlist(aHBox, aType, aIndex, cardbookTypes.allIMPPs, aImppDefault, serviceCode, serviceProtocol);
+				cardbookElementTools.addMenuIMPPlist(aHBox, aType, aIndex, cardbookTypes.allIMPPs, serviceCode, serviceProtocol);
 				var myValue = aCardValue.join(" ");
 				if (serviceCode != "") {
 					var serviceLine = [];
@@ -688,7 +636,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 					return;
 				}
 				var myNextIndex = 1+ 1*myIdArray[1];
-				cardbookTypes.loadDynamicTypes(myIdArray[0], myNextIndex, [], "", [], [""], myIdArray[2], "");
+				cardbookTypes.loadDynamicTypes(myIdArray[0], myNextIndex, [], "", [], [""], myIdArray[2]);
 			};
 			cardbookElementTools.addEditButton(aHBox, aType, aIndex, aVersion, "add", fireAddButton);
 
@@ -732,12 +680,14 @@ if ("undefined" == typeof(cardbookTypes)) {
 			
 			var aPrefImage = document.createElement('image');
 			aRow.appendChild(aPrefImage);
-			aPrefImage.setAttribute('id', aType + '_' + aIndex + '_prefCheckbox');
+			aPrefImage.setAttribute('id', aType + '_' + aIndex + '_PrefImage');
 			aPrefImage.setAttribute('context', aType + 'TreeContextMenu');
 			if (cardbookUtils.getPrefBooleanFromTypes(aInputTypes)) {
-				aPrefImage.setAttribute('class', 'cardbookPrefClass');
+				aPrefImage.setAttribute('class', 'cardbookPrefStarClass');
+				aPrefImage.setAttribute('haspref', 'true');
 			} else {
-				aPrefImage.setAttribute('class', 'cardbookNotPrefClass');
+				aPrefImage.setAttribute('class', 'cardbookNoPrefStarClass');
+				aPrefImage.removeAttribute('haspref');
 			}
 
 			cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_prefWeightBox', cardbookUtils.getPrefValueFromTypes(aInputTypes, document.getElementById('versionTextBox').value),

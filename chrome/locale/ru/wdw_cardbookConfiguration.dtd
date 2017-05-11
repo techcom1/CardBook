@@ -77,7 +77,7 @@
 								Первая часть применяется, если указанное поле присутствует, например {{1}} — не пустое значение, вторая часть применяется если указанное значение является пустым.">
 <!ENTITY fnFormulaLabel "Формировать отображаемое имя">
 <!ENTITY fnFormulaAccesskey "Ф">
-<!ENTITY resetfnFormulaLabel "Сбросить до значений по умолчанию">
+<!ENTITY resetFnFormulaLabel "Сбросить до значений по умолчанию">
 <!ENTITY resetFnFormulaAccesskey "у">
 <!ENTITY miscEdittingGroupboxLabel "Различное">
 <!ENTITY cardCreationVersionLabel "Версия протокола vCard по умолчанию:">
@@ -103,9 +103,9 @@
 <!ENTITY renameTypeAccesskey "П">
 <!ENTITY deleteTypeLabel "Удалить">
 <!ENTITY deleteTypeAccesskey "У">
+<!ENTITY resetTypeLabel "Сбросить до значений по умолчанию">
+<!ENTITY resetTypeAccesskey "C">
 <!ENTITY preferenceGroupboxLabel "Поле ПРИОРитет">
-<!ENTITY preferenceLabel "Метка поля ПРИОРитет">
-<!ENTITY preferenceAccesskey "М">
 <!ENTITY preferenceValueLabel "Метка для значения поля ПРИОРитет (только для vCard 4.0)">
 <!ENTITY preferenceValueAccesskey "з">
 

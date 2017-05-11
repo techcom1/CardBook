@@ -224,7 +224,7 @@ if ("undefined" == typeof(cardbookPrint)) {
 											cardbookPrint.closeTag("td", false);
 										}
 										if (cardbookUtils.getPrefBooleanFromTypes(aListOfCards[i][myField][m][1]) && aColumnChoice.types) {
-											var myCheck = "✓";
+											var myCheck = "★";
 										} else {
 											var myCheck = "";
 										}

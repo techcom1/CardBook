@@ -58,19 +58,14 @@
 	background-color: window;
 }
 
-.cardbookPrefClass {
-	list-style-image: url("chrome://cardbook/skin/valid_32_16.png");
+.cardbookNoPrefStarClass {
 	-moz-image-region: rect(0 16px 16px 0);
-}
-.cardbookNotPrefClass {
-	list-style-image: url("chrome://cardbook/skin/valid_32_16.png");
-	-moz-image-region: rect(0 32px 16px 16px);
 }
 
 menulist[type="cardbookPanelMenulist"] {
    -moz-binding: url("chrome://cardbook/content/widgets/cardbookWidgets.xml#cardbookPanelMenulist");
 }
 
-panel[type="cardbookCategoryPanel"] {
-   -moz-binding: url("chrome://cardbook/content/widgets/cardbookWidgets.xml#cardbookCategoryPanel");
+panel[type="cardbookItemPanel"] {
+   -moz-binding: url("chrome://cardbook/content/widgets/cardbookWidgets.xml#cardbookItemPanel");
 }

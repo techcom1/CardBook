@@ -22,88 +22,157 @@
 		</content>
 	</binding>
 	
-	<binding id="cardbookCategoryPanel" extends="chrome://global/content/bindings/popup.xml#panel">
+	<binding id="cardbookItemPanel" extends="chrome://global/content/bindings/popup.xml#panel">
 		<resources>
 			<stylesheet src="chrome://cardbook/skin/cardbookWidgets.css"/>
 		</resources>
 		<content>
-			<xul:textbox anonid="categoryTextbox"
-				class="categoriesTextboxClass"
+			<xul:textbox anonid="addItemTextbox"
+				class="addItemTextboxClass"
 				type="search"
 				searchbutton="true"
-				placeholder="&categoryTextboxLabel;"
-				oncommand="document.getBindingParent(this).addNewCategory();"
+				placeholder="&addItemTextboxLabel;"
+				oncommand="document.getBindingParent(this).addNewItem();"
 				flex="1"/>
-			<xul:listbox anonid="categoriesListbox" class="categoriesListboxClass" selType="multiple">
+			<xul:listbox anonid="itemsListbox" class="itemsListboxClass" selType="multiple">
 				<children/>
 			</xul:listbox>
 		</content>
 		<implementation>
-			<field name="sourceCategories">[]</field>
-			<property name="categories" readonly="true">
+			<field name="prefixId"></field>
+			<!-- sourceItems : [ [label0, value0], ...] -->
+			<field name="sourceItems">[]</field>
+			<property name="itemsCode" readonly="true">
 				<getter><![CDATA[
-					return this.getCategories();
+					return this.getItems('code');
 				]]></getter>
 			</property>
-			<method name="addNewCategory">
+			<property name="itemsLabel" readonly="true">
+				<getter><![CDATA[
+					return this.getItems('label');
+				]]></getter>
+			</property>
+			<property name="types" readonly="true">
+				<getter><![CDATA[
+					return this.getTypes();
+				]]></getter>
+			</property>
+			<property name="pg" readonly="true">
+				<getter><![CDATA[
+					return this.getPg();
+				]]></getter>
+			</property>
+			<!-- only used for categories -->
+			<method name="addNewItem">
 				<body><![CDATA[
-					let categoryListbox = document.getAnonymousElementByAttribute(this, "anonid", "categoriesListbox");
-					let categoryTextbox = document.getAnonymousElementByAttribute(this, "anonid", "categoryTextbox");
-					let category = categoryTextbox.value;
+					let itemsListbox = document.getAnonymousElementByAttribute(this, "anonid", "itemsListbox");
+					let addItemTextbox = document.getAnonymousElementByAttribute(this, "anonid", "addItemTextbox");
+					let newItem = addItemTextbox.value;
 					
-					if (!category) {
+					if (!newItem) {
 						return;
 					}
 					
-					this.sourceCategories.push(category);
-					this.sourceCategories = cardbookUtils.sortArrayByString(cardbookRepository.arrayUnique(this.sourceCategories),-1,1);
-					let itemCategories = this.getCategories();
-					itemCategories.push(category);
-					itemCategories = cardbookUtils.sortArrayByString(cardbookRepository.arrayUnique(itemCategories),-1,1);
+					this.sourceItems.push([newItem, newItem]);
+					this.sourceItems = cardbookUtils.sortArrayByString(cardbookUtils.arrayUnique2D(this.sourceItems),0,1);
+					let allItems = this.getItems('value');
+					allItems.push(newItem);
+					allItems = cardbookUtils.sortArrayByString(cardbookRepository.arrayUnique(allItems),-1,1);
 					
-					categoryTextbox.value = "";
-					this.loadCategories(this.sourceCategories, itemCategories);
+					addItemTextbox.value = "";
+					this.loadItems(this.prefixId, this.sourceItems, allItems, false);
 				]]></body>
 			</method>
-			<method name="getCategories">
+			<method name="getItems">
+				<!-- aValue : value|label -->
+				<parameter name="aValue"/>
 				<body><![CDATA[
-					let categoryListbox = document.getAnonymousElementByAttribute(this, "anonid", "categoriesListbox");
-					let myCategoryList = [];
-					for (var i=0; i<categoryListbox.itemCount; i++) {
-						var aItem = categoryListbox.getItemAtIndex(i);
+					let itemsListbox = document.getAnonymousElementByAttribute(this, "anonid", "itemsListbox");
+					let myItemList = [];
+					for (var i=0; i<itemsListbox.itemCount; i++) {
+						var aItem = itemsListbox.getItemAtIndex(i);
 						var aItemChecked = aItem.getAttribute('checked');
 						aItemChecked = typeof aItemChecked == "boolean" ? aItemChecked : (aItemChecked == 'true' ? true : false);
 						if (aItemChecked) {
-							myCategoryList.push(aItem.getAttribute('value').trim());
+							myItemList.push(aItem.getAttribute(aValue).trim());
 						}
 					}
-					return myCategoryList;
+					return myItemList;
 				]]></body>
 			</method>
-			<method name="loadCategories">
-				<parameter name="aSourceList"/>
-				<parameter name="aItemList"/>
+			<method name="getTypes">
 				<body><![CDATA[
-					let categoryListbox = document.getAnonymousElementByAttribute(this, "anonid", "categoriesListbox");
+					let itemsListbox = document.getAnonymousElementByAttribute(this, "anonid", "itemsListbox");
+					let myItemList = [];
+					for (var i=0; i<itemsListbox.itemCount; i++) {
+						var aItem = itemsListbox.getItemAtIndex(i);
+						var aItemChecked = aItem.getAttribute('checked');
+						aItemChecked = typeof aItemChecked == "boolean" ? aItemChecked : (aItemChecked == 'true' ? true : false);
+						if (aItemChecked) {
+							if (!(aItem.getAttribute('pg') != null && aItem.getAttribute('pg') !== undefined && aItem.getAttribute('pg') != "")) {
+								myItemList.push(aItem.getAttribute('value').trim());
+							}
+						}
+					}
+					return myItemList;
+				]]></body>
+			</method>
+			<method name="getPg">
+				<body><![CDATA[
+					let itemsListbox = document.getAnonymousElementByAttribute(this, "anonid", "itemsListbox");
+					let myItemList = [];
+					for (var i=0; i<itemsListbox.itemCount; i++) {
+						var aItem = itemsListbox.getItemAtIndex(i);
+						var aItemChecked = aItem.getAttribute('checked');
+						aItemChecked = typeof aItemChecked == "boolean" ? aItemChecked : (aItemChecked == 'true' ? true : false);
+						if (aItemChecked) {
+							if (aItem.getAttribute('pg') != null && aItem.getAttribute('pg') !== undefined && aItem.getAttribute('pg') != "") {
+								myItemList.push([aItem.getAttribute('value').trim(), aItem.getAttribute('label').trim()]);
+							}
+						}
+					}
+					return myItemList;
+				]]></body>
+			</method>
+			<method name="loadItems">
+				<parameter name="aPrefixId"/>
+				<!-- aSourceList : [ [label0, value0, pg], ...] -->
+				<!-- pg : name of the property group , not required -->
+				<!-- pg : used only for types -->
+				<parameter name="aSourceList"/>
+				<!-- aCheckedSourceList : [ value0, ...] -->
+				<parameter name="aCheckedSourceList"/>
+				<parameter name="aAddNewItemField"/>
+				<body><![CDATA[
+					let addItemTextbox = document.getAnonymousElementByAttribute(this, "anonid", "addItemTextbox");
+					addItemTextbox.hidden = aAddNewItemField;
+					
+					let itemsListbox = document.getAnonymousElementByAttribute(this, "anonid", "itemsListbox");
 				
-					while (categoryListbox.firstChild) {
-						categoryListbox.removeChild(categoryListbox.firstChild);
+					while (itemsListbox.firstChild) {
+						itemsListbox.removeChild(itemsListbox.firstChild);
 					}
 					
 					if (aSourceList) {
 						for (var i = 0; i < aSourceList.length; i++) {
-							var aItem = categoryListbox.appendItem(aSourceList[i], aSourceList[i]);
-							aItem.setAttribute('id', aSourceList[i]);
+							var aItem = itemsListbox.appendItem(aSourceList[i][0], aSourceList[i][1]);
+							aItem.setAttribute('id', aPrefixId + aSourceList[i][1]);
 							aItem.setAttribute('type', 'checkbox');
+							if (aSourceList[i][2] != null && aSourceList[i][2] !== undefined && aSourceList[i][2] != "") {
+								aItem.setAttribute('pg', aSourceList[i][2]);
+							} else {
+								aItem.setAttribute('pg', '');
+							}
 						}
-						for (var i = 0; i < aItemList.length; i++) {
-							if (document.getElementById(aItemList[i])) {
-								var aItem = document.getElementById(aItemList[i]);
+						for (var i = 0; i < aCheckedSourceList.length; i++) {
+							if (document.getElementById(aPrefixId + aCheckedSourceList[i])) {
+								var aItem = document.getElementById(aPrefixId + aCheckedSourceList[i]);
 								aItem.setAttribute('checked', true);
 							}
 						}
 					}
-					this.sourceCategories= JSON.parse(JSON.stringify(aSourceList));
+					this.sourceItems = JSON.parse(JSON.stringify(aSourceList));
+					this.prefixId = aPrefixId;
 				]]></body>
 			</method>
 		</implementation>

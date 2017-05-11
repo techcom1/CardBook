@@ -4,6 +4,8 @@
 <?xml-stylesheet href="chrome://cardbook/skin/cardbookButtons.css" type="text/css"?>
 <?xml-stylesheet href="chrome://cardbook/skin/cardbookCheckboxes.css" type="text/css"?>
 <?xml-stylesheet href="chrome://cardbook/skin/cardbookTreeChildrens.css" type="text/css"?>
+<!-- for the preference star -->
+<?xml-stylesheet href="chrome://cardbook-os/skin/cardbookPrefStar.css" type="text/css"?>
 
 <?xul-overlay href="chrome://cardbook/content/ovl_cardbookStringBundle.xul"?>
 <?xul-overlay href="chrome://cardbook/content/ovl_cardbookBar.xul"?>
@@ -199,7 +201,7 @@
 														<groupbox id="fnGroupbox">
 															<caption id="fnLabel" label="&fnLabel;" class="header"/>
 															<hbox flex="1">
-																<image id="dummyFnPrefBox" class="cardbookNotPrefClass"/>
+																<image id="dummyFnPrefBox" class="cardbookNoPrefStarClass"/>
 																<textbox id="fnTextBox" flex="1"/>
 															</hbox>
 														</groupbox>
@@ -209,7 +211,7 @@
 													<groupbox id="persGroupbox" flex="1">
 														<caption label="&persTitleLabel;" class="header"/>
 														<hbox flex="1">
-															<image id="dummyPersPrefBox" class="cardbookNotPrefClass"/>
+															<image id="dummyPersPrefBox" class="cardbookNoPrefStarClass"/>
 															<grid align="center" flex="1">
 																<columns>
 																	<column/>
@@ -266,7 +268,7 @@
 													<groupbox id="orgGroupbox" flex="1">
 														<caption label="&orgTitleLabel;" class="header"/>
 														<hbox flex="1">
-															<image id="dummyOrgPrefBox" class="cardbookNotPrefClass"/>
+															<image id="dummyOrgPrefBox" class="cardbookNoPrefStarClass"/>
 															<grid align="center" flex="1">
 																<columns>
 																	<column/>
@@ -299,7 +301,7 @@
 														<groupbox id="categoriesGroupbox" flex="1">
 															<caption label="&categoriesGroupboxLabel;" class="header"/>
 															<hbox flex="1">
-																<image id="dummyCatPrefBox" class="cardbookNotPrefClass"/>
+																<image id="dummyCatPrefBox" class="cardbookNoPrefStarClass"/>
 																<textbox id="categoriesTextBox" flex="1"/>
 															</hbox>
 														</groupbox>
@@ -316,7 +318,7 @@
 											<groupbox id="noteGroupbox" flex="1">
 												<caption label="&noteTabLabel;" class="header"/>
 												<hbox flex="1">
-													<image id="dummyNotePrefBox" class="cardbookNotPrefClass"/>
+													<image id="dummyNotePrefBox" class="cardbookNoPrefStarClass"/>
 													<vbox flex="1">
 														<textbox id="noteTextBox" multiline="true"/>
 													</vbox>

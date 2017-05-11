@@ -23,6 +23,8 @@ var cardbookRepository = {
 
 	defaultFnFormula : "({{1}} |)({{2}} |)({{3}} |)({{4}} |)({{5}} |)({{6}} |)",
 
+	typesSeed : {"adr": ["HOME","WORK"], "email": ["HOME","WORK"], "impp": ["HOME","WORK"], "tel": ["CELL", "FAX", "HOME","WORK"], "url": ["HOME","WORK"]},
+
 	preferEmailPref : true,
 	
 	cardbookAccounts : [],
@@ -280,7 +282,9 @@ var cardbookRepository = {
 			}
 		}
 		if (notfound) {
-			cardbookPrefService.insertUrlSeedTypes();
+			for (var i = 0; i < cardbookRepository.typesSeed.url.length; i++) {
+				cardbookPrefService.setTypes("url", i, cardbookRepository.typesSeed.url[i]);
+			}
 		}
 		// for file opened with version <= 4.8
 		var notfound = true;
@@ -292,7 +296,9 @@ var cardbookRepository = {
 			}
 		}
 		if (notfound) {
-			cardbookPrefService.insertTelSeedTypes();
+			for (var i = 0; i < cardbookRepository.typesSeed.tel.length; i++) {
+				cardbookPrefService.setTypes("tel", i, cardbookRepository.typesSeed.tel[i]);
+			}
 		}
 		// for file opened with version <= 4.8
 		var notfound = true;
@@ -304,7 +310,9 @@ var cardbookRepository = {
 			}
 		}
 		if (notfound) {
-			cardbookPrefService.insertImppSeedTypes();
+			for (var i = 0; i < cardbookRepository.typesSeed.impp.length; i++) {
+				cardbookPrefService.setTypes("impp", i, cardbookRepository.typesSeed.impp[i]);
+			}
 		}
 		// for file opened with version <= 4.8
 		var notfound = true;
@@ -316,7 +324,9 @@ var cardbookRepository = {
 			}
 		}
 		if (notfound) {
-			cardbookPrefService.insertEmailSeedTypes();
+			for (var i = 0; i < cardbookRepository.typesSeed.email.length; i++) {
+				cardbookPrefService.setTypes("email", i, cardbookRepository.typesSeed.email[i]);
+			}
 		}
 		// for file opened with version <= 11.6
 		var notfound = true;
@@ -328,7 +338,9 @@ var cardbookRepository = {
 			}
 		}
 		if (notfound) {
-			cardbookPrefService.insertAdrSeedTypes();
+			for (var i = 0; i < cardbookRepository.typesSeed.adr.length; i++) {
+				cardbookPrefService.setTypes("adr", i, cardbookRepository.typesSeed.adr[i]);
+			}
 		}
 		// for file opened with version <= 15.3
 		var myIMPPs = [];

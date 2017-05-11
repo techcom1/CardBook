@@ -104,18 +104,26 @@ if ("undefined" == typeof(cardbookUtils)) {
 			return myResult;
 		},
 
-		updateCategoryMenulist: function (aPanel) {
+		updatePanelMenulist: function (aType, aPanel) {
 			var strBundle = document.getElementById("cardbook-strings");
 			let myMenulist = document.getElementById(aPanel.id.replace("Panel", "Menulist"));
 			
-			let label;
-			let categoryList = aPanel.categories;
-			if (categoryList.length > 1) {
-				label = strBundle.getString("multipleCategories");
-			} else if (categoryList.length == 1) {
-				label = categoryList[0];
+			let label = "";
+			let itemsList = aPanel.itemsLabel;
+			if (itemsList.length > 1) {
+				if (aType === "category") {
+					label = strBundle.getString("multipleCategories");
+				} else if (aType === "type") {
+					label = strBundle.getString("multipleTypes");
+				}
+			} else if (itemsList.length == 1) {
+				label = itemsList[0];
 			} else {
-				label = strBundle.getString("None");
+				if (aType === "category") {
+					label = strBundle.getString("none");
+				} else if (aType === "type") {
+					label = strBundle.getString("noType");
+				}
 			}
 			myMenulist.setAttribute("label", label);
 		},

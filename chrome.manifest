@@ -13,7 +13,10 @@ locale   cardbook pl    chrome/locale/pl/
 locale   cardbook pt-PT chrome/locale/pt-PT/
 locale   cardbook ru    chrome/locale/ru/
 
-skin     cardbook       classic/1.0 chrome/skin/
+skin   cardbook   classic/1.0   chrome/skin/
+skin   cardbook-os   classic/1.0 chrome/skin/unix/      os=Linux
+skin   cardbook-os   classic/1.0 chrome/skin/windows/   os=WINNT
+skin   cardbook-os   classic/1.0 chrome/skin/mac/       os=Darwin
 
 # support for customizing toolbars
 style    chrome://global/content/customizeToolbar.xul chrome://cardbook/skin/toolbarButton.css

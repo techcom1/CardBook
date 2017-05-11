@@ -77,7 +77,7 @@
 					Der erste Teil wird verwendet, falls der Ausdruck, z.B. {{1}} nicht 'null' ist; der zweite Teil wird verwendet, falls der Ausdruck 'null' ist.">
 <!ENTITY fnFormulaLabel "Generiere Anzeigenamen">
 <!ENTITY fnFormulaAccesskey "e">
-<!ENTITY resetfnFormulaLabel "Zurücksetzen auf Standard">
+<!ENTITY resetFnFormulaLabel "Zurücksetzen auf Standard">
 <!ENTITY resetFnFormulaAccesskey "Z">
 <!ENTITY miscEdittingGroupboxLabel "Sonstiges">
 <!ENTITY cardCreationVersionLabel "Standardversion der vCard:">
@@ -103,9 +103,9 @@
 <!ENTITY renameTypeAccesskey "B">
 <!ENTITY deleteTypeLabel "Löschen">
 <!ENTITY deleteTypeAccesskey "L">
+<!ENTITY resetTypeLabel "Zurücksetzen auf Standard">
+<!ENTITY resetTypeAccesskey "Z">
 <!ENTITY preferenceGroupboxLabel "Feld PREF">
-<!ENTITY preferenceLabel "Label des Felds PREF">
-<!ENTITY preferenceAccesskey "P">
 <!ENTITY preferenceValueLabel "Label des Werts des Felds PREF (vCard 4.0)">
 <!ENTITY preferenceValueAccesskey "W">
 

@@ -13,13 +13,13 @@
 <!ENTITY cardbookAccountMenuSyncLabel "Synchronizuj książkę adresową">
 <!ENTITY cardbookAccountMenuSyncsLabel "Synchronizuj wszystkie książki adresowe">
 
-<!ENTITY cardbookContactsMenuLabel "Kontakty">
+<!ENTITY cardbookContactsMenuLabel "Wizytówki">
 
 <!ENTITY cardbookToolsMenuLabel "Narzędzia">
 <!ENTITY cardbookToolsMenuBirthdayListLabel "Przeglądaj listę urodzin">
 <!ENTITY cardbookToolsMenuSyncLightningLabel "Dodaj datę urodzin do kalendarza">
-<!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "Znajdź zdublowane kontakty we wszystkich książkach adresowych">
-<!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "Znajdź zdublowane kontakty w bieżącej książce adresowej">
+<!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "Znajdź powielone wizytówki we wszystkich książkach adresowych">
+<!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "Znajdź powielone wizytówki w bieżącej książce adresowej">
 
 <!ENTITY cardbookToolbarLabel "Pasek narzędzi CardBook">
 <!ENTITY cardbookToolbarAccesskey "a">
