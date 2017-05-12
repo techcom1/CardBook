@@ -33,7 +33,7 @@
 <!ENTITY emailsCollectionLabel "Сохранять адреса из исходящей почты">
 <!ENTITY emailsCollectionTooltip "Дополняет стандартный для Thunderbird сбор адресов получателей из исходящий сообщений. При включении, адреса email, не присутствующие ни в одной из адресных книг, будут добавлены в выбранную адресную книгу (книги).">
 <!ENTITY emailsCollectionEnabledLabel "Включено">
-<!ENTITY emailsCollectionMailNameLabel "Потовый аккаунт">
+<!ENTITY emailsCollectionMailNameLabel "Почтовый аккаунт">
 <!ENTITY emailsCollectionABNameLabel "Адресная книга">
 <!ENTITY emailsCollectionCatNameLabel "Категория">
 <!ENTITY emailsCollectionIncludeNameLabel "Тип">
