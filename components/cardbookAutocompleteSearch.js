@@ -76,7 +76,12 @@ cardbookAutocompleteSearch.prototype = {
         } else {
             var done = 0;
             for (var i = aResult._searchResults.length - 1 ; i >= 0; i--) {
-                if (Number(aResultEntry.popularity) <= Number(aResult._searchResults[i].popularity)) {
+                if (Number(aResultEntry.popularity) < Number(aResult._searchResults[i].popularity)) {
+                    aResult._searchResults.splice(i+1, 0, aResultEntry);
+                    done = 1;
+                    break;
+                } else if (Number(aResultEntry.popularity) === Number(aResult._searchResults[i].popularity) &&
+                           aResultEntry.value.toLocaleLowerCase() > aResult._searchResults[i].value.toLocaleLowerCase()) {
                     aResult._searchResults.splice(i+1, 0, aResultEntry);
                     done = 1;
                     break;
