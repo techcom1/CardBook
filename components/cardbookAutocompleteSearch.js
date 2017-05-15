@@ -70,11 +70,38 @@ cardbookAutocompleteSearch.prototype = {
 	catInclRestrictions: {},
 	catExclRestrictions: {},
 	
+    insertResultSorted: function insertResultSorted(aResult, aResultEntry) {
+        if (aResult._searchResults.length === 0) {
+            aResult._searchResults.push(aResultEntry);
+        } else {
+            var done = 0;
+            for (var i = aResult._searchResults.length - 1 ; i >= 0; i--) {
+                if (Number(aResultEntry.popularity) <= Number(aResult._searchResults[i].popularity)) {
+                    aResult._searchResults.splice(i+1, 0, aResultEntry);
+                    done = 1;
+                    break;
+                }
+            }
+            if (done === 0) {
+                aResult._searchResults.splice(0, 0, aResultEntry);
+            }
+        }
+    },
+    
     addResult: function addResult(aResult, aEmailValue, aPopularity, aDebugMode, aStyle) {
 		if (aEmailValue != null && aEmailValue !== undefined && aEmailValue != "") {
 			// check duplicate email
+            var lcEmailValue = aEmailValue.toLocaleLowerCase();
 			for (var i = 0; i < aResult._searchResults.length; i++) {
-				if (aResult._searchResults[i].value === aEmailValue) {
+				if (aResult._searchResults[i].value.toLocaleLowerCase() == lcEmailValue) {
+                    if (aPopularity != null && aPopularity !== undefined && aPopularity != "") {
+                        if (Number(aResult._searchResults[i].popularity) < Number(aPopularity)) {
+                            var oldResult = aResult._searchResults[i];
+                            oldResult.popularity = aPopularity;
+                            aResult._searchResults.splice(i, 1);
+                            this.insertResultSorted(aResult, oldResult);
+                        }
+                    }
 					return;
 				}
 			}
@@ -109,45 +136,15 @@ cardbookAutocompleteSearch.prototype = {
 				aComment = "[" + myPopularity + "]";
 			}
 
-			if (aResult._searchResults.length === 0) {
-				aResult._searchResults.push({
-											 value: aEmailValue,
-											 comment: aComment,
-											 card: null,
-											 isPrimaryEmail: true,
-											 emailToUse: aEmailValue,
-											 popularity: myPopularity,
-											 style: aStyle
-										 });
-			} else {
-				var done = 0;
-				for (var i = aResult._searchResults.length - 1 ; i >= 0; i--) {
-					if (Number(myPopularity) <= Number(aResult._searchResults[i].popularity)) {
-						aResult._searchResults.splice(i+1, 0, {
-													 value: aEmailValue,
-													 comment: aComment,
-													 card: null,
-													 isPrimaryEmail: true,
-													 emailToUse: aEmailValue,
-													 popularity: myPopularity,
-													 style: aStyle
-												 });
-						done = 1;
-						break;
-					}
-				}
-				if (done === 0) {
-					aResult._searchResults.splice(0, 0, {
-												 value: aEmailValue,
-												 comment: aComment,
-												 card: null,
-												 isPrimaryEmail: true,
-												 emailToUse: aEmailValue,
-												 popularity: myPopularity,
-												 style: aStyle
-											 });
-				}
-			}
+            this.insertResultSorted(aResult, {
+                    value: aEmailValue,
+                    comment: aComment,
+                    card: null,
+                    isPrimaryEmail: true,
+                    emailToUse: aEmailValue,
+                    popularity: myPopularity,
+                    style: aStyle
+            });
 		}
     },
 
