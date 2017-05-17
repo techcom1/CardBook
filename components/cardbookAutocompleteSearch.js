@@ -2,10 +2,6 @@ Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 Components.utils.import("resource:///modules/mailServices.js");
 Components.utils.import("resource://gre/modules/Services.jsm");
 
-XPCOMUtils.defineLazyModuleGetter(this,
-                                  "LDAPAbCardFormatter",
-                                  "resource://cardbook-modules/formatter.jsm");
-
 const ACR = Components.interfaces.nsIAutoCompleteResult;
 
 function cardbookAutocompleteResult(aSearchString) {
@@ -65,10 +61,7 @@ cardbookAutocompleteResult.prototype = {
     QueryInterface: XPCOMUtils.generateQI([ACR])
 };
 
-function cardbookAutocompleteSearch() {
-    Services.obs.addObserver(this, "quit-application", false);
-    this.searchTimeout = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);
-}
+function cardbookAutocompleteSearch() {}
 
 cardbookAutocompleteSearch.prototype = {
 
@@ -76,10 +69,6 @@ cardbookAutocompleteSearch.prototype = {
 	ABExclRestrictions: {},
 	catInclRestrictions: {},
 	catExclRestrictions: {},
-    LDAPContexts: {},
-    searchListener: null,
-    searchResult: null,
-    searchTimeout: null,
 	
     addResult: function addResult(aResult, aEmailValue, aPopularity, aDebugMode, aStyle) {
 		if (aEmailValue != null && aEmailValue !== undefined && aEmailValue != "") {
@@ -231,8 +220,6 @@ cardbookAutocompleteSearch.prototype = {
 			return;
 		}
 
-        this.stopSearch();
-        
 		aSearchString = aSearchString.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase();
 
 		var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
@@ -241,68 +228,16 @@ cardbookAutocompleteSearch.prototype = {
 		var mySearchParamObj = JSON.parse(aSearchParam);
 		this.loadRestrictions(mySearchParamObj.idKey);
 		
-		if (prefs.getBoolPref("extensions.cardbook.autocompletion")) {
-			// add Cards
-			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
-				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] != "SEARCH") {
-					var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
-					if (cardbookRepository.verifyABRestrictions(myDirPrefId, "allAddressBooks", this.ABExclRestrictions, this.ABInclRestrictions)) {
-						var myStyle = cardbookRepository.getIconType(cardbookRepository.cardbookAccounts[i][6]) + " color_" + myDirPrefId;
-						for (var j in cardbookRepository.cardbookCardSearch2[myDirPrefId]) {
-							if (j.indexOf(aSearchString) >= 0 || aSearchString == "") {
-								for (var k = 0; k < cardbookRepository.cardbookCardSearch2[myDirPrefId][j].length; k++) {
-									var myCard = cardbookRepository.cardbookCardSearch2[myDirPrefId][j][k];
-									if (this.catExclRestrictions[myDirPrefId]) {
-										var add = true;
-										for (var l in this.catExclRestrictions[myDirPrefId]) {
-											if (cardbookUtils.contains(myCard.categories, l)) {
-												add = false;
-												break;
-											}
-										}
-										if (!add) {
-											continue;
-										}
-									}
-									if (this.catInclRestrictions[myDirPrefId]) {
-										var add = false;
-										for (var l in this.catInclRestrictions[myDirPrefId]) {
-											if (cardbookUtils.contains(myCard.categories, l)) {
-												add = true;
-												break;
-											}
-										}
-										if (!add) {
-											continue;
-										}
-									}
-									for (var l = 0; l < myCard.email.length; l++) {
-										var myCurrentEmail = MailServices.headerParser.makeMimeAddress(myCard.fn, myCard.email[l][0][0]);
-										this.addResult(result, myCurrentEmail, null, debugMode, myStyle);
-									}
-									// add Lists
-									if (myCard.isAList) {
-										this.addResult(result, myCard.fn + " <" + myCard.fn + ">", null, debugMode, myStyle);
-									} else {
-										this.addResult(result, cardbookUtils.getMimeEmailsFromCards([myCard]).join(" , "), null, debugMode, myStyle);
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			
-			// add Categories
-			for (var dirPrefId in cardbookRepository.cardbookAccountsCategories) {
-				if (cardbookRepository.verifyABRestrictions(dirPrefId, "allAddressBooks", this.ABExclRestrictions, this.ABInclRestrictions)) {
-					var cardbookPrefService = new cardbookPreferenceService(dirPrefId);
-					var myStyle = cardbookRepository.getIconType(cardbookPrefService.getType()) + " color_" + dirPrefId;
-					for (var i = 0; i < cardbookRepository.cardbookAccountsCategories[dirPrefId].length; i++) {
-						var myCategory = cardbookRepository.cardbookAccountsCategories[dirPrefId][i];
-						if (((!(this.catInclRestrictions[dirPrefId])) && (myCategory != cardbookRepository.cardbookUncategorizedCards)) ||
-								((this.catInclRestrictions[dirPrefId]) && (this.catInclRestrictions[dirPrefId][myCategory]))) {
-							if (myCategory.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase().indexOf(aSearchString) >= 0) {
+		// add Cards
+		for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
+			if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] != "SEARCH") {
+				var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
+				if (cardbookRepository.verifyABRestrictions(myDirPrefId, "allAddressBooks", this.ABExclRestrictions, this.ABInclRestrictions)) {
+					var myStyle = cardbookRepository.getIconType(cardbookRepository.cardbookAccounts[i][6]) + " color_" + myDirPrefId;
+					for (var j in cardbookRepository.cardbookCardSearch2[myDirPrefId]) {
+						if (j.indexOf(aSearchString) >= 0 || aSearchString == "") {
+							for (var k = 0; k < cardbookRepository.cardbookCardSearch2[myDirPrefId][j].length; k++) {
+								var myCard = cardbookRepository.cardbookCardSearch2[myDirPrefId][j][k];
 								if (this.catExclRestrictions[myDirPrefId]) {
 									var add = true;
 									for (var l in this.catExclRestrictions[myDirPrefId]) {
@@ -315,264 +250,83 @@ cardbookAutocompleteSearch.prototype = {
 										continue;
 									}
 								}
-								var myCardList = [] ;
-								for (var j = 0; j < cardbookRepository.cardbookDisplayCards[dirPrefId+"::"+myCategory].length; j++) {
-									var myCard = cardbookRepository.cardbookDisplayCards[dirPrefId+"::"+myCategory][j];
-									myCardList.push(myCard);
+								if (this.catInclRestrictions[myDirPrefId]) {
+									var add = false;
+									for (var l in this.catInclRestrictions[myDirPrefId]) {
+										if (cardbookUtils.contains(myCard.categories, l)) {
+											add = true;
+											break;
+										}
+									}
+									if (!add) {
+										continue;
+									}
 								}
-								this.addResult(result, cardbookUtils.getMimeEmailsFromCards(myCardList).join(" , "), null, debugMode, myStyle);
+								for (var l = 0; l < myCard.email.length; l++) {
+									var myCurrentEmail = MailServices.headerParser.makeMimeAddress(myCard.fn, myCard.email[l][0][0]);
+									this.addResult(result, myCurrentEmail, null, debugMode, myStyle);
+								}
+								// add Lists
+								if (myCard.isAList) {
+									this.addResult(result, myCard.fn + " <" + myCard.fn + ">", null, debugMode, myStyle);
+								} else {
+									this.addResult(result, cardbookUtils.getMimeEmailsFromCards([myCard]).join(" , "), null, debugMode, myStyle);
+								}
 							}
 						}
 					}
 				}
 			}
 		}
-
-        var performLDAPSearch = false;
-        var ldapSearchURIs = [];
-        
-		// add Thunderbird standard emails
-		if (!prefs.getBoolPref("extensions.cardbook.exclusive")) {
-			var contactManager = Components.classes["@mozilla.org/abmanager;1"].getService(Components.interfaces.nsIAbManager);
-			var contacts = contactManager.directories;
-			var myStyle = "standard-abook";
-			while ( contacts.hasMoreElements() ) {
-				var contact = contacts.getNext().QueryInterface(Components.interfaces.nsIAbDirectory);
-				if (cardbookRepository.verifyABRestrictions(contact.dirPrefId, "allAddressBooks", this.ABExclRestrictions, this.ABInclRestrictions)) {
-                    if (contact.isRemote && contact.dirType === 0) {
-                        // remote LDAP directory
-                        ldapSearchURIs.push({
-                                name: contact.dirName,
-                                uri: contact.URI
-                        });
-                        performLDAPSearch = true;
-                    } else {
-                        var abCardsEnumerator = contact.childCards;
-                        while (abCardsEnumerator.hasMoreElements()) {
-                            var myABCard = abCardsEnumerator.getNext();
-                            myABCard = myABCard.QueryInterface(Components.interfaces.nsIAbCard);
-                            var myPrimaryEmail = myABCard.getProperty("PrimaryEmail","");
-                            var myDisplayName = myABCard.getProperty("DisplayName","");
-                            if (!myABCard.isMailList) {
-                                if (myPrimaryEmail != "") {
-                                    var lSearchString = myABCard.getProperty("FirstName","") + myABCard.getProperty("LastName","") + myDisplayName + myABCard.getProperty("NickName","") + myPrimaryEmail;
-                                    lSearchString = lSearchString.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase();
-                                    if (lSearchString.indexOf(aSearchString) >= 0) {
-                                        if (myDisplayName == "") {
-                                            var delim = myPrimaryEmail.indexOf("@",0);
-                                            myDisplayName = myPrimaryEmail.substr(0,delim);
-                                        }
-                                        var myPopularity = myABCard.getProperty("PopularityIndex", "0");
-                                        this.addResult(result,  MailServices.headerParser.makeMimeAddress(myDisplayName, myPrimaryEmail), myPopularity, debugMode, myStyle);
-                                    }
-                                }
-                            } else {
-                                var myABList = contactManager.getDirectory(myABCard.mailListURI);
-                                var lSearchString = myDisplayName + myABList.listNickName + myABList.description;
-                                lSearchString = lSearchString.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase();
-                                if (lSearchString.indexOf(aSearchString) >= 0) {
-                                    var myPopularity = myABCard.getProperty("PopularityIndex", "0");
-                                    this.addResult(result,  MailServices.headerParser.makeMimeAddress(myDisplayName, myDisplayName), myPopularity, debugMode, myStyle);
-                                }
-                            }
-                        }
-                    }
+		
+		// add Categories
+		for (var dirPrefId in cardbookRepository.cardbookAccountsCategories) {
+			if (cardbookRepository.verifyABRestrictions(dirPrefId, "allAddressBooks", this.ABExclRestrictions, this.ABInclRestrictions)) {
+				var cardbookPrefService = new cardbookPreferenceService(dirPrefId);
+				var myStyle = cardbookRepository.getIconType(cardbookPrefService.getType()) + " color_" + dirPrefId;
+				for (var i = 0; i < cardbookRepository.cardbookAccountsCategories[dirPrefId].length; i++) {
+					var myCategory = cardbookRepository.cardbookAccountsCategories[dirPrefId][i];
+					if (((!(this.catInclRestrictions[dirPrefId])) && (myCategory != cardbookRepository.cardbookUncategorizedCards)) ||
+							((this.catInclRestrictions[dirPrefId]) && (this.catInclRestrictions[dirPrefId][myCategory]))) {
+						if (myCategory.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase().indexOf(aSearchString) >= 0) {
+							if (this.catExclRestrictions[myDirPrefId]) {
+								var add = true;
+								for (var l in this.catExclRestrictions[myDirPrefId]) {
+									if (cardbookUtils.contains(myCard.categories, l)) {
+										add = false;
+										break;
+									}
+								}
+								if (!add) {
+									continue;
+								}
+							}
+							var myCardList = [] ;
+							for (var j = 0; j < cardbookRepository.cardbookDisplayCards[dirPrefId+"::"+myCategory].length; j++) {
+								var myCard = cardbookRepository.cardbookDisplayCards[dirPrefId+"::"+myCategory][j];
+								myCardList.push(myCard);
+							}
+							this.addResult(result, cardbookUtils.getMimeEmailsFromCards(myCardList).join(" , "), null, debugMode, myStyle);
+						}
+					}
 				}
 			}
 		}
 
-        if (performLDAPSearch) {
-            var myStyle = "remote"; //"standard-abook";
-            this.searchListener = aListener;
-            this.searchResult = result;
-            this.searchTimeout.init(this, 60000, Components.interfaces.nsITimer.TYPE_ONE_SHOT);
-            ldapSearchURIs.forEach(function(aDirEntry) {
-                this.startSearchFor(aSearchString, aDirEntry, myStyle);
-            }, this);
-        } else {
-            // since there is no pending LDAP search we can immediately return results
-            if (result.matchCount) {
-                result.searchResult = ACR.RESULT_SUCCESS;
-                result.defaultIndex = 0;
-            }
+		if (result.matchCount) {
+			result.searchResult = ACR.RESULT_SUCCESS;
+			result.defaultIndex = 0;
+		}
 
-            aListener.onSearchResult(this, result);
-        }
+		aListener.onSearchResult(this, result);
     },
 
-    startSearchFor: function startSearchFor(aSearchString, aDirEntry, aStyle) {
-        try {
-            var uri = aDirEntry.uri;
-            var context;
-            if (uri in this.LDAPContexts) {
-                context = this.LDAPContexts[uri];
-            } else {
-                context = {};
-                
-                var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-                context.debugMode = prefs.getBoolPref("extensions.cardbook.debugMode");
-                
-                context.style = aStyle;
-                
-                context.bookName = aDirEntry.name;
-                context.book = MailServices.ab.getDirectory(uri).QueryInterface(Components.interfaces.nsIAbLDAPDirectory);
-                
-                context.numQueries = 0;
-                context.query = Components.classes["@mozilla.org/addressbook/ldap-directory-query;1"]
-                        .createInstance(Components.interfaces.nsIAbDirectoryQuery);
-                context.attributes = Components.classes["@mozilla.org/addressbook/ldap-attribute-map;1"]
-                        .createInstance(Components.interfaces.nsIAbLDAPAttributeMap);
-                context.attributes.setAttributeList("DisplayName", context.book.attributeMap.getAttributeList("DisplayName", {}), true);
-                context.attributes.setAttributeList("PrimaryEmail", context.book.attributeMap.getAttributeList("PrimaryEmail", {}), true);
-                LDAPAbCardFormatter.requiredPropertiesFromBook(context.book).forEach(function(aProperty) {
-                    var alreadyMapped = context.attributes.getAttributeList(aProperty);
-                    if (alreadyMapped) {
-                        return;
-                    }
-                    context.attributes.setAttributeList(aProperty, context.book.attributeMap.getAttributeList(aProperty, {}), true);
-                }, this);
-                
-                context.listener = {
-                    // nsIAbDirSearchListener
-                    
-                    onSearchFinished: (function onSearchFinished(aResult, aErrorMsg) {
-                        context.numQueries--;
-                        if (!context || context.stopped || context.numQueries > 0) {
-                            return;
-                        }
-
-                        context.finished = true;
-                        context.result = aResult;
-                        context.errorMsg = aErrorMsg;
-
-                        if (Object.keys(this.LDAPContexts).some(function(aURI) {
-                                return !this.LDAPContexts[aURI].finished;
-                            }, this)) {
-                            return;
-                        }
-
-                        return this.onSearchFinished(aResult, aErrorMsg, context);
-                    }).bind(this),
-                    
-                    onSearchFoundCard: (function onSearchFoundCard(aCard) {
-                        if (!context || context.stopped) {
-                            return;
-                        }
-                        return this.onSearchFoundCard(aCard, context);
-                    }).bind(this)
-                };
-                
-                this.LDAPContexts[uri] = context;
-            }
-
-            let args = Components.classes["@mozilla.org/addressbook/directory/query-arguments;1"]
-                    .createInstance(Components.interfaces.nsIAbDirectoryQueryArguments);
-
-            let filterTemplate = context.book.getStringValue("autoComplete.filterTemplate", "");
-            if (!filterTemplate) {
-                filterTemplate = "(|(cn=%v1*%v2-*)(mail=%v1*%v2-*)(sn=%v1*%v2-*))";
-            }
-
-            let ldapSvc = Components.classes["@mozilla.org/network/ldap-service;1"]
-                    .getService(Components.interfaces.nsILDAPService);
-            let filter = ldapSvc.createFilter(1024, filterTemplate, "", "", "", aSearchString);
-            if (!filter) {
-                throw new Error("Filter string is empty, check if filterTemplate variable is valid in prefs.js.");
-            }
-            args.typeSpecificArg = context.attributes;
-            args.querySubDirectories = true;
-            args.filter = filter;
-
-            context.finished = false;
-            context.stopped = false;
-            context.result = null;
-            context.errorMsg = null;
-            context.numQueries++;
-            context.contextId = context.query.doQuery(context.book, args, context.listener, context.book.maxHits, 0);
-        } catch(error) {
-            Components.utils.reportError(error);
-            throw error;
-        }
-    },
-    
     stopSearch: function stopSearch() {
-        if (this.searchListener) {
-            Object.keys(this.LDAPContexts).forEach(function(aURI) {
-                var context = this.LDAPContexts[aURI];
-                if (context && !context.stopped && !context.finished) {
-                    if (context.query) {
-                        context.query.stopQuery(context.contextId);
-                    }
-                    context.stopped = true;
-                }
-            }, this);
-            this.searchListener = null;
-            this.searchResult = null;
-        }
     },
 
-    onSearchFinished: function onSearchFinished(aResult, aErrorMsg, aContext) {
-        if (!this.searchListener) {
-            return;
-        }
-
-        if (aResult == Components.interfaces.nsIAbDirectoryQueryResultListener.queryResultError) {
-            this.searchResult.searchResult = ACR.RESULT_FAILURE;
-            this.searchResult.defaultIndex = 0;
-        }
-        
-        if (this.searchResult.matchCount > 0) {
-            // treat as success if there are matches, regardless of LDAP errors
-            this.searchResult.searchResult = ACR.RESULT_SUCCESS;
-            this.searchResult.defaultIndex = 0;
-        } else {
-            if (aResult == Components.interfaces.nsIAbDirectoryQueryResultListener.queryResultComplete) {
-                // LDAP completed but there were no matches (neither from LDAP nor from other address books)
-                this.searchResult.searchResult = ACR.RESULT_NOMATCH;
-            }
-        }
-        
-        this.searchListener.onSearchResult(this, this.searchResult);
-        this.searchListener = null;
-        this.searchResult = null;
-    },
-
-    onSearchFoundCard: function onSearchFoundCard(aCard, aContext) {
-        if (!this.searchListener) {
-            return;
-        }
-
-        this.addResult(this.searchResult, MailServices.headerParser.makeMimeAddress(aCard.displayName, aCard.primaryEmail), 0, aContext.debugMode, aContext.style);
-    },
-  
-    // nsIObserver
-    
-    observe: function observer(subject, topic, data) {
-        if (topic == "quit-application") {
-            Services.obs.removeObserver(this, "quit-application");
-        } else if (topic != "timer-callback") {
-            return;
-        }
-
-        this.stopSearch();
-        // free resources once we reached the timeout
-        Object.keys(this.LDAPContexts).forEach(function(aURI) {
-            var context = this.LDAPContexts[aURI];
-            context.book = null;
-            context.query = null;
-            context.attributes = null;
-            context.result = null;
-            context.errorMsg = null;
-            delete this.LDAPContexts[aURI];
-        }, this);
-        this.LDAPContexts = {};
-    },
-    
-    // nsIClassInfo
-    
+    /* nsIClassInfo */
     getInterfaces: function(aCount) {
         let ifaces = [ Components.interfaces.nsIAutoCompleteSearch,
-                       Components.interfaces.nsIObserver,
                        Components.interfaces.nsIClassInfo,
                        Components.interfaces.nsISupports ];
         aCount.value = ifaces.length;
@@ -594,7 +348,6 @@ cardbookAutocompleteSearch.prototype = {
 
     QueryInterface: function(aIID) {
         if (!aIID.equals(Components.interfaces.nsIAutoCompleteSearch)
-            && !aIID.equals(Components.interfaces.nsIObserver)
             && !aIID.equals(Components.interfaces.nsIClassInfo)
             && !aIID.equals(Components.interfaces.nsISupports))
             throw Components.results.NS_ERROR_NO_INTERFACE;

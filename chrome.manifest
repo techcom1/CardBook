@@ -1,7 +1,5 @@
 manifest components/cardbookAutocompleteSearch.manifest
 
-resource cardbook-modules modules/
-
 content  cardbook       chrome/content/
 
 locale   cardbook cs    chrome/locale/cs/
