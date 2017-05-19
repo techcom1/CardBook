@@ -113,7 +113,7 @@ cardbookAutocompleteSearch.prototype = {
         }
     },
     
-    addResult: function addResult(aResult, aEmailValue, , aComment, aPopularity, aDebugMode, aStyle) {
+    addResult: function addResult(aResult, aEmailValue, aComment, aPopularity, aDebugMode, aStyle) {
 		if (aEmailValue != null && aEmailValue !== undefined && aEmailValue != "") {
 			// check duplicate email
             var lcEmailValue = aEmailValue.toLocaleLowerCase();
