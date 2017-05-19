@@ -113,7 +113,7 @@ cardbookAutocompleteSearch.prototype = {
         }
     },
     
-    addResult: function addResult(aResult, aEmailValue, aPopularity, aDebugMode, aStyle) {
+    addResult: function addResult(aResult, aEmailValue, , aComment, aPopularity, aDebugMode, aStyle) {
 		if (aEmailValue != null && aEmailValue !== undefined && aEmailValue != "") {
 			// check duplicate email
             var lcEmailValue = aEmailValue.toLocaleLowerCase();
@@ -160,14 +160,18 @@ cardbookAutocompleteSearch.prototype = {
                     }
                 }
             }
-			var aComment = "";
+            
+            var myComment = "";
+            if (aComment != null && aComment !== undefined) {
+                myComment = aComment;
+            }
 			if (aDebugMode) {
-				aComment = "[" + myPopularity + "]";
+				myComment += " [" + myPopularity + "]";
 			}
 
             this.insertResultSorted(aResult, {
                     value: aEmailValue,
-                    comment: aComment,
+                    comment: myComment,
                     card: null,
                     isPrimaryEmail: true,
                     emailToUse: aEmailValue,
@@ -253,6 +257,7 @@ cardbookAutocompleteSearch.prototype = {
 		var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
 		var debugMode = prefs.getBoolPref("extensions.cardbook.debugMode");
 		result._sortUsePopularity = prefs.getBoolPref("extensions.cardbook.autocompleteSortByPopularity");
+        var showAddressbookComments = prefs.getBoolPref("extensions.cardbook.autocompleteShowAddressbookComments");
 
 		var mySearchParamObj = JSON.parse(aSearchParam);
 		this.loadRestrictions(mySearchParamObj.idKey);
@@ -264,6 +269,11 @@ cardbookAutocompleteSearch.prototype = {
 					var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
 					if (cardbookRepository.verifyABRestrictions(myDirPrefId, "allAddressBooks", this.ABExclRestrictions, this.ABInclRestrictions)) {
 						var myStyle = cardbookRepository.getIconType(cardbookRepository.cardbookAccounts[i][6]) + " color_" + myDirPrefId;
+                        var myComment = null;
+                        if (showAddressbookComments) {
+                            // display addressbook name in the comments column
+                            myComment = cardbookRepository.cardbookAccounts[i][0];
+                        }
 						for (var j in cardbookRepository.cardbookCardSearch2[myDirPrefId]) {
 							if (j.indexOf(aSearchString) >= 0 || aSearchString == "") {
 								for (var k = 0; k < cardbookRepository.cardbookCardSearch2[myDirPrefId][j].length; k++) {
@@ -294,13 +304,13 @@ cardbookAutocompleteSearch.prototype = {
 									}
 									for (var l = 0; l < myCard.email.length; l++) {
 										var myCurrentEmail = MailServices.headerParser.makeMimeAddress(myCard.fn, myCard.email[l][0][0]);
-										this.addResult(result, myCurrentEmail, null, debugMode, myStyle);
+										this.addResult(result, myCurrentEmail, myComment, null, debugMode, myStyle);
 									}
 									// add Lists
 									if (myCard.isAList) {
-										this.addResult(result, myCard.fn + " <" + myCard.fn + ">", null, debugMode, myStyle);
+										this.addResult(result, myCard.fn + " <" + myCard.fn + ">", myComment, null, debugMode, myStyle);
 									} else {
-										this.addResult(result, cardbookUtils.getMimeEmailsFromCards([myCard]).join(" , "), null, debugMode, myStyle);
+										this.addResult(result, cardbookUtils.getMimeEmailsFromCards([myCard]).join(" , "), myComment, null, debugMode, myStyle);
 									}
 								}
 							}
@@ -336,7 +346,7 @@ cardbookAutocompleteSearch.prototype = {
 									var myCard = cardbookRepository.cardbookDisplayCards[dirPrefId+"::"+myCategory][j];
 									myCardList.push(myCard);
 								}
-								this.addResult(result, cardbookUtils.getMimeEmailsFromCards(myCardList).join(" , "), null, debugMode, myStyle);
+								this.addResult(result, cardbookUtils.getMimeEmailsFromCards(myCardList).join(" , "), null, null, debugMode, myStyle);
 							}
 						}
 					}
@@ -363,6 +373,11 @@ cardbookAutocompleteSearch.prototype = {
                         });
                         performLDAPSearch = true;
                     } else {
+                        var myComment = null;
+                        if (showAddressbookComments) {
+                            // display addressbook name in the comments column
+                            myComment = contact.dirName;
+                        }
                         var abCardsEnumerator = contact.childCards;
                         while (abCardsEnumerator.hasMoreElements()) {
                             var myABCard = abCardsEnumerator.getNext();
@@ -379,7 +394,7 @@ cardbookAutocompleteSearch.prototype = {
                                             myDisplayName = myPrimaryEmail.substr(0,delim);
                                         }
                                         var myPopularity = myABCard.getProperty("PopularityIndex", "0");
-                                        this.addResult(result,  MailServices.headerParser.makeMimeAddress(myDisplayName, myPrimaryEmail), myPopularity, debugMode, myStyle);
+                                        this.addResult(result,  MailServices.headerParser.makeMimeAddress(myDisplayName, myPrimaryEmail), myComment, myPopularity, debugMode, myStyle);
                                     }
                                 }
                             } else {
@@ -388,7 +403,7 @@ cardbookAutocompleteSearch.prototype = {
                                 lSearchString = lSearchString.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase();
                                 if (lSearchString.indexOf(aSearchString) >= 0) {
                                     var myPopularity = myABCard.getProperty("PopularityIndex", "0");
-                                    this.addResult(result,  MailServices.headerParser.makeMimeAddress(myDisplayName, myDisplayName), myPopularity, debugMode, myStyle);
+                                    this.addResult(result,  MailServices.headerParser.makeMimeAddress(myDisplayName, myDisplayName), myComment, myPopularity, debugMode, myStyle);
                                 }
                             }
                         }
@@ -429,6 +444,7 @@ cardbookAutocompleteSearch.prototype = {
                 context.debugMode = prefs.getBoolPref("extensions.cardbook.debugMode");
                 
                 context.style = aStyle;
+                context.showAddressbookComments = prefs.getBoolPref("extensions.cardbook.autocompleteShowAddressbookComments");
                 
                 context.bookName = aDirEntry.name;
                 context.book = MailServices.ab.getDirectory(uri).QueryInterface(Components.interfaces.nsIAbLDAPDirectory);
@@ -558,7 +574,11 @@ cardbookAutocompleteSearch.prototype = {
             return;
         }
 
-        this.addResult(this.searchResult, MailServices.headerParser.makeMimeAddress(aCard.displayName, aCard.primaryEmail), 0, aContext.debugMode, aContext.style);
+        var myComment = null;
+        if (aContext.showAddressbookComments) {
+            myComment = LDAPAbCardFormatter.commentFromCard(aCard, aContext.book, aContext.bookName);
+        }
+        this.addResult(this.searchResult, MailServices.headerParser.makeMimeAddress(aCard.displayName, aCard.primaryEmail), myComment, 0, aContext.debugMode, aContext.style);
     },
   
     // nsIObserver
