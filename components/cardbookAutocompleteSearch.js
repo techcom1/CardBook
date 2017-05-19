@@ -15,6 +15,7 @@ function cardbookAutocompleteResult(aSearchString) {
 
 cardbookAutocompleteResult.prototype = {
     _searchResults: null,
+    _sortUsePopularity: false,
 
     searchString: null,
     searchResult: ACR.RESULT_NOMATCH,
@@ -81,84 +82,98 @@ cardbookAutocompleteSearch.prototype = {
     searchResult: null,
     searchTimeout: null,
 	
+    insertResultSorted: function insertResultSorted(aResult, aResultEntry) {
+        if (aResult._searchResults.length === 0) {
+            aResult._searchResults.push(aResultEntry);
+        } else {
+            var done = 0;
+            for (var i = aResult._searchResults.length - 1 ; i >= 0; i--) {
+                if (aResult._sortUsePopularity) {
+                    if (Number(aResultEntry.popularity) < Number(aResult._searchResults[i].popularity)) {
+                        aResult._searchResults.splice(i+1, 0, aResultEntry);
+                        done = 1;
+                        break;
+                    } else if (Number(aResultEntry.popularity) === Number(aResult._searchResults[i].popularity) &&
+                               aResultEntry.value.toLocaleLowerCase() > aResult._searchResults[i].value.toLocaleLowerCase()) {
+                        aResult._searchResults.splice(i+1, 0, aResultEntry);
+                        done = 1;
+                        break;
+                    }
+                } else {
+                    if (aResultEntry.value.toLocaleLowerCase() > aResult._searchResults[i].value.toLocaleLowerCase()) {
+                        aResult._searchResults.splice(i+1, 0, aResultEntry);
+                        done = 1;
+                        break;
+                    }
+                }
+            }
+            if (done === 0) {
+                aResult._searchResults.splice(0, 0, aResultEntry);
+            }
+        }
+    },
+    
     addResult: function addResult(aResult, aEmailValue, aPopularity, aDebugMode, aStyle) {
 		if (aEmailValue != null && aEmailValue !== undefined && aEmailValue != "") {
 			// check duplicate email
+            var lcEmailValue = aEmailValue.toLocaleLowerCase();
 			for (var i = 0; i < aResult._searchResults.length; i++) {
-				if (aResult._searchResults[i].value === aEmailValue) {
+				if (aResult._searchResults[i].value.toLocaleLowerCase() == lcEmailValue) {
+                    if (aResult._sortUsePopularity) {
+                        if (aPopularity != null && aPopularity !== undefined && aPopularity != "") {
+                            if (Number(aResult._searchResults[i].popularity) < Number(aPopularity)) {
+                                var oldResult = aResult._searchResults[i];
+                                oldResult.popularity = aPopularity;
+                                aResult._searchResults.splice(i, 1);
+                                this.insertResultSorted(aResult, oldResult);
+                            }
+                        }
+                    }
 					return;
 				}
 			}
 
 			// add result
 			var myPopularity = 0;
-			if (aPopularity != null && aPopularity !== undefined && aPopularity != "") {
-				myPopularity = aPopularity;
-			} else {
-				var addresses = {}, names = {}, fullAddresses = {};
-				MailServices.headerParser.parseHeadersWithArray(aEmailValue, addresses, names, fullAddresses);
-				var myTmpPopularity = 0;
-				for (var i = 0; i < addresses.value.length; i++) {
-					if (addresses.value[i] == "") {
-						continue;
-					}
-					if (cardbookRepository.cardbookMailPopularityIndex[addresses.value[i].toLowerCase()]) {
-						myTmpPopularity = cardbookRepository.cardbookMailPopularityIndex[addresses.value[i].toLowerCase()];
-						if (myPopularity === 0) {
-							myPopularity = myTmpPopularity;
-						}
-					} else {
-						continue;
-					}
-					if (myPopularity > myTmpPopularity) {
-						myPopularity = myTmpPopularity;
-					}
-				}
-			}
+            if (aResult._sortUsePopularity) {
+                if (aPopularity != null && aPopularity !== undefined && aPopularity != "") {
+                    myPopularity = aPopularity;
+                } else {
+                    var addresses = {}, names = {}, fullAddresses = {};
+                    MailServices.headerParser.parseHeadersWithArray(aEmailValue, addresses, names, fullAddresses);
+                    var myTmpPopularity = 0;
+                    for (var i = 0; i < addresses.value.length; i++) {
+                        if (addresses.value[i] == "") {
+                            continue;
+                        }
+                        if (cardbookRepository.cardbookMailPopularityIndex[addresses.value[i].toLowerCase()]) {
+                            myTmpPopularity = cardbookRepository.cardbookMailPopularityIndex[addresses.value[i].toLowerCase()];
+                            if (myPopularity === 0) {
+                                myPopularity = myTmpPopularity;
+                            }
+                        } else {
+                            continue;
+                        }
+                        if (myPopularity > myTmpPopularity) {
+                            myPopularity = myTmpPopularity;
+                        }
+                    }
+                }
+            }
 			var aComment = "";
 			if (aDebugMode) {
 				aComment = "[" + myPopularity + "]";
 			}
 
-			if (aResult._searchResults.length === 0) {
-				aResult._searchResults.push({
-											 value: aEmailValue,
-											 comment: aComment,
-											 card: null,
-											 isPrimaryEmail: true,
-											 emailToUse: aEmailValue,
-											 popularity: myPopularity,
-											 style: aStyle
-										 });
-			} else {
-				var done = 0;
-				for (var i = aResult._searchResults.length - 1 ; i >= 0; i--) {
-					if (Number(myPopularity) <= Number(aResult._searchResults[i].popularity)) {
-						aResult._searchResults.splice(i+1, 0, {
-													 value: aEmailValue,
-													 comment: aComment,
-													 card: null,
-													 isPrimaryEmail: true,
-													 emailToUse: aEmailValue,
-													 popularity: myPopularity,
-													 style: aStyle
-												 });
-						done = 1;
-						break;
-					}
-				}
-				if (done === 0) {
-					aResult._searchResults.splice(0, 0, {
-												 value: aEmailValue,
-												 comment: aComment,
-												 card: null,
-												 isPrimaryEmail: true,
-												 emailToUse: aEmailValue,
-												 popularity: myPopularity,
-												 style: aStyle
-											 });
-				}
-			}
+            this.insertResultSorted(aResult, {
+                    value: aEmailValue,
+                    comment: aComment,
+                    card: null,
+                    isPrimaryEmail: true,
+                    emailToUse: aEmailValue,
+                    popularity: myPopularity,
+                    style: aStyle
+            });
 		}
     },
 
@@ -237,6 +252,7 @@ cardbookAutocompleteSearch.prototype = {
 
 		var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
 		var debugMode = prefs.getBoolPref("extensions.cardbook.debugMode");
+		result._sortUsePopularity = prefs.getBoolPref("extensions.cardbook.autocompleteSortByPopularity");
 
 		var mySearchParamObj = JSON.parse(aSearchParam);
 		this.loadRestrictions(mySearchParamObj.idKey);
