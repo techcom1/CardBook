@@ -101,7 +101,7 @@
 								<groupbox id="categoriesReadWriteGroupbox" flex="1">
 									<caption label="&categoriesGroupboxLabel;" class="header"/>
 									<hbox align="center" flex="1" style="min-height:36px;">
-										<menulist id="categoriesMenulist" type="cardbookPanelMenulist" flex="1">
+										<menulist id="categoriesMenulist" type="cardbookPanelMenulist" flex="1" onkeydown="cardbookUtils.enterPanelMenulist('category', event, this);">
 											<panel id="categoriesPanel" type="cardbookItemPanel" onpopuphiding="cardbookUtils.updatePanelMenulist('category', this);"/>
 										</menulist>
 									</hbox>

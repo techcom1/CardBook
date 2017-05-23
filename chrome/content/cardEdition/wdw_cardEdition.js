@@ -194,10 +194,10 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			wdw_cardEdition.cardbookeditlists.availableCards = [];
 			var myCurrentDirPrefId = document.getElementById('dirPrefIdTextBox').value;
 			if (myCurrentDirPrefId != "") {
-				for (var i in cardbookRepository.cardbookCardSearch1) {
+				for (var i in cardbookRepository.cardbookCardSearch[myCurrentDirPrefId]) {
 					if (i.indexOf(searchValue) >= 0 || searchValue == "") {
-						for (var j = 0; j < cardbookRepository.cardbookCardSearch1[i].length; j++) {
-							var myCard = cardbookRepository.cardbookCardSearch1[i][j];
+						for (var j = 0; j < cardbookRepository.cardbookCardSearch[myCurrentDirPrefId][i].length; j++) {
+							var myCard = cardbookRepository.cardbookCardSearch[myCurrentDirPrefId][i][j];
 							if (myCard.dirPrefId == myCurrentDirPrefId) {
 								var found = false;
 								for (var k = 0; k < wdw_cardEdition.cardbookeditlists.addedCards.length; k++) {

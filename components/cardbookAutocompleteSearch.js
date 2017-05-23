@@ -74,7 +74,7 @@ cardbookAutocompleteSearch.prototype = {
 		if (aEmailValue != null && aEmailValue !== undefined && aEmailValue != "") {
 			// check duplicate email
 			for (var i = 0; i < aResult._searchResults.length; i++) {
-				if (aResult._searchResults[i].value === aEmailValue) {
+				if (aResult._searchResults[i].value.toLowerCase() === aEmailValue.toLowerCase()) {
 					return;
 				}
 			}
@@ -234,10 +234,10 @@ cardbookAutocompleteSearch.prototype = {
 				var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
 				if (cardbookRepository.verifyABRestrictions(myDirPrefId, "allAddressBooks", this.ABExclRestrictions, this.ABInclRestrictions)) {
 					var myStyle = cardbookRepository.getIconType(cardbookRepository.cardbookAccounts[i][6]) + " color_" + myDirPrefId;
-					for (var j in cardbookRepository.cardbookCardSearch2[myDirPrefId]) {
+					for (var j in cardbookRepository.cardbookCardSearch[myDirPrefId]) {
 						if (j.indexOf(aSearchString) >= 0 || aSearchString == "") {
-							for (var k = 0; k < cardbookRepository.cardbookCardSearch2[myDirPrefId][j].length; k++) {
-								var myCard = cardbookRepository.cardbookCardSearch2[myDirPrefId][j][k];
+							for (var k = 0; k < cardbookRepository.cardbookCardSearch[myDirPrefId][j].length; k++) {
+								var myCard = cardbookRepository.cardbookCardSearch[myDirPrefId][j][k];
 								if (this.catExclRestrictions[myDirPrefId]) {
 									var add = true;
 									for (var l in this.catExclRestrictions[myDirPrefId]) {

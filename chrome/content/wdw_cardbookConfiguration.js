@@ -7,7 +7,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		allRestrictions: [],
 		allEmailsCollections: [],
 		allMailAccounts: [],
-		prefEmailPref: false,
+		preferEmailPrefOld: false,
 		
 		sortTreesFromCol: function (aEvent, aColumn, aTreeName) {
 			if (aEvent.button == 0) {
@@ -286,12 +286,12 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 
 		loadPrefEmailPref: function () {
 			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-			wdw_cardbookConfiguration.prefEmailPref = prefs.getBoolPref("extensions.cardbook.preferEmailPref");
+			wdw_cardbookConfiguration.preferEmailPrefOld = prefs.getBoolPref("extensions.cardbook.preferEmailPref");
 		},
 
 		validatePrefEmailPref: function () {
 			var myNewCheck = document.getElementById('preferEmailPrefCheckBox').checked;
-			if (myNewCheck !== wdw_cardbookConfiguration.prefEmailPref) {
+			if (myNewCheck !== wdw_cardbookConfiguration.preferEmailPrefOld) {
 				for (j in cardbookRepository.cardbookCards) {
 					let myCard = cardbookRepository.cardbookCards[j];
 					if (!myCard.isAList) {

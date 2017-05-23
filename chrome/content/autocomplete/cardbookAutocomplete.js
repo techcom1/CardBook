@@ -81,9 +81,9 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 
 		loadCssRules: function () {
 			try {
-				if (navigator.appVersion.indexOf("Win")!=-1) {
+				if (navigator.appVersion.indexOf("Win") != -1) {
 					var OSName="WIN";
-				} else if (navigator.appVersion.indexOf("Mac")!=-1) {
+				} else if (navigator.appVersion.indexOf("Mac") != -1) {
 					var OSName="OSX";
 				} else {
 					var OSName="LINUX";

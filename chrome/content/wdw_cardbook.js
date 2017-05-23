@@ -1385,10 +1385,17 @@ if ("undefined" == typeof(wdw_cardbook)) {
 
 			if (cardbookRepository.cardbookSearchValue != "") {
 				cardbookRepository.cardbookDisplayCards[cardbookRepository.cardbookSearchValue] = [];
-				for (var i in cardbookRepository.cardbookCardSearch1) {
-					if (i.indexOf(cardbookRepository.cardbookSearchValue) >= 0) {
-						for (var j = 0; j < cardbookRepository.cardbookCardSearch1[i].length; j++) {
-							cardbookRepository.cardbookDisplayCards[cardbookRepository.cardbookSearchValue].push(cardbookRepository.cardbookCardSearch1[i][j]);
+
+				
+				for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
+					if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5]) {
+						var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
+						for (var j in cardbookRepository.cardbookCardSearch[myDirPrefId]) {
+							if (j.indexOf(cardbookRepository.cardbookSearchValue) >= 0) {
+								for (var k = 0; k < cardbookRepository.cardbookCardSearch[myDirPrefId][j].length; k++) {
+									cardbookRepository.cardbookDisplayCards[cardbookRepository.cardbookSearchValue].push(cardbookRepository.cardbookCardSearch[myDirPrefId][j][k]);
+								}
+							}
 						}
 					}
 				}

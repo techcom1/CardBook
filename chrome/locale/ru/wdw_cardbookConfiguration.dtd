@@ -121,7 +121,6 @@
 <!ENTITY deleteIMPPLabel "Удалить">
 <!ENTITY deleteIMPPAccesskey "У">
 
-<!ENTITY customFieldsPanelLabel "Задать собственные поля.">
 <!ENTITY customFieldName "Открывать внешние ссылки:">
 <!ENTITY customFieldLabel "Метка поля">
 
@@ -176,12 +175,13 @@
 <!ENTITY displayvCardLabel "Посмотреть визитку vCard">
 <!ENTITY displayvCardAccesskey "П">
 
-<!ENTITY birthdayListWarn "Поиск дней рождения производиться только по адресным книгам CardBook.">
+<!ENTITY birthdayListWarn "Поиск дней рождения производиться только по адресным книгам CardBook.?? Birthdays date formats are set up in the address book properties.??">
 <!ENTITY addressBooksGroupboxLabel "Контакты">
 <!ENTITY calendarsGroupboxLabel "Календари">
 <!ENTITY searchGroupboxLabel "Поиск">
 <!ENTITY searchInNoteLabel "Искать дни рождения в поле «Заметка»">
-<!ENTITY searchInNoteTooltip "Добавьте такие строки в поле «Заметка» (разделителем должно быть «:» ,а форматом данных один из указанных ниже): «Birthday:Ты и я, первый поцелуй:02.12.2006»">
+<!ENTITY searchInNoteTooltip "??Add such lines in the Note field  (separator should be : and the date format should be the one defined for the address book) : Birthday:You and me, first kiss:02.12.2006??">
+<!ENTITY searchInNoteTooltipOld "Добавьте такие строки в поле «Заметка» (разделителем должно быть «:» ,а форматом данных один из указанных ниже): «Birthday:Ты и я, первый поцелуй:02.12.2006»">
 <!ENTITY searchInNoteAccesskey "З">
 <!ENTITY dateFormatLabel "Ожидаемый формат даты">
 <!ENTITY dateFormatAccesskey "О">
