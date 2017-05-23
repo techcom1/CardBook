@@ -175,7 +175,7 @@
 <!ENTITY displayvCardLabel "Посмотреть визитку vCard">
 <!ENTITY displayvCardAccesskey "П">
 
-<!ENTITY birthdayListWarn "Поиск дней рождения производиться только по адресным книгам CardBook.?? Birthdays date formats are set up in the address book properties.??">
+<!ENTITY birthdayListWarn "Поиск дней рождения производиться только по адресным книгам CardBook. Формат даты для записей дней рождения задаётся в свойствах адресной книги.">
 <!ENTITY addressBooksGroupboxLabel "Контакты">
 <!ENTITY calendarsGroupboxLabel "Календари">
 <!ENTITY searchGroupboxLabel "Поиск">
