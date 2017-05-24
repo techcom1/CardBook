@@ -179,7 +179,8 @@
 <!ENTITY calendarsGroupboxLabel "Kalendarze">
 <!ENTITY searchGroupboxLabel "Wyszukiwanie">
 <!ENTITY searchInNoteLabel "Wyszukuj daty urodzin w polu Notatki">
-<!ENTITY searchInNoteTooltip "??Add such lines in the Note field  (separator should be : and the date format should be the one defined for the address book) : Birthday:You and me, first kiss:02.12.2006??">
+<!ENTITY searchInNoteTooltip1 "??Add such lines in the Note field  (separator should be : and the date format should be the one defined for the address book) :??">
+<!ENTITY searchInNoteTooltip2 "Wydarzenie:Opis:02.12.2006">
 <!ENTITY searchInNoteTooltipOld "Dodaj takie linie w polu Notatki (oddzielone : w formacie daty takim, jak podany poniżej): Urodziny:Ja i ty, pierwszy pocałunek:02.12.2006">
 <!ENTITY searchInNoteAccesskey "D">
 <!ENTITY dateFormatLabel "Oczekiwany format daty">

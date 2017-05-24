@@ -43,7 +43,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 			observerService.addObserver(this, "cardbook.cardImportedFromFile", false);
 
 			observerService.addObserver(this, "cardbook.identityChanged", false);
-			observerService.addObserver(this, "cardbook.restrictionsChanged", false);
+			observerService.addObserver(this, "cardbook.preferencesChanged", false);
 		},
 		
 		unregister: function() {
@@ -72,7 +72,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 			observerService.removeObserver(this, "cardbook.cardImportedFromFile");
 
 			observerService.removeObserver(this, "cardbook.identityChanged");
-			observerService.removeObserver(this, "cardbook.restrictionsChanged");
+			observerService.removeObserver(this, "cardbook.preferencesChanged");
 		},
 		
 		observe: function(aSubject, aTopic, aData) {
@@ -98,7 +98,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 				case "cardbook.cardModifiedDirect":
 					wdw_cardbookContactsSidebar.onABChange();
 					break;
-				case "cardbook.restrictionsChanged":
+				case "cardbook.preferencesChanged":
 					wdw_cardbookContactsSidebar.onRestrictionsChanged();
 					break;
 				case "cardbook.identityChanged":

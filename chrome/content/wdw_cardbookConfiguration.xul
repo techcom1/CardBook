@@ -709,7 +709,8 @@
 								preference="extensions.cardbook.searchInNote"/>
 						</hbox>
 						<separator class="thin"/>
-						<description>&searchInNoteTooltip;</description>
+						<description>&searchInNoteTooltip1;</description>
+						<description>&searchInNoteTooltip2;</description>
 					</groupbox>
 				</tabpanel>
 			

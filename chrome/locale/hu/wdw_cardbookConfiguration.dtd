@@ -179,7 +179,8 @@
 <!ENTITY calendarsGroupboxLabel "Naptár">
 <!ENTITY searchGroupboxLabel "Keresés">
 <!ENTITY searchInNoteLabel "Születésnapok a jegyzetek mezőben keresés">
-<!ENTITY searchInNoteTooltip "??Add such lines in the Note field  (separator should be : and the date format should be the one defined for the address book) : Birthday:You and me, first kiss:02.12.2006??">
+<!ENTITY searchInNoteTooltip1 "??Add such lines in the Note field  (separator should be : and the date format should be the one defined for the address book) :??">
+<!ENTITY searchInNoteTooltip2 "Esemény:Leírás:02.12.2006">
 <!ENTITY searchInNoteTooltipOld "A jegyzétek mezőben a szöveget (elválasztó legyen, és a dátum formátum legyen az egyik alább): Születésnap:tárgy:éééé.hh.nn.">
 <!ENTITY searchInNoteAccesskey "S">
 <!ENTITY dateFormatLabel "Várható dátum formátum">

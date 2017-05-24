@@ -1623,6 +1623,16 @@ if ("undefined" == typeof(cardbookUtils)) {
 			return false;
 		},
 
+		getAvailableAccountNumber: function() {
+			var result = 0;
+			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
+				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] != "SEARCH") {
+					result++;
+				}
+			}
+			return result;
+		},
+
 		isFileAlreadyOpen: function(aAccountPath) {
 			cardbookUtils.jsInclude(["chrome://cardbook/content/preferences/cardbookPreferences.js"]);
 			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {

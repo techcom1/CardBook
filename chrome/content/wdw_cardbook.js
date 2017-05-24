@@ -1439,7 +1439,6 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		setSearchMode: function () {
 			wdw_cardbook.setNoComplexSearchMode();
 			cardbookRepository.cardbookSearchMode = "SEARCH";
-			wdw_cardbook.disableCardCreation();
 		},
 
 		setNoComplexSearchMode: function () {
@@ -2717,7 +2716,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		},
 
 		enableCardDeletion: function () {
-			if (cardbookRepository.cardbookAccounts.length === 0) {
+			if (cardbookUtils.getAvailableAccountNumber() === 0) {
 				wdw_cardbook.disableCardDeletion();
 			} else {
 				wdw_cardbook.enableOrDisableElement(['cardbookToolbarRemoveButton'], false);
@@ -2736,15 +2735,11 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		},
 	
 		enableCardCreation: function () {
-			if (cardbookRepository.cardbookAccounts.length === 0) {
-				wdw_cardbook.disableCardCreation();
-			} else {
-				wdw_cardbook.enableOrDisableElement(['cardbookToolbarAddButton', 'cardbookContactsMenuAddCard', 'addCardFromCards'], false);
-			}
+			wdw_cardbook.enableOrDisableElement(['cardbookToolbarAddButton', 'cardbookContactsMenuAddCard', 'addCardFromCards'], false);
 		},
 	
 		enableCardModification: function () {
-			if (cardbookRepository.cardbookAccounts.length === 0) {
+			if (cardbookUtils.getAvailableAccountNumber() === 0) {
 				wdw_cardbook.disableCardModification();
 			} else {
 				var myTree = document.getElementById('accountsOrCatsTree');
@@ -2776,7 +2771,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 
 		updateStatusProgressInformationField: function() {
 			if (document.getElementById('cardboookModeBroadcaster').getAttribute('mode') == 'cardbook') {
-				if (cardbookRepository.statusInformation.length === 0) {
+				if (cardbookUtils.getAvailableAccountNumber() === 0) {
 					wdw_cardbook.setElementLabel('totalMessageCount', "");
 				} else {
 					if (cardbookRepository.statusInformation[cardbookRepository.statusInformation.length - 1][0] == cardbookRepository.statusInformation[cardbookRepository.statusInformation.length - 1][0].substr(0,150)) {
@@ -2817,7 +2812,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		},
 	
 		windowControlShowing: function () {
-			if (cardbookRepository.cardbookAccounts.length === 0) {
+			if (cardbookUtils.getAvailableAccountNumber() === 0) {
 				wdw_cardbook.enableOrDisableElement(['cardbookToolbarSyncButton', 'cardbookAccountMenuSyncs'], true);
 				wdw_cardbook.disableCardCreation();
 				wdw_cardbook.disableCardModification();
@@ -2829,7 +2824,11 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					wdw_cardbook.disableCardModification();
 					wdw_cardbook.enableOrDisableElement(['cardbookToolbarSyncButton', 'cardbookAccountMenuSyncs'], true);
 				} else if (cardbookRepository.cardbookSearchMode === "SEARCH" || cardbookRepository.cardbookComplexSearchMode === "SEARCH") {
-					wdw_cardbook.disableCardCreation();
+					if (cardbookUtils.getAvailableAccountNumber() === 1) {
+						wdw_cardbook.enableCardCreation();
+					} else {
+						wdw_cardbook.disableCardCreation();
+					}
 					if (cardbookUtils.getSelectedCardsCount() >= 2 || cardbookUtils.getSelectedCardsCount() == 0) {
 						wdw_cardbook.disableCardModification();
 					} else {

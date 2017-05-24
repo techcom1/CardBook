@@ -180,7 +180,8 @@
 <!ENTITY calendarsGroupboxLabel "Calendarios">
 <!ENTITY searchGroupboxLabel "Procura">
 <!ENTITY searchInNoteLabel "Procurar aniversários no campo Notas">
-<!ENTITY searchInNoteTooltip "??Add such lines in the Note field  (separator should be : and the date format should be the one defined for the address book) : Birthday:You and me, first kiss:02.12.2006??">
+<!ENTITY searchInNoteTooltip1 "??Add such lines in the Note field  (separator should be : and the date format should be the one defined for the address book) :??">
+<!ENTITY searchInNoteTooltip2 "Evento:Descrição:02.12.2006">
 <!ENTITY searchInNoteTooltipOld "Adicionar linhas ao campo de notas (O separador deve ser : e o formatoda data deve ser o seguinte:: Aniversário do primeiro beijo : 01.01.2011">
 <!ENTITY searchInNoteAccesskey "A">
 <!ENTITY dateFormatLabel "Formato de data esperado">

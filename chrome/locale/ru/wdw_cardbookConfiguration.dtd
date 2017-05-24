@@ -180,8 +180,8 @@
 <!ENTITY calendarsGroupboxLabel "Календари">
 <!ENTITY searchGroupboxLabel "Поиск">
 <!ENTITY searchInNoteLabel "Искать дни рождения в поле «Заметка»">
-<!ENTITY searchInNoteTooltip "Добавьте такие строки в поле «Заметка» (разделителем должно быть «:» ,а формат даты — как в настройках адресной книги): «Birthday:Ты и я, первый поцелуй:02.12.2006»">
-<!ENTITY searchInNoteTooltipOld "Добавьте такие строки в поле «Заметка» (разделителем должно быть «:» ,а форматом данных один из указанных ниже): «Birthday:Ты и я, первый поцелуй:02.12.2006»">
+<!ENTITY searchInNoteTooltip1 "Добавьте такие строки в поле «Заметка» (разделителем должно быть «:» ,а формат даты — как в настройках адресной книги):">
+<!ENTITY searchInNoteTooltip2 "Событие:Описание:02.12.2006">
 <!ENTITY searchInNoteAccesskey "З">
 <!ENTITY dateFormatLabel "Ожидаемый формат даты">
 <!ENTITY dateFormatAccesskey "О">

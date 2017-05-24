@@ -178,8 +178,9 @@
 <!ENTITY addressBooksGroupboxLabel "Address Books">
 <!ENTITY calendarsGroupboxLabel "Calendars">
 <!ENTITY searchGroupboxLabel "Search">
-<!ENTITY searchInNoteLabel "Search birthdays in the Note field">
-<!ENTITY searchInNoteTooltip "Add such lines in the Note field  (separator should be : and the date format should be the one defined for the address book) : Birthday:You and me, first kiss:02.12.2006">
+<!ENTITY searchInNoteLabel "Search birthdays in the Notes field">
+<!ENTITY searchInNoteTooltip1 "Add such lines in the Notes field  (separator should be : and the date format should be the one defined for the address book) :">
+<!ENTITY searchInNoteTooltip2 "Event:Description:02.12.2006">
 <!ENTITY searchInNoteAccesskey "S">
 <!ENTITY dateFormatLabel "Expected date format">
 <!ENTITY dateFormatAccesskey "E">

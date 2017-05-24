@@ -175,13 +175,13 @@
 <!ENTITY displayvCardLabel "Zobrazit vCard">
 <!ENTITY displayvCardAccesskey "B">
 
-<!ENTITY birthdayListWarn "Narozeniny jsou hledány pouze v adresářích CardBooku.?? Birthdays date formats are set up in the address book properties.??">
+<!ENTITY birthdayListWarn "Narozeniny jsou hledány pouze v adresářích CardBooku. Formáty data narozenin se nastavují ve vlastnostech adresáře.">
 <!ENTITY addressBooksGroupboxLabel "Adresáře">
 <!ENTITY calendarsGroupboxLabel "Kalendáře">
 <!ENTITY searchGroupboxLabel "Hledat">
 <!ENTITY searchInNoteLabel "Hledat narozeniny v poli s poznámkami">
-<!ENTITY searchInNoteTooltip "??Add such lines in the Note field  (separator should be : and the date format should be the one defined for the address book) : Birthday:You and me, first kiss:02.12.2006??">
-<!ENTITY searchInNoteTooltipOld "Přidejte řádky do poznámek podobné následujícímu oddělovač by měl být : a formát data by měl odpovídat danému níže) : Birthday:You and me, first kiss:02.12.2006">
+<!ENTITY searchInNoteTooltip1 "Přidejte řádky do poznámek podobné následujícímu oddělovač by měl být : a formát data by měl odpovídat nastavenému ve vlastnostech adresáře :">
+<!ENTITY searchInNoteTooltip2 "Událost:Popis:02.12.2006">
 <!ENTITY searchInNoteAccesskey "H">
 <!ENTITY dateFormatLabel "Očekávaný formát data">
 <!ENTITY dateFormatAccesskey "O">

@@ -180,7 +180,8 @@
 <!ENTITY calendarsGroupboxLabel "Kalender">
 <!ENTITY searchGroupboxLabel "Suchen">
 <!ENTITY searchInNoteLabel "Suche Geburtstage im Feld Notizen">
-<!ENTITY searchInNoteTooltip "??Add such lines in the Note field  (separator should be : and the date format should be the one defined for the address book) : Birthday:You and me, first kiss:02.12.2006??">
+<!ENTITY searchInNoteTooltip1 "??Add such lines in the Note field  (separator should be : and the date format should be the one defined for the address book) :??">
+<!ENTITY searchInNoteTooltip2 "Termin:Beschreibung:02.12.2006">
 <!ENTITY searchInNoteTooltipOld "Beispiel für einen Eintrag im Feld Notizen - das Trennzeichen sollte ein Doppelpunkt sein und das Datumsformat dem unten ausgewählten Datumsformat entsprechen: Birthday:Erster Kuss:2006-12-02">
 <!ENTITY searchInNoteAccesskey "S">
 <!ENTITY dateFormatLabel "Erwartetes Datumsformat">
