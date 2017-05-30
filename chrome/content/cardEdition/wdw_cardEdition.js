@@ -476,7 +476,11 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				myTextbox.value = myValue;
 			} else if (aType == "note") {
 				var strBundle = document.getElementById("cardbook-strings");
-				var myPrefix = strBundle.getString("eventInNoteEventPrefix") + ":" + strBundle.getString("eventInNoteDescriptionPrefix") + ":";
+				if (wdw_cardEdition.panel === 1) {
+					var myPrefix = strBundle.getString("eventInNoteEventPrefix") + ":" + document.getElementById('desc1TextBox').value + ":";
+				} else {
+					var myPrefix = strBundle.getString("eventInNoteEventPrefix") + ":" + document.getElementById('desc2TextBox').value + ":";
+				}
 				if (myTextbox.value == "" ) {
 					myTextbox.value = myPrefix + myValue;
 				} else {
@@ -651,6 +655,9 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 							}
 						}
 						myTextbox.value = result;
+						if (myTextbox.oninput) {
+							myTextbox.oninput();
+						}
 					}, false);
 				myMenuItem.setAttribute("label", strBundle.getString("toUpperCase"));
 				myMenu.appendChild(myMenuItem);
@@ -678,6 +685,9 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 							}
 						}
 						myTextbox.value = result;
+						if (myTextbox.oninput) {
+							myTextbox.oninput();
+						}
 					}, false);
 				myMenuItem.setAttribute("label", strBundle.getString("toLowerCase"));
 				myMenu.appendChild(myMenuItem);

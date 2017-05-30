@@ -1,7 +1,7 @@
 <!ENTITY daysLeftColumnLabel "Days left">
 <!ENTITY nameColumnLabel "Name">
 <!ENTITY ageColumnLabel "Age">
-<!ENTITY dateOfBirthColumnLabel "Date of birth">
+<!ENTITY dateOfBirthColumnLabel "Date of event">
 <!ENTITY dateOfBirthFoundColumnLabel "Date found">
 <!ENTITY emailColumnLabel "Email">
 <!ENTITY sendEmailLabel "Send an email">

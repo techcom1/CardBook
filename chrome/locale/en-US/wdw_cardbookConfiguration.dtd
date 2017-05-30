@@ -8,8 +8,8 @@
 <!ENTITY listsTabLabel "Lists">
 <!ENTITY syncTabLabel "Sync.">
 <!ENTITY emailTabLabel "Email">
-<!ENTITY birthdaylistTabLabel "Birthdays">
-<!ENTITY synclistTabLabel "Birthday Reminders">
+<!ENTITY birthdaylistTabLabel "Anniversaries">
+<!ENTITY synclistTabLabel "Anniversary Reminders">
 
 <!ENTITY integrationGroupboxLabel "Integration in Thunderbird">
 <!ENTITY autocompletionLabel "Autocompletion of email addresses">
@@ -174,11 +174,11 @@
 <!ENTITY displayvCardLabel "View the vCard">
 <!ENTITY displayvCardAccesskey "V">
 
-<!ENTITY birthdayListWarn "Birthdays are only searched within CardBook address books. Birthdays date formats are set up in the address book properties.">
+<!ENTITY birthdayListWarn "Anniversaries are only searched within CardBook address books. Anniversary date formats are set up in the address book properties.">
 <!ENTITY addressBooksGroupboxLabel "Address Books">
 <!ENTITY calendarsGroupboxLabel "Calendars">
 <!ENTITY searchGroupboxLabel "Search">
-<!ENTITY searchInNoteLabel "Search birthdays in the Notes field">
+<!ENTITY searchInNoteLabel "Search Notes field for event anniversaries">
 <!ENTITY searchInNoteTooltip1 "Add such lines in the Notes field  (separator should be : and the date format should be the one defined for the address book) :">
 <!ENTITY searchInNoteTooltip2 "Event:Description:02.12.2006">
 <!ENTITY searchInNoteAccesskey "S">
@@ -187,7 +187,7 @@
 
 <!ENTITY remindersTabLabel "Reminders">
 <!ENTITY remindViaPopupWindowGroupboxLabel "Remind via Popup Window">
-<!ENTITY numberOfDaysForSearchingLabel "Number of days to check birthdays for">
+<!ENTITY numberOfDaysForSearchingLabel "Number of days to check anniversaries for">
 <!ENTITY numberOfDaysForSearchingAccesskey "N">
 <!ENTITY showPopupOnStartupLabel "Show popup window on startup">
 <!ENTITY showPopupOnStartupAccesskey "S">
@@ -195,10 +195,10 @@
 <!ENTITY showPeriodicPopupAccesskey "d">
 <!ENTITY periodicPopupTimeLabel "Display time (hh:mm)">
 <!ENTITY periodicPopupTimeAccesskey "i">
-<!ENTITY showPopupEvenIfNoBirthdayLabel "Show popup window when birthday list is empty">
+<!ENTITY showPopupEvenIfNoBirthdayLabel "Show popup window when anniversaries list is empty">
 <!ENTITY showPopupEvenIfNoBirthdayAccesskey "h">
 <!ENTITY remindViaLightningGroupboxLabel "Remind via Thunderbird Lightning Calendar Extension">
-<!ENTITY numberOfDaysForWritingLabel "Number of days to write birthdays">
+<!ENTITY numberOfDaysForWritingLabel "Number of days to write anniversaries">
 <!ENTITY numberOfDaysForWritingAccesskey "w">
 <!ENTITY syncWithLightningOnStartupLabel "Sync with Lightning on startup">
 <!ENTITY syncWithLightningOnStartupAccesskey "L">
@@ -210,7 +210,7 @@
 <!ENTITY calendarEntryWholeDayLabel "Calendar event on the whole day">
 <!ENTITY calendarEntryWholeDayAccesskey "y">
 <!ENTITY calendarEntryAlarmLabel "Alarm to n days before calendar event">
-<!ENTITY calendarEntryAlarmTooltip "Enter how many days before the birthday Lightning's alarm should remind you. Without date. If the field is empty, there would be no alarm.">
+<!ENTITY calendarEntryAlarmTooltip "Enter how many days before the anniversary Lightning's alarm should remind you. Without date. If the field is empty, there would be no alarm.">
 <!ENTITY calendarEntryAlarmAccesskey "n">
 <!ENTITY calendarEntryCategoriesLabel "Category(ies) for calendar event">
 <!ENTITY calendarEntryCategoriesTooltip "One or more categories, comma separated. If the field is empty, there would be no category.">

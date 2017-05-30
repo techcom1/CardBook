@@ -1,3 +1,4 @@
 <!ENTITY existingDataGroupboxLabel "Kapcsolat hozzáadása">
 <!ENTITY cardbookSwitchButtonTooltip "Családi nevét és utónevét csere">
-<!ENTITY cardbookCalendarButtonTooltip "Naptári dátum választás">
+<!ENTITY cardbookCalendarButtonTooltip "??Insert an event??">
+<!ENTITY descriptionTextbox "Leírás">

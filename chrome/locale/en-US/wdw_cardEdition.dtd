@@ -1,3 +1,4 @@
 <!ENTITY existingDataGroupboxLabel "Add to this contact">
 <!ENTITY cardbookSwitchButtonTooltip "Switch family name and given name">
-<!ENTITY cardbookCalendarButtonTooltip "Select a date from the calendar">
+<!ENTITY cardbookCalendarButtonTooltip "Insert an event">
+<!ENTITY descriptionTextbox "Description">

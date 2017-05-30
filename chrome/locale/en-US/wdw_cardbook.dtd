@@ -16,8 +16,8 @@
 <!ENTITY cardbookContactsMenuLabel "Contacts">
 
 <!ENTITY cardbookToolsMenuLabel "Tools">
-<!ENTITY cardbookToolsMenuBirthdayListLabel "View birthdays' list">
-<!ENTITY cardbookToolsMenuSyncLightningLabel "Add birthdays into calendar">
+<!ENTITY cardbookToolsMenuBirthdayListLabel "View anniversaries' list">
+<!ENTITY cardbookToolsMenuSyncLightningLabel "Add anniversaries into calendar">
 <!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "Find duplicate contacts in all address books">
 <!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "Find duplicate contacts in current address book">
 

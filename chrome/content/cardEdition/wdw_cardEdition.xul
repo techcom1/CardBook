@@ -142,8 +142,7 @@
 									<hbox flex="1" align="center">
 										<label id="lastnameLabel" value="&lastnameLabel;" control="lastnameTextBox" class="header"/>
 										<spacer flex="1"/>
-										<button id="cardbookSwitchButtonDown" class="small-button" label="↓" tooltiptext="&cardbookSwitchButtonTooltip;"
-												onclick="wdw_cardEdition.switchLastnameAndFirstname();" oninput="wdw_cardEdition.switchLastnameAndFirstname();"/>
+										<button id="cardbookSwitchButtonDown" class="small-button" label="↓" tooltiptext="&cardbookSwitchButtonTooltip;" oncommand="wdw_cardEdition.switchLastnameAndFirstname();"/>
 									</hbox>
 									<textbox id="lastnameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
 								</row>
@@ -151,8 +150,7 @@
 									<hbox flex="1" align="center">
 										<label id="firstnameLabel" value="&firstnameLabel;" control="firstnameTextBox" class="header"/>
 										<spacer flex="1"/>
-										<button id="cardbookSwitchButtonUp" class="small-button" label="↑" tooltiptext="&cardbookSwitchButtonTooltip;"
-												onclick="wdw_cardEdition.switchLastnameAndFirstname();" oninput="wdw_cardEdition.switchLastnameAndFirstname();"/>
+										<button id="cardbookSwitchButtonUp" class="small-button" label="↑" tooltiptext="&cardbookSwitchButtonTooltip;" oncommand="wdw_cardEdition.switchLastnameAndFirstname();"/>
 									</hbox>
 									<textbox id="firstnameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
 								</row>
@@ -176,8 +174,7 @@
 									<hbox flex="1" align="center">
 										<label id="bdayLabel" value="&bdayLabel;" control="bdayTextBox" class="header"/>
 										<spacer flex="1"/>
-										<button id="bdaycardbookCalendar" class="small-button" label="📅" tooltiptext="&cardbookCalendarButtonTooltip;"
-												onclick="wdw_cardEdition.openCalendarPanel('bday');" oninput="wdw_cardEdition.openCalendarPanel('bday');"/>
+										<button id="bdaycardbookCalendar" class="small-button" label="📅" tooltiptext="&cardbookCalendarButtonTooltip;" oncommand="wdw_cardEdition.openCalendarPanel('bday');"/>
 										<panel id="bdayLightningPanel">
 											<minimonth id="bdayMinimonth" flex="1" onchange="wdw_cardEdition.validateCalendarPanel(this.value, 'bday');"/>
 										</panel>
@@ -295,13 +292,28 @@
 			<tabpanel orient="vertical" style="overflow:auto">
 				<vbox id="noteGroupbox" flex="1">
 					<hbox>
-						<button id="noteCardbookCalendar" class="small-button" label="📅" tooltiptext="&cardbookCalendarButtonTooltip;"
-								onclick="wdw_cardEdition.openCalendarPanel('note');" oninput="wdw_cardEdition.openCalendarPanel('note');"/>
+						<button id="noteCardbookCalendar" class="small-button" label="📅" tooltiptext="&cardbookCalendarButtonTooltip;" oncommand="wdw_cardEdition.openCalendarPanel('note');"/>
 						<panel id="noteLightningPanel">
-							<minimonth id="noteMinimonth" flex="1" onchange="wdw_cardEdition.validateCalendarPanel(this.value, 'note');"/>
+							<vbox>
+								<hbox align="center">
+									<label value="&descriptionTextbox;" control="desc1TextBox" class="header"/>
+									<textbox id="desc1TextBox"/>
+								</hbox>
+								<hbox>
+									<minimonth id="noteMinimonth" flex="1" onchange="wdw_cardEdition.validateCalendarPanel(this.value, 'note');"/>
+								</hbox>
+							</vbox>
 						</panel>
 						<panel id="noteBasePanel">
-							<datepicker id="noteDatepicker" type="grid" onchange="wdw_cardEdition.validateCalendarPanel(this.value, 'note');"/>
+							<vbox>
+								<hbox align="center">
+									<label value="&descriptionTextbox;" control="desc2TextBox" class="header"/>
+									<textbox id="desc2TextBox"/>
+								</hbox>
+								<hbox>
+									<datepicker id="noteDatepicker" type="grid" onchange="wdw_cardEdition.validateCalendarPanel(this.value, 'note');"/>
+								</hbox>
+							</vbox>
 						</panel>
 					</hbox>
 					<hbox flex="1">

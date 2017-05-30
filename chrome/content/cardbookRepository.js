@@ -17,7 +17,7 @@ var cardbookRepository = {
 						["tel", ["tel"] ],
 						["url", ["url"] ] ],
 					"note": ["note"],
-					"technical": ["version"] },
+					"technical": ["version", "rev"] },
 
 	dateFormats : ["YYYY-MM-DD", "YYYY.MM.DD", "YYYY/MM/DD", "YYYYMMDD", "DD-MM-YYYY", "DD.MM.YYYY", "DD/MM/YYYY", "DDMMYYYY", "MM-DD-YYYY", "MM.DD.YYYY", "MM/DD/YYYY", "MMDDYYYY"],
 
@@ -1294,8 +1294,8 @@ var cardbookRepository = {
 					var myDirPrefIdName = cardbookPrefService.getName();
 					var myDirPrefIdType = cardbookPrefService.getType();
 					if (myDirPrefIdType === "FILE") {
-						cardbookRepository.removeCardFromRepository(aListOfCards[i], false);
 						listOfFileToRewrite.push(aListOfCards[i].dirPrefId);
+						cardbookRepository.removeCardFromRepository(aListOfCards[i], false);
 					} else if (myDirPrefIdType === "CACHE" || myDirPrefIdType === "DIRECTORY" || myDirPrefIdType === "LOCALDB") {
 						cardbookRepository.removeCardFromRepository(aListOfCards[i], true);
 					} else {

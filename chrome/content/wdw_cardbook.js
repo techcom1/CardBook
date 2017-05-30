@@ -1402,9 +1402,12 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				// need to verify that the selected cards are always found
 				var myListOfSelectedCards = [];
 				for (var i = 0; i < listOfSelectedCard.length; i++) {
-					var myCard = cardbookRepository.cardbookCards[listOfSelectedCard[i]];
-					if (cardbookRepository.getSearchString(myCard).indexOf(cardbookRepository.cardbookSearchValue) >= 0) {
-						myListOfSelectedCards.push(listOfSelectedCard[i]);
+					// selected cards may have been deleted
+					if (cardbookRepository.cardbookCards[listOfSelectedCard[i]]) {
+						var myCard = cardbookRepository.cardbookCards[listOfSelectedCard[i]];
+						if (cardbookRepository.getSearchString(myCard).indexOf(cardbookRepository.cardbookSearchValue) >= 0) {
+							myListOfSelectedCards.push(listOfSelectedCard[i]);
+						}
 					}
 				}
 				wdw_cardbook.displaySearch(myListOfSelectedCards);
