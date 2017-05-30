@@ -1,0 +1,9 @@
+<!ENTITY persTitleLabel "Osebni podatki">
+<!ENTITY fnLabel "Prikazano ime">
+<!ENTITY lastnameLabel "Priimek">
+<!ENTITY firstnameLabel "Ime">
+<!ENTITY othernameLabel "Drugo ime">
+<!ENTITY suffixnameLabel "Pripona">
+<!ENTITY prefixnameLabel "Predpona">
+<!ENTITY nicknameLabel "Vzdevek">
+<!ENTITY genderLabel "Spol">

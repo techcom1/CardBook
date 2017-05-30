@@ -1,0 +1,217 @@
+<!ENTITY wdw_cardbookConfigurationWindowLabel "Nastavitve CardBook">
+
+<!ENTITY generalTabLabel "Splošno">
+<!ENTITY editionTabLabel "Urejanje">
+<!ENTITY typesTabLabel "Vrste">
+<!ENTITY IMPPsTabLabel "Int. komunikacija">
+<!ENTITY customFieldsTabLabel "Polja po meri">
+<!ENTITY listsTabLabel "Seznami">
+<!ENTITY syncTabLabel "Sinh.">
+<!ENTITY emailTabLabel "E-pošta">
+<!ENTITY birthdaylistTabLabel "Obletnice">
+<!ENTITY synclistTabLabel "Opomniki o obletnicah">
+
+<!ENTITY integrationGroupboxLabel "Vgradnja v Thunderbird">
+<!ENTITY autocompletionLabel "Samodokončevanje e-poštnih naslovov">
+<!ENTITY autocompletionAccesskey "S">
+<!ENTITY autocompletionTooltip "Razširi običajno samodokončevanje stikov iz Thunderbirdovih imenikov s samodokončevanjem stikov iz Cardbookovih imenikov.">
+<!ENTITY exclusiveLabel "Edinstven vir za stike">
+<!ENTITY exclusiveAccesskey "E">
+<!ENTITY exclusiveTooltip "Če je omogočena, ta možnost omogoča pridobivanje stikov iz Thunderbirdovih imenikov za rumene zvezdice, prikazano ime in samodokončevanje e-pošte.">
+<!ENTITY accountsRestrictionsLabel "Omejitve poštnega računa">
+<!ENTITY accountsRestrictionsEnabledLabel "Omogočeno">
+<!ENTITY accountsRestrictionsMailNameLabel "Poštni račun">
+<!ENTITY accountsRestrictionsABNameLabel "Imenik">
+<!ENTITY accountsRestrictionsCatNameLabel "Kategorija">
+<!ENTITY accountsRestrictionsIncludeNameLabel "Vrsta">
+<!ENTITY addRestrictionLabel "Dodaj">
+<!ENTITY addRestrictionAccesskey "D">
+<!ENTITY renameRestrictionLabel "Uredi">
+<!ENTITY renameRestrictionAccesskey "U">
+<!ENTITY deleteRestrictionLabel "Izbriši">
+<!ENTITY deleteRestrictionAccesskey "b">
+<!ENTITY emailsCollectionLabel "Zberi odhodno pošto">
+<!ENTITY emailsCollectionTooltip "Razširi običajno Thunderbirdovo zbiranje odhodnih e-poštih naslovovThunderbird. Če je omogočeno, bodo e-poštni naslovi, ki niso prisotni v nobenem CardBookovem imeniku, dodani v izbrani/-e imenik/-e.">
+<!ENTITY emailsCollectionEnabledLabel "Omogočeno">
+<!ENTITY emailsCollectionMailNameLabel "Poštni račun">
+<!ENTITY emailsCollectionABNameLabel "Imenik">
+<!ENTITY emailsCollectionCatNameLabel "Kategorija">
+<!ENTITY addEmailsCollectionLabel "Dodaj">
+<!ENTITY addEmailsCollectionAccesskey "o">
+<!ENTITY renameEmailsCollectionLabel "Uredi">
+<!ENTITY renameEmailsCollectionAccesskey "r">
+<!ENTITY deleteEmailsCollectionLabel "Izbriši">
+<!ENTITY deleteEmailsCollectionAccesskey "z">
+<!ENTITY logGroupboxLabel "Dnevnik">
+<!ENTITY debugModeLabel "Način razhoščevanja">
+<!ENTITY debugModeAccesskey "N">
+<!ENTITY debugModeTooltip "Omogoči način razhroščevanja za razširjeno beleženje.">
+<!ENTITY statusInformationLineNumberLabel "Največje število vrstic datoteke dnevnika">
+<!ENTITY statusInformationLineNumberAccesskey "a">
+
+<!ENTITY tabsEdittingGroupboxLabel "Prikaži zavihke">
+<!ENTITY noteTabLabel "Opombe">
+<!ENTITY noteTabAccesskey "O">
+<!ENTITY listTabLabel "Seznami">
+<!ENTITY listTabAccesskey "S">
+<!ENTITY mailPopularityTabLabel "Priljubljenost pošte">
+<!ENTITY mailPopularityTabAccesskey "P">
+<!ENTITY technicalTabLabel "Tehnično">
+<!ENTITY technicalTabAccesskey "T">
+<!ENTITY vcardTabLabel "vCard">
+<!ENTITY vcardTabAccesskey "C">
+<!ENTITY localizeEdittingGroupboxLabel "Za iskanje uporabi:">
+<!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
+<!ENTITY localizeEngineOpenStreetMapAccesskey "O">
+<!ENTITY localizeEngineGoogleMapsLabel "Google Zemljevide">
+<!ENTITY localizeEngineGoogleMapsAccesskey "G">
+<!ENTITY localizeEngineBingMapsLabel "Bing Zemljevide">
+<!ENTITY localizeEngineBingMapsAccesskey "B">
+<!ENTITY localizeTargetLabel "Zunanje povezave odpri:">
+<!ENTITY localizeTargetInLabel "V Thunderbirdu">
+<!ENTITY localizeTargetInAccesskey "V">
+<!ENTITY localizeTargetOutLabel "Zunaj Thunderbirda">
+<!ENTITY localizeTargetOutAccesskey "Z">
+<!ENTITY fnLabelExplanation "Cardbookovo ustvarjanje prikazanega imena je mogoče prilagoditi. Ta formula vsebuje bloke, ki so obdani z '()'. V teh blokih sta dva dela, ki sta ločena z '|'. 
+								Prvi del se uporabi, kadar vrednost vpletenega izraza, npr. {{1}}, ni prazna, drugi del pa, kadar je vrednost vpletenega izraza prazna.">
+<!ENTITY fnFormulaLabel "Ustvari prikazano ime">
+<!ENTITY fnFormulaAccesskey "U">
+<!ENTITY resetFnFormulaLabel "Obnovi na privzeto">
+<!ENTITY resetFnFormulaAccesskey "n">
+<!ENTITY miscEdittingGroupboxLabel "Razno">
+<!ENTITY cardCreationVersionLabel "Privzeta različica vCard:">
+<!ENTITY preferEmailEditionLabel "Dvoklik na stik ga uredi namesto pošlje">
+<!ENTITY preferEmailEditionAccesskey "D">
+
+<!ENTITY typesGroupboxLabel "Vrste">
+<!ENTITY typesCategoryAdrLabel "Naslov">
+<!ENTITY typesCategoryAdrAccesskey "N">
+<!ENTITY typesCategoryEmailLabel "E-pošta">
+<!ENTITY typesCategoryEmailAccesskey "E">
+<!ENTITY typesCategoryImppLabel "IMPP">
+<!ENTITY typesCategoryImppAccesskey "M">
+<!ENTITY typesCategoryTelLabel "Tel. številka">
+<!ENTITY typesCategoryTelAccesskey "T">
+<!ENTITY typesCategoryUrlLabel "URL">
+<!ENTITY typesCategoryUrlAccesskey "U">
+<!ENTITY typesCodeLabel "Koda">
+<!ENTITY typesLabelLabel "Oznaka">
+<!ENTITY addTypeLabel "Dodaj">
+<!ENTITY addTypeAccesskey "D">
+<!ENTITY renameTypeLabel "Uredi">
+<!ENTITY renameTypeAccesskey "U">
+<!ENTITY deleteTypeLabel "Izbriši">
+<!ENTITY deleteTypeAccesskey "b">
+<!ENTITY resetTypeLabel "Obnovi na privzeto">
+<!ENTITY resetTypeAccesskey "O">
+<!ENTITY preferenceGroupboxLabel "Polje PREF">
+<!ENTITY preferenceValueLabel "Oznaka polja vrednosti PREF (samo za vCard 4.0)">
+<!ENTITY preferenceValueAccesskey "z">
+
+<!ENTITY IMPPGroupboxWarn "Te nastavitve omogočajo internetno komunikacijo z uporabo namenskega protokola.">
+<!ENTITY IMPPGroupboxLabel "Int. komunikacija">
+<!ENTITY IMPPCodeLabel "Koda">
+<!ENTITY IMPPLabelLabel "Oznaka">
+<!ENTITY IMPPProtocolLabel "Protokol">
+<!ENTITY addIMPPLabel "Dodaj">
+<!ENTITY addIMPPAccesskey "D">
+<!ENTITY renameIMPPLabel "Uredi">
+<!ENTITY renameIMPPAccesskey "U">
+<!ENTITY deleteIMPPLabel "Izbriši">
+<!ENTITY deleteIMPPAccesskey "b">
+
+<!ENTITY customFieldName "Ime polja">
+<!ENTITY customFieldLabel "Oznaka polja">
+
+<!ENTITY orgWarn "Polje ORG lahko vsebuje besedilno vrednost z zgradbo, ki je sestavljena iz delov, ločenih s PODPIČJEM (npr.: podjetje;storitev;oddelek). Spodnja polja opisujejo oznake delov te zgradbe.">
+
+<!ENTITY listPanelLabel "Če vaš strežnik ne podpira kategorij (kot npr. Google, Apple, Zimbra itd. …), lahko za pošiljanje e-pošte skupinam uporabite sezname. vCard 3.0 izvirno ne podpra seznamov, vendar lahko to dosežete s polji po meri. Če želite s standardom vCard 3.0 uporabiti sezname, morate ta polja določiti.">
+<!ENTITY listGroupboxLabel "Polja po meri za sezname">
+<!ENTITY kindCustomLabel "Vrsta">
+<!ENTITY kindCustomAccesskey "V">
+<!ENTITY memberCustomLabel "Član">
+<!ENTITY memberCustomAccesskey "Č">
+
+<!ENTITY syncGroupboxLabel "Sinh.">
+<!ENTITY syncWarn "Sinhronizacija prenese vaše spremembe na oddaljeni strežnik in spremembe na strežniku k vam.">
+<!ENTITY initialSyncLabel "Zaženi začetno sinhronizacijo ob zagonu Thunderbirda">
+<!ENTITY initialSyncAccesskey "Z">
+<!ENTITY solveConflictsLabel "Če je bil stik sprememnjen tako na strežniku kot krajevno:">
+<!ENTITY solveConflictsLocalLabel "daj prednost krajevni spremembi">
+<!ENTITY solveConflictsLocalAccesskey "k">
+<!ENTITY solveConflictsRemoteLabel "daj prednost spremembi na strežniku">
+<!ENTITY solveConflictsRemoteAccesskey "e">
+<!ENTITY solveConflictsUserLabel "vprašaj uporabnika">
+<!ENTITY solveConflictsUserAccesskey "V">
+<!ENTITY autoSyncGroupboxLabel "Občasna sinhronizacija">
+<!ENTITY autoSyncLabel "Omnogoči občasno sinhronizacijo">
+<!ENTITY autoSyncAccesskey "O">
+<!ENTITY autoSyncIntervalLabel "Razmik občasne sinhronizacije (minute)">
+<!ENTITY autoSyncIntervalAccesskey "R">
+<!ENTITY requestsGroupboxLabel "Zahteve">
+<!ENTITY requestsTimeoutLabel "Časovna omejitev (sekunde)">
+<!ENTITY requestsTimeoutAccesskey "Č">
+<!ENTITY multigetLabel "Za zahteve GET združi stike po">
+<!ENTITY multigetAccesskey "G">
+<!ENTITY advancedSyncGroupboxLabel "Napredne lastnosti">
+<!ENTITY decodeReportLabel "Odkodiraj URL-je za zahteve REPORT">
+<!ENTITY decodeReportAccesskey "d">
+
+<!ENTITY miscEmailGroupboxLabel "Pošiljanje e-pošte">
+<!ENTITY preferEmailPrefLabel "Daj prednost -poštnim naslovom, ki so označeni z oznako PREF">
+<!ENTITY preferEmailPrefAccesskey "D">
+<!ENTITY preferEmailPrefWarn "Če noben naslov ni označen z oznako 'PREF', bo sporočilo poslano na vse e-poštne naslove stika.">
+<!ENTITY warnEmptyEmailsLabel "Opozori me, kadar poskušam poslati pošto stikom brez e-poštnega naslova">
+<!ENTITY warnEmptyEmailsAccesskey "O">
+<!ENTITY attachvCardWarn "Za samodejno dodajanje kartice vCard k vaši e-pošti izberite kartico vCard za vsak e-poštni račun. Če je omogočeno, jo bo CardBook pripel k vsaki odhodni e-pošti za ta račun.">
+<!ENTITY attachvCardGroupboxLabel "Dodaj kartico vCard">
+<!ENTITY mailAccountsEnabledLabel "Omogočeno">
+<!ENTITY mailAccountsNameLabel "Poštni račun">
+<!ENTITY mailAccountsFileNameLabel "Pripeta datoteka">
+<!ENTITY mailAccountsFnLabel "Stik">
+<!ENTITY choosevCardLabel "Izberi kartico vCard">
+<!ENTITY choosevCardAccesskey "z">
+<!ENTITY displayvCardLabel "Pokaži kartico vCard">
+<!ENTITY displayvCardAccesskey "P">
+
+<!ENTITY birthdayListWarn "Obletnice se išče samo v imenikih CardBook. Oblike datuma obletnic so nastavljene v lastnostih imenika.">
+<!ENTITY addressBooksGroupboxLabel "Imeniki">
+<!ENTITY calendarsGroupboxLabel "Koledarji">
+<!ENTITY searchGroupboxLabel "Išči">
+<!ENTITY searchInNoteLabel "Išči obletnice v polju Opombe">
+<!ENTITY searchInNoteTooltip1 "V polje za opombe dodajte vrstice v naslednji obliki (ločilo mora biti : in oblika datuma taka, kot je določena v imeniku):">
+<!ENTITY searchInNoteTooltip2 "Dogodek:Opis:02.12.2006">
+<!ENTITY searchInNoteAccesskey "D">
+<!ENTITY dateFormatLabel "Pričakuj obliko datuma">
+<!ENTITY dateFormatAccesskey "P">
+
+<!ENTITY remindersTabLabel "Opomniki">
+<!ENTITY remindViaPopupWindowGroupboxLabel "Opomni s pojavnim oknom">
+<!ENTITY numberOfDaysForSearchingLabel "Št. dni za preverjanje obletnic">
+<!ENTITY numberOfDaysForSearchingAccesskey "r">
+<!ENTITY showPopupOnStartupLabel "Prikaži pojavno okno ob zagonu">
+<!ENTITY showPopupOnStartupAccesskey "z">
+<!ENTITY showPeriodicPopupLabel "Prikaži pojavno okno vsak dan">
+<!ENTITY showPeriodicPopupAccesskey "s">
+<!ENTITY periodicPopupTimeLabel "Čas prikaza (hh:mm)">
+<!ENTITY periodicPopupTimeAccesskey "k">
+<!ENTITY showPopupEvenIfNoBirthdayLabel "Prikaži pojavno okno, kadar je seznam obletnic prazen">
+<!ENTITY showPopupEvenIfNoBirthdayAccesskey "P">
+<!ENTITY remindViaLightningGroupboxLabel "Opomni preko Thunderbirdove koledarske razširitve Lightning">
+<!ENTITY numberOfDaysForWritingLabel "Št. dni za pisanje obletnic">
+<!ENTITY numberOfDaysForWritingAccesskey "a">
+<!ENTITY syncWithLightningOnStartupLabel "Sinhroniziraj z Lightningom ob zagonu">
+<!ENTITY syncWithLightningOnStartupAccesskey "n">
+<!ENTITY calendarEntryTitleLabel "Naziv dogodka">
+<!ENTITY calendarEntryTitleTooltip "Naziv predloge dogodka. Vsebovati mora dve označbi mesta &#37;S, ki se ustrezno nadomestita z imenom in starostjo. Če je polje prazno se uporabi običajno sporočilo.">
+<!ENTITY calendarEntryTitleAccesskey "a">
+<!ENTITY calendarEntryTimeLabel "Čas dogodka (hh:mm)">
+<!ENTITY calendarEntryTimeAccesskey "d">
+<!ENTITY calendarEntryWholeDayLabel "Celodnevni dogodek">
+<!ENTITY calendarEntryWholeDayAccesskey "C">
+<!ENTITY calendarEntryAlarmLabel "Opozori toliko dni pred dogodkom">
+<!ENTITY calendarEntryAlarmTooltip "Vnesite št. dni pred obletnico, ko naj vas opozori Lightningovo opozorilo. Če je polje prazno, opozorila ne bo.">
+<!ENTITY calendarEntryAlarmAccesskey "O">
+<!ENTITY calendarEntryCategoriesLabel "Kategorija/-e dogodka">
+<!ENTITY calendarEntryCategoriesTooltip "Ena ali več kategorij, ločene z vejico.">
+<!ENTITY calendarEntryCategoriesAccesskey "K">
