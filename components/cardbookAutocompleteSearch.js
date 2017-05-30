@@ -262,73 +262,21 @@ cardbookAutocompleteSearch.prototype = {
 		var mySearchParamObj = JSON.parse(aSearchParam);
 		this.loadRestrictions(mySearchParamObj.idKey);
 		
-		if (prefs.getBoolPref("extensions.cardbook.autocompletion")) {
-			// add Cards
-			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
-				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] != "SEARCH") {
-					var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
-					if (cardbookRepository.verifyABRestrictions(myDirPrefId, "allAddressBooks", this.ABExclRestrictions, this.ABInclRestrictions)) {
-						var myStyle = cardbookRepository.getIconType(cardbookRepository.cardbookAccounts[i][6]) + " color_" + myDirPrefId;
-                        var myComment = null;
-                        if (showAddressbookComments) {
-                            // display addressbook name in the comments column
-                            myComment = cardbookRepository.cardbookAccounts[i][0];
-                        }
-						for (var j in cardbookRepository.cardbookCardSearch2[myDirPrefId]) {
-							if (j.indexOf(aSearchString) >= 0 || aSearchString == "") {
-								for (var k = 0; k < cardbookRepository.cardbookCardSearch2[myDirPrefId][j].length; k++) {
-									var myCard = cardbookRepository.cardbookCardSearch2[myDirPrefId][j][k];
-									if (this.catExclRestrictions[myDirPrefId]) {
-										var add = true;
-										for (var l in this.catExclRestrictions[myDirPrefId]) {
-											if (cardbookUtils.contains(myCard.categories, l)) {
-												add = false;
-												break;
-											}
-										}
-										if (!add) {
-											continue;
-										}
-									}
-									if (this.catInclRestrictions[myDirPrefId]) {
-										var add = false;
-										for (var l in this.catInclRestrictions[myDirPrefId]) {
-											if (cardbookUtils.contains(myCard.categories, l)) {
-												add = true;
-												break;
-											}
-										}
-										if (!add) {
-											continue;
-										}
-									}
-									for (var l = 0; l < myCard.email.length; l++) {
-										var myCurrentEmail = MailServices.headerParser.makeMimeAddress(myCard.fn, myCard.email[l][0][0]);
-										this.addResult(result, myCurrentEmail, myComment, null, debugMode, myStyle);
-									}
-									// add Lists
-									if (myCard.isAList) {
-										this.addResult(result, myCard.fn + " <" + myCard.fn + ">", myComment, null, debugMode, myStyle);
-									} else {
-										this.addResult(result, cardbookUtils.getMimeEmailsFromCards([myCard]).join(" , "), myComment, null, debugMode, myStyle);
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			
-			// add Categories
-			for (var dirPrefId in cardbookRepository.cardbookAccountsCategories) {
-				if (cardbookRepository.verifyABRestrictions(dirPrefId, "allAddressBooks", this.ABExclRestrictions, this.ABInclRestrictions)) {
-					var cardbookPrefService = new cardbookPreferenceService(dirPrefId);
-					var myStyle = cardbookRepository.getIconType(cardbookPrefService.getType()) + " color_" + dirPrefId;
-					for (var i = 0; i < cardbookRepository.cardbookAccountsCategories[dirPrefId].length; i++) {
-						var myCategory = cardbookRepository.cardbookAccountsCategories[dirPrefId][i];
-						if (((!(this.catInclRestrictions[dirPrefId])) && (myCategory != cardbookRepository.cardbookUncategorizedCards)) ||
-								((this.catInclRestrictions[dirPrefId]) && (this.catInclRestrictions[dirPrefId][myCategory]))) {
-							if (myCategory.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase().indexOf(aSearchString) >= 0) {
+		// add Cards
+		for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
+			if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] != "SEARCH") {
+				var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
+				if (cardbookRepository.verifyABRestrictions(myDirPrefId, "allAddressBooks", this.ABExclRestrictions, this.ABInclRestrictions)) {
+					var myStyle = cardbookRepository.getIconType(cardbookRepository.cardbookAccounts[i][6]) + " color_" + myDirPrefId;
+                    var myComment = null;
+                    if (showAddressbookComments) {
+                        // display addressbook name in the comments column
+                        myComment = cardbookRepository.cardbookAccounts[i][0];
+                    }
+					for (var j in cardbookRepository.cardbookCardSearch[myDirPrefId]) {
+						if (j.indexOf(aSearchString) >= 0 || aSearchString == "") {
+							for (var k = 0; k < cardbookRepository.cardbookCardSearch[myDirPrefId][j].length; k++) {
+								var myCard = cardbookRepository.cardbookCardSearch[myDirPrefId][j][k];
 								if (this.catExclRestrictions[myDirPrefId]) {
 									var add = true;
 									for (var l in this.catExclRestrictions[myDirPrefId]) {
@@ -341,13 +289,63 @@ cardbookAutocompleteSearch.prototype = {
 										continue;
 									}
 								}
-								var myCardList = [] ;
-								for (var j = 0; j < cardbookRepository.cardbookDisplayCards[dirPrefId+"::"+myCategory].length; j++) {
-									var myCard = cardbookRepository.cardbookDisplayCards[dirPrefId+"::"+myCategory][j];
-									myCardList.push(myCard);
+								if (this.catInclRestrictions[myDirPrefId]) {
+									var add = false;
+									for (var l in this.catInclRestrictions[myDirPrefId]) {
+										if (cardbookUtils.contains(myCard.categories, l)) {
+											add = true;
+											break;
+										}
+									}
+									if (!add) {
+										continue;
+									}
 								}
-								this.addResult(result, cardbookUtils.getMimeEmailsFromCards(myCardList).join(" , "), null, null, debugMode, myStyle);
+								for (var l = 0; l < myCard.email.length; l++) {
+									var myCurrentEmail = MailServices.headerParser.makeMimeAddress(myCard.fn, myCard.email[l][0][0]);
+									this.addResult(result, myCurrentEmail, myComment, null, debugMode, myStyle);
+								}
+								// add Lists
+								if (myCard.isAList) {
+									this.addResult(result, myCard.fn + " <" + myCard.fn + ">", myComment, null, debugMode, myStyle);
+								} else {
+									this.addResult(result, cardbookUtils.getMimeEmailsFromCards([myCard]).join(" , "), myComment, null, debugMode, myStyle);
+								}
 							}
+						}
+					}
+				}
+			}
+		}
+		
+		// add Categories
+		for (var dirPrefId in cardbookRepository.cardbookAccountsCategories) {
+			if (cardbookRepository.verifyABRestrictions(dirPrefId, "allAddressBooks", this.ABExclRestrictions, this.ABInclRestrictions)) {
+				var cardbookPrefService = new cardbookPreferenceService(dirPrefId);
+				var myStyle = cardbookRepository.getIconType(cardbookPrefService.getType()) + " color_" + dirPrefId;
+				for (var i = 0; i < cardbookRepository.cardbookAccountsCategories[dirPrefId].length; i++) {
+					var myCategory = cardbookRepository.cardbookAccountsCategories[dirPrefId][i];
+					if (((!(this.catInclRestrictions[dirPrefId])) && (myCategory != cardbookRepository.cardbookUncategorizedCards)) ||
+							((this.catInclRestrictions[dirPrefId]) && (this.catInclRestrictions[dirPrefId][myCategory]))) {
+						if (myCategory.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase().indexOf(aSearchString) >= 0) {
+							if (this.catExclRestrictions[myDirPrefId]) {
+								var add = true;
+								for (var l in this.catExclRestrictions[myDirPrefId]) {
+									if (cardbookUtils.contains(myCard.categories, l)) {
+										add = false;
+										break;
+									}
+								}
+								if (!add) {
+									continue;
+								}
+							}
+							var myCardList = [] ;
+							for (var j = 0; j < cardbookRepository.cardbookDisplayCards[dirPrefId+"::"+myCategory].length; j++) {
+								var myCard = cardbookRepository.cardbookDisplayCards[dirPrefId+"::"+myCategory][j];
+								myCardList.push(myCard);
+							}
+							this.addResult(result, cardbookUtils.getMimeEmailsFromCards(myCardList).join(" , "), null, null, debugMode, myStyle);
 						}
 					}
 				}
