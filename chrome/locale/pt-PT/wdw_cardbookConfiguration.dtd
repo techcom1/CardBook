@@ -175,12 +175,12 @@
 <!ENTITY displayvCardLabel "Ver um vCard">
 <!ENTITY displayvCardAccesskey "V">
 
-<!ENTITY birthdayListWarn "Os aniversários são procurados dentro das agendas no CardBook.?? Birthdays date formats are set up in the address book properties.??">
+<!ENTITY birthdayListWarn "Os aniversários são procurados dentro das agendas no CardBook. O formato das datas de aniversários é configurado nas propriedades da agenda.">
 <!ENTITY addressBooksGroupboxLabel "Agendas">
 <!ENTITY calendarsGroupboxLabel "Calendarios">
 <!ENTITY searchGroupboxLabel "Procura">
 <!ENTITY searchInNoteLabel "Procurar aniversários no campo Notas">
-<!ENTITY searchInNoteTooltip1 "??Add such lines in the Note field  (separator should be : and the date format should be the one defined for the address book) :??">
+<!ENTITY searchInNoteTooltip1 "Adicionar tantas linhas no campo das Notas (o separador deve ser : e o formato da data deve ser definido na agenda) :">
 <!ENTITY searchInNoteTooltip2 "Evento:Descrição:02.12.2006">
 <!ENTITY searchInNoteTooltipOld "Adicionar linhas ao campo de notas (O separador deve ser : e o formatoda data deve ser o seguinte:: Aniversário do primeiro beijo : 01.01.2011">
 <!ENTITY searchInNoteAccesskey "A">
