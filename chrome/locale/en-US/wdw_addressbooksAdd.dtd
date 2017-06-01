@@ -36,8 +36,8 @@
 <!ENTITY remotePage.credentials.description "Enter the credentials for accessing your address book. For a Google address book, the username should be your Google email.">
 <!ENTITY remotePage.validatebutton.label "Validate">
 
-<!ENTITY locationSearchPage.wizard.description "Definition of the advanced search.">
-<!ENTITY locationSearchPage.label "Advanced Search">
+<!ENTITY locationSearchPage.wizard.description "Definition of the saved search.">
+<!ENTITY locationSearchPage.label "Saved Search">
 
 <!ENTITY googleOauthPage.wizard.description "Google Authentication">
 

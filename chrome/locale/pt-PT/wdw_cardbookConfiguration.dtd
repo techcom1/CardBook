@@ -182,7 +182,6 @@
 <!ENTITY searchInNoteLabel "Procurar aniversários no campo Notas">
 <!ENTITY searchInNoteTooltip1 "Adicionar tantas linhas no campo das Notas (o separador deve ser : e o formato da data deve ser definido na agenda) :">
 <!ENTITY searchInNoteTooltip2 "Evento:Descrição:02.12.2006">
-<!ENTITY searchInNoteTooltipOld "Adicionar linhas ao campo de notas (O separador deve ser : e o formatoda data deve ser o seguinte:: Aniversário do primeiro beijo : 01.01.2011">
 <!ENTITY searchInNoteAccesskey "A">
 <!ENTITY dateFormatLabel "Formato de data esperado">
 <!ENTITY dateFormatAccesskey "F">

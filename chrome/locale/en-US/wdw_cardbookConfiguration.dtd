@@ -8,7 +8,7 @@
 <!ENTITY listsTabLabel "Lists">
 <!ENTITY syncTabLabel "Sync.">
 <!ENTITY emailTabLabel "Email">
-<!ENTITY birthdaylistTabLabel "Anniversaries">
+<!ENTITY birthdaylistTabLabel "Anniversary">
 <!ENTITY synclistTabLabel "Anniversary Reminders">
 
 <!ENTITY integrationGroupboxLabel "Integration in Thunderbird">

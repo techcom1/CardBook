@@ -16,8 +16,8 @@
 <!ENTITY cardbookContactsMenuLabel "Névjegyek">
 
 <!ENTITY cardbookToolsMenuLabel "Eszközök">
-<!ENTITY cardbookToolsMenuBirthdayListLabel "Születésnapi lista mutatása">
-<!ENTITY cardbookToolsMenuSyncLightningLabel "Születésnapok naptár hozzáadása">
+<!ENTITY cardbookToolsMenuBirthdayListLabel "Az évforduló lista megtekintése">
+<!ENTITY cardbookToolsMenuSyncLightningLabel "Az évfordulók hozzáadása a naptárhoz">
 <!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "Az összes névjegytárokban ismétlődő névjegy keresése">
 <!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "A jelenlegi névjegytárban ismétlődő névjegy keresése">
 
