@@ -93,9 +93,12 @@ if ("undefined" == typeof(cardbookComplexSearch)) {
 			var myListOfSelectedCards = [];
 			if (aParams.aListOfCards) {
 				for (var i = 0; i < aParams.aListOfCards.length; i++) {
-					var myCard = cardbookRepository.cardbookCards[aParams.aListOfCards[i]];
-					if (cardbookComplexSearch.isMyCardFound(myCard)) {
-						myListOfSelectedCards.push(aParams.aListOfCards[i]);
+					// selected cards may have been deleted
+					if (cardbookRepository.cardbookCards[aParams.aListOfCards[i]]) {
+						var myCard = cardbookRepository.cardbookCards[aParams.aListOfCards[i]];
+						if (cardbookComplexSearch.isMyCardFound(myCard)) {
+							myListOfSelectedCards.push(aParams.aListOfCards[i]);
+						}
 					}
 				}
 			}

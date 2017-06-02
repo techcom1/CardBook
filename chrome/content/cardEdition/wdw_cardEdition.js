@@ -194,10 +194,10 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			wdw_cardEdition.cardbookeditlists.availableCards = [];
 			var myCurrentDirPrefId = document.getElementById('dirPrefIdTextBox').value;
 			if (myCurrentDirPrefId != "") {
-				for (var i in cardbookRepository.cardbookCardSearch1) {
+				for (var i in cardbookRepository.cardbookCardSearch[myCurrentDirPrefId]) {
 					if (i.indexOf(searchValue) >= 0 || searchValue == "") {
-						for (var j = 0; j < cardbookRepository.cardbookCardSearch1[i].length; j++) {
-							var myCard = cardbookRepository.cardbookCardSearch1[i][j];
+						for (var j = 0; j < cardbookRepository.cardbookCardSearch[myCurrentDirPrefId][i].length; j++) {
+							var myCard = cardbookRepository.cardbookCardSearch[myCurrentDirPrefId][i][j];
 							if (myCard.dirPrefId == myCurrentDirPrefId) {
 								var found = false;
 								for (var k = 0; k < wdw_cardEdition.cardbookeditlists.addedCards.length; k++) {
@@ -447,26 +447,47 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			wdw_cardEdition.setDisplayName();
 		},
 
-		openCalendarPanel: function () {
+		openCalendarPanel: function (aType) {
+			if (aType == "bday") {
+				var myStartField = document.getElementById('bdayTextBox');
+			} else if (aType == "note") {
+				var myStartField = document.getElementById('noteCardbookCalendar');
+			}
 			if (wdw_cardEdition.panel === 1) {
-				document.getElementById('bdayLightningPanel').openPopup(document.getElementById('bdayTextBox'), 'after_start', 0, 0, false, false);
+				document.getElementById(aType + 'LightningPanel').openPopup(myStartField, 'after_start', 0, 0, false, false);
 			} else {
-				document.getElementById('bdayBasePanel').openPopup(document.getElementById('bdayTextBox'), 'after_start', 0, 0, false, false);
+				document.getElementById(aType + 'BasePanel').openPopup(myStartField, 'after_start', 0, 0, false, false);
 			}
 		},
 
-		validateCalendarPanel: function (aValue) {
+		validateCalendarPanel: function (aValue, aType) {
 			var cardbookPrefService = new cardbookPreferenceService(document.getElementById('dirPrefIdTextBox').value);
 			var dateFormat = cardbookPrefService.getDateFormat();
 			if (wdw_cardEdition.panel === 1) {
-				document.getElementById('bdayTextBox').value = cardbookDates.convertDateToDateString(aValue, dateFormat);
-				document.getElementById('bdayLightningPanel').hidePopup();
+				var myValue = cardbookDates.convertDateToDateString(aValue, dateFormat);
+				document.getElementById(aType + 'LightningPanel').hidePopup();
 			} else {
 				var myDate = cardbookDates.convertDateStringToDate(aValue, 'YYYY-MM-DD');
-				document.getElementById('bdayTextBox').value = cardbookDates.convertDateToDateString(myDate, dateFormat);
-				document.getElementById('bdayBasePanel').hidePopup();
+				var myValue = cardbookDates.convertDateToDateString(myDate, dateFormat);
+				document.getElementById(aType + 'BasePanel').hidePopup();
 			}
-			document.getElementById('bdayTextBox').focus();
+			var myTextbox = document.getElementById(aType + 'TextBox');
+			if (aType == "bday") {
+				myTextbox.value = myValue;
+			} else if (aType == "note") {
+				var strBundle = document.getElementById("cardbook-strings");
+				if (wdw_cardEdition.panel === 1) {
+					var myPrefix = strBundle.getString("eventInNoteEventPrefix") + ":" + document.getElementById('desc1TextBox').value + ":";
+				} else {
+					var myPrefix = strBundle.getString("eventInNoteEventPrefix") + ":" + document.getElementById('desc2TextBox').value + ":";
+				}
+				if (myTextbox.value == "" ) {
+					myTextbox.value = myPrefix + myValue;
+				} else {
+					myTextbox.value = myPrefix + myValue + "\r\n" + myTextbox.value;
+				}
+			}
+			document.getElementById(aType + 'TextBox').focus();
 		},
 
 		chooseCalendarPanelEnd: function (addon) {
@@ -634,6 +655,9 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 							}
 						}
 						myTextbox.value = result;
+						if (myTextbox.oninput) {
+							myTextbox.oninput();
+						}
 					}, false);
 				myMenuItem.setAttribute("label", strBundle.getString("toUpperCase"));
 				myMenu.appendChild(myMenuItem);
@@ -661,6 +685,9 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 							}
 						}
 						myTextbox.value = result;
+						if (myTextbox.oninput) {
+							myTextbox.oninput();
+						}
 					}, false);
 				myMenuItem.setAttribute("label", strBundle.getString("toLowerCase"));
 				myMenu.appendChild(myMenuItem);
@@ -806,6 +833,9 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		returnKey: function () {
 			if (window.arguments[0].editionMode == "ViewResult" || window.arguments[0].editionMode == "ViewResultHideCreate") {
 				return;
+			// the panel for addresses does not save information otherwise
+			} else {
+				wdw_cardEdition.validateAdrPanel();
 			}
 			wdw_cardEdition.save();
 		},

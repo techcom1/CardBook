@@ -1,3 +1,4 @@
 <!ENTITY existingDataGroupboxLabel "Dodaj do tej wizytówki">
 <!ENTITY cardbookSwitchButtonTooltip "Zamień nazwisko i imię">
-<!ENTITY cardbookCalendarButtonTooltip "Wybierz datę z kalendarza">
+<!ENTITY cardbookCalendarButtonTooltip "??Insert an event??">
+<!ENTITY descriptionTextbox "Opis">

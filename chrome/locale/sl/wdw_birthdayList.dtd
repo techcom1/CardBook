@@ -1,0 +1,12 @@
+<!ENTITY daysLeftColumnLabel "Preostalih dni">
+<!ENTITY nameColumnLabel "Ime">
+<!ENTITY ageColumnLabel "Starost">
+<!ENTITY dateOfBirthColumnLabel "Datum rojstva">
+<!ENTITY dateOfBirthFoundColumnLabel "Datum odkritja">
+<!ENTITY emailColumnLabel "E-pošta">
+<!ENTITY sendEmailLabel "Pošlji e-pošto">
+<!ENTITY sendEmailAccesskey "P">
+<!ENTITY syncLightningMenuItemLabel "Sinhroniziraj z Lightningom">
+<!ENTITY syncLightningMenuAccesskey "S">
+<!ENTITY configurationButtonLabel "Nastavitve">
+<!ENTITY configurationButtonAccesskey "N">

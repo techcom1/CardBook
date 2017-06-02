@@ -6,7 +6,7 @@
 	<Description about="urn:mozilla:install-manifest">
 		<em:id>cardbook@vigneau.philippe</em:id>
 		<em:name>CardBook</em:name>
-		<em:version>19.1</em:version>
+		<em:version>19.4</em:version>
 		<em:type>2</em:type>
 		<em:description>vCard Address Book</em:description>
 		<em:creator>Philippe Vigneau</em:creator>
@@ -16,12 +16,14 @@
 		<em:contributor>Christoph Mair</em:contributor>
 		<em:contributor>Boris Prüssmann</em:contributor>
 		<em:contributor>Lukáš Tyrychtr</em:contributor>
+		<em:contributor>Michael Roland</em:contributor>
 		<em:translator>Lukáš Tyrychtr (cs)</em:translator>
 		<em:translator>Alexander Bergmann (de)</em:translator>
 		<em:translator>Markus Mauerer (de)</em:translator>
 		<em:translator>Oliver Schuppe (de)</em:translator>
 		<em:translator>SusiTux (de)</em:translator>
 		<em:translator>Timothe Litt (en-US)</em:translator>
+		<em:translator>Óvári (en-US)</em:translator>
 		<em:translator>Philippe Vigneau (fr)</em:translator>
 		<em:translator>Óvári (hu)</em:translator>
 		<em:translator>Agnese Morettini (it)</em:translator>
@@ -29,7 +31,8 @@
 		<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 		<em:translator>Dominik Wnęk (pl)</em:translator>
 		<em:translator>André Bação (pt-PT)</em:translator>
-        <em:translator>Alexander Yavorsky (ru)</em:translator>
+		<em:translator>Alexander Yavorsky (ru)</em:translator>
+		<em:translator>Peter Klofutar (sl)</em:translator>
 		<em:optionsURL>chrome://cardbook/content/wdw_cardbookConfiguration.xul</em:optionsURL>
 		<em:iconURL>chrome://cardbook/skin/cardbook_32_32.png</em:iconURL>
 
@@ -53,12 +56,14 @@
 				<em:contributor>Christoph Mair</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
+				<em:contributor>Michael Roland</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
 				<em:translator>Oliver Schuppe (de)</em:translator>
 				<em:translator>SusiTux (de)</em:translator>
 				<em:translator>Timothe Litt (en-US)</em:translator>
+				<em:translator>Óvári (en-US)</em:translator>
 				<em:translator>Philippe Vigneau (fr)</em:translator>
 				<em:translator>Óvári (hu)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
@@ -66,7 +71,8 @@
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 				<em:translator>Dominik Wnęk (pl)</em:translator>
 				<em:translator>André Bação (pt-PT)</em:translator>
-                <em:translator>Alexander Yavorsky (ru)</em:translator>
+				<em:translator>Alexander Yavorsky (ru)</em:translator>
+				<em:translator>Peter Klofutar (sl)</em:translator>
 			</Description>
 		</em:localized>
 		
@@ -81,12 +87,14 @@
 				<em:contributor>Christoph Mair</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
+				<em:contributor>Michael Roland</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
 				<em:translator>Oliver Schuppe (de)</em:translator>
 				<em:translator>SusiTux (de)</em:translator>
 				<em:translator>Timothe Litt (en-US)</em:translator>
+				<em:translator>Óvári (en-US)</em:translator>
 				<em:translator>Philippe Vigneau (fr)</em:translator>
 				<em:translator>Óvári (hu)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
@@ -94,7 +102,8 @@
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 				<em:translator>Dominik Wnęk (pl)</em:translator>
 				<em:translator>André Bação (pt-PT)</em:translator>
-                <em:translator>Alexander Yavorsky (ru)</em:translator>
+				<em:translator>Alexander Yavorsky (ru)</em:translator>
+				<em:translator>Peter Klofutar (sl)</em:translator>
 			</Description>
 		</em:localized>
 		
@@ -109,12 +118,14 @@
 				<em:contributor>Christoph Mair</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
+				<em:contributor>Michael Roland</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
 				<em:translator>Oliver Schuppe (de)</em:translator>
 				<em:translator>SusiTux (de)</em:translator>
 				<em:translator>Timothe Litt (en-US)</em:translator>
+				<em:translator>Óvári (en-US)</em:translator>
 				<em:translator>Philippe Vigneau (fr)</em:translator>
 				<em:translator>Óvári (hu)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
@@ -122,7 +133,8 @@
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 				<em:translator>Dominik Wnęk (pl)</em:translator>
 				<em:translator>André Bação (pt-PT)</em:translator>
-                <em:translator>Alexander Yavorsky (ru)</em:translator>
+				<em:translator>Alexander Yavorsky (ru)</em:translator>
+				<em:translator>Peter Klofutar (sl)</em:translator>
 			</Description>
 		</em:localized>
 		
@@ -137,12 +149,14 @@
 				<em:contributor>Christoph Mair</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
+				<em:contributor>Michael Roland</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
 				<em:translator>Oliver Schuppe (de)</em:translator>
 				<em:translator>SusiTux (de)</em:translator>
 				<em:translator>Timothe Litt (en-US)</em:translator>
+				<em:translator>Óvári (en-US)</em:translator>
 				<em:translator>Philippe Vigneau (fr)</em:translator>
 				<em:translator>Óvári (hu)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
@@ -150,7 +164,8 @@
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 				<em:translator>Dominik Wnęk (pl)</em:translator>
 				<em:translator>André Bação (pt-PT)</em:translator>
-                <em:translator>Alexander Yavorsky (ru)</em:translator>
+				<em:translator>Alexander Yavorsky (ru)</em:translator>
+				<em:translator>Peter Klofutar (sl)</em:translator>
 			</Description>
 		</em:localized>
 		
@@ -165,12 +180,14 @@
 				<em:contributor>Christoph Mair</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
+				<em:contributor>Michael Roland</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
 				<em:translator>Oliver Schuppe (de)</em:translator>
 				<em:translator>SusiTux (de)</em:translator>
 				<em:translator>Timothe Litt (en-US)</em:translator>
+				<em:translator>Óvári (en-US)</em:translator>
 				<em:translator>Philippe Vigneau (fr)</em:translator>
 				<em:translator>Óvári (hu)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
@@ -178,7 +195,8 @@
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 				<em:translator>Dominik Wnęk (pl)</em:translator>
 				<em:translator>André Bação (pt-PT)</em:translator>
-                <em:translator>Alexander Yavorsky (ru)</em:translator>
+				<em:translator>Alexander Yavorsky (ru)</em:translator>
+				<em:translator>Peter Klofutar (sl)</em:translator>
 			</Description>
 		</em:localized>
 
@@ -193,12 +211,14 @@
 				<em:contributor>Christoph Mair</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
+				<em:contributor>Michael Roland</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
 				<em:translator>Oliver Schuppe (de)</em:translator>
 				<em:translator>SusiTux (de)</em:translator>
 				<em:translator>Timothe Litt (en-US)</em:translator>
+				<em:translator>Óvári (en-US)</em:translator>
 				<em:translator>Philippe Vigneau (fr)</em:translator>
 				<em:translator>Óvári (hu)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
@@ -206,7 +226,8 @@
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 				<em:translator>Dominik Wnęk (pl)</em:translator>
 				<em:translator>André Bação (pt-PT)</em:translator>
-                <em:translator>Alexander Yavorsky (ru)</em:translator>
+				<em:translator>Alexander Yavorsky (ru)</em:translator>
+				<em:translator>Peter Klofutar (sl)</em:translator>
 			</Description>
 		</em:localized>
 		
@@ -221,12 +242,14 @@
 				<em:contributor>Christoph Mair</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
+				<em:contributor>Michael Roland</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
 				<em:translator>Oliver Schuppe (de)</em:translator>
 				<em:translator>SusiTux (de)</em:translator>
 				<em:translator>Timothe Litt (en-US)</em:translator>
+				<em:translator>Óvári (en-US)</em:translator>
 				<em:translator>Philippe Vigneau (fr)</em:translator>
 				<em:translator>Óvári (hu)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
@@ -234,7 +257,8 @@
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 				<em:translator>Dominik Wnęk (pl)</em:translator>
 				<em:translator>André Bação (pt-PT)</em:translator>
-                <em:translator>Alexander Yavorsky (ru)</em:translator>
+				<em:translator>Alexander Yavorsky (ru)</em:translator>
+				<em:translator>Peter Klofutar (sl)</em:translator>
 			</Description>
 		</em:localized>
 		
@@ -249,12 +273,14 @@
 				<em:contributor>Christoph Mair</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
+				<em:contributor>Michael Roland</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
 				<em:translator>Oliver Schuppe (de)</em:translator>
 				<em:translator>SusiTux (de)</em:translator>
 				<em:translator>Timothe Litt (en-US)</em:translator>
+				<em:translator>Óvári (en-US)</em:translator>
 				<em:translator>Philippe Vigneau (fr)</em:translator>
 				<em:translator>Óvári (hu)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
@@ -262,7 +288,8 @@
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 				<em:translator>Dominik Wnęk (pl)</em:translator>
 				<em:translator>André Bação (pt-PT)</em:translator>
-                <em:translator>Alexander Yavorsky (ru)</em:translator>
+				<em:translator>Alexander Yavorsky (ru)</em:translator>
+				<em:translator>Peter Klofutar (sl)</em:translator>
 			</Description>
 		</em:localized>
 		
@@ -277,12 +304,14 @@
 				<em:contributor>Christoph Mair</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
+				<em:contributor>Michael Roland</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
 				<em:translator>Oliver Schuppe (de)</em:translator>
 				<em:translator>SusiTux (de)</em:translator>
 				<em:translator>Timothe Litt (en-US)</em:translator>
+				<em:translator>Óvári (en-US)</em:translator>
 				<em:translator>Philippe Vigneau (fr)</em:translator>
 				<em:translator>Óvári (hu)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
@@ -290,7 +319,8 @@
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 				<em:translator>Dominik Wnęk (pl)</em:translator>
 				<em:translator>André Bação (pt-PT)</em:translator>
-                <em:translator>Alexander Yavorsky (ru)</em:translator>
+				<em:translator>Alexander Yavorsky (ru)</em:translator>
+				<em:translator>Peter Klofutar (sl)</em:translator>
 			</Description>
 		</em:localized>
         
@@ -305,12 +335,14 @@
 				<em:contributor>Christoph Mair</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
+				<em:contributor>Michael Roland</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
 				<em:translator>Oliver Schuppe (de)</em:translator>
 				<em:translator>SusiTux (de)</em:translator>
 				<em:translator>Timothe Litt (en-US)</em:translator>
+				<em:translator>Óvári (en-US)</em:translator>
 				<em:translator>Philippe Vigneau (fr)</em:translator>
 				<em:translator>Óvári (hu)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
@@ -318,7 +350,39 @@
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 				<em:translator>Dominik Wnęk (pl)</em:translator>
 				<em:translator>André Bação (pt-PT)</em:translator>
-                <em:translator>Alexander Yavorsky (ru)</em:translator>
+				<em:translator>Alexander Yavorsky (ru)</em:translator>
+				<em:translator>Peter Klofutar (sl)</em:translator>
+			</Description>
+		</em:localized>
+        
+        <em:localized>
+			<Description>
+				<em:locale>sl</em:locale>
+				<em:name>CardBook</em:name>
+				<em:description>Imenik vCard</em:description>
+				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>R. Kent James</em:contributor>
+				<em:contributor>Timothe Litt</em:contributor>
+				<em:contributor>Christoph Mair</em:contributor>
+				<em:contributor>Boris Prüssmann</em:contributor>
+				<em:contributor>Lukáš Tyrychtr</em:contributor>
+				<em:contributor>Michael Roland</em:contributor>
+				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
+				<em:translator>Alexander Bergmann (de)</em:translator>
+				<em:translator>Markus Mauerer (de)</em:translator>
+				<em:translator>Oliver Schuppe (de)</em:translator>
+				<em:translator>SusiTux (de)</em:translator>
+				<em:translator>Timothe Litt (en-US)</em:translator>
+				<em:translator>Óvári (en-US)</em:translator>
+				<em:translator>Philippe Vigneau (fr)</em:translator>
+				<em:translator>Óvári (hu)</em:translator>
+				<em:translator>Agnese Morettini (it)</em:translator>
+				<em:translator>Han Knols (nl)</em:translator>
+				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
+				<em:translator>Dominik Wnęk (pl)</em:translator>
+				<em:translator>André Bação (pt-PT)</em:translator>
+				<em:translator>Alexander Yavorsky (ru)</em:translator>
+				<em:translator>Peter Klofutar (sl)</em:translator>
 			</Description>
 		</em:localized>
 		

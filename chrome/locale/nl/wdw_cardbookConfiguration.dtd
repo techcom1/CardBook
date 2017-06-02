@@ -15,6 +15,12 @@
 <!ENTITY autocompletionLabel "Auto-aanvullen bij het typen van email adressen">
 <!ENTITY autocompletionAccesskey "A">
 <!ENTITY autocompletionTooltip "Auto-aanvullen bij het typen van email adressen vanuit CardBook.">
+<!ENTITY autocompleteSortByPopularityLabel "??Sort email addresses by popularity??">
+<!ENTITY autocompleteSortByPopularityAccesskey "p">
+<!ENTITY autocompleteShowAddressbookLabel "??Show address book name??">
+<!ENTITY autocompleteShowAddressbookAccesskey "S">
+<!ENTITY autocompleteWithColorLabel "??Use address book color for background color??">
+<!ENTITY autocompleteWithColorAccesskey "U">
 <!ENTITY exclusiveLabel "CardBook als enige bron voor contactpersonen">
 <!ENTITY exclusiveAccesskey "e">
 <!ENTITY exclusiveTooltip "Als deze optie ingeschakeld is, dan wordt bij het typen uitsluitend naar email adressen in CardBook gezocht; als de optie uit staat, dan wordt ook in de Thunderbird-boeken gezocht.">
@@ -121,7 +127,6 @@
 <!ENTITY deleteIMPPLabel "Verwijderen">
 <!ENTITY deleteIMPPAccesskey "V">
 
-<!ENTITY customFieldsPanelLabel "Definieer eigen rubrieken">
 <!ENTITY customFieldName "Rubriek naam">
 <!ENTITY customFieldLabel "Rubriek label">
 
@@ -176,12 +181,13 @@
 <!ENTITY displayvCardLabel "Bekijk de vCard">
 <!ENTITY displayvCardAccesskey "B">
 
-<!ENTITY birthdayListWarn "Let op: geboortedata worden uitsluitend in CardBook adresboeken gezocht.">
+<!ENTITY birthdayListWarn "Let op: geboortedata worden uitsluitend in CardBook adresboeken gezocht. Datumformaten zijn instelbaar per adresboek.">
 <!ENTITY addressBooksGroupboxLabel "Adresboeken">
 <!ENTITY calendarsGroupboxLabel "Agenda's">
 <!ENTITY searchGroupboxLabel "Zoeken">
 <!ENTITY searchInNoteLabel "Zoek bijzondere gebeurtenissen in de rubriek Notities">
-<!ENTITY searchInNoteTooltip "Bijzondere gebeurtenissen in de rubriek Notities toevoegen (Scheidingsteken : en datumformaat zoals hieronder) : Verjaardag:Onze eerste zoen:02.12.1996">
+<!ENTITY searchInNoteTooltip1 "Regels toevoegen in het Notitie-veld (Scheidingsteken : en datumformaat zoals ingesteld in adresboek) :">
+<!ENTITY searchInNoteTooltip2 "Gebeurtenis:Beschrijving:02.12.2006">
 <!ENTITY searchInNoteAccesskey "Z">
 <!ENTITY dateFormatLabel "Datumformaat">
 <!ENTITY dateFormatAccesskey "D">

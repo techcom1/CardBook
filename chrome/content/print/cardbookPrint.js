@@ -67,7 +67,6 @@ if ("undefined" == typeof(cardbookPrint)) {
 				for (var j in cardbookRepository.allColumns) {
 					if (j == "technical") {
 						continue;
-						textarea 
 					} else if ((j == "note" && aColumnChoice["note"]) || (j == "display" && aColumnChoice["display"])) {
 						var myField = cardbookRepository.allColumns[j][0];
 						if (aListOfCards[i][myField] != "") {

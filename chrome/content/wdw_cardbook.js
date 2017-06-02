@@ -242,7 +242,9 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			}
 			myTree.view.selection.select(myPosition);
 			if (cardbookPrefService.getType() === "SEARCH") {
-				cardbookComplexSearch.startComplexSearch(myCurrentDirPrefId, aListOfCards);
+				if (cardbookPrefService.getEnabled()) {
+					cardbookComplexSearch.startComplexSearch(myCurrentDirPrefId, aListOfCards);
+				}
 			} else {
 				wdw_cardbook.setNoComplexSearchMode();
 			}
@@ -334,11 +336,6 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		},
 
 		createCard: function () {
-			wdw_cardbook.setNoComplexSearchMode();
-			wdw_cardbook.setNoSearchMode();
-			var myTree = document.getElementById('cardsTree');
-			myTree.view.selection.clearSelection();
-			wdw_cardbook.clearCard();
 			var myNewCard = new cardbookCardParser();
 			var myTree = document.getElementById('accountsOrCatsTree');
 			if (myTree.currentIndex != -1) {
@@ -925,29 +922,19 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			if (cardbookRepository.cardbookSyncMode === "SYNC") {
 				return;
 			}
-			if (cardbookRepository.cardbookSearchMode === "SEARCH" || cardbookRepository.cardbookComplexSearchMode === "SEARCH") {
-				var myTree = document.getElementById('cardsTree');
-				var row = { }, col = { }, child = { };
-				myTree.treeBoxObject.getCellAt(aEvent.clientX, aEvent.clientY, row, col, child);
-				if (row.value != -1) {
-					wdw_cardbook.chooseActionCardsTree();
-				}
+			var myTree = document.getElementById('cardsTree');
+			var row = { }, col = { }, child = { };
+			myTree.treeBoxObject.getCellAt(aEvent.clientX, aEvent.clientY, row, col, child);
+			if (row.value != -1) {
+				wdw_cardbook.chooseActionCardsTree();
 			} else {
 				var myTree = document.getElementById('accountsOrCatsTree');
-				if (myTree.currentIndex != -1) {
-					var myTree = document.getElementById('cardsTree');
-					var row = { }, col = { }, child = { };
-					myTree.treeBoxObject.getCellAt(aEvent.clientX, aEvent.clientY, row, col, child);
-					if (row.value != -1) {
-						wdw_cardbook.chooseActionCardsTree();
-					} else {
-						var myTree = document.getElementById('accountsOrCatsTree');
-						var myTarget = myTree.view.getCellText(myTree.currentIndex, {id: "accountId"});
-						var myDirPrefId = cardbookUtils.getAccountId(myTarget);
-						var cardbookPrefService = new cardbookPreferenceService(myDirPrefId);
-						if (!cardbookPrefService.getReadOnly() && cardbookPrefService.getEnabled()) {
-							wdw_cardbook.createCard();
-						}
+				var myTarget = myTree.view.getCellText(myTree.currentIndex, {id: "accountId"});
+				var myDirPrefId = cardbookUtils.getAccountId(myTarget);
+				var cardbookPrefService = new cardbookPreferenceService(myDirPrefId);
+				if (!cardbookPrefService.getReadOnly() && cardbookPrefService.getEnabled()) {
+					if (cardbookUtils.getAvailableAccountNumber() !== 0) {
+						wdw_cardbook.createCard();
 					}
 				}
 			}
@@ -1320,6 +1307,8 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			var myDirPrefIdType = cardbookPrefService.getType();
 			var myDirPrefIdEnabled = cardbookPrefService.getEnabled();
 			var myDirPrefIdReadOnly = cardbookPrefService.getReadOnly();
+			var myCreatedEvent = "";
+			var myDeletedEvent = "";
 
 			if (myDirPrefIdType !== "SEARCH") {
 				if (myDirPrefIdEnabled) {
@@ -1333,7 +1322,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 									var myCard = cardbookRepository.cardbookCards[dataArray[i]];
 									if (myDirPrefId == myCard.dirPrefId) {
 										cardbookRepository.importConflictChoicePersist = true;
-										cardbookRepository.importConflictChoice = "duplicate";
+										cardbookRepository.importConflictChoice = "overwrite";
 										var askUser = false;
 									} else {
 										cardbookRepository.importConflictChoicePersist = false;
@@ -1343,9 +1332,14 @@ if ("undefined" == typeof(wdw_cardbook)) {
 									// performance reason
 									// update the UI only at the end
 									if (i == dataLength - 1) {
-										cardbookSynchronization.importCard(myCard, myTarget, askUser, "cardbook.cardDragged");
-									} else {
-										cardbookSynchronization.importCard(myCard, myTarget, askUser);
+										myCreatedEvent = "cardbook.cardDragged";
+										myDeletedEvent = "cardbook.cardRemovedIndirect";
+									}
+									cardbookSynchronization.importCard(myCard, myTarget, askUser, myCreatedEvent);
+									if (myDirPrefId != myCard.dirPrefId) {
+										if (!aEvent.ctrlKey) {
+											cardbookRepository.deleteCards([myCard], myDeletedEvent);
+										}
 									}
 								} else {
 									cardbookUtils.formatStringForOutput("draggableWrong");
@@ -1385,19 +1379,29 @@ if ("undefined" == typeof(wdw_cardbook)) {
 
 			if (cardbookRepository.cardbookSearchValue != "") {
 				cardbookRepository.cardbookDisplayCards[cardbookRepository.cardbookSearchValue] = [];
-				for (var i in cardbookRepository.cardbookCardSearch1) {
-					if (i.indexOf(cardbookRepository.cardbookSearchValue) >= 0) {
-						for (var j = 0; j < cardbookRepository.cardbookCardSearch1[i].length; j++) {
-							cardbookRepository.cardbookDisplayCards[cardbookRepository.cardbookSearchValue].push(cardbookRepository.cardbookCardSearch1[i][j]);
+
+				
+				for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
+					if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5]) {
+						var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
+						for (var j in cardbookRepository.cardbookCardSearch[myDirPrefId]) {
+							if (j.indexOf(cardbookRepository.cardbookSearchValue) >= 0) {
+								for (var k = 0; k < cardbookRepository.cardbookCardSearch[myDirPrefId][j].length; k++) {
+									cardbookRepository.cardbookDisplayCards[cardbookRepository.cardbookSearchValue].push(cardbookRepository.cardbookCardSearch[myDirPrefId][j][k]);
+								}
+							}
 						}
 					}
 				}
 				// need to verify that the selected cards are always found
 				var myListOfSelectedCards = [];
 				for (var i = 0; i < listOfSelectedCard.length; i++) {
-					var myCard = cardbookRepository.cardbookCards[listOfSelectedCard[i]];
-					if (cardbookRepository.getSearchString(myCard).indexOf(cardbookRepository.cardbookSearchValue) >= 0) {
-						myListOfSelectedCards.push(listOfSelectedCard[i]);
+					// selected cards may have been deleted
+					if (cardbookRepository.cardbookCards[listOfSelectedCard[i]]) {
+						var myCard = cardbookRepository.cardbookCards[listOfSelectedCard[i]];
+						if (cardbookRepository.getSearchString(myCard).indexOf(cardbookRepository.cardbookSearchValue) >= 0) {
+							myListOfSelectedCards.push(listOfSelectedCard[i]);
+						}
 					}
 				}
 				wdw_cardbook.displaySearch(myListOfSelectedCards);
@@ -1432,7 +1436,6 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		setSearchMode: function () {
 			wdw_cardbook.setNoComplexSearchMode();
 			cardbookRepository.cardbookSearchMode = "SEARCH";
-			wdw_cardbook.disableCardCreation();
 		},
 
 		setNoComplexSearchMode: function () {
@@ -2710,7 +2713,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		},
 
 		enableCardDeletion: function () {
-			if (cardbookRepository.cardbookAccounts.length === 0) {
+			if (cardbookUtils.getAvailableAccountNumber() === 0) {
 				wdw_cardbook.disableCardDeletion();
 			} else {
 				wdw_cardbook.enableOrDisableElement(['cardbookToolbarRemoveButton'], false);
@@ -2729,15 +2732,11 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		},
 	
 		enableCardCreation: function () {
-			if (cardbookRepository.cardbookAccounts.length === 0) {
-				wdw_cardbook.disableCardCreation();
-			} else {
-				wdw_cardbook.enableOrDisableElement(['cardbookToolbarAddButton', 'cardbookContactsMenuAddCard', 'addCardFromCards'], false);
-			}
+			wdw_cardbook.enableOrDisableElement(['cardbookToolbarAddButton', 'cardbookContactsMenuAddCard', 'addCardFromCards'], false);
 		},
 	
 		enableCardModification: function () {
-			if (cardbookRepository.cardbookAccounts.length === 0) {
+			if (cardbookUtils.getAvailableAccountNumber() === 0) {
 				wdw_cardbook.disableCardModification();
 			} else {
 				var myTree = document.getElementById('accountsOrCatsTree');
@@ -2769,7 +2768,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 
 		updateStatusProgressInformationField: function() {
 			if (document.getElementById('cardboookModeBroadcaster').getAttribute('mode') == 'cardbook') {
-				if (cardbookRepository.statusInformation.length === 0) {
+				if (cardbookUtils.getAvailableAccountNumber() === 0) {
 					wdw_cardbook.setElementLabel('totalMessageCount', "");
 				} else {
 					if (cardbookRepository.statusInformation[cardbookRepository.statusInformation.length - 1][0] == cardbookRepository.statusInformation[cardbookRepository.statusInformation.length - 1][0].substr(0,150)) {
@@ -2810,7 +2809,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		},
 	
 		windowControlShowing: function () {
-			if (cardbookRepository.cardbookAccounts.length === 0) {
+			if (cardbookUtils.getAvailableAccountNumber() === 0) {
 				wdw_cardbook.enableOrDisableElement(['cardbookToolbarSyncButton', 'cardbookAccountMenuSyncs'], true);
 				wdw_cardbook.disableCardCreation();
 				wdw_cardbook.disableCardModification();
@@ -2822,7 +2821,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					wdw_cardbook.disableCardModification();
 					wdw_cardbook.enableOrDisableElement(['cardbookToolbarSyncButton', 'cardbookAccountMenuSyncs'], true);
 				} else if (cardbookRepository.cardbookSearchMode === "SEARCH" || cardbookRepository.cardbookComplexSearchMode === "SEARCH") {
-					wdw_cardbook.disableCardCreation();
+					wdw_cardbook.enableCardCreation();
 					if (cardbookUtils.getSelectedCardsCount() >= 2 || cardbookUtils.getSelectedCardsCount() == 0) {
 						wdw_cardbook.disableCardModification();
 					} else {
@@ -2885,17 +2884,19 @@ if ("undefined" == typeof(wdw_cardbook)) {
 
 			// get selected account
 			var myAccountId = "";
-			if (aParams && aParams.search(/^accountid:/) != -1) {
-				myAccountId = aParams.replace(/^accountid:/, "");
-			} else {
-				var myTree = document.getElementById('accountsOrCatsTree');
-				var mySelectedIndex = myTree.currentIndex;
-				if (mySelectedIndex !== -1) {
-					myAccountId = myTree.view.getCellText(mySelectedIndex, {id: "accountId"});
+			if (cardbookRepository.cardbookSearchMode !== "SEARCH" && cardbookRepository.cardbookComplexSearchMode !== "SEARCH") {
+				if (aParams && aParams.search(/^accountid:/) != -1) {
+					myAccountId = aParams.replace(/^accountid:/, "");
 				} else {
-					try {
-						myAccountId = myTree.view.getCellText(0, {id: "accountId"});
-					} catch (e) { return; }
+					var myTree = document.getElementById('accountsOrCatsTree');
+					var mySelectedIndex = myTree.currentIndex;
+					if (mySelectedIndex !== -1) {
+						myAccountId = myTree.view.getCellText(mySelectedIndex, {id: "accountId"});
+					} else {
+						try {
+							myAccountId = myTree.view.getCellText(0, {id: "accountId"});
+						} catch (e) { return; }
+					}
 				}
 			}
 			

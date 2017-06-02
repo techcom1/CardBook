@@ -8,13 +8,19 @@
 <!ENTITY listsTabLabel "Listák">
 <!ENTITY syncTabLabel "Összehangolás">
 <!ENTITY emailTabLabel "Email">
-<!ENTITY birthdaylistTabLabel "Születésnapok">
-<!ENTITY synclistTabLabel "Szülinapi emlékeztetők">
+<!ENTITY birthdaylistTabLabel "Évforduló">
+<!ENTITY synclistTabLabel "Évforduló emlékeztetők">
 
 <!ENTITY integrationGroupboxLabel "Thunderbird integráció">
 <!ENTITY autocompletionLabel "E-mail címek automata kiegészítése">
 <!ENTITY autocompletionAccesskey "A">
 <!ENTITY autocompletionTooltip "Kiterjeszti az alapértelmezett automatikus kiegészítéséhez névjegyzéket a Thunderbird egy automatikus kiegészítéséhez kapcsolatok címjegyzékei CardBook.">
+<!ENTITY autocompleteSortByPopularityLabel "??Sort email addresses by popularity??">
+<!ENTITY autocompleteSortByPopularityAccesskey "p">
+<!ENTITY autocompleteShowAddressbookLabel "??Show address book name??">
+<!ENTITY autocompleteShowAddressbookAccesskey "S">
+<!ENTITY autocompleteWithColorLabel "??Use address book color for background color??">
+<!ENTITY autocompleteWithColorAccesskey "U">
 <!ENTITY exclusiveLabel "Névjegyzék egyedi forrása">
 <!ENTITY exclusiveAccesskey "f">
 <!ENTITY exclusiveTooltip "Ha le van tiltva, ez az opció lehetővé teszi, hogy letölteni kapcsolatok Thunderbird szabvány címjegyzékek a sárga csillag, az e-mail megjelenítési nevét és az e-mail automatikus kiegészítésre.">
@@ -120,7 +126,6 @@
 <!ENTITY deleteIMPPLabel "Törlés">
 <!ENTITY deleteIMPPAccesskey "T">
 
-<!ENTITY customFieldsPanelLabel "Határozza meg a saját egyéni mezőket.">
 <!ENTITY customFieldName "Mező neve">
 <!ENTITY customFieldLabel "Mezőcímkét">
 
@@ -175,19 +180,20 @@
 <!ENTITY displayvCardLabel "vCard nézes">
 <!ENTITY displayvCardAccesskey "n">
 
-<!ENTITY birthdayListWarn "Születésnapok csak rákeresett névjegyzéket.">
+<!ENTITY birthdayListWarn "Az évfordulókat csak a névjegyzék kiegészítő program névjegytárában keresi. Az évfordulók dátumformátumait a névjegytár beállításai tartalmazzák.">
 <!ENTITY addressBooksGroupboxLabel "Minden mappa">
 <!ENTITY calendarsGroupboxLabel "Naptár">
 <!ENTITY searchGroupboxLabel "Keresés">
-<!ENTITY searchInNoteLabel "Születésnapok a jegyzetek mezőben keresés">
-<!ENTITY searchInNoteTooltip "A jegyzétek mezőben a szöveget (elválasztó legyen, és a dátum formátum legyen az egyik alább): Születésnap:tárgy:éééé.hh.nn.">
+<!ENTITY searchInNoteLabel "Keresés az eseményekévfordulóhoz a jegyzetek mezőiben">
+<!ENTITY searchInNoteTooltip1 "Sor hozzáadása a jegyzetek mezőibe (kettőspont az elválasztóvonal az esemény a leírás és a dátum között és a dátumformátum a névjegytárban megadott formában legyen):">
+<!ENTITY searchInNoteTooltip2 "Esemény:Leírás:02.12.2006">
 <!ENTITY searchInNoteAccesskey "S">
 <!ENTITY dateFormatLabel "Várható dátum formátum">
 <!ENTITY dateFormatAccesskey "V">
 
 <!ENTITY remindersTabLabel "Emlékeztetők">
 <!ENTITY remindViaPopupWindowGroupboxLabel "Emlékeztesd keresztül felugró ablakban">
-<!ENTITY numberOfDaysForSearchingLabel "Napok száma, hogy ellenőrizze születésnap">
+<!ENTITY numberOfDaysForSearchingLabel "Az évfordulók kereséséhez a következő napok intervallumában">
 <!ENTITY numberOfDaysForSearchingAccesskey "s">
 <!ENTITY showPopupOnStartupLabel "Indításkor felugró ablakban megjelenítése">
 <!ENTITY showPopupOnStartupAccesskey "f">
@@ -195,10 +201,10 @@
 <!ENTITY showPeriodicPopupAccesskey "a">
 <!ENTITY periodicPopupTimeLabel "Idő megjelenítése (óó:pp)">
 <!ENTITY periodicPopupTimeAccesskey "I">
-<!ENTITY showPopupEvenIfNoBirthdayLabel "Amikor születésnapi lista üres, felugró ablak megjelenítése">
+<!ENTITY showPopupEvenIfNoBirthdayLabel "A felugró ablakok megjelenítése amikor az évfordulók listája üres">
 <!ENTITY showPopupEvenIfNoBirthdayAccesskey "ü">
 <!ENTITY remindViaLightningGroupboxLabel "Thunderbird Lightning naptár kiegésztő keresztül emlékeztetés">
-<!ENTITY numberOfDaysForWritingLabel "Napok száma előre születésnapok megjelenítése">
+<!ENTITY numberOfDaysForWritingLabel "Az évfordulók beírása a következő napok intervallumában">
 <!ENTITY numberOfDaysForWritingAccesskey "e">
 <!ENTITY syncWithLightningOnStartupLabel "Összehangolni Lightning indításkor">
 <!ENTITY syncWithLightningOnStartupAccesskey "L">
@@ -210,7 +216,7 @@
 <!ENTITY calendarEntryWholeDayLabel "Naptár esemény egész nap">
 <!ENTITY calendarEntryWholeDayAccesskey "e">
 <!ENTITY calendarEntryAlarmLabel "Napok száma előtt naptár esemény értesítése">
-<!ENTITY calendarEntryAlarmTooltip "Írja hany nap előlegként szeretnél értesítés. Ha dátum mező üres, akkor nem lenne riasztást.">
+<!ENTITY calendarEntryAlarmTooltip "Adja meg, hogy hány nappal az évforduló előtt emlékeztesse Önt a Lightning kiegészítő program. Dátum nélkül. Ha a mező üres, akkor nem lesz emlékeztető.">
 <!ENTITY calendarEntryAlarmAccesskey "n">
 <!ENTITY calendarEntryCategoriesLabel "Naptári események kategória">
 <!ENTITY calendarEntryCategoriesTooltip "Egy vagy több kategóriát, vesszővel elválasztva. Ha a mező üres, akkor nincs kategória.">

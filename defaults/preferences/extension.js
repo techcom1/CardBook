@@ -1,4 +1,7 @@
 pref("extensions.cardbook.autocompletion", true);
+pref("extensions.cardbook.autocompleteSortByPopularity", true);
+pref("extensions.cardbook.autocompleteShowAddressbook", false); 
+pref("extensions.cardbook.autocompleteWithColor", true); 
 pref("extensions.cardbook.exclusive", true);
 pref("extensions.cardbook.requestsTimeout", "120");
 pref("extensions.cardbook.statusInformationLineNumber", "250");

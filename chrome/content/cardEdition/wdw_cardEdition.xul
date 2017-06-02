@@ -101,7 +101,7 @@
 								<groupbox id="categoriesReadWriteGroupbox" flex="1">
 									<caption label="&categoriesGroupboxLabel;" class="header"/>
 									<hbox align="center" flex="1" style="min-height:36px;">
-										<menulist id="categoriesMenulist" type="cardbookPanelMenulist" flex="1">
+										<menulist id="categoriesMenulist" type="cardbookPanelMenulist" flex="1" onkeydown="cardbookUtils.enterPanelMenulist('category', event, this);">
 											<panel id="categoriesPanel" type="cardbookItemPanel" onpopuphiding="cardbookUtils.updatePanelMenulist('category', this);"/>
 										</menulist>
 									</hbox>
@@ -142,8 +142,7 @@
 									<hbox flex="1" align="center">
 										<label id="lastnameLabel" value="&lastnameLabel;" control="lastnameTextBox" class="header"/>
 										<spacer flex="1"/>
-										<button id="cardbookSwitchButtonDown" class="small-button" label="↓" tooltiptext="&cardbookSwitchButtonTooltip;"
-												onclick="wdw_cardEdition.switchLastnameAndFirstname();" oninput="wdw_cardEdition.switchLastnameAndFirstname();"/>
+										<button id="cardbookSwitchButtonDown" class="small-button" label="↓" tooltiptext="&cardbookSwitchButtonTooltip;" oncommand="wdw_cardEdition.switchLastnameAndFirstname();"/>
 									</hbox>
 									<textbox id="lastnameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
 								</row>
@@ -151,8 +150,7 @@
 									<hbox flex="1" align="center">
 										<label id="firstnameLabel" value="&firstnameLabel;" control="firstnameTextBox" class="header"/>
 										<spacer flex="1"/>
-										<button id="cardbookSwitchButtonUp" class="small-button" label="↑" tooltiptext="&cardbookSwitchButtonTooltip;"
-												onclick="wdw_cardEdition.switchLastnameAndFirstname();" oninput="wdw_cardEdition.switchLastnameAndFirstname();"/>
+										<button id="cardbookSwitchButtonUp" class="small-button" label="↑" tooltiptext="&cardbookSwitchButtonTooltip;" oncommand="wdw_cardEdition.switchLastnameAndFirstname();"/>
 									</hbox>
 									<textbox id="firstnameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
 								</row>
@@ -176,14 +174,13 @@
 									<hbox flex="1" align="center">
 										<label id="bdayLabel" value="&bdayLabel;" control="bdayTextBox" class="header"/>
 										<spacer flex="1"/>
-										<button id="cardbookCalendar" class="small-button" label="📅" tooltiptext="&cardbookCalendarButtonTooltip;"
-												onclick="wdw_cardEdition.openCalendarPanel();" oninput="wdw_cardEdition.openCalendarPanel();"/>
-											<panel id="bdayLightningPanel">
-												<minimonth id="bdayMinimonth" flex="1" onchange="wdw_cardEdition.validateCalendarPanel(this.value);"/>
-											</panel>
-											<panel id="bdayBasePanel">
-												<datepicker id="bdayDatepicker" type="grid" onchange="wdw_cardEdition.validateCalendarPanel(this.value);"/>
-											</panel>
+										<button id="bdaycardbookCalendar" class="small-button" label="📅" tooltiptext="&cardbookCalendarButtonTooltip;" oncommand="wdw_cardEdition.openCalendarPanel('bday');"/>
+										<panel id="bdayLightningPanel">
+											<minimonth id="bdayMinimonth" flex="1" onchange="wdw_cardEdition.validateCalendarPanel(this.value, 'bday');"/>
+										</panel>
+										<panel id="bdayBasePanel">
+											<datepicker id="bdayDatepicker" type="grid" onchange="wdw_cardEdition.validateCalendarPanel(this.value, 'bday');"/>
+										</panel>
 									</hbox>
 									<textbox id="bdayTextBox"/>
 								</row>
@@ -293,9 +290,36 @@
 			</tabpanel>
 
 			<tabpanel orient="vertical" style="overflow:auto">
-				<hbox id="noteGroupbox" flex="1">
-					<textbox id="noteTextBox" flex="1" multiline="true" wrap="virtual"/>
-				</hbox>
+				<vbox id="noteGroupbox" flex="1">
+					<hbox>
+						<button id="noteCardbookCalendar" class="small-button" label="📅" tooltiptext="&cardbookCalendarButtonTooltip;" oncommand="wdw_cardEdition.openCalendarPanel('note');"/>
+						<panel id="noteLightningPanel">
+							<vbox>
+								<hbox align="center">
+									<label value="&descriptionTextbox;" control="desc1TextBox" class="header"/>
+									<textbox id="desc1TextBox"/>
+								</hbox>
+								<hbox>
+									<minimonth id="noteMinimonth" flex="1" onchange="wdw_cardEdition.validateCalendarPanel(this.value, 'note');"/>
+								</hbox>
+							</vbox>
+						</panel>
+						<panel id="noteBasePanel">
+							<vbox>
+								<hbox align="center">
+									<label value="&descriptionTextbox;" control="desc2TextBox" class="header"/>
+									<textbox id="desc2TextBox"/>
+								</hbox>
+								<hbox>
+									<datepicker id="noteDatepicker" type="grid" onchange="wdw_cardEdition.validateCalendarPanel(this.value, 'note');"/>
+								</hbox>
+							</vbox>
+						</panel>
+					</hbox>
+					<hbox flex="1">
+						<textbox id="noteTextBox" flex="1" multiline="true" wrap="virtual"/>
+					</hbox>
+				</vbox>
 			</tabpanel>
 
 			<tabpanel orient="vertical" style="overflow:auto">

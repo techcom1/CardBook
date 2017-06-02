@@ -15,6 +15,12 @@
 <!ENTITY autocompletionLabel "Autovervollständigung der Email-Adressen">
 <!ENTITY autocompletionAccesskey "A">
 <!ENTITY autocompletionTooltip "Erweitert die standardmäßige Autovervollständigung von Kontakten in Adressbüchern von Thunderbird um eine Autovervollständigung von Kontakten in Adressbüchern von CardBook.">
+<!ENTITY autocompleteSortByPopularityLabel "??Sort email addresses by popularity??">
+<!ENTITY autocompleteSortByPopularityAccesskey "p">
+<!ENTITY autocompleteShowAddressbookLabel "??Show address book name??">
+<!ENTITY autocompleteShowAddressbookAccesskey "S">
+<!ENTITY autocompleteWithColorLabel "??Use address book color for background color??">
+<!ENTITY autocompleteWithColorAccesskey "U">
 <!ENTITY exclusiveLabel "Einzige Quelle für Kontakte">
 <!ENTITY exclusiveAccesskey "E">
 <!ENTITY exclusiveTooltip "Falls deaktiviert, ermöglicht diese Einstellung die Zuordnung von Kontakten aus den Standardadressbüchern von Thunderbird für die Gelben Sterne, die Anzeigenamen und die Autovervollständigung.">
@@ -121,7 +127,6 @@
 <!ENTITY deleteIMPPLabel "Löschen">
 <!ENTITY deleteIMPPAccesskey "L">
 
-<!ENTITY customFieldsPanelLabel "Benutzerdefinierte Felder">
 <!ENTITY customFieldName "Feldname">
 <!ENTITY customFieldLabel "Feldlabel">
 
@@ -176,12 +181,14 @@
 <!ENTITY displayvCardLabel "vCard anzeigen">
 <!ENTITY displayvCardAccesskey "V">
 
-<!ENTITY birthdayListWarn "Geburtstage werden nur in Adressbüchern von CardBook gesucht.">
+<!ENTITY birthdayListWarn "Geburtstage werden nur in Adressbüchern von CardBook gesucht. Das Format für Geburtstage wird unten den Eigenschaften des Adressbuchs festgelegt.">
 <!ENTITY addressBooksGroupboxLabel "Adressbücher">
 <!ENTITY calendarsGroupboxLabel "Kalender">
 <!ENTITY searchGroupboxLabel "Suchen">
 <!ENTITY searchInNoteLabel "Suche Geburtstage im Feld Notizen">
-<!ENTITY searchInNoteTooltip "Beispiel für einen Eintrag im Feld Notizen - das Trennzeichen sollte ein Doppelpunkt sein und das Datumsformat dem unten ausgewählten Datumsformat entsprechen: Birthday:Erster Kuss:2006-12-02">
+
+<!ENTITY searchInNoteTooltip1 "Ergänze solche Zeilen im Notizfeld (Trennzeichen sollte ein Doppelpunkt sein, und das Format dem entsprechen, das für das Adressbuch festgelegt wurde):">
+<!ENTITY searchInNoteTooltip2 "Termin:Beschreibung:02.12.2006">
 <!ENTITY searchInNoteAccesskey "S">
 <!ENTITY dateFormatLabel "Erwartetes Datumsformat">
 <!ENTITY dateFormatAccesskey "E">

@@ -1,3 +1,4 @@
 <!ENTITY existingDataGroupboxLabel "Добавить к этому контакту">
 <!ENTITY cardbookSwitchButtonTooltip "Поменять местами фамилию и имя">
-<!ENTITY cardbookCalendarButtonTooltip "Выбрать дату в календаре">
+<!ENTITY cardbookCalendarButtonTooltip "Добавить событие">
+<!ENTITY descriptionTextbox "Описание">

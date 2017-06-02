@@ -10,8 +10,7 @@ if ("undefined" == typeof(wdw_cardbookConfigurationAddEmails)) {
 		},
 		
 		loadAB: function () {
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-			cardbookElementTools.loadAddressBooks("CardBookABMenupopup", "CardBookABMenulist", window.arguments[0].addressBookId, prefs.getBoolPref("extensions.cardbook.exclusive"), false, true, false);
+			cardbookElementTools.loadAddressBooks("CardBookABMenupopup", "CardBookABMenulist", window.arguments[0].addressBookId, true, false, true, false);
 		},
 		
 		loadCategories: function () {
