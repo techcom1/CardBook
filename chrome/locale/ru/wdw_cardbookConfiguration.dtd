@@ -15,18 +15,18 @@
 <!ENTITY autocompletionLabel "Автозавершение адресов email">
 <!ENTITY autocompletionAccesskey "А">
 <!ENTITY autocompletionTooltip "Расширяет стандартное автоматическое завершение ввода для контактов из адресной книги Thunderbird добавлением контактов из CardBook.">
-<!ENTITY autocompleteSortByPopularityLabel "??Sort email addresses by popularity??">
-<!ENTITY autocompleteSortByPopularityAccesskey "p">
-<!ENTITY autocompleteShowAddressbookLabel "??Show address book name??">
-<!ENTITY autocompleteShowAddressbookAccesskey "S">
-<!ENTITY autocompleteWithColorLabel "??Use address book color for background color??">
-<!ENTITY autocompleteWithColorAccesskey "U">
+<!ENTITY autocompleteSortByPopularityLabel "Сортировка адресов email по популярности">
+<!ENTITY autocompleteSortByPopularityAccesskey "п">
+<!ENTITY autocompleteShowAddressbookLabel "Показывать название адресной книги">
+<!ENTITY autocompleteShowAddressbookAccesskey "а">
+<!ENTITY autocompleteWithColorLabel "Выделять цветом адресной книги">
+<!ENTITY autocompleteWithColorAccesskey "ц">
 <!ENTITY exclusiveLabel "Единственный источник контактов">
 <!ENTITY exclusiveAccesskey "Е">
 <!ENTITY exclusiveTooltip "Отключение этой настройки позволяет Thunderbird запрашивать контакты из стандартной адресной книги для жёлтых звёздочек, отображаемого имени в сообщениях и автозавершения адресов email.">
 <!ENTITY accountsRestrictionsLabel "Ограничения для учётных записей">
 <!ENTITY accountsRestrictionsEnabledLabel "Включено">
-<!ENTITY accountsRestrictionsMailNameLabel "Потовый аккаунт">
+<!ENTITY accountsRestrictionsMailNameLabel "Почтовый аккаунт">
 <!ENTITY accountsRestrictionsABNameLabel "Адресная книга">
 <!ENTITY accountsRestrictionsCatNameLabel "Категория">
 <!ENTITY accountsRestrictionsIncludeNameLabel "Тип">
