@@ -1322,7 +1322,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 									var myCard = cardbookRepository.cardbookCards[dataArray[i]];
 									if (myDirPrefId == myCard.dirPrefId) {
 										cardbookRepository.importConflictChoicePersist = true;
-										cardbookRepository.importConflictChoice = "duplicate";
+										cardbookRepository.importConflictChoice = "overwrite";
 										var askUser = false;
 									} else {
 										cardbookRepository.importConflictChoicePersist = false;
