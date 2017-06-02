@@ -15,11 +15,11 @@
 <!ENTITY autocompletionLabel "Samodokončevanje e-poštnih naslovov">
 <!ENTITY autocompletionAccesskey "S">
 <!ENTITY autocompletionTooltip "Razširi običajno samodokončevanje stikov iz Thunderbirdovih imenikov s samodokončevanjem stikov iz Cardbookovih imenikov.">
-<!ENTITY autocompleteSortByPopularityLabel "??Sort email addresses by popularity??">
+<!ENTITY autocompleteSortByPopularityLabel "??Razvrsti e-poštne naslove po priljubljenosti??">
 <!ENTITY autocompleteSortByPopularityAccesskey "p">
-<!ENTITY autocompleteShowAddressbookLabel "??Show address book name??">
+<!ENTITY autocompleteShowAddressbookLabel "??Prikaži ime imenika??">
 <!ENTITY autocompleteShowAddressbookAccesskey "S">
-<!ENTITY autocompleteWithColorLabel "??Use address book color for background color??">
+<!ENTITY autocompleteWithColorLabel "??Uporabi barvo imenika kot barvo ozadja??">
 <!ENTITY autocompleteWithColorAccesskey "U">
 <!ENTITY exclusiveLabel "Edinstven vir za stike">
 <!ENTITY exclusiveAccesskey "E">
