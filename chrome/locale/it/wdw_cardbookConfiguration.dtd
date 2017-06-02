@@ -15,6 +15,12 @@
 <!ENTITY autocompletionLabel "Autocompletamento degli indirizzi email">
 <!ENTITY autocompletionAccesskey "e">
 <!ENTITY autocompletionTooltip "Sostituisce la funzionalità standard di autocompletamento degli indirizzi nelle rubriche di Thunderbird con l'autocompletamento dei contatti nelle rubriche in CardBook.">
+<!ENTITY autocompleteSortByPopularityLabel "??Sort email addresses by popularity??">
+<!ENTITY autocompleteSortByPopularityAccesskey "p">
+<!ENTITY autocompleteShowAddressbookLabel "??Show address book name??">
+<!ENTITY autocompleteShowAddressbookAccesskey "S">
+<!ENTITY autocompleteWithColorLabel "??Use address book color for background color??">
+<!ENTITY autocompleteWithColorAccesskey "U">
 <!ENTITY exclusiveLabel "CardBook come fonte unica dei contatti">
 <!ENTITY exclusiveAccesskey "U">
 <!ENTITY exclusiveTooltip "Se disabilitata, questa opzione permette di recuperare i contatti nelle rubriche standard di Thunderbird per le stelline gialle, il nome mostrato nell'email e l'autocompletamento dell'email.">

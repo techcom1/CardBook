@@ -2473,8 +2473,10 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						cardbookRepository.saveCard(myNullCard, aNewCard, aSource);
 						break;
 					case "overwrite":
-						var myTargetCard = cardbookRepository.cardbookCards[myTargetPrefId+"::"+aNewCard.uid];
-						cardbookRepository.deleteCards([myTargetCard]);
+						if (cardbookRepository.cardbookCards[myTargetPrefId+"::"+aNewCard.uid]) {
+							var myTargetCard = cardbookRepository.cardbookCards[myTargetPrefId+"::"+aNewCard.uid];
+							cardbookRepository.deleteCards([myTargetCard]);
+						}
 						cardbookRepository.saveCard(myNullCard, aNewCard, aSource);
 						break;
 					case "merge":

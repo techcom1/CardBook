@@ -15,6 +15,12 @@
 <!ENTITY autocompletionLabel "Autocompletion of email addresses">
 <!ENTITY autocompletionAccesskey "o">
 <!ENTITY autocompletionTooltip "Extends the standard autocompletion of contacts in address books of Thunderbird with an autocompletion of contacts in address books of CardBook.">
+<!ENTITY autocompleteSortByPopularityLabel "Sort email addresses by popularity">
+<!ENTITY autocompleteSortByPopularityAccesskey "p">
+<!ENTITY autocompleteShowAddressbookLabel "Show address book name">
+<!ENTITY autocompleteShowAddressbookAccesskey "S">
+<!ENTITY autocompleteWithColorLabel "Use address book color for background color">
+<!ENTITY autocompleteWithColorAccesskey "U">
 <!ENTITY exclusiveLabel "Unique source for contacts">
 <!ENTITY exclusiveAccesskey "U">
 <!ENTITY exclusiveTooltip "If disabled, this option allows to retrieve contacts in Thunderbird standard address books for the yellow stars, for the email display name and the for the email autocompletion.">

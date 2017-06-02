@@ -15,6 +15,12 @@
 <!ENTITY autocompletionLabel "E-mail címek automata kiegészítése">
 <!ENTITY autocompletionAccesskey "A">
 <!ENTITY autocompletionTooltip "Kiterjeszti az alapértelmezett automatikus kiegészítéséhez névjegyzéket a Thunderbird egy automatikus kiegészítéséhez kapcsolatok címjegyzékei CardBook.">
+<!ENTITY autocompleteSortByPopularityLabel "??Sort email addresses by popularity??">
+<!ENTITY autocompleteSortByPopularityAccesskey "p">
+<!ENTITY autocompleteShowAddressbookLabel "??Show address book name??">
+<!ENTITY autocompleteShowAddressbookAccesskey "S">
+<!ENTITY autocompleteWithColorLabel "??Use address book color for background color??">
+<!ENTITY autocompleteWithColorAccesskey "U">
 <!ENTITY exclusiveLabel "Névjegyzék egyedi forrása">
 <!ENTITY exclusiveAccesskey "f">
 <!ENTITY exclusiveTooltip "Ha le van tiltva, ez az opció lehetővé teszi, hogy letölteni kapcsolatok Thunderbird szabvány címjegyzékek a sárga csillag, az e-mail megjelenítési nevét és az e-mail automatikus kiegészítésre.">

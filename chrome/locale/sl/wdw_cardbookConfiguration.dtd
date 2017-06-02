@@ -15,6 +15,12 @@
 <!ENTITY autocompletionLabel "Samodokončevanje e-poštnih naslovov">
 <!ENTITY autocompletionAccesskey "S">
 <!ENTITY autocompletionTooltip "Razširi običajno samodokončevanje stikov iz Thunderbirdovih imenikov s samodokončevanjem stikov iz Cardbookovih imenikov.">
+<!ENTITY autocompleteSortByPopularityLabel "??Sort email addresses by popularity??">
+<!ENTITY autocompleteSortByPopularityAccesskey "p">
+<!ENTITY autocompleteShowAddressbookLabel "??Show address book name??">
+<!ENTITY autocompleteShowAddressbookAccesskey "S">
+<!ENTITY autocompleteWithColorLabel "??Use address book color for background color??">
+<!ENTITY autocompleteWithColorAccesskey "U">
 <!ENTITY exclusiveLabel "Edinstven vir za stike">
 <!ENTITY exclusiveAccesskey "E">
 <!ENTITY exclusiveTooltip "Če je omogočena, ta možnost omogoča pridobivanje stikov iz Thunderbirdovih imenikov za rumene zvezdice, prikazano ime in samodokončevanje e-pošte.">

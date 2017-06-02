@@ -15,6 +15,12 @@
 <!ENTITY autocompletionLabel "Doplňování e-mailových adres">
 <!ENTITY autocompletionAccesskey "A">
 <!ENTITY autocompletionTooltip "Rozšíří dokončování adres kontaktů Thunderbirdu o adresáře CardBooku">
+<!ENTITY autocompleteSortByPopularityLabel "??Sort email addresses by popularity??">
+<!ENTITY autocompleteSortByPopularityAccesskey "p">
+<!ENTITY autocompleteShowAddressbookLabel "??Show address book name??">
+<!ENTITY autocompleteShowAddressbookAccesskey "S">
+<!ENTITY autocompleteWithColorLabel "??Use address book color for background color??">
+<!ENTITY autocompleteWithColorAccesskey "U">
 <!ENTITY exclusiveLabel "Unikátní zdroj pro kontakty">
 <!ENTITY exclusiveAccesskey "z">
 <!ENTITY exclusiveTooltip "Pokud je zakázáno, tato možnost dovolí Thunderbirdu získat údaje pro žluté hvězdy, zobrazované jméno e-mailů a dokončování z standardního adresáře.">

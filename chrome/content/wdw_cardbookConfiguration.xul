@@ -34,6 +34,12 @@
 		<preferences id="cardbookPreferences">
 			<preference id="extensions.cardbook.autocompletion"
 				name="extensions.cardbook.autocompletion" type="bool"/>
+			<preference id="extensions.cardbook.autocompleteSortByPopularity"
+				name="extensions.cardbook.autocompleteSortByPopularity" type="bool"/>
+			<preference id="extensions.cardbook.autocompleteShowAddressbook"
+				name="extensions.cardbook.autocompleteShowAddressbook" type="bool"/>
+			<preference id="extensions.cardbook.autocompleteWithColor"
+				name="extensions.cardbook.autocompleteWithColor" type="bool"/>
 			<preference id="extensions.cardbook.exclusive"
 				name="extensions.cardbook.exclusive" type="bool"/>
 			<preference id="extensions.cardbook.requestsTimeout"
@@ -135,12 +141,28 @@
 				<tabpanel orient="vertical">
 					<groupbox>
 						<caption label="&integrationGroupboxLabel;"/>
-						<hbox align="center">
+						<vbox>
 							<checkbox id="autocompletionCheckBox" label="&autocompletionLabel;"
 								accesskey="&autocompletionAccesskey;"
 								tooltiptext = "&autocompletionTooltip;"
-								preference="extensions.cardbook.autocompletion"/>
-						</hbox>
+								preference="extensions.cardbook.autocompletion"
+								oncommand="wdw_cardbookConfiguration.cardbookAutoComplete();"/>
+							<separator class="thin"/>
+							<checkbox id="autocompleteSortByPopularityCheckBox" label="&autocompleteSortByPopularityLabel;"
+								accesskey="&autocompleteSortByPopularityAccesskey;"
+								class="indent"
+								preference="extensions.cardbook.autocompleteSortByPopularity"/>
+							<separator class="thin"/>
+							<checkbox id="autocompleteShowAddressbookCheckBox" label="&autocompleteShowAddressbookLabel;"
+								accesskey="&autocompleteShowAddressbookAccesskey;"
+								class="indent"
+								preference="extensions.cardbook.autocompleteShowAddressbook"/>
+							<separator class="thin"/>
+							<checkbox id="autocompleteWithColorCheckBox" label="&autocompleteWithColorLabel;"
+								accesskey="&autocompleteWithColorAccesskey;"
+								class="indent"
+								preference="extensions.cardbook.autocompleteWithColor"/>
+						</vbox>
 						<separator class="thin"/>
 						<hbox align="center">
 							<checkbox id="exclusiveCheckBox" label="&exclusiveLabel;"

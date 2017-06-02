@@ -15,6 +15,12 @@
 <!ENTITY autocompletionLabel "Automatyczne uzupełnianie adresów e-mail">
 <!ENTITY autocompletionAccesskey "A">
 <!ENTITY autocompletionTooltip "Rozszerza automatyczne uzupełnianie adresów z wizytówek we wbudowanych książkach adresowych Thunderbirda o automatyczne uzupełnianie adresów z wizytówek w książkach adresowych CardBook.">
+<!ENTITY autocompleteSortByPopularityLabel "??Sort email addresses by popularity??">
+<!ENTITY autocompleteSortByPopularityAccesskey "p">
+<!ENTITY autocompleteShowAddressbookLabel "??Show address book name??">
+<!ENTITY autocompleteShowAddressbookAccesskey "S">
+<!ENTITY autocompleteWithColorLabel "??Use address book color for background color??">
+<!ENTITY autocompleteWithColorAccesskey "U">
 <!ENTITY exclusiveLabel "Wyłączne źródło wizytówek">
 <!ENTITY exclusiveAccesskey "W">
 <!ENTITY exclusiveTooltip "Wyłącz, aby pobierać adresy z wizytówek we wbudowanych książkach adresowych Thunderbirda do żółtych gwiazdek, wyświetlanych nazw i autouzupełniania adresów e-mail.">

@@ -69,11 +69,14 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 
 		createCssMsgIconsRules: function (aStyleSheet, aOSName) {
 			var ruleIndex = aStyleSheet.insertRule(cardbookAutocomplete.iconRuleStrings["local"][aOSName], aStyleSheet.cssRules.length);
+			cardbookRepository.cardbookDynamicCssRules[aStyleSheet.href].push(ruleIndex);
 			var ruleIndex = aStyleSheet.insertRule(cardbookAutocomplete.iconRuleStrings["remote"][aOSName], aStyleSheet.cssRules.length);
+			cardbookRepository.cardbookDynamicCssRules[aStyleSheet.href].push(ruleIndex);
 			var ruleIndex = aStyleSheet.insertRule(cardbookAutocomplete.iconRuleStrings["standard-abook"][aOSName], aStyleSheet.cssRules.length);
+			cardbookRepository.cardbookDynamicCssRules[aStyleSheet.href].push(ruleIndex);
 		},
 
-		createCssMsgAccountRules: function (aStyleSheet, aStyle, aColor, aOSName) {
+		createCssMsgAccountRules: function (aStyleSheet, aStyle, aColor, aOSName, aUseColor) {
 			cardbookAutocomplete.celltextRuleStrings["LINUX"] = "treechildren::-moz-tree-cell-text(" + aStyle + ") {\
 				}";
 			cardbookAutocomplete.celltextRuleStrings["WIN"] = "treechildren::-moz-tree-cell-text(" + aStyle + ") {\
@@ -85,17 +88,21 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 				margin-inline-end: -3px;\
 				border: none;\
 				}";
-			cardbookAutocomplete.textRuleStrings["LINUX"] = "treechildren::-moz-tree-cell(" + aStyle + ") {\
-				background-color: " + aColor + ";\
-				}";
-			cardbookAutocomplete.textRuleStrings["WIN"] = "treechildren::-moz-tree-cell(" + aStyle + ") {\
-				background-color: " + aColor + ";\
-				}";
-			cardbookAutocomplete.textRuleStrings["OSX"] = "treechildren::-moz-tree-cell(" + aStyle + ") {\
-				background-color: " + aColor + ";\
-				}";
 			var ruleIndex = aStyleSheet.insertRule(cardbookAutocomplete.celltextRuleStrings[aOSName], aStyleSheet.cssRules.length);
-			var ruleIndex = aStyleSheet.insertRule(cardbookAutocomplete.textRuleStrings[aOSName], aStyleSheet.cssRules.length);
+			cardbookRepository.cardbookDynamicCssRules[aStyleSheet.href].push(ruleIndex);
+			if (aUseColor) {
+				cardbookAutocomplete.textRuleStrings["LINUX"] = "treechildren::-moz-tree-cell(" + aStyle + ") {\
+					background-color: " + aColor + ";\
+					}";
+				cardbookAutocomplete.textRuleStrings["WIN"] = "treechildren::-moz-tree-cell(" + aStyle + ") {\
+					background-color: " + aColor + ";\
+					}";
+				cardbookAutocomplete.textRuleStrings["OSX"] = "treechildren::-moz-tree-cell(" + aStyle + ") {\
+					background-color: " + aColor + ";\
+					}";
+				var ruleIndex = aStyleSheet.insertRule(cardbookAutocomplete.textRuleStrings[aOSName], aStyleSheet.cssRules.length);
+				cardbookRepository.cardbookDynamicCssRules[aStyleSheet.href].push(ruleIndex);
+			}
 		},
 
 		loadCssRules: function () {
@@ -109,16 +116,22 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 				}
 				cardbookAutocomplete.defineMsgIconsRules();
 				Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+				var autocompleteWithColor = prefs.getBoolPref("extensions.cardbook.autocompleteWithColor");
 				for (var prop in document.styleSheets) {
 					var styleSheet = document.styleSheets[prop];
 					if (styleSheet.href == "chrome://cardbook/skin/cardbookAutocomplete.css") {
+						if (!(cardbookRepository.cardbookDynamicCssRules[styleSheet.href])) {
+							cardbookRepository.cardbookDynamicCssRules[styleSheet.href] = [];
+						}
+						cardbookRepository.deleteCssAllRules(styleSheet);
 						for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
 							if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] != "SEARCH") {
 								var dirPrefId = cardbookRepository.cardbookAccounts[i][4];
 								var cardbookPrefService = new cardbookPreferenceService(dirPrefId);
 								var myColor = cardbookPrefService.getColor()
 								var myStyle = cardbookRepository.getIconType(cardbookRepository.cardbookAccounts[i][6]) + " color_" + dirPrefId;
-								cardbookAutocomplete.createCssMsgAccountRules(styleSheet, myStyle, myColor, OSName);
+								cardbookAutocomplete.createCssMsgAccountRules(styleSheet, myStyle, myColor, OSName, autocompleteWithColor);
 							}
 						}
 						cardbookAutocomplete.createCssMsgIconsRules(styleSheet, OSName);
@@ -137,7 +150,7 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 				} else {
 					aTextBox.setAttribute('autocompletesearch', 'addrbook ldap');
 				}
-				if (prefs.getBoolPref("extensions.cardbook.debugMode")) {
+				if (prefs.getBoolPref("extensions.cardbook.debugMode") || prefs.getBoolPref("extensions.cardbook.autocompleteShowAddressbook")) {
 					aTextBox.showCommentColumn = true;
 				} else {
 					aTextBox.showCommentColumn = false;

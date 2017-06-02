@@ -356,6 +356,18 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			}
 		},
 
+		cardbookAutoComplete: function () {
+			if (document.getElementById('autocompletionCheckBox').checked) {
+				document.getElementById('autocompleteSortByPopularityCheckBox').disabled=false;
+				document.getElementById('autocompleteShowAddressbookCheckBox').disabled=false;
+				document.getElementById('autocompleteWithColorCheckBox').disabled=false;
+			} else {
+				document.getElementById('autocompleteSortByPopularityCheckBox').disabled=true;
+				document.getElementById('autocompleteShowAddressbookCheckBox').disabled=true;
+				document.getElementById('autocompleteWithColorCheckBox').disabled=true;
+			}
+		},
+
 		remindViaPopup: function () {
 			if (document.getElementById('showPopupOnStartupCheckBox').checked || document.getElementById('showPeriodicPopupCheckBox').checked) {
 				document.getElementById('showPopupEvenIfNoBirthdayCheckBox').disabled=false;
@@ -890,7 +902,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			var cardbookPrefService = new cardbookPreferenceService();
 			cardbookPrefService.delRestrictions();
 			for (var i = 0; i < wdw_cardbookConfiguration.allRestrictions.length; i++) {
-				cardbookPrefService.setRestriction(wdw_cardbookConfiguration.allRestrictions[i][1], wdw_cardbookConfiguration.allRestrictions[i][0].toString() + "::" + wdw_cardbookConfiguration.allRestrictions[i][9]
+				cardbookPrefService.setRestriction(i.toString(), wdw_cardbookConfiguration.allRestrictions[i][0].toString() + "::" + wdw_cardbookConfiguration.allRestrictions[i][9]
 													+ "::" + wdw_cardbookConfiguration.allRestrictions[i][3] + "::" + wdw_cardbookConfiguration.allRestrictions[i][5] + "::" + wdw_cardbookConfiguration.allRestrictions[i][6]);
 			}
 		},
@@ -971,7 +983,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			var myArgs = {emailAccountId: "", emailAccountName: "", addressBookId: "", addressBookName: "", categoryName: "", includeName: "",  includeCode: "", typeAction: "", context: "Collection"};
 			var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookConfigurationAddEmails.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
 			if (myArgs.typeAction == "SAVE") {
-				wdw_cardbookConfiguration.allEmailsCollections.push([true, wdw_cardbookConfiguration.allRestrictions.length.toString(), myArgs.emailAccountName, myArgs.emailAccountId,
+				wdw_cardbookConfiguration.allEmailsCollections.push([true, wdw_cardbookConfiguration.allEmailsCollections.length.toString(), myArgs.emailAccountName, myArgs.emailAccountId,
 																myArgs.addressBookName, myArgs.addressBookId, myArgs.categoryName, myArgs.categoryId, myArgs.includeName, myArgs.includeCode]);
 				wdw_cardbookConfiguration.allEmailsCollections = cardbookUtils.sortArrayByString(wdw_cardbookConfiguration.allEmailsCollections,1,1);
 				wdw_cardbookConfiguration.sortTrees(null, "emailsCollectionTree");
@@ -1034,7 +1046,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			var cardbookPrefService = new cardbookPreferenceService();
 			cardbookPrefService.delEmailsCollection();
 			for (var i = 0; i < wdw_cardbookConfiguration.allEmailsCollections.length; i++) {
-				cardbookPrefService.setEmailsCollection(wdw_cardbookConfiguration.allEmailsCollections[i][1], wdw_cardbookConfiguration.allEmailsCollections[i][0].toString() + "::" + wdw_cardbookConfiguration.allEmailsCollections[i][9]
+				cardbookPrefService.setEmailsCollection(i.toString(), wdw_cardbookConfiguration.allEmailsCollections[i][0].toString() + "::" + wdw_cardbookConfiguration.allEmailsCollections[i][9]
 													+ "::" + wdw_cardbookConfiguration.allEmailsCollections[i][3] + "::" + wdw_cardbookConfiguration.allEmailsCollections[i][5] + "::" + wdw_cardbookConfiguration.allEmailsCollections[i][6]);
 			}
 		},
@@ -1437,6 +1449,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			Components.utils.import("resource://gre/modules/AddonManager.jsm");  
 			AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, wdw_cardbookConfiguration.loadCalendars);
 			wdw_cardbookConfiguration.remindViaPopup();
+			wdw_cardbookConfiguration.cardbookAutoComplete();
 			wdw_cardbookConfiguration.loadEventEntryTitle();
 			wdw_cardbookConfiguration.showTab();
 		},

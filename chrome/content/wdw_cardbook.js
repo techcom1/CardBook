@@ -1307,6 +1307,8 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			var myDirPrefIdType = cardbookPrefService.getType();
 			var myDirPrefIdEnabled = cardbookPrefService.getEnabled();
 			var myDirPrefIdReadOnly = cardbookPrefService.getReadOnly();
+			var myCreatedEvent = "";
+			var myDeletedEvent = "";
 
 			if (myDirPrefIdType !== "SEARCH") {
 				if (myDirPrefIdEnabled) {
@@ -1330,9 +1332,14 @@ if ("undefined" == typeof(wdw_cardbook)) {
 									// performance reason
 									// update the UI only at the end
 									if (i == dataLength - 1) {
-										cardbookSynchronization.importCard(myCard, myTarget, askUser, "cardbook.cardDragged");
-									} else {
-										cardbookSynchronization.importCard(myCard, myTarget, askUser);
+										myCreatedEvent = "cardbook.cardDragged";
+										myDeletedEvent = "cardbook.cardRemovedIndirect";
+									}
+									cardbookSynchronization.importCard(myCard, myTarget, askUser, myCreatedEvent);
+									if (myDirPrefId != myCard.dirPrefId) {
+										if (!aEvent.ctrlKey) {
+											cardbookRepository.deleteCards([myCard], myDeletedEvent);
+										}
 									}
 								} else {
 									cardbookUtils.formatStringForOutput("draggableWrong");
