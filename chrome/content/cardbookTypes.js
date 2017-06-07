@@ -553,6 +553,17 @@ if ("undefined" == typeof(cardbookTypes)) {
 					}
 				}
 				cardbookElementTools.addKeyTextbox(aHBox, aType + '_' + aIndex + '_valueBox', myValue, {flex: "1"}, aVersion, aIndex);
+			} else if (aType == "adr") {
+				if (aCardValue.length != 7) {
+					aCardValue = ["", "", "", "", "", "", ""];
+				}
+				var myTmpArray = [];
+				for (var i = 0; i < aCardValue.length; i++) {
+					if (aCardValue[i] != "") {
+						myTmpArray.push(aCardValue[i].replace(/\n/g, " "));
+					}
+				}
+				cardbookElementTools.addKeyTextbox(aHBox, aType + '_' + aIndex + '_valueBox', myTmpArray.join(" "), {flex: "1"}, aVersion, aIndex);
 			} else {
 				cardbookElementTools.addKeyTextbox(aHBox, aType + '_' + aIndex + '_valueBox', cardbookUtils.cleanArray(aCardValue).join(" "), {flex: "1"}, aVersion, aIndex);
 			}
@@ -747,7 +758,20 @@ if ("undefined" == typeof(cardbookTypes)) {
 			} else {
 				cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', myDisplayedTypes.join(" "), {context: aType + 'TreeContextMenu', readonly: 'true'});
 	
-				cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', cardbookUtils.cleanArray(aCardValue).join(" "), {context: aType + 'TreeContextMenu', flex: '1'});
+				if (aType == "adr") {
+					if (aCardValue.length != 7) {
+						aCardValue = ["", "", "", "", "", "", ""];
+					}
+					var myTmpArray = [];
+					for (var i = 0; i < aCardValue.length; i++) {
+						if (aCardValue[i] != "") {
+							myTmpArray.push(aCardValue[i].replace(/\n/g, " "));
+						}
+					}
+					cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myTmpArray.join(" "), {context: aType + 'TreeContextMenu', flex: '1'});
+				} else {
+					cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', cardbookUtils.cleanArray(aCardValue).join(" "), {context: aType + 'TreeContextMenu', flex: '1'});
+				}
 				if (aType == "url" || aType == "email" || aType == "adr") {
 					document.getElementById(aType + '_' + aIndex + '_valueBox').setAttribute('link', 'true');
 				} else if (aType == "tel") {

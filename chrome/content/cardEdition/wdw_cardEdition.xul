@@ -281,8 +281,7 @@
 						</hbox>
 						<hbox>
 							<spacer flex="1"/>
-							<button id="validateEditionLabel" label="&validateEditionLabel;" accesskey="&validateEditionAccesskey;" oncommand="wdw_cardEdition.validateAdrPanel();"/>
-							<button id="cancelEditionLabel" label="&cancelEditionLabel;" accesskey="&cancelEditionAccesskey;" oncommand="wdw_cardEdition.cancelAdrPanel();"/>
+							<button id="validateEditionLabel" label="&validateEditionLabel;" accesskey="&validateEditionAccesskey;" oncommand="wdw_cardEdition.cancelAdrPanel();"/>
 						</hbox>
 					</panel>
 				</vbox>

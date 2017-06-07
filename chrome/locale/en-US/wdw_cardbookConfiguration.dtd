@@ -20,7 +20,7 @@
 <!ENTITY autocompleteShowAddressbookLabel "Show address book name">
 <!ENTITY autocompleteShowAddressbookAccesskey "S">
 <!ENTITY autocompleteWithColorLabel "Use address book color for background color">
-<!ENTITY autocompleteWithColorAccesskey "U">
+<!ENTITY autocompleteWithColorAccesskey "b">
 <!ENTITY exclusiveLabel "Unique source for contacts">
 <!ENTITY exclusiveAccesskey "U">
 <!ENTITY exclusiveTooltip "If disabled, this option allows to retrieve contacts in Thunderbird standard address books for the yellow stars, for the email display name and the for the email autocompletion.">

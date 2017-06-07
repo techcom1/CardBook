@@ -15,12 +15,12 @@
 <!ENTITY autocompletionLabel "Autovervollständigung der Email-Adressen">
 <!ENTITY autocompletionAccesskey "A">
 <!ENTITY autocompletionTooltip "Erweitert die standardmäßige Autovervollständigung von Kontakten in Adressbüchern von Thunderbird um eine Autovervollständigung von Kontakten in Adressbüchern von CardBook.">
-<!ENTITY autocompleteSortByPopularityLabel "??Sort email addresses by popularity??">
-<!ENTITY autocompleteSortByPopularityAccesskey "p">
-<!ENTITY autocompleteShowAddressbookLabel "??Show address book name??">
-<!ENTITY autocompleteShowAddressbookAccesskey "S">
-<!ENTITY autocompleteWithColorLabel "??Use address book color for background color??">
-<!ENTITY autocompleteWithColorAccesskey "U">
+<!ENTITY autocompleteSortByPopularityLabel "Sortiere Email-Adressen nach Popularität">
+<!ENTITY autocompleteSortByPopularityAccesskey "S">
+<!ENTITY autocompleteShowAddressbookLabel "Zeite den Namen des Adressbuchs">
+<!ENTITY autocompleteShowAddressbookAccesskey "Z">
+<!ENTITY autocompleteWithColorLabel "Benutze die Farbe des Adressbuchs als Hintergrundfarbe">
+<!ENTITY autocompleteWithColorAccesskey "F">
 <!ENTITY exclusiveLabel "Einzige Quelle für Kontakte">
 <!ENTITY exclusiveAccesskey "E">
 <!ENTITY exclusiveTooltip "Falls deaktiviert, ermöglicht diese Einstellung die Zuordnung von Kontakten aus den Standardadressbüchern von Thunderbird für die Gelben Sterne, die Anzeigenamen und die Autovervollständigung.">

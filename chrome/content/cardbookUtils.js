@@ -394,7 +394,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			vArrayNew = JSON.parse(JSON.stringify(vArray));
 			for (let i = 0; i<vArrayNew.length; i++){
 				if (vArrayNew[i] && vArrayNew[i] != ""){
-					vArrayNew[i] = vArrayNew[i].replace(/,/g,"@ESCAPEDCOMMA@");
+					vArrayNew[i] = vArrayNew[i].replace(/,/g,"@ESCAPEDCOMMA@").replace(/;/g,"@ESCAPEDSEMICOLON@");// test
 				}
 			}
 			return vArrayNew;
@@ -405,7 +405,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			vArrayNew = JSON.parse(JSON.stringify(vArray));
 			for (let i = 0; i<vArrayNew.length; i++){
 				if (vArrayNew[i] && vArrayNew[i] != ""){
-					vArrayNew[i] = vArrayNew[i].replace(/@ESCAPEDCOMMA@/g,"\\,");
+					vArrayNew[i] = vArrayNew[i].replace(/@ESCAPEDCOMMA@/g,"\\,").replace(/@ESCAPEDSEMICOLON@/g,"\\;"); //test
 				}
 			}
 			return vArrayNew;

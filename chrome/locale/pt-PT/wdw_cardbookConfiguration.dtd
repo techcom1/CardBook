@@ -15,11 +15,11 @@
 <!ENTITY autocompletionLabel "Usar o autocomplete do CardBook">
 <!ENTITY autocompletionAccesskey "o">
 <!ENTITY autocompletionTooltip "Trocar o normal autocomplete pelo do carbook. Quando activado, os email serão provenientes do repositorio do cardbook ou os emails recolhidos.">
-<!ENTITY autocompleteSortByPopularityLabel "??Sort email addresses by popularity??">
+<!ENTITY autocompleteSortByPopularityLabel "?Organizar email por popularidade">
 <!ENTITY autocompleteSortByPopularityAccesskey "p">
-<!ENTITY autocompleteShowAddressbookLabel "??Show address book name??">
-<!ENTITY autocompleteShowAddressbookAccesskey "S">
-<!ENTITY autocompleteWithColorLabel "??Use address book color for background color??">
+<!ENTITY autocompleteShowAddressbookLabel "Mostrar nome da agenda">
+<!ENTITY autocompleteShowAddressbookAccesskey "M">
+<!ENTITY autocompleteWithColorLabel "Usar cor da agenda para cor de fundo">
 <!ENTITY autocompleteWithColorAccesskey "U">
 <!ENTITY exclusiveLabel "CardBook como fonte unica de contactos">
 <!ENTITY exclusiveAccesskey "U">
