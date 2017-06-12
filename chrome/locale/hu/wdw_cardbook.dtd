@@ -139,6 +139,8 @@
 <!ENTITY ccEmailCardFromCardsLabel "Új üzenetek (másolatok)">
 <!ENTITY bccEmailCardFromAccountsOrCatsLabel "Új üzenetek (rejtett másolatok)">
 <!ENTITY bccEmailCardFromCardsLabel "Új üzenetek (rejtett másolatok)">
+<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "??Share contact by email??">
+<!ENTITY shareCardByEmailFromCardsLabel "??Share contact by email??">
 <!ENTITY categoryLabel "Kategória">
 <!ENTITY findEmailsFromCardsLabel "E-mailek keresése (névjegy alapján)">
 <!ENTITY findEventsFromCardsLabel "Naptári események keresése (névjegy alapján)">

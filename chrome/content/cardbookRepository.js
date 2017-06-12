@@ -1376,14 +1376,23 @@ var cardbookRepository = {
 	},
 
 	createCssCardRules: function (aStyleSheet, aDirPrefId, aColor) {
-		var ruleString = ".cardbookCardsTreeClass treechildren::-moz-tree-row(SEARCH odd color_" + aDirPrefId + ") {}";
-		var ruleIndex = aStyleSheet.insertRule(ruleString, aStyleSheet.cssRules.length);
-		aStyleSheet.cssRules[ruleIndex].style.backgroundColor = aColor;
-		cardbookRepository.cardbookDynamicCssRules[aStyleSheet.href].push(ruleIndex);
-		var ruleString = ".cardbookCardsTreeClass treechildren::-moz-tree-row(SEARCH even color_" + aDirPrefId + ") {}";
-		var ruleIndex = aStyleSheet.insertRule(ruleString, aStyleSheet.cssRules.length);
-		aStyleSheet.cssRules[ruleIndex].style.backgroundColor = aColor;
-		cardbookRepository.cardbookDynamicCssRules[aStyleSheet.href].push(ruleIndex);
+		var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+		var useColor = prefs.getComplexValue("extensions.cardbook.useColor", Components.interfaces.nsISupportsString).data;
+		if (useColor == "text") {
+			var ruleString = ".cardbookCardsTreeClass treechildren::-moz-tree-cell-text(SEARCH odd color_" + aDirPrefId + ") {color: " + aColor + ";}";
+			var ruleIndex = aStyleSheet.insertRule(ruleString, aStyleSheet.cssRules.length);
+			cardbookRepository.cardbookDynamicCssRules[aStyleSheet.href].push(ruleIndex);
+			var ruleString = ".cardbookCardsTreeClass treechildren::-moz-tree-cell-text(SEARCH even color_" + aDirPrefId + ") {color: " + aColor + ";}";
+			var ruleIndex = aStyleSheet.insertRule(ruleString, aStyleSheet.cssRules.length);
+			cardbookRepository.cardbookDynamicCssRules[aStyleSheet.href].push(ruleIndex);
+		} else {
+			var ruleString = ".cardbookCardsTreeClass treechildren::-moz-tree-row(SEARCH odd color_" + aDirPrefId + ") {background-color: " + aColor + ";}";
+			var ruleIndex = aStyleSheet.insertRule(ruleString, aStyleSheet.cssRules.length);
+			cardbookRepository.cardbookDynamicCssRules[aStyleSheet.href].push(ruleIndex);
+			var ruleString = ".cardbookCardsTreeClass treechildren::-moz-tree-row(SEARCH even color_" + aDirPrefId + ") {background-color: " + aColor + ";}";
+			var ruleIndex = aStyleSheet.insertRule(ruleString, aStyleSheet.cssRules.length);
+			cardbookRepository.cardbookDynamicCssRules[aStyleSheet.href].push(ruleIndex);
+		}
 	},
 
 	unregisterCss: function (aChromeUri) {

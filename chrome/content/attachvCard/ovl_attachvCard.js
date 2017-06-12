@@ -16,7 +16,9 @@ if ("undefined" == typeof(ovl_attachvCard)) {
 						var attachment = Components.classes["@mozilla.org/messengercompose/attachment;1"].createInstance(Components.interfaces.nsIMsgAttachment);
 						attachment.contentType = "text/vcard";
 						attachment.name = filename;
-						var myFile = cardbookUtils.getTempFile(filename);
+						var myFile = cardbookUtils.getTempFile();
+						myFile.append("cardbook-send-messages");
+						myFile.append(filename);
 						if (myFile.exists() && myFile.isFile()) {
 							try {
 								myFile.remove(true);

@@ -19,8 +19,13 @@
 <!ENTITY autocompleteSortByPopularityAccesskey "p">
 <!ENTITY autocompleteShowAddressbookLabel "??Show address book name??">
 <!ENTITY autocompleteShowAddressbookAccesskey "S">
-<!ENTITY autocompleteWithColorLabel "??Use address book color for background color??">
+<!ENTITY autocompleteWithColorLabel "??Use address book color??">
 <!ENTITY autocompleteWithColorAccesskey "U">
+<!ENTITY useColorLabel "??Use address book color into:??">
+<!ENTITY useColorBackgroundLabel "??Background color??">
+<!ENTITY useColorBackgroundAccesskey "B">
+<!ENTITY useColorTextLabel "??Text color??">
+<!ENTITY useColorTextAccesskey "T">
 <!ENTITY exclusiveLabel "Wyłączne źródło wizytówek">
 <!ENTITY exclusiveAccesskey "W">
 <!ENTITY exclusiveTooltip "Wyłącz, aby pobierać adresy z wizytówek we wbudowanych książkach adresowych Thunderbirda do żółtych gwiazdek, wyświetlanych nazw i autouzupełniania adresów e-mail.">

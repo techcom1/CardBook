@@ -40,6 +40,8 @@
 				name="extensions.cardbook.autocompleteShowAddressbook" type="bool"/>
 			<preference id="extensions.cardbook.autocompleteWithColor"
 				name="extensions.cardbook.autocompleteWithColor" type="bool"/>
+			<preference id="extensions.cardbook.useColor"
+				name="extensions.cardbook.useColor" type="string"/>
 			<preference id="extensions.cardbook.exclusive"
 				name="extensions.cardbook.exclusive" type="bool"/>
 			<preference id="extensions.cardbook.requestsTimeout"
@@ -170,6 +172,16 @@
 								tooltiptext = "&exclusiveTooltip;"
 								preference="extensions.cardbook.exclusive"/>
 						</hbox>
+						<separator class="thin"/>
+						<vbox>
+							<label value="&useColorLabel;"
+								control="useColorRadiogroup"
+								id="useColor"/>
+							<radiogroup id="useColorRadiogroup" orient="horizontal" preference="extensions.cardbook.useColor" class="indent">
+								<radio value="background" label="&useColorBackgroundLabel;" accesskey="&useColorBackgroundAccesskey;"/>
+								<radio value="text" label="&useColorTextLabel;" accesskey="&useColorTextAccesskey;"/>
+							</radiogroup>
+						</vbox>
 					</groupbox>
 
 					<groupbox>

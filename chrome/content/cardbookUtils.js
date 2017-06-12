@@ -394,7 +394,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			vArrayNew = JSON.parse(JSON.stringify(vArray));
 			for (let i = 0; i<vArrayNew.length; i++){
 				if (vArrayNew[i] && vArrayNew[i] != ""){
-					vArrayNew[i] = vArrayNew[i].replace(/,/g,"@ESCAPEDCOMMA@").replace(/;/g,"@ESCAPEDSEMICOLON@");// test
+					vArrayNew[i] = vArrayNew[i].replace(/,/g,"@ESCAPEDCOMMA@").replace(/;/g,"@ESCAPEDSEMICOLON@");
 				}
 			}
 			return vArrayNew;
@@ -405,7 +405,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			vArrayNew = JSON.parse(JSON.stringify(vArray));
 			for (let i = 0; i<vArrayNew.length; i++){
 				if (vArrayNew[i] && vArrayNew[i] != ""){
-					vArrayNew[i] = vArrayNew[i].replace(/@ESCAPEDCOMMA@/g,"\\,").replace(/@ESCAPEDSEMICOLON@/g,"\\;"); //test
+					vArrayNew[i] = vArrayNew[i].replace(/@ESCAPEDCOMMA@/g,"\\,").replace(/@ESCAPEDSEMICOLON@/g,"\\;");
 				}
 			}
 			return vArrayNew;
@@ -1982,7 +1982,9 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		getTempFile: function (aFileName) {
 			var myFile = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties).get("TmpD", Components.interfaces.nsIFile);
-			myFile.append(aFileName);
+			if (aFileName) {
+				myFile.append(aFileName);
+			}
 			return myFile;
 		},
 

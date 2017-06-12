@@ -19,8 +19,13 @@
 <!ENTITY autocompleteSortByPopularityAccesskey "S">
 <!ENTITY autocompleteShowAddressbookLabel "Zeite den Namen des Adressbuchs">
 <!ENTITY autocompleteShowAddressbookAccesskey "Z">
-<!ENTITY autocompleteWithColorLabel "Benutze die Farbe des Adressbuchs als Hintergrundfarbe">
+<!ENTITY autocompleteWithColorLabel "Benutze die Farbe des Adressbuchs">
 <!ENTITY autocompleteWithColorAccesskey "F">
+<!ENTITY useColorLabel "??Use address book color into:??">
+<!ENTITY useColorBackgroundLabel "??Background color??">
+<!ENTITY useColorBackgroundAccesskey "B">
+<!ENTITY useColorTextLabel "??Text color??">
+<!ENTITY useColorTextAccesskey "T">
 <!ENTITY exclusiveLabel "Einzige Quelle für Kontakte">
 <!ENTITY exclusiveAccesskey "E">
 <!ENTITY exclusiveTooltip "Falls deaktiviert, ermöglicht diese Einstellung die Zuordnung von Kontakten aus den Standardadressbüchern von Thunderbird für die Gelben Sterne, die Anzeigenamen und die Autovervollständigung.">

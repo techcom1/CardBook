@@ -19,8 +19,13 @@
 <!ENTITY autocompleteSortByPopularityAccesskey "d">
 <!ENTITY autocompleteShowAddressbookLabel "Zobrazit jméno adresáře">
 <!ENTITY autocompleteShowAddressbookAccesskey "Z">
-<!ENTITY autocompleteWithColorLabel "Použít jako barvu pozadí barvu adresáře">
+<!ENTITY autocompleteWithColorLabel "??Use address book color??">
 <!ENTITY autocompleteWithColorAccesskey "P">
+<!ENTITY useColorLabel "??Use address book color into:??">
+<!ENTITY useColorBackgroundLabel "??Background color??">
+<!ENTITY useColorBackgroundAccesskey "B">
+<!ENTITY useColorTextLabel "??Text color??">
+<!ENTITY useColorTextAccesskey "T">
 <!ENTITY exclusiveLabel "Unikátní zdroj pro kontakty">
 <!ENTITY exclusiveAccesskey "z">
 <!ENTITY exclusiveTooltip "Pokud je zakázáno, tato možnost dovolí Thunderbirdu získat údaje pro žluté hvězdy, zobrazované jméno e-mailů a dokončování z standardního adresáře.">

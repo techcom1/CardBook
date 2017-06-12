@@ -19,8 +19,13 @@
 <!ENTITY autocompleteSortByPopularityAccesskey "p">
 <!ENTITY autocompleteShowAddressbookLabel "Toon naam adresboek">
 <!ENTITY autocompleteShowAddressbookAccesskey "T">
-<!ENTITY autocompleteWithColorLabel "Gebruik de kleur van het adresboek als achtergrond">
+<!ENTITY autocompleteWithColorLabel "Gebruik de kleur van het adresboek">
 <!ENTITY autocompleteWithColorAccesskey "G">
+<!ENTITY useColorLabel "??Use address book color into:??">
+<!ENTITY useColorBackgroundLabel "??Background color??">
+<!ENTITY useColorBackgroundAccesskey "B">
+<!ENTITY useColorTextLabel "??Text color??">
+<!ENTITY useColorTextAccesskey "T">
 <!ENTITY exclusiveLabel "CardBook als enige bron voor contactpersonen">
 <!ENTITY exclusiveAccesskey "e">
 <!ENTITY exclusiveTooltip "Als deze optie ingeschakeld is, dan wordt bij het typen uitsluitend naar email adressen in CardBook gezocht; als de optie uit staat, dan wordt ook in de Thunderbird-boeken gezocht.">

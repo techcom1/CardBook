@@ -50,6 +50,7 @@ function cardbookWebDAV(connection, target, etag, asJSON) {
 	this.etag = etag;
 	var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
 	var requestsTimeout = prefs.getComplexValue("extensions.cardbook.requestsTimeout", Components.interfaces.nsISupportsString).data;
+	this.userAgent = prefs.getComplexValue("extensions.cardbook.userAgent", Components.interfaces.nsISupportsString).data;
 	this.timeout = requestsTimeout * 1000;
 
 	this.requestJSONResponse = false;
@@ -276,9 +277,9 @@ cardbookWebDAV.prototype = {
 				httpChannel.timeout = this.timeout;
 			}
 
-			headers["X-client"] = "CardBook (Thunderbird)";
+			// headers["X-client"] = "CardBook (Thunderbird)";
 			// needed for Apple
-			headers["User-Agent"] = "Thunderbird";
+			headers["User-Agent"] = "Thunderbird " + this.userAgent;
 
 			// let httpAuthManager = Components.classes["@mozilla.org/network/http-auth-manager;1"].getService(Components.interfaces.nsIHttpAuthManager);
 			// httpAuthManager.clearAll();
@@ -309,7 +310,7 @@ cardbookWebDAV.prototype = {
 			wdw_cardbooklog.updateStatusProgressInformationWithDebug1(this.logDescription + " : debug mode : username : ", this.username);
 			wdw_cardbooklog.updateStatusProgressInformationWithDebug1(this.logDescription + " : debug mode : url : ", this.url);
 
-			httpChannel.open(method, this.url, true, this.username, this.password);
+			httpChannel.open(method, this.url, true);
 			
 			if (aOverrideMime) {
 				httpChannel.overrideMimeType('text/plain; charset=x-user-defined');

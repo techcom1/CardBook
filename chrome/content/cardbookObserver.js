@@ -105,7 +105,10 @@ if ("undefined" == typeof(cardbookObserver)) {
 				case "cardbook.cardPasted":
 				case "cardbook.cardDragged":
 				case "cardbook.cardImportedFromFile":
+					wdw_cardbook.refreshWindow();
+					break;
 				case "cardbook.preferencesChanged":
+					wdw_cardbook.loadCssRules();
 					wdw_cardbook.refreshWindow();
 					break;
 				case "cardbook.catAddedDirect":

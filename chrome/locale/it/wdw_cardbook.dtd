@@ -139,6 +139,8 @@
 <!ENTITY ccEmailCardFromCardsLabel "Contatti email (in copia/CC)">
 <!ENTITY bccEmailCardFromAccountsOrCatsLabel "Contatti email (in copia nascosta/BCC)">
 <!ENTITY bccEmailCardFromCardsLabel "Contatti email (in copia nascosta/BCC)">
+<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "??Share contact by email??">
+<!ENTITY shareCardByEmailFromCardsLabel "??Share contact by email??">
 <!ENTITY categoryLabel "Categoria">
 <!ENTITY findEmailsFromCardsLabel "Trova email collegate a questo contatto">
 <!ENTITY findEventsFromCardsLabel "Trova eventi del calendario collegati a questo contatto">

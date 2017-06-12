@@ -139,6 +139,8 @@
 <!ENTITY ccEmailCardFromCardsLabel "Wyślij wizytówki e-mailem (kopia/cc)">
 <!ENTITY bccEmailCardFromAccountsOrCatsLabel "Wyślij wizytówki e-mailem (ukryta kopia/bcc)">
 <!ENTITY bccEmailCardFromCardsLabel "Wyślij wizytówki e-mailem (ukryta kopia/bcc)">
+<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "??Share contact by email??">
+<!ENTITY shareCardByEmailFromCardsLabel "??Share contact by email??">
 <!ENTITY categoryLabel "Kategoria">
 <!ENTITY findEmailsFromCardsLabel "Znajdź e-maile związane z tą wizytówką">
 <!ENTITY findEventsFromCardsLabel "Znajdź wydarzenia związane z tą wizytówką">

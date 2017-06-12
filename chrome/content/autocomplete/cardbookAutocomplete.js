@@ -76,7 +76,7 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 			cardbookRepository.cardbookDynamicCssRules[aStyleSheet.href].push(ruleIndex);
 		},
 
-		createCssMsgAccountRules: function (aStyleSheet, aStyle, aColor, aOSName, aUseColor) {
+		createCssMsgAccountRules: function (aStyleSheet, aStyle, aColor, aOSName, aUseColor, aTreeCellProperty, aColorProperty) {
 			cardbookAutocomplete.celltextRuleStrings["LINUX"] = "treechildren::-moz-tree-cell-text(" + aStyle + ") {\
 				}";
 			cardbookAutocomplete.celltextRuleStrings["WIN"] = "treechildren::-moz-tree-cell-text(" + aStyle + ") {\
@@ -91,14 +91,14 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 			var ruleIndex = aStyleSheet.insertRule(cardbookAutocomplete.celltextRuleStrings[aOSName], aStyleSheet.cssRules.length);
 			cardbookRepository.cardbookDynamicCssRules[aStyleSheet.href].push(ruleIndex);
 			if (aUseColor) {
-				cardbookAutocomplete.textRuleStrings["LINUX"] = "treechildren::-moz-tree-cell(" + aStyle + ") {\
-					background-color: " + aColor + ";\
+				cardbookAutocomplete.textRuleStrings["LINUX"] = "treechildren::" + aTreeCellProperty + "(" + aStyle + ") {\
+					" + aColorProperty + ": " + aColor + ";\
 					}";
-				cardbookAutocomplete.textRuleStrings["WIN"] = "treechildren::-moz-tree-cell(" + aStyle + ") {\
-					background-color: " + aColor + ";\
+				cardbookAutocomplete.textRuleStrings["WIN"] = "treechildren::" + aTreeCellProperty + "(" + aStyle + ") {\
+					" + aColorProperty + ": " + aColor + ";\
 					}";
-				cardbookAutocomplete.textRuleStrings["OSX"] = "treechildren::-moz-tree-cell(" + aStyle + ") {\
-					background-color: " + aColor + ";\
+				cardbookAutocomplete.textRuleStrings["OSX"] = "treechildren::" + aTreeCellProperty + "(" + aStyle + ") {\
+					" + aColorProperty + ": " + aColor + ";\
 					}";
 				var ruleIndex = aStyleSheet.insertRule(cardbookAutocomplete.textRuleStrings[aOSName], aStyleSheet.cssRules.length);
 				cardbookRepository.cardbookDynamicCssRules[aStyleSheet.href].push(ruleIndex);
@@ -118,6 +118,14 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 				Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
 				var autocompleteWithColor = prefs.getBoolPref("extensions.cardbook.autocompleteWithColor");
+				var useColor = prefs.getComplexValue("extensions.cardbook.useColor", Components.interfaces.nsISupportsString).data;
+				if (useColor == "text") {
+					var colorProperty = "color";
+					var treeCellProperty="-moz-tree-cell-text";
+				} else {
+					var colorProperty = "background-color";
+					var treeCellProperty="-moz-tree-cell";
+				}
 				for (var prop in document.styleSheets) {
 					var styleSheet = document.styleSheets[prop];
 					if (styleSheet.href == "chrome://cardbook/skin/cardbookAutocomplete.css") {
@@ -131,7 +139,7 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 								var cardbookPrefService = new cardbookPreferenceService(dirPrefId);
 								var myColor = cardbookPrefService.getColor()
 								var myStyle = cardbookRepository.getIconType(cardbookRepository.cardbookAccounts[i][6]) + " color_" + dirPrefId;
-								cardbookAutocomplete.createCssMsgAccountRules(styleSheet, myStyle, myColor, OSName, autocompleteWithColor);
+								cardbookAutocomplete.createCssMsgAccountRules(styleSheet, myStyle, myColor, OSName, autocompleteWithColor, treeCellProperty, colorProperty);
 							}
 						}
 						cardbookAutocomplete.createCssMsgIconsRules(styleSheet, OSName);

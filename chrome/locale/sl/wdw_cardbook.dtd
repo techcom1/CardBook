@@ -139,6 +139,8 @@
 <!ENTITY ccEmailCardFromCardsLabel "Pošlji pošto stikom (kopija/kp)">
 <!ENTITY bccEmailCardFromAccountsOrCatsLabel "Pošlji pošto stikom (skrita kopija/skp)">
 <!ENTITY bccEmailCardFromCardsLabel "Pošlji pošto stikom (skrita kopija/skp)">
+<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "??Share contact by email??">
+<!ENTITY shareCardByEmailFromCardsLabel "??Share contact by email??">
 <!ENTITY categoryLabel "Kategorija">
 <!ENTITY findEmailsFromCardsLabel "Poišči e-pošto, povezano s tem stikom">
 <!ENTITY findEventsFromCardsLabel "Poišči dogodke koledarja, povezane s tem stikom">

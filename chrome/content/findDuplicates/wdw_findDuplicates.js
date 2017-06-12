@@ -14,8 +14,8 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 			wdw_findDuplicates.gDynamicCss[aStyleSheet.href] = [];
 		},
 
-		createCssTextBoxRules: function (aStyleSheet, aDirPrefId, aColor) {
-			var ruleString = ".cardbookFindDuplicatesClass textbox[findDuplicates=color_" + aDirPrefId + "] {-moz-appearance: none !important; background-color: " + aColor + " !important; border: 1px !important;}";
+		createCssTextBoxRules: function (aStyleSheet, aDirPrefId, aColor, aColorProperty) {
+			var ruleString = ".cardbookFindDuplicatesClass textbox[findDuplicates=color_" + aDirPrefId + "] {-moz-appearance: none !important; " + aColorProperty + ": " + aColor + " !important; border: 1px !important;}";
 			var ruleIndex = aStyleSheet.insertRule(ruleString, aStyleSheet.cssRules.length);
 			wdw_findDuplicates.gDynamicCss[aStyleSheet.href].push(ruleIndex);
 		},
@@ -24,13 +24,22 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 			for (var prop in document.styleSheets) {
 				var styleSheet = document.styleSheets[prop];
 				if (styleSheet.href == "chrome://cardbook/skin/findDuplicates.css") {
-					wdw_findDuplicates.gDynamicCss[styleSheet.href] = [];
+					if (!(wdw_findDuplicates.gDynamicCss[styleSheet.href])) {
+						wdw_findDuplicates.gDynamicCss[styleSheet.href] = [];
+					}
 					wdw_findDuplicates.deleteCssAllRules(styleSheet);
 					for (var i = 0; i < wdw_findDuplicates.gResultsDirPrefId.length; i++) {
 						var dirPrefId = wdw_findDuplicates.gResultsDirPrefId[i];
 						var cardbookPrefService = new cardbookPreferenceService(dirPrefId);
 						var color = cardbookPrefService.getColor()
-						wdw_findDuplicates.createCssTextBoxRules(styleSheet, dirPrefId, color);
+						var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+						var useColor = prefs.getComplexValue("extensions.cardbook.useColor", Components.interfaces.nsISupportsString).data;
+						if (useColor == "text") {
+							var colorProperty = "color";
+						} else {
+							var colorProperty = "background-color";
+						}
+						wdw_findDuplicates.createCssTextBoxRules(styleSheet, dirPrefId, color, colorProperty);
 					}
 					cardbookRepository.reloadCss(styleSheet.href);
 				}

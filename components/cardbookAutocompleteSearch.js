@@ -114,7 +114,7 @@ cardbookAutocompleteSearch.prototype = {
 				var done = 0;
 				for (var i = aResult._searchResults.length - 1 ; i >= 0; i--) {
 					if (this.sortUsePopularity) {
-						if (Number(aPopularity) <= Number(aResult._searchResults[i].popularity)) {
+						if (Number(aPopularity) < Number(aResult._searchResults[i].popularity)) {
 											aResult._searchResults.splice(i+1, 0, {
 																		 value: aEmailValue,
 																		 comment: myComment,
@@ -127,6 +127,21 @@ cardbookAutocompleteSearch.prototype = {
 																	 });
 											done = 1;
 											break;
+						} else if (Number(aPopularity) == Number(aResult._searchResults[i].popularity)) {
+							if (aFn.toLowerCase() > aResult._searchResults[i].fn.toLowerCase()) {
+												aResult._searchResults.splice(i+1, 0, {
+																			 value: aEmailValue,
+																			 comment: myComment,
+																			 card: null,
+																			 isPrimaryEmail: true,
+																			 emailToUse: aEmailValue,
+																			 popularity: aPopularity,
+																			 style: aStyle,
+																			 fn: aFn
+																		 });
+												done = 1;
+												break;
+							}
 						}
 					} else {
 						if (aFn.toLowerCase() > aResult._searchResults[i].fn.toLowerCase()) {
@@ -142,6 +157,21 @@ cardbookAutocompleteSearch.prototype = {
 																	 });
 											done = 1;
 											break;
+						} else if (aFn.toLowerCase() == aResult._searchResults[i].fn.toLowerCase()) {
+							if (Number(aPopularity) < Number(aResult._searchResults[i].popularity)) {
+												aResult._searchResults.splice(i+1, 0, {
+																			 value: aEmailValue,
+																			 comment: myComment,
+																			 card: null,
+																			 isPrimaryEmail: true,
+																			 emailToUse: aEmailValue,
+																			 popularity: aPopularity,
+																			 style: aStyle,
+																			 fn: aFn
+																		 });
+												done = 1;
+												break;
+							}
 						}
 					}
 				}

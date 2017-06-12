@@ -139,6 +139,8 @@
 <!ENTITY ccEmailCardFromCardsLabel "Отправить email контактам (копию)">
 <!ENTITY bccEmailCardFromAccountsOrCatsLabel "Отправить email контактам (скрытую копию)">
 <!ENTITY bccEmailCardFromCardsLabel "Отправить email контактам (скрытую копию)">
+<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "??Share contact by email??">
+<!ENTITY shareCardByEmailFromCardsLabel "??Share contact by email??">
 <!ENTITY categoryLabel "Категория">
 <!ENTITY findEmailsFromCardsLabel "Искать сообщения, связанные с этим контактом">
 <!ENTITY findEventsFromCardsLabel "Искать события календаря, связанные с этим контактом">

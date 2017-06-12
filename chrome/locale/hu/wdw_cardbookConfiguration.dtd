@@ -19,8 +19,13 @@
 <!ENTITY autocompleteSortByPopularityAccesskey "R">
 <!ENTITY autocompleteShowAddressbookLabel "A névjegytár nevének megjelenítése">
 <!ENTITY autocompleteShowAddressbookAccesskey "m">
-<!ENTITY autocompleteWithColorLabel "Használja a névjegytár színét háttérszínnek">
+<!ENTITY autocompleteWithColorLabel "??Use address book color??">
 <!ENTITY autocompleteWithColorAccesskey "h">
+<!ENTITY useColorLabel "??Use address book color into:??">
+<!ENTITY useColorBackgroundLabel "??Background color??">
+<!ENTITY useColorBackgroundAccesskey "B">
+<!ENTITY useColorTextLabel "??Text color??">
+<!ENTITY useColorTextAccesskey "T">
 <!ENTITY exclusiveLabel "Névjegyzék egyedi forrása">
 <!ENTITY exclusiveAccesskey "f">
 <!ENTITY exclusiveTooltip "Ha le van tiltva, ez az opció lehetővé teszi, hogy letölteni kapcsolatok Thunderbird szabvány címjegyzékek a sárga csillag, az e-mail megjelenítési nevét és az e-mail automatikus kiegészítésre.">

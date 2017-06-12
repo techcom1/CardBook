@@ -19,8 +19,13 @@
 <!ENTITY autocompleteSortByPopularityAccesskey "p">
 <!ENTITY autocompleteShowAddressbookLabel "??Show address book name??">
 <!ENTITY autocompleteShowAddressbookAccesskey "S">
-<!ENTITY autocompleteWithColorLabel "??Use address book color for background color??">
+<!ENTITY autocompleteWithColorLabel "??Use address book color??">
 <!ENTITY autocompleteWithColorAccesskey "U">
+<!ENTITY useColorLabel "??Use address book color into:??">
+<!ENTITY useColorBackgroundLabel "??Background color??">
+<!ENTITY useColorBackgroundAccesskey "B">
+<!ENTITY useColorTextLabel "??Text color??">
+<!ENTITY useColorTextAccesskey "T">
 <!ENTITY exclusiveLabel "CardBook come fonte unica dei contatti">
 <!ENTITY exclusiveAccesskey "U">
 <!ENTITY exclusiveTooltip "Se disabilitata, questa opzione permette di recuperare i contatti nelle rubriche standard di Thunderbird per le stelline gialle, il nome mostrato nell'email e l'autocompletamento dell'email.">
