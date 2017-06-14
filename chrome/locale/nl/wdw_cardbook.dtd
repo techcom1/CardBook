@@ -139,8 +139,8 @@
 <!ENTITY ccEmailCardFromCardsLabel "Email contactpersoon (copy / cc)">
 <!ENTITY bccEmailCardFromAccountsOrCatsLabel "Email contactpersoon (blind copy / bcc)">
 <!ENTITY bccEmailCardFromCardsLabel "Email contactpersoon (blind copy / bcc)">
-<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "??Share contact by email??">
-<!ENTITY shareCardByEmailFromCardsLabel "??Share contact by email??">
+<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Gegevens van contactpersoon aan iemand anders mailen">
+<!ENTITY shareCardByEmailFromCardsLabel "Gegevens van contactpersoon aan iemand anders mailen">
 <!ENTITY categoryLabel "Categorie">
 <!ENTITY findEmailsFromCardsLabel "Zoek e-mails van contactpersoon">
 <!ENTITY findEventsFromCardsLabel "Zoek agenda-gebeurtenissen van contactpersoon">

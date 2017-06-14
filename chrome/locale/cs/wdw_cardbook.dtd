@@ -139,8 +139,8 @@
 <!ENTITY ccEmailCardFromCardsLabel "Poslat e-mail kontaktům (kopie / cc)">
 <!ENTITY bccEmailCardFromAccountsOrCatsLabel "Poslat e-mail kontaktům (skrytá kopie / bcc)">
 <!ENTITY bccEmailCardFromCardsLabel "Poslat e-mail kontaktům (skrytá kopie / bcc)">
-<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "??Share contact by email??">
-<!ENTITY shareCardByEmailFromCardsLabel "??Share contact by email??">
+<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Sdílet kontakt e-mailem">
+<!ENTITY shareCardByEmailFromCardsLabel "Sdílet kontakt e-mailem">
 <!ENTITY categoryLabel "Kategorie">
 <!ENTITY findEmailsFromCardsLabel "Najít e-maily kontaktu">
 <!ENTITY findEventsFromCardsLabel "Najít v kalendáři události vztahující se k tomuto kontaktu">

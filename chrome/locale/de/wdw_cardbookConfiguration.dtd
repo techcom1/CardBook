@@ -21,10 +21,10 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "Z">
 <!ENTITY autocompleteWithColorLabel "Benutze die Farbe des Adressbuchs">
 <!ENTITY autocompleteWithColorAccesskey "F">
-<!ENTITY useColorLabel "??Use address book color into:??">
-<!ENTITY useColorBackgroundLabel "??Background color??">
-<!ENTITY useColorBackgroundAccesskey "B">
-<!ENTITY useColorTextLabel "??Text color??">
+<!ENTITY useColorLabel "Benutze die Farbe des Adressbuchs als:">
+<!ENTITY useColorBackgroundLabel "Hintergrundfarbe">
+<!ENTITY useColorBackgroundAccesskey "g">
+<!ENTITY useColorTextLabel "Textfarbe">
 <!ENTITY useColorTextAccesskey "T">
 <!ENTITY exclusiveLabel "Einzige Quelle für Kontakte">
 <!ENTITY exclusiveAccesskey "E">

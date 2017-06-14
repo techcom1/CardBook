@@ -21,7 +21,7 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "M">
 <!ENTITY autocompleteWithColorLabel "Usar cor da agenda">
 <!ENTITY autocompleteWithColorAccesskey "U">
-<!ENTITY useColorLabel "??Use address book color into:??">
+<!ENTITY useColorLabel "??Use address book color for:??">
 <!ENTITY useColorBackgroundLabel "??Background color??">
 <!ENTITY useColorBackgroundAccesskey "B">
 <!ENTITY useColorTextLabel "??Text color??">

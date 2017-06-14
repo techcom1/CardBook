@@ -21,7 +21,7 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "P">
 <!ENTITY autocompleteWithColorLabel "??Use address book color??">
 <!ENTITY autocompleteWithColorAccesskey "U">
-<!ENTITY useColorLabel "??Use address book color into:??">
+<!ENTITY useColorLabel "??Use address book color for:??">
 <!ENTITY useColorBackgroundLabel "??Background color??">
 <!ENTITY useColorBackgroundAccesskey "B">
 <!ENTITY useColorTextLabel "??Text color??">

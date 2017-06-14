@@ -282,13 +282,32 @@ if ("undefined" == typeof(cardbookElementTools)) {
 		},
 
 		loadDateFormats: function (aPopupName, aMenuName, aDefaultValue) {
+			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 			var myPopup = document.getElementById(aPopupName);
 			cardbookElementTools.deleteRows(aPopupName);
 			var defaultIndex = 0;
+			var myD = "";			
+			var myM = "";			
+			var myY = "";			
+			try {
+				myD = strBundle.GetStringFromName("dateFormatsDLabel");
+				myM = strBundle.GetStringFromName("dateFormatsMLabel");
+				myY = strBundle.GetStringFromName("dateFormatsYLabel");
+			}
+			catch (e) {
+				myD = "";			
+				myM = "";			
+				myY = "";			
+			}
 			var j = 0;
 			for (var i = 0; i < cardbookRepository.dateFormats.length; i++) {
 				var menuItem = document.createElement("menuitem");
-				menuItem.setAttribute("label", cardbookRepository.dateFormats[i]);
+				if (myD != "") {
+					menuItem.setAttribute("label", cardbookRepository.dateFormats[i].replace(/D/g, myD).replace(/M/g, myM).replace(/Y/g, myY));
+				} else {
+					menuItem.setAttribute("label", cardbookRepository.dateFormats[i]);
+				}
 				menuItem.setAttribute("value", cardbookRepository.dateFormats[i]);
 				myPopup.appendChild(menuItem);
 				if (cardbookRepository.dateFormats[i] == aDefaultValue) {

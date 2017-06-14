@@ -13,7 +13,7 @@
 
 <!ENTITY integrationGroupboxLabel "Integratie in Thunderbird">
 <!ENTITY autocompletionLabel "Auto-aanvullen bij het typen van email adressen">
-<!ENTITY autocompletionAccesskey "A">
+<!ENTITY autocompletionAccesskey "h">
 <!ENTITY autocompletionTooltip "Auto-aanvullen bij het typen van email adressen vanuit CardBook.">
 <!ENTITY autocompleteSortByPopularityLabel "Sorteer e-mail adressen op populariteit">
 <!ENTITY autocompleteSortByPopularityAccesskey "p">
@@ -21,10 +21,10 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "T">
 <!ENTITY autocompleteWithColorLabel "Gebruik de kleur van het adresboek">
 <!ENTITY autocompleteWithColorAccesskey "G">
-<!ENTITY useColorLabel "??Use address book color into:??">
-<!ENTITY useColorBackgroundLabel "??Background color??">
-<!ENTITY useColorBackgroundAccesskey "B">
-<!ENTITY useColorTextLabel "??Text color??">
+<!ENTITY useColorLabel "Gebruik kleur van adresboek voor:">
+<!ENTITY useColorBackgroundLabel "Achtergrondkleur">
+<!ENTITY useColorBackgroundAccesskey "A">
+<!ENTITY useColorTextLabel "Tekstkleur">
 <!ENTITY useColorTextAccesskey "T">
 <!ENTITY exclusiveLabel "CardBook als enige bron voor contactpersonen">
 <!ENTITY exclusiveAccesskey "e">

@@ -1083,6 +1083,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				getCellText: function(idx, column) {
 					if (column.id == "typesCode") return wdw_cardbookConfiguration.allTypes[this.typeField][idx][0];
 					else if (column.id == "typesLabel") return wdw_cardbookConfiguration.allTypes[this.typeField][idx][1];
+					else if (column.id == "typesId") return wdw_cardbookConfiguration.allTypes[this.typeField][idx][2];
 				}
 			}
 			document.getElementById('typesTree').view = typesTreeView;
@@ -1097,15 +1098,15 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				var result = [];
 				var already = false;
 				for (let i = 0; i < wdw_cardbookConfiguration.allTypes[type].length; i++) {
-					if (myArgs.code === wdw_cardbookConfiguration.allTypes[type][i][0]) {
-						result.push([myArgs.code, myArgs.label]);
+					if (myArgs.code.toLowerCase() === wdw_cardbookConfiguration.allTypes[type][i][0].toLowerCase()) {
+						result.push([myArgs.code, myArgs.label, i]);
 						already = true;
 					} else {
-						result.push(wdw_cardbookConfiguration.allTypes[type][i]);
+						result.push([wdw_cardbookConfiguration.allTypes[type][i][0], wdw_cardbookConfiguration.allTypes[type][i][1], i]);
 					}
 				}
 				if (!already) {
-					result.push([myArgs.code, myArgs.label]);
+					result.push([myArgs.code, myArgs.label, wdw_cardbookConfiguration.allTypes[type].length]);
 				}
 				wdw_cardbookConfiguration.allTypes[type] = JSON.parse(JSON.stringify(result));
 				wdw_cardbookConfiguration.allTypes[type] = cardbookUtils.sortArrayByString(wdw_cardbookConfiguration.allTypes[type],1,1);
@@ -1121,15 +1122,28 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			} else {
 				var myCode = myTree.view.getCellText(myTree.currentIndex, {id: "typesCode"});
 				var myLabel = myTree.view.getCellText(myTree.currentIndex, {id: "typesLabel"});
+				var myId = myTree.view.getCellText(myTree.currentIndex, {id: "typesId"});
 				var myArgs = {code: myCode, label: myLabel, typeAction: ""};
 				var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookAddType.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
 				if (myArgs.typeAction == "SAVE") {
 					var result = [];
+					var already = false;
 					for (let i = 0; i < wdw_cardbookConfiguration.allTypes[type].length; i++) {
-						if (myArgs.code === wdw_cardbookConfiguration.allTypes[type][i][0]) {
-							result.push([myArgs.code, myArgs.label]);
+						if (myArgs.code.toLowerCase() === wdw_cardbookConfiguration.allTypes[type][i][0].toLowerCase()) {
+							result.push([myArgs.code, myArgs.label, i]);
+							already = true;
 						} else {
-							result.push(wdw_cardbookConfiguration.allTypes[type][i]);
+							result.push([wdw_cardbookConfiguration.allTypes[type][i][0], wdw_cardbookConfiguration.allTypes[type][i][1], i]);
+						}
+					}
+					if (!already) {
+						result = [];
+						for (let i = 0; i < wdw_cardbookConfiguration.allTypes[type].length; i++) {
+							if (myId == wdw_cardbookConfiguration.allTypes[type][i][2]) {
+								result.push([myArgs.code, myArgs.label, i]);
+							} else {
+								result.push([wdw_cardbookConfiguration.allTypes[type][i][0], wdw_cardbookConfiguration.allTypes[type][i][1], i]);
+							}
 						}
 					}
 					wdw_cardbookConfiguration.allTypes[type] = JSON.parse(JSON.stringify(result));
@@ -1145,10 +1159,10 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			if (myTree.currentIndex == -1) {
 				return;
 			} else {
-				var myCode = myTree.view.getCellText(myTree.currentIndex, {id: "typesCode"});
+				var myId = myTree.view.getCellText(myTree.currentIndex, {id: "typesId"});
 				var result = [];
 				for (let i = 0; i < wdw_cardbookConfiguration.allTypes[type].length; i++) {
-					if (myCode !== wdw_cardbookConfiguration.allTypes[type][i][0]) {
+					if (myId != wdw_cardbookConfiguration.allTypes[type][i][2]) {
 						result.push(wdw_cardbookConfiguration.allTypes[type][i]);
 					}
 				}
@@ -1164,7 +1178,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			for (var i = 0; i < cardbookRepository.typesSeed[type].length; i++) {
 				var myCode = cardbookRepository.typesSeed[type][i];
 				var myLabel = strBundle.getString("types." + type + "." + myCode.toLowerCase());
-				result.push([myCode, myLabel]);
+				result.push([myCode, myLabel, i]);
 			}
 			wdw_cardbookConfiguration.allTypes[type] = JSON.parse(JSON.stringify(result));
 			wdw_cardbookConfiguration.sortTrees(null, "typesTree");
@@ -1228,6 +1242,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 					if (column.id == "IMPPCode") return wdw_cardbookConfiguration.allIMPPs[this.typeField][idx][0];
 					else if (column.id == "IMPPLabel") return wdw_cardbookConfiguration.allIMPPs[this.typeField][idx][1];
 					else if (column.id == "IMPPProtocol") return wdw_cardbookConfiguration.allIMPPs[this.typeField][idx][2];
+					else if (column.id == "IMPPId") return wdw_cardbookConfiguration.allIMPPs[this.typeField][idx][3];
 				}
 			}
 			document.getElementById('IMPPsTree').view = IMPPsTreeView;
@@ -1239,7 +1254,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			var myArgs = {code: "", label: "", protocol: "", typeAction: ""};
 			var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookAddIMPP.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
 			if (myArgs.typeAction == "SAVE") {
-				wdw_cardbookConfiguration.allIMPPs[type].push([myArgs.code, myArgs.label, myArgs.protocol]);
+				wdw_cardbookConfiguration.allIMPPs[type].push([myArgs.code, myArgs.label, myArgs.protocol, wdw_cardbookConfiguration.allIMPPs[type].length]);
 				wdw_cardbookConfiguration.allIMPPs[type] = cardbookUtils.sortArrayByString(wdw_cardbookConfiguration.allIMPPs[type],1,1);
 				wdw_cardbookConfiguration.sortTrees(null, "IMPPsTree");
 			}
@@ -1254,13 +1269,14 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				var myCode = myTree.view.getCellText(myTree.currentIndex, {id: "IMPPCode"});
 				var myLabel = myTree.view.getCellText(myTree.currentIndex, {id: "IMPPLabel"});
 				var myProtocol = myTree.view.getCellText(myTree.currentIndex, {id: "IMPPProtocol"});
+				var myId = myTree.view.getCellText(myTree.currentIndex, {id: "IMPPId"});
 				var myArgs = {code: myCode, label: myLabel, protocol: myProtocol, typeAction: ""};
 				var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookAddIMPP.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
 				if (myArgs.typeAction == "SAVE") {
 					var result = [];
 					for (let i = 0; i < wdw_cardbookConfiguration.allIMPPs[type].length; i++) {
-						if (myCode === wdw_cardbookConfiguration.allIMPPs[type][i][0]) {
-							result.push([myArgs.code, myArgs.label, myArgs.protocol]);
+						if (myId == wdw_cardbookConfiguration.allIMPPs[type][i][3]) {
+							result.push([myArgs.code, myArgs.label, myArgs.protocol, myId]);
 						} else {
 							result.push(wdw_cardbookConfiguration.allIMPPs[type][i]);
 						}
@@ -1278,10 +1294,10 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			if (myTree.currentIndex == -1) {
 				return;
 			} else {
-				var myCode = myTree.view.getCellText(myTree.currentIndex, {id: "IMPPCode"});
+				var myId = myTree.view.getCellText(myTree.currentIndex, {id: "IMPPId"});
 				var result = [];
 				for (let i = 0; i < wdw_cardbookConfiguration.allIMPPs[type].length; i++) {
-					if (myCode !== wdw_cardbookConfiguration.allIMPPs[type][i][0]) {
+					if (myId != wdw_cardbookConfiguration.allIMPPs[type][i][3]) {
 						result.push(wdw_cardbookConfiguration.allIMPPs[type][i]);
 					}
 				}

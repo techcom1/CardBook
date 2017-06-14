@@ -197,7 +197,11 @@ cardbookPreferenceService.prototype = {
 			for (var i in typesList) {
 				var type = typesList[i];
 				finalResult[type] = [];
-				finalResult[type] = this.getAllTypesByType(type);
+				var result = [];
+				result = this.getAllTypesByType(type);
+				for (let j = 0; j < result.length; j++) {
+					finalResult[type].push([result[j][0], result[j][1], j]); 
+				}
 			}
 			return finalResult;
 		}
@@ -254,7 +258,7 @@ cardbookPreferenceService.prototype = {
 			finalResult = this._arrayUnique(finalResult);
 			for (let i = 0; i < finalResult.length; i++) {
 				var tmpArray = finalResult[i].split(":");
-				finalResult1.push([tmpArray[0], tmpArray[1], tmpArray[2]]);
+				finalResult1.push([tmpArray[0], tmpArray[1], tmpArray[2], i]);
 			}
 			finalResult1 = cardbookUtils.sortArrayByString(finalResult1,1,1);
 			return finalResult1;
@@ -280,7 +284,7 @@ cardbookPreferenceService.prototype = {
 			finalResult = this._arrayUnique(finalResult);
 			for (let i = 0; i < finalResult.length; i++) {
 				var tmpArray = finalResult[i].split(":");
-				finalResult1.push([tmpArray[0], tmpArray[1], tmpArray[2]]);
+				finalResult1.push([tmpArray[0], tmpArray[1], tmpArray[2], i]);
 			}
 			finalResult1 = cardbookUtils.sortArrayByString(finalResult1,1,1);
 			return finalResult1;
