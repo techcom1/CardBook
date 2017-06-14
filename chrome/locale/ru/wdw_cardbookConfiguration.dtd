@@ -19,13 +19,13 @@
 <!ENTITY autocompleteSortByPopularityAccesskey "п">
 <!ENTITY autocompleteShowAddressbookLabel "Показывать название адресной книги">
 <!ENTITY autocompleteShowAddressbookAccesskey "а">
-<!ENTITY autocompleteWithColorLabel "??Use address book color??">
+<!ENTITY autocompleteWithColorLabel "Использовать цвет адресной книги">
 <!ENTITY autocompleteWithColorAccesskey "ц">
-<!ENTITY useColorLabel "??Use address book color into:??">
-<!ENTITY useColorBackgroundLabel "??Background color??">
-<!ENTITY useColorBackgroundAccesskey "B">
-<!ENTITY useColorTextLabel "??Text color??">
-<!ENTITY useColorTextAccesskey "T">
+<!ENTITY useColorLabel "Использовать цвет адресной книги для:">
+<!ENTITY useColorBackgroundLabel "Фона">
+<!ENTITY useColorBackgroundAccesskey "Ф">
+<!ENTITY useColorTextLabel "Текста">
+<!ENTITY useColorTextAccesskey "Т">
 <!ENTITY exclusiveLabel "Единственный источник контактов">
 <!ENTITY exclusiveAccesskey "Е">
 <!ENTITY exclusiveTooltip "Отключение этой настройки позволяет Thunderbird запрашивать контакты из стандартной адресной книги для жёлтых звёздочек, отображаемого имени в сообщениях и автозавершения адресов email.">
