@@ -15,7 +15,7 @@
 <!ENTITY autocompletionLabel "Usar o autocomplete do CardBook">
 <!ENTITY autocompletionAccesskey "o">
 <!ENTITY autocompletionTooltip "Trocar o normal autocomplete pelo do carbook. Quando activado, os email serão provenientes do repositorio do cardbook ou os emails recolhidos.">
-<!ENTITY autocompleteSortByPopularityLabel "?Organizar email por popularidade">
+<!ENTITY autocompleteSortByPopularityLabel "Organizar email por popularidade">
 <!ENTITY autocompleteSortByPopularityAccesskey "p">
 <!ENTITY autocompleteShowAddressbookLabel "Mostrar nome da agenda">
 <!ENTITY autocompleteShowAddressbookAccesskey "M">
