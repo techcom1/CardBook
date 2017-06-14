@@ -18,9 +18,14 @@
 <!ENTITY autocompleteSortByPopularityLabel "Organizar email por popularidade">
 <!ENTITY autocompleteSortByPopularityAccesskey "p">
 <!ENTITY autocompleteShowAddressbookLabel "Mostrar nome da agenda">
-<!ENTITY autocompleteShowAddressbookAccesskey "S">
-<!ENTITY autocompleteWithColorLabel "Usar cor da agenda para cor de fundo">
+<!ENTITY autocompleteShowAddressbookAccesskey "M">
+<!ENTITY autocompleteWithColorLabel "Usar cor da agenda">
 <!ENTITY autocompleteWithColorAccesskey "U">
+<!ENTITY useColorLabel "??Use address book color into:??">
+<!ENTITY useColorBackgroundLabel "??Background color??">
+<!ENTITY useColorBackgroundAccesskey "B">
+<!ENTITY useColorTextLabel "??Text color??">
+<!ENTITY useColorTextAccesskey "T">
 <!ENTITY exclusiveLabel "CardBook como fonte unica de contactos">
 <!ENTITY exclusiveAccesskey "U">
 <!ENTITY exclusiveTooltip "Se não seleccionado, a opção pertmite que sejam utilizados contactos das agendas do próprio Thunderbird.">

@@ -19,8 +19,13 @@
 <!ENTITY autocompleteSortByPopularityAccesskey "T">
 <!ENTITY autocompleteShowAddressbookLabel "Voir le nom du carnet d'adresses">
 <!ENTITY autocompleteShowAddressbookAccesskey "V">
-<!ENTITY autocompleteWithColorLabel "Utiliser la couleur du carnet d'adresses comme fond">
-<!ENTITY autocompleteWithColorAccesskey "U">
+<!ENTITY autocompleteWithColorLabel "Utiliser la couleur du carnet d'adresses">
+<!ENTITY autocompleteWithColorAccesskey "c">
+<!ENTITY useColorLabel "Utiliser la couleur du carnet d'adresses pour :">
+<!ENTITY useColorBackgroundLabel "La couleur du fond">
+<!ENTITY useColorBackgroundAccesskey "f">
+<!ENTITY useColorTextLabel "La couleur du texte">
+<!ENTITY useColorTextAccesskey "x">
 <!ENTITY exclusiveLabel "CardBook, unique source pour les contacts">
 <!ENTITY exclusiveAccesskey "U">
 <!ENTITY exclusiveTooltip "Si décochée, cette option permet la recherche des contacts dans les carnets d'adresses standards de Thunderbird pour les étoiles jaunes, pour le nom affiché des emails et la suggestion d'emails.">

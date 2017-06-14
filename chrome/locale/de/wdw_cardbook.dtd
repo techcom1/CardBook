@@ -139,6 +139,8 @@
 <!ENTITY ccEmailCardFromCardsLabel "Email an Kontakt verfassen (Kopie / Cc)">
 <!ENTITY bccEmailCardFromAccountsOrCatsLabel "Email an Kontakt verfassen (Blindkopie / Bcc)">
 <!ENTITY bccEmailCardFromCardsLabel "Email an Kontakt verfassen (Blindkopie / Bcc)">
+<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "??Share contact by email??">
+<!ENTITY shareCardByEmailFromCardsLabel "??Share contact by email??">
 <!ENTITY categoryLabel "Kategorie">
 <!ENTITY findEmailsFromCardsLabel "Suche Emails des Kontakts">
 <!ENTITY findEventsFromCardsLabel "Suche Termine des Kontakts">

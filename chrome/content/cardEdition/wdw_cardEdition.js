@@ -3,7 +3,6 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 
 		contactNotLoaded : true,
 		panel : 0,
-		currentAdr : [],
 		currentAdrId : [],
 		emailToAdd : [],
 		listOfCategories : [],
@@ -504,7 +503,6 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		},
 
 		openAdrPanel: function (aAdrLine, aIdArray) {
-			wdw_cardEdition.currentAdr = JSON.parse(JSON.stringify(aAdrLine));
 			wdw_cardEdition.currentAdrId = JSON.parse(JSON.stringify(aIdArray));
 			document.getElementById('adrPostOfficeTextBox').value = cardbookUtils.undefinedToBlank(aAdrLine[0][0]);
 			document.getElementById('adrExtendedAddrTextBox').value = cardbookUtils.undefinedToBlank(aAdrLine[0][1]);
@@ -519,27 +517,27 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 
 		cancelAdrPanel: function () {
 			document.getElementById('adrPanel').hidePopup();
-			document.getElementById(wdw_cardEdition.currentAdrId.join("_")).focus();
 		},
 
 		validateAdrPanel: function () {
-			wdw_cardEdition.currentAdr[0][0] = document.getElementById('adrPostOfficeTextBox').value.trim();
-			wdw_cardEdition.currentAdr[0][1] = document.getElementById('adrExtendedAddrTextBox').value.trim();
-			wdw_cardEdition.currentAdr[0][2] = document.getElementById('adrStreetTextBox').value.trim();
-			wdw_cardEdition.currentAdr[0][3] = document.getElementById('adrLocalityTextBox').value.trim();
-			wdw_cardEdition.currentAdr[0][4] = document.getElementById('adrRegionTextBox').value.trim();
-			wdw_cardEdition.currentAdr[0][5] = document.getElementById('adrPostalCodeTextBox').value.trim();
-			wdw_cardEdition.currentAdr[0][6] = document.getElementById('adrCountryTextBox').value.trim();
+			var myId = wdw_cardEdition.currentAdrId.join("_");
+			document.getElementById(myId + '_' + '0').value = document.getElementById('adrPostOfficeTextBox').value.trim();
+			document.getElementById(myId + '_' + '1').value = document.getElementById('adrExtendedAddrTextBox').value.trim();
+			document.getElementById(myId + '_' + '2').value = document.getElementById('adrStreetTextBox').value.replace(/\n/g, "\\n").trim();
+			document.getElementById(myId + '_' + '3').value = document.getElementById('adrLocalityTextBox').value.trim();
+			document.getElementById(myId + '_' + '4').value = document.getElementById('adrRegionTextBox').value.trim();
+			document.getElementById(myId + '_' + '5').value = document.getElementById('adrPostalCodeTextBox').value.trim();
+			document.getElementById(myId + '_' + '6').value = document.getElementById('adrCountryTextBox').value.trim();
 
-			var myAllValuesArray = cardbookTypes.getAllTypes(wdw_cardEdition.currentAdrId[0], true);
-			cardbookElementTools.deleteRowsType(wdw_cardEdition.currentAdrId[0]);
-			if (myAllValuesArray.length == 0) {
-				cardbookTypes.constructDynamicRows(wdw_cardEdition.currentAdrId[0], [wdw_cardEdition.currentAdr], wdw_cardEdition.currentAdrId[2]);
-			} else {
-				var removed = myAllValuesArray.splice(wdw_cardEdition.currentAdrId[1], 1, wdw_cardEdition.currentAdr);
-				cardbookTypes.constructDynamicRows(wdw_cardEdition.currentAdrId[0], myAllValuesArray, wdw_cardEdition.currentAdrId[2]);
+			var myTmpArray = [];
+			for (var i = 0; i < 7; i++) {
+				if (document.getElementById(myId + '_' + i).value != "") {
+					myTmpArray.push(document.getElementById(myId + '_' + i).value.replace(/\\n/g, " "));
+				}
 			}
-			wdw_cardEdition.cancelAdrPanel();
+			document.getElementById(myId).value = myTmpArray.join(" ");
+			cardbookTypes.disableButtons(wdw_cardEdition.currentAdrId[0], wdw_cardEdition.currentAdrId[1], document.getElementById("versionTextBox").value);
+			document.getElementById(myId).focus();
 		},
 
 		displayCard: function (aCard) {
@@ -835,7 +833,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				return;
 			// the panel for addresses does not save information otherwise
 			} else {
-				wdw_cardEdition.validateAdrPanel();
+				wdw_cardEdition.cancelAdrPanel();
 			}
 			wdw_cardEdition.save();
 		},

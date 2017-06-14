@@ -133,12 +133,14 @@
 
 <!ENTITY copyCardTreeLabel "Copy entry">
 
-<!ENTITY toEmailCardFromAccountsOrCatsLabel "Email contacts">
-<!ENTITY toEmailCardFromCardsLabel "Email contacts">
-<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Email contacts (copy / cc)">
-<!ENTITY ccEmailCardFromCardsLabel "Email contacts (copy / cc)">
-<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Email contacts (blind copy / bcc)">
-<!ENTITY bccEmailCardFromCardsLabel "Email contacts (blind copy / bcc)">
+<!ENTITY toEmailCardFromAccountsOrCatsLabel "Email contact">
+<!ENTITY toEmailCardFromCardsLabel "Email contact">
+<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Email contact (copy / cc)">
+<!ENTITY ccEmailCardFromCardsLabel "Email contact (copy / cc)">
+<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Email contact (blind copy / bcc)">
+<!ENTITY bccEmailCardFromCardsLabel "Email contact (blind copy / bcc)">
+<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Share contact by email">
+<!ENTITY shareCardByEmailFromCardsLabel "Share contact by email">
 <!ENTITY categoryLabel "Category">
 <!ENTITY findEmailsFromCardsLabel "Find emails related to this contact">
 <!ENTITY findEventsFromCardsLabel "Find calendar events related to this contact">

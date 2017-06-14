@@ -139,6 +139,8 @@
 <!ENTITY ccEmailCardFromCardsLabel "Enviar cartões por email (cc)">
 <!ENTITY bccEmailCardFromAccountsOrCatsLabel "Enviar cartões por email (bcc)">
 <!ENTITY bccEmailCardFromCardsLabel "Enviar cartões por email (bcc)">
+<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "??Share contact by email??">
+<!ENTITY shareCardByEmailFromCardsLabel "??Share contact by email??">
 <!ENTITY categoryLabel "Categoria">
 <!ENTITY findEmailsFromCardsLabel "Procurar emails com este endereço de email">
 <!ENTITY findEventsFromCardsLabel "Procurar eventos no calendário relacionados com este contacto">

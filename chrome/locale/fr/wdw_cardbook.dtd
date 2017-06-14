@@ -139,6 +139,8 @@
 <!ENTITY ccEmailCardFromCardsLabel "Envoyer des emails (copie / cc)">
 <!ENTITY bccEmailCardFromAccountsOrCatsLabel "Envoyer des emails (copie cachée / bcc)">
 <!ENTITY bccEmailCardFromCardsLabel "Envoyer des emails (copie cachée / bcc)">
+<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Partager le contact par email">
+<!ENTITY shareCardByEmailFromCardsLabel "Partager le contact par email">
 <!ENTITY categoryLabel "Catégorie">
 <!ENTITY findEmailsFromCardsLabel "Trouver les emails du contact">
 <!ENTITY findEventsFromCardsLabel "Trouver les rendez-vous du contact">

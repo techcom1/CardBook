@@ -2,6 +2,7 @@ pref("extensions.cardbook.autocompletion", true);
 pref("extensions.cardbook.autocompleteSortByPopularity", true);
 pref("extensions.cardbook.autocompleteShowAddressbook", false); 
 pref("extensions.cardbook.autocompleteWithColor", true); 
+pref("extensions.cardbook.useColor", "background"); 
 pref("extensions.cardbook.exclusive", true);
 pref("extensions.cardbook.requestsTimeout", "120");
 pref("extensions.cardbook.statusInformationLineNumber", "250");
@@ -59,3 +60,5 @@ pref("extensions.cardbook.calendarEntryCategories", "");
 
 pref("extensions.cardbook.viewABPane", true);
 pref("extensions.cardbook.viewABContact", true);
+
+pref("extensions.cardbook.userAgent", "CardBook/19.6");

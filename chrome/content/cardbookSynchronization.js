@@ -599,7 +599,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 										aCard[aField].localURI = "file:///" + cacheDir.path;
 									} else {
 										cardbookRepository.cardbookImageGetError[aCard.dirPrefId]++;
-										cardbookUtils.formatStringForOutput("serverCardGetImageFailed", [aImageConnection.connDescription, aCard.fn, aImageConnection.connUrl, status]);
+										cardbookUtils.formatStringForOutput("serverCardGetImageFailed", [aImageConnection.connDescription, aCard.fn, aImageConnection.connUrl, status], "Error");
 									}
 									cardbookRepository.cardbookImageGetResponse[aCard.dirPrefId]++;
 								}
@@ -643,7 +643,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						cardbookRepository.removeCardFromRepository(aCard, true);
 					} else {
 						cardbookRepository.cardbookServerDeletedError[aConnection.connPrefId]++;
-						cardbookUtils.formatStringForOutput("serverCardDeleteFailed", [aConnection.connDescription, aCard.fn, aConnection.connUrl, status]);
+						cardbookUtils.formatStringForOutput("serverCardDeleteFailed", [aConnection.connDescription, aCard.fn, aConnection.connUrl, status], "Error");
 						cardbookUtils.addTagDeleted(aCard);
 						cardbookRepository.addCardToCache(aCard, aMode, cardbookUtils.getFileNameFromUrl(aConnection.connUrl));
 						if (cardbookRepository.cardbookCards[aCard.dirPrefId+"::"+aCard.uid]) {
@@ -682,7 +682,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						cardbookUtils.addTagUpdated(aModifiedCard);
 						cardbookRepository.cardbookServerSyncDone[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerUpdatedError[aConnection.connPrefId]++;
-						cardbookUtils.formatStringForOutput("serverCardUpdateFailed", [aConnection.connDescription, aModifiedCard.fn, aConnection.connUrl, status]);
+						cardbookUtils.formatStringForOutput("serverCardUpdateFailed", [aConnection.connDescription, aModifiedCard.fn, aConnection.connUrl, status], "Error");
 					}
 					cardbookRepository.cardbookServerUpdatedResponse[aConnection.connPrefId]++;
 				}
@@ -716,7 +716,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					} else {
 						cardbookUtils.addTagCreated(aCard);
 						cardbookRepository.cardbookServerCreatedError[aConnection.connPrefId]++;
-						cardbookUtils.formatStringForOutput("serverCardCreateFailed", [aConnection.connDescription, aCard.fn, aConnection.connUrl, status]);
+						cardbookUtils.formatStringForOutput("serverCardCreateFailed", [aConnection.connDescription, aCard.fn, aConnection.connUrl, status], "Error");
 					}
 					cardbookRepository.cardbookServerCreatedResponse[aConnection.connPrefId]++;
 					cardbookRepository.cardbookServerSyncDone[aConnection.connPrefId]++;
@@ -776,7 +776,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						cardbookRepository.cardbookServerGetForMergeError[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerGetForMergeResponse[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerSyncDone[aConnection.connPrefId]++;
-						cardbookUtils.formatStringForOutput("serverCardGetFailed", [aConnection.connDescription, aConnection.connUrl, status]);
+						cardbookUtils.formatStringForOutput("serverCardGetFailed", [aConnection.connDescription, aConnection.connUrl, status], "Error");
 					}
 				}
 			};
@@ -812,7 +812,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						cardbookUtils.formatStringForOutput("serverCardGetOK", [aConnection.connDescription, myCard.fn]);
 					} else {
 						cardbookRepository.cardbookServerGetError[aConnection.connPrefId]++;
-						cardbookUtils.formatStringForOutput("serverCardGetFailed", [aConnection.connDescription, aConnection.connUrl, status]);
+						cardbookUtils.formatStringForOutput("serverCardGetFailed", [aConnection.connDescription, aConnection.connUrl, status], "Error");
 					}
 					cardbookRepository.cardbookServerSyncDone[aConnection.connPrefId]++;
 					cardbookRepository.cardbookServerGetResponse[aConnection.connPrefId]++;
@@ -884,11 +884,11 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 												cardbookUtils.formatStringForOutput("serverCardGetOK", [aConnection.connDescription, myCard.fn]);
 											} else {
 												cardbookRepository.cardbookServerGetError[aConnection.connPrefId]++;
-												cardbookUtils.formatStringForOutput("serverCardGetFailed", [aConnection.connDescription, aConnection.connUrl, status]);
+												cardbookUtils.formatStringForOutput("serverCardGetFailed", [aConnection.connDescription, aConnection.connUrl, status], "Error");
 											}
 										} else {
 											cardbookRepository.cardbookServerGetError[aConnection.connPrefId]++;
-											cardbookUtils.formatStringForOutput("serverCardGetFailed", [aConnection.connDescription, aConnection.connUrl, status]);
+											cardbookUtils.formatStringForOutput("serverCardGetFailed", [aConnection.connDescription, aConnection.connUrl, status], "Error");
 										}
 										cardbookRepository.cardbookServerSyncDone[aConnection.connPrefId]++;
 										cardbookRepository.cardbookServerGetResponse[aConnection.connPrefId]++;
@@ -910,6 +910,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					} else {
 						cardbookRepository.cardbookServerSyncDone[aConnection.connPrefId] = cardbookRepository.cardbookServerSyncDone[aConnection.connPrefId] + length;
 						cardbookRepository.cardbookServerMultiGetError[aConnection.connPrefId]++;
+						wdw_cardbooklog.updateStatusProgressInformation(aConnection.connDescription + " : cardbookSynchronization.serverMultiGet error, status : " + status, "Error");
 					}
 					cardbookRepository.cardbookServerMultiGetResponse[aConnection.connPrefId]++;
 				}
@@ -1232,12 +1233,12 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							if (certificateExceptionAdded) {
 								cardbookSynchronization.serverSyncCards(aConnection, aMode, aPrefIdType);
 							} else {
-								cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "googleSyncCards", aConnection.connUrl, status]);
+								cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "googleSyncCards", aConnection.connUrl, status], "Error");
 								cardbookRepository.cardbookServerSyncError[aConnection.connPrefId]++;
 								cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 							}
 						} else {
-							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "googleSyncCards", aConnection.connUrl, status]);
+							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "googleSyncCards", aConnection.connUrl, status], "Error");
 							cardbookRepository.cardbookServerSyncError[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 						}
@@ -1289,7 +1290,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						}
 						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 					} else {
-						cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "googleSyncCards", aConnection.connUrl, status]);
+						cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "googleSyncCards", aConnection.connUrl, status], "Error");
 						cardbookRepository.cardbookServerSyncError[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 					}
@@ -1314,12 +1315,12 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							if (certificateExceptionAdded) {
 								cardbookSynchronization.serverSyncCards(aConnection, aMode, aPrefIdType);
 							} else {
-								cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "serverSyncCards", aConnection.connUrl, status]);
+								cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "serverSyncCards", aConnection.connUrl, status], "Error");
 								cardbookRepository.cardbookServerSyncError[aConnection.connPrefId]++;
 								cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 							}
 						} else {
-							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "serverSyncCards", aConnection.connUrl, status]);
+							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "serverSyncCards", aConnection.connUrl, status], "Error");
 							cardbookRepository.cardbookServerSyncError[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 						}
@@ -1385,7 +1386,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						}
 						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 					} else {
-						cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "serverSyncCards", aConnection.connUrl, status]);
+						cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "serverSyncCards", aConnection.connUrl, status], "Error");
 						cardbookRepository.cardbookServerSyncError[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 					}
@@ -1410,12 +1411,12 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							if (certificateExceptionAdded) {
 								cardbookSynchronization.validateWithoutDiscovery(aConnection, aRootUrl);
 							} else {
-								cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status]);
+								cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status], "Error");
 								cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 								cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 							}
 						} else {
-							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status]);
+							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status], "Error");
 							cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 						}
@@ -1470,7 +1471,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 					} else {
-						cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status]);
+						cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status], "Error");
 						cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
@@ -1497,12 +1498,12 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							if (certificateExceptionAdded) {
 								cardbookSynchronization.discoverPhase3(aConnection, aRootUrl, aOperationType, aParams);
 							} else {
-								cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status]);
+								cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status], "Error");
 								cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 								cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 							}
 						} else {
-							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status]);
+							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status], "Error");
 							cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 						}
@@ -1603,7 +1604,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						}
 						cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
 					} else {
-						cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "discoverPhase3", aConnection.connUrl, status]);
+						cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "discoverPhase3", aConnection.connUrl, status], "Error");
 						cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
@@ -1630,12 +1631,12 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							if (certificateExceptionAdded) {
 								cardbookSynchronization.discoverPhase2(aConnection, aRootUrl, aOperationType, aParams);
 							} else {
-								cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status]);
+								cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status], "Error");
 								cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 								cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 							}
 						} else {
-							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status]);
+							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status], "Error");
 							cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 						}
@@ -1681,7 +1682,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 						}
 					} else {
-						cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "discoverPhase2", aConnection.connUrl, status]);
+						cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "discoverPhase2", aConnection.connUrl, status], "Error");
 						cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
@@ -1708,12 +1709,12 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							if (certificateExceptionAdded) {
 								cardbookSynchronization.discoverPhase1(aConnection, aOperationType, aParams);
 							} else {
-								cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status]);
+								cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status], "Error");
 								cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 								cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 							}
 						} else {
-							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status]);
+							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status], "Error");
 							cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 						}
@@ -1755,7 +1756,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 						}
 					} else {
-						cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "discoverPhase1", aConnection.connUrl, status]);
+						cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "discoverPhase1", aConnection.connUrl, status], "Error");
 						cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
@@ -1803,11 +1804,12 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							wdw_cardbooklog.updateStatusProgressInformation(aConnection.connDescription + " : cardbookSynchronization.googleGetAccessToken error : " + e, "Error");
 						}
 					} else {
-						cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "googleGetAccessToken", aConnection.connUrl, status]);
 						if (status == 400 || status == 401) {
+							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "googleGetAccessToken", aConnection.connUrl, status]);
 							cardbookUtils.formatStringForOutput("googleGetNewRefreshToken", [aConnection.connDescription, aConnection.connUrl]);
 							cardbookSynchronization.requestNewRefreshToken(aConnection, cardbookSynchronization.googleGetAccessToken, aOperationType, aParams);
 						} else {
+							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "googleGetAccessToken", aConnection.connUrl, status], "Error");
 							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 							cardbookRepository.cardbookGoogleAccessTokenError[aConnection.connPrefId]++;
 						}
@@ -1841,7 +1843,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						}
 					} else {
 						cardbookRepository.cardbookGoogleRefreshTokenError[aConnection.connPrefId]++;
-						cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "googleGetRefreshToken", aConnection.connUrl, status]);
+						cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "googleGetRefreshToken", aConnection.connUrl, status], "Error");
 						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 					}
 					cardbookRepository.cardbookGoogleRefreshTokenResponse[aConnection.connPrefId]++;

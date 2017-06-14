@@ -6,7 +6,7 @@
 	<Description about="urn:mozilla:install-manifest">
 		<em:id>cardbook@vigneau.philippe</em:id>
 		<em:name>CardBook</em:name>
-		<em:version>19.4</em:version>
+		<em:version>19.6</em:version>
 		<em:type>2</em:type>
 		<em:description>vCard Address Book</em:description>
 		<em:creator>Philippe Vigneau</em:creator>
@@ -15,8 +15,8 @@
 		<em:contributor>Timothe Litt</em:contributor>
 		<em:contributor>Christoph Mair</em:contributor>
 		<em:contributor>Boris Prüssmann</em:contributor>
-		<em:contributor>Lukáš Tyrychtr</em:contributor>
 		<em:contributor>Michael Roland</em:contributor>
+		<em:contributor>Lukáš Tyrychtr</em:contributor>
 		<em:translator>Lukáš Tyrychtr (cs)</em:translator>
 		<em:translator>Alexander Bergmann (de)</em:translator>
 		<em:translator>Markus Mauerer (de)</em:translator>
@@ -55,8 +55,8 @@
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
-				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
+				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
@@ -86,8 +86,8 @@
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
-				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
+				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
@@ -117,8 +117,8 @@
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
-				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
+				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
@@ -148,8 +148,8 @@
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
-				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
+				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
@@ -179,8 +179,8 @@
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
-				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
+				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
@@ -210,8 +210,8 @@
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
-				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
+				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
@@ -241,8 +241,8 @@
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
-				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
+				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
@@ -272,8 +272,8 @@
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
-				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
+				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
@@ -303,8 +303,8 @@
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
-				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
+				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
@@ -334,8 +334,8 @@
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
-				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
+				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
@@ -365,8 +365,8 @@
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
-				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
+				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
