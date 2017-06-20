@@ -139,8 +139,8 @@
 <!ENTITY ccEmailCardFromCardsLabel "Pošlji pošto stikom (kopija/kp)">
 <!ENTITY bccEmailCardFromAccountsOrCatsLabel "Pošlji pošto stikom (skrita kopija/skp)">
 <!ENTITY bccEmailCardFromCardsLabel "Pošlji pošto stikom (skrita kopija/skp)">
-<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "??Share contact by email??">
-<!ENTITY shareCardByEmailFromCardsLabel "??Share contact by email??">
+<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Deli stik po e-pošti">
+<!ENTITY shareCardByEmailFromCardsLabel "Deli stik po e-pošti">
 <!ENTITY categoryLabel "Kategorija">
 <!ENTITY findEmailsFromCardsLabel "Poišči e-pošto, povezano s tem stikom">
 <!ENTITY findEventsFromCardsLabel "Poišči dogodke koledarja, povezane s tem stikom">
@@ -159,7 +159,7 @@
 <!ENTITY renameCatFromAccountsOrCatsLabel "Preimenuj kategorijo">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Odstrani kategorijo">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Poišči podvojene stike v trenutnem imeniku">
-<!ENTITY generateFnFromAccountsOrCatsLabel "??Generate Display Names??">
+<!ENTITY generateFnFromAccountsOrCatsLabel "Ustvari prikazana imena">
 <!ENTITY mergeCardsFromCardsLabel "Združi stike">
 <!ENTITY duplicateCardFromCardsLabel "Podvoji stik">
 <!ENTITY convertListToCategoryFromCardsLabel "Pretvori seznam v kategorijo">
