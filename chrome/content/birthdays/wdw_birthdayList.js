@@ -54,7 +54,7 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 	
 		configure: function () {
 			var myArgs = {showTab: "birthdaylistTab"};
-			var MyWindows = window.openDialog("chrome://cardbook/content/wdw_cardbookConfiguration.xul", "", "chrome,centerscreen,modal", myArgs);
+			var MyWindows = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfiguration.xul", "", "chrome,centerscreen,modal", myArgs);
 			wdw_birthdayList.displayAllBirthdays();
 		},
 	

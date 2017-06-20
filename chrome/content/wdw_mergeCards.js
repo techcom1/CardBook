@@ -293,8 +293,11 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 
 		addRowCustomFromArray: function (aListOfCards, aField) {
 			for (var i = 0; i < aListOfCards.length; i++) {
-				if (cardbookUtils.getCustomValue(aListOfCards[i], aField) != "") {
-					return true;
+				for (var j = 0; j < aListOfCards[i].others.length; j++) {
+					var othersTempArray = aListOfCards[i].others[j].split(":");
+					if (aField == othersTempArray[0]) {
+						return true;
+					}
 				}
 			}
 			return false;
@@ -362,19 +365,22 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 				}
 			}
 			for (var i in cardbookRepository.customFields) {
-				if (wdw_mergeCards.addRowCustomFromArray(listOfCards, cardbookRepository.customFields[i])) {
-					var aRow = wdw_mergeCards.createRow(aListRows, cardbookRepository.customFields[i] + 'Row');
-					wdw_mergeCards.createCustomLabel(aRow, cardbookRepository.customFields[i] + 'Label', cardbookRepository.customFieldsLabel[cardbookRepository.customFields[i]]);
-					var selected = true;
-					for (var j = 0; j < listOfCards.length; j++) {
-						var customValue = cardbookUtils.getCustomValue(listOfCards[j], cardbookRepository.customFields[i]);
-						if (customValue != "") {
-							wdw_mergeCards.createCheckBox1(aRow, cardbookRepository.customFields[i] + 'Checkbox' + j, selected);
-							wdw_mergeCards.createTextBox(aRow, cardbookRepository.customFields[i] + 'Textbox' + j, customValue, selected, false);
-							selected = false;
-						} else {
-							wdw_mergeCards.createHbox(aRow);
-							wdw_mergeCards.createHbox(aRow);
+				for (var j = 0; j < cardbookRepository.customFields[i].length; j++) {
+					if (wdw_mergeCards.addRowCustomFromArray(listOfCards, cardbookRepository.customFields[i][j][0])) {
+						var prefixRow = i + cardbookRepository.customFields[i][j][2];
+						var aRow = wdw_mergeCards.createRow(aListRows, prefixRow + 'Row');
+						wdw_mergeCards.createCustomLabel(aRow, prefixRow + 'Label', cardbookRepository.customFields[i][j][1]);
+						var selected = true;
+						for (var k = 0; k < listOfCards.length; k++) {
+							var customValue = cardbookUtils.getCardValueByField(listOfCards[k], cardbookRepository.customFields[i][j][0]);
+							if (customValue != "") {
+								wdw_mergeCards.createCheckBox1(aRow, prefixRow + 'Checkbox' + k, selected);
+								wdw_mergeCards.createTextBox(aRow, prefixRow + 'Textbox' + k, customValue, selected, false);
+								selected = false;
+							} else {
+								wdw_mergeCards.createHbox(aRow);
+								wdw_mergeCards.createHbox(aRow);
+							}
 						}
 					}
 				}
@@ -497,11 +503,14 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 				}
 			}
 			for (var i in cardbookRepository.customFields) {
-				for (var j = 0; j < listOfCards.length; j++) {
-					if (document.getElementById(cardbookRepository.customFields[i] + 'Checkbox' + j)) {
-						var myCheckBox = document.getElementById(cardbookRepository.customFields[i] + 'Checkbox' + j);
-						if (myCheckBox.checked) {
-							aCard.others.push(cardbookRepository.customFieldsValue[cardbookRepository.customFields[i]] + ":" + document.getElementById(cardbookRepository.customFields[i] + 'Textbox' + j).value);
+				for (var j = 0; j < cardbookRepository.customFields[i].length; j++) {
+					var prefixRow = i + cardbookRepository.customFields[i][j][2];
+					for (var k = 0; k < listOfCards.length; k++) {
+						if (document.getElementById(prefixRow + 'Checkbox' + k)) {
+							var myCheckBox = document.getElementById(prefixRow + 'Checkbox' + k);
+							if (myCheckBox.checked) {
+								aCard.others.push(cardbookRepository.customFields[i][j][0] + ":" + document.getElementById(prefixRow + 'Textbox' + k).value);
+							}
 						}
 					}
 				}

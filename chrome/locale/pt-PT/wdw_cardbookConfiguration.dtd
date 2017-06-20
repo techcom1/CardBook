@@ -15,12 +15,17 @@
 <!ENTITY autocompletionLabel "Usar o autocomplete do CardBook">
 <!ENTITY autocompletionAccesskey "o">
 <!ENTITY autocompletionTooltip "Trocar o normal autocomplete pelo do carbook. Quando activado, os email serão provenientes do repositorio do cardbook ou os emails recolhidos.">
-<!ENTITY autocompleteSortByPopularityLabel "??Sort email addresses by popularity??">
+<!ENTITY autocompleteSortByPopularityLabel "Organizar email por popularidade">
 <!ENTITY autocompleteSortByPopularityAccesskey "p">
-<!ENTITY autocompleteShowAddressbookLabel "??Show address book name??">
-<!ENTITY autocompleteShowAddressbookAccesskey "S">
-<!ENTITY autocompleteWithColorLabel "??Use address book color for background color??">
+<!ENTITY autocompleteShowAddressbookLabel "Mostrar nome da agenda">
+<!ENTITY autocompleteShowAddressbookAccesskey "M">
+<!ENTITY autocompleteWithColorLabel "Usar cor da agenda">
 <!ENTITY autocompleteWithColorAccesskey "U">
+<!ENTITY useColorLabel "??Use address book color for:??">
+<!ENTITY useColorBackgroundLabel "??Background color??">
+<!ENTITY useColorBackgroundAccesskey "B">
+<!ENTITY useColorTextLabel "??Text color??">
+<!ENTITY useColorTextAccesskey "T">
 <!ENTITY exclusiveLabel "CardBook como fonte unica de contactos">
 <!ENTITY exclusiveAccesskey "U">
 <!ENTITY exclusiveTooltip "Se não seleccionado, a opção pertmite que sejam utilizados contactos das agendas do próprio Thunderbird.">
@@ -127,8 +132,19 @@
 <!ENTITY deleteIMPPLabel "Apagar">
 <!ENTITY deleteIMPPAccesskey "G">
 
-<!ENTITY customFieldName "Nome do campo">
-<!ENTITY customFieldLabel "Etiqueta do campo">
+<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldCodeLabel "Nome do campo">
+<!ENTITY customFieldLabelLabel "Etiqueta do campo">
+<!ENTITY customFieldsPersTitleLabel "Information pessoal">
+<!ENTITY customFieldsPersTitleAccesskey "p">
+<!ENTITY customFieldsOrgTitleLabel "Information profissional">
+<!ENTITY customFieldsOrgTitleAccesskey "r">
+<!ENTITY addCustomFieldsLabel "Adicionar">
+<!ENTITY addCustomFieldsAccesskey "A">
+<!ENTITY renameCustomFieldsLabel "Editar">
+<!ENTITY renameCustomFieldsAccesskey "E">
+<!ENTITY deleteCustomFieldsLabel "Apagar">
+<!ENTITY deleteCustomFieldsAccesskey "G">
 
 <!ENTITY orgWarn "O campo ORG pode conter texto composto por componentes separado por ponto-e-virgula (por exemplo: companhia;serviço;departamento). Os campos abaixo mostram os nomes da nova estrutura.">
 

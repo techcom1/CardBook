@@ -139,6 +139,8 @@
 <!ENTITY ccEmailCardFromCardsLabel "Envoyer des emails (copie / cc)">
 <!ENTITY bccEmailCardFromAccountsOrCatsLabel "Envoyer des emails (copie cachée / bcc)">
 <!ENTITY bccEmailCardFromCardsLabel "Envoyer des emails (copie cachée / bcc)">
+<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Partager le contact par email">
+<!ENTITY shareCardByEmailFromCardsLabel "Partager le contact par email">
 <!ENTITY categoryLabel "Catégorie">
 <!ENTITY findEmailsFromCardsLabel "Trouver les emails du contact">
 <!ENTITY findEventsFromCardsLabel "Trouver les rendez-vous du contact">
@@ -156,6 +158,8 @@
 <!ENTITY importCardFromDirLabel "Importer des contacts depuis un répertoire">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Renommer la catégorie">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Supprimer la catégorie">
+<!ENTITY findDuplicatesFromAccountsOrCatsLabel "Recherche des contacts dupliqués dans le carnet d'adresses courant">
+<!ENTITY generateFnFromAccountsOrCatsLabel "Générer les noms affichés">
 <!ENTITY mergeCardsFromCardsLabel "Fusionner les contacts">
 <!ENTITY duplicateCardFromCardsLabel "Dupliquer le contact">
 <!ENTITY convertListToCategoryFromCardsLabel "Convertir la liste en catégorie">

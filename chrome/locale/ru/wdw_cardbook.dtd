@@ -139,6 +139,8 @@
 <!ENTITY ccEmailCardFromCardsLabel "Отправить email контактам (копию)">
 <!ENTITY bccEmailCardFromAccountsOrCatsLabel "Отправить email контактам (скрытую копию)">
 <!ENTITY bccEmailCardFromCardsLabel "Отправить email контактам (скрытую копию)">
+<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Поделиться контактом по email">
+<!ENTITY shareCardByEmailFromCardsLabel "Поделиться контактом по email">
 <!ENTITY categoryLabel "Категория">
 <!ENTITY findEmailsFromCardsLabel "Искать сообщения, связанные с этим контактом">
 <!ENTITY findEventsFromCardsLabel "Искать события календаря, связанные с этим контактом">
@@ -156,6 +158,8 @@
 <!ENTITY importCardFromDirLabel "Импортировать контакт из каталога">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Переименовать категорию">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Удалить категорию">
+<!ENTITY findDuplicatesFromAccountsOrCatsLabel "Искать повторяющиеся контакты во текущей адресной книге">
+<!ENTITY generateFnFromAccountsOrCatsLabel "??Generate Display Names??">
 <!ENTITY mergeCardsFromCardsLabel "Объеденить контакты">
 <!ENTITY duplicateCardFromCardsLabel "Клонировать контакт">
 <!ENTITY convertListToCategoryFromCardsLabel "Преобразовать список в категорию">

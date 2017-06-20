@@ -15,12 +15,17 @@
 <!ENTITY autocompletionLabel "Autovervollständigung der Email-Adressen">
 <!ENTITY autocompletionAccesskey "A">
 <!ENTITY autocompletionTooltip "Erweitert die standardmäßige Autovervollständigung von Kontakten in Adressbüchern von Thunderbird um eine Autovervollständigung von Kontakten in Adressbüchern von CardBook.">
-<!ENTITY autocompleteSortByPopularityLabel "??Sort email addresses by popularity??">
-<!ENTITY autocompleteSortByPopularityAccesskey "p">
-<!ENTITY autocompleteShowAddressbookLabel "??Show address book name??">
-<!ENTITY autocompleteShowAddressbookAccesskey "S">
-<!ENTITY autocompleteWithColorLabel "??Use address book color for background color??">
-<!ENTITY autocompleteWithColorAccesskey "U">
+<!ENTITY autocompleteSortByPopularityLabel "Sortiere Email-Adressen nach Popularität">
+<!ENTITY autocompleteSortByPopularityAccesskey "S">
+<!ENTITY autocompleteShowAddressbookLabel "Zeite den Namen des Adressbuchs">
+<!ENTITY autocompleteShowAddressbookAccesskey "Z">
+<!ENTITY autocompleteWithColorLabel "Benutze die Farbe des Adressbuchs">
+<!ENTITY autocompleteWithColorAccesskey "F">
+<!ENTITY useColorLabel "Benutze die Farbe des Adressbuchs als:">
+<!ENTITY useColorBackgroundLabel "Hintergrundfarbe">
+<!ENTITY useColorBackgroundAccesskey "g">
+<!ENTITY useColorTextLabel "Textfarbe">
+<!ENTITY useColorTextAccesskey "T">
 <!ENTITY exclusiveLabel "Einzige Quelle für Kontakte">
 <!ENTITY exclusiveAccesskey "E">
 <!ENTITY exclusiveTooltip "Falls deaktiviert, ermöglicht diese Einstellung die Zuordnung von Kontakten aus den Standardadressbüchern von Thunderbird für die Gelben Sterne, die Anzeigenamen und die Autovervollständigung.">
@@ -127,8 +132,19 @@
 <!ENTITY deleteIMPPLabel "Löschen">
 <!ENTITY deleteIMPPAccesskey "L">
 
-<!ENTITY customFieldName "Feldname">
-<!ENTITY customFieldLabel "Feldlabel">
+<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldCodeLabel "Feldname">
+<!ENTITY customFieldLabelLabel "Feldlabel">
+<!ENTITY customFieldsPersTitleLabel "Persönliche Informationen">
+<!ENTITY customFieldsPersTitleAccesskey "P">
+<!ENTITY customFieldsOrgTitleLabel "Berufliche Informationen">
+<!ENTITY customFieldsOrgTitleAccesskey "B">
+<!ENTITY addCustomFieldsLabel "Hinzufügen">
+<!ENTITY addCustomFieldsAccesskey "H">
+<!ENTITY renameCustomFieldsLabel "Bearbeiten">
+<!ENTITY renameCustomFieldsAccesskey "B">
+<!ENTITY deleteCustomFieldsLabel "Löschen">
+<!ENTITY deleteCustomFieldsAccesskey "L">
 
 <!ENTITY orgWarn "Das Feld ORG darf mehrere durch SEMIKOLON getrennte Zeichenketten enthalten, z.B.: yourcompany;yourservice;yourdepartment. Die Felder unten definieren die Namen der jeweiligen Zeichenketten.">
 

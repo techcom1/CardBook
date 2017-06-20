@@ -15,18 +15,23 @@
 <!ENTITY autocompletionLabel "Автозавершение адресов email">
 <!ENTITY autocompletionAccesskey "А">
 <!ENTITY autocompletionTooltip "Расширяет стандартное автоматическое завершение ввода для контактов из адресной книги Thunderbird добавлением контактов из CardBook.">
-<!ENTITY autocompleteSortByPopularityLabel "??Sort email addresses by popularity??">
-<!ENTITY autocompleteSortByPopularityAccesskey "p">
-<!ENTITY autocompleteShowAddressbookLabel "??Show address book name??">
-<!ENTITY autocompleteShowAddressbookAccesskey "S">
-<!ENTITY autocompleteWithColorLabel "??Use address book color for background color??">
-<!ENTITY autocompleteWithColorAccesskey "U">
+<!ENTITY autocompleteSortByPopularityLabel "Сортировка адресов email по популярности">
+<!ENTITY autocompleteSortByPopularityAccesskey "п">
+<!ENTITY autocompleteShowAddressbookLabel "Показывать название адресной книги">
+<!ENTITY autocompleteShowAddressbookAccesskey "а">
+<!ENTITY autocompleteWithColorLabel "Использовать цвет адресной книги">
+<!ENTITY autocompleteWithColorAccesskey "ц">
+<!ENTITY useColorLabel "Использовать цвет адресной книги для:">
+<!ENTITY useColorBackgroundLabel "Фона">
+<!ENTITY useColorBackgroundAccesskey "Ф">
+<!ENTITY useColorTextLabel "Текста">
+<!ENTITY useColorTextAccesskey "Т">
 <!ENTITY exclusiveLabel "Единственный источник контактов">
 <!ENTITY exclusiveAccesskey "Е">
 <!ENTITY exclusiveTooltip "Отключение этой настройки позволяет Thunderbird запрашивать контакты из стандартной адресной книги для жёлтых звёздочек, отображаемого имени в сообщениях и автозавершения адресов email.">
 <!ENTITY accountsRestrictionsLabel "Ограничения для учётных записей">
 <!ENTITY accountsRestrictionsEnabledLabel "Включено">
-<!ENTITY accountsRestrictionsMailNameLabel "Потовый аккаунт">
+<!ENTITY accountsRestrictionsMailNameLabel "Почтовый аккаунт">
 <!ENTITY accountsRestrictionsABNameLabel "Адресная книга">
 <!ENTITY accountsRestrictionsCatNameLabel "Категория">
 <!ENTITY accountsRestrictionsIncludeNameLabel "Тип">
@@ -127,8 +132,19 @@
 <!ENTITY deleteIMPPLabel "Удалить">
 <!ENTITY deleteIMPPAccesskey "У">
 
-<!ENTITY customFieldName "Открывать внешние ссылки:">
-<!ENTITY customFieldLabel "Метка поля">
+<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldCodeLabel "Открывать внешние ссылки:">
+<!ENTITY customFieldLabelLabel "Метка поля">
+<!ENTITY customFieldsPersTitleLabel "Персональная информация">
+<!ENTITY customFieldsPersTitleAccesskey "П">
+<!ENTITY customFieldsOrgTitleLabel "Профессиональная информация">
+<!ENTITY customFieldsOrgTitleAccesskey "и">
+<!ENTITY addCustomFieldsLabel "Добавить">
+<!ENTITY addCustomFieldsAccesskey "Д">
+<!ENTITY renameCustomFieldsLabel "Править">
+<!ENTITY renameCustomFieldsAccesskey "П">
+<!ENTITY deleteCustomFieldsLabel "Удалить">
+<!ENTITY deleteCustomFieldsAccesskey "У">
 
 <!ENTITY orgWarn "Поле ORG может содержать структурированное текстовое значение, состоящее из компонентов, разделённых символом «;» (например: компания;служба;отделение). Поля ниже описывают метки компонентов этой этой структуры.">
 

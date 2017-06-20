@@ -15,12 +15,17 @@
 <!ENTITY autocompletionLabel "Samodokončevanje e-poštnih naslovov">
 <!ENTITY autocompletionAccesskey "S">
 <!ENTITY autocompletionTooltip "Razširi običajno samodokončevanje stikov iz Thunderbirdovih imenikov s samodokončevanjem stikov iz Cardbookovih imenikov.">
-<!ENTITY autocompleteSortByPopularityLabel "??Razvrsti e-poštne naslove po priljubljenosti??">
-<!ENTITY autocompleteSortByPopularityAccesskey "p">
-<!ENTITY autocompleteShowAddressbookLabel "??Prikaži ime imenika??">
-<!ENTITY autocompleteShowAddressbookAccesskey "S">
-<!ENTITY autocompleteWithColorLabel "??Uporabi barvo imenika kot barvo ozadja??">
+<!ENTITY autocompleteSortByPopularityLabel "Razvrsti e-poštne naslove po priljubljenosti">
+<!ENTITY autocompleteSortByPopularityAccesskey "R">
+<!ENTITY autocompleteShowAddressbookLabel "Prikaži ime imenika">
+<!ENTITY autocompleteShowAddressbookAccesskey "P">
+<!ENTITY autocompleteWithColorLabel "??Use address book color??">
 <!ENTITY autocompleteWithColorAccesskey "U">
+<!ENTITY useColorLabel "??Use address book color for:??">
+<!ENTITY useColorBackgroundLabel "??Background color??">
+<!ENTITY useColorBackgroundAccesskey "B">
+<!ENTITY useColorTextLabel "??Text color??">
+<!ENTITY useColorTextAccesskey "T">
 <!ENTITY exclusiveLabel "Edinstven vir za stike">
 <!ENTITY exclusiveAccesskey "E">
 <!ENTITY exclusiveTooltip "Če je omogočena, ta možnost omogoča pridobivanje stikov iz Thunderbirdovih imenikov za rumene zvezdice, prikazano ime in samodokončevanje e-pošte.">
@@ -126,8 +131,19 @@
 <!ENTITY deleteIMPPLabel "Izbriši">
 <!ENTITY deleteIMPPAccesskey "b">
 
-<!ENTITY customFieldName "Ime polja">
-<!ENTITY customFieldLabel "Oznaka polja">
+<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldCodeLabel "Ime polja">
+<!ENTITY customFieldLabelLabel "Oznaka polja">
+<!ENTITY customFieldsPersTitleLabel "Osebni podatki">
+<!ENTITY customFieldsPersTitleAccesskey "O">
+<!ENTITY customFieldsOrgTitleLabel "Poslovnih podatki">
+<!ENTITY customFieldsOrgTitleAccesskey "P">
+<!ENTITY addCustomFieldsLabel "Dodaj">
+<!ENTITY addCustomFieldsAccesskey "D">
+<!ENTITY renameCustomFieldsLabel "Uredi">
+<!ENTITY renameCustomFieldsAccesskey "U">
+<!ENTITY deleteCustomFieldsLabel "Izbriši">
+<!ENTITY deleteCustomFieldsAccesskey "b">
 
 <!ENTITY orgWarn "Polje ORG lahko vsebuje besedilno vrednost z zgradbo, ki je sestavljena iz delov, ločenih s PODPIČJEM (npr.: podjetje;storitev;oddelek). Spodnja polja opisujejo oznake delov te zgradbe.">
 

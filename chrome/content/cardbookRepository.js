@@ -136,9 +136,7 @@ var cardbookRepository = {
 	
 	cardbookMailPopularityFile : "mailPopularityIndex.txt",
 
-	customFields : [ 'customField1Name', 'customField2Name', 'customField1Org', 'customField2Org' ],
-	customFieldsValue : {},
-	customFieldsLabel : {},
+	customFields : {},
 									
 	statusInformation : [],
 
@@ -182,31 +180,35 @@ var cardbookRepository = {
 	},
 		
     loadCustoms: function () {
-		var cardbookPrefService = new cardbookPreferenceService();
-		var myCustoms = [];
-		myCustoms = cardbookPrefService.getAllCustoms();
-		for (var i in cardbookRepository.customFields) {
-			var found = 0;
-			for (var j = 0; j < myCustoms.length; j++) {
-				var fieldTemp1 = myCustoms[j].split(":");
-				var fieldName = fieldTemp1[0];
-				var fieldValue = fieldTemp1[1];
-				var fieldLabel = fieldTemp1[2];
-				if (!(fieldValue != null && fieldValue !== undefined && fieldValue != "")) {
-					var fieldLabel = "";
+		// for file opened with version <= 19.6
+		var typeList = [ 'Name', 'Org' ];
+		var numberList = [ '1', '2' ];
+		for (var i in typeList) {
+			var myTargetNumber = 0;
+			for (var j in numberList) {
+				try {
+					var mySourceField = "extensions.cardbook.customs.customField" + numberList[j] + typeList[i];
+					var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+					var mySourceValue = prefs.getComplexValue(mySourceField, Components.interfaces.nsISupportsString).data;
+					var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
+					if (typeList[i] === "Name") {
+						var myTargetType = "pers";
+					} else {
+						var myTargetType = "org";
+					}
+					if (mySourceValue != "") {
+						var cardbookPrefService = new cardbookPreferenceService();
+						cardbookPrefService.setCustomFields(myTargetType, myTargetNumber, mySourceValue);
+						myTargetNumber++;
+					}
+					prefs.deleteBranch(mySourceField);
 				}
-				if (cardbookRepository.customFields[i] == fieldName) {
-					cardbookRepository.customFieldsValue[cardbookRepository.customFields[i]] = fieldValue;
-					cardbookRepository.customFieldsLabel[cardbookRepository.customFields[i]] = fieldLabel;
-					j = myCustoms.length;
-					found = 1;
-				}
-			}
-			if (found === 0) {
-				cardbookRepository.customFieldsValue[cardbookRepository.customFields[i]] = "";
-				cardbookRepository.customFieldsLabel[cardbookRepository.customFields[i]] = "";
+				catch (e) {}
 			}
 		}
+		var cardbookPrefService = new cardbookPreferenceService();
+		cardbookRepository.customFields = {};
+		cardbookRepository.customFields = cardbookPrefService.getAllCustomFields();
 	},
 		
     setCollected: function () {
@@ -1376,14 +1378,23 @@ var cardbookRepository = {
 	},
 
 	createCssCardRules: function (aStyleSheet, aDirPrefId, aColor) {
-		var ruleString = ".cardbookCardsTreeClass treechildren::-moz-tree-row(SEARCH odd color_" + aDirPrefId + ") {}";
-		var ruleIndex = aStyleSheet.insertRule(ruleString, aStyleSheet.cssRules.length);
-		aStyleSheet.cssRules[ruleIndex].style.backgroundColor = aColor;
-		cardbookRepository.cardbookDynamicCssRules[aStyleSheet.href].push(ruleIndex);
-		var ruleString = ".cardbookCardsTreeClass treechildren::-moz-tree-row(SEARCH even color_" + aDirPrefId + ") {}";
-		var ruleIndex = aStyleSheet.insertRule(ruleString, aStyleSheet.cssRules.length);
-		aStyleSheet.cssRules[ruleIndex].style.backgroundColor = aColor;
-		cardbookRepository.cardbookDynamicCssRules[aStyleSheet.href].push(ruleIndex);
+		var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+		var useColor = prefs.getComplexValue("extensions.cardbook.useColor", Components.interfaces.nsISupportsString).data;
+		if (useColor == "text") {
+			var ruleString = ".cardbookCardsTreeClass treechildren::-moz-tree-cell-text(SEARCH odd color_" + aDirPrefId + ") {color: " + aColor + ";}";
+			var ruleIndex = aStyleSheet.insertRule(ruleString, aStyleSheet.cssRules.length);
+			cardbookRepository.cardbookDynamicCssRules[aStyleSheet.href].push(ruleIndex);
+			var ruleString = ".cardbookCardsTreeClass treechildren::-moz-tree-cell-text(SEARCH even color_" + aDirPrefId + ") {color: " + aColor + ";}";
+			var ruleIndex = aStyleSheet.insertRule(ruleString, aStyleSheet.cssRules.length);
+			cardbookRepository.cardbookDynamicCssRules[aStyleSheet.href].push(ruleIndex);
+		} else {
+			var ruleString = ".cardbookCardsTreeClass treechildren::-moz-tree-row(SEARCH odd color_" + aDirPrefId + ") {background-color: " + aColor + ";}";
+			var ruleIndex = aStyleSheet.insertRule(ruleString, aStyleSheet.cssRules.length);
+			cardbookRepository.cardbookDynamicCssRules[aStyleSheet.href].push(ruleIndex);
+			var ruleString = ".cardbookCardsTreeClass treechildren::-moz-tree-row(SEARCH even color_" + aDirPrefId + ") {background-color: " + aColor + ";}";
+			var ruleIndex = aStyleSheet.insertRule(ruleString, aStyleSheet.cssRules.length);
+			cardbookRepository.cardbookDynamicCssRules[aStyleSheet.href].push(ruleIndex);
+		}
 	},
 
 	unregisterCss: function (aChromeUri) {

@@ -18,6 +18,7 @@ cardbookAutocompleteResult.prototype = {
     searchResult: ACR.RESULT_NOMATCH,
     defaultIndex: -1,
     errorDescription: null,
+    listUpdated: false,
 
     get matchCount() {
         return this._searchResults.length;
@@ -45,6 +46,16 @@ cardbookAutocompleteResult.prototype = {
     },
 
     getFinalCompleteValueAt: function(aIndex) {
+    	// need to collect popularity for lists
+    	// when CardBook collects popularities lists are still splitted into emails
+    	if (!this.listUpdated && this.getTypeAt(aIndex) == "CB_LIST") {
+		var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
+		loader.loadSubScript("chrome://cardbook/content/cardbookSynchronization.js");
+		loader.loadSubScript("chrome://cardbook/content/cardbookMailPopularity.js");
+		cardbookMailPopularity.updateMailPopularity(this.getEmailToUse(aIndex));
+		// this function getFinalCompleteValueAt is called many times so to update only once we need this variable
+		this.listUpdated = true;
+	}
     	return this.getValueAt(aIndex);
     },
 
@@ -57,6 +68,10 @@ cardbookAutocompleteResult.prototype = {
 
     getEmailToUse: function getEmailToUse(aIndex) {
         return this._searchResults[aIndex].emailToUse;
+    },
+
+    getTypeAt: function getTypeAt(aIndex) {
+        return this._searchResults[aIndex].type;
     },
 
     /* nsISupports */
@@ -82,15 +97,8 @@ cardbookAutocompleteSearch.prototype = {
     searchResult: null,
     searchTimeout: null,
 	
-    addResult: function addResult(aResult, aEmailValue, aComment, aPopularity, aType, aStyle, aFn) {
+    addResult: function addResult(aResult, aEmailValue, aComment, aPopularity, aType, aStyle, aLowerFn) {
 		if (aEmailValue != null && aEmailValue !== undefined && aEmailValue != "") {
-			// check duplicate email
-			for (var i = 0; i < aResult._searchResults.length; i++) {
-				if (aResult._searchResults[i].value.toLowerCase() == aEmailValue.toLowerCase()) {
-					return;
-				}
-			}
-
             var myComment = "";
             if (aComment != null && aComment !== undefined) {
                 myComment = aComment;
@@ -108,40 +116,75 @@ cardbookAutocompleteSearch.prototype = {
 											 emailToUse: aEmailValue,
 											 popularity: aPopularity,
 											 style: aStyle,
-											 fn: aFn
+											 fn: aLowerFn,
+											 type: aType
 										 });
 			} else {
 				var done = 0;
 				for (var i = aResult._searchResults.length - 1 ; i >= 0; i--) {
 					if (this.sortUsePopularity) {
-						if (Number(aPopularity) <= Number(aResult._searchResults[i].popularity)) {
-											aResult._searchResults.splice(i+1, 0, {
-																		 value: aEmailValue,
-																		 comment: myComment,
-																		 card: null,
-																		 isPrimaryEmail: true,
-																		 emailToUse: aEmailValue,
-																		 popularity: aPopularity,
-																		 style: aStyle,
-																		 fn: aFn
-																	 });
-											done = 1;
-											break;
+						if (Number(aPopularity) < Number(aResult._searchResults[i].popularity)) {
+							aResult._searchResults.splice(i+1, 0, {
+														 value: aEmailValue,
+														 comment: myComment,
+														 card: null,
+														 isPrimaryEmail: true,
+														 emailToUse: aEmailValue,
+														 popularity: aPopularity,
+														 style: aStyle,
+														 fn: aLowerFn,
+														 type: aType
+													 });
+							done = 1;
+							break;
+						} else if (Number(aPopularity) == Number(aResult._searchResults[i].popularity)) {
+							if (aLowerFn > aResult._searchResults[i].fn) {
+								aResult._searchResults.splice(i+1, 0, {
+															 value: aEmailValue,
+															 comment: myComment,
+															 card: null,
+															 isPrimaryEmail: true,
+															 emailToUse: aEmailValue,
+															 popularity: aPopularity,
+															 style: aStyle,
+															 fn: aLowerFn,
+															 type: aType
+														 });
+								done = 1;
+								break;
+							}
 						}
 					} else {
-						if (aFn.toLowerCase() > aResult._searchResults[i].fn.toLowerCase()) {
-											aResult._searchResults.splice(i+1, 0, {
-																		 value: aEmailValue,
-																		 comment: myComment,
-																		 card: null,
-																		 isPrimaryEmail: true,
-																		 emailToUse: aEmailValue,
-																		 popularity: aPopularity,
-																		 style: aStyle,
-																		 fn: aFn
-																	 });
-											done = 1;
-											break;
+						if (aLowerFn > aResult._searchResults[i].fn) {
+							aResult._searchResults.splice(i+1, 0, {
+														 value: aEmailValue,
+														 comment: myComment,
+														 card: null,
+														 isPrimaryEmail: true,
+														 emailToUse: aEmailValue,
+														 popularity: aPopularity,
+														 style: aStyle,
+														 fn: aLowerFn,
+														 type: aType
+													 });
+							done = 1;
+							break;
+						} else if (aLowerFn == aResult._searchResults[i].fn) {
+							if (Number(aPopularity) < Number(aResult._searchResults[i].popularity)) {
+								aResult._searchResults.splice(i+1, 0, {
+															 value: aEmailValue,
+															 comment: myComment,
+															 card: null,
+															 isPrimaryEmail: true,
+															 emailToUse: aEmailValue,
+															 popularity: aPopularity,
+															 style: aStyle,
+															 fn: aLowerFn,
+															 type: aType
+														 });
+								done = 1;
+								break;
+							}
 						}
 					}
 				}
@@ -154,7 +197,8 @@ cardbookAutocompleteSearch.prototype = {
 												 emailToUse: aEmailValue,
 												 popularity: aPopularity,
 												 style: aStyle,
-												 fn: aFn
+												 fn: aLowerFn,
+												 type: aType
 											 });
 				}
 			}
@@ -296,16 +340,19 @@ cardbookAutocompleteSearch.prototype = {
 										myMinPopularity = myCurrentPopularity;
 									}
 									var myCurrentEmail = MailServices.headerParser.makeMimeAddress(myCard.fn, myCard.email[l][0][0]);
-									this.addResult(result, myCurrentEmail, myComment, myCurrentPopularity, "CB_ONE", myStyle, myCard.fn);
+									this.addResult(result, myCurrentEmail, myComment, myCurrentPopularity, "CB_ONE", myStyle, myCard.fn.toLowerCase());
 								}
 								// add Lists
 								if (myCard.isAList) {
 									if (cardbookRepository.cardbookMailPopularityIndex[myCard.fn.toLowerCase()]) {
 										myCurrentPopularity = cardbookRepository.cardbookMailPopularityIndex[myCard.fn.toLowerCase()];
 									}
-									this.addResult(result, myCard.fn + " <" + myCard.fn + ">", myComment, myCurrentPopularity, "CB_LIST", myStyle, myCard.fn);
+									this.addResult(result, myCard.fn + " <" + myCard.fn + ">", myComment, myCurrentPopularity, "CB_LIST", myStyle, myCard.fn.toLowerCase());
 								} else {
-									this.addResult(result, cardbookUtils.getMimeEmailsFromCards([myCard]).join(" , "), myComment, myMinPopularity, "CB_ALL", myStyle, myCard.fn);
+									// otherwise it is already fetched above
+									if (myCard.emails.length > 1) {
+										this.addResult(result, cardbookUtils.getMimeEmailsFromCards([myCard]).join(" , "), myComment, myMinPopularity, "CB_ALL", myStyle, myCard.fn.toLowerCase());
+									}
 								}
 							}
 						}
@@ -347,7 +394,7 @@ cardbookAutocompleteSearch.prototype = {
 								var myCard = cardbookRepository.cardbookDisplayCards[dirPrefId+"::"+myCategory][j];
 								myCardList.push(myCard);
 							}
-							this.addResult(result, cardbookUtils.getMimeEmailsFromCards(myCardList).join(" , "), myComment, 0, "CB_CAT", myStyle, myCategory);
+							this.addResult(result, cardbookUtils.getMimeEmailsFromCards(myCardList).join(" , "), myComment, 0, "CB_CAT", myStyle, myCategory.toLowerCase());
 						}
 					}
 				}
@@ -394,7 +441,7 @@ cardbookAutocompleteSearch.prototype = {
                                             myDisplayName = myPrimaryEmail.substr(0,delim);
                                         }
                                         var myPopularity = myABCard.getProperty("PopularityIndex", "0");
-                                        this.addResult(result,  MailServices.headerParser.makeMimeAddress(myDisplayName, myPrimaryEmail), myComment, myPopularity, "TH_CARD", myStyle, myDisplayName);
+                                        this.addResult(result,  MailServices.headerParser.makeMimeAddress(myDisplayName, myPrimaryEmail), myComment, myPopularity, "TH_CARD", myStyle, myDisplayName.toLowerCase());
                                     }
                                 }
                             } else {
@@ -403,7 +450,7 @@ cardbookAutocompleteSearch.prototype = {
                                 lSearchString = lSearchString.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase();
                                 if (lSearchString.indexOf(aSearchString) >= 0) {
                                     var myPopularity = myABCard.getProperty("PopularityIndex", "0");
-                                    this.addResult(result,  MailServices.headerParser.makeMimeAddress(myDisplayName, myDisplayName), myComment, myPopularity, "TH_LIST", myStyle, myDisplayName);
+                                    this.addResult(result,  MailServices.headerParser.makeMimeAddress(myDisplayName, myDisplayName), myComment, myPopularity, "TH_LIST", myStyle, myDisplayName.toLowerCase());
                                 }
                             }
                         }
@@ -577,7 +624,7 @@ cardbookAutocompleteSearch.prototype = {
         if (aContext.showAddressbookComments) {
             myComment = LDAPAbCardFormatter.commentFromCard(aCard, aContext.book, aContext.bookName);
         }
-        this.addResult(this.searchResult, MailServices.headerParser.makeMimeAddress(aCard.displayName, aCard.primaryEmail), myComment, 0, "TH_LDAP", aContext.style, aCard.displayName);
+        this.addResult(this.searchResult, MailServices.headerParser.makeMimeAddress(aCard.displayName, aCard.primaryEmail), myComment, 0, "TH_LDAP", aContext.style, aCard.displayName.toLowerCase());
     },
   
     observe: function observer(subject, topic, data) {

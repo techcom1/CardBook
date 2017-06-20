@@ -363,7 +363,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 			}
 		},
 
-		constructOrg: function (aReadOnly, aOrgValue, aTitleValue, aRoleValue, aCustomField1OrgValue, aCustomField1OrgLabel, aCustomField2OrgValue, aCustomField2OrgLabel) {
+		constructOrg: function (aReadOnly, aOrgValue, aTitleValue, aRoleValue) {
 			var strBundle = document.getElementById("cardbook-strings");
 			var aOrigBox = document.getElementById('orgRows');
 			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
@@ -416,16 +416,6 @@ if ("undefined" == typeof(cardbookTypes)) {
 					cardbookTypes.addLabel(currentRow, 'roleLabel', strBundle.getString("roleLabel"), 'roleTextBox', {class: 'header'});
 					cardbookElementTools.addTextbox(currentRow, 'roleTextBox', aRoleValue, {flex: '1', readonly: 'true'});
 				}
-				if (aCustomField1OrgValue != "") {
-					currentRow = cardbookTypes.addRow(aOrigBox, 'customField1OrgRow');
-					cardbookTypes.addLabel(currentRow, 'customField1OrgLabel', aCustomField1OrgLabel, 'customField1OrgTextBox', {class: 'header'});
-					cardbookElementTools.addTextbox(currentRow, 'customField1OrgTextBox', aCustomField1OrgValue, {flex: '1', readonly: 'true'});
-				}
-				if (aCustomField2OrgValue != "") {
-					currentRow = cardbookTypes.addRow(aOrigBox, 'customField2OrgRow');
-					cardbookTypes.addLabel(currentRow, 'customField2OrgLabel', aCustomField2OrgLabel, 'customField2OrgTextBox', {class: 'header'});
-					cardbookElementTools.addTextbox(currentRow, 'customField2OrgTextBox', aCustomField2OrgValue, {flex: '1', readonly: 'true'});
-				}
 			} else {
 				currentRow = cardbookTypes.addRow(aOrigBox, 'titleRow');
 				cardbookTypes.addLabel(currentRow, 'titleLabel', strBundle.getString("titleLabel"), 'titleTextBox', {class: 'header'});
@@ -433,17 +423,44 @@ if ("undefined" == typeof(cardbookTypes)) {
 				currentRow = cardbookTypes.addRow(aOrigBox, 'roleRow');
 				cardbookTypes.addLabel(currentRow, 'roleLabel', strBundle.getString("roleLabel"), 'roleTextBox', {class: 'header'});
 				cardbookElementTools.addTextbox(currentRow, 'roleTextBox', aRoleValue, {flex: '1'});
-				if (aCustomField1OrgLabel != "") {
-					currentRow = cardbookTypes.addRow(aOrigBox, 'customField1OrgRow');
-					cardbookTypes.addLabel(currentRow, 'customField1OrgLabel', aCustomField1OrgLabel, 'customField1OrgTextBox', {class: 'header'});
-					cardbookElementTools.addTextbox(currentRow, 'customField1OrgTextBox', aCustomField1OrgValue, {flex: '1'});
+			}
+		},
+
+		constructCustom: function (aReadOnly, aType, aOtherValue) {
+			var strBundle = document.getElementById("cardbook-strings");
+			var aOrigBox = document.getElementById(aType + 'Rows');
+
+			var othersTemp = JSON.parse(JSON.stringify(aOtherValue));
+			var result = [];
+			var cardbookPrefService = new cardbookPreferenceService();
+			result = cardbookPrefService.getAllCustomFieldsByType(aType);
+			for (let i = 0; i < result.length; i++) {
+				var myCode = result[i][0];
+				var myLabel = result[i][1];
+				var myField = 'customField' + i + aType;
+				var myValue = '';
+				for (var j = 0; j < othersTemp.length; j++) {
+					var othersTempArray = othersTemp[j].split(":");
+					if (myCode == othersTempArray[0]) {
+						var myValue = othersTempArray[1];
+						break;
+					}
 				}
-				if (aCustomField2OrgLabel != "") {
-					currentRow = cardbookTypes.addRow(aOrigBox, 'customField2OrgRow');
-					cardbookTypes.addLabel(currentRow, 'customField2OrgLabel', aCustomField2OrgLabel, 'customField2OrgTextBox', {class: 'header'});
-					cardbookElementTools.addTextbox(currentRow, 'customField2OrgTextBox', aCustomField2OrgValue, {flex: '1'});
+				var dummy = othersTemp.splice(j,1);
+				j--;
+				if (aReadOnly) {
+					if (myValue != "") {
+						currentRow = cardbookTypes.addRow(aOrigBox, myField + 'Row');
+						cardbookTypes.addLabel(currentRow, myField + 'Label', myLabel, myField + 'TextBox', {class: 'header'});
+						cardbookElementTools.addTextbox(currentRow, myField + 'TextBox', myValue, {flex: '1', readonly: 'true'});
+					}
+				} else {
+					currentRow = cardbookTypes.addRow(aOrigBox, myField + 'Row');
+					cardbookTypes.addLabel(currentRow, myField + 'Label', myLabel, myField + 'TextBox', {class: 'header'});
+					cardbookElementTools.addTextbox(currentRow, myField + 'TextBox', myValue, {flex: '1'});
 				}
 			}
+			return othersTemp;
 		},
 
 		addRow: function (aOrigBox, aId) {
@@ -553,6 +570,17 @@ if ("undefined" == typeof(cardbookTypes)) {
 					}
 				}
 				cardbookElementTools.addKeyTextbox(aHBox, aType + '_' + aIndex + '_valueBox', myValue, {flex: "1"}, aVersion, aIndex);
+			} else if (aType == "adr") {
+				if (aCardValue.length != 7) {
+					aCardValue = ["", "", "", "", "", "", ""];
+				}
+				var myTmpArray = [];
+				for (var i = 0; i < aCardValue.length; i++) {
+					if (aCardValue[i] != "") {
+						myTmpArray.push(aCardValue[i].replace(/\n/g, " "));
+					}
+				}
+				cardbookElementTools.addKeyTextbox(aHBox, aType + '_' + aIndex + '_valueBox', myTmpArray.join(" "), {flex: "1"}, aVersion, aIndex);
 			} else {
 				cardbookElementTools.addKeyTextbox(aHBox, aType + '_' + aIndex + '_valueBox', cardbookUtils.cleanArray(aCardValue).join(" "), {flex: "1"}, aVersion, aIndex);
 			}
@@ -747,7 +775,20 @@ if ("undefined" == typeof(cardbookTypes)) {
 			} else {
 				cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', myDisplayedTypes.join(" "), {context: aType + 'TreeContextMenu', readonly: 'true'});
 	
-				cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', cardbookUtils.cleanArray(aCardValue).join(" "), {context: aType + 'TreeContextMenu', flex: '1'});
+				if (aType == "adr") {
+					if (aCardValue.length != 7) {
+						aCardValue = ["", "", "", "", "", "", ""];
+					}
+					var myTmpArray = [];
+					for (var i = 0; i < aCardValue.length; i++) {
+						if (aCardValue[i] != "") {
+							myTmpArray.push(aCardValue[i].replace(/\n/g, " "));
+						}
+					}
+					cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myTmpArray.join(" "), {context: aType + 'TreeContextMenu', flex: '1'});
+				} else {
+					cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', cardbookUtils.cleanArray(aCardValue).join(" "), {context: aType + 'TreeContextMenu', flex: '1'});
+				}
 				if (aType == "url" || aType == "email" || aType == "adr") {
 					document.getElementById(aType + '_' + aIndex + '_valueBox').setAttribute('link', 'true');
 				} else if (aType == "tel") {

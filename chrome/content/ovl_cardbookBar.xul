@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<?xml-stylesheet href="chrome://cardbook/skin/cardbookButtons.css" type="text/css"?>
-<?xml-stylesheet href="chrome://cardbook/skin/cardbookCheckboxes.css" type="text/css"?>
-<?xml-stylesheet href="chrome://cardbook/skin/cardbookTreeChildrens.css" type="text/css"?>
 
 <!DOCTYPE window [
     <!ENTITY % brandDTD SYSTEM "chrome://branding/locale/brand.dtd"> %brandDTD;
@@ -233,6 +230,8 @@
 		<menuitem id="ccEmailCardsFromAccountsOrCats" label="&ccEmailCardFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.emailCardsFromAccountsOrCats('cc');"/>
 		<menuitem id="bccEmailCardsFromAccountsOrCats" label="&bccEmailCardFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.emailCardsFromAccountsOrCats('bcc');"/>
 		<menuseparator/>
+		<menuitem id="shareCardsByEmailFromAccountsOrCats" label="&shareCardByEmailFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.shareCardsByEmailFromAccountsOrCats();"/>
+		<menuseparator/>
 		<menuitem id="cutCardsFromAccountsOrCats" label="&cutCardFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.cutCardsFromAccountsOrCats();"/>
 		<menuitem id="copyCardsFromAccountsOrCats" label="&copyCardFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.copyCardsFromAccountsOrCats();"/>
 		<menuitem id="pasteCardsFromAccountsOrCats" label="&pasteCardFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.pasteCards();"/>
@@ -240,7 +239,9 @@
 		<menuitem id="renameCatFromAccountsOrCats" label="&renameCatFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.selectCategoryToAction('RENAME');"/>
 		<menuitem id="removeCatFromAccountsOrCats" label="&removeCatFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.selectCategoryToAction('REMOVE');"/>
 		<menuseparator/>
-		<menuitem id="findDuplicatesFromAccountsOrCats" label="&cardbookToolsMenuFindSingleDuplicatesLabel;" oncommand="wdw_cardbook.findDuplicatesFromAccountsOrCats();"/>
+		<menuitem id="findDuplicatesFromAccountsOrCats" label="&findDuplicatesFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.findDuplicatesFromAccountsOrCats();"/>
+		<menuseparator/>
+		<menuitem id="generateFnFromAccountsOrCats" label="&generateFnFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.generateFnFromAccountsOrCats();"/>
 		<menuseparator/>
 		<menuitem id="printFromAccountsOrCats" label="&cardbookToolbarPrintButtonLabel;" oncommand="wdw_cardbook.printFromAccountsOrCats();"/>
 		<menuseparator/>
@@ -266,6 +267,8 @@
 		<menuitem id="toEmailCardsFromCards" label="&toEmailCardFromCardsLabel;" oncommand="wdw_cardbook.emailCardsFromCards('to');"/>
 		<menuitem id="ccEmailCardsFromCards" label="&ccEmailCardFromCardsLabel;" oncommand="wdw_cardbook.emailCardsFromCards('cc');"/>
 		<menuitem id="bccEmailCardsFromCards" label="&bccEmailCardFromCardsLabel;" oncommand="wdw_cardbook.emailCardsFromCards('bcc');"/>
+		<menuseparator/>
+		<menuitem id="shareCardsByEmailFromCards" label="&shareCardByEmailFromCardsLabel;" oncommand="wdw_cardbook.shareCardsByEmailFromCards();"/>
 		<menuseparator/>
 		<menu id="IMPPCardFromCards" label="&IMPPMenuLabel;">
 			<menupopup id="IMPPCardFromCardsMenuPopup"/>

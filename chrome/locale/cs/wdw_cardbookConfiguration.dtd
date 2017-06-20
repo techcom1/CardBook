@@ -15,12 +15,17 @@
 <!ENTITY autocompletionLabel "Doplňování e-mailových adres">
 <!ENTITY autocompletionAccesskey "A">
 <!ENTITY autocompletionTooltip "Rozšíří dokončování adres kontaktů Thunderbirdu o adresáře CardBooku">
-<!ENTITY autocompleteSortByPopularityLabel "??Sort email addresses by popularity??">
-<!ENTITY autocompleteSortByPopularityAccesskey "p">
-<!ENTITY autocompleteShowAddressbookLabel "??Show address book name??">
-<!ENTITY autocompleteShowAddressbookAccesskey "S">
-<!ENTITY autocompleteWithColorLabel "??Use address book color for background color??">
-<!ENTITY autocompleteWithColorAccesskey "U">
+<!ENTITY autocompleteSortByPopularityLabel "Řadit e-mailové adresy podle oblíbenosti">
+<!ENTITY autocompleteSortByPopularityAccesskey "d">
+<!ENTITY autocompleteShowAddressbookLabel "Zobrazit jméno adresáře">
+<!ENTITY autocompleteShowAddressbookAccesskey "Z">
+<!ENTITY autocompleteWithColorLabel "Použít barvu adresáře">
+<!ENTITY autocompleteWithColorAccesskey "P">
+<!ENTITY useColorLabel "Použít barvu adresáře jako:">
+<!ENTITY useColorBackgroundLabel "Barvu pozadí">
+<!ENTITY useColorBackgroundAccesskey "i">
+<!ENTITY useColorTextLabel "Barvu textu">
+<!ENTITY useColorTextAccesskey "t">
 <!ENTITY exclusiveLabel "Unikátní zdroj pro kontakty">
 <!ENTITY exclusiveAccesskey "z">
 <!ENTITY exclusiveTooltip "Pokud je zakázáno, tato možnost dovolí Thunderbirdu získat údaje pro žluté hvězdy, zobrazované jméno e-mailů a dokončování z standardního adresáře.">
@@ -127,8 +132,19 @@
 <!ENTITY deleteIMPPLabel "Smazat">
 <!ENTITY deleteIMPPAccesskey "S">
 
-<!ENTITY customFieldName "Název pole">
-<!ENTITY customFieldLabel "Popisek pole">
+<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldCodeLabel "Název pole">
+<!ENTITY customFieldLabelLabel "Popisek pole">
+<!ENTITY customFieldsPersTitleLabel "Osobní informace">
+<!ENTITY customFieldsPersTitleAccesskey "O">
+<!ENTITY customFieldsOrgTitleLabel "Profesní informace">
+<!ENTITY customFieldsOrgTitleAccesskey "P">
+<!ENTITY addCustomFieldsLabel "Přidat">
+<!ENTITY addCustomFieldsAccesskey "P">
+<!ENTITY renameCustomFieldsLabel "Upravit">
+<!ENTITY renameCustomFieldsAccesskey "U">
+<!ENTITY deleteCustomFieldsLabel "Smazat">
+<!ENTITY deleteCustomFieldsAccesskey "S">
 
 <!ENTITY orgWarn "Pole ORG může obsahovat strukturovanou textovou hodnotu obsahující komponenty oddělené STŘEDNÍKEM (například : vašespolečnost;vašeslužba;vašeoddělení). Pole níže popisují popisky komponent obsažených v této struktuře.">
 

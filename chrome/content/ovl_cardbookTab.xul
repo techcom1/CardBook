@@ -220,7 +220,7 @@
 																	<column flex="1"/>
 																</columns>
 													
-																<rows>
+																<rows id="persRows">
 																	<row id="lastnameRow" align="center">
 																		<label id="lastnameLabel" value="&lastnameLabel;" control="lastnameTextBox" class="header"/>
 																		<textbox id="lastnameTextBox"/>
@@ -252,14 +252,6 @@
 																	<row id="bdayRow" align="center">
 																		<label value="&bdayLabel;" control="bdayTextBox" class="header"/>
 																		<textbox id="bdayTextBox"/>
-																	</row>
-																	<row id="customField1NameRow" align="center">
-																		<label id="customField1NameLabel" control="customField1NameTextBox" class="header"/>
-																		<textbox id="customField1NameTextBox"/>
-																	</row>
-																	<row id="customField2NameRow" align="center">
-																		<label id="customField2NameLabel" control="customField2NameTextBox" class="header"/>
-																		<textbox id="customField2NameTextBox"/>
 																	</row>
 																</rows>
 															</grid>

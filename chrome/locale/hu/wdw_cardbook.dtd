@@ -139,6 +139,8 @@
 <!ENTITY ccEmailCardFromCardsLabel "Új üzenetek (másolatok)">
 <!ENTITY bccEmailCardFromAccountsOrCatsLabel "Új üzenetek (rejtett másolatok)">
 <!ENTITY bccEmailCardFromCardsLabel "Új üzenetek (rejtett másolatok)">
+<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Új üzenet (névjegy melléklettel)">
+<!ENTITY shareCardByEmailFromCardsLabel "Új üzenet (névjegy melléklettel)">
 <!ENTITY categoryLabel "Kategória">
 <!ENTITY findEmailsFromCardsLabel "E-mailek keresése (névjegy alapján)">
 <!ENTITY findEventsFromCardsLabel "Naptári események keresése (névjegy alapján)">
@@ -156,6 +158,8 @@
 <!ENTITY importCardFromDirLabel "Megnyitás és mentés mappából">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Kategória átnevezése">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Kategória eltávolítása">
+<!ENTITY findDuplicatesFromAccountsOrCatsLabel "A jelenlegi névjegytárban ismétlődő névjegy keresése">
+<!ENTITY generateFnFromAccountsOrCatsLabel "??Generate Display Names??">
 <!ENTITY mergeCardsFromCardsLabel "Névjegyek egyesítése">
 <!ENTITY duplicateCardFromCardsLabel "Névjegy másolata">
 <!ENTITY convertListToCategoryFromCardsLabel "Átalakítás listától kategórianak">

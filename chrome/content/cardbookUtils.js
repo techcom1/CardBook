@@ -394,7 +394,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			vArrayNew = JSON.parse(JSON.stringify(vArray));
 			for (let i = 0; i<vArrayNew.length; i++){
 				if (vArrayNew[i] && vArrayNew[i] != ""){
-					vArrayNew[i] = vArrayNew[i].replace(/,/g,"@ESCAPEDCOMMA@");
+					vArrayNew[i] = vArrayNew[i].replace(/,/g,"@ESCAPEDCOMMA@").replace(/;/g,"@ESCAPEDSEMICOLON@");
 				}
 			}
 			return vArrayNew;
@@ -405,7 +405,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			vArrayNew = JSON.parse(JSON.stringify(vArray));
 			for (let i = 0; i<vArrayNew.length; i++){
 				if (vArrayNew[i] && vArrayNew[i] != ""){
-					vArrayNew[i] = vArrayNew[i].replace(/@ESCAPEDCOMMA@/g,"\\,");
+					vArrayNew[i] = vArrayNew[i].replace(/@ESCAPEDCOMMA@/g,"\\,").replace(/@ESCAPEDSEMICOLON@/g,"\\;");
 				}
 			}
 			return vArrayNew;
@@ -705,7 +705,11 @@ if ("undefined" == typeof(cardbookUtils)) {
 					}
 				}
 			}
-			return result;
+			if (result == "") {
+				return aString;
+			} else {
+				return result;
+			}
 		},
 
 		getDisplayedName: function(aNewN, aNewOrg) {
@@ -959,11 +963,17 @@ if ("undefined" == typeof(cardbookUtils)) {
 			for (var i in typesList) {
 				cardbookElementTools.deleteRowsType(typesList[i]);
 			}
-			for (var j in cardbookRepository.customFields) {
-				if (document.getElementById(cardbookRepository.customFields[j] + 'TextBox')) {
-					document.getElementById(cardbookRepository.customFields[j] + 'TextBox').value = "";
+
+			// need to remove the Custom from Pers
+			// for the Org, everything is cleared out
+			var aListRows = document.getElementById('persRows');
+			var j = aListRows.childNodes.length;
+			for (var i = 0; i < j; i++) {
+				if (document.getElementById('customField' + i + 'persRow')) {
+					aListRows.removeChild(document.getElementById('customField' + i + 'persRow'));
 				}
 			}
+
 			document.getElementById('defaultCardImage').src = "";
 			cardbookElementTools.deleteRows('mailPopularityRows');
 		},
@@ -988,66 +998,13 @@ if ("undefined" == typeof(cardbookUtils)) {
 				}
 			}
 
-			/* var cardbookPrefService = new cardbookPreferenceService(aCard.dirPrefId);
-			var myDirPrefIdType = cardbookPrefService.getType();
-			var myDirPrefIdUrl = cardbookPrefService.getUrl();
-			if (myDirPrefIdType === "DIRECTORY") {
-				var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
-				myFile.initWithPath(myDirPrefIdUrl);
-				myFile.append(aCard.cacheuri);
-			} else if (myDirPrefIdType === "FILE") {
-				var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
-				myFile.initWithPath(myDirPrefIdUrl);
-			} else {
-				var myFile = cardbookRepository.getLocalDirectory();
-				myFile.append(aCard.dirPrefId);
-				myFile.append(aCard.cacheuri);
-			}
-			var fieldArray = [ "cacheuri" ];
-			for (var i = 0; i < fieldArray.length; i++) {
-				if (document.getElementById(fieldArray[i] + 'TextBox')) {
-					document.getElementById(fieldArray[i] + 'TextBox').value = myFile.path;
-					if (aReadOnly) {
-						document.getElementById(fieldArray[i] + 'TextBox').setAttribute('readonly', 'true');
-					} else {
-						document.getElementById(fieldArray[i] + 'TextBox').removeAttribute('readonly');
-					}
-				}
-			}*/
-
-			var myCustomField1OrgValue = "";
-			var myCustomField2OrgValue = "";
-			var myCustomField1OrgLabel = "";
-			var myCustomField2OrgLabel = "";
-			var othersTemp = JSON.parse(JSON.stringify(aCard.others));
-
-			for (var i in cardbookRepository.customFields) {
-				if (cardbookRepository.customFields[i] == "customField1Org" ) {
-					myCustomField1OrgLabel = cardbookRepository.customFieldsLabel[cardbookRepository.customFields[i]];
-				} else if (cardbookRepository.customFields[i] == "customField2Org" ) {
-					myCustomField2OrgLabel = cardbookRepository.customFieldsLabel[cardbookRepository.customFields[i]];
-				} else {
-					document.getElementById(cardbookRepository.customFields[i] + 'Label').value = cardbookRepository.customFieldsLabel[cardbookRepository.customFields[i]];
-				}
-				for (var j = 0; j < othersTemp.length; j++) {
-					var othersTempArray = othersTemp[j].split(":");
-					if (cardbookRepository.customFieldsValue[cardbookRepository.customFields[i]] == othersTempArray[0]) {
-						if (cardbookRepository.customFields[i] == "customField1Org" ) {
-							myCustomField1OrgValue = othersTempArray[1];
-							myCustomField1OrgLabel = cardbookRepository.customFieldsLabel[cardbookRepository.customFields[i]];
-						} else if (cardbookRepository.customFields[i] == "customField2Org" ) {
-							myCustomField2OrgValue = othersTempArray[1];
-							myCustomField2OrgLabel = cardbookRepository.customFieldsLabel[cardbookRepository.customFields[i]];
-						} else {
-							document.getElementById(cardbookRepository.customFields[i] + 'TextBox').value = othersTempArray[1];
-						}
-						var dummy = othersTemp.splice(j,1);
-						j--;
-					}
-				}
-			}
+			var myRemainingOthers = [];
+			myRemainingOthers = cardbookTypes.constructCustom(aReadOnly, 'pers', aCard.others);
 			
-			document.getElementById('othersTextBox').value = othersTemp.join("\n");
+			cardbookTypes.constructOrg(aReadOnly, aCard.org, aCard.title, aCard.role);
+			myRemainingOthers = cardbookTypes.constructCustom(aReadOnly, 'org', myRemainingOthers);
+			
+			document.getElementById('othersTextBox').value = myRemainingOthers.join("\n");
 			if (aReadOnly) {
 				document.getElementById('othersTextBox').setAttribute('readonly', 'true');
 			} else {
@@ -1066,10 +1023,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 				}
 			}
 			
-			cardbookTypes.constructOrg(aReadOnly, aCard.org, aCard.title, aCard.role, myCustomField1OrgValue, myCustomField1OrgLabel, myCustomField2OrgValue, myCustomField2OrgLabel);
-			
 			wdw_imageEdition.displayImageCard(aCard, !aReadOnly);
-			wdw_cardEdition.displayCustomsName(aReadOnly);
 			wdw_cardEdition.display40(aCard.version, aReadOnly);
 			
 			document.getElementById('categoriesTextBox').value = cardbookUtils.formatCategories(aCard.categories);
@@ -1101,7 +1055,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		adjustFields: function () {
 			var nullableFields = {fn: [ 'fn' ],
-									pers: [ 'lastname', 'firstname', 'othername', 'prefixname', 'suffixname', 'nickname', 'gender', 'bday', 'customField1Name', 'customField2Name' ],
+									pers: [ 'lastname', 'firstname', 'othername', 'prefixname', 'suffixname', 'nickname', 'gender', 'bday' ],
 									categories: [ 'categories' ],
 									note: [ 'note' ],
 									misc: [ 'mailer', 'geo', 'sortstring', 'class1', 'tz', 'agent', 'key', 'photolocalURI', 'photoURI', 'logolocalURI', 'logoURI', 'soundlocalURI', 'soundURI' ],
@@ -1142,6 +1096,15 @@ if ("undefined" == typeof(cardbookUtils)) {
 							}
 							if (label) {
 								label.setAttribute('hidden', 'true');
+							}
+						}
+					}
+				}
+				if (cardbookRepository.customFields[i]) {
+					for (var j = 0; j < cardbookRepository.customFields[i].length; j++) {
+						if (document.getElementById('customField' + cardbookRepository.customFields[i][j][2] + i + 'TextBox')) {
+							if (document.getElementById('customField' + cardbookRepository.customFields[i][j][2] + i + 'TextBox').value != "") {
+								found = true;
 							}
 						}
 					}
@@ -1265,16 +1228,6 @@ if ("undefined" == typeof(cardbookUtils)) {
 			targetCard.dispcategories = sourceCard.dispcategories;
 		},
 
-		getCustomValue: function(aCard, aCustomElement) {
-			for (var i = 0; i < aCard.others.length; i++) {
-				var othersTempArray = aCard.others[i].split(":");
-				if (cardbookRepository.customFieldsValue[aCustomElement] == othersTempArray[0]) {
-					return othersTempArray[1];
-				}
-			}
-			return "";
-		},
-
 		getCardValueByField: function(aCard, aField) {
 			var result = [];
 			if (aField.indexOf(".") > 0) {
@@ -1370,9 +1323,12 @@ if ("undefined" == typeof(cardbookUtils)) {
 			} else {
 				var found = false;
 				for (var i in cardbookRepository.customFields) {
-					if (cardbookRepository.customFieldsValue[cardbookRepository.customFields[i]] == aField) {
-						aCard.others.push(aField + ":" + aValue);
-						found = true;
+					for (var j = 0; j < cardbookRepository.customFields[i].length; j++) {
+						if (cardbookRepository.customFields[i][j][0] == aField) {
+							aCard.others.push(aField + ":" + aValue);
+							found = true;
+							break;
+						}
 					}
 				}
 				if (!found) {
@@ -1982,7 +1938,9 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		getTempFile: function (aFileName) {
 			var myFile = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties).get("TmpD", Components.interfaces.nsIFile);
-			myFile.append(aFileName);
+			if (aFileName) {
+				myFile.append(aFileName);
+			}
 			return myFile;
 		},
 
@@ -2379,8 +2337,8 @@ if ("undefined" == typeof(cardbookUtils)) {
 				}
 			}
 			for (var i in cardbookRepository.customFields) {
-				if (cardbookRepository.customFieldsValue[cardbookRepository.customFields[i]] != "") {
-					result.push([cardbookRepository.customFieldsValue[cardbookRepository.customFields[i]], cardbookRepository.customFieldsLabel[cardbookRepository.customFields[i]]]);
+				for (var j = 0; j < cardbookRepository.customFields[i].length; j++) {
+					result.push([cardbookRepository.customFields[i][j][0], cardbookRepository.customFields[i][j][1]]);
 				}
 			}
 			if (aMode === "export" || aMode === "all") {

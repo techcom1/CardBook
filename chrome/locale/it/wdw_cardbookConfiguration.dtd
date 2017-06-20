@@ -19,8 +19,13 @@
 <!ENTITY autocompleteSortByPopularityAccesskey "p">
 <!ENTITY autocompleteShowAddressbookLabel "??Show address book name??">
 <!ENTITY autocompleteShowAddressbookAccesskey "S">
-<!ENTITY autocompleteWithColorLabel "??Use address book color for background color??">
+<!ENTITY autocompleteWithColorLabel "??Use address book color??">
 <!ENTITY autocompleteWithColorAccesskey "U">
+<!ENTITY useColorLabel "??Use address book color for:??">
+<!ENTITY useColorBackgroundLabel "??Background color??">
+<!ENTITY useColorBackgroundAccesskey "B">
+<!ENTITY useColorTextLabel "??Text color??">
+<!ENTITY useColorTextAccesskey "T">
 <!ENTITY exclusiveLabel "CardBook come fonte unica dei contatti">
 <!ENTITY exclusiveAccesskey "U">
 <!ENTITY exclusiveTooltip "Se disabilitata, questa opzione permette di recuperare i contatti nelle rubriche standard di Thunderbird per le stelline gialle, il nome mostrato nell'email e l'autocompletamento dell'email.">
@@ -127,8 +132,19 @@
 <!ENTITY deleteIMPPLabel "Elimina">
 <!ENTITY deleteIMPPAccesskey "E">
 
-<!ENTITY customFieldName "Nome del campo">
-<!ENTITY customFieldLabel "Etichetta del campo">
+<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldCodeLabel "Nome del campo">
+<!ENTITY customFieldLabelLabel "Etichetta del campo">
+<!ENTITY customFieldsPersTitleLabel "Informazioni personali">
+<!ENTITY customFieldsPersTitleAccesskey "p">
+<!ENTITY customFieldsOrgTitleLabel "Informazioni professionali">
+<!ENTITY customFieldsOrgTitleAccesskey "r">
+<!ENTITY addCustomFieldsLabel "Aggiungi">
+<!ENTITY addCustomFieldsAccesskey "A">
+<!ENTITY renameCustomFieldsLabel "Rinomina">
+<!ENTITY renameCustomFieldsAccesskey "R">
+<!ENTITY deleteCustomFieldsLabel "Elimina">
+<!ENTITY deleteCustomFieldsAccesskey "E">
 
 <!ENTITY orgWarn "Il campo ORG può contenere un valore strutturato composto da elementi separati dal carattere PUNTO E VIRGOLA (esempio: latuaazienda;ituoiservizi;iltuoufficio). I campi qui sotto descrivono le etichette di questi elementi.">
 

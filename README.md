@@ -78,4 +78,4 @@ Trailblazer:
 
 ### License
 
-To be added
+Mozilla Public License version 2.0

@@ -137,7 +137,7 @@
 								<column/>
 								<column flex="1"/>
 							</columns>
-							<rows>
+							<rows id="persRows">
 								<row align="center">
 									<hbox flex="1" align="center">
 										<label id="lastnameLabel" value="&lastnameLabel;" control="lastnameTextBox" class="header"/>
@@ -187,14 +187,6 @@
 								<row align="center">
 									<label id="genderLabel" value="&genderLabel;" control="genderTextBox" class="header"/>
 									<textbox id="genderTextBox"/>
-								</row>
-								<row align="center">
-									<label id="customField1NameLabel" control="customField1NameTextBox" class="header"/>
-									<textbox id="customField1NameTextBox"/>
-								</row>
-								<row align="center">
-									<label id="customField2NameLabel" control="customField2NameTextBox" class="header"/>
-									<textbox id="customField2NameTextBox"/>
 								</row>
 								<row align="center">
 									<textbox id="othersTextBox" hidden="true" multiline="true"/>
@@ -281,8 +273,7 @@
 						</hbox>
 						<hbox>
 							<spacer flex="1"/>
-							<button id="validateEditionLabel" label="&validateEditionLabel;" accesskey="&validateEditionAccesskey;" oncommand="wdw_cardEdition.validateAdrPanel();"/>
-							<button id="cancelEditionLabel" label="&cancelEditionLabel;" accesskey="&cancelEditionAccesskey;" oncommand="wdw_cardEdition.cancelAdrPanel();"/>
+							<button id="validateEditionLabel" label="&validateEditionLabel;" accesskey="&validateEditionAccesskey;" oncommand="wdw_cardEdition.cancelAdrPanel();"/>
 						</hbox>
 					</panel>
 				</vbox>

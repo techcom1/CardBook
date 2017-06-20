@@ -13,14 +13,19 @@
 
 <!ENTITY integrationGroupboxLabel "Integratie in Thunderbird">
 <!ENTITY autocompletionLabel "Auto-aanvullen bij het typen van email adressen">
-<!ENTITY autocompletionAccesskey "A">
+<!ENTITY autocompletionAccesskey "h">
 <!ENTITY autocompletionTooltip "Auto-aanvullen bij het typen van email adressen vanuit CardBook.">
-<!ENTITY autocompleteSortByPopularityLabel "??Sort email addresses by popularity??">
+<!ENTITY autocompleteSortByPopularityLabel "Sorteer e-mail adressen op populariteit">
 <!ENTITY autocompleteSortByPopularityAccesskey "p">
-<!ENTITY autocompleteShowAddressbookLabel "??Show address book name??">
-<!ENTITY autocompleteShowAddressbookAccesskey "S">
-<!ENTITY autocompleteWithColorLabel "??Use address book color for background color??">
-<!ENTITY autocompleteWithColorAccesskey "U">
+<!ENTITY autocompleteShowAddressbookLabel "Toon naam adresboek">
+<!ENTITY autocompleteShowAddressbookAccesskey "T">
+<!ENTITY autocompleteWithColorLabel "Gebruik de kleur van het adresboek">
+<!ENTITY autocompleteWithColorAccesskey "G">
+<!ENTITY useColorLabel "Gebruik kleur van adresboek voor:">
+<!ENTITY useColorBackgroundLabel "Achtergrondkleur">
+<!ENTITY useColorBackgroundAccesskey "A">
+<!ENTITY useColorTextLabel "Tekstkleur">
+<!ENTITY useColorTextAccesskey "T">
 <!ENTITY exclusiveLabel "CardBook als enige bron voor contactpersonen">
 <!ENTITY exclusiveAccesskey "e">
 <!ENTITY exclusiveTooltip "Als deze optie ingeschakeld is, dan wordt bij het typen uitsluitend naar email adressen in CardBook gezocht; als de optie uit staat, dan wordt ook in de Thunderbird-boeken gezocht.">
@@ -127,8 +132,19 @@
 <!ENTITY deleteIMPPLabel "Verwijderen">
 <!ENTITY deleteIMPPAccesskey "V">
 
-<!ENTITY customFieldName "Rubriek naam">
-<!ENTITY customFieldLabel "Rubriek label">
+<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldCodeLabel "Rubriek naam">
+<!ENTITY customFieldLabelLabel "Rubriek label">
+<!ENTITY customFieldsPersTitleLabel "Persoonlijke informatie">
+<!ENTITY customFieldsPersTitleAccesskey "P">
+<!ENTITY customFieldsOrgTitleLabel "Professionele informatie">
+<!ENTITY customFieldsOrgTitleAccesskey "r">
+<!ENTITY addCustomFieldsLabel "Toevoegen">
+<!ENTITY addCustomFieldsAccesskey "T">
+<!ENTITY renameCustomFieldsLabel "Bewerken">
+<!ENTITY renameCustomFieldsAccesskey "B">
+<!ENTITY deleteCustomFieldsLabel "Verwijderen">
+<!ENTITY deleteCustomFieldsAccesskey "V">
 
 <!ENTITY orgWarn "De rubriek ORG kan bestaan uit tekst, gescheiden door puntkomma's. Bijvoorbeeld: bedrijfsnaam;dienstnaam;afdelingsnaam. De rubrieken hieronder beschrijven de namen van de onderdelen daarvan.">
 
