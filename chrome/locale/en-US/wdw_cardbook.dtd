@@ -158,6 +158,8 @@
 <!ENTITY importCardFromDirLabel "Import contacts from a directory">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Rename category">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Remove category">
+<!ENTITY findDuplicatesFromAccountsOrCatsLabel "Find duplicate contacts in current address book">
+<!ENTITY generateFnFromAccountsOrCatsLabel "Generate Display Names">
 <!ENTITY mergeCardsFromCardsLabel "Merge contacts">
 <!ENTITY duplicateCardFromCardsLabel "Duplicate contact">
 <!ENTITY convertListToCategoryFromCardsLabel "Convert list to category">

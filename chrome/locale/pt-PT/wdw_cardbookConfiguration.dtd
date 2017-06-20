@@ -132,8 +132,19 @@
 <!ENTITY deleteIMPPLabel "Apagar">
 <!ENTITY deleteIMPPAccesskey "G">
 
-<!ENTITY customFieldName "Nome do campo">
-<!ENTITY customFieldLabel "Etiqueta do campo">
+<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldCodeLabel "Nome do campo">
+<!ENTITY customFieldLabelLabel "Etiqueta do campo">
+<!ENTITY customFieldsPersTitleLabel "Information pessoal">
+<!ENTITY customFieldsPersTitleAccesskey "p">
+<!ENTITY customFieldsOrgTitleLabel "Information profissional">
+<!ENTITY customFieldsOrgTitleAccesskey "r">
+<!ENTITY addCustomFieldsLabel "Adicionar">
+<!ENTITY addCustomFieldsAccesskey "A">
+<!ENTITY renameCustomFieldsLabel "Editar">
+<!ENTITY renameCustomFieldsAccesskey "E">
+<!ENTITY deleteCustomFieldsLabel "Apagar">
+<!ENTITY deleteCustomFieldsAccesskey "G">
 
 <!ENTITY orgWarn "O campo ORG pode conter texto composto por componentes separado por ponto-e-virgula (por exemplo: companhia;serviço;departamento). Os campos abaixo mostram os nomes da nova estrutura.">
 

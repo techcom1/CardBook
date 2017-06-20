@@ -131,8 +131,19 @@
 <!ENTITY deleteIMPPLabel "Delete">
 <!ENTITY deleteIMPPAccesskey "D">
 
-<!ENTITY customFieldName "Field Name">
-<!ENTITY customFieldLabel "Field Label">
+<!ENTITY customFieldRankLabel "Rank">
+<!ENTITY customFieldCodeLabel "Field Name">
+<!ENTITY customFieldLabelLabel "Field Label">
+<!ENTITY customFieldsPersTitleLabel "Personal Information">
+<!ENTITY customFieldsPersTitleAccesskey "P">
+<!ENTITY customFieldsOrgTitleLabel "Professional Information">
+<!ENTITY customFieldsOrgTitleAccesskey "r">
+<!ENTITY addCustomFieldsLabel "Add">
+<!ENTITY addCustomFieldsAccesskey "A">
+<!ENTITY renameCustomFieldsLabel "Edit">
+<!ENTITY renameCustomFieldsAccesskey "E">
+<!ENTITY deleteCustomFieldsLabel "Delete">
+<!ENTITY deleteCustomFieldsAccesskey "D">
 
 <!ENTITY orgWarn "The field ORG may contain a structured text value consisting of components separated by the SEMICOLON character (for example : yourcompany;yourservice;yourdepartment). The fields below describe the component labels of this structure.">
 

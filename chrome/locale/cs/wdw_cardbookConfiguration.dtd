@@ -132,8 +132,19 @@
 <!ENTITY deleteIMPPLabel "Smazat">
 <!ENTITY deleteIMPPAccesskey "S">
 
-<!ENTITY customFieldName "Název pole">
-<!ENTITY customFieldLabel "Popisek pole">
+<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldCodeLabel "Název pole">
+<!ENTITY customFieldLabelLabel "Popisek pole">
+<!ENTITY customFieldsPersTitleLabel "Osobní informace">
+<!ENTITY customFieldsPersTitleAccesskey "O">
+<!ENTITY customFieldsOrgTitleLabel "Profesní informace">
+<!ENTITY customFieldsOrgTitleAccesskey "P">
+<!ENTITY addCustomFieldsLabel "Přidat">
+<!ENTITY addCustomFieldsAccesskey "P">
+<!ENTITY renameCustomFieldsLabel "Upravit">
+<!ENTITY renameCustomFieldsAccesskey "U">
+<!ENTITY deleteCustomFieldsLabel "Smazat">
+<!ENTITY deleteCustomFieldsAccesskey "S">
 
 <!ENTITY orgWarn "Pole ORG může obsahovat strukturovanou textovou hodnotu obsahující komponenty oddělené STŘEDNÍKEM (například : vašespolečnost;vašeslužba;vašeoddělení). Pole níže popisují popisky komponent obsažených v této struktuře.">
 

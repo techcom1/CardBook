@@ -158,6 +158,8 @@
 <!ENTITY importCardFromDirLabel "Importovat kontakty z adresáře">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Přejmenovat kategorii">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Odstranit kategorii">
+<!ENTITY findDuplicatesFromAccountsOrCatsLabel "Najít duplicitní kontakty v aktuálním adresáři">
+<!ENTITY generateFnFromAccountsOrCatsLabel "??Generate Display Names??">
 <!ENTITY mergeCardsFromCardsLabel "Sloučit kontakty">
 <!ENTITY duplicateCardFromCardsLabel "Duplicitní kontakt">
 <!ENTITY convertListToCategoryFromCardsLabel "Převést seznam na kategorii">

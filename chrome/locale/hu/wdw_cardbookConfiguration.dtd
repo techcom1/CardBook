@@ -131,8 +131,19 @@
 <!ENTITY deleteIMPPLabel "Törlés">
 <!ENTITY deleteIMPPAccesskey "T">
 
-<!ENTITY customFieldName "Mező neve">
-<!ENTITY customFieldLabel "Mezőcímkét">
+<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldCodeLabel "Mező neve">
+<!ENTITY customFieldLabelLabel "Mezőcímkét">
+<!ENTITY customFieldsPersTitleLabel "Személyes adatok">
+<!ENTITY customFieldsPersTitleAccesskey "a">
+<!ENTITY customFieldsOrgTitleLabel "Szakmai profil">
+<!ENTITY customFieldsOrgTitleAccesskey "p">
+<!ENTITY addCustomFieldsLabel "Új…">
+<!ENTITY addCustomFieldsAccesskey "j">
+<!ENTITY renameCustomFieldsLabel "Szerkesztés…">
+<!ENTITY renameCustomFieldsAccesskey "z">
+<!ENTITY deleteCustomFieldsLabel "Törlés…">
+<!ENTITY deleteCustomFieldsAccesskey "T">
 
 <!ENTITY orgWarn "A mező ORG tartalmazhat strukturált szöveges érték komponensekből álló amelyeket pontosvessző karaktert (például: cég;szolgáltatás;osztály). Az alábbi mezőket a részegység megnevezésére címkék ezt a struktúrát.">
 

@@ -6,7 +6,7 @@
 	<Description about="urn:mozilla:install-manifest">
 		<em:id>cardbook@vigneau.philippe</em:id>
 		<em:name>CardBook</em:name>
-		<em:version>19.6</em:version>
+		<em:version>19.7</em:version>
 		<em:type>2</em:type>
 		<em:description>vCard Address Book</em:description>
 		<em:creator>Philippe Vigneau</em:creator>
@@ -33,7 +33,7 @@
 		<em:translator>André Bação (pt-PT)</em:translator>
 		<em:translator>Alexander Yavorsky (ru)</em:translator>
 		<em:translator>Peter Klofutar (sl)</em:translator>
-		<em:optionsURL>chrome://cardbook/content/wdw_cardbookConfiguration.xul</em:optionsURL>
+		<em:optionsURL>chrome://cardbook/content/configuration/wdw_cardbookConfiguration.xul</em:optionsURL>
 		<em:iconURL>chrome://cardbook/skin/cardbook_32_32.png</em:iconURL>
 
 		<!-- Target Application - Thunderbird -->

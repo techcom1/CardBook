@@ -3,14 +3,14 @@ pref("extensions.cardbook.autocompleteSortByPopularity", true);
 pref("extensions.cardbook.autocompleteShowAddressbook", false); 
 pref("extensions.cardbook.autocompleteWithColor", true); 
 pref("extensions.cardbook.useColor", "background"); 
-pref("extensions.cardbook.exclusive", true);
+pref("extensions.cardbook.exclusive", false);
 pref("extensions.cardbook.requestsTimeout", "120");
 pref("extensions.cardbook.statusInformationLineNumber", "250");
 pref("extensions.cardbook.debugMode", false);
 
 pref("extensions.cardbook.cardCreationVersion", "3.0");
 pref("extensions.cardbook.preferEmailEdition", true);
-pref("extensions.cardbook.listTabView", false);
+pref("extensions.cardbook.listTabView", true);
 pref("extensions.cardbook.mailPopularityTabView", false);
 pref("extensions.cardbook.technicalTabView", false);
 pref("extensions.cardbook.vcardTabView", false);
@@ -61,4 +61,4 @@ pref("extensions.cardbook.calendarEntryCategories", "");
 pref("extensions.cardbook.viewABPane", true);
 pref("extensions.cardbook.viewABContact", true);
 
-pref("extensions.cardbook.userAgent", "CardBook/19.6");
+pref("extensions.cardbook.userAgent", "CardBook/19.7");

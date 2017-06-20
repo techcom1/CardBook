@@ -132,8 +132,19 @@
 <!ENTITY deleteIMPPLabel "Verwijderen">
 <!ENTITY deleteIMPPAccesskey "V">
 
-<!ENTITY customFieldName "Rubriek naam">
-<!ENTITY customFieldLabel "Rubriek label">
+<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldCodeLabel "Rubriek naam">
+<!ENTITY customFieldLabelLabel "Rubriek label">
+<!ENTITY customFieldsPersTitleLabel "Persoonlijke informatie">
+<!ENTITY customFieldsPersTitleAccesskey "P">
+<!ENTITY customFieldsOrgTitleLabel "Professionele informatie">
+<!ENTITY customFieldsOrgTitleAccesskey "r">
+<!ENTITY addCustomFieldsLabel "Toevoegen">
+<!ENTITY addCustomFieldsAccesskey "T">
+<!ENTITY renameCustomFieldsLabel "Bewerken">
+<!ENTITY renameCustomFieldsAccesskey "B">
+<!ENTITY deleteCustomFieldsLabel "Verwijderen">
+<!ENTITY deleteCustomFieldsAccesskey "V">
 
 <!ENTITY orgWarn "De rubriek ORG kan bestaan uit tekst, gescheiden door puntkomma's. Bijvoorbeeld: bedrijfsnaam;dienstnaam;afdelingsnaam. De rubrieken hieronder beschrijven de namen van de onderdelen daarvan.">
 

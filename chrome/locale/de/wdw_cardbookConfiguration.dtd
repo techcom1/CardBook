@@ -132,8 +132,19 @@
 <!ENTITY deleteIMPPLabel "Löschen">
 <!ENTITY deleteIMPPAccesskey "L">
 
-<!ENTITY customFieldName "Feldname">
-<!ENTITY customFieldLabel "Feldlabel">
+<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldCodeLabel "Feldname">
+<!ENTITY customFieldLabelLabel "Feldlabel">
+<!ENTITY customFieldsPersTitleLabel "Persönliche Informationen">
+<!ENTITY customFieldsPersTitleAccesskey "P">
+<!ENTITY customFieldsOrgTitleLabel "Berufliche Informationen">
+<!ENTITY customFieldsOrgTitleAccesskey "B">
+<!ENTITY addCustomFieldsLabel "Hinzufügen">
+<!ENTITY addCustomFieldsAccesskey "H">
+<!ENTITY renameCustomFieldsLabel "Bearbeiten">
+<!ENTITY renameCustomFieldsAccesskey "B">
+<!ENTITY deleteCustomFieldsLabel "Löschen">
+<!ENTITY deleteCustomFieldsAccesskey "L">
 
 <!ENTITY orgWarn "Das Feld ORG darf mehrere durch SEMIKOLON getrennte Zeichenketten enthalten, z.B.: yourcompany;yourservice;yourdepartment. Die Felder unten definieren die Namen der jeweiligen Zeichenketten.">
 

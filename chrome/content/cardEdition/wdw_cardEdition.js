@@ -251,32 +251,6 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			}
 		},
 
-		displayCustomsName: function (aReadOnly) {
-			if (cardbookRepository.customFieldsLabel['customField1Name'] != null && cardbookRepository.customFieldsLabel['customField1Name'] !== undefined && cardbookRepository.customFieldsLabel['customField1Name'] != "") {
-				document.getElementById('customField1NameLabel').value = cardbookRepository.customFieldsLabel['customField1Name'];
-				document.getElementById('customField1NameLabel').removeAttribute('hidden');
-				document.getElementById('customField1NameTextBox').removeAttribute('hidden');
-			} else {
-				document.getElementById('customField1NameLabel').setAttribute('hidden', 'true');
-				document.getElementById('customField1NameTextBox').setAttribute('hidden', 'true');
-			}
-			if (cardbookRepository.customFieldsLabel['customField2Name'] != null && cardbookRepository.customFieldsLabel['customField2Name'] !== undefined && cardbookRepository.customFieldsLabel['customField2Name'] != "") {
-				document.getElementById('customField2NameLabel').value = cardbookRepository.customFieldsLabel['customField2Name'];
-				document.getElementById('customField2NameLabel').removeAttribute('hidden');
-				document.getElementById('customField2NameTextBox').removeAttribute('hidden');
-			} else {
-				document.getElementById('customField2NameLabel').setAttribute('hidden', 'true');
-				document.getElementById('customField2NameTextBox').setAttribute('hidden', 'true');
-			}
-			if (aReadOnly) {
-				document.getElementById('customField1NameTextBox').setAttribute('readonly', 'true');
-				document.getElementById('customField2NameTextBox').setAttribute('readonly', 'true');
-			} else {
-				document.getElementById('customField1NameTextBox').removeAttribute('readonly');
-				document.getElementById('customField2NameTextBox').removeAttribute('readonly');
-			}
-		},
-
 		loadEditionMode: function () {
 			var strBundle = document.getElementById("cardbook-strings");
 			document.title=strBundle.getString("wdw_cardEdition" + window.arguments[0].editionMode + "Title");
@@ -782,10 +756,12 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 
 			var othersTemp1 = [];
 			for (var i in cardbookRepository.customFields) {
-				if (document.getElementById(cardbookRepository.customFields[i] + 'TextBox')) {
-					var customValue = document.getElementById(cardbookRepository.customFields[i] + 'TextBox').value.trim()
-					if (customValue != null && customValue !== undefined && customValue != "") {
-						othersTemp1.push(cardbookRepository.customFieldsValue[cardbookRepository.customFields[i]] + ":" + customValue);
+				for (var j = 0; j < cardbookRepository.customFields[i].length; j++) {
+					if (document.getElementById('customField' + cardbookRepository.customFields[i][j][2] + i + 'TextBox')) {
+						var customValue = document.getElementById('customField' + cardbookRepository.customFields[i][j][2] + i + 'TextBox').value.trim();
+						if (customValue != null && customValue !== undefined && customValue != "") {
+							othersTemp1.push(cardbookRepository.customFields[i][j][0] + ":" + customValue);
+						}
 					}
 				}
 			}

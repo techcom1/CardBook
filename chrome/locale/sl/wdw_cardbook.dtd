@@ -158,6 +158,8 @@
 <!ENTITY importCardFromDirLabel "Uvozi stike iz mape">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Preimenuj kategorijo">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Odstrani kategorijo">
+<!ENTITY findDuplicatesFromAccountsOrCatsLabel "Poišči podvojene stike v trenutnem imeniku">
+<!ENTITY generateFnFromAccountsOrCatsLabel "??Generate Display Names??">
 <!ENTITY mergeCardsFromCardsLabel "Združi stike">
 <!ENTITY duplicateCardFromCardsLabel "Podvoji stik">
 <!ENTITY convertListToCategoryFromCardsLabel "Pretvori seznam v kategorijo">

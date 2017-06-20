@@ -158,6 +158,8 @@
 <!ENTITY importCardFromDirLabel "Importuj wizytówkę z katalogu">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Zmień nazwę kategorii">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Usuń kategorię">
+<!ENTITY findDuplicatesFromAccountsOrCatsLabel "Znajdź powielone wizytówki w bieżącej książce adresowej">
+<!ENTITY generateFnFromAccountsOrCatsLabel "??Generate Display Names??">
 <!ENTITY mergeCardsFromCardsLabel "Połącz wizytówki">
 <!ENTITY duplicateCardFromCardsLabel "Powiel wizytówkę">
 <!ENTITY convertListToCategoryFromCardsLabel "Zamień listę w kategorię">

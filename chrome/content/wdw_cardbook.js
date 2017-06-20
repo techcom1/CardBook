@@ -459,6 +459,50 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			}
 		},
 
+		generateFnFromAccountsOrCats: function () {
+			try {
+				var myTree = document.getElementById('accountsOrCatsTree');
+				if (myTree.currentIndex != -1) {
+					var myAccountId = myTree.view.getCellText(myTree.currentIndex, {id: "accountId"});
+					wdw_cardbook.generateFn(myAccountId);
+				} else {
+					return;
+				}
+			}
+			catch (e) {
+				wdw_cardbooklog.updateStatusProgressInformation("wdw_cardbook.findDuplicatesFromAccountsOrCats error : " + e, "Error");
+			}
+		},
+
+		generateFn: function (aAccountId) {
+			try {
+				if (cardbookRepository.cardbookSyncMode == "NOSYNC") {
+					cardbookRepository.cardbookSyncMode = "SYNC";
+				} else {
+					return;
+				}
+				var myCards = cardbookRepository.cardbookDisplayCards[aAccountId];
+				for (var i = 0; i < myCards.length; i++) {
+					var myCard = myCards[i];
+					var myOutCard = new cardbookCardParser();
+					cardbookUtils.cloneCard(myCard, myOutCard);
+					var myFn = cardbookUtils.getDisplayedName([myOutCard.prefixname, myOutCard.firstname, myOutCard.othername, myOutCard.lastname, myOutCard.suffixname], myOutCard.org);
+					if (myFn != "" && myFn != myOutCard.fn) {
+						myOutCard.fn = myFn;
+						cardbookRepository.saveCard(myCard, myOutCard, "cardbook.cardModifiedDirect");
+					}
+				}
+				
+				var myDirPrefId = cardbookUtils.getAccountId(aAccountId);
+				cardbookRepository.reWriteFiles([myDirPrefId]);
+				cardbookRepository.cardbookSyncMode = "NOSYNC";
+			}
+			catch (e) {
+				wdw_cardbooklog.updateStatusProgressInformation("wdw_cardbook.generateFn error : " + e, "Error");
+			}
+		},
+
+
 		deleteCardsAndValidate: function (aSource, aCardList, aMessage) {
 			try {
 				var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
@@ -1526,7 +1570,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		},
 
 		openOptionsEdition: function () {
-			var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookConfiguration.xul", "", "chrome,modal,resizable,centerscreen");
+			var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfiguration.xul", "", "chrome,modal,resizable,centerscreen");
 		},
 
 		openPrintEdition: function (aListOfCards, aTitle) {
@@ -2441,7 +2485,6 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		cardbookContactsMenuContextShowing: function () {
 			cardbookUtils.addToIMPPMenuSubMenu('cardbookContactsMenuIMPPCardsMenuPopup');
 			cardbookUtils.addCardsToCategoryMenuSubMenu('cardbookContactsMenuCategoriesMenuPopup');
-			wdw_cardbook.loadCategories('cardbookContactsMenuCategoriesPanel');
 			wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuFindEvents'], true);
 			var myTree = document.getElementById('accountsOrCatsTree');
 			if (cardbookUtils.getSelectedCardsCount() == 0) {
@@ -2546,7 +2589,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			wdw_cardbook.setElementLabelWithBundle('readOnlyOrReadWriteFromAccountsOrCats', "readOnlyFromAccountsOrCats");
 			if (cardbookRepository.cardbookSyncMode === "NOSYNC") {
 				var myTree = document.getElementById('accountsOrCatsTree');
-				if (myTree.currentIndex != -1) {
+				if (cardbookRepository.cardbookAccounts.length != 0) {
 					var myAccountId = myTree.view.getCellText(myTree.currentIndex, {id: "accountId"});
 					var myPrefId = cardbookUtils.getAccountId(myAccountId);
 					var cardbookPrefService = new cardbookPreferenceService(myPrefId);
@@ -2583,64 +2626,67 @@ if ("undefined" == typeof(wdw_cardbook)) {
 							wdw_cardbook.enableOrDisableElement(['removeCatFromAccountsOrCats', 'renameCatFromAccountsOrCats'], true);
 						}
 					}
+					wdw_cardbook.enableOrDisableElement(['addAccountFromAccountsOrCats', 'editAccountFromAccountsOrCats', 'removeAccountFromAccountsOrCats',
+														'enableOrDisableFromAccountsOrCats', 'readOnlyOrReadWriteFromAccountsOrCats'], false);
+					if (document.getElementById('cardsTree').view.rowCount == 0) {
+						wdw_cardbook.setElementLabelWithBundle('toEmailCardsFromAccountsOrCats', "toEmailCardFromAccountsOrCatsLabel");
+						wdw_cardbook.setElementLabelWithBundle('ccEmailCardsFromAccountsOrCats', "ccEmailCardFromAccountsOrCatsLabel");
+						wdw_cardbook.setElementLabelWithBundle('bccEmailCardsFromAccountsOrCats', "bccEmailCardFromAccountsOrCatsLabel");
+						wdw_cardbook.setElementLabelWithBundle('shareCardsByEmailFromAccountsOrCats', "shareCardByEmailFromAccountsOrCatsLabel");
+						wdw_cardbook.setElementLabelWithBundle('cutCardsFromAccountsOrCats', "cutCardFromAccountsOrCatsLabel");
+						wdw_cardbook.setElementLabelWithBundle('copyCardsFromAccountsOrCats', "copyCardFromAccountsOrCatsLabel");
+						wdw_cardbook.setElementLabelWithBundle('exportCardsToFileFromAccountsOrCats', "exportCardToFileLabel");
+						wdw_cardbook.setElementLabelWithBundle('exportCardsToDirFromAccountsOrCats', "exportCardToDirLabel");
+						wdw_cardbook.enableOrDisableElement(['toEmailCardsFromAccountsOrCats', 'ccEmailCardsFromAccountsOrCats', 'bccEmailCardsFromAccountsOrCats', 'shareCardsByEmailFromAccountsOrCats', 'cutCardsFromAccountsOrCats',
+															'copyCardsFromAccountsOrCats', 'exportCardsToFileFromAccountsOrCats', 'exportCardsToDirFromAccountsOrCats', 'generateFnFromAccountsOrCats',
+															'findDuplicatesFromAccountsOrCats', 'renameCatFromAccountsOrCats', 'removeCatFromAccountsOrCats', 'printFromAccountsOrCats'], true);
+					} else if (document.getElementById('cardsTree').view.rowCount == 1) {
+						wdw_cardbook.setElementLabelWithBundle('toEmailCardsFromAccountsOrCats', "toEmailCardFromAccountsOrCatsLabel");
+						wdw_cardbook.setElementLabelWithBundle('ccEmailCardsFromAccountsOrCats', "ccEmailCardFromAccountsOrCatsLabel");
+						wdw_cardbook.setElementLabelWithBundle('bccEmailCardsFromAccountsOrCats', "bccEmailCardFromAccountsOrCatsLabel");
+						wdw_cardbook.setElementLabelWithBundle('shareCardsByEmailFromAccountsOrCats', "shareCardByEmailFromAccountsOrCatsLabel");
+						wdw_cardbook.setElementLabelWithBundle('cutCardsFromAccountsOrCats', "cutCardFromAccountsOrCatsLabel");
+						wdw_cardbook.setElementLabelWithBundle('copyCardsFromAccountsOrCats', "copyCardFromAccountsOrCatsLabel");
+						wdw_cardbook.setElementLabelWithBundle('exportCardsToFileFromAccountsOrCats', "exportCardToFileLabel");
+						wdw_cardbook.setElementLabelWithBundle('exportCardsToDirFromAccountsOrCats', "exportCardToDirLabel");
+						wdw_cardbook.enableOrDisableElement(['toEmailCardsFromAccountsOrCats', 'ccEmailCardsFromAccountsOrCats', 'bccEmailCardsFromAccountsOrCats', 'shareCardsByEmailFromAccountsOrCats', 'cutCardsFromAccountsOrCats',
+															'copyCardsFromAccountsOrCats', 'exportCardsToFileFromAccountsOrCats', 'exportCardsToDirFromAccountsOrCats', 'findDuplicatesFromAccountsOrCats',
+															'generateFnFromAccountsOrCats', 'printFromAccountsOrCats'], false);
+					} else {
+						wdw_cardbook.setElementLabelWithBundle('toEmailCardsFromAccountsOrCats', "toEmailCardsFromAccountsOrCatsLabel");
+						wdw_cardbook.setElementLabelWithBundle('ccEmailCardsFromAccountsOrCats', "ccEmailCardsFromAccountsOrCatsLabel");
+						wdw_cardbook.setElementLabelWithBundle('bccEmailCardsFromAccountsOrCats', "bccEmailCardsFromAccountsOrCatsLabel");
+						wdw_cardbook.setElementLabelWithBundle('shareCardsByEmailFromAccountsOrCats', "shareCardsByEmailFromAccountsOrCatsLabel");
+						wdw_cardbook.setElementLabelWithBundle('cutCardsFromAccountsOrCats', "cutCardsFromAccountsOrCatsLabel");
+						wdw_cardbook.setElementLabelWithBundle('copyCardsFromAccountsOrCats', "copyCardsFromAccountsOrCatsLabel");
+						wdw_cardbook.setElementLabelWithBundle('exportCardsToFileFromAccountsOrCats', "exportCardsToFileLabel");
+						wdw_cardbook.setElementLabelWithBundle('exportCardsToDirFromAccountsOrCats', "exportCardsToDirLabel");
+						wdw_cardbook.enableOrDisableElement(['toEmailCardsFromAccountsOrCats', 'ccEmailCardsFromAccountsOrCats', 'bccEmailCardsFromAccountsOrCats', 'shareCardsByEmailFromAccountsOrCats', 'cutCardsFromAccountsOrCats',
+															'copyCardsFromAccountsOrCats', 'exportCardsToFileFromAccountsOrCats', 'exportCardsToDirFromAccountsOrCats', 'findDuplicatesFromAccountsOrCats',
+															'generateFnFromAccountsOrCats', 'printFromAccountsOrCats'], false);
+					}
+					if (cardbookRepository.cardbookComplexSearchMode === "SEARCH") {
+						wdw_cardbook.enableOrDisableElement(['toEmailCardsFromAccountsOrCats', 'ccEmailCardsFromAccountsOrCats', 'bccEmailCardsFromAccountsOrCats', 'shareCardsByEmailFromAccountsOrCats', 'cutCardsFromAccountsOrCats',
+															'copyCardsFromAccountsOrCats', 'exportCardsToFileFromAccountsOrCats', 'exportCardsToDirFromAccountsOrCats',
+															'addAccountFromAccountsOrCats', 'editAccountFromAccountsOrCats', 'removeAccountFromAccountsOrCats', 'enableOrDisableFromAccountsOrCats',
+															'printFromAccountsOrCats'], false);
+						wdw_cardbook.enableOrDisableElement(['pasteCardsFromAccountsOrCats', 'importCardsFromFileFromAccountsOrCats', 'importCardsFromDirFromAccountsOrCats',
+															'readOnlyOrReadWriteFromAccountsOrCats', 'syncAccountFromAccountsOrCats', 'generateFnFromAccountsOrCats', 
+															'findDuplicatesFromAccountsOrCats', 'renameCatFromAccountsOrCats', 'removeCatFromAccountsOrCats'], true);
+					}
 				} else {
-					wdw_cardbook.enableOrDisableElement(['renameCatFromAccountsOrCats', 'removeCatFromAccountsOrCats', 'pasteCardsFromAccountsOrCats', 'importCardsFromFileFromAccountsOrCats',
-														'importCardsFromDirFromAccountsOrCats', 'syncAccountFromAccountsOrCats', 'printFromAccountsOrCats'], true);
-				}
-				wdw_cardbook.enableOrDisableElement(['addAccountFromAccountsOrCats', 'editAccountFromAccountsOrCats', 'removeAccountFromAccountsOrCats',
-													'enableOrDisableFromAccountsOrCats', 'readOnlyOrReadWriteFromAccountsOrCats'], false);
-				if (document.getElementById('cardsTree').view.rowCount == 0) {
-					wdw_cardbook.setElementLabelWithBundle('toEmailCardsFromAccountsOrCats', "toEmailCardFromAccountsOrCatsLabel");
-					wdw_cardbook.setElementLabelWithBundle('ccEmailCardsFromAccountsOrCats', "ccEmailCardFromAccountsOrCatsLabel");
-					wdw_cardbook.setElementLabelWithBundle('bccEmailCardsFromAccountsOrCats', "bccEmailCardFromAccountsOrCatsLabel");
-					wdw_cardbook.setElementLabelWithBundle('shareCardsByEmailFromAccountsOrCats', "shareCardByEmailFromAccountsOrCatsLabel");
-					wdw_cardbook.setElementLabelWithBundle('cutCardsFromAccountsOrCats', "cutCardFromAccountsOrCatsLabel");
-					wdw_cardbook.setElementLabelWithBundle('copyCardsFromAccountsOrCats', "copyCardFromAccountsOrCatsLabel");
-					wdw_cardbook.setElementLabelWithBundle('exportCardsToFileFromAccountsOrCats', "exportCardToFileLabel");
-					wdw_cardbook.setElementLabelWithBundle('exportCardsToDirFromAccountsOrCats', "exportCardToDirLabel");
 					wdw_cardbook.enableOrDisableElement(['toEmailCardsFromAccountsOrCats', 'ccEmailCardsFromAccountsOrCats', 'bccEmailCardsFromAccountsOrCats', 'shareCardsByEmailFromAccountsOrCats', 'cutCardsFromAccountsOrCats',
-														'copyCardsFromAccountsOrCats', 'exportCardsToFileFromAccountsOrCats', 'exportCardsToDirFromAccountsOrCats', 'findDuplicatesFromAccountsOrCats',
-														'renameCatFromAccountsOrCats', 'removeCatFromAccountsOrCats', 'printFromAccountsOrCats'], true);
-				} else if (document.getElementById('cardsTree').view.rowCount == 1) {
-					wdw_cardbook.setElementLabelWithBundle('toEmailCardsFromAccountsOrCats', "toEmailCardFromAccountsOrCatsLabel");
-					wdw_cardbook.setElementLabelWithBundle('ccEmailCardsFromAccountsOrCats', "ccEmailCardFromAccountsOrCatsLabel");
-					wdw_cardbook.setElementLabelWithBundle('bccEmailCardsFromAccountsOrCats', "bccEmailCardFromAccountsOrCatsLabel");
-					wdw_cardbook.setElementLabelWithBundle('shareCardsByEmailFromAccountsOrCats', "shareCardByEmailFromAccountsOrCatsLabel");
-					wdw_cardbook.setElementLabelWithBundle('cutCardsFromAccountsOrCats', "cutCardFromAccountsOrCatsLabel");
-					wdw_cardbook.setElementLabelWithBundle('copyCardsFromAccountsOrCats', "copyCardFromAccountsOrCatsLabel");
-					wdw_cardbook.setElementLabelWithBundle('exportCardsToFileFromAccountsOrCats', "exportCardToFileLabel");
-					wdw_cardbook.setElementLabelWithBundle('exportCardsToDirFromAccountsOrCats', "exportCardToDirLabel");
-					wdw_cardbook.enableOrDisableElement(['toEmailCardsFromAccountsOrCats', 'ccEmailCardsFromAccountsOrCats', 'bccEmailCardsFromAccountsOrCats', 'shareCardsByEmailFromAccountsOrCats', 'cutCardsFromAccountsOrCats',
-														'copyCardsFromAccountsOrCats', 'exportCardsToFileFromAccountsOrCats', 'exportCardsToDirFromAccountsOrCats', 'findDuplicatesFromAccountsOrCats',
-														'printFromAccountsOrCats'], false);
-				} else {
-					wdw_cardbook.setElementLabelWithBundle('toEmailCardsFromAccountsOrCats', "toEmailCardsFromAccountsOrCatsLabel");
-					wdw_cardbook.setElementLabelWithBundle('ccEmailCardsFromAccountsOrCats', "ccEmailCardsFromAccountsOrCatsLabel");
-					wdw_cardbook.setElementLabelWithBundle('bccEmailCardsFromAccountsOrCats', "bccEmailCardsFromAccountsOrCatsLabel");
-					wdw_cardbook.setElementLabelWithBundle('shareCardsByEmailFromAccountsOrCats', "shareCardsByEmailFromAccountsOrCatsLabel");
-					wdw_cardbook.setElementLabelWithBundle('cutCardsFromAccountsOrCats', "cutCardsFromAccountsOrCatsLabel");
-					wdw_cardbook.setElementLabelWithBundle('copyCardsFromAccountsOrCats', "copyCardsFromAccountsOrCatsLabel");
-					wdw_cardbook.setElementLabelWithBundle('exportCardsToFileFromAccountsOrCats', "exportCardsToFileLabel");
-					wdw_cardbook.setElementLabelWithBundle('exportCardsToDirFromAccountsOrCats', "exportCardsToDirLabel");
-					wdw_cardbook.enableOrDisableElement(['toEmailCardsFromAccountsOrCats', 'ccEmailCardsFromAccountsOrCats', 'bccEmailCardsFromAccountsOrCats', 'shareCardsByEmailFromAccountsOrCats', 'cutCardsFromAccountsOrCats',
-														'copyCardsFromAccountsOrCats', 'exportCardsToFileFromAccountsOrCats', 'exportCardsToDirFromAccountsOrCats', 'findDuplicatesFromAccountsOrCats',
-														'printFromAccountsOrCats'], false);
-				}
-				if (cardbookRepository.cardbookComplexSearchMode === "SEARCH") {
-					wdw_cardbook.enableOrDisableElement(['toEmailCardsFromAccountsOrCats', 'ccEmailCardsFromAccountsOrCats', 'bccEmailCardsFromAccountsOrCats', 'shareCardsByEmailFromAccountsOrCats', 'cutCardsFromAccountsOrCats',
-														'copyCardsFromAccountsOrCats', 'exportCardsToFileFromAccountsOrCats', 'exportCardsToDirFromAccountsOrCats',
-														'addAccountFromAccountsOrCats', 'editAccountFromAccountsOrCats', 'removeAccountFromAccountsOrCats', 'enableOrDisableFromAccountsOrCats',
-														'printFromAccountsOrCats'], false);
-					wdw_cardbook.enableOrDisableElement(['pasteCardsFromAccountsOrCats', 'importCardsFromFileFromAccountsOrCats', 'importCardsFromDirFromAccountsOrCats',
-														'readOnlyOrReadWriteFromAccountsOrCats', 'syncAccountFromAccountsOrCats', 'findDuplicatesFromAccountsOrCats',
-														'renameCatFromAccountsOrCats', 'removeCatFromAccountsOrCats'], true);
+														'copyCardsFromAccountsOrCats', 'pasteCardsFromAccountsOrCats', 'exportCardsToFileFromAccountsOrCats', 'exportCardsToDirFromAccountsOrCats', 'importCardsFromFileFromAccountsOrCats',
+														'importCardsFromDirFromAccountsOrCats', 'editAccountFromAccountsOrCats', 'removeAccountFromAccountsOrCats',
+														'renameCatFromAccountsOrCats', 'removeCatFromAccountsOrCats', 'enableOrDisableFromAccountsOrCats', 'readOnlyOrReadWriteFromAccountsOrCats',
+														'syncAccountFromAccountsOrCats', 'generateFnFromAccountsOrCats', 'findDuplicatesFromAccountsOrCats', 'printFromAccountsOrCats'], true);
 				}
 			} else {
 				wdw_cardbook.enableOrDisableElement(['toEmailCardsFromAccountsOrCats', 'ccEmailCardsFromAccountsOrCats', 'bccEmailCardsFromAccountsOrCats', 'shareCardsByEmailFromAccountsOrCats', 'cutCardsFromAccountsOrCats',
 													'copyCardsFromAccountsOrCats', 'pasteCardsFromAccountsOrCats', 'exportCardsToFileFromAccountsOrCats', 'exportCardsToDirFromAccountsOrCats', 'importCardsFromFileFromAccountsOrCats',
 													'importCardsFromDirFromAccountsOrCats', 'addAccountFromAccountsOrCats', 'editAccountFromAccountsOrCats', 'removeAccountFromAccountsOrCats',
 													'renameCatFromAccountsOrCats', 'removeCatFromAccountsOrCats', 'enableOrDisableFromAccountsOrCats', 'readOnlyOrReadWriteFromAccountsOrCats',
-													'syncAccountFromAccountsOrCats', 'findDuplicatesFromAccountsOrCats', 'printFromAccountsOrCats'], true);
+													'syncAccountFromAccountsOrCats', 'generateFnFromAccountsOrCats', 'findDuplicatesFromAccountsOrCats', 'printFromAccountsOrCats'], true);
 			}
 		},
 	
@@ -2844,7 +2890,9 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				if (cardbookUtils.getAvailableAccountNumber() === 0) {
 					wdw_cardbook.setElementLabel('totalMessageCount', "");
 				} else {
-					if (cardbookRepository.statusInformation[cardbookRepository.statusInformation.length - 1][0] == cardbookRepository.statusInformation[cardbookRepository.statusInformation.length - 1][0].substr(0,150)) {
+					if (cardbookRepository.statusInformation.length == 0) {
+						wdw_cardbook.setElementLabel('totalMessageCount', '');
+					} else if (cardbookRepository.statusInformation[cardbookRepository.statusInformation.length - 1][0] == cardbookRepository.statusInformation[cardbookRepository.statusInformation.length - 1][0].substr(0,150)) {
 						wdw_cardbook.setElementLabel('totalMessageCount', cardbookRepository.statusInformation[cardbookRepository.statusInformation.length - 1][0]);
 					} else {
 						wdw_cardbook.setElementLabel('totalMessageCount', cardbookRepository.statusInformation[cardbookRepository.statusInformation.length - 1][0].substr(0,147) + "…");

@@ -131,8 +131,19 @@
 <!ENTITY deleteIMPPLabel "Izbriši">
 <!ENTITY deleteIMPPAccesskey "b">
 
-<!ENTITY customFieldName "Ime polja">
-<!ENTITY customFieldLabel "Oznaka polja">
+<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldCodeLabel "Ime polja">
+<!ENTITY customFieldLabelLabel "Oznaka polja">
+<!ENTITY customFieldsPersTitleLabel "Osebni podatki">
+<!ENTITY customFieldsPersTitleAccesskey "O">
+<!ENTITY customFieldsOrgTitleLabel "Poslovnih podatki">
+<!ENTITY customFieldsOrgTitleAccesskey "P">
+<!ENTITY addCustomFieldsLabel "Dodaj">
+<!ENTITY addCustomFieldsAccesskey "D">
+<!ENTITY renameCustomFieldsLabel "Uredi">
+<!ENTITY renameCustomFieldsAccesskey "U">
+<!ENTITY deleteCustomFieldsLabel "Izbriši">
+<!ENTITY deleteCustomFieldsAccesskey "b">
 
 <!ENTITY orgWarn "Polje ORG lahko vsebuje besedilno vrednost z zgradbo, ki je sestavljena iz delov, ločenih s PODPIČJEM (npr.: podjetje;storitev;oddelek). Spodnja polja opisujejo oznake delov te zgradbe.">
 

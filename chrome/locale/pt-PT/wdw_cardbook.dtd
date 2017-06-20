@@ -158,6 +158,8 @@
 <!ENTITY importCardFromDirLabel "Importar cartões de diretoria">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Renomear categoria">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Remover categoria">
+<!ENTITY findDuplicatesFromAccountsOrCatsLabel "Procurar duplicados na agenda actual">
+<!ENTITY generateFnFromAccountsOrCatsLabel "??Generate Display Names??">
 <!ENTITY mergeCardsFromCardsLabel "Juntar cartões">
 <!ENTITY duplicateCardFromCardsLabel "Contacto duplicado">
 <!ENTITY convertListToCategoryFromCardsLabel "Converter lista para categoria">

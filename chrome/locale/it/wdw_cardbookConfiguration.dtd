@@ -132,8 +132,19 @@
 <!ENTITY deleteIMPPLabel "Elimina">
 <!ENTITY deleteIMPPAccesskey "E">
 
-<!ENTITY customFieldName "Nome del campo">
-<!ENTITY customFieldLabel "Etichetta del campo">
+<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldCodeLabel "Nome del campo">
+<!ENTITY customFieldLabelLabel "Etichetta del campo">
+<!ENTITY customFieldsPersTitleLabel "Informazioni personali">
+<!ENTITY customFieldsPersTitleAccesskey "p">
+<!ENTITY customFieldsOrgTitleLabel "Informazioni professionali">
+<!ENTITY customFieldsOrgTitleAccesskey "r">
+<!ENTITY addCustomFieldsLabel "Aggiungi">
+<!ENTITY addCustomFieldsAccesskey "A">
+<!ENTITY renameCustomFieldsLabel "Rinomina">
+<!ENTITY renameCustomFieldsAccesskey "R">
+<!ENTITY deleteCustomFieldsLabel "Elimina">
+<!ENTITY deleteCustomFieldsAccesskey "E">
 
 <!ENTITY orgWarn "Il campo ORG può contenere un valore strutturato composto da elementi separati dal carattere PUNTO E VIRGOLA (esempio: latuaazienda;ituoiservizi;iltuoufficio). I campi qui sotto descrivono le etichette di questi elementi.">
 

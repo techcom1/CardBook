@@ -108,6 +108,7 @@ if ("undefined" == typeof(cardbookObserver)) {
 					wdw_cardbook.refreshWindow();
 					break;
 				case "cardbook.preferencesChanged":
+					cardbookRepository.loadCustoms();
 					wdw_cardbook.loadCssRules();
 					wdw_cardbook.refreshWindow();
 					break;

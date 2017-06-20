@@ -5,7 +5,7 @@ function cardbookPreferenceService(uniqueId) {
     this.prefCardBookTypes = this.prefCardBookRoot + "types.";
     this.prefCardBookTels = this.prefCardBookRoot + "tels.";
     this.prefCardBookIMPPs = this.prefCardBookRoot + "impps.";
-    this.prefCardBookCustoms = this.prefCardBookRoot + "customs.";
+    this.prefCardBookCustomFields = this.prefCardBookRoot + "customFields.";
     this.prefCardBookMailAccount = this.prefCardBookRoot + "mailAccount.";
     this.prefCardBookAccountRestrictions = this.prefCardBookRoot + "accountsRestrictions.";
     this.prefCardBookEmailsCollection = this.prefCardBookRoot + "emailsCollection.";
@@ -190,7 +190,7 @@ cardbookPreferenceService.prototype = {
 		}
     },
 
-    getAllTypes: function () {
+	getAllTypes: function () {
 		try {
 			var finalResult = {};
 			var typesList = [ 'email', 'tel', 'impp', 'url', 'adr' ];
@@ -210,7 +210,7 @@ cardbookPreferenceService.prototype = {
 		}
     },
 
-    getTypeLabel: function (aType, aCode) {
+	getTypeLabel: function (aType, aCode) {
 		try {
 			var resultTmp = [];
 			resultTmp = this.getAllTypesByType(aType);
@@ -226,7 +226,7 @@ cardbookPreferenceService.prototype = {
 		}
     },
 
-    getTypeCode: function (aType, aLabel) {
+	getTypeCode: function (aType, aLabel) {
 		try {
 			var resultTmp = [];
 			resultTmp = this.getAllTypesByType(aType);
@@ -268,7 +268,50 @@ cardbookPreferenceService.prototype = {
 		}
     },
 
-    getAllTels: function () {
+    getAllCustomFieldsByType: function (aType) {
+		try {
+			var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
+			loader.loadSubScript("chrome://cardbook/content/cardbookUtils.js");
+			var count = {};
+			var finalResult = [];
+			var result = this.mPreferencesService.getChildList(this.prefCardBookCustomFields + aType + ".", count);
+			
+			for (let i = 0; i < result.length; i++) {
+				var prefName = result[i].replace(this.prefCardBookCustomFields, "");
+				var prefNumber = prefName.replace(aType + '.', '');
+				var prefValue = this.getCustomFields(prefName);
+				var tmpArray = prefValue.split(":");
+				finalResult.push([tmpArray[0], tmpArray[1], prefNumber]);
+			}
+			finalResult = cardbookUtils.sortArrayByString(finalResult,2,1);
+			return finalResult;
+		}
+		catch(e) {
+			dump("cardbookPreferenceService.getAllCustomFieldsByType error : " + e + "\n");
+		}
+    },
+
+	getAllCustomFields: function () {
+		try {
+			var finalResult = {};
+			var typesList = [ 'pers', 'org' ];
+			for (var i in typesList) {
+				var type = typesList[i];
+				finalResult[type] = [];
+				var result = [];
+				result = this.getAllCustomFieldsByType(type);
+				for (let j = 0; j < result.length; j++) {
+					finalResult[type] = result; 
+				}
+			}
+			return finalResult;
+		}
+		catch(e) {
+			dump("cardbookPreferenceService.getAllCustomFields error : " + e + "\n");
+		}
+    },
+
+	getAllTels: function () {
 		try {
 			var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
 			loader.loadSubScript("chrome://cardbook/content/cardbookUtils.js");
@@ -291,21 +334,6 @@ cardbookPreferenceService.prototype = {
 		}
 		catch(e) {
 			dump("cardbookPreferenceService.getAllTels error : " + e + "\n");
-		}
-    },
-
-    getAllCustoms: function () {
-		try {
-			let count = {};
-			let finalResult = [];
-			let result = this.mPreferencesService.getChildList(this.prefCardBookCustoms, count);
-			for (let i = 0; i < result.length; i++) {
-				finalResult.push(result[i].replace(this.prefCardBookCustoms,"") + ":" + this.getCustoms(result[i]));
-			}
-			return this._arrayUnique(finalResult);
-		}
-		catch(e) {
-			dump("cardbookPreferenceService.getAllCustoms error : " + e + "\n");
 		}
     },
 
@@ -483,6 +511,40 @@ cardbookPreferenceService.prototype = {
 		}
     },
 
+    getCustomFields: function (prefName) {
+		try {
+			let value = this.mPreferencesService.getComplexValue(this.prefCardBookCustomFields + prefName, Components.interfaces.nsISupportsString).data;
+			return value;
+		}
+		catch(e) {
+			dump("cardbookPreferenceService.getCustomFields : failed to get" + this.prefCardBookCustomFields + prefName + "\n" + e + "\n");
+		}
+    },
+
+    setCustomFields: function (aType, prefName, value) {
+		try {
+			var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
+			str.data = value;
+			this.mPreferencesService.setComplexValue(this.prefCardBookCustomFields + aType + "." + prefName, Components.interfaces.nsISupportsString, str);
+		}
+		catch(e) {
+			dump("cardbookPreferenceService.setCustomFields : failed to set" + this.prefCardBookCustomFields + aType + "." + prefName + "\n" + e + "\n");
+		}
+    },
+
+    delCustomFields: function (aType) {
+		try {
+			if (aType != null && aType !== undefined && aType != "") {
+				this.mPreferencesService.deleteBranch(this.prefCardBookCustomFields + aType);
+			} else {
+				this.mPreferencesService.deleteBranch(this.prefCardBookCustomFields);
+			}
+		}
+		catch(e) {
+			dump("cardbookPreferenceService.delCustomFields : failed to delete" + this.prefCardBookCustomFields + aType + "\n" + e + "\n");
+		}
+    },
+
     getTels: function (prefName) {
 		try {
 			let value = this.mPreferencesService.getComplexValue(this.prefCardBookTels + prefName, Components.interfaces.nsISupportsString).data;
@@ -527,19 +589,19 @@ cardbookPreferenceService.prototype = {
 		try {
 			var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
 			str.data = value;
-			this.mPreferencesService.setComplexValue(this.prefCardBookCustoms + prefName, Components.interfaces.nsISupportsString, str);
+			this.mPreferencesService.setComplexValue(this.prefCardBookCustomFields + prefName, Components.interfaces.nsISupportsString, str);
 		}
 		catch(e) {
-			dump("cardbookPreferenceService.setCustoms : failed to set" + this.prefCardBookCustoms + prefName + "\n" + e + "\n");
+			dump("cardbookPreferenceService.setCustoms : failed to set" + this.prefCardBookCustomFields + prefName + "\n" + e + "\n");
 		}
     },
 
     delCustoms: function () {
 		try {
-			this.mPreferencesService.deleteBranch(this.prefCardBookCustoms);
+			this.mPreferencesService.deleteBranch(this.prefCardBookCustomFields);
 		}
 		catch(e) {
-			dump("cardbookPreferenceService.delCustoms : failed to delete" + this.prefCardBookCustoms + "\n" + e + "\n");
+			dump("cardbookPreferenceService.delCustoms : failed to delete" + this.prefCardBookCustomFields + "\n" + e + "\n");
 		}
     },
 

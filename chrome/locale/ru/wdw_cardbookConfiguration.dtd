@@ -132,8 +132,19 @@
 <!ENTITY deleteIMPPLabel "Удалить">
 <!ENTITY deleteIMPPAccesskey "У">
 
-<!ENTITY customFieldName "Открывать внешние ссылки:">
-<!ENTITY customFieldLabel "Метка поля">
+<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldCodeLabel "Открывать внешние ссылки:">
+<!ENTITY customFieldLabelLabel "Метка поля">
+<!ENTITY customFieldsPersTitleLabel "Персональная информация">
+<!ENTITY customFieldsPersTitleAccesskey "П">
+<!ENTITY customFieldsOrgTitleLabel "Профессиональная информация">
+<!ENTITY customFieldsOrgTitleAccesskey "и">
+<!ENTITY addCustomFieldsLabel "Добавить">
+<!ENTITY addCustomFieldsAccesskey "Д">
+<!ENTITY renameCustomFieldsLabel "Править">
+<!ENTITY renameCustomFieldsAccesskey "П">
+<!ENTITY deleteCustomFieldsLabel "Удалить">
+<!ENTITY deleteCustomFieldsAccesskey "У">
 
 <!ENTITY orgWarn "Поле ORG может содержать структурированное текстовое значение, состоящее из компонентов, разделённых символом «;» (например: компания;служба;отделение). Поля ниже описывают метки компонентов этой этой структуры.">
 

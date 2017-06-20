@@ -131,8 +131,19 @@
 <!ENTITY deleteIMPPLabel "Usuń">
 <!ENTITY deleteIMPPAccesskey "U">
 
-<!ENTITY customFieldName "Nazwa pola">
-<!ENTITY customFieldLabel "Etykieta pola">
+<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldCodeLabel "Nazwa pola">
+<!ENTITY customFieldLabelLabel "Etykieta pola">
+<!ENTITY customFieldsPersTitleLabel "Informacje osobiste">
+<!ENTITY customFieldsPersTitleAccesskey "o">
+<!ENTITY customFieldsOrgTitleLabel "Informacje służbowe">
+<!ENTITY customFieldsOrgTitleAccesskey "s">
+<!ENTITY addCustomFieldsLabel "Dodaj">
+<!ENTITY addCustomFieldsAccesskey "D">
+<!ENTITY renameCustomFieldsLabel "Edytuj">
+<!ENTITY renameCustomFieldsAccesskey "E">
+<!ENTITY deleteCustomFieldsLabel "Usuń">
+<!ENTITY deleteCustomFieldsAccesskey "U">
 
 <!ENTITY orgWarn "Pole Organizacja może zawierać strukturę wartości tekstowych składającą się z elementów oddzielonych ŚREDNIKIEM (na przykład: twojafirma;twojausługa;twójdział). Pola poniżej opisują etykiety elementów tej struktury.">
 

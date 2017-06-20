@@ -239,7 +239,9 @@
 		<menuitem id="renameCatFromAccountsOrCats" label="&renameCatFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.selectCategoryToAction('RENAME');"/>
 		<menuitem id="removeCatFromAccountsOrCats" label="&removeCatFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.selectCategoryToAction('REMOVE');"/>
 		<menuseparator/>
-		<menuitem id="findDuplicatesFromAccountsOrCats" label="&cardbookToolsMenuFindSingleDuplicatesLabel;" oncommand="wdw_cardbook.findDuplicatesFromAccountsOrCats();"/>
+		<menuitem id="findDuplicatesFromAccountsOrCats" label="&findDuplicatesFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.findDuplicatesFromAccountsOrCats();"/>
+		<menuseparator/>
+		<menuitem id="generateFnFromAccountsOrCats" label="&generateFnFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.generateFnFromAccountsOrCats();"/>
 		<menuseparator/>
 		<menuitem id="printFromAccountsOrCats" label="&cardbookToolbarPrintButtonLabel;" oncommand="wdw_cardbook.printFromAccountsOrCats();"/>
 		<menuseparator/>
