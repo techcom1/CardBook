@@ -432,8 +432,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 
 			var othersTemp = JSON.parse(JSON.stringify(aOtherValue));
 			var result = [];
-			var cardbookPrefService = new cardbookPreferenceService();
-			result = cardbookPrefService.getAllCustomFieldsByType(aType);
+			result = cardbookRepository.customFields[aType];
 			for (let i = 0; i < result.length; i++) {
 				var myCode = result[i][0];
 				var myLabel = result[i][1];

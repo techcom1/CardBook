@@ -132,7 +132,7 @@
 <!ENTITY deleteIMPPLabel "Löschen">
 <!ENTITY deleteIMPPAccesskey "L">
 
-<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldRankLabel "Rang">
 <!ENTITY customFieldCodeLabel "Feldname">
 <!ENTITY customFieldLabelLabel "Feldlabel">
 <!ENTITY customFieldsPersTitleLabel "Persönliche Informationen">

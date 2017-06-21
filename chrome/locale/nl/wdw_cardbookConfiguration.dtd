@@ -132,7 +132,7 @@
 <!ENTITY deleteIMPPLabel "Verwijderen">
 <!ENTITY deleteIMPPAccesskey "V">
 
-<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldRankLabel "Volgorde">
 <!ENTITY customFieldCodeLabel "Rubriek naam">
 <!ENTITY customFieldLabelLabel "Rubriek label">
 <!ENTITY customFieldsPersTitleLabel "Persoonlijke informatie">

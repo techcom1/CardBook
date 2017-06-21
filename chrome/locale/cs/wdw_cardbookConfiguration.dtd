@@ -132,7 +132,7 @@
 <!ENTITY deleteIMPPLabel "Smazat">
 <!ENTITY deleteIMPPAccesskey "S">
 
-<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldRankLabel "Pořadí">
 <!ENTITY customFieldCodeLabel "Název pole">
 <!ENTITY customFieldLabelLabel "Popisek pole">
 <!ENTITY customFieldsPersTitleLabel "Osobní informace">

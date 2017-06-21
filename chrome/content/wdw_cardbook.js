@@ -229,6 +229,10 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		},
 
 		selectAccountOrCat: function (aAccountOrCat, aListOfCards) {
+			if (cardbookRepository.cardbookAccounts.length == 0) {
+				wdw_cardbook.clearAccountOrCat();
+				return;
+			}
 			if (cardbookRepository.cardbookSearchMode === "SEARCH") {
 				wdw_cardbook.startSearch(aListOfCards);
 				return;
@@ -2405,7 +2409,15 @@ if ("undefined" == typeof(wdw_cardbook)) {
 
 		cardbookAccountMenuContextShowing: function () {
 			var myTree = document.getElementById('accountsOrCatsTree');
-			if (myTree.currentIndex != -1) {
+			if (cardbookRepository.cardbookAccounts.length == 0) {
+				wdw_cardbook.enableOrDisableElement(['cardbookAccountMenuEditServer', 'cardbookAccountMenuCloseServer', 'cardbookAccountMenuEnableOrDisableAddressbook', 
+													'cardbookAccountMenuReadOnlyOrReadWriteAddressbook', 'cardbookAccountMenuSync', 'cardbookAccountMenuExportToFile', 'cardbookAccountMenuImportFromFile',
+													'cardbookAccountMenuExportToDir', 'cardbookAccountMenuImportFromDir'], true);
+				wdw_cardbook.setElementLabelWithBundle('cardbookAccountMenuEnableOrDisableAddressbook', "disableFromAccountsOrCats");
+				wdw_cardbook.setElementLabelWithBundle('cardbookAccountMenuReadOnlyOrReadWriteAddressbook', "readWriteFromAccountsOrCats");
+				wdw_cardbook.setElementLabelWithBundle('cardbookAccountMenuExportToFile', "exportCardToFileLabel");
+				wdw_cardbook.setElementLabelWithBundle('cardbookAccountMenuExportToDir', "exportCardToDirLabel");
+			} else if (myTree.currentIndex != -1) {
 				var myPrefId = cardbookUtils.getAccountId(myTree.view.getCellText(myTree.currentIndex, {id: "accountId"}));
 				var cardbookPrefService = new cardbookPreferenceService(myPrefId);
 				wdw_cardbook.enableOrDisableElement(['cardbookAccountMenuEditServer', 'cardbookAccountMenuCloseServer', 'cardbookAccountMenuEnableOrDisableAddressbook', 'cardbookAccountMenuReadOnlyOrReadWriteAddressbook'], false);
@@ -2486,8 +2498,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			cardbookUtils.addToIMPPMenuSubMenu('cardbookContactsMenuIMPPCardsMenuPopup');
 			cardbookUtils.addCardsToCategoryMenuSubMenu('cardbookContactsMenuCategoriesMenuPopup');
 			wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuFindEvents'], true);
-			var myTree = document.getElementById('accountsOrCatsTree');
-			if (cardbookUtils.getSelectedCardsCount() == 0) {
+			if (cardbookRepository.cardbookAccounts.length == 0) {
 				wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuToEmailCards', "toEmailCardFromCardsLabel");
 				wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuCcEmailCards', "ccEmailCardFromCardsLabel");
 				wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuBccEmailCards', "bccEmailCardFromCardsLabel");
@@ -2501,67 +2512,84 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuToEmailCards', 'cardbookContactsMenuCcEmailCards', 'cardbookContactsMenuBccEmailCards', 'cardbookContactsMenuFindEmails', 'cardbookContactsMenuLocalizeCards',
 													'cardbookContactsMenuOpenURL', 'cardbookContactsMenuCutCards', 'cardbookContactsMenuCopyCards', 'cardbookContactsMenuPasteCards', 'cardbookContactsMenuExportCardsToFile',
 													'cardbookContactsMenuExportCardsToDir', 'cardbookContactsMenuMergeCards', 'cardbookContactsMenuDuplicateCards', 'cardbookContactsMenuIMPPCards', 'cardbookContactsMenuCategories'], true);
-			} else if (cardbookUtils.getSelectedCardsCount() == 1) {
-				wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuToEmailCards', "toEmailCardFromCardsLabel");
-				wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuCcEmailCards', "ccEmailCardFromCardsLabel");
-				wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuBccEmailCards', "bccEmailCardFromCardsLabel");
-				wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuLocalizeCards', "localizeCardFromCardsLabel");
-				wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuOpenURL', "openURLCardFromCardsLabel");
-				wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuCutCards', "cutCardFromCardsLabel");
-				wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuCopyCards', "copyCardFromCardsLabel");
-				wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuPasteCards', "pasteCardFromCardsLabel");
-				wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuExportCardsToFile', "exportCardToFileLabel");
-				wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuExportCardsToDir', "exportCardToDirLabel");
-				wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuToEmailCards', 'cardbookContactsMenuCcEmailCards', 'cardbookContactsMenuBccEmailCards', 'cardbookContactsMenuFindEmails', 'cardbookContactsMenuLocalizeCards',
-													'cardbookContactsMenuOpenURL', 'cardbookContactsMenuCutCards', 'cardbookContactsMenuCopyCards', 'cardbookContactsMenuPasteCards', 'cardbookContactsMenuExportCardsToFile',
-													'cardbookContactsMenuExportCardsToDir', 'cardbookContactsMenuDuplicateCards', 'cardbookContactsMenuIMPPCards', 'cardbookContactsMenuCategories'], false);
-				wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuMergeCards'], true);
-				Components.utils.import("resource://gre/modules/AddonManager.jsm");  
-				AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, wdw_cardbook.cardbookContactsMenuLightningContextShowing);
 			} else {
-				wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuToEmailCards', "toEmailCardsFromCardsLabel");
-				wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuCcEmailCards', "ccEmailCardsFromCardsLabel");
-				wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuBccEmailCards', "bccEmailCardsFromCardsLabel");
-				wdw_cardbook.setElementLabelWithBundle('shareCardsByEmailFromCards', "shareCardsByEmailFromCardsLabel");
-				wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuLocalizeCards', "localizeCardsFromCardsLabel");
-				wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuOpenURL', "openURLCardsFromCardsLabel");
-				wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuCutCards', "cutCardsFromCardsLabel");
-				wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuCopyCards', "copyCardsFromCardsLabel");
-				wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuPasteCards', "pasteCardsFromCardsLabel");
-				wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuExportCardsToFile', "exportCardsToFileLabel");
-				wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuExportCardsToDir', "exportCardsToDirLabel");
-				wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuToEmailCards', 'cardbookContactsMenuCcEmailCards', 'cardbookContactsMenuBccEmailCards', 'cardbookContactsMenuLocalizeCards',
-													'cardbookContactsMenuOpenURL', 'cardbookContactsMenuCutCards', 'cardbookContactsMenuCopyCards', 'cardbookContactsMenuPasteCards', 'cardbookContactsMenuExportCardsToFile',
-													'cardbookContactsMenuExportCardsToDir', 'cardbookContactsMenuMergeCards', 'cardbookContactsMenuDuplicateCards', 'cardbookContactsMenuIMPPCardsMenuPopup', 'cardbookContactsMenuCategories'], false);
-				wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuFindEmails', 'cardbookContactsMenuIMPPCards'], true);
-			}
-			if (cardbookRepository.cardbookSearchMode === "SEARCH" || cardbookRepository.cardbookComplexSearchMode === "SEARCH") {
-				wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuPasteCards'], true);
-			} else {
-				if (myTree.currentIndex != -1) {
-					var myPrefId = cardbookUtils.getAccountId(myTree.view.getCellText(myTree.currentIndex, {id: "accountId"}));
-					var cardbookPrefService = new cardbookPreferenceService(myPrefId);
-					if (cardbookPrefService.getEnabled()) {
-						if (cardbookPrefService.getReadOnly()) {
-							wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuPasteCards'], true);
+				var myTree = document.getElementById('accountsOrCatsTree');
+				if (cardbookUtils.getSelectedCardsCount() == 0) {
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuToEmailCards', "toEmailCardFromCardsLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuCcEmailCards', "ccEmailCardFromCardsLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuBccEmailCards', "bccEmailCardFromCardsLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuLocalizeCards', "localizeCardFromCardsLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuOpenURL', "openURLCardFromCardsLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuCutCards', "cutCardFromCardsLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuCopyCards', "copyCardFromCardsLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuPasteCards', "pasteCardFromCardsLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuExportCardsToFile', "exportCardToFileLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuExportCardsToDir', "exportCardToDirLabel");
+					wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuToEmailCards', 'cardbookContactsMenuCcEmailCards', 'cardbookContactsMenuBccEmailCards', 'cardbookContactsMenuFindEmails', 'cardbookContactsMenuLocalizeCards',
+														'cardbookContactsMenuOpenURL', 'cardbookContactsMenuCutCards', 'cardbookContactsMenuCopyCards', 'cardbookContactsMenuPasteCards', 'cardbookContactsMenuExportCardsToFile',
+														'cardbookContactsMenuExportCardsToDir', 'cardbookContactsMenuMergeCards', 'cardbookContactsMenuDuplicateCards', 'cardbookContactsMenuIMPPCards', 'cardbookContactsMenuCategories'], true);
+				} else if (cardbookUtils.getSelectedCardsCount() == 1) {
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuToEmailCards', "toEmailCardFromCardsLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuCcEmailCards', "ccEmailCardFromCardsLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuBccEmailCards', "bccEmailCardFromCardsLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuLocalizeCards', "localizeCardFromCardsLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuOpenURL', "openURLCardFromCardsLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuCutCards', "cutCardFromCardsLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuCopyCards', "copyCardFromCardsLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuPasteCards', "pasteCardFromCardsLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuExportCardsToFile', "exportCardToFileLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuExportCardsToDir', "exportCardToDirLabel");
+					wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuToEmailCards', 'cardbookContactsMenuCcEmailCards', 'cardbookContactsMenuBccEmailCards', 'cardbookContactsMenuFindEmails', 'cardbookContactsMenuLocalizeCards',
+														'cardbookContactsMenuOpenURL', 'cardbookContactsMenuCutCards', 'cardbookContactsMenuCopyCards', 'cardbookContactsMenuPasteCards', 'cardbookContactsMenuExportCardsToFile',
+														'cardbookContactsMenuExportCardsToDir', 'cardbookContactsMenuDuplicateCards', 'cardbookContactsMenuIMPPCards', 'cardbookContactsMenuCategories'], false);
+					wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuMergeCards'], true);
+					Components.utils.import("resource://gre/modules/AddonManager.jsm");  
+					AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, wdw_cardbook.cardbookContactsMenuLightningContextShowing);
+				} else {
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuToEmailCards', "toEmailCardsFromCardsLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuCcEmailCards', "ccEmailCardsFromCardsLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuBccEmailCards', "bccEmailCardsFromCardsLabel");
+					wdw_cardbook.setElementLabelWithBundle('shareCardsByEmailFromCards', "shareCardsByEmailFromCardsLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuLocalizeCards', "localizeCardsFromCardsLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuOpenURL', "openURLCardsFromCardsLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuCutCards', "cutCardsFromCardsLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuCopyCards', "copyCardsFromCardsLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuPasteCards', "pasteCardsFromCardsLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuExportCardsToFile', "exportCardsToFileLabel");
+					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuExportCardsToDir', "exportCardsToDirLabel");
+					wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuToEmailCards', 'cardbookContactsMenuCcEmailCards', 'cardbookContactsMenuBccEmailCards', 'cardbookContactsMenuLocalizeCards',
+														'cardbookContactsMenuOpenURL', 'cardbookContactsMenuCutCards', 'cardbookContactsMenuCopyCards', 'cardbookContactsMenuPasteCards', 'cardbookContactsMenuExportCardsToFile',
+														'cardbookContactsMenuExportCardsToDir', 'cardbookContactsMenuMergeCards', 'cardbookContactsMenuDuplicateCards', 'cardbookContactsMenuIMPPCardsMenuPopup', 'cardbookContactsMenuCategories'], false);
+					wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuFindEmails', 'cardbookContactsMenuIMPPCards'], true);
+				}
+				if (cardbookRepository.cardbookSearchMode === "SEARCH" || cardbookRepository.cardbookComplexSearchMode === "SEARCH") {
+					wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuPasteCards'], true);
+				} else {
+					if (myTree.currentIndex != -1) {
+						var myPrefId = cardbookUtils.getAccountId(myTree.view.getCellText(myTree.currentIndex, {id: "accountId"}));
+						var cardbookPrefService = new cardbookPreferenceService(myPrefId);
+						if (cardbookPrefService.getEnabled()) {
+							if (cardbookPrefService.getReadOnly()) {
+								wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuPasteCards'], true);
+							} else {
+								wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuPasteCards'], false);
+							}
 						} else {
-							wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuPasteCards'], false);
+							wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuPasteCards'], true);
 						}
 					} else {
 						wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuPasteCards'], true);
 					}
-				} else {
-					wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuPasteCards'], true);
 				}
-			}
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-			if (!prefs.getBoolPref("mailnews.database.global.indexer.enabled")) {
-				wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuFindEmails'], true);
-			}
-			if (cardbookUtils.getSelectedCardsDirPrefId().length == 1) {
-				wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuCategories'], false);
-			} else {
-				wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuCategories'], true);
+				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+				if (!prefs.getBoolPref("mailnews.database.global.indexer.enabled")) {
+					wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuFindEmails'], true);
+				}
+				if (cardbookUtils.getSelectedCardsDirPrefId().length == 1) {
+					wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuCategories'], false);
+				} else {
+					wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuCategories'], true);
+				}
 			}
 		},
 
@@ -2691,107 +2719,125 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		},
 	
 		cardsTreeContextShowingNext: function () {
-			cardbookUtils.addToIMPPMenuSubMenu('IMPPCardFromCardsMenuPopup');
-			cardbookUtils.addCardsToCategoryMenuSubMenu('categoriesFromCardsMenuPopup');
-			wdw_cardbook.enableOrDisableElement(['findEventsFromCards'], true);
-			if (cardbookRepository.cardbookSyncMode === "NOSYNC") {
-				if (cardbookUtils.getSelectedCardsCount() == 0) {
-					wdw_cardbook.setElementLabelWithBundle('toEmailCardsFromCards', "toEmailCardFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('ccEmailCardsFromCards', "ccEmailCardFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('bccEmailCardsFromCards', "bccEmailCardFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('localizeCardsFromCards', "localizeCardFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('shareCardsByEmailFromCards', "shareCardByEmailFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('openURLFromCards', "openURLCardFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('cutCardsFromCards', "cutCardFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('copyCardsFromCards', "copyCardFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('pasteCardsFromCards', "pasteCardFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('exportCardsToFileFromCards', "exportCardToFileLabel");
-					wdw_cardbook.setElementLabelWithBundle('exportCardsToDirFromCards', "exportCardToDirLabel");
-					wdw_cardbook.enableOrDisableElement(['toEmailCardsFromCards', 'ccEmailCardsFromCards', 'bccEmailCardsFromCards', 'shareCardsByEmailFromCards', 'findEmailsFromCards',
-														'localizeCardsFromCards', 'openURLFromCards', 'cutCardsFromCards', 'copyCardsFromCards', 'pasteCardsFromCards', 'exportCardsToFileFromCards',
-														'exportCardsToDirFromCards', 'mergeCardsFromCards', 'duplicateCardsFromCards', 'convertListToCategoryFromCards',
-														'IMPPCardFromCards', 'categoriesFromCards', 'printFromCards'], true);
-				} else if (cardbookUtils.getSelectedCardsCount() == 1) {
-					wdw_cardbook.setElementLabelWithBundle('toEmailCardsFromCards', "toEmailCardFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('ccEmailCardsFromCards', "ccEmailCardFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('bccEmailCardsFromCards', "bccEmailCardFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('shareCardsByEmailFromCards', "shareCardByEmailFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('localizeCardsFromCards', "localizeCardFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('openURLFromCards', "openURLCardFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('cutCardsFromCards', "cutCardFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('copyCardsFromCards', "copyCardFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('pasteCardsFromCards', "pasteCardFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('exportCardsToFileFromCards', "exportCardToFileLabel");
-					wdw_cardbook.setElementLabelWithBundle('exportCardsToDirFromCards', "exportCardToDirLabel");
-					wdw_cardbook.enableOrDisableElement(['toEmailCardsFromCards', 'ccEmailCardsFromCards', 'bccEmailCardsFromCards', 'shareCardsByEmailFromCards', 'findEmailsFromCards',
-														'localizeCardsFromCards', 'openURLFromCards', 'cutCardsFromCards', 'copyCardsFromCards', 'pasteCardsFromCards', 'exportCardsToFileFromCards',
-														'exportCardsToDirFromCards', 'duplicateCardsFromCards', 'IMPPCardFromCards', 'categoriesFromCards', 'printFromCards'], false);
-					wdw_cardbook.enableOrDisableElement(['mergeCardsFromCards'], true);
-					var myDirPrefId = document.getElementById('dirPrefIdTextBox').value;
-					var cardbookPrefService = new cardbookPreferenceService(myDirPrefId);
-					var myCard = cardbookRepository.cardbookCards[myDirPrefId+"::"+document.getElementById('uidTextBox').value];
-					if (myCard) {
-						if (!myCard.isAList || cardbookPrefService.getReadOnly()) {
-							wdw_cardbook.enableOrDisableElement(['convertListToCategoryFromCards'], true);
+			if (cardbookRepository.cardbookAccounts.length == 0) {
+				wdw_cardbook.setElementLabelWithBundle('toEmailCardsFromCards', "toEmailCardFromCardsLabel");
+				wdw_cardbook.setElementLabelWithBundle('ccEmailCardsFromCards', "ccEmailCardFromCardsLabel");
+				wdw_cardbook.setElementLabelWithBundle('bccEmailCardsFromCards', "bccEmailCardFromCardsLabel");
+				wdw_cardbook.setElementLabelWithBundle('localizeCardsFromCards', "localizeCardFromCardsLabel");
+				wdw_cardbook.setElementLabelWithBundle('shareCardsByEmailFromCards', "shareCardByEmailFromCardsLabel");
+				wdw_cardbook.setElementLabelWithBundle('openURLFromCards', "openURLCardFromCardsLabel");
+				wdw_cardbook.setElementLabelWithBundle('cutCardsFromCards', "cutCardFromCardsLabel");
+				wdw_cardbook.setElementLabelWithBundle('copyCardsFromCards', "copyCardFromCardsLabel");
+				wdw_cardbook.setElementLabelWithBundle('pasteCardsFromCards', "pasteCardFromCardsLabel");
+				wdw_cardbook.setElementLabelWithBundle('exportCardsToFileFromCards', "exportCardToFileLabel");
+				wdw_cardbook.setElementLabelWithBundle('exportCardsToDirFromCards', "exportCardToDirLabel");
+				wdw_cardbook.enableOrDisableElement(['toEmailCardsFromCards', 'ccEmailCardsFromCards', 'bccEmailCardsFromCards', 'shareCardsByEmailFromCards', 'findEmailsFromCards', 'findEventsFromCards',
+													'localizeCardsFromCards', 'openURLFromCards', 'cutCardsFromCards', 'copyCardsFromCards', 'pasteCardsFromCards', 'exportCardsToFileFromCards',
+													'exportCardsToDirFromCards', 'mergeCardsFromCards', 'duplicateCardsFromCards', 'convertListToCategoryFromCards',
+													'IMPPCardFromCards', 'categoriesFromCards', 'printFromCards'], true);
+			} else {
+				cardbookUtils.addToIMPPMenuSubMenu('IMPPCardFromCardsMenuPopup');
+				cardbookUtils.addCardsToCategoryMenuSubMenu('categoriesFromCardsMenuPopup');
+				wdw_cardbook.enableOrDisableElement(['findEventsFromCards'], true);
+				if (cardbookRepository.cardbookSyncMode === "NOSYNC") {
+					if (cardbookUtils.getSelectedCardsCount() == 0) {
+						wdw_cardbook.setElementLabelWithBundle('toEmailCardsFromCards', "toEmailCardFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('ccEmailCardsFromCards', "ccEmailCardFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('bccEmailCardsFromCards', "bccEmailCardFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('localizeCardsFromCards', "localizeCardFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('shareCardsByEmailFromCards', "shareCardByEmailFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('openURLFromCards', "openURLCardFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('cutCardsFromCards', "cutCardFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('copyCardsFromCards', "copyCardFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('pasteCardsFromCards', "pasteCardFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('exportCardsToFileFromCards', "exportCardToFileLabel");
+						wdw_cardbook.setElementLabelWithBundle('exportCardsToDirFromCards', "exportCardToDirLabel");
+						wdw_cardbook.enableOrDisableElement(['toEmailCardsFromCards', 'ccEmailCardsFromCards', 'bccEmailCardsFromCards', 'shareCardsByEmailFromCards', 'findEmailsFromCards', 'findEventsFromCards',
+															'localizeCardsFromCards', 'openURLFromCards', 'cutCardsFromCards', 'copyCardsFromCards', 'pasteCardsFromCards', 'exportCardsToFileFromCards',
+															'exportCardsToDirFromCards', 'mergeCardsFromCards', 'duplicateCardsFromCards', 'convertListToCategoryFromCards',
+															'IMPPCardFromCards', 'categoriesFromCards', 'printFromCards'], true);
+					} else if (cardbookUtils.getSelectedCardsCount() == 1) {
+						wdw_cardbook.setElementLabelWithBundle('toEmailCardsFromCards', "toEmailCardFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('ccEmailCardsFromCards', "ccEmailCardFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('bccEmailCardsFromCards', "bccEmailCardFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('shareCardsByEmailFromCards', "shareCardByEmailFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('localizeCardsFromCards', "localizeCardFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('openURLFromCards', "openURLCardFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('cutCardsFromCards', "cutCardFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('copyCardsFromCards', "copyCardFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('pasteCardsFromCards', "pasteCardFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('exportCardsToFileFromCards', "exportCardToFileLabel");
+						wdw_cardbook.setElementLabelWithBundle('exportCardsToDirFromCards', "exportCardToDirLabel");
+						wdw_cardbook.enableOrDisableElement(['toEmailCardsFromCards', 'ccEmailCardsFromCards', 'bccEmailCardsFromCards', 'shareCardsByEmailFromCards', 'findEmailsFromCards', 'findEventsFromCards',
+															'localizeCardsFromCards', 'openURLFromCards', 'cutCardsFromCards', 'copyCardsFromCards', 'pasteCardsFromCards', 'exportCardsToFileFromCards',
+															'exportCardsToDirFromCards', 'duplicateCardsFromCards', 'IMPPCardFromCards', 'categoriesFromCards', 'printFromCards'], false);
+						wdw_cardbook.enableOrDisableElement(['mergeCardsFromCards'], true);
+						var myDirPrefId = document.getElementById('dirPrefIdTextBox').value;
+						var cardbookPrefService = new cardbookPreferenceService(myDirPrefId);
+						var myCard = cardbookRepository.cardbookCards[myDirPrefId+"::"+document.getElementById('uidTextBox').value];
+						if (myCard) {
+							if (!myCard.isAList || cardbookPrefService.getReadOnly()) {
+								wdw_cardbook.enableOrDisableElement(['convertListToCategoryFromCards'], true);
+							} else {
+								wdw_cardbook.enableOrDisableElement(['convertListToCategoryFromCards'], false);
+							}
 						} else {
 							wdw_cardbook.enableOrDisableElement(['convertListToCategoryFromCards'], false);
 						}
+						Components.utils.import("resource://gre/modules/AddonManager.jsm");  
+						AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, wdw_cardbook.cardsTreeLightningContextShowing);
 					} else {
-						wdw_cardbook.enableOrDisableElement(['convertListToCategoryFromCards'], false);
+						wdw_cardbook.setElementLabelWithBundle('toEmailCardsFromCards', "toEmailCardsFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('ccEmailCardsFromCards', "ccEmailCardsFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('bccEmailCardsFromCards', "bccEmailCardsFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('shareCardsByEmailFromCards', "shareCardsByEmailFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('localizeCardsFromCards', "localizeCardsFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('openURLFromCards', "openURLCardsFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('cutCardsFromCards', "cutCardsFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('copyCardsFromCards', "copyCardsFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('pasteCardsFromCards', "pasteCardsFromCardsLabel");
+						wdw_cardbook.setElementLabelWithBundle('exportCardsToFileFromCards', "exportCardsToFileLabel");
+						wdw_cardbook.setElementLabelWithBundle('exportCardsToDirFromCards', "exportCardsToDirLabel");
+						wdw_cardbook.enableOrDisableElement(['toEmailCardsFromCards', 'ccEmailCardsFromCards', 'bccEmailCardsFromCards', 'shareCardsByEmailFromCards', 'localizeCardsFromCards',
+															'openURLFromCards', 'cutCardsFromCards', 'copyCardsFromCards', 'pasteCardsFromCards', 'exportCardsToFileFromCards',
+															'exportCardsToDirFromCards', 'mergeCardsFromCards', 'duplicateCardsFromCards', 'printFromCards'], false);
+						wdw_cardbook.enableOrDisableElement(['convertListToCategoryFromCards', 'findEmailsFromCards', 'findEventsFromCards', 'IMPPCardFromCards'], true);
 					}
-					Components.utils.import("resource://gre/modules/AddonManager.jsm");  
-					AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, wdw_cardbook.cardsTreeLightningContextShowing);
-				} else {
-					wdw_cardbook.setElementLabelWithBundle('toEmailCardsFromCards', "toEmailCardsFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('ccEmailCardsFromCards', "ccEmailCardsFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('bccEmailCardsFromCards', "bccEmailCardsFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('shareCardsByEmailFromCards', "shareCardsByEmailFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('localizeCardsFromCards', "localizeCardsFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('openURLFromCards', "openURLCardsFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('cutCardsFromCards', "cutCardsFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('copyCardsFromCards', "copyCardsFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('pasteCardsFromCards', "pasteCardsFromCardsLabel");
-					wdw_cardbook.setElementLabelWithBundle('exportCardsToFileFromCards', "exportCardsToFileLabel");
-					wdw_cardbook.setElementLabelWithBundle('exportCardsToDirFromCards', "exportCardsToDirLabel");
-					wdw_cardbook.enableOrDisableElement(['toEmailCardsFromCards', 'ccEmailCardsFromCards', 'bccEmailCardsFromCards', 'shareCardsByEmailFromCards', 'localizeCardsFromCards',
-														'openURLFromCards', 'cutCardsFromCards', 'copyCardsFromCards', 'pasteCardsFromCards', 'exportCardsToFileFromCards',
-														'exportCardsToDirFromCards', 'mergeCardsFromCards', 'duplicateCardsFromCards', 'printFromCards'], false);
-					wdw_cardbook.enableOrDisableElement(['convertListToCategoryFromCards', 'findEmailsFromCards', 'IMPPCardFromCards'], true);
-				}
-				if (cardbookRepository.cardbookSearchMode === "SEARCH" || cardbookRepository.cardbookComplexSearchMode === "SEARCH") {
-					wdw_cardbook.enableOrDisableElement(['pasteCardsFromCards'], true);
-				} else {
-					var myTree = document.getElementById('accountsOrCatsTree');
-					if (myTree.currentIndex != -1) {
-						var myPrefId = cardbookUtils.getAccountId(myTree.view.getCellText(myTree.currentIndex, {id: "accountId"}));
-						var cardbookPrefService = new cardbookPreferenceService(myPrefId);
-						if (cardbookPrefService.getEnabled()) {
-							if (cardbookPrefService.getReadOnly()) {
-								wdw_cardbook.enableOrDisableElement(['pasteCardsFromCards'], true);
+					if (cardbookRepository.cardbookSearchMode === "SEARCH" || cardbookRepository.cardbookComplexSearchMode === "SEARCH") {
+						wdw_cardbook.enableOrDisableElement(['pasteCardsFromCards'], true);
+					} else {
+						var myTree = document.getElementById('accountsOrCatsTree');
+						if (myTree.currentIndex != -1) {
+							var myPrefId = cardbookUtils.getAccountId(myTree.view.getCellText(myTree.currentIndex, {id: "accountId"}));
+							var cardbookPrefService = new cardbookPreferenceService(myPrefId);
+							if (cardbookPrefService.getEnabled()) {
+								if (cardbookPrefService.getReadOnly()) {
+									wdw_cardbook.enableOrDisableElement(['pasteCardsFromCards'], true);
+								} else {
+									wdw_cardbook.enableOrDisableElement(['pasteCardsFromCards'], false);
+								}
 							} else {
-								wdw_cardbook.enableOrDisableElement(['pasteCardsFromCards'], false);
+								wdw_cardbook.enableOrDisableElement(['pasteCardsFromCards'], true);
 							}
 						} else {
 							wdw_cardbook.enableOrDisableElement(['pasteCardsFromCards'], true);
 						}
-					} else {
-						wdw_cardbook.enableOrDisableElement(['pasteCardsFromCards'], true);
 					}
-				}
-				if (cardbookUtils.getSelectedCardsDirPrefId().length == 1) {
-					wdw_cardbook.enableOrDisableElement(['categoriesFromCards'], false);
+					if (cardbookUtils.getSelectedCardsDirPrefId().length == 1) {
+						wdw_cardbook.enableOrDisableElement(['categoriesFromCards'], false);
+					} else {
+						wdw_cardbook.enableOrDisableElement(['categoriesFromCards'], true);
+					}
 				} else {
-					wdw_cardbook.enableOrDisableElement(['categoriesFromCards'], true);
+					wdw_cardbook.enableOrDisableElement(['toEmailCardsFromCards', 'ccEmailCardsFromCards', 'bccEmailCardsFromCards', 'shareCardsByEmailFromCards', 'findEmailsFromCards', 'findEventsFromCards',
+														'localizeCardsFromCards', 'openURLFromCards', 'cutCardsFromCards', 'copyCardsFromCards', 'pasteCardsFromCards', 'exportCardsToFileFromCards',
+														'exportCardsToDirFromCards', 'mergeCardsFromCards', 'duplicateCardsFromCards', 'convertListToCategoryFromCards',
+														'IMPPCardFromCards', 'categoriesFromCards', 'printFromCards'], true);
 				}
-			} else {
-				wdw_cardbook.enableOrDisableElement(['toEmailCardsFromCards', 'ccEmailCardsFromCards', 'bccEmailCardsFromCards', 'shareCardsByEmailFromCards', 'findEmailsFromCards',
-													'localizeCardsFromCards', 'openURLFromCards', 'cutCardsFromCards', 'copyCardsFromCards', 'pasteCardsFromCards', 'exportCardsToFileFromCards',
-													'exportCardsToDirFromCards', 'mergeCardsFromCards', 'duplicateCardsFromCards', 'convertListToCategoryFromCards',
-													'IMPPCardFromCards', 'categoriesFromCards', 'printFromCards'], true);
-			}
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-			if (!prefs.getBoolPref("mailnews.database.global.indexer.enabled")) {
-				wdw_cardbook.enableOrDisableElement(['findEmailsFromCards'], true);
+				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+				if (!prefs.getBoolPref("mailnews.database.global.indexer.enabled")) {
+					wdw_cardbook.enableOrDisableElement(['findEmailsFromCards', 'findEventsFromCards'], true);
+				}
 			}
 		},
 	

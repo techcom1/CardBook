@@ -136,7 +136,7 @@
 <!ENTITY customFieldLabelLabel "Oznaka polja">
 <!ENTITY customFieldsPersTitleLabel "Osebni podatki">
 <!ENTITY customFieldsPersTitleAccesskey "O">
-<!ENTITY customFieldsOrgTitleLabel "Poslovnih podatki">
+<!ENTITY customFieldsOrgTitleLabel "Poslovni podatki">
 <!ENTITY customFieldsOrgTitleAccesskey "P">
 <!ENTITY addCustomFieldsLabel "Dodaj">
 <!ENTITY addCustomFieldsAccesskey "D">

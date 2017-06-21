@@ -140,7 +140,7 @@
 			</tabs>
 
 			<tabpanels>
-				<tabpanel orient="vertical">
+				<tabpanel orient="vertical" style="overflow:auto">
 					<groupbox>
 						<caption label="&integrationGroupboxLabel;"/>
 						<vbox>
@@ -282,7 +282,7 @@
 					</groupbox>
 				</tabpanel>
 
-				<tabpanel orient="vertical">
+				<tabpanel orient="vertical" style="overflow:auto">
 					<groupbox>
 						<caption label="&tabsEdittingGroupboxLabel;"/>
 						<hbox align="center">
@@ -379,7 +379,7 @@
 					</groupbox>
 				</tabpanel>
 
-				<tabpanel orient="vertical">
+				<tabpanel orient="vertical" style="overflow:auto">
 					<groupbox flex="1">
 						<caption label="&typesGroupboxLabel;"/>
 						<hbox align="center">
@@ -428,7 +428,7 @@
 					</groupbox>
 				</tabpanel>
 
-				<tabpanel orient="vertical">
+				<tabpanel orient="vertical" style="overflow:auto">
 					<description>&IMPPGroupboxWarn;</description>
 					<separator class="thin"/>
 					<groupbox flex="1">
@@ -467,7 +467,7 @@
 					</groupbox>
 				</tabpanel>
 
-				<tabpanel orient="vertical">
+				<tabpanel orient="vertical" style="overflow:auto">
 					<groupbox flex="1">
 						<caption label="&customFieldsTabLabel;"/>
 						<hbox align="center">
@@ -524,7 +524,7 @@
 					</groupbox>
 				</tabpanel>
 
-				<tabpanel orient="vertical">
+				<tabpanel orient="vertical" style="overflow:auto">
 					<description>&listPanelLabel;</description>
 					<groupbox>
 						<caption label="&listGroupboxLabel;"/>
@@ -560,7 +560,7 @@
 					</groupbox>
 				</tabpanel>
 				
-				<tabpanel orient="vertical">
+				<tabpanel orient="vertical" style="overflow:auto">
 					<description>&syncWarn;</description>
 					<separator class="thin"/>
 					<groupbox>
@@ -634,7 +634,7 @@
 					</groupbox>
 				</tabpanel>
 
-				<tabpanel orient="vertical">
+				<tabpanel orient="vertical" style="overflow:auto">
 					<groupbox>
 						<caption label="&miscEmailGroupboxLabel;"/>
 						<hbox align="center">
@@ -694,7 +694,7 @@
 					</groupbox>
 				</tabpanel>
 
-				<tabpanel orient="vertical">
+				<tabpanel orient="vertical" style="overflow:auto">
 					<description>&birthdayListWarn;</description>
 					<groupbox id="addressBooksNameListGoupbox">
 						<caption>
@@ -723,7 +723,7 @@
 					</groupbox>
 				</tabpanel>
 			
-				<tabpanel orient="vertical">
+				<tabpanel orient="vertical" style="overflow:auto">
 					<groupbox>
 						<caption label="&remindViaPopupWindowGroupboxLabel;"/>
 						<hbox align="center">

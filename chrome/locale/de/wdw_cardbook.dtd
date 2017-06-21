@@ -159,7 +159,7 @@
 <!ENTITY renameCatFromAccountsOrCatsLabel "Kategorie umbenennen">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Kategorie entfernen">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Suche doppelte Kontakte im aktuellen Adressbuch">
-<!ENTITY generateFnFromAccountsOrCatsLabel "??Generate Display Names??">
+<!ENTITY generateFnFromAccountsOrCatsLabel "Anzeigenamen erstellen">
 <!ENTITY mergeCardsFromCardsLabel "Kontakten zusammenführen">
 <!ENTITY duplicateCardFromCardsLabel "Kontakt verdoppeln">
 <!ENTITY convertListToCategoryFromCardsLabel "Konvertiere die Liste zu einer Kategorie">
