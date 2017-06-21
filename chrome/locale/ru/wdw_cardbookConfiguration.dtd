@@ -132,7 +132,7 @@
 <!ENTITY deleteIMPPLabel "Удалить">
 <!ENTITY deleteIMPPAccesskey "У">
 
-<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldRankLabel "Ранг">
 <!ENTITY customFieldCodeLabel "Открывать внешние ссылки:">
 <!ENTITY customFieldLabelLabel "Метка поля">
 <!ENTITY customFieldsPersTitleLabel "Персональная информация">
