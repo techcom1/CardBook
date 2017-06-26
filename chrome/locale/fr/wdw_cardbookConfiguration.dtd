@@ -1,7 +1,7 @@
 <!ENTITY wdw_cardbookConfigurationWindowLabel "Configuration de CardBook">
 
 <!ENTITY generalTabLabel "Général">
-<!ENTITY editionTabLabel "Édition">
+<!ENTITY CardBookTabLabel "Onglet CardBook">
 <!ENTITY typesTabLabel "Types">
 <!ENTITY IMPPsTabLabel "Communications internet">
 <!ENTITY customFieldsTabLabel "Champs personnalisés">
@@ -63,18 +63,18 @@
 
 <!ENTITY tabsEdittingGroupboxLabel "Afficher les onglets">
 <!ENTITY noteTabLabel "Notes">
-<!ENTITY noteTabAccesskey "N">
+<!ENTITY noteTabAccesskey "e">
 <!ENTITY listTabLabel "Liste">
 <!ENTITY listTabAccesskey "L">
 <!ENTITY mailPopularityTabLabel "Popularité des emails">
-<!ENTITY mailPopularityTabAccesskey "P">
+<!ENTITY mailPopularityTabAccesskey "u">
 <!ENTITY technicalTabLabel "Technique">
 <!ENTITY technicalTabAccesskey "T">
 <!ENTITY vcardTabLabel "vCard">
 <!ENTITY vcardTabAccesskey "V">
 <!ENTITY localizeEdittingGroupboxLabel "Localiser avec :">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
-<!ENTITY localizeEngineOpenStreetMapAccesskey "O">
+<!ENTITY localizeEngineOpenStreetMapAccesskey "S">
 <!ENTITY localizeEngineGoogleMapsLabel "Google Maps">
 <!ENTITY localizeEngineGoogleMapsAccesskey "G">
 <!ENTITY localizeEngineBingMapsLabel "Bing Maps">
@@ -84,6 +84,13 @@
 <!ENTITY localizeTargetInAccesskey "D">
 <!ENTITY localizeTargetOutLabel "Hors de Thunderbird">
 <!ENTITY localizeTargetOutAccesskey "H">
+<!ENTITY showNameAsLabel "Afficher le nom comme">
+<!ENTITY showNameAsLFLabel "Nom Prénom">
+<!ENTITY showNameAsLFAccesskey "o">
+<!ENTITY showNameAsFLLabel "Prénom Nom">
+<!ENTITY showNameAsFLAccesskey "P">
+<!ENTITY showNameAsDSPLabel "Nom affiché">
+<!ENTITY showNameAsDSPAccesskey "f">
 <!ENTITY fnLabelExplanation "Il est possible de choisir comment CardBook génère ses Noms affichés. Cette formule est une succession de blocs délimités par '()'. Dans ces blocs, il y a deux parties délimitées par '|'. 
 								La première partie s'applique lorsque le terme impliqué, par exemple {{1}}, n'est pas null, la seconde partie s'applique lorsque le terme impliqué est null.">
 <!ENTITY fnFormulaLabel "Génération du nom affiché">

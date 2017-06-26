@@ -10,9 +10,13 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		allMailAccounts: [],
 		preferEmailPrefOld: false,
 		
-		onlyUppercase: function (aTextBox) {
+		customFieldCheck: function (aTextBox) {
 			var myValue = aTextBox.value.trim();
-			aTextBox.value = myValue.toUpperCase(); 
+			if (myValue == "") {
+				aTextBox.value = "X-";
+			} else {
+				aTextBox.value = myValue.toUpperCase();
+			}
 		},
 
 		sortTreesFromCol: function (aEvent, aColumn, aTreeName) {

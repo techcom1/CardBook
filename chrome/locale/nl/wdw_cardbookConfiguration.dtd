@@ -1,7 +1,7 @@
 <!ENTITY wdw_cardbookConfigurationWindowLabel "CardBook voorkeuren">
 
 <!ENTITY generalTabLabel "Algemeen">
-<!ENTITY editionTabLabel "Bewerken">
+<!ENTITY CardBookTabLabel "??CardBook Tab??">
 <!ENTITY typesTabLabel "Types">
 <!ENTITY IMPPsTabLabel "Instant Messenger adressen">
 <!ENTITY customFieldsTabLabel "Eigen rubrieken">
@@ -84,6 +84,13 @@
 <!ENTITY localizeTargetInAccesskey "I">
 <!ENTITY localizeTargetOutLabel "Buiten Thunderbird">
 <!ENTITY localizeTargetOutAccesskey "U">
+<!ENTITY showNameAsLabel "Naam tonen als">
+<!ENTITY showNameAsLFLabel "Achternaam Roepnaam">
+<!ENTITY showNameAsLFAccesskey "A">
+<!ENTITY showNameAsFLLabel "Roepnaam Achternaam">
+<!ENTITY showNameAsFLAccesskey "R">
+<!ENTITY showNameAsDSPLabel "Getoonde naam">
+<!ENTITY showNameAsDSPAccesskey "G">
 <!ENTITY fnLabelExplanation "Het is mogelijk om in te stellen hoe CardBook de 'Getoonde naam' samenstelt. De formule bestaat uit blokken, omsloten door haakjes, (). In die blokken zitten twee delen, gescheiden door een verticaal streepje, |.
 					Het eerste deel is van toepassing als het betreffende deel {{1}} ingevuld is, het tweede deel als het niet ingevuld is.">
 <!ENTITY fnFormulaLabel "'Getoonde naam' samenstellen">

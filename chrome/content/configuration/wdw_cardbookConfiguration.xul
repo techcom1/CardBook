@@ -64,6 +64,8 @@
 				name="extensions.cardbook.cardCreationVersion" type="string"/>
 			<preference id="extensions.cardbook.localizeEngine"
 				name="extensions.cardbook.localizeEngine" type="string"/>
+			<preference id="extensions.cardbook.showNameAs"
+				name="extensions.cardbook.showNameAs" type="string"/>
 			<preference id="extensions.cardbook.fnFormula"
 				name="extensions.cardbook.fnFormula" type="string"/>
 			<preference id="extensions.cardbook.localizeTarget"
@@ -128,7 +130,7 @@
 
 			<tabs>
 				<tab id="generalTab" label="&generalTabLabel;"/>
-				<tab id="editionTab" label="&editionTabLabel;"/>
+				<tab id="CardBookTab" label="&CardBookTabLabel;"/>
 				<tab id="typesTab" label="&typesTabLabel;"/>
 				<tab id="IMPPTab" label="&IMPPsTabLabel;"/>
 				<tab id="customFieldsTab" label="&customFieldsTabLabel;"/>
@@ -308,6 +310,17 @@
 								<radio value="OpenStreetMap" label="&localizeEngineOpenStreetMapLabel;" accesskey="&localizeEngineOpenStreetMapAccesskey;"/>
 								<radio value="GoogleMaps" label="&localizeEngineGoogleMapsLabel;" accesskey="&localizeEngineGoogleMapsAccesskey;"/>
 								<radio value="BingMaps" label="&localizeEngineBingMapsLabel;" accesskey="&localizeEngineBingMapsAccesskey;"/>
+							</radiogroup>
+						</hbox>
+					</groupbox>
+
+					<groupbox>
+						<caption label="&showNameAsLabel;"/>
+						<hbox flex="1" align="center">
+							<radiogroup id="showNameAsRadiogroup" orient="horizontal" preference="extensions.cardbook.showNameAs">
+								<radio value="LF" label="&showNameAsLFLabel;" accesskey="&showNameAsLFAccesskey;"/>
+								<radio value="FL" label="&showNameAsFLLabel;" accesskey="&showNameAsFLAccesskey;"/>
+								<radio value="DSP" label="&showNameAsDSPLabel;" accesskey="&showNameAsDSPAccesskey;"/>
 							</radiogroup>
 						</hbox>
 					</groupbox>
@@ -542,7 +555,7 @@
 												accesskey="&kindCustomAccesskey;"
 												control="kindCustomTextBox"
 												id="kindCustom"/>
-											<textbox id="kindCustomTextBox" oninput="wdw_cardbookConfiguration.onlyUppercase(this);"
+											<textbox id="kindCustomTextBox" oninput="wdw_cardbookConfiguration.customFieldCheck(this);"
 												preference="extensions.cardbook.kindCustom"/>
 										</row>
 										<row align="center">
@@ -550,7 +563,7 @@
 												accesskey="&memberCustomAccesskey;"
 												control="memberCustomTextBox"
 												id="memberCustom"/>
-											<textbox id="memberCustomTextBox" oninput="wdw_cardbookConfiguration.onlyUppercase(this);"
+											<textbox id="memberCustomTextBox" oninput="wdw_cardbookConfiguration.customFieldCheck(this);"
 												preference="extensions.cardbook.memberCustom"/>
 										</row>
 									</rows>

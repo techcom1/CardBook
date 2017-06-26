@@ -1,7 +1,7 @@
 <!ENTITY wdw_cardbookConfigurationWindowLabel "Ustawienia CardBook">
 
 <!ENTITY generalTabLabel "Ogólne">
-<!ENTITY editionTabLabel "Edycja">
+<!ENTITY CardBookTabLabel "??CardBook Tab??">
 <!ENTITY typesTabLabel "Typy">
 <!ENTITY IMPPsTabLabel "Komunikatory internetowe">
 <!ENTITY customFieldsTabLabel "Własne pola">
@@ -84,6 +84,13 @@
 <!ENTITY localizeTargetInAccesskey "W">
 <!ENTITY localizeTargetOutLabel "Poza Thunderbirdem">
 <!ENTITY localizeTargetOutAccesskey "P">
+<!ENTITY showNameAsLabel "Pokazuj nazwę jako">
+<!ENTITY showNameAsLFLabel "Nazwisko Imię">
+<!ENTITY showNameAsLFAccesskey "N">
+<!ENTITY showNameAsFLLabel "Imię Nazwisko">
+<!ENTITY showNameAsFLAccesskey "I">
+<!ENTITY showNameAsDSPLabel "Wyświetlana nazwa">
+<!ENTITY showNameAsDSPAccesskey "W">
 <!ENTITY fnLabelExplanation "Można dostosować sposób, w który CardBook tworzy Wyświetlaną nazwę. Formuła zawiera bloki otoczone '()'. Bloki zawierają dwa elementy oddzielone'|'. Pierwszy element jest używany, gdy wybrane pole, na przykład {{1}}, nie jest puste, drugi element jest używany, gdy wybrane pole jest puste.">
 <!ENTITY fnFormulaLabel "Stwórz Wyświetlaną nazwę">
 <!ENTITY fnFormulaAccesskey "S">

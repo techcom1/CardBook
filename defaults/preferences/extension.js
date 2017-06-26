@@ -38,8 +38,8 @@ pref("extensions.cardbook.memberCustom", "X-ADDRESSBOOKSERVER-MEMBER");
 pref("extensions.cardbook.orgStructure", "");
 
 pref("extensions.cardbook.localizeEngine", "OpenStreetMap");
-pref("extensions.cardbook.localizeTarget", "in");
-
+pref("extensions.cardbook.localizeTarget", "out");
+pref("extensions.cardbook.showNameAs", "LF");
 pref("extensions.cardbook.fnFormula", "({{1}} |)({{2}} |)({{3}} |)({{4}} |)({{5}} |)({{6}} |)");
 
 pref("extensions.cardbook.addressBooksNameList", "allAddressBooks");
@@ -61,4 +61,4 @@ pref("extensions.cardbook.calendarEntryCategories", "");
 pref("extensions.cardbook.viewABPane", true);
 pref("extensions.cardbook.viewABContact", true);
 
-pref("extensions.cardbook.userAgent", "CardBook/19.7");
+pref("extensions.cardbook.userAgent", "CardBook/19.8");

@@ -128,6 +128,9 @@ var cardbookRepository = {
 	// used to store the msgIdentityKey by window
 	composeMsgIdentity : {},
 	
+	// used to remember the choice of name format
+	showNameAs : "",
+
 	cardbookDynamicCssRules : {},
 
 	cardbookUncategorizedCards : "",

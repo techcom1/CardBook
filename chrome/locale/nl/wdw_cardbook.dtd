@@ -7,7 +7,7 @@
 
 <!ENTITY cardbookAccountMenuLabel "Adresboek">
 
-<!ENTITY cardbookAccountMenuAddServerLabel "Adresboek toevoegen">
+<!ENTITY cardbookAccountMenuAddServerLabel "Nieuw adresboek">
 <!ENTITY cardbookAccountMenuEditServerLabel "Adresboek bewerken">
 <!ENTITY cardbookAccountMenuCloseServerLabel "Adresboek verwijderen">
 <!ENTITY cardbookAccountMenuSyncLabel "Adresboek synchroniseren">
@@ -25,17 +25,17 @@
 <!ENTITY cardbookToolbarAccesskey "C">
 <!ENTITY CustomizeCardBookToolbarLabel "Aanpassen…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "A">
-<!ENTITY cardbookToolbarAddServerButtonLabel "Adresboek toevoegen">
+<!ENTITY cardbookToolbarAddServerButtonLabel "Nieuw adresboek">
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Locaal of internt adresboek toevoegen">
 <!ENTITY cardbookToolbarSyncButtonLabel "Synchroniseren">
 <!ENTITY cardbookToolbarSyncButtonTooltip "Internet adresboeken synchroniseren">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Voorkeuren">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "CardBook voorkeuren">
-<!ENTITY cardbookToolbarAddButtonLabel "Contactpersoon toevoegen">
+<!ENTITY cardbookToolbarAddButtonLabel "Nieuw contact">
 <!ENTITY cardbookToolbarAddButtonTooltip "Nieuwe contactpersoon toestaan">
-<!ENTITY cardbookToolbarEditButtonLabel "Contactpersoon wijzigen">
+<!ENTITY cardbookToolbarEditButtonLabel "Wijzigen">
 <!ENTITY cardbookToolbarEditButtonTooltip "Contactpersoon wijzigen toestaan">
-<!ENTITY cardbookToolbarRemoveButtonLabel "Contactpersoon verwijderen">
+<!ENTITY cardbookToolbarRemoveButtonLabel "Verwijderen">
 <!ENTITY cardbookToolbarRemoveButtonTooltip "Contactpersoon verwijderen toestaan">
 <!ENTITY cardbookToolbarPrintButtonLabel "Afdrukvoorbeeld">
 <!ENTITY cardbookToolbarPrintButtonTooltip "Selectie afdrukken">
@@ -53,6 +53,8 @@
 <!ENTITY technicalTabLabel "Technisch">
 <!ENTITY vcardTabLabel "vCard">
 
+<!ENTITY GeneratedNameColumnLabel "Pictogram">
+<!ENTITY nameColumnLabel "Naam">
 <!ENTITY lastnameColumnLabel "Achternaam">
 <!ENTITY firstnameColumnLabel "Voornaam">
 <!ENTITY othernameColumnLabel "Extra naam">
@@ -133,27 +135,27 @@
 
 <!ENTITY copyCardTreeLabel "Kopieëren entry">
 
-<!ENTITY toEmailCardFromAccountsOrCatsLabel "Email contactpersoon">
-<!ENTITY toEmailCardFromCardsLabel "Email contactpersoon">
-<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Email contactpersoon (copy / cc)">
-<!ENTITY ccEmailCardFromCardsLabel "Email contactpersoon (copy / cc)">
-<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Email contactpersoon (blind copy / bcc)">
-<!ENTITY bccEmailCardFromCardsLabel "Email contactpersoon (blind copy / bcc)">
+<!ENTITY toEmailCardFromAccountsOrCatsLabel "Email">
+<!ENTITY toEmailCardFromCardsLabel "Email">
+<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Email (copy / cc)">
+<!ENTITY ccEmailCardFromCardsLabel "Email (copy / cc)">
+<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Email (blind copy / bcc)">
+<!ENTITY bccEmailCardFromCardsLabel "Email (blind copy / bcc)">
 <!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Gegevens van contactpersoon aan iemand anders mailen">
 <!ENTITY shareCardByEmailFromCardsLabel "Gegevens van contactpersoon aan iemand anders mailen">
 <!ENTITY categoryLabel "Categorie">
 <!ENTITY findEmailsFromCardsLabel "Zoek e-mails van contactpersoon">
 <!ENTITY findEventsFromCardsLabel "Zoek agenda-gebeurtenissen van contactpersoon">
 <!ENTITY localizeCardFromCardsLabel "Localiseren">
-<!ENTITY openURLCardFromCardsLabel "Open URLs van contactpersoon">
-<!ENTITY cutCardFromAccountsOrCatsLabel "Contactpersoon knippen">
-<!ENTITY cutCardFromCardsLabel "Contactpersoon knippen">
-<!ENTITY copyCardFromAccountsOrCatsLabel "Kopieer contactpersoon naar prikbord">
-<!ENTITY copyCardFromCardsLabel "Kopieer contactpersoon naar prikbord">
-<!ENTITY pasteCardFromAccountsOrCatsLabel "Plak contactpersoon van prikbord">
-<!ENTITY pasteCardFromCardsLabel "Plak contactpersoon van prikbord">
-<!ENTITY exportCardToFileLabel "Exporteer contactpersoon naar een bestand">
-<!ENTITY exportCardToDirLabel "Exporteer contactpersoon naar een map">
+<!ENTITY openURLCardFromCardsLabel "Open URLs">
+<!ENTITY cutCardFromAccountsOrCatsLabel "Knippen">
+<!ENTITY cutCardFromCardsLabel "Knippen">
+<!ENTITY copyCardFromAccountsOrCatsLabel "Kopieer naar prikbord">
+<!ENTITY copyCardFromCardsLabel "Kopieer naar prikbord">
+<!ENTITY pasteCardFromAccountsOrCatsLabel "Plak van prikbord">
+<!ENTITY pasteCardFromCardsLabel "Plak van prikbord">
+<!ENTITY exportCardToFileLabel "Exporteer naar een bestand">
+<!ENTITY exportCardToDirLabel "Exporteer naar een map">
 <!ENTITY importCardFromFileLabel "Importeer contactpersoon van een bestand">
 <!ENTITY importCardFromDirLabel "Importeer contactpersoon van een map">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Categorie hernoemen">

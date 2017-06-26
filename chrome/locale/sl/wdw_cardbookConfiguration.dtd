@@ -1,7 +1,7 @@
 <!ENTITY wdw_cardbookConfigurationWindowLabel "Nastavitve CardBook">
 
 <!ENTITY generalTabLabel "Splošno">
-<!ENTITY editionTabLabel "Urejanje">
+<!ENTITY CardBookTabLabel "??CardBook Tab??">
 <!ENTITY typesTabLabel "Vrste">
 <!ENTITY IMPPsTabLabel "Int. komunikacija">
 <!ENTITY customFieldsTabLabel "Polja po meri">
@@ -83,6 +83,13 @@
 <!ENTITY localizeTargetInAccesskey "V">
 <!ENTITY localizeTargetOutLabel "Zunaj Thunderbirda">
 <!ENTITY localizeTargetOutAccesskey "Z">
+<!ENTITY showNameAsLabel "Prikaži ime kot">
+<!ENTITY showNameAsLFLabel "Priimek Ime">
+<!ENTITY showNameAsLFAccesskey "P">
+<!ENTITY showNameAsFLLabel "Ime Priimek">
+<!ENTITY showNameAsFLAccesskey "I">
+<!ENTITY showNameAsDSPLabel "Prikazano ime">
+<!ENTITY showNameAsDSPAccesskey "k">
 <!ENTITY fnLabelExplanation "Cardbookovo ustvarjanje prikazanega imena je mogoče prilagoditi. Ta formula vsebuje bloke, ki so obdani z '()'. V teh blokih sta dva dela, ki sta ločena z '|'. 
 								Prvi del se uporabi, kadar vrednost vpletenega izraza, npr. {{1}}, ni prazna, drugi del pa, kadar je vrednost vpletenega izraza prazna.">
 <!ENTITY fnFormulaLabel "Ustvari prikazano ime">
