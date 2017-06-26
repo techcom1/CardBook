@@ -312,9 +312,14 @@ if ("undefined" == typeof(cardbookTypes)) {
 			}
 		},
 
-		constructDynamicMailPopularity: function (aArray) {
-			for (var i = 0; i < aArray.length; i++) {
-				cardbookTypes.loadDynamicMailPopularity(i, aArray[i]);
+		constructDynamicMailPopularity: function (aCard) {
+			if (aCard.isAList) {
+				cardbookTypes.loadDynamicMailPopularity(0, aCard.fn.toLowerCase());
+			} else {
+				for (var i = 0; i < aCard.email.length; i++) {
+					var myEmail = aCard.email[i][0][0].toLowerCase(); 
+					cardbookTypes.loadDynamicMailPopularity(i, myEmail);
+				}
 			}
 		},
 
@@ -327,9 +332,14 @@ if ("undefined" == typeof(cardbookTypes)) {
 			}
 		},
 
-		constructStaticMailPopularity: function (aArray) {
-			for (var i = 0; i < aArray.length; i++) {
-				cardbookTypes.loadStaticMailPopularity(i, aArray[i]);
+		constructStaticMailPopularity: function (aCard) {
+			if (aCard.isAList) {
+				cardbookTypes.loadStaticMailPopularity(0, aCard.fn.toLowerCase());
+			} else {
+				for (var i = 0; i < aCard.email.length; i++) {
+					var myEmail = aCard.email[i][0][0].toLowerCase(); 
+					cardbookTypes.loadStaticMailPopularity(i, myEmail);
+				}
 			}
 		},
 
@@ -432,8 +442,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 
 			var othersTemp = JSON.parse(JSON.stringify(aOtherValue));
 			var result = [];
-			var cardbookPrefService = new cardbookPreferenceService();
-			result = cardbookPrefService.getAllCustomFieldsByType(aType);
+			result = cardbookRepository.customFields[aType];
 			for (let i = 0; i < result.length; i++) {
 				var myCode = result[i][0];
 				var myLabel = result[i][1];
@@ -805,7 +814,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 			}
 		},
 
-		loadStaticMailPopularity: function (aIndex, aInputTypes) {
+		loadStaticMailPopularity: function (aIndex, aEmail) {
 			var aOrigRows = document.getElementById('mailPopularityRows');
 
 			var aRow = document.createElement('row');
@@ -813,17 +822,16 @@ if ("undefined" == typeof(cardbookTypes)) {
 			aRow.setAttribute('id', 'mailPopularity_' + aIndex + '_row');
 			aRow.setAttribute('flex', '1');
 
-			var myEmail = aInputTypes[0][0].toLowerCase(); 
-			if (cardbookRepository.cardbookMailPopularityIndex[myEmail]) {
-				var mailPopularityValue = cardbookRepository.cardbookMailPopularityIndex[myEmail];
+			if (cardbookRepository.cardbookMailPopularityIndex[aEmail]) {
+				var mailPopularityValue = cardbookRepository.cardbookMailPopularityIndex[aEmail];
 			} else {
 				var mailPopularityValue = "";
 			}
 			cardbookElementTools.addTextbox(aRow, 'popularity_' + aIndex + '_Textbox', mailPopularityValue, {readonly: 'true'});
-			cardbookElementTools.addTextbox(aRow, 'email_' + aIndex + '_Textbox', myEmail, {readonly: 'true'});
+			cardbookElementTools.addTextbox(aRow, 'email_' + aIndex + '_Textbox', aEmail, {readonly: 'true'});
 		},
 
-		loadDynamicMailPopularity: function (aIndex, aInputTypes) {
+		loadDynamicMailPopularity: function (aIndex, aEmail) {
 			var aOrigRows = document.getElementById('mailPopularityRows');
 			
 			var aRow = document.createElement('row');
@@ -831,14 +839,13 @@ if ("undefined" == typeof(cardbookTypes)) {
 			aRow.setAttribute('id', 'mailPopularity_' + aIndex + '_row');
 			aRow.setAttribute('flex', '1');
 
-			var myEmail = aInputTypes[0][0].toLowerCase(); 
-			if (cardbookRepository.cardbookMailPopularityIndex[myEmail]) {
-				var mailPopularityValue = cardbookRepository.cardbookMailPopularityIndex[myEmail];
+			if (cardbookRepository.cardbookMailPopularityIndex[aEmail]) {
+				var mailPopularityValue = cardbookRepository.cardbookMailPopularityIndex[aEmail];
 			} else {
 				var mailPopularityValue = "";
 			}
 			cardbookElementTools.addTextbox(aRow, 'popularity_' + aIndex + '_Textbox', mailPopularityValue);
-			cardbookElementTools.addTextbox(aRow, 'email_' + aIndex + '_Textbox', myEmail);
+			cardbookElementTools.addTextbox(aRow, 'email_' + aIndex + '_Textbox', aEmail);
 		},
 
 		loadStaticList: function (aCard) {

@@ -260,7 +260,8 @@ if ("undefined" == typeof(wdw_cardbookEventContacts)) {
 
 		loadEvents: function () {
 			wdw_cardbookEventContacts.allEvents = [];
-			for each (let calendar in cal.getCalendarManager().getCalendars({})) {
+			let cals = cal.getCalendarManager().getCalendars({});
+			for (let calendar of cals) {
 				if (!calendar.getProperty("disabled")) {
 					wdw_cardbookEventContacts.addItemsFromCalendar(calendar, wdw_cardbookEventContacts.addItemsFromCompositeCalendarInternal);
 				}

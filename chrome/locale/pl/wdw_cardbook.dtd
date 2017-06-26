@@ -7,7 +7,7 @@
 
 <!ENTITY cardbookAccountMenuLabel "Książka adresowa">
 
-<!ENTITY cardbookAccountMenuAddServerLabel "Dodaj książkę adresową">
+<!ENTITY cardbookAccountMenuAddServerLabel "Nowa książkę adresową">
 <!ENTITY cardbookAccountMenuEditServerLabel "Edytuj książkę adresową">
 <!ENTITY cardbookAccountMenuCloseServerLabel "Usuń książkę adresową">
 <!ENTITY cardbookAccountMenuSyncLabel "Synchronizuj książkę adresową">
@@ -25,17 +25,17 @@
 <!ENTITY cardbookToolbarAccesskey "a">
 <!ENTITY CustomizeCardBookToolbarLabel "Dostosuj…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "C">
-<!ENTITY cardbookToolbarAddServerButtonLabel "Dodaj książkę adresową">
+<!ENTITY cardbookToolbarAddServerButtonLabel "Nowa książkę adresową">
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Dodaj zdalną lub lokalną książkę adresową">
 <!ENTITY cardbookToolbarSyncButtonLabel "Synchronizuj">
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synchronizuj wszystkie zdalne książki adresowe">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Ustawienia">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Ustawienia programu CardBook">
-<!ENTITY cardbookToolbarAddButtonLabel "Dodaj wizytówkę">
+<!ENTITY cardbookToolbarAddButtonLabel "Nowa wizytówka">
 <!ENTITY cardbookToolbarAddButtonTooltip "Utwórz nową wizytówkę">
-<!ENTITY cardbookToolbarEditButtonLabel "Edytuj wizytówkę">
+<!ENTITY cardbookToolbarEditButtonLabel "Edytuj">
 <!ENTITY cardbookToolbarEditButtonTooltip "Zmodyfikuj istniejącą wizytówkę">
-<!ENTITY cardbookToolbarRemoveButtonLabel "Usuń wizytówkę">
+<!ENTITY cardbookToolbarRemoveButtonLabel "Usuń">
 <!ENTITY cardbookToolbarRemoveButtonTooltip "Usuń bieżącą wizytówkę">
 <!ENTITY cardbookToolbarPrintButtonLabel "Podgląd wydruku">
 <!ENTITY cardbookToolbarPrintButtonTooltip "Wydrukuj wybrane elementy">
@@ -53,6 +53,8 @@
 <!ENTITY technicalTabLabel "Techniczne">
 <!ENTITY vcardTabLabel "vCard">
 
+<!ENTITY GeneratedNameColumnLabel "Ikona">
+<!ENTITY nameColumnLabel "Nazwa">
 <!ENTITY lastnameColumnLabel "Nazwisko">
 <!ENTITY firstnameColumnLabel "Imię">
 <!ENTITY othernameColumnLabel "Drugie imię">
@@ -133,27 +135,27 @@
 
 <!ENTITY copyCardTreeLabel "Kopiuj pozycję">
 
-<!ENTITY toEmailCardFromAccountsOrCatsLabel "Wyślij wizytówki e-mailem">
-<!ENTITY toEmailCardFromCardsLabel "Wyślij wizytówki e-mailem">
-<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Wyślij wizytówki e-mailem (kopia/cc)">
-<!ENTITY ccEmailCardFromCardsLabel "Wyślij wizytówki e-mailem (kopia/cc)">
-<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Wyślij wizytówki e-mailem (ukryta kopia/bcc)">
-<!ENTITY bccEmailCardFromCardsLabel "Wyślij wizytówki e-mailem (ukryta kopia/bcc)">
-<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "??Share contact by email??">
-<!ENTITY shareCardByEmailFromCardsLabel "??Share contact by email??">
+<!ENTITY toEmailCardFromAccountsOrCatsLabel "Wyślij e-mailem">
+<!ENTITY toEmailCardFromCardsLabel "Wyślij e-mailem">
+<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Wyślij e-mailem (kopia/cc)">
+<!ENTITY ccEmailCardFromCardsLabel "Wyślij e-mailem (kopia/cc)">
+<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Wyślij e-mailem (ukryta kopia/bcc)">
+<!ENTITY bccEmailCardFromCardsLabel "Wyślij e-mailem (ukryta kopia/bcc)">
+<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "??Share by email??">
+<!ENTITY shareCardByEmailFromCardsLabel "??Share by email??">
 <!ENTITY categoryLabel "Kategoria">
 <!ENTITY findEmailsFromCardsLabel "Znajdź e-maile związane z tą wizytówką">
 <!ENTITY findEventsFromCardsLabel "Znajdź wydarzenia związane z tą wizytówką">
-<!ENTITY localizeCardFromCardsLabel "Lokalizuj wizytówkę">
-<!ENTITY openURLCardFromCardsLabel "Otwórz adresy URL z wizytówki">
-<!ENTITY cutCardFromAccountsOrCatsLabel "Wytnij wizytówkę">
-<!ENTITY cutCardFromCardsLabel "Wytnij wizytówkę">
-<!ENTITY copyCardFromAccountsOrCatsLabel "Kopiuj wizytówkę">
-<!ENTITY copyCardFromCardsLabel "Kopiuj wizytówkę">
-<!ENTITY pasteCardFromAccountsOrCatsLabel "Wklej wizytówkę">
-<!ENTITY pasteCardFromCardsLabel "Wklej wizytówkę">
-<!ENTITY exportCardToFileLabel "Eksportuj wizytówkę do pliku">
-<!ENTITY exportCardToDirLabel "Eksportuj wizytówkę do katalogu">
+<!ENTITY localizeCardFromCardsLabel "Lokalizuj">
+<!ENTITY openURLCardFromCardsLabel "Otwórz adresy URL">
+<!ENTITY cutCardFromAccountsOrCatsLabel "Wytnij">
+<!ENTITY cutCardFromCardsLabel "Wytnij">
+<!ENTITY copyCardFromAccountsOrCatsLabel "Kopiuj">
+<!ENTITY copyCardFromCardsLabel "Kopiuj">
+<!ENTITY pasteCardFromAccountsOrCatsLabel "Wklej">
+<!ENTITY pasteCardFromCardsLabel "Wklej">
+<!ENTITY exportCardToFileLabel "Eksportuj do pliku">
+<!ENTITY exportCardToDirLabel "Eksportuj do katalogu">
 <!ENTITY importCardFromFileLabel "Importuj wizytówkę z pliku">
 <!ENTITY importCardFromDirLabel "Importuj wizytówkę z katalogu">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Zmień nazwę kategorii">

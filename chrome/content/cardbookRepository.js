@@ -128,6 +128,9 @@ var cardbookRepository = {
 	// used to store the msgIdentityKey by window
 	composeMsgIdentity : {},
 	
+	// used to remember the choice of name format
+	showNameAs : "",
+
 	cardbookDynamicCssRules : {},
 
 	cardbookUncategorizedCards : "",
@@ -561,7 +564,7 @@ var cardbookRepository = {
 			}
 		}
 		for (var i = 0; i < result.length; i++) {
-			cardbookPrefService.setEmailsCollection(i.toString(), result[0] + "::" + result[1] + "::" + result[2] + "::" + result[3] + "::" + result[4]);
+			cardbookPrefService.setEmailsCollection(i.toString(), result[i][0] + "::" + result[i][1] + "::" + result[i][2] + "::" + result[i][3] + "::" + result[i][4]);
 		}
 	},
 
@@ -578,7 +581,7 @@ var cardbookRepository = {
 		result.push(["true", "include", "allMailAccounts", aDirPrefId, ""]);
 
 		for (var i = 0; i < result.length; i++) {
-			cardbookPrefService.setEmailsCollection(i.toString(), result[0] + "::" + result[1] + "::" + result[2] + "::" + result[3] + "::" + result[4]);
+			cardbookPrefService.setEmailsCollection(i.toString(), result[i][0] + "::" + result[i][1] + "::" + result[i][2] + "::" + result[i][3] + "::" + result[i][4]);
 		}
 	},
 

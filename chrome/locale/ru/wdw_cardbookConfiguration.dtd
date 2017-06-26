@@ -1,7 +1,7 @@
 <!ENTITY wdw_cardbookConfigurationWindowLabel "Настройки CardBook">
 
 <!ENTITY generalTabLabel "Основные">
-<!ENTITY editionTabLabel "Редактирование">
+<!ENTITY CardBookTabLabel "??CardBook Tab??">
 <!ENTITY typesTabLabel "Типы">
 <!ENTITY IMPPsTabLabel "Интернет–вызовы">
 <!ENTITY customFieldsTabLabel "Пользовательсткие поля">
@@ -84,6 +84,13 @@
 <!ENTITY localizeTargetInAccesskey "у">
 <!ENTITY localizeTargetOutLabel "Вне Thunderbird">
 <!ENTITY localizeTargetOutAccesskey "е">
+<!ENTITY showNameAsLabel "Показывать имя как">
+<!ENTITY showNameAsLFLabel "Фамилия Имя">
+<!ENTITY showNameAsLFAccesskey "Ф">
+<!ENTITY showNameAsFLLabel "Имя Фамилия">
+<!ENTITY showNameAsFLAccesskey "И">
+<!ENTITY showNameAsDSPLabel "Отображаемое имя">
+<!ENTITY showNameAsDSPAccesskey "О">
 <!ENTITY fnLabelExplanation "Возможна настройка правила, согласно которому CardBook заполняет поле «Отображаемое имя». Эта формула состоит из блоков, ограниченных «()». В каждом из блоков есть две части, разделяемые «|». 
 								Первая часть применяется, если указанное поле присутствует, например {{1}} — не пустое значение, вторая часть применяется если указанное значение является пустым.">
 <!ENTITY fnFormulaLabel "Формировать отображаемое имя">
@@ -132,7 +139,7 @@
 <!ENTITY deleteIMPPLabel "Удалить">
 <!ENTITY deleteIMPPAccesskey "У">
 
-<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldRankLabel "Ранг">
 <!ENTITY customFieldCodeLabel "Открывать внешние ссылки:">
 <!ENTITY customFieldLabelLabel "Метка поля">
 <!ENTITY customFieldsPersTitleLabel "Персональная информация">

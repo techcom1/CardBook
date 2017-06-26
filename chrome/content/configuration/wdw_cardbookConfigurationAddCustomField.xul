@@ -35,7 +35,7 @@
 				<rows>
 					<row align="center">
 						<label id="customFieldCodeLabel" value="&customFieldCodeLabel;" control="customFieldCodeTextBox"/>
-						<textbox id="customFieldCodeTextBox" oninput="wdw_cardbookConfiguration.onlyUppercase(this);wdw_cardbookConfigurationAddCustomField.checkNullCustomField();"/>
+						<textbox id="customFieldCodeTextBox" oninput="wdw_cardbookConfiguration.customFieldCheck(this);wdw_cardbookConfigurationAddCustomField.checkNullCustomField();"/>
 					</row>
 					<row align="center">
 						<label id="customFieldLabelLabel" value="&customFieldLabelLabel;" control="customFieldLabelTextBox"/>

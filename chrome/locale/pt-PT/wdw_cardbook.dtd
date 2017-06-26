@@ -7,7 +7,7 @@
 
 <!ENTITY cardbookAccountMenuLabel "Agenda">
 
-<!ENTITY cardbookAccountMenuAddServerLabel "Adicionar agenda">
+<!ENTITY cardbookAccountMenuAddServerLabel "Novo agenda">
 <!ENTITY cardbookAccountMenuEditServerLabel "Editar agenda">
 <!ENTITY cardbookAccountMenuCloseServerLabel "Fechar agenda">
 <!ENTITY cardbookAccountMenuSyncLabel "Sincronizar agenda">
@@ -25,17 +25,17 @@
 <!ENTITY cardbookToolbarAccesskey "C">
 <!ENTITY CustomizeCardBookToolbarLabel "Personalizar…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "P">
-<!ENTITY cardbookToolbarAddServerButtonLabel "Adicionar agenda">
+<!ENTITY cardbookToolbarAddServerButtonLabel "Novo agenda">
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Adicionar uma agenda local ou remota">
 <!ENTITY cardbookToolbarSyncButtonLabel "Sincronizar">
 <!ENTITY cardbookToolbarSyncButtonTooltip "Sincronizar todas as agendas remotas">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Preferências">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Preferências do CardBook">
-<!ENTITY cardbookToolbarAddButtonLabel "Criar cartão">
+<!ENTITY cardbookToolbarAddButtonLabel "Novo contacto">
 <!ENTITY cardbookToolbarAddButtonTooltip "Permitir criação de contacto">
-<!ENTITY cardbookToolbarEditButtonLabel "Editar contacto">
+<!ENTITY cardbookToolbarEditButtonLabel "Editar">
 <!ENTITY cardbookToolbarEditButtonTooltip "Permitir alteração de contacto">
-<!ENTITY cardbookToolbarRemoveButtonLabel "Apagar cartão">
+<!ENTITY cardbookToolbarRemoveButtonLabel "Apagar">
 <!ENTITY cardbookToolbarRemoveButtonTooltip "Permitir apagar contacto">
 <!ENTITY cardbookToolbarPrintButtonLabel "Pré-visualização">
 <!ENTITY cardbookToolbarPrintButtonTooltip "Permitir a impressão do seleccionado">
@@ -53,6 +53,8 @@
 <!ENTITY technicalTabLabel "Tecnico">
 <!ENTITY vcardTabLabel "vCard">
 
+<!ENTITY GeneratedNameColumnLabel "Ícone">
+<!ENTITY nameColumnLabel "Nome">
 <!ENTITY lastnameColumnLabel "Nome">
 <!ENTITY firstnameColumnLabel "Apelido">
 <!ENTITY othernameColumnLabel "Outros nomes">
@@ -133,27 +135,27 @@
 
 <!ENTITY copyCardTreeLabel "Copiar entrada">
 
-<!ENTITY toEmailCardFromAccountsOrCatsLabel "Enviar cartões por email">
-<!ENTITY toEmailCardFromCardsLabel "Enviar cartões por email">
-<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Enviar cartões por email (cc)">
-<!ENTITY ccEmailCardFromCardsLabel "Enviar cartões por email (cc)">
-<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Enviar cartões por email (bcc)">
-<!ENTITY bccEmailCardFromCardsLabel "Enviar cartões por email (bcc)">
-<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "??Share contact by email??">
-<!ENTITY shareCardByEmailFromCardsLabel "??Share contact by email??">
+<!ENTITY toEmailCardFromAccountsOrCatsLabel "Enviar email">
+<!ENTITY toEmailCardFromCardsLabel "Enviar por email">
+<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Enviar email (cc)">
+<!ENTITY ccEmailCardFromCardsLabel "Enviar email (cc)">
+<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Enviar email (bcc)">
+<!ENTITY bccEmailCardFromCardsLabel "Enviar email (bcc)">
+<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Enviar por email">
+<!ENTITY shareCardByEmailFromCardsLabel "Enviar por email">
 <!ENTITY categoryLabel "Categoria">
 <!ENTITY findEmailsFromCardsLabel "Procurar emails com este endereço de email">
 <!ENTITY findEventsFromCardsLabel "Procurar eventos no calendário relacionados com este contacto">
-<!ENTITY localizeCardFromCardsLabel "Localizar contacto">
-<!ENTITY openURLCardFromCardsLabel "Abrir URL do contacto">
-<!ENTITY cutCardFromAccountsOrCatsLabel "Cortar contacto">
-<!ENTITY cutCardFromCardsLabel "Cortar contacto">
-<!ENTITY copyCardFromAccountsOrCatsLabel "Copiar contacto">
-<!ENTITY copyCardFromCardsLabel "Copiar contacto">
-<!ENTITY pasteCardFromAccountsOrCatsLabel "Colar contacto">
-<!ENTITY pasteCardFromCardsLabel "Colar contacto">
-<!ENTITY exportCardToFileLabel "Exportar cartão para ficheiro">
-<!ENTITY exportCardToDirLabel "Exportar cartão para diretoria">
+<!ENTITY localizeCardFromCardsLabel "Localizar">
+<!ENTITY openURLCardFromCardsLabel "Abrir URL">
+<!ENTITY cutCardFromAccountsOrCatsLabel "Cortar">
+<!ENTITY cutCardFromCardsLabel "Cortar">
+<!ENTITY copyCardFromAccountsOrCatsLabel "Copiar">
+<!ENTITY copyCardFromCardsLabel "Copiar">
+<!ENTITY pasteCardFromAccountsOrCatsLabel "Colar">
+<!ENTITY pasteCardFromCardsLabel "Colar">
+<!ENTITY exportCardToFileLabel "Exportar para ficheiro">
+<!ENTITY exportCardToDirLabel "Exportar para diretoria">
 <!ENTITY importCardFromFileLabel "Importar cartões de ficheiro">
 <!ENTITY importCardFromDirLabel "Importar cartões de diretoria">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Renomear categoria">

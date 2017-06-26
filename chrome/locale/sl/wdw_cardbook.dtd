@@ -7,7 +7,7 @@
 
 <!ENTITY cardbookAccountMenuLabel "Imenik">
 
-<!ENTITY cardbookAccountMenuAddServerLabel "Dodaj imenik">
+<!ENTITY cardbookAccountMenuAddServerLabel "Nov imenik">
 <!ENTITY cardbookAccountMenuEditServerLabel "Uredi imenik">
 <!ENTITY cardbookAccountMenuCloseServerLabel "Izbriši imenik">
 <!ENTITY cardbookAccountMenuSyncLabel "Sinhroniziraj imenik">
@@ -25,17 +25,17 @@
 <!ENTITY cardbookToolbarAccesskey "C">
 <!ENTITY CustomizeCardBookToolbarLabel "Prilagodi …">
 <!ENTITY CustomizeCardBookToolbarAccesskey "P">
-<!ENTITY cardbookToolbarAddServerButtonLabel "Dodaj imenik">
+<!ENTITY cardbookToolbarAddServerButtonLabel "Nov imenik">
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Dodaj oddaljeni ali krajevni imenik">
 <!ENTITY cardbookToolbarSyncButtonLabel "Sinhroniziraj">
 <!ENTITY cardbookToolbarSyncButtonTooltip "Sinhroniziraj vse oddaljene imenike">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Nastavitve">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Nastavitve CardBook">
-<!ENTITY cardbookToolbarAddButtonLabel "Dodaj stik">
+<!ENTITY cardbookToolbarAddButtonLabel "Nov stik">
 <!ENTITY cardbookToolbarAddButtonTooltip "Dovoli ustvarjanje stika">
-<!ENTITY cardbookToolbarEditButtonLabel "Uredi stik">
+<!ENTITY cardbookToolbarEditButtonLabel "Uredi">
 <!ENTITY cardbookToolbarEditButtonTooltip "Dovoli spreminjanje stika">
-<!ENTITY cardbookToolbarRemoveButtonLabel "Izbriši stik">
+<!ENTITY cardbookToolbarRemoveButtonLabel "Izbriši">
 <!ENTITY cardbookToolbarRemoveButtonTooltip "Dovoli brisanje stika">
 <!ENTITY cardbookToolbarPrintButtonLabel "Predogled tiskanja">
 <!ENTITY cardbookToolbarPrintButtonTooltip "Dovoli tiskanje izbire">
@@ -53,6 +53,8 @@
 <!ENTITY technicalTabLabel "Tehnično">
 <!ENTITY vcardTabLabel "vCard">
 
+<!ENTITY GeneratedNameColumnLabel "Ikona">
+<!ENTITY nameColumnLabel "Ime">
 <!ENTITY lastnameColumnLabel "Priimek">
 <!ENTITY firstnameColumnLabel "Ime">
 <!ENTITY othernameColumnLabel "Drugo ime">
@@ -133,27 +135,27 @@
 
 <!ENTITY copyCardTreeLabel "Kopiraj vnos">
 
-<!ENTITY toEmailCardFromAccountsOrCatsLabel "Pošlji pošto stikom">
-<!ENTITY toEmailCardFromCardsLabel "Pošlji pošto stikom">
-<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Pošlji pošto stikom (kopija/kp)">
-<!ENTITY ccEmailCardFromCardsLabel "Pošlji pošto stikom (kopija/kp)">
-<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Pošlji pošto stikom (skrita kopija/skp)">
-<!ENTITY bccEmailCardFromCardsLabel "Pošlji pošto stikom (skrita kopija/skp)">
-<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Deli stik po e-pošti">
-<!ENTITY shareCardByEmailFromCardsLabel "Deli stik po e-pošti">
+<!ENTITY toEmailCardFromAccountsOrCatsLabel "Pošlji pošto">
+<!ENTITY toEmailCardFromCardsLabel "Pošlji pošto">
+<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Pošlji pošto (kopija/kp)">
+<!ENTITY ccEmailCardFromCardsLabel "Pošlji pošto (kopija/kp)">
+<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Pošlji pošto (skrita kopija/skp)">
+<!ENTITY bccEmailCardFromCardsLabel "Pošlji pošto (skrita kopija/skp)">
+<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Deli po e-pošti">
+<!ENTITY shareCardByEmailFromCardsLabel "Deli po e-pošti">
 <!ENTITY categoryLabel "Kategorija">
 <!ENTITY findEmailsFromCardsLabel "Poišči e-pošto, povezano s tem stikom">
 <!ENTITY findEventsFromCardsLabel "Poišči dogodke koledarja, povezane s tem stikom">
-<!ENTITY localizeCardFromCardsLabel "Lokaliziraj stik">
-<!ENTITY openURLCardFromCardsLabel "Odpri URL-je iz stika">
-<!ENTITY cutCardFromAccountsOrCatsLabel "Izreži stik">
-<!ENTITY cutCardFromCardsLabel "Izreži stik">
-<!ENTITY copyCardFromAccountsOrCatsLabel "Kopiraj stik">
-<!ENTITY copyCardFromCardsLabel "Kopiraj stik">
-<!ENTITY pasteCardFromAccountsOrCatsLabel "Prilepi stik">
-<!ENTITY pasteCardFromCardsLabel "Prilepi stik">
-<!ENTITY exportCardToFileLabel "Izvozi stik v datoteko">
-<!ENTITY exportCardToDirLabel "Izvozi stik v mapo">
+<!ENTITY localizeCardFromCardsLabel "Lokaliziraj">
+<!ENTITY openURLCardFromCardsLabel "Odpri URL-je">
+<!ENTITY cutCardFromAccountsOrCatsLabel "Izreži">
+<!ENTITY cutCardFromCardsLabel "Izreži">
+<!ENTITY copyCardFromAccountsOrCatsLabel "Kopiraj">
+<!ENTITY copyCardFromCardsLabel "Kopiraj">
+<!ENTITY pasteCardFromAccountsOrCatsLabel "Prilepi">
+<!ENTITY pasteCardFromCardsLabel "Prilepi">
+<!ENTITY exportCardToFileLabel "Izvozi v datoteko">
+<!ENTITY exportCardToDirLabel "Izvozi v mapo">
 <!ENTITY importCardFromFileLabel "Uvozi stike iz datoteke">
 <!ENTITY importCardFromDirLabel "Uvozi stike iz mape">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Preimenuj kategorijo">

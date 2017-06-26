@@ -1,5 +1,34 @@
 if ("undefined" == typeof(wdw_migrate)) {
 	var wdw_migrate = {
+		
+		customMap : [ ["1", false], ["2", false], ["3", false], ["4", false] ],
+
+		writeCustomToPreference: function () {
+			var myType = 'pers';
+			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+			var customLabel = strBundle.GetStringFromName("customLabel");
+			var cardbookPrefService = new cardbookPreferenceService();
+			result = cardbookRepository.customFields[myType];
+			var myCount = result.length;
+			for (var i = 0; i < wdw_migrate.customMap.length; i++) {
+				if (wdw_migrate.customMap[i][1]) {
+					var found = false
+					var myCode = "X-CUSTOM" + wdw_migrate.customMap[i][0];
+					for (var j = 0; j < result.length; j++) {
+						if (result[j][0] == myCode) {
+							found = true;
+							break;
+						}
+					}
+					if (!found) {
+						cardbookPrefService.setCustomFields(myType, myCount, myCode + ":" + customLabel + wdw_migrate.customMap[i][0]);
+						myCount++;
+					}
+				}
+			}
+			cardbookRepository.loadCustoms();
+		},
 
 		translateStandardCards: function (aDirPrefIdTarget, aDirPrefIdTargetName, aABCard, aMode) {
 			try {
@@ -11,6 +40,15 @@ if ("undefined" == typeof(wdw_migrate)) {
 				for (var i = 0; i < myMap.length; i++) {
 					var myMapData = aABCard.getProperty(myMap[i][0],"");
 					myCard[myMap[i][1]] = myMapData;
+				}
+				for (var i = 0; i < wdw_migrate.customMap.length; i++) {
+					var myMapData = aABCard.getProperty("Custom" + wdw_migrate.customMap[i][0],"");
+					if (myMapData != "") {
+						myCard.others.push("X-CUSTOM" + wdw_migrate.customMap[i][0] + ":" + myMapData);
+						if (!wdw_migrate.customMap[i][1]) {
+							wdw_migrate.customMap[i][1] = true;
+						}
+					}
 				}
 				var myDep = aABCard.getProperty("Department","");
 				var myOrg = aABCard.getProperty("Company","");
@@ -210,6 +248,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 				}
 			}	
 			cardbookMailPopularity.writeMailPopularity();
+			wdw_migrate.writeCustomToPreference();
 			cardbookRepository.cardbookDirResponse[aDirPrefIdTarget]++;
 		}
 		

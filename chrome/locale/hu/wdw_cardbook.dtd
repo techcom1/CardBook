@@ -33,9 +33,9 @@
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Névjegyzék beállítások">
 <!ENTITY cardbookToolbarAddButtonLabel "Új névjegy">
 <!ENTITY cardbookToolbarAddButtonTooltip "Új névjegy">
-<!ENTITY cardbookToolbarEditButtonLabel "Névjegy szerkesztés">
+<!ENTITY cardbookToolbarEditButtonLabel "Szerkesztés">
 <!ENTITY cardbookToolbarEditButtonTooltip "Névjegy szerkesztése">
-<!ENTITY cardbookToolbarRemoveButtonLabel "Névjegy törlés">
+<!ENTITY cardbookToolbarRemoveButtonLabel "Törlés">
 <!ENTITY cardbookToolbarRemoveButtonTooltip "Névjegy törlése">
 <!ENTITY cardbookToolbarPrintButtonLabel "Nyomtatási kép">
 <!ENTITY cardbookToolbarPrintButtonTooltip "Kiválasztás nyomtatás engedélyezése">
@@ -53,6 +53,8 @@
 <!ENTITY technicalTabLabel "Műszaki">
 <!ENTITY vcardTabLabel "vCard">
 
+<!ENTITY GeneratedNameColumnLabel "Ikon">
+<!ENTITY nameColumnLabel "Név">
 <!ENTITY lastnameColumnLabel "Családnév">
 <!ENTITY firstnameColumnLabel "Keresztnév">
 <!ENTITY othernameColumnLabel "Másik név">
@@ -146,12 +148,12 @@
 <!ENTITY findEventsFromCardsLabel "Naptári események keresése (névjegy alapján)">
 <!ENTITY localizeCardFromCardsLabel "Mutasd a térképen">
 <!ENTITY openURLCardFromCardsLabel "Névjegy webcím hívatkozás megnyitása böngészőben">
-<!ENTITY cutCardFromAccountsOrCatsLabel "Névjegy kivágása">
-<!ENTITY cutCardFromCardsLabel "Névjegy kivágása">
-<!ENTITY copyCardFromAccountsOrCatsLabel "Névjegy kivágása">
-<!ENTITY copyCardFromCardsLabel "Névjegy másolása">
-<!ENTITY pasteCardFromAccountsOrCatsLabel "Névjegy beillesztése">
-<!ENTITY pasteCardFromCardsLabel "Névjegy beillesztése">
+<!ENTITY cutCardFromAccountsOrCatsLabel "Kivágása">
+<!ENTITY cutCardFromCardsLabel "Kivágása">
+<!ENTITY copyCardFromAccountsOrCatsLabel "Másolása">
+<!ENTITY copyCardFromCardsLabel "Másolása">
+<!ENTITY pasteCardFromAccountsOrCatsLabel "Beillesztése">
+<!ENTITY pasteCardFromCardsLabel "Beillesztése">
 <!ENTITY exportCardToFileLabel "Fájl mentése">
 <!ENTITY exportCardToDirLabel "Mappa mentése">
 <!ENTITY importCardFromFileLabel "Megnyitás és mentés fájlból">
@@ -159,7 +161,7 @@
 <!ENTITY renameCatFromAccountsOrCatsLabel "Kategória átnevezése">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Kategória eltávolítása">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "A jelenlegi névjegytárban ismétlődő névjegy keresése">
-<!ENTITY generateFnFromAccountsOrCatsLabel "??Generate Display Names??">
+<!ENTITY generateFnFromAccountsOrCatsLabel "Megjelenítendő nevek létrehozása">
 <!ENTITY mergeCardsFromCardsLabel "Névjegyek egyesítése">
 <!ENTITY duplicateCardFromCardsLabel "Névjegy másolata">
 <!ENTITY convertListToCategoryFromCardsLabel "Átalakítás listától kategórianak">

@@ -220,6 +220,44 @@ if ("undefined" == typeof(cardbookUtils)) {
 			return sum;
 		},
 		
+		getName: function (aCard) {
+			var result = "";
+			if (aCard.isAList || cardbookRepository.showNameAs == "DSP") {
+				return aCard.fn;
+			}
+			if (aCard.lastname != "" && aCard.firstname != "") {
+				if (cardbookRepository.showNameAs == "LF") {
+					result = aCard.lastname + " " + aCard.firstname;
+				} else if (cardbookRepository.showNameAs == "FL") {
+					result = aCard.firstname + " " + aCard.lastname;
+				}
+				return result.trim();
+			} else {
+				return aCard.fn;
+			}
+		},
+
+		sortCardsTreeArrayByString: function (aArray, aIndex, aInvert) {
+			Components.utils.import("resource://gre/modules/Services.jsm");
+			if (Services.locale.getApplicationLocale) {
+				var collator = Components.classes["@mozilla.org/intl/collation-factory;1"].getService(Components.interfaces.nsICollationFactory).CreateCollation(Services.locale.getApplicationLocale());
+			} else {
+				var collator = Components.classes["@mozilla.org/intl/collation-factory;1"].getService(Components.interfaces.nsICollationFactory).CreateCollation();
+			}
+			function compare1(a, b) { return collator.compareString(0, a[aIndex], b[aIndex])*aInvert; };
+			function compare2(a, b) { return collator.compareString(0, a, b)*aInvert; };
+			function compare3(a, b) { return collator.compareString(0, cardbookUtils.getName(a), cardbookUtils.getName(b))*aInvert; };
+			if (aIndex != -1) {
+				if (aIndex == "name") {
+					return aArray.sort(compare3);
+				} else {
+					return aArray.sort(compare1);
+				}
+			} else {
+				return aArray.sort(compare2);
+			}
+		},
+		
 		sortArrayByString: function (aArray, aIndex, aInvert) {
 			Components.utils.import("resource://gre/modules/Services.jsm");
 			if (Services.locale.getApplicationLocale) {
@@ -1046,10 +1084,10 @@ if ("undefined" == typeof(cardbookUtils)) {
 			}
 			if (aReadOnly) {
 				cardbookTypes.loadStaticList(aCard);
-				cardbookTypes.constructStaticMailPopularity(aCard.email);
+				cardbookTypes.constructStaticMailPopularity(aCard);
 			} else {
 				wdw_cardEdition.displayLists(aCard);
-				cardbookTypes.constructDynamicMailPopularity(aCard.email);
+				cardbookTypes.constructDynamicMailPopularity(aCard);
 			}
 		},
 
@@ -1194,7 +1232,6 @@ if ("undefined" == typeof(cardbookUtils)) {
 			targetCard.prodid = sourceCard.prodid;
 			targetCard.sortstring = sourceCard.sortstring;
 			targetCard.uid = sourceCard.uid;
-			cardbookUtils.setCalculatedFields(targetCard);
 
 			targetCard.member = JSON.parse(JSON.stringify(sourceCard.member));
 			targetCard.kind = sourceCard.kind;
@@ -1211,7 +1248,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			targetCard.created = sourceCard.created;
 			targetCard.deleted = sourceCard.deleted;
 
-			targetCard.others = sourceCard.others;
+			targetCard.others = JSON.parse(JSON.stringify(sourceCard.others));
 			
 			targetCard.dispadr = sourceCard.dispadr;
 			targetCard.disphomeadr = sourceCard.disphomeadr;
@@ -1226,6 +1263,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			targetCard.dispimpp = sourceCard.dispimpp;
 			targetCard.dispurl = sourceCard.dispurl;
 			targetCard.dispcategories = sourceCard.dispcategories;
+			cardbookUtils.setCalculatedFields(targetCard);
 		},
 
 		getCardValueByField: function(aCard, aField) {

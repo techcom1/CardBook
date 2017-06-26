@@ -1,7 +1,7 @@
 <!ENTITY wdw_cardbookConfigurationWindowLabel "Preferências do CardBook">
 
 <!ENTITY generalTabLabel "Geral">
-<!ENTITY editionTabLabel "Edição">
+<!ENTITY CardBookTabLabel "??CardBook Tab??">
 <!ENTITY typesTabLabel "Tipos">
 <!ENTITY IMPPsTabLabel "Endereços de mensagem instantanea">
 <!ENTITY customFieldsTabLabel "Campos customizaveis">
@@ -84,6 +84,13 @@
 <!ENTITY localizeTargetInAccesskey "D">
 <!ENTITY localizeTargetOutLabel "Fora do Thunderbird">
 <!ENTITY localizeTargetOutAccesskey "F">
+<!ENTITY showNameAsLabel "Mostrar nome como">
+<!ENTITY showNameAsLFLabel "Apelido Nome">
+<!ENTITY showNameAsLFAccesskey "A">
+<!ENTITY showNameAsFLLabel "Nome Apelido">
+<!ENTITY showNameAsFLAccesskey "N">
+<!ENTITY showNameAsDSPLabel "Nome de apresentação">
+<!ENTITY showNameAsDSPAccesskey "d">
 <!ENTITY fnLabelExplanation "É possivel determinar como o CardBook gera o nome. A formula consiste num bloco dentro de '()'. Nesse bloco existem 2 partes delimitadas por '|'.
 								A primeira é aplicada quando o termo envolvido (ex: {{1}}), não é nulo e a segunda parte é aplicada quando o termo é nulo">
 <!ENTITY fnFormulaLabel "Gerar Nome">

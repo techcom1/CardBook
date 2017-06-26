@@ -31,11 +31,11 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Синхронизирует все удалённые адресные книги">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Настройки">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Открывает панель настроек CardBook">
-<!ENTITY cardbookToolbarAddButtonLabel "Новый контакт">
+<!ENTITY cardbookToolbarAddButtonLabel "Создать контакт">
 <!ENTITY cardbookToolbarAddButtonTooltip "Позволяет создать новый контакт">
-<!ENTITY cardbookToolbarEditButtonLabel "Править контакт">
+<!ENTITY cardbookToolbarEditButtonLabel "Править">
 <!ENTITY cardbookToolbarEditButtonTooltip "Позволяет измененить контакт">
-<!ENTITY cardbookToolbarRemoveButtonLabel "Удалить контакт">
+<!ENTITY cardbookToolbarRemoveButtonLabel "Удалить">
 <!ENTITY cardbookToolbarRemoveButtonTooltip "Позволяет удалить контакт">
 <!ENTITY cardbookToolbarPrintButtonLabel "Предварительный просмор печати">
 <!ENTITY cardbookToolbarPrintButtonTooltip "Разрешить печатать выделение">
@@ -53,6 +53,8 @@
 <!ENTITY technicalTabLabel "Технические данные">
 <!ENTITY vcardTabLabel "vCard">
 
+<!ENTITY GeneratedNameColumnLabel "Значок">
+<!ENTITY nameColumnLabel "Название">
 <!ENTITY lastnameColumnLabel "Фамилия">
 <!ENTITY firstnameColumnLabel "Имя">
 <!ENTITY othernameColumnLabel "Отчество">
@@ -133,33 +135,33 @@
 
 <!ENTITY copyCardTreeLabel "Копировать запись">
 
-<!ENTITY toEmailCardFromAccountsOrCatsLabel "Отправить сообщение email контатам">
-<!ENTITY toEmailCardFromCardsLabel "Отправить email контактам">
-<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Отправить email контактам (копию)">
-<!ENTITY ccEmailCardFromCardsLabel "Отправить email контактам (копию)">
-<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Отправить email контактам (скрытую копию)">
-<!ENTITY bccEmailCardFromCardsLabel "Отправить email контактам (скрытую копию)">
-<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Поделиться контактом по email">
-<!ENTITY shareCardByEmailFromCardsLabel "Поделиться контактом по email">
+<!ENTITY toEmailCardFromAccountsOrCatsLabel "Отправить email">
+<!ENTITY toEmailCardFromCardsLabel "Отправить email">
+<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Отправить email (копию)">
+<!ENTITY ccEmailCardFromCardsLabel "Отправить email (копию)">
+<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Отправить email (скрытую копию)">
+<!ENTITY bccEmailCardFromCardsLabel "Отправить email (скрытую копию)">
+<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Поделиться по email">
+<!ENTITY shareCardByEmailFromCardsLabel "Поделиться по email">
 <!ENTITY categoryLabel "Категория">
 <!ENTITY findEmailsFromCardsLabel "Искать сообщения, связанные с этим контактом">
 <!ENTITY findEventsFromCardsLabel "Искать события календаря, связанные с этим контактом">
 <!ENTITY localizeCardFromCardsLabel "Показать на карте">
-<!ENTITY openURLCardFromCardsLabel "Открыть URL из контакта">
-<!ENTITY cutCardFromAccountsOrCatsLabel "Вырезать контакт">
-<!ENTITY cutCardFromCardsLabel "Вырезать контакт">
-<!ENTITY copyCardFromAccountsOrCatsLabel "Копировать контакт">
-<!ENTITY copyCardFromCardsLabel "Копировать контакт">
-<!ENTITY pasteCardFromAccountsOrCatsLabel "Вставить контакт">
-<!ENTITY pasteCardFromCardsLabel "Вставить контакт">
-<!ENTITY exportCardToFileLabel "Экспортировать контакт в файл">
-<!ENTITY exportCardToDirLabel "Экспортировать контакт в каталог">
+<!ENTITY openURLCardFromCardsLabel "Открыть URL">
+<!ENTITY cutCardFromAccountsOrCatsLabel "Вырезать">
+<!ENTITY cutCardFromCardsLabel "Вырезать">
+<!ENTITY copyCardFromAccountsOrCatsLabel "Копировать">
+<!ENTITY copyCardFromCardsLabel "Копировать">
+<!ENTITY pasteCardFromAccountsOrCatsLabel "Вставить">
+<!ENTITY pasteCardFromCardsLabel "Вставить">
+<!ENTITY exportCardToFileLabel "Экспортировать в файл">
+<!ENTITY exportCardToDirLabel "Экспортировать в каталог">
 <!ENTITY importCardFromFileLabel "Импортировать контакт из файла">
 <!ENTITY importCardFromDirLabel "Импортировать контакт из каталога">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Переименовать категорию">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Удалить категорию">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Искать повторяющиеся контакты во текущей адресной книге">
-<!ENTITY generateFnFromAccountsOrCatsLabel "??Generate Display Names??">
+<!ENTITY generateFnFromAccountsOrCatsLabel "Формировать поле «Отображаемое имя»">
 <!ENTITY mergeCardsFromCardsLabel "Объеденить контакты">
 <!ENTITY duplicateCardFromCardsLabel "Клонировать контакт">
 <!ENTITY convertListToCategoryFromCardsLabel "Преобразовать список в категорию">

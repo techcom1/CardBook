@@ -1,7 +1,7 @@
 <!ENTITY wdw_cardbookConfigurationWindowLabel "A névjegyzék beállításai">
 
 <!ENTITY generalTabLabel "Általános">
-<!ENTITY editionTabLabel "Szerkesztés">
+<!ENTITY CardBookTabLabel "??CardBook Tab??">
 <!ENTITY typesTabLabel "Típusok">
 <!ENTITY IMPPsTabLabel "Internetes kommunikáció">
 <!ENTITY customFieldsTabLabel "Egyéni mezők">
@@ -84,6 +84,13 @@
 <!ENTITY localizeTargetInAccesskey "b">
 <!ENTITY localizeTargetOutLabel "Thunderbird kívül">
 <!ENTITY localizeTargetOutAccesskey "k">
+<!ENTITY showNameAsLabel "Nevek megjelenítése">
+<!ENTITY showNameAsLFLabel "Családnév Keresztnév">
+<!ENTITY showNameAsLFAccesskey "C">
+<!ENTITY showNameAsFLLabel "Keresztnév Családnév">
+<!ENTITY showNameAsFLAccesskey "K">
+<!ENTITY showNameAsDSPLabel "Megjelenítendő név">
+<!ENTITY showNameAsDSPAccesskey "M">
 <!ENTITY fnLabelExplanation "Lehetőség van a megszokott módon névjegyzék állítja elő az megjelenített neve. Ez a képlet áll blokkok által közrezárt „()”. Két része van ezekben a blokkokban által határolt „|”. Az első rész alkalmazandó, ha a kifejezés részt, például a {{1}}, nem nulla, a második része alkalmazandó, ha a kifejezés részt null.">
 <!ENTITY fnFormulaLabel "Képlet">
 <!ENTITY fnFormulaAccesskey "P">
@@ -131,9 +138,9 @@
 <!ENTITY deleteIMPPLabel "Törlés">
 <!ENTITY deleteIMPPAccesskey "T">
 
-<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldRankLabel "Sorrend">
 <!ENTITY customFieldCodeLabel "Mező neve">
-<!ENTITY customFieldLabelLabel "Mezőcímkét">
+<!ENTITY customFieldLabelLabel "Mező címke">
 <!ENTITY customFieldsPersTitleLabel "Személyes adatok">
 <!ENTITY customFieldsPersTitleAccesskey "a">
 <!ENTITY customFieldsOrgTitleLabel "Szakmai profil">
