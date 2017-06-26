@@ -1,7 +1,7 @@
 <!ENTITY wdw_cardbookConfigurationWindowLabel "Nastavitve CardBook">
 
 <!ENTITY generalTabLabel "Splošno">
-<!ENTITY CardBookTabLabel "??CardBook Tab??">
+<!ENTITY CardBookTabLabel "Zavihek CardBook">
 <!ENTITY typesTabLabel "Vrste">
 <!ENTITY IMPPsTabLabel "Int. komunikacija">
 <!ENTITY customFieldsTabLabel "Polja po meri">
