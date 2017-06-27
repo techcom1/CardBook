@@ -1,7 +1,7 @@
 <!ENTITY wdw_cardbookConfigurationWindowLabel "Настройки CardBook">
 
 <!ENTITY generalTabLabel "Основные">
-<!ENTITY CardBookTabLabel "??CardBook Tab??">
+<!ENTITY CardBookTabLabel "Вкладка CardBook">
 <!ENTITY typesTabLabel "Типы">
 <!ENTITY IMPPsTabLabel "Интернет–вызовы">
 <!ENTITY customFieldsTabLabel "Пользовательсткие поля">
