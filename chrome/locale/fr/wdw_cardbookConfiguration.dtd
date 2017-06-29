@@ -85,9 +85,9 @@
 <!ENTITY localizeTargetOutLabel "Hors de Thunderbird">
 <!ENTITY localizeTargetOutAccesskey "H">
 <!ENTITY showNameAsLabel "Afficher le nom comme">
-<!ENTITY showNameAsLFLabel "Nom Prénom">
+<!ENTITY showNameAsLFLabel "Nom de famille Prénom">
 <!ENTITY showNameAsLFAccesskey "o">
-<!ENTITY showNameAsFLLabel "Prénom Nom">
+<!ENTITY showNameAsFLLabel "Prénom Nom de famille">
 <!ENTITY showNameAsFLAccesskey "P">
 <!ENTITY showNameAsDSPLabel "Nom affiché">
 <!ENTITY showNameAsDSPAccesskey "f">

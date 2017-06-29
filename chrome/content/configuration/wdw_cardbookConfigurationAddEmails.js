@@ -10,7 +10,11 @@ if ("undefined" == typeof(wdw_cardbookConfigurationAddEmails)) {
 		},
 		
 		loadAB: function () {
-			cardbookElementTools.loadAddressBooks("CardBookABMenupopup", "CardBookABMenulist", window.arguments[0].addressBookId, true, false, true, false);
+			var aIncludeSearch = true;
+			if (window.arguments[0].context === "Collection") {
+				aIncludeSearch = false;
+			}
+			cardbookElementTools.loadAddressBooks("CardBookABMenupopup", "CardBookABMenulist", window.arguments[0].addressBookId, true, false, true, aIncludeSearch);
 		},
 		
 		loadCategories: function () {

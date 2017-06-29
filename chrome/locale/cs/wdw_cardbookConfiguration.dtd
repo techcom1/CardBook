@@ -1,7 +1,7 @@
 <!ENTITY wdw_cardbookConfigurationWindowLabel "Nastavení CardBooku">
 
 <!ENTITY generalTabLabel "Obecné">
-<!ENTITY CardBookTabLabel "??CardBook Tab??">
+<!ENTITY CardBookTabLabel "Záložka Cardbooku">
 <!ENTITY typesTabLabel "Typy">
 <!ENTITY IMPPsTabLabel "Adresy IM">
 <!ENTITY customFieldsTabLabel "Vlastní pole">

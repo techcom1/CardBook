@@ -1751,7 +1751,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			try {
 				var listOfSelectedCard = [];
 				var myTree = document.getElementById('accountsOrCatsTree');
-				if (cardbookRepository.cardbookSearchMode === "SEARCH" || cardbookRepository.cardbookComplexSearchMode === "SEARCH") {
+				if (cardbookRepository.cardbookSearchMode === "SEARCH") {
 					var myAccountPrefId = cardbookRepository.cardbookSearchValue;
 				} else {
 					var myAccountPrefId = myTree.view.getCellText(myTree.currentIndex, {id: "accountId"});
