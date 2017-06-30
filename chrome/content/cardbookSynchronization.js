@@ -2163,6 +2163,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			cardbookRepository.lComplexSearchAll[aPrefId] = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);
 			var lComplexSearch = cardbookRepository.lComplexSearchAll[aPrefId];
 			lComplexSearch.initWithCallback({ notify: function(lComplexSearch) {
+						cardbookUtils.notifyObservers("cardbook.syncRunning");
 						var request = cardbookSynchronization.getRequest(aPrefId, aPrefName);
 						var response = cardbookSynchronization.getResponse(aPrefId, aPrefName);
 						if (request == response) {

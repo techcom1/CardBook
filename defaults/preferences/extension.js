@@ -61,4 +61,4 @@ pref("extensions.cardbook.calendarEntryCategories", "");
 pref("extensions.cardbook.viewABPane", true);
 pref("extensions.cardbook.viewABContact", true);
 
-pref("extensions.cardbook.userAgent", "CardBook/19.8");
+pref("extensions.cardbook.userAgent", "CardBook/19.9");

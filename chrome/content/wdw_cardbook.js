@@ -1595,16 +1595,15 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		},
 		
 		createAddressbook: function (aFinishAction, aFinishParams) {
-			cardbookSynchronization.nullifyMultipleOperations();
 			for (var i = 0; i < aFinishParams.length; i++) {
 				let cardbookPrefService = new cardbookPreferenceService(aFinishParams[i].dirPrefId);
-				if (cardbookPrefService.getType() === "SEARCH") {
+				if (cardbookPrefService.getType() === "SEARCH" && aFinishAction === "SEARCH") {
 					wdw_cardbook.modifySearchAddressbook(aFinishParams[i].dirPrefId, aFinishParams[i].name, aFinishParams[i].color, aFinishParams[i].vcard, aFinishParams[i].readonly, 
 													aFinishParams[i].dateFormat, aFinishParams[i].urnuuid, aFinishParams[i].searchDef);
 					return;
 				}
 			}
-
+			cardbookSynchronization.nullifyMultipleOperations();
 			if (aFinishAction === "GOOGLE" || aFinishAction === "CARDDAV" || aFinishAction === "APPLE") {
 				wdw_cardbook.setNoComplexSearchMode();
 				wdw_cardbook.setNoSearchMode();
@@ -1825,7 +1824,9 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			cardbookUtils.formatStringForOutput("addressbookModified", [aName]);
 			wdw_cardbooklog.addActivity("addressbookModified", [aName], "editItem");
 			cardbookUtils.notifyObservers("cardbook.ABModifiedDirect", "accountid:" + aDirPrefId);
-			cardbookRepository.cardbookSyncMode = "NOSYNC";
+
+			cardbookRepository.emptyComplexSearchFromRepository(aDirPrefId);
+			cardbookComplexSearch.loadComplexSearchAccount(aDirPrefId, true, "WINDOW");
 		},
 
 		removeAddressbook: function () {

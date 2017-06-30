@@ -77,6 +77,11 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 		
 		observe: function(aSubject, aTopic, aData) {
 			switch (aTopic) {
+				case "cardbook.ABAddedDirect":
+				case "cardbook.ABRemovedDirect":
+				case "cardbook.ABModifiedDirect":
+					wdw_cardbookContactsSidebar.loadAB();
+					break;
 				case "cardbook.catAddedIndirect":
 				case "cardbook.cardAddedIndirect":
 				case "cardbook.cardRemovedIndirect":
@@ -91,9 +96,6 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 				case "cardbook.catRemovedDirect":
 				case "cardbook.catModifiedIndirect":
 				case "cardbook.catModifiedDirect":
-				case "cardbook.ABAddedDirect":
-				case "cardbook.ABRemovedDirect":
-				case "cardbook.ABModifiedDirect":
 				case "cardbook.cardAddedDirect":
 				case "cardbook.cardModifiedDirect":
 					wdw_cardbookContactsSidebar.onABChange();
@@ -405,19 +407,18 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 						}
 					// complex searches
 					} else if ((cardbookRepository.cardbookAccounts[i][6] === "SEARCH") && ((searchAB == myDirPrefId))) {
-						// first add cards
-						if ((searchCategory === "allCategories") || (searchCategory === "noCategory") || (searchCategory === "onlyCategories")) {
-							for (var j = 0; j < cardbookRepository.cardbookDisplayCards[myDirPrefId].length; j++) {
-								// All No categories
-								if (searchCategory !== "onlyCategories") {
-									var myCard = cardbookRepository.cardbookDisplayCards[myDirPrefId][j];
-									var mySourceDirPrefId = myCard.dirPrefId;
-									if (cardbookRepository.verifyABRestrictions(myDirPrefId, searchAB, wdw_cardbookContactsSidebar.ABExclRestrictions, wdw_cardbookContactsSidebar.ABInclRestrictions)) {
-									var myDirPrefName = cardbookUtils.getPrefNameFromPrefId(mySourceDirPrefId);
+						if (cardbookRepository.verifyABRestrictions(myDirPrefId, searchAB, wdw_cardbookContactsSidebar.ABExclRestrictions, wdw_cardbookContactsSidebar.ABInclRestrictions)) {
+							// first add cards
+							if ((searchCategory === "allCategories") || (searchCategory === "noCategory") || (searchCategory === "onlyCategories")) {
+								for (var j = 0; j < cardbookRepository.cardbookDisplayCards[myDirPrefId].length; j++) {
+									// All No categories
+									if (searchCategory !== "onlyCategories") {
+										var myCard = cardbookRepository.cardbookDisplayCards[myDirPrefId][j];
+										var myDirPrefName = cardbookUtils.getPrefNameFromPrefId(myCard.dirPrefId);
 										if (cardbookRepository.getSearchString(myCard).indexOf(searchInput) >= 0 || searchInput == "") {
-											if (wdw_cardbookContactsSidebar.catExclRestrictions[mySourceDirPrefId]) {
+											if (wdw_cardbookContactsSidebar.catExclRestrictions[myDirPrefId]) {
 												var add = true;
-												for (var l in wdw_cardbookContactsSidebar.catExclRestrictions[mySourceDirPrefId]) {
+												for (var l in wdw_cardbookContactsSidebar.catExclRestrictions[myDirPrefId]) {
 													if (cardbookUtils.contains(myCard.categories, l)) {
 														add = false;
 														break;
@@ -427,9 +428,9 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 													continue;
 												}
 											}
-											if (wdw_cardbookContactsSidebar.catInclRestrictions[mySourceDirPrefId]) {
+											if (wdw_cardbookContactsSidebar.catInclRestrictions[myDirPrefId]) {
 												var add = false;
-												for (var l in wdw_cardbookContactsSidebar.catInclRestrictions[mySourceDirPrefId]) {
+												for (var l in wdw_cardbookContactsSidebar.catInclRestrictions[myDirPrefId]) {
 													if (cardbookUtils.contains(myCard.categories, l)) {
 														add = true;
 														break;
@@ -453,22 +454,19 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 										}
 									}
 								}
-							}
-						// one category
-						} else {
-							var mySepPosition = searchCategory.indexOf("::",0);
-							var myCategory = searchCategory.substr(mySepPosition+2,searchCategory.length);
-							for (var j = 0; j < cardbookRepository.cardbookDisplayCards[myDirPrefId+'::'+myCategory].length; j++) {
-								var myCard = cardbookRepository.cardbookDisplayCards[myDirPrefId+'::'+myCategory][j];
-								var mySourceDirPrefId = myCard.dirPrefId;
-								if (cardbookRepository.verifyABRestrictions(myDirPrefId, searchAB, wdw_cardbookContactsSidebar.ABExclRestrictions, wdw_cardbookContactsSidebar.ABInclRestrictions)) {
-									var myDirPrefName = cardbookUtils.getPrefNameFromPrefId(mySourceDirPrefId);
+							// one category
+							} else {
+								var mySepPosition = searchCategory.indexOf("::",0);
+								var myCategory = searchCategory.substr(mySepPosition+2,searchCategory.length);
+								for (var j = 0; j < cardbookRepository.cardbookDisplayCards[myDirPrefId+'::'+myCategory].length; j++) {
+									var myCard = cardbookRepository.cardbookDisplayCards[myDirPrefId+'::'+myCategory][j];
+									var myDirPrefName = cardbookUtils.getPrefNameFromPrefId(myCard.dirPrefId);
 									// All No categories
 									if (searchCategory !== "onlyCategories") {
 										if (cardbookRepository.getSearchString(myCard).indexOf(searchInput) >= 0 || searchInput == "") {
-											if (wdw_cardbookContactsSidebar.catExclRestrictions[mySourceDirPrefId]) {
+											if (wdw_cardbookContactsSidebar.catExclRestrictions[myDirPrefId]) {
 												var add = true;
-												for (var l in wdw_cardbookContactsSidebar.catExclRestrictions[mySourceDirPrefId]) {
+												for (var l in wdw_cardbookContactsSidebar.catExclRestrictions[myDirPrefId]) {
 													if (cardbookUtils.contains(myCard.categories, l)) {
 														add = false;
 														break;
@@ -478,9 +476,9 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 													continue;
 												}
 											}
-											if (wdw_cardbookContactsSidebar.catInclRestrictions[mySourceDirPrefId]) {
+											if (wdw_cardbookContactsSidebar.catInclRestrictions[myDirPrefId]) {
 												var add = false;
-												for (var l in wdw_cardbookContactsSidebar.catInclRestrictions[mySourceDirPrefId]) {
+												for (var l in wdw_cardbookContactsSidebar.catInclRestrictions[myDirPrefId]) {
 													if (cardbookUtils.contains(myCard.categories, l)) {
 														add = true;
 														break;
