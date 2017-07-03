@@ -90,7 +90,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		wdw_cardbook.firstOpen();
 		// in case of opening a new window without having a reload
 		wdw_cardbook.loadCssRules();
-		wdw_cardbook.refreshWindow("accountid:0");
+		wdw_cardbook.refreshAccountsInDirTree();
 	},
 
 		syncAccounts: function () {

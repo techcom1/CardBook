@@ -1,7 +1,7 @@
 <!ENTITY wdw_cardbookConfigurationWindowLabel "Ustawienia CardBook">
 
 <!ENTITY generalTabLabel "Ogólne">
-<!ENTITY CardBookTabLabel "??CardBook Tab??">
+<!ENTITY CardBookTabLabel "Karta CardBook">
 <!ENTITY typesTabLabel "Typy">
 <!ENTITY IMPPsTabLabel "Komunikatory internetowe">
 <!ENTITY customFieldsTabLabel "Własne pola">
@@ -15,17 +15,17 @@
 <!ENTITY autocompletionLabel "Automatyczne uzupełnianie adresów e-mail">
 <!ENTITY autocompletionAccesskey "A">
 <!ENTITY autocompletionTooltip "Rozszerza automatyczne uzupełnianie adresów z wizytówek we wbudowanych książkach adresowych Thunderbirda o automatyczne uzupełnianie adresów z wizytówek w książkach adresowych CardBook.">
-<!ENTITY autocompleteSortByPopularityLabel "??Sort email addresses by popularity??">
+<!ENTITY autocompleteSortByPopularityLabel "Sortuj adresy e-mail według popularności">
 <!ENTITY autocompleteSortByPopularityAccesskey "p">
-<!ENTITY autocompleteShowAddressbookLabel "??Show address book name??">
+<!ENTITY autocompleteShowAddressbookLabel "Pokaż nazwę książki adresowej">
 <!ENTITY autocompleteShowAddressbookAccesskey "S">
-<!ENTITY autocompleteWithColorLabel "??Use address book color??">
+<!ENTITY autocompleteWithColorLabel "Używaj koloru książki adresowej">
 <!ENTITY autocompleteWithColorAccesskey "U">
-<!ENTITY useColorLabel "??Use address book color for:??">
-<!ENTITY useColorBackgroundLabel "??Background color??">
-<!ENTITY useColorBackgroundAccesskey "B">
-<!ENTITY useColorTextLabel "??Text color??">
-<!ENTITY useColorTextAccesskey "T">
+<!ENTITY useColorLabel "Używaj koloru książki adresowej do:">
+<!ENTITY useColorBackgroundLabel "tła">
+<!ENTITY useColorBackgroundAccesskey "T">
+<!ENTITY useColorTextLabel "tekstu">
+<!ENTITY useColorTextAccesskey "K">
 <!ENTITY exclusiveLabel "Wyłączne źródło wizytówek">
 <!ENTITY exclusiveAccesskey "W">
 <!ENTITY exclusiveTooltip "Wyłącz, aby pobierać adresy z wizytówek we wbudowanych książkach adresowych Thunderbirda do żółtych gwiazdek, wyświetlanych nazw i autouzupełniania adresów e-mail.">
@@ -138,7 +138,7 @@
 <!ENTITY deleteIMPPLabel "Usuń">
 <!ENTITY deleteIMPPAccesskey "U">
 
-<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldRankLabel "Kolejność">
 <!ENTITY customFieldCodeLabel "Nazwa pola">
 <!ENTITY customFieldLabelLabel "Etykieta pola">
 <!ENTITY customFieldsPersTitleLabel "Informacje osobiste">
@@ -154,7 +154,7 @@
 
 <!ENTITY orgWarn "Pole Organizacja może zawierać strukturę wartości tekstowych składającą się z elementów oddzielonych ŚREDNIKIEM (na przykład: twojafirma;twojausługa;twójdział). Pola poniżej opisują etykiety elementów tej struktury.">
 
-<!ENTITY listPanelLabel "Jeśli Twój serwer nie obsługuje kategorii (Google, Apple, Zimbra, itd…), listy są dobrym sposobem na wysyłanie e-maili do grup. vCard 3.0 nie obsługuje natywnie list, ale można je zastąpić własnymi polami, więc jeśli chcesz używać list w vCard 3.0, musisz zdefiniować te pola.">
+<!ENTITY listPanelLabel "Jeśli Twój serwer nie obsługuje kategorii (Google, Apple, Zimbra, itd…), listy są dobrym sposobem na wysyłanie e-maili do grup odbiorców. vCard 3.0 nie obsługuje natywnie list, ale można je zastąpić własnymi polami, więc jeśli chcesz używać list w vCard 3.0, musisz zdefiniować te pola.">
 <!ENTITY listGroupboxLabel "Własne pola dla list">
 <!ENTITY kindCustomLabel "Rodzaj">
 <!ENTITY kindCustomAccesskey "R">
@@ -203,12 +203,12 @@
 <!ENTITY displayvCardLabel "Zobacz vCard">
 <!ENTITY displayvCardAccesskey "Z">
 
-<!ENTITY birthdayListWarn "Daty urodzin są wyszukiwane tylko w książkach adresowych CardBook.?? Birthdays date formats are set up in the address book properties.??">
+<!ENTITY birthdayListWarn "Format dat urodzin jest ustawiany we właściwościach książki adresowej">
 <!ENTITY addressBooksGroupboxLabel "Książki adresowe">
 <!ENTITY calendarsGroupboxLabel "Kalendarze">
 <!ENTITY searchGroupboxLabel "Wyszukiwanie">
 <!ENTITY searchInNoteLabel "Wyszukuj daty urodzin w polu Notatki">
-<!ENTITY searchInNoteTooltip1 "??Add such lines in the Note field  (separator should be : and the date format should be the one defined for the address book) :??">
+<!ENTITY searchInNoteTooltip1 "Dodaj takie linie w polu Notatki (oddzielone : i w formacie daty takim, jaki jest ustawiony dla danej książki adresowej):">
 <!ENTITY searchInNoteTooltip2 "Wydarzenie:Opis:02.12.2006">
 <!ENTITY searchInNoteTooltipOld "Dodaj takie linie w polu Notatki (oddzielone : w formacie daty takim, jak podany poniżej): Urodziny:Ja i ty, pierwszy pocałunek:02.12.2006">
 <!ENTITY searchInNoteAccesskey "D">

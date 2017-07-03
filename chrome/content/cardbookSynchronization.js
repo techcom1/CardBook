@@ -2203,6 +2203,9 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			for (let i = 0; i < result.length; i++) {
 				cardbookComplexSearch.loadComplexSearchAccount(result[i], false, myMode);
 			}
+			if (result.length == 0) {
+				cardbookUtils.notifyObservers("cardbook.complexSearchInitLoaded");
+			}
 		},
 
 		loadAccounts: function () {
@@ -2213,6 +2216,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			var result = [];
 			result = cardbookPrefService.getAllPrefIds();
 			for (let i = 0; i < result.length; i++) {
+				var consoleService = Components.classes["@mozilla.org/consoleservice;1"].getService(Components.interfaces.nsIConsoleService);
 				cardbookSynchronization.loadAccount(result[i], initialSync, true, myMode);
 			}
 			cardbookSynchronization.setPeriodicSyncControl();
