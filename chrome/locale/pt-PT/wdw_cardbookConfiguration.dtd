@@ -1,7 +1,7 @@
 <!ENTITY wdw_cardbookConfigurationWindowLabel "Preferências do CardBook">
 
 <!ENTITY generalTabLabel "Geral">
-<!ENTITY CardBookTabLabel "??CardBook Tab??">
+<!ENTITY CardBookTabLabel "Tab CardBook">
 <!ENTITY typesTabLabel "Tipos">
 <!ENTITY IMPPsTabLabel "Endereços de mensagem instantanea">
 <!ENTITY customFieldsTabLabel "Campos customizaveis">
@@ -21,10 +21,10 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "M">
 <!ENTITY autocompleteWithColorLabel "Usar cor da agenda">
 <!ENTITY autocompleteWithColorAccesskey "U">
-<!ENTITY useColorLabel "??Use address book color for:??">
-<!ENTITY useColorBackgroundLabel "??Background color??">
+<!ENTITY useColorLabel "Usar cor da agenda para:">
+<!ENTITY useColorBackgroundLabel "Cor de fundo">
 <!ENTITY useColorBackgroundAccesskey "B">
-<!ENTITY useColorTextLabel "??Text color??">
+<!ENTITY useColorTextLabel "Cor do texto">
 <!ENTITY useColorTextAccesskey "T">
 <!ENTITY exclusiveLabel "CardBook como fonte unica de contactos">
 <!ENTITY exclusiveAccesskey "U">
@@ -139,7 +139,7 @@
 <!ENTITY deleteIMPPLabel "Apagar">
 <!ENTITY deleteIMPPAccesskey "G">
 
-<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldRankLabel "Rank">
 <!ENTITY customFieldCodeLabel "Nome do campo">
 <!ENTITY customFieldLabelLabel "Etiqueta do campo">
 <!ENTITY customFieldsPersTitleLabel "Information pessoal">
