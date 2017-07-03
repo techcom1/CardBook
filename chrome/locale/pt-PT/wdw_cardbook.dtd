@@ -55,8 +55,8 @@
 
 <!ENTITY GeneratedNameColumnLabel "Ícone">
 <!ENTITY nameColumnLabel "Nome">
-<!ENTITY lastnameColumnLabel "Nome">
-<!ENTITY firstnameColumnLabel "Apelido">
+<!ENTITY lastnameColumnLabel "Apelido">
+<!ENTITY firstnameColumnLabel "Nome">
 <!ENTITY othernameColumnLabel "Outros nomes">
 <!ENTITY prefixnameColumnLabel "Prefixo">
 <!ENTITY suffixnameColumnLabel "Sufixo">
