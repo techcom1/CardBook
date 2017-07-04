@@ -1,7 +1,7 @@
 <!ENTITY persTitleLabel "Information pessoal">
 <!ENTITY fnLabel "Nome de apresentação">
-<!ENTITY lastnameLabel "Apelido">
-<!ENTITY firstnameLabel "Nome">
+<!ENTITY lastnameLabel "Nome">
+<!ENTITY firstnameLabel "Apelido">
 <!ENTITY othernameLabel "Outros nomes">
 <!ENTITY suffixnameLabel "Sufixo">
 <!ENTITY prefixnameLabel "Prefixo">

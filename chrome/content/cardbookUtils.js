@@ -1525,18 +1525,36 @@ if ("undefined" == typeof(cardbookUtils)) {
 			return listOfUid.length;
 		},
 
+		setSelectedAccount: function (aAccountId, aFirstVisibleRow, aLastVisibleRow) {
+			if (aAccountId == "") {
+				return;
+			}
+			var foundIndex;
+			var myTree = document.getElementById('accountsOrCatsTree');
+			for (var i = 0; i < myTree.view.rowCount; i++) {
+				if (myTree.view.getCellText(i, {id: "accountId"}) == aAccountId) {
+					myTree.view.selection.select(i);
+					foundIndex = i;
+					break;
+				}
+			}
+			if (foundIndex < aFirstVisibleRow || foundIndex > aLastVisibleRow) {
+				myTree.boxObject.scrollToRow(foundIndex);
+			} else {
+				myTree.boxObject.scrollToRow(aFirstVisibleRow);
+			}
+		},
+
 		setSelectedCards: function (aListOfUid, aFirstVisibleRow, aLastVisibleRow) {
 			if (aListOfUid.length == 0) {
 				return;
 			}
-			var found = false;
 			var foundIndex;
 			var myTree = document.getElementById('cardsTree');
 			for (var i = 0; i < aListOfUid.length; i++) {
 				for (var j = 0; j < myTree.view.rowCount; j++) {
 					if (myTree.view.getCellText(j, {id: "uid"}) == aListOfUid[i]) {
 						myTree.view.selection.rangedSelect(j,j,true);
-						found = true;
 						foundIndex = j;
 						break;
 					}

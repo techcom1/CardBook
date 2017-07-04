@@ -23,7 +23,7 @@
 <!ENTITY autocompleteWithColorAccesskey "U">
 <!ENTITY useColorLabel "Usar cor da agenda para:">
 <!ENTITY useColorBackgroundLabel "Cor de fundo">
-<!ENTITY useColorBackgroundAccesskey "B">
+<!ENTITY useColorBackgroundAccesskey "f">
 <!ENTITY useColorTextLabel "Cor do texto">
 <!ENTITY useColorTextAccesskey "T">
 <!ENTITY exclusiveLabel "CardBook como fonte unica de contactos">
@@ -85,9 +85,9 @@
 <!ENTITY localizeTargetOutLabel "Fora do Thunderbird">
 <!ENTITY localizeTargetOutAccesskey "F">
 <!ENTITY showNameAsLabel "Mostrar nome como">
-<!ENTITY showNameAsLFLabel "Apelido Nome">
+<!ENTITY showNameAsLFLabel "Nome Apelido">
 <!ENTITY showNameAsLFAccesskey "A">
-<!ENTITY showNameAsFLLabel "Nome Apelido">
+<!ENTITY showNameAsFLLabel "Apelido Nome">
 <!ENTITY showNameAsFLAccesskey "N">
 <!ENTITY showNameAsDSPLabel "Nome de apresentação">
 <!ENTITY showNameAsDSPAccesskey "d">

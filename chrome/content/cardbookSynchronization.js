@@ -2216,7 +2216,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			var result = [];
 			result = cardbookPrefService.getAllPrefIds();
 			for (let i = 0; i < result.length; i++) {
-				var consoleService = Components.classes["@mozilla.org/consoleservice;1"].getService(Components.interfaces.nsIConsoleService);
 				cardbookSynchronization.loadAccount(result[i], initialSync, true, myMode);
 			}
 			cardbookSynchronization.setPeriodicSyncControl();

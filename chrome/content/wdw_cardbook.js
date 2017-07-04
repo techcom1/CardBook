@@ -4,6 +4,8 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		currentType : "",
 		currentIndex : "",
 		currentCardOfListId : "",
+		currentFirstVisibleRow : 0,
+		currentLastVisibleRow : 0,
 		cutAndPaste : [],
 
 		cardbookrefresh : false,
@@ -14,13 +16,15 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			// collect open container
 			var listOfOpenedContainer = [];			
 			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
-				if (cardbookRepository.cardbookAccounts[i][2]) {
+				if (cardbookRepository.cardbookAccounts[i][2] && !cardbookRepository.cardbookAccounts[i][3]) {
 					listOfOpenedContainer.push(cardbookRepository.cardbookAccounts[i][4]);
 				}
 			}
 
 			// close opened container
 			for (var i = 0; i < listOfOpenedContainer.length; i++) {
+				var cardbookPrefService = new cardbookPreferenceService(listOfOpenedContainer[i]);
+				var myDirPrefIdName = cardbookPrefService.getName();
 				var treeIndex = cardbookUtils.getPositionOfAccountId(listOfOpenedContainer[i]);
 				if (treeIndex != -1)  {
 					myTree.view.toggleOpenState(treeIndex);
@@ -29,8 +33,11 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			
 			// sort accounts
 			cardbookRepository.cardbookAccounts = cardbookUtils.sortArrayByString(cardbookRepository.cardbookAccounts,0,1);
+			
 			// open opened containers
 			for (var i = 0; i < listOfOpenedContainer.length; i++) {
+				var cardbookPrefService = new cardbookPreferenceService(listOfOpenedContainer[i]);
+				var myDirPrefIdName = cardbookPrefService.getName();
 				var treeIndex = cardbookUtils.getPositionOfAccountId(listOfOpenedContainer[i]);
 				if (treeIndex != -1)  {
 					myTree.view.toggleOpenState(treeIndex);
@@ -253,14 +260,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			}
 
 			var myTree = document.getElementById('accountsOrCatsTree');
-			var myPosition = cardbookUtils.getPositionOfAccountId(aAccountOrCat);
-			if (myPosition == -1) {
-				myPosition = cardbookUtils.getPositionOfAccountId(myCurrentDirPrefId);
-				if (myPosition == -1) {
-					myPosition = 0;
-				}
-			}
-			myTree.view.selection.select(myPosition);
+			cardbookUtils.setSelectedAccount(aAccountOrCat, wdw_cardbook.currentFirstVisibleRow, wdw_cardbook.currentLastVisibleRow);
 		},
 
 		displaySearch: function (aListOfCards) {
@@ -331,6 +331,8 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			try {
 				if (document.getElementById('accountsOrCatsTree')) {
 					var myTree = document.getElementById('accountsOrCatsTree');
+					wdw_cardbook.currentFirstVisibleRow = myTree.boxObject.getFirstVisibleRow();
+					wdw_cardbook.currentLastVisibleRow = myTree.boxObject.getLastVisibleRow();
 					cardbookDirTree.childData = cardbookRepository.cardbookAccountsCategories;
 					cardbookDirTree.visibleData = cardbookRepository.cardbookAccounts;
 					myTree.view = cardbookDirTree;
