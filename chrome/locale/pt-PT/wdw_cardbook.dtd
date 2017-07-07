@@ -31,8 +31,10 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Sincronizar todas as agendas remotas">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Preferências">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Preferências do CardBook">
-<!ENTITY cardbookToolbarAddButtonLabel "Novo contacto">
-<!ENTITY cardbookToolbarAddButtonTooltip "Permitir criação de contacto">
+<!ENTITY cardbookToolbarAddContactButtonLabel "Novo contacto">
+<!ENTITY cardbookToolbarAddContactButtonTooltip "Criar novo contacto no livro de endereços">
+<!ENTITY cardbookToolbarAddListButtonLabel "Nova lista">
+<!ENTITY cardbookToolbarAddListButtonTooltip "Criar nova lista">
 <!ENTITY cardbookToolbarEditButtonLabel "Editar">
 <!ENTITY cardbookToolbarEditButtonTooltip "Permitir alteração de contacto">
 <!ENTITY cardbookToolbarRemoveButtonLabel "Apagar">

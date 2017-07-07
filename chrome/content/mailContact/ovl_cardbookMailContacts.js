@@ -70,7 +70,7 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 		newInCardBook: function() {
 			try {
 				var myNewCard = new cardbookCardParser();
-				cardbookUtils.openEditionWindow(myNewCard, "CreateCard", "cardbook.cardAddedIndirect");
+				cardbookUtils.openEditionWindow(myNewCard, "CreateContact", "cardbook.cardAddedIndirect");
 			}
 			catch (e) {
 				var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
@@ -137,10 +137,15 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 				var myOutCard = new cardbookCardParser();
 				cardbookUtils.cloneCard(myCard, myOutCard);
 				var cardbookPrefService = new cardbookPreferenceService(myCard.dirPrefId);
-				if (cardbookPrefService.getReadOnly()) {
-					cardbookUtils.openEditionWindow(myOutCard, "ViewCard");
+				if (myOutCard.isAList) {
+					var myType = "List";
 				} else {
-					cardbookUtils.openEditionWindow(myOutCard, "EditCard", "cardbook.cardModifiedIndirect");
+					var myType = "Contact";
+				}
+				if (cardbookPrefService.getReadOnly()) {
+					cardbookUtils.openEditionWindow(myOutCard, "View" + myType);
+				} else {
+					cardbookUtils.openEditionWindow(myOutCard, "Edit" + myType, "cardbook.cardModifiedIndirect");
 				}
 				UpdateEmailNodeDetails(myEmail, myEmailNode);
 			}

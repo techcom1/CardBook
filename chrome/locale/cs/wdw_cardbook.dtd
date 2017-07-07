@@ -31,8 +31,10 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synchronizovat všechny adresáře">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Předvolby">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Nastavení CardBooku">
-<!ENTITY cardbookToolbarAddButtonLabel "Nový kontakt">
-<!ENTITY cardbookToolbarAddButtonTooltip "Dovoluje přidat kontakt">
+<!ENTITY cardbookToolbarAddContactButtonLabel "Nový kontakt">
+<!ENTITY cardbookToolbarAddContactButtonTooltip "Vytvoří nový kontakt">
+<!ENTITY cardbookToolbarAddListButtonLabel "Nová skupina">
+<!ENTITY cardbookToolbarAddListButtonTooltip "Vytvoří novou skupinu">
 <!ENTITY cardbookToolbarEditButtonLabel "Upravit">
 <!ENTITY cardbookToolbarEditButtonTooltip "Dovoluje úpravu kontaktu">
 <!ENTITY cardbookToolbarRemoveButtonLabel "Smazat">

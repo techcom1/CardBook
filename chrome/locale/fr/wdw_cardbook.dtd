@@ -31,8 +31,10 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synchroniser tous les carnets d'adresses distants">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Préférences">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Préférences de CardBook">
-<!ENTITY cardbookToolbarAddButtonLabel "Nouveau contact">
-<!ENTITY cardbookToolbarAddButtonTooltip "Permet la création d'un contact">
+<!ENTITY cardbookToolbarAddContactButtonLabel "Nouveau contact">
+<!ENTITY cardbookToolbarAddContactButtonTooltip "Créer un nouveau contact">
+<!ENTITY cardbookToolbarAddListButtonLabel "Nouvelle liste">
+<!ENTITY cardbookToolbarAddListButtonTooltip "Créer une nouvelle liste de diffusion">
 <!ENTITY cardbookToolbarEditButtonLabel "Modifier">
 <!ENTITY cardbookToolbarEditButtonTooltip "Permet la modification d'un contact">
 <!ENTITY cardbookToolbarRemoveButtonLabel "Supprimer">

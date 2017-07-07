@@ -31,8 +31,10 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Синхронизирует все удалённые адресные книги">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Настройки">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Открывает панель настроек CardBook">
-<!ENTITY cardbookToolbarAddButtonLabel "Создать контакт">
-<!ENTITY cardbookToolbarAddButtonTooltip "Позволяет создать новый контакт">
+<!ENTITY cardbookToolbarAddContactButtonLabel "Создать контакт">
+<!ENTITY cardbookToolbarAddContactButtonTooltip "Создание нового контакта адресной книги">
+<!ENTITY cardbookToolbarAddListButtonLabel "Создать список">
+<!ENTITY cardbookToolbarAddListButtonTooltip "Создание нового списка рассылки">
 <!ENTITY cardbookToolbarEditButtonLabel "Править">
 <!ENTITY cardbookToolbarEditButtonTooltip "Позволяет измененить контакт">
 <!ENTITY cardbookToolbarRemoveButtonLabel "Удалить">

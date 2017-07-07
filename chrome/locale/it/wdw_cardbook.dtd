@@ -31,8 +31,10 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Sincronizza tutte le rubriche remote">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Opzioni">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Opzioni di CardBook">
-<!ENTITY cardbookToolbarAddButtonLabel "Nuovo contatto">
-<!ENTITY cardbookToolbarAddButtonTooltip "Permetti la creazione di contatti">
+<!ENTITY cardbookToolbarAddContactButtonLabel "Nuovo contatto">
+<!ENTITY cardbookToolbarAddContactButtonTooltip "Crea un nuovo contatto in rubrica">
+<!ENTITY cardbookToolbarAddListButtonLabel "Nuova lista">
+<!ENTITY cardbookToolbarAddListButtonTooltip "Crea una nuova lista">
 <!ENTITY cardbookToolbarEditButtonLabel "Modifica">
 <!ENTITY cardbookToolbarEditButtonTooltip "Permetti la modifica dei contatti">
 <!ENTITY cardbookToolbarRemoveButtonLabel "Elimina">

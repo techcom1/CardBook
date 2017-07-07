@@ -31,8 +31,10 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Internet adresboeken synchroniseren">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Voorkeuren">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "CardBook voorkeuren">
-<!ENTITY cardbookToolbarAddButtonLabel "Nieuw contact">
-<!ENTITY cardbookToolbarAddButtonTooltip "Nieuwe contactpersoon toestaan">
+<!ENTITY cardbookToolbarAddContactButtonLabel "Nieuw contact">
+<!ENTITY cardbookToolbarAddContactButtonTooltip "Een nieuw adresboekcontact aanmaken">
+<!ENTITY cardbookToolbarAddListButtonLabel "Nieuwe lijst">
+<!ENTITY cardbookToolbarAddListButtonTooltip "Een nieuwe lijst aanmaken">
 <!ENTITY cardbookToolbarEditButtonLabel "Wijzigen">
 <!ENTITY cardbookToolbarEditButtonTooltip "Contactpersoon wijzigen toestaan">
 <!ENTITY cardbookToolbarRemoveButtonLabel "Verwijderen">

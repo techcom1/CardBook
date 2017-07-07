@@ -681,10 +681,15 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 				var myOutCard = new cardbookCardParser();
 				cardbookUtils.cloneCard(myCard, myOutCard);
 				var cardbookPrefService = new cardbookPreferenceService(myCard.dirPrefId);
-				if (cardbookPrefService.getReadOnly()) {
-					cardbookUtils.openEditionWindow(myOutCard, "ViewCard");
+				if (myOutCard.isAList) {
+					var myType = "List";
 				} else {
-					cardbookUtils.openEditionWindow(myOutCard, "EditCard", "cardbook.cardModifiedIndirect");
+					var myType = "Contact";
+				}
+				if (cardbookPrefService.getReadOnly()) {
+					cardbookUtils.openEditionWindow(myOutCard, "View" + myType);
+				} else {
+					cardbookUtils.openEditionWindow(myOutCard, "Edit" + myType, "cardbook.cardModifiedIndirect");
 				}
 			} else if (listOfUid[0][0] === "CARDCORE") {
 				var myCard = listOfUid[0][1];

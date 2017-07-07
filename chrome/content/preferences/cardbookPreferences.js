@@ -281,9 +281,9 @@ cardbookPreferenceService.prototype = {
 				var prefNumber = prefName.replace(aType + '.', '');
 				var prefValue = this.getCustomFields(prefName);
 				var tmpArray = prefValue.split(":");
-				finalResult.push([tmpArray[0], tmpArray[1], prefNumber]);
+				finalResult.push([tmpArray[0], tmpArray[1], parseInt(prefNumber)]);
 			}
-			finalResult = cardbookUtils.sortArrayByString(finalResult,2,1);
+			finalResult = cardbookUtils.sortArrayByNumber(finalResult,2,1);
 			return finalResult;
 		}
 		catch(e) {

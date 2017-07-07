@@ -22,7 +22,6 @@ if ("undefined" == typeof(cardbookObserver)) {
 				case "viewABContact":
 					ovl_cardbookLayout.resizePanes();
 					break;
-				case "listTabView":
 				case "mailPopularityTabView":
 				case "technicalTabView":
 				case "vcardTabView":

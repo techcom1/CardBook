@@ -1013,10 +1013,11 @@ if ("undefined" == typeof(cardbookUtils)) {
 			}
 
 			document.getElementById('defaultCardImage').src = "";
-			cardbookElementTools.deleteRows('mailPopularityRows');
+			cardbookElementTools.deleteRows('addedCardsGroupbox');
+			cardbookElementTools.deleteRows('mailPopularityGroupbox');
 		},
 
-		displayCard: function (aCard, aReadOnly) {
+		displayCard: function (aCard, aReadOnly, aFollowLink) {
 			var fieldArray = [ "fn", "lastname", "firstname", "othername", "prefixname", "suffixname", "nickname", "bday",
 								"gender", "note", "mailer", "geo", "sortstring", "class1", "tz", "agent", "key", "prodid",
 								"uid", "version", "dirPrefId", "cardurl", "rev", "etag" ];
@@ -1074,7 +1075,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			var typesList = [ 'email', 'tel', 'impp', 'url', 'adr' ];
 			for (var i in typesList) {
 				if (aReadOnly) {
-					cardbookTypes.constructStaticRows(typesList[i], aCard[typesList[i]], aCard.version);
+					cardbookTypes.constructStaticRows(typesList[i], aCard[typesList[i]], aCard.version, aFollowLink);
 				} else {
 					if (typesList[i] === "impp") {
 						cardbookTypes.loadIMPPs(aCard[typesList[i]]);
@@ -1083,12 +1084,11 @@ if ("undefined" == typeof(cardbookUtils)) {
 				}
 			}
 			if (aReadOnly) {
-				cardbookTypes.loadStaticList(aCard);
-				cardbookTypes.constructStaticMailPopularity(aCard);
+				cardbookTypes.loadStaticList(aCard, aFollowLink);
 			} else {
 				wdw_cardEdition.displayLists(aCard);
-				cardbookTypes.constructDynamicMailPopularity(aCard);
 			}
+			cardbookTypes.loadMailPopularity(aCard, aReadOnly);
 		},
 
 		adjustFields: function () {

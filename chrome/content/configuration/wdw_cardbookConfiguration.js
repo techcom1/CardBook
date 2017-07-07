@@ -120,7 +120,11 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			}
 			
 			if (myData && myData.length) {
-				myData = cardbookUtils.sortArrayByString(myData,columnArray,order);
+				if (columnName != 'customFieldsRank') {
+					myData = cardbookUtils.sortArrayByString(myData,columnArray,order);
+				} else {
+					myData = cardbookUtils.sortArrayByNumber(myData,columnArray,order);
+				}
 			}
 
 			//setting these will make the sort option persist
@@ -1401,8 +1405,8 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				return;
 			} else {
 				var myId = myTree.view.getCellText(myTree.currentIndex, {id: "customFieldsRank"})*1;
-				var temp = [wdw_cardbookConfiguration.allCustomFields[type][myId-1][0], wdw_cardbookConfiguration.allCustomFields[type][myId-1][1], myId];
-				wdw_cardbookConfiguration.allCustomFields[type][myId-1] = [wdw_cardbookConfiguration.allCustomFields[type][myId][0], wdw_cardbookConfiguration.allCustomFields[type][myId][1], myId-1];
+				var temp = [wdw_cardbookConfiguration.allCustomFields[type][myId-1][0], wdw_cardbookConfiguration.allCustomFields[type][myId-1][1], parseInt(myId)];
+				wdw_cardbookConfiguration.allCustomFields[type][myId-1] = [wdw_cardbookConfiguration.allCustomFields[type][myId][0], wdw_cardbookConfiguration.allCustomFields[type][myId][1], parseInt(myId-1)];
 				wdw_cardbookConfiguration.allCustomFields[type][myId] = temp;
 				wdw_cardbookConfiguration.sortTrees(null, "customFields");
 			}
@@ -1415,8 +1419,8 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				return;
 			} else {
 				var myId = myTree.view.getCellText(myTree.currentIndex, {id: "customFieldsRank"})*1;
-				var temp = [wdw_cardbookConfiguration.allCustomFields[type][myId+1][0], wdw_cardbookConfiguration.allCustomFields[type][myId+1][1], myId];
-				wdw_cardbookConfiguration.allCustomFields[type][myId+1] = [wdw_cardbookConfiguration.allCustomFields[type][myId][0], wdw_cardbookConfiguration.allCustomFields[type][myId][1], myId+1];
+				var temp = [wdw_cardbookConfiguration.allCustomFields[type][myId+1][0], wdw_cardbookConfiguration.allCustomFields[type][myId+1][1], parseInt(myId)];
+				wdw_cardbookConfiguration.allCustomFields[type][myId+1] = [wdw_cardbookConfiguration.allCustomFields[type][myId][0], wdw_cardbookConfiguration.allCustomFields[type][myId][1], parseInt(myId+1)];
 				wdw_cardbookConfiguration.allCustomFields[type][myId] = temp;
 				wdw_cardbookConfiguration.sortTrees(null, "customFields");
 			}

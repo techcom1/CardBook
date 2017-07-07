@@ -37,7 +37,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				for (var i = 0; i < aCard.member.length; i++) {
 					var uid = aCard.member[i].replace("urn:uuid:", "");
 					if (cardbookRepository.cardbookCards[aCard.dirPrefId+"::"+uid]) {
-						wdw_cardEdition.cardbookeditlists.addedCards.push([aCard.member[i], cardbookRepository.cardbookCards[aCard.dirPrefId+"::"+uid].fn]);
+						wdw_cardEdition.cardbookeditlists.addedCards.push([aCard.member[i], cardbookUtils.getName(cardbookRepository.cardbookCards[aCard.dirPrefId+"::"+uid])]);
 					}
 				}
 			} else if (aCard.version == "3.0") {
@@ -54,7 +54,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 							document.getElementById('kindTextBox').value = trailer;
 						} else if (header == memberCustom) {
 							if (cardbookRepository.cardbookCards[aCard.dirPrefId+"::"+trailer.replace("urn:uuid:", "")]) {
-								wdw_cardEdition.cardbookeditlists.addedCards.push([trailer, cardbookRepository.cardbookCards[aCard.dirPrefId+"::"+trailer.replace("urn:uuid:", "")].fn]);
+								wdw_cardEdition.cardbookeditlists.addedCards.push([trailer, cardbookUtils.getName(cardbookRepository.cardbookCards[aCard.dirPrefId+"::"+trailer.replace("urn:uuid:", "")])]);
 							}
 						}
 					}
@@ -206,7 +206,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 									}
 								}
 								if (!found && myCard.uid != document.getElementById('uidTextBox').value) {
-									wdw_cardEdition.cardbookeditlists.availableCards.push(["urn:uuid:" + myCard.uid, myCard.fn]);
+									wdw_cardEdition.cardbookeditlists.availableCards.push(["urn:uuid:" + myCard.uid, cardbookUtils.getName(myCard)]);
 								}
 							}
 						}
@@ -281,8 +281,9 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('saveEditionLabel').setAttribute('hidden', 'true');
 				document.getElementById('cardbookSwitchButtonDown').setAttribute('hidden', 'true');
 				document.getElementById('cardbookSwitchButtonUp').setAttribute('hidden', 'true');
-				document.getElementById('cardbookCalendar').setAttribute('hidden', 'true');
-			} else if (window.arguments[0].editionMode == "ViewCard") {
+				document.getElementById('bdayCardbookCalendar').setAttribute('hidden', 'true');
+				document.getElementById('noteCardbookCalendar').setAttribute('hidden', 'true');
+			} else if (window.arguments[0].editionMode == "ViewContact" || window.arguments[0].editionMode == "ViewList") {
 				document.getElementById('addressbookMenulist').disabled = true;
 				document.getElementById('addressbookMenulistLabel').label = strBundle.getString("dirPrefIdLabel");
 				document.getElementById('existingDataGroupbox').setAttribute('hidden', 'true');
@@ -298,8 +299,9 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('saveEditionLabel').setAttribute('hidden', 'true');
 				document.getElementById('cardbookSwitchButtonDown').setAttribute('hidden', 'true');
 				document.getElementById('cardbookSwitchButtonUp').setAttribute('hidden', 'true');
-				document.getElementById('cardbookCalendar').setAttribute('hidden', 'true');
-			} else if (window.arguments[0].editionMode == "EditCard") {
+				document.getElementById('bdayCardbookCalendar').setAttribute('hidden', 'true');
+				document.getElementById('noteCardbookCalendar').setAttribute('hidden', 'true');
+			} else if (window.arguments[0].editionMode == "EditContact" || window.arguments[0].editionMode == "EditList") {
 				document.getElementById('addressbookMenulist').disabled = false;
 				document.getElementById('addressbookMenulistLabel').label = strBundle.getString("dirPrefIdLabel");
 				document.getElementById('existingDataGroupbox').setAttribute('hidden', 'true');
@@ -310,7 +312,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('listReadWriteGroupbox').removeAttribute('hidden');
 				document.getElementById('createEditionLabel').setAttribute('hidden', 'true');
 				document.getElementById('createAndReplaceEditionLabel').setAttribute('hidden', 'true');
-			} else if (window.arguments[0].editionMode == "CreateCard" ) {
+			} else if (window.arguments[0].editionMode == "CreateContact" || window.arguments[0].editionMode == "CreateList") {
 				document.getElementById('addressbookMenulist').disabled = false;
 				document.getElementById('addressbookMenulistLabel').label = strBundle.getString("addToAddressbook");
 				document.getElementById('existingDataGroupbox').setAttribute('hidden', 'true');
@@ -321,7 +323,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('listReadWriteGroupbox').removeAttribute('hidden');
 				document.getElementById('createEditionLabel').setAttribute('hidden', 'true');
 				document.getElementById('createAndReplaceEditionLabel').setAttribute('hidden', 'true');
-			} else if (window.arguments[0].editionMode == "AddEmail" ) {
+			} else if (window.arguments[0].editionMode == "AddEmail") {
 				wdw_cardEdition.emailToAdd = wdw_cardEdition.workingCard.email[0];
 				document.getElementById('addressbookMenulist').disabled = false;
 				document.getElementById('addressbookMenulistLabel').label = strBundle.getString("addToAddressbook");
@@ -333,6 +335,17 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('listReadWriteGroupbox').removeAttribute('hidden');
 				document.getElementById('createEditionLabel').setAttribute('hidden', 'true');
 				document.getElementById('createAndReplaceEditionLabel').setAttribute('hidden', 'true');
+			}
+			if (window.arguments[0].editionMode == "CreateList") {
+				document.getElementById('contactGroupbox').setAttribute('hidden', 'true');
+				document.getElementById('listGroupbox').removeAttribute('hidden');
+				wdw_cardEdition.expandButton(document.getElementById('expandPersButton'));
+				wdw_cardEdition.expandButton(document.getElementById('expandOrgButton'));
+				document.getElementById('firstTabSpacer').setAttribute('hidden', 'true');
+			} else {
+				document.getElementById('contactGroupbox').removeAttribute('hidden');
+				document.getElementById('listGroupbox').setAttribute('hidden', 'true');
+				document.getElementById('firstTabSpacer').removeAttribute('hidden');
 			}
 			document.getElementById('lastnameTextBox').focus();
 			document.getElementById('addressbookMenulistLabel').scrollIntoView();
@@ -418,6 +431,17 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			document.getElementById('firstnameTextBox').value = tmpValue;
 			document.getElementById('lastnameTextBox').focus();
 			wdw_cardEdition.setDisplayName();
+		},
+
+		expandButton: function (aButton) {
+			var myGrid = document.getElementById(aButton.id.replace(/^expand/, "").replace(/Button$/, "").toLowerCase() + "Grid");
+			if (aButton.label == "+") {
+				myGrid.removeAttribute('hidden');
+				aButton.setAttribute('label', '-');
+			} else {
+				myGrid.setAttribute('hidden', 'true');
+				aButton.setAttribute('label', '+');
+			}
 		},
 
 		openCalendarPanel: function (aType) {
@@ -517,11 +541,13 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		displayCard: function (aCard) {
 			wdw_cardEdition.clearCard();
 			var cardbookPrefService = new cardbookPreferenceService(aCard.dirPrefId);
-			cardbookUtils.displayCard(aCard, cardbookPrefService.getReadOnly());
+			var aReadOnly = cardbookPrefService.getReadOnly();
+			var aFollowLink = false;
+			cardbookUtils.displayCard(aCard, aReadOnly, aFollowLink);
 			
 			wdw_cardEdition.loadCategories(aCard.categories);
 			document.getElementById('photoExtensionTextBox').value = aCard.photo.extension;
-			if (!cardbookPrefService.getReadOnly()) {
+			if (!aReadOnly) {
 				cardbookTypes.display40(aCard.version);
 			} else {
 				cardbookUtils.adjustFields();
@@ -676,14 +702,14 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		load: function () {
 			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-			document.getElementById('listTab').setAttribute("collapsed", !prefs.getBoolPref("extensions.cardbook.listTabView"));
 			document.getElementById('mailPopularityTab').setAttribute("collapsed", !prefs.getBoolPref("extensions.cardbook.mailPopularityTabView"));
 
 			cardbookUtils.purgeEditionPhotoTempFile();
 
 			wdw_cardEdition.workingCard = new cardbookCardParser();
 			cardbookUtils.cloneCard(window.arguments[0].cardIn, wdw_cardEdition.workingCard);
-			cardbookElementTools.loadAddressBooks("addressbookMenupopup", "addressbookMenulist", wdw_cardEdition.workingCard.dirPrefId, true, false, (window.arguments[0].editionMode == "ViewCard"), false);
+			cardbookElementTools.loadAddressBooks("addressbookMenupopup", "addressbookMenulist", wdw_cardEdition.workingCard.dirPrefId, true, false,
+													(window.arguments[0].editionMode == "ViewContact" || window.arguments[0].editionMode == "ViewList"), false);
 			if (wdw_cardEdition.workingCard.dirPrefId == "") {
 				wdw_cardEdition.workingCard.dirPrefId = document.getElementById('addressbookMenulist').selectedItem.value;
 			}
@@ -779,7 +805,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		},
 
 		saveFinal: function () {
-			if (cardbookTypes.validateDynamicTypes() && cardbookTypes.validateMailPopularity() && window.arguments[0].editionMode != "ViewCard") {
+			if (cardbookTypes.validateDynamicTypes() && cardbookTypes.validateMailPopularity() && window.arguments[0].editionMode != "ViewContact" && window.arguments[0].editionMode != "ViewList") {
 				var myOutCard = new cardbookCardParser();
 				wdw_cardEdition.calculateResult(myOutCard);
 				wdw_cardEdition.saveMailPopularity();

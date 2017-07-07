@@ -22,11 +22,19 @@ toolbar[iconsize="small"] #cardbookToolbarConfigurationButton {
 	list-style-image: url("chrome://cardbook/skin/configuration_16_16.png");
 }
 
-#cardbookToolbarAddButton {
+#cardbookToolbarAddContactButton {
 	list-style-image: url("chrome://cardbook/skin/add_24_24.png");
 }
 
-toolbar[iconsize="small"] #cardbookToolbarAddButton {
+toolbar[iconsize="small"] #cardbookToolbarAddContactButton {
+	list-style-image: url("chrome://cardbook/skin/add_16_16.png");
+}
+
+#cardbookToolbarAddListButton {
+	list-style-image: url("chrome://cardbook/skin/add_24_24.png");
+}
+
+toolbar[iconsize="small"] #cardbookToolbarAddListButton {
 	list-style-image: url("chrome://cardbook/skin/add_16_16.png");
 }
 

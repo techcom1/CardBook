@@ -31,8 +31,10 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Sinhroniziraj vse oddaljene imenike">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Nastavitve">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Nastavitve CardBook">
-<!ENTITY cardbookToolbarAddButtonLabel "Nov stik">
-<!ENTITY cardbookToolbarAddButtonTooltip "Dovoli ustvarjanje stika">
+<!ENTITY cardbookToolbarAddContactButtonLabel "Nov stik">
+<!ENTITY cardbookToolbarAddContactButtonTooltip "Ustvari nov stik v imeniku">
+<!ENTITY cardbookToolbarAddListButtonLabel "Nov seznam">
+<!ENTITY cardbookToolbarAddListButtonTooltip "Ustvari nov seznam">
 <!ENTITY cardbookToolbarEditButtonLabel "Uredi">
 <!ENTITY cardbookToolbarEditButtonTooltip "Dovoli spreminjanje stika">
 <!ENTITY cardbookToolbarRemoveButtonLabel "Izbriši">

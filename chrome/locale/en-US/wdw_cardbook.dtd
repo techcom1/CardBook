@@ -31,8 +31,10 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synchronize all remote address books">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Preferences">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "CardBook Preferences">
-<!ENTITY cardbookToolbarAddButtonLabel "New Contact">
-<!ENTITY cardbookToolbarAddButtonTooltip "Create a new contact">
+<!ENTITY cardbookToolbarAddContactButtonLabel "New Contact">
+<!ENTITY cardbookToolbarAddContactButtonTooltip "Create a new address book contact">
+<!ENTITY cardbookToolbarAddListButtonLabel "New List">
+<!ENTITY cardbookToolbarAddListButtonTooltip "Create a new list">
 <!ENTITY cardbookToolbarEditButtonLabel "Edit">
 <!ENTITY cardbookToolbarEditButtonTooltip "Edit the selected contact">
 <!ENTITY cardbookToolbarRemoveButtonLabel "Delete">

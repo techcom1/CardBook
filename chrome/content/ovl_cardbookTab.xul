@@ -195,7 +195,6 @@
 								
 								<tabs>
 									<tab id="generalTab" label="&generalTabLabel;"/>
-									<tab id="listTab" label="&listTabLabel;"/>
 									<tab id="mailPopularityTab" label="&mailPopularityTabLabel;"/>
 									<tab id="technicalTab" label="&technicalTabLabel;"/>
 									<tab id="vcardTab" label="&vcardTabLabel;"/>
@@ -315,6 +314,19 @@
 												</grid>
 											</vbox>
 										</hbox>
+										<hbox id="listGroupbox" flex="1">
+											<vbox flex="1">
+												<grid align="center" flex="1">
+													<columns>
+														<column/>
+														<column flex="1"/>
+													</columns>
+													<rows flex="1">
+														<groupbox id="addedCardsGroupbox" flex="1"/>
+													</rows>
+												</grid>
+											</vbox>
+										</hbox>
 										<hbox flex="1">
 											<groupbox id="noteGroupbox" flex="1">
 												<caption label="&noteTabLabel;" class="header"/>
@@ -330,32 +342,15 @@
 									</tabpanel>
 				
 									<tabpanel orient="vertical" style="overflow:auto">
-										<vbox id="listGroupbox" flex="1">
-											<grid align="center" flex="1">
-												<columns>
-													<column/>
-													<column flex="1"/>
-												</columns>
-												<rows>
-													<groupbox id="addedCardsGroupbox" flex="1">
-														<caption label="&addedCardsGroupboxLabel;" class="header"/>
-														<vbox id="addedCardsBox" flex="1"/>
-													</groupbox>
-												</rows>
-											</grid>
-											<spacer flex="100"/>
-										</vbox>
-									</tabpanel>
-				
-									<tabpanel orient="vertical" style="overflow:auto">
 										<groupbox id="mailPopularityReadWriteGroupbox" flex="1">
-											<caption label="&mailPopularityTabLabel;" class="header"/>
 											<grid>
 												<columns flex="1">
 													<column/>
 													<column flex="1"/>
 												</columns>
-												<rows id="mailPopularityRows"/>
+												<rows flex="1">
+													<groupbox id="mailPopularityGroupbox" flex="1"/>
+												</rows>
 											</grid>
 										</groupbox>
 										<spacer flex="100"/>

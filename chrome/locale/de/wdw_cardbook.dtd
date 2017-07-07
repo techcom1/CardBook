@@ -31,8 +31,10 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Alle Netzwerk-Adressbücher synchronisieren">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Einstellungen">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "CardBook-Einstellungen">
-<!ENTITY cardbookToolbarAddButtonLabel "Neuer Kontakt">
-<!ENTITY cardbookToolbarAddButtonTooltip "Erlaube das Erstellen von Kontakten">
+<!ENTITY cardbookToolbarAddContactButtonLabel "Neuer Kontakt">
+<!ENTITY cardbookToolbarAddContactButtonTooltip "Neuen Kontakt erstellen">
+<!ENTITY cardbookToolbarAddListButtonLabel "Neue Liste">
+<!ENTITY cardbookToolbarAddListButtonTooltip "Neue Verteilerliste erstellen">
 <!ENTITY cardbookToolbarEditButtonLabel "Bearbeiten">
 <!ENTITY cardbookToolbarEditButtonTooltip "Erlaube das Ändern von Kontakten">
 <!ENTITY cardbookToolbarRemoveButtonLabel "Löschen">

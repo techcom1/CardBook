@@ -31,8 +31,10 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Minden távoli névjegytár összehangolása">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Beállítások">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Névjegyzék beállítások">
-<!ENTITY cardbookToolbarAddButtonLabel "Új névjegy">
-<!ENTITY cardbookToolbarAddButtonTooltip "Új névjegy">
+<!ENTITY cardbookToolbarAddContactButtonLabel "Új névjegy">
+<!ENTITY cardbookToolbarAddContactButtonTooltip "Új névjegy létrehozása">
+<!ENTITY cardbookToolbarAddListButtonLabel "Új lista">
+<!ENTITY cardbookToolbarAddListButtonTooltip "Egy új lista létrehozása">
 <!ENTITY cardbookToolbarEditButtonLabel "Szerkesztés">
 <!ENTITY cardbookToolbarEditButtonTooltip "Névjegy szerkesztése">
 <!ENTITY cardbookToolbarRemoveButtonLabel "Törlés">

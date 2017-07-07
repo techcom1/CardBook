@@ -31,8 +31,10 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synchronizuj wszystkie zdalne książki adresowe">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Ustawienia">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Ustawienia programu CardBook">
-<!ENTITY cardbookToolbarAddButtonLabel "Nowa wizytówka">
-<!ENTITY cardbookToolbarAddButtonTooltip "Utwórz nową wizytówkę">
+<!ENTITY cardbookToolbarAddContactButtonLabel "Nowa wizytówka">
+<!ENTITY cardbookToolbarAddContactButtonTooltip "Dodaj nową wizytówkę do książki adresowej">
+<!ENTITY cardbookToolbarAddListButtonLabel "Nowa lista dystrybucyjna">
+<!ENTITY cardbookToolbarAddListButtonTooltip "Dodaj nową listę dystrybucyjną">
 <!ENTITY cardbookToolbarEditButtonLabel "Edytuj">
 <!ENTITY cardbookToolbarEditButtonTooltip "Zmodyfikuj istniejącą wizytówkę">
 <!ENTITY cardbookToolbarRemoveButtonLabel "Usuń">
