@@ -103,7 +103,7 @@
 					</menu>
 					<menu id="cardbookContactsMenu" label="&cardbookContactsMenuLabel;">
 						<menupopup onpopupshowing="wdw_cardbook.cardbookContactsMenuContextShowing();">
-							<menuitem id="cardbookContactsMenuAddCard" label="&cardbookToolbarAddContactButtonLabel;" oncommand="wdw_cardbook.createContact();"/>
+							<menuitem id="cardbookContactsMenuAddContact" label="&cardbookToolbarAddContactButtonLabel;" oncommand="wdw_cardbook.createContact();"/>
 							<menuitem id="cardbookContactsMenuAddList" label="&cardbookToolbarAddListButtonLabel;" oncommand="wdw_cardbook.createList();"/>
 							<menuitem id="cardbookContactsMenuEditContact" label="&cardbookToolbarEditButtonLabel;" oncommand="wdw_cardbook.editCard();"/>
 							<menuitem id="cardbookContactsMenuRemoveCard" label="&cardbookToolbarRemoveButtonLabel;" oncommand="wdw_cardbook.deleteCardsAndValidate('cardbook.cardRemovedDirect');"/>
@@ -152,7 +152,7 @@
 							<menuseparator/>
 							<menuitem id="cardbookToolsMenuLog" label="&wdw_logEditionTitle;" oncommand="wdw_cardbook.openLogEdition();"/>
 							<menuseparator/>
-							<menuitem id="cardbookToolsMenuOptions" label="&wdw_cardbookConfigurationWindowLabel;" oncommand="wdw_cardbook.openOptionsEdition();"/>
+							<menuitem id="cardbookToolsMenuOptions" label="&cardbookToolsMenuPrefsLabel;" oncommand="wdw_cardbook.openOptionsEdition();"/>
 						</menupopup>
 					</menu>
 				</menupopup>
@@ -259,7 +259,7 @@
 	</menupopup>
 
 	<menupopup id="cardsTreeContextMenu" onpopupshowing="return wdw_cardbook.cardsTreeContextShowing();">
-		<menuitem id="addCardFromCards" label="&cardbookToolbarAddContactButtonLabel;" oncommand="wdw_cardbook.createContact();"/>
+		<menuitem id="addContactFromCards" label="&cardbookToolbarAddContactButtonLabel;" oncommand="wdw_cardbook.createContact();"/>
 		<menuitem id="addListFromCards" label="&cardbookToolbarAddListButtonLabel;" oncommand="wdw_cardbook.createList();"/>
 		<menuitem id="editCardFromCards" label="&cardbookToolbarEditButtonLabel;" oncommand="wdw_cardbook.editCard();"/>
 		<menuitem id="removeCardFromCards" label="&cardbookToolbarRemoveButtonLabel;" oncommand="wdw_cardbook.deleteCardsAndValidate('cardbook.cardRemovedDirect');"/>

@@ -11,7 +11,6 @@
 ]>
 
 <prefwindow xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-	title="&wdw_cardbookConfigurationWindowLabel;"
 	onload="wdw_cardbookConfiguration.load();" resizable="true"
 	ondialogcancel="wdw_cardbookConfiguration.cancel();"
 	ondialogaccept="wdw_cardbookConfiguration.accept();"

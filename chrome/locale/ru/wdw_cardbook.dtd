@@ -20,6 +20,7 @@
 <!ENTITY cardbookToolsMenuSyncLightningLabel "Добавить дни рождения в календарь">
 <!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "Искать повторяющиеся контакты во всех адресных книгах">
 <!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "Искать повторяющиеся контакты во текущей адресной книге">
+<!ENTITY cardbookToolsMenuPrefsLabel "Настройки CardBook">
 
 <!ENTITY cardbookToolbarLabel "Панель инструментов CardBook">
 <!ENTITY cardbookToolbarAccesskey "П">
@@ -55,7 +56,7 @@
 <!ENTITY technicalTabLabel "Технические данные">
 <!ENTITY vcardTabLabel "vCard">
 
-<!ENTITY GeneratedNameColumnLabel "Значок">
+<!ENTITY cardIconColumnLabel "Значок">
 <!ENTITY nameColumnLabel "Название">
 <!ENTITY lastnameColumnLabel "Фамилия">
 <!ENTITY firstnameColumnLabel "Имя">

@@ -180,14 +180,16 @@ if ("undefined" == typeof(cardbookTypes)) {
 				myLineTypeResult = myLineTypeResult.concat(myLineOtherType.split(','));
 			}
 			
-			var myPanel = document.getElementById(aType + '_' + aIndex + '_PanelType');
 			var myLineTypeType = [];
-			for (var i = 0; i < myPanel.types.length; i++) {
-				myLineTypeType.push("TYPE=" + myPanel.types[i]);
-			}
 			var myLinepgTypeType = [];
-			for (var i = 0; i < myPanel.pg.length; i++) {
-				myLinepgTypeType = JSON.parse(JSON.stringify(myPanel.pg));
+			var myPanel = document.getElementById(aType + '_' + aIndex + '_PanelType');
+			if (myPanel) {
+				for (var i = 0; i < myPanel.types.length; i++) {
+					myLineTypeType.push("TYPE=" + myPanel.types[i]);
+				}
+				for (var i = 0; i < myPanel.pg.length; i++) {
+					myLinepgTypeType = JSON.parse(JSON.stringify(myPanel.pg));
+				}
 			}
 			if (myLineTypeType.length > 0) {
 				myLineTypeResult = myLineTypeResult.concat(myLineTypeType);

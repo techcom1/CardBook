@@ -60,4 +60,4 @@ pref("extensions.cardbook.calendarEntryCategories", "");
 pref("extensions.cardbook.viewABPane", true);
 pref("extensions.cardbook.viewABContact", true);
 
-pref("extensions.cardbook.userAgent", "CardBook/20.2");
+pref("extensions.cardbook.addonVersion", "20.3");

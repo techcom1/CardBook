@@ -20,6 +20,7 @@
 <!ENTITY cardbookToolsMenuSyncLightningLabel "Az évfordulók hozzáadása a naptárhoz">
 <!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "Az összes névjegytárokban ismétlődő névjegy keresése">
 <!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "A jelenlegi névjegytárban ismétlődő névjegy keresése">
+<!ENTITY cardbookToolsMenuPrefsLabel "A névjegyzék beállításai">
 
 <!ENTITY cardbookToolbarLabel "Névjegyzék eszköztár">
 <!ENTITY cardbookToolbarAccesskey "N">
@@ -55,7 +56,7 @@
 <!ENTITY technicalTabLabel "Műszaki">
 <!ENTITY vcardTabLabel "vCard">
 
-<!ENTITY GeneratedNameColumnLabel "Ikon">
+<!ENTITY cardIconColumnLabel "Ikon">
 <!ENTITY nameColumnLabel "Név">
 <!ENTITY lastnameColumnLabel "Családnév">
 <!ENTITY firstnameColumnLabel "Keresztnév">

@@ -20,6 +20,7 @@
 <!ENTITY cardbookToolsMenuSyncLightningLabel "Add anniversaries into calendar">
 <!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "Find duplicate contacts in all address books">
 <!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "Find duplicate contacts in current address book">
+<!ENTITY cardbookToolsMenuPrefsLabel "CardBook Preferences">
 
 <!ENTITY cardbookToolbarLabel "CardBook Toolbar">
 <!ENTITY cardbookToolbarAccesskey "a">
@@ -55,7 +56,7 @@
 <!ENTITY technicalTabLabel "Technical">
 <!ENTITY vcardTabLabel "vCard">
 
-<!ENTITY GeneratedNameColumnLabel "Icon">
+<!ENTITY cardIconColumnLabel "Icon">
 <!ENTITY nameColumnLabel "Name">
 <!ENTITY lastnameColumnLabel "Family Name">
 <!ENTITY firstnameColumnLabel "Given Name">

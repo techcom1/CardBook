@@ -336,11 +336,11 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('createEditionLabel').setAttribute('hidden', 'true');
 				document.getElementById('createAndReplaceEditionLabel').setAttribute('hidden', 'true');
 			}
-			if (window.arguments[0].editionMode == "CreateList") {
+			if (window.arguments[0].cardIn.isAList) {
 				document.getElementById('contactGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('listGroupbox').removeAttribute('hidden');
-				wdw_cardEdition.expandButton(document.getElementById('expandPersButton'));
-				wdw_cardEdition.expandButton(document.getElementById('expandOrgButton'));
+				wdw_cardEdition.expandButton(document.getElementById('expandPersImage'));
+				wdw_cardEdition.expandButton(document.getElementById('expandOrgImage'));
 				document.getElementById('firstTabSpacer').setAttribute('hidden', 'true');
 			} else {
 				document.getElementById('contactGroupbox').removeAttribute('hidden');
@@ -433,14 +433,14 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			wdw_cardEdition.setDisplayName();
 		},
 
-		expandButton: function (aButton) {
-			var myGrid = document.getElementById(aButton.id.replace(/^expand/, "").replace(/Button$/, "").toLowerCase() + "Grid");
-			if (aButton.label == "+") {
+		expandButton: function (aImage) {
+			var myGrid = document.getElementById(aImage.id.replace(/^expand/, "").replace(/Image$/, "").toLowerCase() + "Grid");
+			if (!aImage.getAttribute('expanded')) {
 				myGrid.removeAttribute('hidden');
-				aButton.setAttribute('label', '-');
+				aImage.setAttribute('expanded', 'true');
 			} else {
 				myGrid.setAttribute('hidden', 'true');
-				aButton.setAttribute('label', '+');
+				aImage.removeAttribute('expanded');
 			}
 		},
 

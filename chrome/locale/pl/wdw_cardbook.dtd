@@ -20,6 +20,7 @@
 <!ENTITY cardbookToolsMenuSyncLightningLabel "Dodaj datę urodzin do kalendarza">
 <!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "Znajdź powielone wizytówki we wszystkich książkach adresowych">
 <!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "Znajdź powielone wizytówki w bieżącej książce adresowej">
+<!ENTITY cardbookToolsMenuPrefsLabel "Ustawienia CardBook">
 
 <!ENTITY cardbookToolbarLabel "Pasek narzędzi CardBook">
 <!ENTITY cardbookToolbarAccesskey "a">
@@ -55,7 +56,7 @@
 <!ENTITY technicalTabLabel "Techniczne">
 <!ENTITY vcardTabLabel "vCard">
 
-<!ENTITY GeneratedNameColumnLabel "Ikona">
+<!ENTITY cardIconColumnLabel "Ikona">
 <!ENTITY nameColumnLabel "Nazwa">
 <!ENTITY lastnameColumnLabel "Nazwisko">
 <!ENTITY firstnameColumnLabel "Imię">

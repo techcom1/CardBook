@@ -10,6 +10,7 @@
 <?xml-stylesheet href="chrome://calendar-common/skin/widgets/minimonth.css" type="text/css"?>
 <!-- for the preference star -->
 <?xml-stylesheet href="chrome://cardbook-os/skin/cardbookPrefStar.css" type="text/css"?>
+<?xml-stylesheet href="chrome://cardbook-os/skin/cardbookExpandedClass.css" type="text/css"?>
 
 <?xul-overlay href="chrome://cardbook/content/ovl_cardbookStringBundle.xul"?>
 <!DOCTYPE window [
@@ -131,7 +132,7 @@
 				<hbox>
 					<groupbox id="persGroupbox" flex="1">
 						<hbox align="center">
-							<button id="expandPersButton" class="small-button" label="-" oncommand="wdw_cardEdition.expandButton(this);"/>
+							<image id="expandPersImage" class="cardbookExpandedClass" expanded="true" onclick="wdw_cardEdition.expandButton(this);"/>
 							<caption label="&persTitleLabel;" class="header" flex="1"/>
 						</hbox>
 						<grid id="persGrid" align="center" flex="1">
@@ -216,7 +217,7 @@
 					</groupbox>
 					<groupbox id="orgGroupbox" flex="1">
 						<hbox align="center">
-							<button id="expandOrgButton" class="small-button" label="-" oncommand="wdw_cardEdition.expandButton(this);"/>
+							<image id="expandOrgImage" class="cardbookExpandedClass" expanded="true" onclick="wdw_cardEdition.expandButton(this);"/>
 							<caption label="&orgTitleLabel;" class="header" flex="1"/>
 						</hbox>
 						<grid id="orgGrid" align="center" flex="1">

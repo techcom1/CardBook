@@ -188,6 +188,13 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			}
 		},
 
+		loadTitle: function () {
+			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var addonVersion = prefs.getComplexValue("extensions.cardbook.addonVersion", Components.interfaces.nsISupportsString).data;
+			var strBundle = document.getElementById("cardbook-strings");
+			document.title = strBundle.getString("cardbookPrefTitle") + " (" + addonVersion + ")";
+		},
+
 		displayMailAccounts: function () {
 			var mailAccountsTreeView = {
 				get rowCount() { return wdw_cardbookConfiguration.allMailAccounts.length; },
@@ -1605,6 +1612,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 
 		load: function () {
 			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+			wdw_cardbookConfiguration.loadTitle();
 			wdw_cardbookConfiguration.addAcceptButton();
 			wdw_cardbookConfiguration.loadTypes();
 			wdw_cardbookConfiguration.sortTrees(null, "typesTree");

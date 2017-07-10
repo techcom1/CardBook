@@ -20,6 +20,7 @@
 <!ENTITY cardbookToolsMenuSyncLightningLabel "Geboortedata toevoegen aan agenda">
 <!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "Zoek overeenkomende contactpersonen in alle adresboeken">
 <!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "Zoek overeenkomende contactpersonen in huidige adresboek">
+<!ENTITY cardbookToolsMenuPrefsLabel "CardBook voorkeuren">
 
 <!ENTITY cardbookToolbarLabel "CardBook knoppenbalk">
 <!ENTITY cardbookToolbarAccesskey "C">
@@ -55,7 +56,7 @@
 <!ENTITY technicalTabLabel "Technisch">
 <!ENTITY vcardTabLabel "vCard">
 
-<!ENTITY GeneratedNameColumnLabel "Pictogram">
+<!ENTITY cardIconColumnLabel "Pictogram">
 <!ENTITY nameColumnLabel "Naam">
 <!ENTITY lastnameColumnLabel "Achternaam">
 <!ENTITY firstnameColumnLabel "Voornaam">

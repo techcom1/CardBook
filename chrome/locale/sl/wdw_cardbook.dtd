@@ -20,6 +20,7 @@
 <!ENTITY cardbookToolsMenuSyncLightningLabel "Dodaj obletnice v koledar">
 <!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "Poišči podvojene stike v vseh imenikih">
 <!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "Poišči podvojene stike v trenutnem imeniku">
+<!ENTITY cardbookToolsMenuPrefsLabel "Nastavitve CardBook">
 
 <!ENTITY cardbookToolbarLabel "Orodna vrstica CardBook">
 <!ENTITY cardbookToolbarAccesskey "C">
@@ -55,7 +56,7 @@
 <!ENTITY technicalTabLabel "Tehnično">
 <!ENTITY vcardTabLabel "vCard">
 
-<!ENTITY GeneratedNameColumnLabel "Ikona">
+<!ENTITY cardIconColumnLabel "Ikona">
 <!ENTITY nameColumnLabel "Ime">
 <!ENTITY lastnameColumnLabel "Priimek">
 <!ENTITY firstnameColumnLabel "Ime">

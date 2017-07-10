@@ -20,6 +20,7 @@
 <!ENTITY cardbookToolsMenuSyncLightningLabel "Geburtstage zum Kalender hinzufügen">
 <!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "Suche doppelte Kontakte in allen Adressbüchern">
 <!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "Suche doppelte Kontakte im aktuellen Adressbuch">
+<!ENTITY cardbookToolsMenuPrefsLabel "CardBook-Einstellungen">
 
 <!ENTITY cardbookToolbarLabel "CardBook Symbolleiste">
 <!ENTITY cardbookToolbarAccesskey "C">
@@ -55,7 +56,7 @@
 <!ENTITY technicalTabLabel "Technische Details">
 <!ENTITY vcardTabLabel "vCard">
 
-<!ENTITY GeneratedNameColumnLabel "Symbol">
+<!ENTITY cardIconColumnLabel "Symbol">
 <!ENTITY nameColumnLabel "Name">
 <!ENTITY lastnameColumnLabel "Nachname">
 <!ENTITY firstnameColumnLabel "Vorname">
