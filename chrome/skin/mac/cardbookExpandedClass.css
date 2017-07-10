@@ -1,0 +1,6 @@
+﻿.cardbookExpandedClass {
+	list-style-image: url("chrome://messenger/skin/icons/twisty-clsd.png");
+}
+.cardbookExpandedClass[expanded="true"] {
+	list-style-image: url("chrome://messenger/skin/icons/twisty-open.png");
+}
