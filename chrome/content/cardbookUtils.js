@@ -1570,6 +1570,28 @@ if ("undefined" == typeof(cardbookUtils)) {
 			}
 		},
 
+		setSelectedCardsId: function (aListOfUid, aFirstVisibleRow, aLastVisibleRow) {
+			if (aListOfUid.length == 0) {
+				return;
+			}
+			var foundIndex;
+			var myTree = document.getElementById('cardsTree');
+			for (var i = 0; i < aListOfUid.length; i++) {
+				for (var j = 0; j < myTree.view.rowCount; j++) {
+					if (myTree.view.getCellText(j, {id: "dirPrefId"})+"::"+myTree.view.getCellText(j, {id: "uid"}) == aListOfUid[i]) {
+						myTree.view.selection.rangedSelect(j,j,true);
+						foundIndex = j;
+						break;
+					}
+				}
+			}
+			if (foundIndex < aFirstVisibleRow || foundIndex > aLastVisibleRow) {
+				myTree.boxObject.scrollToRow(foundIndex);
+			} else {
+				myTree.boxObject.scrollToRow(aFirstVisibleRow);
+			}
+		},
+
 		getSelectedCardsDirPrefId: function () {
 			var myTree = document.getElementById('cardsTree');
 			var listOfUid = [];

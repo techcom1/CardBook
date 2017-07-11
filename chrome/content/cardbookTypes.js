@@ -184,11 +184,15 @@ if ("undefined" == typeof(cardbookTypes)) {
 			var myLinepgTypeType = [];
 			var myPanel = document.getElementById(aType + '_' + aIndex + '_PanelType');
 			if (myPanel) {
-				for (var i = 0; i < myPanel.types.length; i++) {
-					myLineTypeType.push("TYPE=" + myPanel.types[i]);
+				if (myPanel.types) {
+					for (var i = 0; i < myPanel.types.length; i++) {
+						myLineTypeType.push("TYPE=" + myPanel.types[i]);
+					}
 				}
-				for (var i = 0; i < myPanel.pg.length; i++) {
-					myLinepgTypeType = JSON.parse(JSON.stringify(myPanel.pg));
+				if (myPanel.pg) {
+					for (var i = 0; i < myPanel.pg.length; i++) {
+						myLinepgTypeType = JSON.parse(JSON.stringify(myPanel.pg));
+					}
 				}
 			}
 			if (myLineTypeType.length > 0) {

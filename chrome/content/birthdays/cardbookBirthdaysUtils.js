@@ -1,6 +1,7 @@
 if ("undefined" == typeof(cardbookBirthdaysUtils)) {  
 	var cardbookBirthdaysUtils = {
 		lBirthdayList : [],
+		lBirthdayAccountList : {},
 		lCalendarList : [],
 		lBirthdaySyncResult : [],
 		
@@ -294,7 +295,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			return lnextBirthday;
 		},
 
-		getAllBirthdaysByName: function (aDateFormat, lDateOfBirth, lName, lNumberOfDays2, lDateOfBirthFound, lEmail) {
+		getAllBirthdaysByName: function (aDateFormat, lDateOfBirth, lName, lNumberOfDays2, lDateOfBirthFound, lEmail, aDirPrefId) {
 			var date_of_today = new Date();
 			var endDate = new Date();
 			var dateRef = new Date();
@@ -316,9 +317,12 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 				ldaysUntilNextBirthday = this.daysBetween(lnextBirthday, date_of_today);
 				if (parseInt(ldaysUntilNextBirthday) <= parseInt(lNumberOfDays2)) {
 					if (ldaysUntilNextBirthday === parseInt(ldaysUntilNextBirthday)) {
-						cardbookBirthdaysUtils.lBirthdayList.push([ldaysUntilNextBirthday, lName, lAge, lDateOfBirthOld, lDateOfBirthFound, lEmail]);
+						cardbookBirthdaysUtils.lBirthdayList.push([ldaysUntilNextBirthday, lName, lAge, lDateOfBirthOld, lDateOfBirthFound, lEmail, aDirPrefId]);
 					} else {
-						cardbookBirthdaysUtils.lBirthdayList.push(["0", lName + " : Error", "0", "0", lDateOfBirthFound, lEmail]);
+						cardbookBirthdaysUtils.lBirthdayList.push(["0", lName + " : Error", "0", "0", lDateOfBirthFound, lEmail, aDirPrefId]);
+					}
+					if (!(cardbookBirthdaysUtils.lBirthdayAccountList[aDirPrefId])) {
+						cardbookBirthdaysUtils.lBirthdayAccountList[aDirPrefId] = "";
 					}
 				}
 				dateRef.setMonth(dateRef.getMonth() + 12);
@@ -349,14 +353,14 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 								var lDateOfBirth = cardbookDates.isDateStringCorrectlyFormatted(myCard.bday, dateFormat);
 								if (lDateOfBirth != "WRONGDATE") {
 									listOfEmail = cardbookUtils.getMimeEmailsFromCards([myCard]);
-									cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, lDateOfBirth, myCard.fn, lnumberOfDays, myCard.bday, listOfEmail);
+									cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, lDateOfBirth, myCard.fn, lnumberOfDays, myCard.bday, listOfEmail, myDirPrefId);
 								} else {
 									cardbookUtils.formatStringForOutput("birthdayEntry1Wrong", [myDirPrefName, myCard.fn, myCard.bday, dateFormat], "Warning");
 								}
 							}
 							if (searchInNote == true) {
 								var lNotesLine = myCard.note.split("\n");
-								for (var a=0;a<lNotesLine.length;a++) {
+								for (var a = 0; a < lNotesLine.length; a++) {
 									// compatibility when not localized
 									var EmptyParamRegExp1 = new RegExp("^Birthday:([^:]*):([^:]*)([:]*)(.*)", "ig");
 									if (lNotesLine[a].replace(EmptyParamRegExp1, "$1")!=lNotesLine[a]) {
@@ -366,7 +370,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 											var lNotesDate = cardbookDates.isDateStringCorrectlyFormatted(lNotesDateFound, dateFormat);
 											if (lNotesDate != "WRONGDATE") {
 												listOfEmail = cardbookUtils.getMimeEmailsFromCards([myCard]);
-												cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, lNotesDate, lNotesName, lnumberOfDays, lNotesDateFound, listOfEmail);
+												cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, lNotesDate, lNotesName, lnumberOfDays, lNotesDateFound, listOfEmail, myDirPrefId);
 											} else {
 												cardbookUtils.formatStringForOutput("birthdayEntry2Wrong", [myDirPrefName, myCard.fn, lNotesDateFound, dateFormat], "Warning");
 											}
@@ -381,7 +385,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 											var lNotesDate = cardbookDates.isDateStringCorrectlyFormatted(lNotesDateFound, dateFormat);
 											if (lNotesDate != "WRONGDATE") {
 												listOfEmail = cardbookUtils.getMimeEmailsFromCards([myCard]);
-												cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, lNotesDate, lNotesName, lnumberOfDays, lNotesDateFound, listOfEmail);
+												cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, lNotesDate, lNotesName, lnumberOfDays, lNotesDateFound, listOfEmail, myDirPrefId);
 											} else {
 												cardbookUtils.formatStringForOutput("birthdayEntry2Wrong", [myDirPrefName, myCard.fn, lNotesDateFound, dateFormat], "Warning");
 											}

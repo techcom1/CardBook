@@ -35,7 +35,7 @@
 <!ENTITY cardbookToolbarAddContactButtonLabel "New Contact">
 <!ENTITY cardbookToolbarAddContactButtonTooltip "Create a new address book contact">
 <!ENTITY cardbookToolbarAddListButtonLabel "New List">
-<!ENTITY cardbookToolbarAddListButtonTooltip "Create a new list">
+<!ENTITY cardbookToolbarAddListButtonTooltip "New Mailing List">
 <!ENTITY cardbookToolbarEditButtonLabel "Edit">
 <!ENTITY cardbookToolbarEditButtonTooltip "Edit the selected contact">
 <!ENTITY cardbookToolbarRemoveButtonLabel "Delete">
