@@ -17,6 +17,7 @@ var cardbookRepository = {
 						["tel", ["tel"] ],
 						["url", ["url"] ] ],
 					"note": ["note"],
+					"age": ["age"],
 					"technical": ["version", "rev"] },
 
 	dateFormats : ["YYYY-MM-DD", "YYYY.MM.DD", "YYYY/MM/DD", "YYYYMMDD", "DD-MM-YYYY", "DD.MM.YYYY", "DD/MM/YYYY", "DDMMYYYY", "MM-DD-YYYY", "MM.DD.YYYY", "MM/DD/YYYY", "MMDDYYYY"],
@@ -1233,11 +1234,6 @@ var cardbookRepository = {
 			if (cardbookPrefService.getReadOnly()) {
 				return;
 			}
-			if (cardbookRepository.cardbookComplexSearchPrefId != "") {
-				var myDisplayPrefId = cardbookRepository.cardbookComplexSearchPrefId;
-			} else {
-				var myDisplayPrefId = aNewCard.dirPrefId;
-			}
 
 			var newCats = [];
 			for (var i = 0; i < aNewCard.categories.length; i++) {
@@ -1280,7 +1276,7 @@ var cardbookRepository = {
 					cardbookRepository.addCardToRepository(aNewCard, "WINDOW", cardbookUtils.getFileCacheNameFromCard(aNewCard, myDirPrefIdType));
 				}
 				cardbookUtils.formatStringForOutput("cardUpdatedOK", [myDirPrefIdName, aNewCard.fn]);
-				cardbookUtils.notifyObservers(aSource, "cardid:" + myDisplayPrefId + "::" + aNewCard.uid);
+				cardbookUtils.notifyObservers(aSource, "cardid:" + aNewCard.dirPrefId + "::" + aNewCard.uid);
 			// Moved card
 			} else if (aOldCard.dirPrefId != "" && cardbookRepository.cardbookCards[aOldCard.dirPrefId+"::"+aNewCard.uid] && aOldCard.dirPrefId != aNewCard.dirPrefId) {
 				var myCard = cardbookRepository.cardbookCards[aOldCard.dirPrefId+"::"+aNewCard.uid];
@@ -1324,7 +1320,7 @@ var cardbookRepository = {
 				}
 				cardbookUtils.formatStringForOutput("cardCreatedOK", [myDirPrefIdName, aNewCard.fn]);
 				wdw_cardbooklog.addActivity("cardCreatedOK", [myDirPrefIdName, aNewCard.fn], "addItem");
-				cardbookUtils.notifyObservers(aSource, "cardid:" + myDisplayPrefId + "::" + aNewCard.uid);
+				cardbookUtils.notifyObservers(aSource, "cardid:" + aNewCard.dirPrefId + "::" + aNewCard.uid);
 			// New card
 			} else {
 				if (aNewCard.uid == "") {
@@ -1345,13 +1341,13 @@ var cardbookRepository = {
 				}
 				cardbookUtils.formatStringForOutput("cardCreatedOK", [myDirPrefIdName, aNewCard.fn]);
 				wdw_cardbooklog.addActivity("cardCreatedOK", [myDirPrefIdName, aNewCard.fn], "addItem");
-				cardbookUtils.notifyObservers(aSource, "cardid:" + myDisplayPrefId + "::" + aNewCard.uid);
+				cardbookUtils.notifyObservers(aSource, "cardid:" + aNewCard.dirPrefId + "::" + aNewCard.uid);
 			}
 			delete aOldCard;
 			for (var i = 0; i < newCats.length; i++) {
 				cardbookUtils.formatStringForOutput("categoryCreatedOK", [myDirPrefIdName, newCats[i]]);
 				wdw_cardbooklog.addActivity("categoryCreatedOK", [myDirPrefIdName, newCats[i]], "addItem");
-				cardbookUtils.notifyObservers("cardbook.catAddedIndirect", "accountid:" + myDisplayPrefId+"::"+newCats[i]);
+				cardbookUtils.notifyObservers("cardbook.catAddedIndirect", "accountid:" + aNewCard.dirPrefId+"::"+newCats[i]);
 			}
 		}
 		catch (e) {
@@ -1513,6 +1509,7 @@ var cardbookRepository = {
 cardbookRepository.jsInclude(["chrome://cardbook/content/preferences/cardbookPreferences.js"]);
 cardbookRepository.jsInclude(["chrome://cardbook/content/wdw_log.js"]);
 cardbookRepository.jsInclude(["chrome://cardbook/content/cardbookUtils.js"]);
+cardbookRepository.jsInclude(["chrome://cardbook/content/cardbookDates.js"]);
 cardbookRepository.jsInclude(["chrome://cardbook/content/cardbookIndexedDB.js"]);
 cardbookRepository.jsInclude(["chrome://cardbook/content/cardbookSynchronization.js"]);
 cardbookRepository.jsInclude(["chrome://cardbook/content/complexSearch/cardbookComplexSearch.js"]);

@@ -23,7 +23,7 @@ skin   cardbook-os   classic/1.0 chrome/skin/mac/       os=Darwin
 
 # support for customizing toolbars
 style    chrome://global/content/customizeToolbar.xul chrome://cardbook/skin/toolbarButton.css
-style    chrome://global/content/customizeToolbar.xul chrome://cardbook/skin/cardbookButtons.css
+style    chrome://global/content/customizeToolbar.xul chrome://cardbook-os/skin/cardbookToolbarButtons.css
 
 # support for CardBook, yellow stars, creation from emails, formatting email fields
 overlay  chrome://messenger/content/messenger.xul chrome://cardbook/content/ovl_cardbook.xul

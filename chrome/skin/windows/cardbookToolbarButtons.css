@@ -1,0 +1,14 @@
+﻿@media (-moz-os-version: windows-win8) and (-moz-windows-default-theme),
+       (-moz-os-version: windows-win10) and (-moz-windows-default-theme) {
+	#cardbookToolbarComplexSearch {
+		list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#filter");
+	}
+}
+	   
+toolbar[brighttext] #cardbookToolbarComplexSearch {
+	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#filter-inverted");
+}
+
+#cardbookToolbarComplexSearch {
+	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#filter");
+}

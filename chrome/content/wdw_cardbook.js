@@ -67,6 +67,18 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		wdw_cardbook.showCorrectTabs();
 	},
 
+   	migrateIcons: function () {
+		var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+		var iconsMigrated = prefs.getBoolPref("extensions.cardbook.iconsMigrated");
+		if (!iconsMigrated) {
+			var toolbar = document.getElementById("cardbook-toolbar");
+			if (toolbar) {
+				toolbar.setAttribute("currentset", "calendar-synchronize-button,calendar-newevent-button,calendar-newtask-button,calendar-edit-button,calendar-delete-button,spring,calendar-appmenu-button");
+			}
+			prefs.setBoolPref("extensions.cardbook.iconsMigrated", true);
+		}
+	},
+
    	setToolbarCustom: function () {
 		var toolbox = document.getElementById("cardbook-toolbox");
 		toolbox.customizeDone = function(aEvent) {
@@ -86,6 +98,8 @@ if ("undefined" == typeof(wdw_cardbook)) {
    	loadFirstWindow: function () {
 		Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 		Components.utils.import("resource://gre/modules/PluralForm.jsm");
+		// for versions <= 20.4
+		wdw_cardbook.migrateIcons();
 		wdw_cardbook.setSyncControl();
 		wdw_cardbook.setToolbarCustom();
 		wdw_cardbook.setNoSearchMode();
@@ -2791,14 +2805,14 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			if (cardbookUtils.getAvailableAccountNumber() === 0) {
 				wdw_cardbook.disableCardDeletion();
 			} else {
-				wdw_cardbook.enableOrDisableElement(['cardbookToolbarRemoveButton'], false);
+				wdw_cardbook.enableOrDisableElement(['button-abdelete'], false);
 				wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuRemoveCard'], false);
 				wdw_cardbook.enableOrDisableElement(['removeCardFromCards'], false);
 			}
 		},
 	
 		enableCardCreation: function () {
-			wdw_cardbook.enableOrDisableElement(['cardbookToolbarAddContactButton', 'cardbookToolbarAddListButton', 'cardbookContactsMenuAddContact', 'cardbookContactsMenuAddList',
+			wdw_cardbook.enableOrDisableElement(['button-newcard', 'button-newlist', 'cardbookContactsMenuAddContact', 'cardbookContactsMenuAddList',
 													'addContactFromCards', 'addListFromCards', 'cardbookContactsMenuDuplicateCards', 'duplicateCardsFromCards'], false);
 		},
 	
@@ -2809,29 +2823,29 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				var myTree = document.getElementById('accountsOrCatsTree');
 				var myPrefId = cardbookUtils.getAccountId(myTree.view.getCellText(myTree.currentIndex, {id: "accountId"}));
 				if (cardbookUtils.isMyAccountReadOnly(myPrefId)) {
-					wdw_cardbook.setElementLabelWithBundle('cardbookToolbarEditButton', "viewCardButtonLabel");
+					wdw_cardbook.setElementLabelWithBundle('button-editcard', "viewCardButtonLabel");
 					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuEditContact', "viewCardButtonLabel");
 					wdw_cardbook.setElementLabelWithBundle('editCardFromCards', "viewCardButtonLabel");
 				} else {
-					wdw_cardbook.setElementLabelWithBundle('cardbookToolbarEditButton', "editCardButtonLabel");
+					wdw_cardbook.setElementLabelWithBundle('button-editcard', "editCardButtonLabel");
 					wdw_cardbook.setElementLabelWithBundle('cardbookContactsMenuEditContact', "editCardButtonLabel");
 					wdw_cardbook.setElementLabelWithBundle('editCardFromCards', "editCardButtonLabel");
 				}
-				wdw_cardbook.enableOrDisableElement(['cardbookToolbarEditButton', 'cardbookContactsMenuEditContact', 'editCardFromCards'], false);
+				wdw_cardbook.enableOrDisableElement(['button-editcard', 'cardbookContactsMenuEditContact', 'editCardFromCards'], false);
 			}
 		},
 	
 		disableCardDeletion: function () {
-			wdw_cardbook.enableOrDisableElement(['cardbookToolbarRemoveButton', 'cardbookContactsMenuRemoveCard', 'removeCardFromCards'], true);
+			wdw_cardbook.enableOrDisableElement(['button-abdelete', 'cardbookContactsMenuRemoveCard', 'removeCardFromCards'], true);
 		},
 		
 		disableCardCreation: function () {
-			wdw_cardbook.enableOrDisableElement(['cardbookToolbarAddContactButton', 'cardbookToolbarAddListButton', 'cardbookContactsMenuAddContact', 'cardbookContactsMenuAddList', 'addContactFromCards',
+			wdw_cardbook.enableOrDisableElement(['button-newcard', 'button-newlist', 'cardbookContactsMenuAddContact', 'cardbookContactsMenuAddList', 'addContactFromCards',
 													'addListFromCards', 'cardbookContactsMenuDuplicateCards', 'duplicateCardsFromCards'], true);
 		},
 		
 		disableCardModification: function () {
-			wdw_cardbook.enableOrDisableElement(['cardbookToolbarEditButton', 'cardbookContactsMenuEditContact', 'editCardFromCards'], true);
+			wdw_cardbook.enableOrDisableElement(['button-editcard', 'cardbookContactsMenuEditContact', 'editCardFromCards'], true);
 		},
 
 		updateStatusProgressInformationField: function() {
@@ -2880,7 +2894,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 	
 		windowControlShowing: function () {
 			if (cardbookUtils.getAvailableAccountNumber() === 0) {
-				wdw_cardbook.enableOrDisableElement(['cardbookToolbarSyncButton', 'cardbookAccountMenuSyncs'], true);
+				wdw_cardbook.enableOrDisableElement(['button-getmsg', 'cardbookAccountMenuSyncs'], true);
 				wdw_cardbook.disableCardCreation();
 				wdw_cardbook.disableCardModification();
 				wdw_cardbook.disableCardDeletion();
@@ -2889,7 +2903,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					wdw_cardbook.disableCardDeletion();
 					wdw_cardbook.disableCardCreation();
 					wdw_cardbook.disableCardModification();
-					wdw_cardbook.enableOrDisableElement(['cardbookToolbarSyncButton', 'cardbookAccountMenuSyncs'], true);
+					wdw_cardbook.enableOrDisableElement(['button-getmsg', 'cardbookAccountMenuSyncs'], true);
 				} else if (cardbookRepository.cardbookSearchMode === "SEARCH" || cardbookRepository.cardbookComplexSearchMode === "SEARCH") {
 					wdw_cardbook.enableCardCreation();
 					if (cardbookUtils.getSelectedCardsCount() >= 2 || cardbookUtils.getSelectedCardsCount() == 0) {
@@ -2902,7 +2916,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					} else {
 						wdw_cardbook.enableCardDeletion();
 					}
-					wdw_cardbook.enableOrDisableElement(['cardbookToolbarSyncButton', 'cardbookAccountMenuSyncs'], !cardbookUtils.isThereNetworkAccountToSync());
+					wdw_cardbook.enableOrDisableElement(['button-getmsg', 'cardbookAccountMenuSyncs'], !cardbookUtils.isThereNetworkAccountToSync());
 				} else {
 					var myTree = document.getElementById('accountsOrCatsTree');
 					if (myTree.currentIndex != -1) {
@@ -2934,16 +2948,16 @@ if ("undefined" == typeof(wdw_cardbook)) {
 						wdw_cardbook.disableCardCreation();
 						wdw_cardbook.disableCardModification();
 					}
-					wdw_cardbook.enableOrDisableElement(['cardbookToolbarSyncButton', 'cardbookAccountMenuSyncs'], !cardbookUtils.isThereNetworkAccountToSync());
+					wdw_cardbook.enableOrDisableElement(['button-getmsg', 'cardbookAccountMenuSyncs'], !cardbookUtils.isThereNetworkAccountToSync());
 				}
 			}
 
 			if (cardbookRepository.cardbookSyncMode === "SYNC") {
-				wdw_cardbook.enableOrDisableElement(['cardbookToolbarAddServerButton', 'cardbookToolbarConfigurationButton', 'accountsOrCatsTreeContextMenu', 'cardsTreeContextMenu',
-													'cardbookAccountMenu', 'cardbookContactsMenu', 'cardbookToolsMenu', 'cardbookToolbarComplexSearch', 'cardbookToolbarPrintButton'], true);
+				wdw_cardbook.enableOrDisableElement(['button-address', 'button-compact', 'accountsOrCatsTreeContextMenu', 'cardsTreeContextMenu',
+													'cardbookAccountMenu', 'cardbookContactsMenu', 'cardbookToolsMenu', 'cardbookToolbarComplexSearch', 'button-print'], true);
 			} else {
-				wdw_cardbook.enableOrDisableElement(['cardbookToolbarAddServerButton', 'cardbookToolbarConfigurationButton', 'accountsOrCatsTreeContextMenu', 'cardsTreeContextMenu',
-													'cardbookAccountMenu', 'cardbookContactsMenu', 'cardbookToolsMenu', 'cardbookToolbarComplexSearch', 'cardbookToolbarPrintButton'], false);
+				wdw_cardbook.enableOrDisableElement(['button-address', 'button-compact', 'accountsOrCatsTreeContextMenu', 'cardsTreeContextMenu',
+													'cardbookAccountMenu', 'cardbookContactsMenu', 'cardbookToolsMenu', 'cardbookToolbarComplexSearch', 'button-print'], false);
 			}
 			wdw_cardbook.updateStatusInformation();
 			wdw_cardbook.updateStatusProgressInformationField();
@@ -3009,7 +3023,6 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				var myTree = document.getElementById('cardsTree');
 				myTree.view.selection.clearSelection();
 				if (cardbookRepository.cardbookComplexSearchMode === "SEARCH") {
-					cardbookUtils.setSelectedCardsId(listOfSelectedCard, myTree.boxObject.getFirstVisibleRow(), myTree.boxObject.getLastVisibleRow());
 					if (listOfSelectedCard.length == 1) {
 						if (cardbookRepository.cardbookCards[listOfSelectedCard[0]]) {
 							wdw_cardbook.displayCard(cardbookRepository.cardbookCards[listOfSelectedCard[0]]);

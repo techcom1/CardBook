@@ -1,0 +1,6 @@
+﻿#cardbookToolbarComplexSearch {
+	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#filter");
+}
+toolbar[brighttext] #cardbookToolbarComplexSearch {
+	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#filter-inverted");
+}

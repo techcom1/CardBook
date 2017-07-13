@@ -1304,6 +1304,8 @@ if ("undefined" == typeof(cardbookUtils)) {
 						}
 					}
 				}
+			} else if (aField == "age") {
+				result.push(cardbookDates.getAge(aCard));
 			} else {
 				if (aCard[aField]) {
 					result.push(aCard[aField]);
@@ -2411,6 +2413,8 @@ if ("undefined" == typeof(cardbookUtils)) {
 			for (var i in cardbookRepository.allColumns) {
 				for (var j = 0; j < cardbookRepository.allColumns[i].length; j++) {
 					if (i != "arrayColumns" && i != "categories") {
+						result.push([cardbookRepository.allColumns[i][j], strBundle.getString(cardbookRepository.allColumns[i][j] + "Label")]);
+					} else if (i == "age" && aMode != "import" && aMode != "export") {
 						result.push([cardbookRepository.allColumns[i][j], strBundle.getString(cardbookRepository.allColumns[i][j] + "Label")]);
 					} else if (i == "categories") {
 						result.push([cardbookRepository.allColumns[i][j] + ".0.array", strBundle.getString(cardbookRepository.allColumns[i][j] + "Label")]);

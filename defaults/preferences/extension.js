@@ -30,6 +30,7 @@ pref("extensions.cardbook.preferenceValueLabel", "");
 pref("extensions.cardbook.firstRun", true);
 pref("extensions.cardbook.firstOpen", true);
 pref("extensions.cardbook.firstOpenModern", true);
+pref("extensions.cardbook.iconsMigrated", false);
 
 pref("extensions.cardbook.kindCustom", "X-ADDRESSBOOKSERVER-KIND");
 pref("extensions.cardbook.memberCustom", "X-ADDRESSBOOKSERVER-MEMBER");
@@ -60,4 +61,4 @@ pref("extensions.cardbook.calendarEntryCategories", "");
 pref("extensions.cardbook.viewABPane", true);
 pref("extensions.cardbook.viewABContact", true);
 
-pref("extensions.cardbook.addonVersion", "20.4");
+pref("extensions.cardbook.addonVersion", "20.5");

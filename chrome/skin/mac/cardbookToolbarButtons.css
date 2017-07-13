@@ -1,0 +1,14 @@
+﻿@media not all and (-moz-mac-yosemite-theme) {
+	#cardbookToolbarComplexSearch {
+		list-style-image: url("chrome://messenger/skin/icons/mail-toolbar-osxlion.svg#filter");
+	}
+}
+
+@media (-moz-mac-yosemite-theme) {
+	#cardbookToolbarComplexSearch {
+		list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#filter-flat");
+	}
+}
+toolbar[brighttext] #cardbookToolbarComplexSearch {
+	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#filter-inverted");
+}

@@ -41,7 +41,7 @@
 <!ENTITY cardbookToolbarRemoveButtonLabel "Delete">
 <!ENTITY cardbookToolbarRemoveButtonTooltip "Delete selected contact">
 <!ENTITY cardbookToolbarPrintButtonLabel "Print Preview">
-<!ENTITY cardbookToolbarPrintButtonTooltip "Allow to print the selection">
+<!ENTITY cardbookToolbarPrintButtonTooltip "Print preview of the selection">
 <!ENTITY cardbookToolbarAppMenuButtonLabel "CardBook menu">
 <!ENTITY cardbookToolbarAppMenuButtonTooltip "CardBook menu">
 <!ENTITY cardbookToolbarSearchBoxLabel "Contacts search">
