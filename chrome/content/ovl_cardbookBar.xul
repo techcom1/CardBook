@@ -39,42 +39,42 @@
 		labelalign="end"
 		defaultlabelalign="end">
 		<toolbarpalette id="CardBookToolbarPalette">
-			<toolbarbutton id="button-address"
+			<toolbarbutton id="cardbookToolbarAddServerButton"
 				label="&cardbookToolbarAddServerButtonLabel;"
 				tooltiptext="&cardbookToolbarAddServerButtonTooltip;"
 				oncommand="wdw_cardbook.addAddressbook();"
 				class="toolbarbutton-1"/>
-			<toolbarbutton id="button-getmsg"
+			<toolbarbutton id="cardbookToolbarSyncButton"
 				label="&cardbookToolbarSyncButtonLabel;"
 				tooltiptext="&cardbookToolbarSyncButtonTooltip;"
 				oncommand="wdw_cardbook.syncAccounts();"
 				class="toolbarbutton-1"/>
-			<toolbarbutton id="button-compact"
+			<toolbarbutton id="cardbookToolbarConfigurationButton"
 				label="&cardbookToolbarConfigurationButtonLabel;"
 				tooltiptext="&cardbookToolbarConfigurationButtonTooltip;"
 				oncommand="wdw_cardbook.openOptionsEdition();"
 				class="toolbarbutton-1"/>
-			<toolbarbutton id="button-newcard"
+			<toolbarbutton id="cardbookToolbarAddContactButton"
 				label="&cardbookToolbarAddContactButtonLabel;"
 				tooltiptext="&cardbookToolbarAddContactButtonTooltip;"
 				oncommand="wdw_cardbook.createContact();"
 				class="toolbarbutton-1"/>
-			<toolbarbutton id="button-newlist"
+			<toolbarbutton id="cardbookToolbarAddListButton"
 				label="&cardbookToolbarAddListButtonLabel;"
 				tooltiptext="&cardbookToolbarAddListButtonTooltip;"
 				oncommand="wdw_cardbook.createList();"
 				class="toolbarbutton-1"/>
-			<toolbarbutton id="button-editcard"
+			<toolbarbutton id="cardbookToolbarEditButton"
 				label="&cardbookToolbarEditButtonLabel;"
 				tooltiptext="&cardbookToolbarEditButtonTooltip;"
 				oncommand="wdw_cardbook.editCard();"
 				class="toolbarbutton-1"/>
-			<toolbarbutton id="button-abdelete"
+			<toolbarbutton id="cardbookToolbarRemoveButton"
 				label="&cardbookToolbarRemoveButtonLabel;"
 				tooltiptext="&cardbookToolbarRemoveButtonTooltip;"
 				oncommand="wdw_cardbook.deleteCardsAndValidate('cardbook.cardRemovedDirect');"
 				class="toolbarbutton-1"/>
-			<toolbarbutton id="button-print"
+			<toolbarbutton id="cardbookToolbarPrintButton"
 				label="&cardbookToolbarPrintButtonLabel;"
 				tooltiptext="&cardbookToolbarPrintButtonTooltip;"
 				oncommand="wdw_cardbook.print();"
@@ -186,7 +186,7 @@
 			fullscreentoolbar="true" mode="full"
 			customizable="true"
 			context="cardbook-toolbar-context"
-			defaultset="cardbookToolbarAppMenuButton,button-getmsg,button-compact,spring,cardbookToolbarSearchBox,button-newcard,button-newlist,button-editcard,button-abdelete,cardbookToolbarThMenuButton"/>
+			defaultset="cardbookToolbarAppMenuButton,cardbookToolbarSyncButton,cardbookToolbarConfigurationButton,spring,cardbookToolbarSearchBox,cardbookToolbarAddContactButton,cardbookToolbarAddListButton,cardbookToolbarEditButton,cardbookToolbarRemoveButton,cardbookToolbarThMenuButton"/>
 		<toolbarset id="cardbookToolbars" context="cardbook-toolbar-context"/>
 	</toolbox>
 
