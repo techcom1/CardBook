@@ -281,9 +281,9 @@ cardbookPreferenceService.prototype = {
 				var prefNumber = prefName.replace(aType + '.', '');
 				var prefValue = this.getCustomFields(prefName);
 				var tmpArray = prefValue.split(":");
-				finalResult.push([tmpArray[0], tmpArray[1], prefNumber]);
+				finalResult.push([tmpArray[0], tmpArray[1], parseInt(prefNumber)]);
 			}
-			finalResult = cardbookUtils.sortArrayByString(finalResult,2,1);
+			finalResult = cardbookUtils.sortArrayByNumber(finalResult,2,1);
 			return finalResult;
 		}
 		catch(e) {
@@ -337,6 +337,28 @@ cardbookPreferenceService.prototype = {
 		}
     },
 
+    getAllComplexSearchIds: function () {
+		try {
+			let count = {};
+			let finalResult = [];
+			let result = this.mPreferencesService.getChildList(this.prefCardBookData, count);
+			for (let i = 0; i < result.length; i++) {
+				result[i] = result[i].replace(this.prefCardBookData,"");
+				var myTmpArray = result[i].split('.');
+				if (myTmpArray[1] == 'type') {
+					var value = this.mPreferencesService.getComplexValue(this.prefCardBookData + myTmpArray[0] + '.' + myTmpArray[1], Components.interfaces.nsISupportsString).data;
+					if (value == 'SEARCH') {
+						finalResult.push(myTmpArray[0]);
+					}
+				}
+			}
+			return finalResult;
+		}
+		catch(e) {
+			dump("cardbookPreferenceService.getAllPrefIds error : " + e + "\n");
+		}
+    },
+
     getAllPrefIds: function () {
 		try {
 			let count = {};
@@ -344,9 +366,12 @@ cardbookPreferenceService.prototype = {
 			let result = this.mPreferencesService.getChildList(this.prefCardBookData, count);
 			for (let i = 0; i < result.length; i++) {
 				result[i] = result[i].replace(this.prefCardBookData,"");
-				finalResult.push(result[i].substring(0, result[i].indexOf(".")));
+				var myTmpArray = result[i].split('.');
+				if (myTmpArray[1] == 'id') {
+					finalResult.push(myTmpArray[0]);
+				}
 			}
-			return this._arrayUnique(finalResult);
+			return finalResult;
 		}
 		catch(e) {
 			dump("cardbookPreferenceService.getAllPrefIds error : " + e + "\n");

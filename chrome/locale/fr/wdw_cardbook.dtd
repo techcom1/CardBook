@@ -20,6 +20,7 @@
 <!ENTITY cardbookToolsMenuSyncLightningLabel "Ajout des anniversaires dans l'agenda">
 <!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "Recherche des contacts dupliqués dans tous les carnets d'adresses">
 <!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "Recherche des contacts dupliqués dans le carnet d'adresses courant">
+<!ENTITY cardbookToolsMenuPrefsLabel "Configuration de CardBook">
 
 <!ENTITY cardbookToolbarLabel "Barre d'outils CardBook">
 <!ENTITY cardbookToolbarAccesskey "C">
@@ -31,8 +32,10 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synchroniser tous les carnets d'adresses distants">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Préférences">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Préférences de CardBook">
-<!ENTITY cardbookToolbarAddButtonLabel "Nouveau contact">
-<!ENTITY cardbookToolbarAddButtonTooltip "Permet la création d'un contact">
+<!ENTITY cardbookToolbarAddContactButtonLabel "Nouveau contact">
+<!ENTITY cardbookToolbarAddContactButtonTooltip "Créer un nouveau contact">
+<!ENTITY cardbookToolbarAddListButtonLabel "Nouvelle liste">
+<!ENTITY cardbookToolbarAddListButtonTooltip "Créer une nouvelle liste de diffusion">
 <!ENTITY cardbookToolbarEditButtonLabel "Modifier">
 <!ENTITY cardbookToolbarEditButtonTooltip "Permet la modification d'un contact">
 <!ENTITY cardbookToolbarRemoveButtonLabel "Supprimer">
@@ -53,7 +56,7 @@
 <!ENTITY technicalTabLabel "Technique">
 <!ENTITY vcardTabLabel "vCard">
 
-<!ENTITY GeneratedNameColumnLabel "Icône">
+<!ENTITY cardIconColumnLabel "Icône">
 <!ENTITY nameColumnLabel "Nom">
 <!ENTITY lastnameColumnLabel "Nom de famille">
 <!ENTITY firstnameColumnLabel "Prénom">

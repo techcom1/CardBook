@@ -180,14 +180,20 @@ if ("undefined" == typeof(cardbookTypes)) {
 				myLineTypeResult = myLineTypeResult.concat(myLineOtherType.split(','));
 			}
 			
-			var myPanel = document.getElementById(aType + '_' + aIndex + '_PanelType');
 			var myLineTypeType = [];
-			for (var i = 0; i < myPanel.types.length; i++) {
-				myLineTypeType.push("TYPE=" + myPanel.types[i]);
-			}
 			var myLinepgTypeType = [];
-			for (var i = 0; i < myPanel.pg.length; i++) {
-				myLinepgTypeType = JSON.parse(JSON.stringify(myPanel.pg));
+			var myPanel = document.getElementById(aType + '_' + aIndex + '_PanelType');
+			if (myPanel) {
+				if (myPanel.types) {
+					for (var i = 0; i < myPanel.types.length; i++) {
+						myLineTypeType.push("TYPE=" + myPanel.types[i]);
+					}
+				}
+				if (myPanel.pg) {
+					for (var i = 0; i < myPanel.pg.length; i++) {
+						myLinepgTypeType = JSON.parse(JSON.stringify(myPanel.pg));
+					}
+				}
 			}
 			if (myLineTypeType.length > 0) {
 				myLineTypeResult = myLineTypeResult.concat(myLineTypeType);
@@ -312,34 +318,12 @@ if ("undefined" == typeof(cardbookTypes)) {
 			}
 		},
 
-		constructDynamicMailPopularity: function (aCard) {
-			if (aCard.isAList) {
-				cardbookTypes.loadDynamicMailPopularity(0, aCard.fn.toLowerCase());
-			} else {
-				for (var i = 0; i < aCard.email.length; i++) {
-					var myEmail = aCard.email[i][0][0].toLowerCase(); 
-					cardbookTypes.loadDynamicMailPopularity(i, myEmail);
-				}
-			}
-		},
-
-		constructStaticRows: function (aType, aArray, aVersion) {
+		constructStaticRows: function (aType, aArray, aVersion, aFollowLink) {
 			for (var i = 0; i < aArray.length; i++) {
-				cardbookTypes.loadStaticTypes(aType, i, aArray[i][1], aArray[i][2], aArray[i][3], aArray[i][0], aVersion);
+				cardbookTypes.loadStaticTypes(aType, i, aArray[i][1], aArray[i][2], aArray[i][3], aArray[i][0], aVersion, aFollowLink);
 			}
 			if (aArray.length == 0) {
-				cardbookTypes.loadStaticTypes(aType, 0, [], "", [], [""], aVersion);
-			}
-		},
-
-		constructStaticMailPopularity: function (aCard) {
-			if (aCard.isAList) {
-				cardbookTypes.loadStaticMailPopularity(0, aCard.fn.toLowerCase());
-			} else {
-				for (var i = 0; i < aCard.email.length; i++) {
-					var myEmail = aCard.email[i][0][0].toLowerCase(); 
-					cardbookTypes.loadStaticMailPopularity(i, myEmail);
-				}
+				cardbookTypes.loadStaticTypes(aType, 0, [], "", [], [""], aVersion, aFollowLink);
 			}
 		},
 
@@ -685,7 +669,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 			cardbookTypes.disableButtons(aType, aIndex, aVersion);
 		},
 
-		loadStaticTypes: function (aType, aIndex, aInputTypes, aPgName, aPgType, aCardValue, aVersion) {
+		loadStaticTypes: function (aType, aIndex, aInputTypes, aPgName, aPgType, aCardValue, aVersion, aFollowLink) {
 			if (aCardValue.join(" ") == "") {
 				return;
 			}
@@ -701,14 +685,6 @@ if ("undefined" == typeof(cardbookTypes)) {
 			aRow.setAttribute('id', aType + '_' + aIndex + '_row');
 			aRow.setAttribute('flex', '1');
 			aRow.setAttribute('align', 'center');
-			aRow.setAttribute('context', aType + 'TreeContextMenu');
-			function fireClick(event) {
-				if (wdw_cardbook) {
-					wdw_cardbook.chooseActionTreeForClick(event)
-				}
-			};
-			aRow.addEventListener("click", fireClick, false);
-
 			var myInputTypes = [];
 			myInputTypes = cardbookUtils.getOnlyTypesFromTypes(aInputTypes);
 			var cardbookPrefService = new cardbookPreferenceService();
@@ -723,7 +699,6 @@ if ("undefined" == typeof(cardbookTypes)) {
 			var aPrefImage = document.createElement('image');
 			aRow.appendChild(aPrefImage);
 			aPrefImage.setAttribute('id', aType + '_' + aIndex + '_PrefImage');
-			aPrefImage.setAttribute('context', aType + 'TreeContextMenu');
 			if (cardbookUtils.getPrefBooleanFromTypes(aInputTypes)) {
 				aPrefImage.setAttribute('class', 'cardbookPrefStarClass');
 				aPrefImage.setAttribute('haspref', 'true');
@@ -732,14 +707,19 @@ if ("undefined" == typeof(cardbookTypes)) {
 				aPrefImage.removeAttribute('haspref');
 			}
 
+			var myContextMenu = '';
+			if (aFollowLink) {
+				myContextMenu = aType + 'TreeContextMenu';
+			}
 			cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_prefWeightBox', cardbookUtils.getPrefValueFromTypes(aInputTypes, document.getElementById('versionTextBox').value),
-										{context: aType + 'TreeContextMenu', readonly: 'true'});
+										{readonly: 'true'});
 			if (document.getElementById('versionTextBox').value === "4.0") {
 				document.getElementById(aType + '_' + aIndex + '_prefWeightBox').setAttribute('hidden', 'false');
 			} else {
 				document.getElementById(aType + '_' + aIndex + '_prefWeightBox').setAttribute('hidden', 'true');
 			}
 
+			var myValueTextbox;
 			if (aType == "impp") {
 				var serviceCode = cardbookTypes.getIMPPCode(aInputTypes);
 				var serviceProtocol = cardbookTypes.getIMPPProtocol(aCardValue);
@@ -749,40 +729,40 @@ if ("undefined" == typeof(cardbookTypes)) {
 					serviceLine = cardbookTypes.getIMPPLineForCode(serviceCode)
 					if (serviceLine[0]) {
 						myDisplayedTypes = myDisplayedTypes.concat(serviceLine[1]);
-						cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', myDisplayedTypes.join(" "), {context: aType + 'TreeContextMenu', readonly: 'true'});
+						cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', myDisplayedTypes.join(" "), {readonly: 'true'});
 						var myRegexp = new RegExp("^" + serviceLine[2] + ":");
 						myValue = myValue.replace(myRegexp, "");
-						cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myValue, {context: aType + 'TreeContextMenu', flex: '1'});
-						document.getElementById(aType + '_' + aIndex + '_valueBox').setAttribute('link', 'true');
+						myValueTextbox = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myValue, {context: myContextMenu, flex: '1'});
+						myValueTextbox.setAttribute('link', 'true');
 					} else {
 						myDisplayedTypes = myDisplayedTypes.concat(serviceCode);
-						cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', myDisplayedTypes.join(" "), {context: aType + 'TreeContextMenu', readonly: 'true'});
-						cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myValue, {context: aType + 'TreeContextMenu', flex: '1'});
-						document.getElementById(aType + '_' + aIndex + '_valueBox').setAttribute('readonly', 'true');
+						cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', myDisplayedTypes.join(" "), {readonly: 'true'});
+						myValueTextbox = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myValue, {context: myContextMenu, flex: '1'});
+						myValueTextbox.setAttribute('readonly', 'true');
 					}
 				} else if (serviceProtocol != "") {
 					var serviceLine = [];
 					serviceLine = cardbookTypes.getIMPPLineForProtocol(serviceProtocol)
 					if (serviceLine[0]) {
 						myDisplayedTypes = myDisplayedTypes.concat(serviceLine[1]);
-						cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', myDisplayedTypes.join(" "), {context: aType + 'TreeContextMenu', readonly: 'true'});
+						cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', myDisplayedTypes.join(" "), {readonly: 'true'});
 						var myRegexp = new RegExp("^" + serviceLine[2] + ":");
 						myValue = myValue.replace(myRegexp, "");
-						cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myValue, {context: aType + 'TreeContextMenu', flex: '1'});
-						document.getElementById(aType + '_' + aIndex + '_valueBox').setAttribute('link', 'true');
+						myValueTextbox = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myValue, {context: myContextMenu, flex: '1'});
+						myValueTextbox.setAttribute('link', 'true');
 					} else {
 						myDisplayedTypes = myDisplayedTypes.concat(serviceCode);
-						cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', myDisplayedTypes.join(" "), {context: aType + 'TreeContextMenu', readonly: 'true'});
-						cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myValue, {context: aType + 'TreeContextMenu', flex: '1'});
-						document.getElementById(aType + '_' + aIndex + '_valueBox').setAttribute('readonly', 'true');
+						cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', myDisplayedTypes.join(" "), {readonly: 'true'});
+						myValueTextbox = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myValue, {context: myContextMenu, flex: '1'});
+						myValueTextbox.setAttribute('readonly', 'true');
 					}
 				} else {
-					cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', myDisplayedTypes.join(" "), {context: aType + 'TreeContextMenu', readonly: 'true'});
-					cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myValue, {context: aType + 'TreeContextMenu', flex: '1'});
-					document.getElementById(aType + '_' + aIndex + '_valueBox').setAttribute('readonly', 'true');
+					cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', myDisplayedTypes.join(" "), {readonly: 'true'});
+					myValueTextbox = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myValue, {context: myContextMenu, flex: '1'});
+					myValueTextbox.setAttribute('readonly', 'true');
 				}
 			} else {
-				cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', myDisplayedTypes.join(" "), {context: aType + 'TreeContextMenu', readonly: 'true'});
+				cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', myDisplayedTypes.join(" "), {readonly: 'true'});
 	
 				if (aType == "adr") {
 					if (aCardValue.length != 7) {
@@ -794,65 +774,80 @@ if ("undefined" == typeof(cardbookTypes)) {
 							myTmpArray.push(aCardValue[i].replace(/\n/g, " "));
 						}
 					}
-					cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myTmpArray.join(" "), {context: aType + 'TreeContextMenu', flex: '1'});
+					myValueTextbox = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myTmpArray.join(" "), {context: myContextMenu, flex: '1'});
 				} else {
-					cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', cardbookUtils.cleanArray(aCardValue).join(" "), {context: aType + 'TreeContextMenu', flex: '1'});
+					myValueTextbox = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', cardbookUtils.cleanArray(aCardValue).join(" "), {context: myContextMenu, flex: '1'});
 				}
 				if (aType == "url" || aType == "email" || aType == "adr") {
-					document.getElementById(aType + '_' + aIndex + '_valueBox').setAttribute('link', 'true');
+					myValueTextbox.setAttribute('link', 'true');
 				} else if (aType == "tel") {
 					var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
 					var telProtocol = "";
 					try {
 						var telProtocol = prefs.getComplexValue("extensions.cardbook.tels.0", Components.interfaces.nsISupportsString).data;
-						document.getElementById(aType + '_' + aIndex + '_valueBox').setAttribute('link', 'true');
+						myValueTextbox.setAttribute('link', 'true');
 					}
 					catch(e) {
-						document.getElementById(aType + '_' + aIndex + '_valueBox').setAttribute('readonly', 'true');
+						myValueTextbox.setAttribute('readonly', 'true');
 					}
+				}
+			}
+			if (aFollowLink) {
+				function fireClick(event) {
+					if (wdw_cardbook) {
+						wdw_cardbook.chooseActionTreeForClick(event)
+					}
+				};
+				myValueTextbox.addEventListener("click", fireClick, false);
+			}
+		},
+
+		loadMailPopularity: function (aCard, aReadOnly) {
+			var myEmails = [];
+			if (aCard.isAList) {
+				myEmails.push(aCard.fn.toLowerCase());
+			} else {
+				for (var i = 0; i < aCard.email.length; i++) {
+					myEmails.push(aCard.email[i][0][0].toLowerCase());
+				}
+			}
+
+			for (var i = 0; i < myEmails.length; i++) {
+				var aOrigBox = document.getElementById('mailPopularityGroupbox');
+
+				if (i == 0) {
+					cardbookElementTools.addCaption('mailPopularity', aOrigBox);
+				}
+
+				var aRow = document.createElement('row');
+				aOrigBox.appendChild(aRow);
+				aRow.setAttribute('id', 'mailPopularity_' + i + '_row');
+				aRow.setAttribute('flex', '1');
+				aRow.setAttribute('align', 'center');
+
+				if (aReadOnly) {
+					var aImage = document.createElement('image');
+					aRow.appendChild(aImage);
+					aImage.setAttribute('id', 'dummyMailPopularityPrefBox_' + i);
+					aImage.setAttribute('class', 'cardbookNoPrefStarClass');
+				}
+
+				if (cardbookRepository.cardbookMailPopularityIndex[myEmails[i]]) {
+					var mailPopularityValue = cardbookRepository.cardbookMailPopularityIndex[myEmails[i]];
+				} else {
+					var mailPopularityValue = "";
+				}
+				if (aReadOnly) {
+					cardbookElementTools.addTextbox(aRow, 'popularity_' + i + '_Textbox', mailPopularityValue, {flex: '1', readonly: 'true'});
+					cardbookElementTools.addTextbox(aRow, 'email_' + i + '_Textbox', myEmails[i], {flex: '1', readonly: 'true'});
+				} else {
+					cardbookElementTools.addTextbox(aRow, 'popularity_' + i + '_Textbox', mailPopularityValue, {flex: '1'});
+					cardbookElementTools.addTextbox(aRow, 'email_' + i + '_Textbox', myEmails[i], {flex: '1'});
 				}
 			}
 		},
 
-		loadStaticMailPopularity: function (aIndex, aEmail) {
-			var aOrigRows = document.getElementById('mailPopularityRows');
-
-			var aRow = document.createElement('row');
-			aOrigRows.appendChild(aRow);
-			aRow.setAttribute('id', 'mailPopularity_' + aIndex + '_row');
-			aRow.setAttribute('flex', '1');
-
-			if (cardbookRepository.cardbookMailPopularityIndex[aEmail]) {
-				var mailPopularityValue = cardbookRepository.cardbookMailPopularityIndex[aEmail];
-			} else {
-				var mailPopularityValue = "";
-			}
-			cardbookElementTools.addTextbox(aRow, 'popularity_' + aIndex + '_Textbox', mailPopularityValue, {readonly: 'true'});
-			cardbookElementTools.addTextbox(aRow, 'email_' + aIndex + '_Textbox', aEmail, {readonly: 'true'});
-		},
-
-		loadDynamicMailPopularity: function (aIndex, aEmail) {
-			var aOrigRows = document.getElementById('mailPopularityRows');
-			
-			var aRow = document.createElement('row');
-			aOrigRows.appendChild(aRow);
-			aRow.setAttribute('id', 'mailPopularity_' + aIndex + '_row');
-			aRow.setAttribute('flex', '1');
-
-			if (cardbookRepository.cardbookMailPopularityIndex[aEmail]) {
-				var mailPopularityValue = cardbookRepository.cardbookMailPopularityIndex[aEmail];
-			} else {
-				var mailPopularityValue = "";
-			}
-			cardbookElementTools.addTextbox(aRow, 'popularity_' + aIndex + '_Textbox', mailPopularityValue);
-			cardbookElementTools.addTextbox(aRow, 'email_' + aIndex + '_Textbox', aEmail);
-		},
-
-		loadStaticList: function (aCard) {
-			cardbookElementTools.deleteRows('addedCardsBox');
-			var strBundle = document.getElementById("cardbook-strings");
-			var aOrigBox = document.getElementById('addedCardsBox');
-			
+		loadStaticList: function (aCard, aFollowLink) {
 			var addedCards = [];
 			if (aCard.version == "4.0") {
 				for (var i = 0; i < aCard.member.length; i++) {
@@ -860,9 +855,9 @@ if ("undefined" == typeof(cardbookTypes)) {
 					if (cardbookRepository.cardbookCards[aCard.dirPrefId+"::"+uid]) {
 						var cardFound = cardbookRepository.cardbookCards[aCard.dirPrefId+"::"+uid];
 						if (cardFound.isAList) {
-							addedCards.push([cardFound.fn, [""], cardFound.dirPrefId+"::"+cardFound.uid]);
+							addedCards.push([cardbookUtils.getName(cardFound), [""], cardFound.dirPrefId+"::"+cardFound.uid]);
 						} else {
-							addedCards.push([cardFound.fn, cardFound.emails, cardFound.dirPrefId+"::"+cardFound.uid]);
+							addedCards.push([cardbookUtils.getName(cardFound), cardFound.emails, cardFound.dirPrefId+"::"+cardFound.uid]);
 						}
 					}
 				}
@@ -879,9 +874,9 @@ if ("undefined" == typeof(cardbookTypes)) {
 							if (cardbookRepository.cardbookCards[aCard.dirPrefId+"::"+trailer.replace("urn:uuid:", "")]) {
 								var cardFound = cardbookRepository.cardbookCards[aCard.dirPrefId+"::"+trailer.replace("urn:uuid:", "")];
 								if (cardFound.isAList) {
-									addedCards.push([cardFound.fn, [""], cardFound.dirPrefId+"::"+cardFound.uid]);
+									addedCards.push([cardbookUtils.getName(cardFound), [""], cardFound.dirPrefId+"::"+cardFound.uid]);
 								} else {
-									addedCards.push([cardFound.fn, cardFound.emails, cardFound.dirPrefId+"::"+cardFound.uid]);
+									addedCards.push([cardbookUtils.getName(cardFound), cardFound.emails, cardFound.dirPrefId+"::"+cardFound.uid]);
 								}
 							}
 						}
@@ -890,24 +885,36 @@ if ("undefined" == typeof(cardbookTypes)) {
 			}
 
 			for (var i = 0; i < addedCards.length; i++) {
+				var aOrigBox = document.getElementById('addedCardsGroupbox');
+
+				if (i == 0) {
+					cardbookElementTools.addCaption('addedCards', aOrigBox);
+				}
+
 				var aRow = document.createElement('row');
 				aOrigBox.appendChild(aRow);
-				aRow.setAttribute('id', addedCards[i][2] + '_row');
+				aRow.setAttribute('id', 'addedCards_' + i + '_row');
 				aRow.setAttribute('flex', '1');
 				aRow.setAttribute('align', 'center');
-				aRow.setAttribute('context', 'listsContextMenu');
-				function fireDblClick(event) {
-					var myId = this.id.replace(/_row$/, "");
-					var myCardToDisplay = cardbookRepository.cardbookCards[myId];
-					wdw_cardbook.editCardFromCard(myCardToDisplay)
-					var myCardToRefresh = cardbookRepository.cardbookCards[document.getElementById('dirPrefIdTextBox').value+"::"+document.getElementById('uidTextBox').value];
-					cardbookTypes.loadStaticList(myCardToRefresh);
-				};
-				aRow.addEventListener("dblclick", fireDblClick, false);
-	
-				cardbookElementTools.addTextbox(aRow, addedCards[i][2] + '_fnBox', addedCards[i][0], {context: 'listsContextMenu', readonly: 'true'});
-	
-				cardbookElementTools.addTextbox(aRow, addedCards[i][2] + '_mailBox', addedCards[i][1].join(" "), {context: 'listsContextMenu', flex: '1', readonly: 'true'});
+
+				var aImage = document.createElement('image');
+				aRow.appendChild(aImage);
+				aImage.setAttribute('id', 'dummyListPrefBox_' + i);
+				aImage.setAttribute('class', 'cardbookNoPrefStarClass');
+
+				cardbookElementTools.addTextbox(aRow, 'email_' + addedCards[i][2] + '_valueBox', addedCards[i][1].join(" "), {flex: '1', readonly: 'true'});
+
+				var myCardTextbox = cardbookElementTools.addTextbox(aRow, 'fn_' + addedCards[i][2] + '_valueBox', addedCards[i][0], {context: 'listsContextMenu', flex: '1', readonly: 'true'});
+				if (aFollowLink) {
+					myCardTextbox.setAttribute('link', 'true');
+					function fireClick(event) {
+						if (wdw_cardbook) {
+							wdw_cardbook.chooseActionTreeForClick(event)
+						}
+					};
+					myCardTextbox.addEventListener("click", fireClick, false);
+				}
+
 			}
 		}
 

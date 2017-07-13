@@ -20,6 +20,7 @@
 <!ENTITY cardbookToolsMenuSyncLightningLabel "Geboortedata toevoegen aan agenda">
 <!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "Zoek overeenkomende contactpersonen in alle adresboeken">
 <!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "Zoek overeenkomende contactpersonen in huidige adresboek">
+<!ENTITY cardbookToolsMenuPrefsLabel "CardBook voorkeuren">
 
 <!ENTITY cardbookToolbarLabel "CardBook knoppenbalk">
 <!ENTITY cardbookToolbarAccesskey "C">
@@ -31,8 +32,10 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Internet adresboeken synchroniseren">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Voorkeuren">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "CardBook voorkeuren">
-<!ENTITY cardbookToolbarAddButtonLabel "Nieuw contact">
-<!ENTITY cardbookToolbarAddButtonTooltip "Nieuwe contactpersoon toestaan">
+<!ENTITY cardbookToolbarAddContactButtonLabel "Nieuw contact">
+<!ENTITY cardbookToolbarAddContactButtonTooltip "Een nieuw adresboekcontact aanmaken">
+<!ENTITY cardbookToolbarAddListButtonLabel "Nieuwe lijst">
+<!ENTITY cardbookToolbarAddListButtonTooltip "Een nieuwe lijst aanmaken">
 <!ENTITY cardbookToolbarEditButtonLabel "Wijzigen">
 <!ENTITY cardbookToolbarEditButtonTooltip "Contactpersoon wijzigen toestaan">
 <!ENTITY cardbookToolbarRemoveButtonLabel "Verwijderen">
@@ -53,7 +56,7 @@
 <!ENTITY technicalTabLabel "Technisch">
 <!ENTITY vcardTabLabel "vCard">
 
-<!ENTITY GeneratedNameColumnLabel "Pictogram">
+<!ENTITY cardIconColumnLabel "Pictogram">
 <!ENTITY nameColumnLabel "Naam">
 <!ENTITY lastnameColumnLabel "Achternaam">
 <!ENTITY firstnameColumnLabel "Voornaam">

@@ -20,6 +20,7 @@
 <!ENTITY cardbookToolsMenuSyncLightningLabel "Az évfordulók hozzáadása a naptárhoz">
 <!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "Az összes névjegytárokban ismétlődő névjegy keresése">
 <!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "A jelenlegi névjegytárban ismétlődő névjegy keresése">
+<!ENTITY cardbookToolsMenuPrefsLabel "A névjegyzék beállításai">
 
 <!ENTITY cardbookToolbarLabel "Névjegyzék eszköztár">
 <!ENTITY cardbookToolbarAccesskey "N">
@@ -31,8 +32,10 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Minden távoli névjegytár összehangolása">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Beállítások">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Névjegyzék beállítások">
-<!ENTITY cardbookToolbarAddButtonLabel "Új névjegy">
-<!ENTITY cardbookToolbarAddButtonTooltip "Új névjegy">
+<!ENTITY cardbookToolbarAddContactButtonLabel "Új névjegy">
+<!ENTITY cardbookToolbarAddContactButtonTooltip "Új névjegy létrehozása">
+<!ENTITY cardbookToolbarAddListButtonLabel "Új lista">
+<!ENTITY cardbookToolbarAddListButtonTooltip "Egy új lista létrehozása">
 <!ENTITY cardbookToolbarEditButtonLabel "Szerkesztés">
 <!ENTITY cardbookToolbarEditButtonTooltip "Névjegy szerkesztése">
 <!ENTITY cardbookToolbarRemoveButtonLabel "Törlés">
@@ -53,7 +56,7 @@
 <!ENTITY technicalTabLabel "Műszaki">
 <!ENTITY vcardTabLabel "vCard">
 
-<!ENTITY GeneratedNameColumnLabel "Ikon">
+<!ENTITY cardIconColumnLabel "Ikon">
 <!ENTITY nameColumnLabel "Név">
 <!ENTITY lastnameColumnLabel "Családnév">
 <!ENTITY firstnameColumnLabel "Keresztnév">

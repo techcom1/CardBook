@@ -7,7 +7,7 @@
 
 <!ENTITY cardbookAccountMenuLabel "Książka adresowa">
 
-<!ENTITY cardbookAccountMenuAddServerLabel "Nowa książkę adresową">
+<!ENTITY cardbookAccountMenuAddServerLabel "Nowa książka adresowa">
 <!ENTITY cardbookAccountMenuEditServerLabel "Edytuj książkę adresową">
 <!ENTITY cardbookAccountMenuCloseServerLabel "Usuń książkę adresową">
 <!ENTITY cardbookAccountMenuSyncLabel "Synchronizuj książkę adresową">
@@ -20,19 +20,22 @@
 <!ENTITY cardbookToolsMenuSyncLightningLabel "Dodaj datę urodzin do kalendarza">
 <!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "Znajdź powielone wizytówki we wszystkich książkach adresowych">
 <!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "Znajdź powielone wizytówki w bieżącej książce adresowej">
+<!ENTITY cardbookToolsMenuPrefsLabel "Ustawienia CardBook">
 
 <!ENTITY cardbookToolbarLabel "Pasek narzędzi CardBook">
 <!ENTITY cardbookToolbarAccesskey "a">
 <!ENTITY CustomizeCardBookToolbarLabel "Dostosuj…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "C">
-<!ENTITY cardbookToolbarAddServerButtonLabel "Nowa książkę adresową">
+<!ENTITY cardbookToolbarAddServerButtonLabel "Nowa książka adresowa">
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Dodaj zdalną lub lokalną książkę adresową">
 <!ENTITY cardbookToolbarSyncButtonLabel "Synchronizuj">
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synchronizuj wszystkie zdalne książki adresowe">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Ustawienia">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Ustawienia programu CardBook">
-<!ENTITY cardbookToolbarAddButtonLabel "Nowa wizytówka">
-<!ENTITY cardbookToolbarAddButtonTooltip "Utwórz nową wizytówkę">
+<!ENTITY cardbookToolbarAddContactButtonLabel "Nowa wizytówka">
+<!ENTITY cardbookToolbarAddContactButtonTooltip "Dodaj nową wizytówkę do książki adresowej">
+<!ENTITY cardbookToolbarAddListButtonLabel "Nowa lista dystrybucyjna">
+<!ENTITY cardbookToolbarAddListButtonTooltip "Dodaj nową listę dystrybucyjną">
 <!ENTITY cardbookToolbarEditButtonLabel "Edytuj">
 <!ENTITY cardbookToolbarEditButtonTooltip "Zmodyfikuj istniejącą wizytówkę">
 <!ENTITY cardbookToolbarRemoveButtonLabel "Usuń">
@@ -53,7 +56,7 @@
 <!ENTITY technicalTabLabel "Techniczne">
 <!ENTITY vcardTabLabel "vCard">
 
-<!ENTITY GeneratedNameColumnLabel "Ikona">
+<!ENTITY cardIconColumnLabel "Ikona">
 <!ENTITY nameColumnLabel "Nazwa">
 <!ENTITY lastnameColumnLabel "Nazwisko">
 <!ENTITY firstnameColumnLabel "Imię">
@@ -135,14 +138,14 @@
 
 <!ENTITY copyCardTreeLabel "Kopiuj pozycję">
 
-<!ENTITY toEmailCardFromAccountsOrCatsLabel "Wyślij e-mailem">
-<!ENTITY toEmailCardFromCardsLabel "Wyślij e-mailem">
-<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Wyślij e-mailem (kopia/cc)">
-<!ENTITY ccEmailCardFromCardsLabel "Wyślij e-mailem (kopia/cc)">
-<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Wyślij e-mailem (ukryta kopia/bcc)">
-<!ENTITY bccEmailCardFromCardsLabel "Wyślij e-mailem (ukryta kopia/bcc)">
-<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "??Share by email??">
-<!ENTITY shareCardByEmailFromCardsLabel "??Share by email??">
+<!ENTITY toEmailCardFromAccountsOrCatsLabel "Wyślij e-mail">
+<!ENTITY toEmailCardFromCardsLabel "Wyślij e-mail">
+<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Wyślij e-mail (kopia)">
+<!ENTITY ccEmailCardFromCardsLabel "Wyślij e-mail (kopia)">
+<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Wyślij e-mail (ukryta kopia)">
+<!ENTITY bccEmailCardFromCardsLabel "Wyślij e-mail (ukryta kopia)">
+<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Wyślij e-mailem">
+<!ENTITY shareCardByEmailFromCardsLabel "Wyślij e-mailem">
 <!ENTITY categoryLabel "Kategoria">
 <!ENTITY findEmailsFromCardsLabel "Znajdź e-maile związane z tą wizytówką">
 <!ENTITY findEventsFromCardsLabel "Znajdź wydarzenia związane z tą wizytówką">
@@ -161,7 +164,7 @@
 <!ENTITY renameCatFromAccountsOrCatsLabel "Zmień nazwę kategorii">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Usuń kategorię">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Znajdź powielone wizytówki w bieżącej książce adresowej">
-<!ENTITY generateFnFromAccountsOrCatsLabel "??Generate Display Names??">
+<!ENTITY generateFnFromAccountsOrCatsLabel "Stwórz Wyświetlane nazwy">
 <!ENTITY mergeCardsFromCardsLabel "Połącz wizytówki">
 <!ENTITY duplicateCardFromCardsLabel "Powiel wizytówkę">
 <!ENTITY convertListToCategoryFromCardsLabel "Zamień listę w kategorię">

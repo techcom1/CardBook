@@ -42,7 +42,7 @@ if ("undefined" == typeof(ovl_cardbookComposeMsg)) {
 		newInCardBook: function() {
 			try {
 				var myNewCard = new cardbookCardParser();
-				cardbookUtils.openEditionWindow(myNewCard, "CreateCard", "cardbook.cardAddedIndirect");
+				cardbookUtils.openEditionWindow(myNewCard, "CreateContact", "cardbook.cardAddedIndirect");
 			}
 			catch (e) {
 				var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);

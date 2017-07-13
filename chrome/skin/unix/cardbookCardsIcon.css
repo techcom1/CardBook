@@ -1,0 +1,11 @@
+﻿.cardIconColumnHeader {
+	list-style-image: url("chrome://messenger/skin/addressbook/icons/abcard.png");
+}
+
+treechildren::-moz-tree-image(cardIcon) {
+	list-style-image: url("chrome://messenger/skin/addressbook/icons/abcard.png");
+}
+
+treechildren::-moz-tree-image(cardIcon, MailList) {
+	list-style-image: url("chrome://messenger/skin/addressbook/icons/ablist.png");
+}

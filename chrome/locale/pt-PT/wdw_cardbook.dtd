@@ -20,6 +20,7 @@
 <!ENTITY cardbookToolsMenuSyncLightningLabel "Adicionar aniversário ao calendário">
 <!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "Procurar duplicados em todas as agendas">
 <!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "Procurar duplicados na agenda actual">
+<!ENTITY cardbookToolsMenuPrefsLabel "Preferências do CardBook">
 
 <!ENTITY cardbookToolbarLabel "Barra de ferramentas do Cardbook">
 <!ENTITY cardbookToolbarAccesskey "C">
@@ -31,8 +32,10 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Sincronizar todas as agendas remotas">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Preferências">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Preferências do CardBook">
-<!ENTITY cardbookToolbarAddButtonLabel "Novo contacto">
-<!ENTITY cardbookToolbarAddButtonTooltip "Permitir criação de contacto">
+<!ENTITY cardbookToolbarAddContactButtonLabel "Novo contacto">
+<!ENTITY cardbookToolbarAddContactButtonTooltip "Criar novo contacto no livro de endereços">
+<!ENTITY cardbookToolbarAddListButtonLabel "Nova lista">
+<!ENTITY cardbookToolbarAddListButtonTooltip "Criar nova lista">
 <!ENTITY cardbookToolbarEditButtonLabel "Editar">
 <!ENTITY cardbookToolbarEditButtonTooltip "Permitir alteração de contacto">
 <!ENTITY cardbookToolbarRemoveButtonLabel "Apagar">
@@ -53,10 +56,10 @@
 <!ENTITY technicalTabLabel "Tecnico">
 <!ENTITY vcardTabLabel "vCard">
 
-<!ENTITY GeneratedNameColumnLabel "Ícone">
+<!ENTITY cardIconColumnLabel "Ícone">
 <!ENTITY nameColumnLabel "Nome">
-<!ENTITY lastnameColumnLabel "Nome">
-<!ENTITY firstnameColumnLabel "Apelido">
+<!ENTITY lastnameColumnLabel "Apelido">
+<!ENTITY firstnameColumnLabel "Nome">
 <!ENTITY othernameColumnLabel "Outros nomes">
 <!ENTITY prefixnameColumnLabel "Prefixo">
 <!ENTITY suffixnameColumnLabel "Sufixo">
@@ -161,7 +164,7 @@
 <!ENTITY renameCatFromAccountsOrCatsLabel "Renomear categoria">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Remover categoria">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Procurar duplicados na agenda actual">
-<!ENTITY generateFnFromAccountsOrCatsLabel "??Generate Display Names??">
+<!ENTITY generateFnFromAccountsOrCatsLabel "Gerar nomes de apresentação">
 <!ENTITY mergeCardsFromCardsLabel "Juntar cartões">
 <!ENTITY duplicateCardFromCardsLabel "Contacto duplicado">
 <!ENTITY convertListToCategoryFromCardsLabel "Converter lista para categoria">

@@ -20,6 +20,7 @@
 <!ENTITY cardbookToolsMenuSyncLightningLabel "Přidat narozeniny do kalendáře">
 <!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "Najít duplicitní kontakty ve všech adresářích">
 <!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "Najít duplicitní kontakty v aktuálním adresáři">
+<!ENTITY cardbookToolsMenuPrefsLabel "Nastavení CardBooku">
 
 <!ENTITY cardbookToolbarLabel "Panel nástrojů CardBooku">
 <!ENTITY cardbookToolbarAccesskey "C">
@@ -31,8 +32,10 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synchronizovat všechny adresáře">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Předvolby">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Nastavení CardBooku">
-<!ENTITY cardbookToolbarAddButtonLabel "Nový kontakt">
-<!ENTITY cardbookToolbarAddButtonTooltip "Dovoluje přidat kontakt">
+<!ENTITY cardbookToolbarAddContactButtonLabel "Nový kontakt">
+<!ENTITY cardbookToolbarAddContactButtonTooltip "Vytvoří nový kontakt">
+<!ENTITY cardbookToolbarAddListButtonLabel "Nová skupina">
+<!ENTITY cardbookToolbarAddListButtonTooltip "Vytvoří novou skupinu">
 <!ENTITY cardbookToolbarEditButtonLabel "Upravit">
 <!ENTITY cardbookToolbarEditButtonTooltip "Dovoluje úpravu kontaktu">
 <!ENTITY cardbookToolbarRemoveButtonLabel "Smazat">
@@ -53,7 +56,7 @@
 <!ENTITY technicalTabLabel "Technické">
 <!ENTITY vcardTabLabel "vCard">
 
-<!ENTITY GeneratedNameColumnLabel "Ikona">
+<!ENTITY cardIconColumnLabel "Ikona">
 <!ENTITY nameColumnLabel "Název">
 <!ENTITY lastnameColumnLabel "Příjmení">
 <!ENTITY firstnameColumnLabel "Křestní jméno">

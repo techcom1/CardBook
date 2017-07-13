@@ -50,10 +50,15 @@
 				tooltiptext="&cardbookToolbarConfigurationButtonTooltip;"
 				oncommand="wdw_cardbook.openOptionsEdition();"
 				class="toolbarbutton-1"/>
-			<toolbarbutton id="cardbookToolbarAddButton"
-				label="&cardbookToolbarAddButtonLabel;"
-				tooltiptext="&cardbookToolbarAddButtonTooltip;"
-				oncommand="wdw_cardbook.createCard();"
+			<toolbarbutton id="cardbookToolbarAddContactButton"
+				label="&cardbookToolbarAddContactButtonLabel;"
+				tooltiptext="&cardbookToolbarAddContactButtonTooltip;"
+				oncommand="wdw_cardbook.createContact();"
+				class="toolbarbutton-1"/>
+			<toolbarbutton id="cardbookToolbarAddListButton"
+				label="&cardbookToolbarAddListButtonLabel;"
+				tooltiptext="&cardbookToolbarAddListButtonTooltip;"
+				oncommand="wdw_cardbook.createList();"
 				class="toolbarbutton-1"/>
 			<toolbarbutton id="cardbookToolbarEditButton"
 				label="&cardbookToolbarEditButtonLabel;"
@@ -98,8 +103,9 @@
 					</menu>
 					<menu id="cardbookContactsMenu" label="&cardbookContactsMenuLabel;">
 						<menupopup onpopupshowing="wdw_cardbook.cardbookContactsMenuContextShowing();">
-							<menuitem id="cardbookContactsMenuAddCard" label="&cardbookToolbarAddButtonLabel;" oncommand="wdw_cardbook.createCard();"/>
-							<menuitem id="cardbookContactsMenuEditCard" label="&cardbookToolbarEditButtonLabel;" oncommand="wdw_cardbook.editCard();"/>
+							<menuitem id="cardbookContactsMenuAddContact" label="&cardbookToolbarAddContactButtonLabel;" oncommand="wdw_cardbook.createContact();"/>
+							<menuitem id="cardbookContactsMenuAddList" label="&cardbookToolbarAddListButtonLabel;" oncommand="wdw_cardbook.createList();"/>
+							<menuitem id="cardbookContactsMenuEditContact" label="&cardbookToolbarEditButtonLabel;" oncommand="wdw_cardbook.editCard();"/>
 							<menuitem id="cardbookContactsMenuRemoveCard" label="&cardbookToolbarRemoveButtonLabel;" oncommand="wdw_cardbook.deleteCardsAndValidate('cardbook.cardRemovedDirect');"/>
 							<menuseparator/>
 							<menu id="cardbookContactsMenuCategories" label="&categoryLabel;">
@@ -146,7 +152,7 @@
 							<menuseparator/>
 							<menuitem id="cardbookToolsMenuLog" label="&wdw_logEditionTitle;" oncommand="wdw_cardbook.openLogEdition();"/>
 							<menuseparator/>
-							<menuitem id="cardbookToolsMenuOptions" label="&wdw_cardbookConfigurationWindowLabel;" oncommand="wdw_cardbook.openOptionsEdition();"/>
+							<menuitem id="cardbookToolsMenuOptions" label="&cardbookToolsMenuPrefsLabel;" oncommand="wdw_cardbook.openOptionsEdition();"/>
 						</menupopup>
 					</menu>
 				</menupopup>
@@ -176,7 +182,7 @@
 			fullscreentoolbar="true" mode="full"
 			customizable="true"
 			context="cardbook-toolbar-context"
-			defaultset="cardbookToolbarAppMenuButton,cardbookToolbarSyncButton,cardbookToolbarConfigurationButton,spring,cardbookToolbarSearchBox,cardbookToolbarAddButton,cardbookToolbarEditButton,cardbookToolbarRemoveButton,cardbookToolbarThMenuButton"/>
+			defaultset="cardbookToolbarAppMenuButton,cardbookToolbarSyncButton,cardbookToolbarConfigurationButton,spring,cardbookToolbarSearchBox,cardbookToolbarAddContactButton,cardbookToolbarAddListButton,cardbookToolbarEditButton,cardbookToolbarRemoveButton,cardbookToolbarThMenuButton"/>
 		<toolbarset id="cardbookToolbars" context="cardbook-toolbar-context"/>
 	</toolbox>
 
@@ -253,7 +259,8 @@
 	</menupopup>
 
 	<menupopup id="cardsTreeContextMenu" onpopupshowing="return wdw_cardbook.cardsTreeContextShowing();">
-		<menuitem id="addCardFromCards" label="&cardbookToolbarAddButtonLabel;" oncommand="wdw_cardbook.createCard();"/>
+		<menuitem id="addContactFromCards" label="&cardbookToolbarAddContactButtonLabel;" oncommand="wdw_cardbook.createContact();"/>
+		<menuitem id="addListFromCards" label="&cardbookToolbarAddListButtonLabel;" oncommand="wdw_cardbook.createList();"/>
 		<menuitem id="editCardFromCards" label="&cardbookToolbarEditButtonLabel;" oncommand="wdw_cardbook.editCard();"/>
 		<menuitem id="removeCardFromCards" label="&cardbookToolbarRemoveButtonLabel;" oncommand="wdw_cardbook.deleteCardsAndValidate('cardbook.cardRemovedDirect');"/>
 		<menuseparator/>

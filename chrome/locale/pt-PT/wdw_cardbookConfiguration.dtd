@@ -1,7 +1,5 @@
-<!ENTITY wdw_cardbookConfigurationWindowLabel "Preferências do CardBook">
-
 <!ENTITY generalTabLabel "Geral">
-<!ENTITY CardBookTabLabel "??CardBook Tab??">
+<!ENTITY CardBookTabLabel "Tab CardBook">
 <!ENTITY typesTabLabel "Tipos">
 <!ENTITY IMPPsTabLabel "Endereços de mensagem instantanea">
 <!ENTITY customFieldsTabLabel "Campos customizaveis">
@@ -21,10 +19,10 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "M">
 <!ENTITY autocompleteWithColorLabel "Usar cor da agenda">
 <!ENTITY autocompleteWithColorAccesskey "U">
-<!ENTITY useColorLabel "??Use address book color for:??">
-<!ENTITY useColorBackgroundLabel "??Background color??">
-<!ENTITY useColorBackgroundAccesskey "B">
-<!ENTITY useColorTextLabel "??Text color??">
+<!ENTITY useColorLabel "Usar cor da agenda para:">
+<!ENTITY useColorBackgroundLabel "Cor de fundo">
+<!ENTITY useColorBackgroundAccesskey "f">
+<!ENTITY useColorTextLabel "Cor do texto">
 <!ENTITY useColorTextAccesskey "T">
 <!ENTITY exclusiveLabel "CardBook como fonte unica de contactos">
 <!ENTITY exclusiveAccesskey "U">
@@ -85,9 +83,9 @@
 <!ENTITY localizeTargetOutLabel "Fora do Thunderbird">
 <!ENTITY localizeTargetOutAccesskey "F">
 <!ENTITY showNameAsLabel "Mostrar nome como">
-<!ENTITY showNameAsLFLabel "Apelido Nome">
+<!ENTITY showNameAsLFLabel "Nome Apelido">
 <!ENTITY showNameAsLFAccesskey "A">
-<!ENTITY showNameAsFLLabel "Nome Apelido">
+<!ENTITY showNameAsFLLabel "Apelido Nome">
 <!ENTITY showNameAsFLAccesskey "N">
 <!ENTITY showNameAsDSPLabel "Nome de apresentação">
 <!ENTITY showNameAsDSPAccesskey "d">
@@ -139,7 +137,7 @@
 <!ENTITY deleteIMPPLabel "Apagar">
 <!ENTITY deleteIMPPAccesskey "G">
 
-<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldRankLabel "Rank">
 <!ENTITY customFieldCodeLabel "Nome do campo">
 <!ENTITY customFieldLabelLabel "Etiqueta do campo">
 <!ENTITY customFieldsPersTitleLabel "Information pessoal">

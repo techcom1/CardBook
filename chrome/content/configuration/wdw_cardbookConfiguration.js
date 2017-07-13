@@ -120,7 +120,11 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			}
 			
 			if (myData && myData.length) {
-				myData = cardbookUtils.sortArrayByString(myData,columnArray,order);
+				if (columnName != 'customFieldsRank') {
+					myData = cardbookUtils.sortArrayByString(myData,columnArray,order);
+				} else {
+					myData = cardbookUtils.sortArrayByNumber(myData,columnArray,order);
+				}
 			}
 
 			//setting these will make the sort option persist
@@ -182,6 +186,13 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 					}
 				}
 			}
+		},
+
+		loadTitle: function () {
+			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var addonVersion = prefs.getComplexValue("extensions.cardbook.addonVersion", Components.interfaces.nsISupportsString).data;
+			var strBundle = document.getElementById("cardbook-strings");
+			document.title = strBundle.getString("cardbookPrefTitle") + " (" + addonVersion + ")";
 		},
 
 		displayMailAccounts: function () {
@@ -1401,8 +1412,8 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				return;
 			} else {
 				var myId = myTree.view.getCellText(myTree.currentIndex, {id: "customFieldsRank"})*1;
-				var temp = [wdw_cardbookConfiguration.allCustomFields[type][myId-1][0], wdw_cardbookConfiguration.allCustomFields[type][myId-1][1], myId];
-				wdw_cardbookConfiguration.allCustomFields[type][myId-1] = [wdw_cardbookConfiguration.allCustomFields[type][myId][0], wdw_cardbookConfiguration.allCustomFields[type][myId][1], myId-1];
+				var temp = [wdw_cardbookConfiguration.allCustomFields[type][myId-1][0], wdw_cardbookConfiguration.allCustomFields[type][myId-1][1], parseInt(myId)];
+				wdw_cardbookConfiguration.allCustomFields[type][myId-1] = [wdw_cardbookConfiguration.allCustomFields[type][myId][0], wdw_cardbookConfiguration.allCustomFields[type][myId][1], parseInt(myId-1)];
 				wdw_cardbookConfiguration.allCustomFields[type][myId] = temp;
 				wdw_cardbookConfiguration.sortTrees(null, "customFields");
 			}
@@ -1415,8 +1426,8 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				return;
 			} else {
 				var myId = myTree.view.getCellText(myTree.currentIndex, {id: "customFieldsRank"})*1;
-				var temp = [wdw_cardbookConfiguration.allCustomFields[type][myId+1][0], wdw_cardbookConfiguration.allCustomFields[type][myId+1][1], myId];
-				wdw_cardbookConfiguration.allCustomFields[type][myId+1] = [wdw_cardbookConfiguration.allCustomFields[type][myId][0], wdw_cardbookConfiguration.allCustomFields[type][myId][1], myId+1];
+				var temp = [wdw_cardbookConfiguration.allCustomFields[type][myId+1][0], wdw_cardbookConfiguration.allCustomFields[type][myId+1][1], parseInt(myId)];
+				wdw_cardbookConfiguration.allCustomFields[type][myId+1] = [wdw_cardbookConfiguration.allCustomFields[type][myId][0], wdw_cardbookConfiguration.allCustomFields[type][myId][1], parseInt(myId+1)];
 				wdw_cardbookConfiguration.allCustomFields[type][myId] = temp;
 				wdw_cardbookConfiguration.sortTrees(null, "customFields");
 			}
@@ -1601,6 +1612,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 
 		load: function () {
 			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+			wdw_cardbookConfiguration.loadTitle();
 			wdw_cardbookConfiguration.addAcceptButton();
 			wdw_cardbookConfiguration.loadTypes();
 			wdw_cardbookConfiguration.sortTrees(null, "typesTree");

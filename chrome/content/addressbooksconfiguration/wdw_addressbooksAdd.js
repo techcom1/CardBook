@@ -603,7 +603,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				} else {
 					var enabled = true;
 				}
-				wdw_addressbooksAdd.gFinishParams.push({searchDef: wdw_addressbooksAdd.gTypeFile, name: name, username: "", color: color, vcard: vCardVersion, enabled: enabled, dirPrefId: dirPrefId, DBcached: false});
+				wdw_addressbooksAdd.gFinishParams.push({searchDef: wdw_addressbooksAdd.gTypeFile, name: name, username: "", color: color, vcard: vCardVersion, enabled: enabled, dirPrefId: dirPrefId, DBcached: false, firstAction: false});
 			} else if (wdw_addressbooksAdd.gType == 'GOOGLE') {
 				var url = cardbookRepository.cardbookgdata.GOOGLE_API;
 				var name = document.getElementById('namePageName').value;
@@ -614,7 +614,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				var urnuuid = document.getElementById('urnuuidPageName').checked;
 				var dirPrefId = cardbookUtils.getUUID();
 				wdw_addressbooksAdd.gFinishParams.push({url: url, name: name, username: username, color: color, vcard: vCardVersion, readonly: readonly, dirPrefId: dirPrefId, dateFormat: dateFormat,
-															urnuuid: urnuuid, DBcached: true});
+															urnuuid: urnuuid, DBcached: true, firstAction: false});
 			} else if (wdw_addressbooksAdd.gType == 'APPLE') {
 				var url = cardbookRepository.APPLE_API;
 				var name = document.getElementById('namePageName').value;
@@ -625,7 +625,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				var urnuuid = document.getElementById('urnuuidPageName').checked;
 				var dirPrefId = cardbookUtils.getUUID();
 				wdw_addressbooksAdd.gFinishParams.push({url: url, name: name, username: username, color: color, vcard: vCardVersion, readonly: readonly, dirPrefId: dirPrefId, dateFormat: dateFormat,
-															urnuuid: urnuuid, DBcached: true});
+															urnuuid: urnuuid, DBcached: true, firstAction: false});
 			} else if (wdw_addressbooksAdd.gType == 'CARDDAV') {
 				for (var url in cardbookRepository.cardbookServerValidation) {
 					if (cardbookRepository.cardbookServerValidation[url].length > 1) {
@@ -641,7 +641,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 								var aAddressbookUrnuuid = document.getElementById('urnuuidCheckbox' + cardbookRepository.cardbookServerValidation[url][i][0]).checked;
 								wdw_addressbooksAdd.gFinishParams.push({url: cardbookRepository.cardbookServerValidation[url][i][1], name: aAddressbookName, username: username, color: aAddressbookColor, 
 																		vcard: aAddressbookVCard, readonly: aAddressbookReadOnly, dirPrefId: dirPrefId, dateFormat: aAddressbookDateFormat,
-																		urnuuid: aAddressbookUrnuuid, DBcached: true});
+																		urnuuid: aAddressbookUrnuuid, DBcached: true, firstAction: false});
 							}
 						}
 					} else {
@@ -654,7 +654,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 						var urnuuid = document.getElementById('urnuuidPageName').checked;
 						var dirPrefId = cardbookUtils.getUUID();
 						wdw_addressbooksAdd.gFinishParams.push({url: url, name: name, username: username, color: color, vcard: vCardVersion, readonly: readonly, dirPrefId: dirPrefId, dateFormat: dateFormat,
-																	urnuuid: urnuuid, DBcached: true});
+																	urnuuid: urnuuid, DBcached: true, firstAction: false});
 					}
 				}
 			} else if (wdw_addressbooksAdd.gType == 'STANDARD') {
@@ -668,10 +668,15 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 						var aAddressbookReadOnly = document.getElementById('readonlyCheckbox' + wdw_addressbooksAdd.gStandardAddressbooks[i][0]).checked;
 						var aAddressbookDateFormat = document.getElementById('dateFormatMenuList' + wdw_addressbooksAdd.gStandardAddressbooks[i][0]).value;
 						var aAddressbookUrnuuid = document.getElementById('urnuuidCheckbox' + wdw_addressbooksAdd.gStandardAddressbooks[i][0]).checked;
+						if (window.arguments[0].action == "first") {
+							var aFirstAction = true;
+						} else {
+							var aFirstAction = false;
+						}
 						wdw_addressbooksAdd.gFinishParams.push({sourceDirPrefId: wdw_addressbooksAdd.gStandardAddressbooks[i][0],
 																name: aAddressbookName, username: "", color: aAddressbookColor, vcard: aAddressbookVCard, readonly: aAddressbookReadOnly, 
 																dirPrefId: aAddressbookId, collected: wdw_addressbooksAdd.gStandardAddressbooks[i][2], dateFormat: aAddressbookDateFormat,
-																urnuuid: aAddressbookUrnuuid, DBcached: true});
+																urnuuid: aAddressbookUrnuuid, DBcached: true, firstAction: aFirstAction});
 					}
 				}
 			} else if (wdw_addressbooksAdd.gType == 'LOCALDB') {
@@ -683,7 +688,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				var urnuuid = document.getElementById('urnuuidPageName').checked;
 				var dirPrefId = cardbookUtils.getUUID();
 				wdw_addressbooksAdd.gFinishParams.push({name: name, username: "", color: color, vcard: vCardVersion, readonly: readonly, dirPrefId: dirPrefId, dateFormat: dateFormat,
-															urnuuid: urnuuid, DBcached: true});
+															urnuuid: urnuuid, DBcached: true, firstAction: false});
 			} else if (wdw_addressbooksAdd.gType == 'FILE' || wdw_addressbooksAdd.gType == 'DIRECTORY') {
 				var dirname = document.getElementById('localPageURI').value;
 				var name = document.getElementById('namePageName').value;
@@ -694,7 +699,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				var urnuuid = document.getElementById('urnuuidPageName').checked;
 				var dirPrefId = cardbookUtils.getUUID();
 				wdw_addressbooksAdd.gFinishParams.push({actionType: wdw_addressbooksAdd.gTypeFile, file: wdw_addressbooksAdd.gFile, dirname: dirname, name: name, username: "", 
-														color: color, vcard: vCardVersion, readonly: readonly, dirPrefId: dirPrefId, dateFormat: dateFormat, urnuuid: urnuuid, DBcached: false});
+														color: color, vcard: vCardVersion, readonly: readonly, dirPrefId: dirPrefId, dateFormat: dateFormat, urnuuid: urnuuid, DBcached: false, firstAction: false});
 			}
 		},
 

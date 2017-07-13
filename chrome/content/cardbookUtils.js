@@ -247,9 +247,12 @@ if ("undefined" == typeof(cardbookUtils)) {
 			function compare1(a, b) { return collator.compareString(0, a[aIndex], b[aIndex])*aInvert; };
 			function compare2(a, b) { return collator.compareString(0, a, b)*aInvert; };
 			function compare3(a, b) { return collator.compareString(0, cardbookUtils.getName(a), cardbookUtils.getName(b))*aInvert; };
+			function compare4(a, b) { return ((a.isAList === b.isAList)? 0 : a.isAList? -1 : 1)*aInvert; };
 			if (aIndex != -1) {
 				if (aIndex == "name") {
 					return aArray.sort(compare3);
+				} else if (aIndex == "cardIcon") {
+					return aArray.sort(compare4);
 				} else {
 					return aArray.sort(compare1);
 				}
@@ -1013,10 +1016,11 @@ if ("undefined" == typeof(cardbookUtils)) {
 			}
 
 			document.getElementById('defaultCardImage').src = "";
-			cardbookElementTools.deleteRows('mailPopularityRows');
+			cardbookElementTools.deleteRows('addedCardsGroupbox');
+			cardbookElementTools.deleteRows('mailPopularityGroupbox');
 		},
 
-		displayCard: function (aCard, aReadOnly) {
+		displayCard: function (aCard, aReadOnly, aFollowLink) {
 			var fieldArray = [ "fn", "lastname", "firstname", "othername", "prefixname", "suffixname", "nickname", "bday",
 								"gender", "note", "mailer", "geo", "sortstring", "class1", "tz", "agent", "key", "prodid",
 								"uid", "version", "dirPrefId", "cardurl", "rev", "etag" ];
@@ -1074,7 +1078,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			var typesList = [ 'email', 'tel', 'impp', 'url', 'adr' ];
 			for (var i in typesList) {
 				if (aReadOnly) {
-					cardbookTypes.constructStaticRows(typesList[i], aCard[typesList[i]], aCard.version);
+					cardbookTypes.constructStaticRows(typesList[i], aCard[typesList[i]], aCard.version, aFollowLink);
 				} else {
 					if (typesList[i] === "impp") {
 						cardbookTypes.loadIMPPs(aCard[typesList[i]]);
@@ -1083,12 +1087,11 @@ if ("undefined" == typeof(cardbookUtils)) {
 				}
 			}
 			if (aReadOnly) {
-				cardbookTypes.loadStaticList(aCard);
-				cardbookTypes.constructStaticMailPopularity(aCard);
+				cardbookTypes.loadStaticList(aCard, aFollowLink);
 			} else {
 				wdw_cardEdition.displayLists(aCard);
-				cardbookTypes.constructDynamicMailPopularity(aCard);
 			}
+			cardbookTypes.loadMailPopularity(aCard, aReadOnly);
 		},
 
 		adjustFields: function () {
@@ -1525,18 +1528,58 @@ if ("undefined" == typeof(cardbookUtils)) {
 			return listOfUid.length;
 		},
 
+		setSelectedAccount: function (aAccountId, aFirstVisibleRow, aLastVisibleRow) {
+			if (aAccountId == "") {
+				return;
+			}
+			var foundIndex;
+			var myTree = document.getElementById('accountsOrCatsTree');
+			for (var i = 0; i < myTree.view.rowCount; i++) {
+				if (myTree.view.getCellText(i, {id: "accountId"}) == aAccountId) {
+					myTree.view.selection.select(i);
+					foundIndex = i;
+					break;
+				}
+			}
+			if (foundIndex < aFirstVisibleRow || foundIndex > aLastVisibleRow) {
+				myTree.boxObject.scrollToRow(foundIndex);
+			} else {
+				myTree.boxObject.scrollToRow(aFirstVisibleRow);
+			}
+		},
+
 		setSelectedCards: function (aListOfUid, aFirstVisibleRow, aLastVisibleRow) {
 			if (aListOfUid.length == 0) {
 				return;
 			}
-			var found = false;
 			var foundIndex;
 			var myTree = document.getElementById('cardsTree');
 			for (var i = 0; i < aListOfUid.length; i++) {
 				for (var j = 0; j < myTree.view.rowCount; j++) {
 					if (myTree.view.getCellText(j, {id: "uid"}) == aListOfUid[i]) {
 						myTree.view.selection.rangedSelect(j,j,true);
-						found = true;
+						foundIndex = j;
+						break;
+					}
+				}
+			}
+			if (foundIndex < aFirstVisibleRow || foundIndex > aLastVisibleRow) {
+				myTree.boxObject.scrollToRow(foundIndex);
+			} else {
+				myTree.boxObject.scrollToRow(aFirstVisibleRow);
+			}
+		},
+
+		setSelectedCardsId: function (aListOfUid, aFirstVisibleRow, aLastVisibleRow) {
+			if (aListOfUid.length == 0) {
+				return;
+			}
+			var foundIndex;
+			var myTree = document.getElementById('cardsTree');
+			for (var i = 0; i < aListOfUid.length; i++) {
+				for (var j = 0; j < myTree.view.rowCount; j++) {
+					if (myTree.view.getCellText(j, {id: "dirPrefId"})+"::"+myTree.view.getCellText(j, {id: "uid"}) == aListOfUid[i]) {
+						myTree.view.selection.rangedSelect(j,j,true);
 						foundIndex = j;
 						break;
 					}
@@ -1751,7 +1794,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			try {
 				var listOfSelectedCard = [];
 				var myTree = document.getElementById('accountsOrCatsTree');
-				if (cardbookRepository.cardbookSearchMode === "SEARCH" || cardbookRepository.cardbookComplexSearchMode === "SEARCH") {
+				if (cardbookRepository.cardbookSearchMode === "SEARCH") {
 					var myAccountPrefId = cardbookRepository.cardbookSearchValue;
 				} else {
 					var myAccountPrefId = myTree.view.getCellText(myTree.currentIndex, {id: "accountId"});

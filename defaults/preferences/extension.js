@@ -10,7 +10,6 @@ pref("extensions.cardbook.debugMode", false);
 
 pref("extensions.cardbook.cardCreationVersion", "3.0");
 pref("extensions.cardbook.preferEmailEdition", true);
-pref("extensions.cardbook.listTabView", true);
 pref("extensions.cardbook.mailPopularityTabView", false);
 pref("extensions.cardbook.technicalTabView", false);
 pref("extensions.cardbook.vcardTabView", false);
@@ -61,4 +60,4 @@ pref("extensions.cardbook.calendarEntryCategories", "");
 pref("extensions.cardbook.viewABPane", true);
 pref("extensions.cardbook.viewABContact", true);
 
-pref("extensions.cardbook.userAgent", "CardBook/19.8");
+pref("extensions.cardbook.addonVersion", "20.4");

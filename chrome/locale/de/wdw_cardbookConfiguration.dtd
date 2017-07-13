@@ -1,7 +1,5 @@
-<!ENTITY wdw_cardbookConfigurationWindowLabel "CardBook-Einstellungen">
-
 <!ENTITY generalTabLabel "Allgemein">
-<!ENTITY CardBookTabLabel "??CardBook Tab??">
+<!ENTITY CardBookTabLabel "CardBook Tab">
 <!ENTITY typesTabLabel "Typen">
 <!ENTITY IMPPsTabLabel "IM Adressen">
 <!ENTITY customFieldsTabLabel "Benutzerdefinierte Felder">
@@ -99,7 +97,7 @@
 <!ENTITY resetFnFormulaAccesskey "Z">
 <!ENTITY miscEdittingGroupboxLabel "Sonstiges">
 <!ENTITY cardCreationVersionLabel "Standardversion der vCard:">
-<!ENTITY preferEmailEditionLabel "Durch einen Doppelklick den Kontakt bearbeiten anstelle eine Email zu verfassen">
+<!ENTITY preferEmailEditionLabel "Durch einen Doppelklick den Kontakt bearbeiten anstatt eine E-Mail zu verfassen">
 <!ENTITY preferEmailEditionAccesskey "D">
 
 <!ENTITY typesGroupboxLabel "Typen">

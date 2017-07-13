@@ -6,9 +6,8 @@
 <?xml-stylesheet href="chrome://cardbook/skin/cardbookTreeChildrens.css" type="text/css"?>
 <!-- for the preference star -->
 <?xml-stylesheet href="chrome://cardbook-os/skin/cardbookPrefStar.css" type="text/css"?>
-<!-- for MailList icon for column GeneratedName -->
-
-<?xml-stylesheet href="chrome://messenger/skin/addressbook/abContactsPanel.css" type="text/css"?>
+<!-- for MailList icon -->
+<?xml-stylesheet href="chrome://cardbook-os/skin/cardbookCardsIcon.css" type="text/css"?>
 
 <?xul-overlay href="chrome://cardbook/content/ovl_cardbookStringBundle.xul"?>
 <?xul-overlay href="chrome://cardbook/content/ovl_cardbookBar.xul"?>
@@ -23,7 +22,6 @@
 	<!ENTITY % adrDTD SYSTEM "chrome://cardbook/locale/wdw_adrEdition.dtd"> %adrDTD;
 	<!ENTITY % listsDTD SYSTEM "chrome://cardbook/locale/wdw_lists.dtd"> %listsDTD;
 	<!ENTITY % logDTD SYSTEM "chrome://cardbook/locale/wdw_logEdition.dtd"> %logDTD;
-	<!ENTITY % configurationDTD SYSTEM "chrome://cardbook/locale/wdw_cardbookConfiguration.dtd"> %configurationDTD;
 ]>
 
 <overlay id="ovl_cardbookTab" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
@@ -97,9 +95,9 @@
 				<box id="cardsBox" flex="1">
 					<hbox id="rightPaneUpHbox" flex="1" persist="width height collapsed">
 						<tree id="cardsTree" class="cardbookTreeClass cardbookCardsTreeClass" context="cardsTreeContextMenu" flex="1" enableColumnDrag="true" persist="height sortDirection sortResource" sortDirection="ascending" sortResource="lastname"
-							onkeyup="wdw_cardbook.selectCard(event);" onkeydown="wdw_cardbook.selectCard(event);" onclick="wdw_cardbook.sortTrees(event);">
+							onkeyup="wdw_cardbook.selectCard(event);" onclick="wdw_cardbook.sortTrees(event);">
 							<treecols>
-								<treecol id="GeneratedName" label="&GeneratedNameColumnLabel;" flex="1" persist="width ordinal hidden" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending"/>
+								<treecol id="cardIcon" label="&cardIconColumnLabel;" persist="width ordinal hidden" fixed="true" class="treecol-image cardIconColumnHeader" sortDirection="ascending"/>
 								<splitter class="tree-splitter"/>
 								<treecol id="name" label="&nameColumnLabel;" flex="1" persist="width ordinal hidden" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending"/>
 								<splitter class="tree-splitter"/>
@@ -195,7 +193,6 @@
 								
 								<tabs>
 									<tab id="generalTab" label="&generalTabLabel;"/>
-									<tab id="listTab" label="&listTabLabel;"/>
 									<tab id="mailPopularityTab" label="&mailPopularityTabLabel;"/>
 									<tab id="technicalTab" label="&technicalTabLabel;"/>
 									<tab id="vcardTab" label="&vcardTabLabel;"/>
@@ -315,6 +312,19 @@
 												</grid>
 											</vbox>
 										</hbox>
+										<hbox id="listGroupbox" flex="1">
+											<vbox flex="1">
+												<grid align="center" flex="1">
+													<columns>
+														<column/>
+														<column flex="1"/>
+													</columns>
+													<rows flex="1">
+														<groupbox id="addedCardsGroupbox" flex="1"/>
+													</rows>
+												</grid>
+											</vbox>
+										</hbox>
 										<hbox flex="1">
 											<groupbox id="noteGroupbox" flex="1">
 												<caption label="&noteTabLabel;" class="header"/>
@@ -330,32 +340,15 @@
 									</tabpanel>
 				
 									<tabpanel orient="vertical" style="overflow:auto">
-										<vbox id="listGroupbox" flex="1">
-											<grid align="center" flex="1">
-												<columns>
-													<column/>
-													<column flex="1"/>
-												</columns>
-												<rows>
-													<groupbox id="addedCardsGroupbox" flex="1">
-														<caption label="&addedCardsGroupboxLabel;" class="header"/>
-														<vbox id="addedCardsBox" flex="1"/>
-													</groupbox>
-												</rows>
-											</grid>
-											<spacer flex="100"/>
-										</vbox>
-									</tabpanel>
-				
-									<tabpanel orient="vertical" style="overflow:auto">
 										<groupbox id="mailPopularityReadWriteGroupbox" flex="1">
-											<caption label="&mailPopularityTabLabel;" class="header"/>
 											<grid>
 												<columns flex="1">
 													<column/>
 													<column flex="1"/>
 												</columns>
-												<rows id="mailPopularityRows"/>
+												<rows flex="1">
+													<groupbox id="mailPopularityGroupbox" flex="1"/>
+												</rows>
 											</grid>
 										</groupbox>
 										<spacer flex="100"/>

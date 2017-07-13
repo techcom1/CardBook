@@ -11,7 +11,6 @@
 ]>
 
 <prefwindow xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-	title="&wdw_cardbookConfigurationWindowLabel;"
 	onload="wdw_cardbookConfiguration.load();" resizable="true"
 	ondialogcancel="wdw_cardbookConfiguration.cancel();"
 	ondialogaccept="wdw_cardbookConfiguration.accept();"
@@ -50,8 +49,6 @@
 				name="extensions.cardbook.debugMode" type="bool"/>
 			<preference id="extensions.cardbook.statusInformationLineNumber"
 				name="extensions.cardbook.statusInformationLineNumber" type="string"/>
-			<preference id="extensions.cardbook.listTabView"
-				name="extensions.cardbook.listTabView" type="bool"/>
 			<preference id="extensions.cardbook.mailPopularityTabView"
 				name="extensions.cardbook.mailPopularityTabView" type="bool"/>
 			<preference id="extensions.cardbook.technicalTabView"
@@ -288,9 +285,6 @@
 					<groupbox>
 						<caption label="&tabsEdittingGroupboxLabel;"/>
 						<hbox align="center">
-							<checkbox id="listTabCheckBox" label="&listTabLabel;"
-								accesskey="&listTabAccesskey;"
-								preference="extensions.cardbook.listTabView"/>
 							<checkbox id="mailPopularityTabCheckBox" label="&mailPopularityTabLabel;"
 								accesskey="&mailPopularityTabAccesskey;"
 								preference="extensions.cardbook.mailPopularityTabView"/>

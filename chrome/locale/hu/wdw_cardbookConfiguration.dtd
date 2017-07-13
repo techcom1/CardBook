@@ -1,7 +1,5 @@
-<!ENTITY wdw_cardbookConfigurationWindowLabel "A névjegyzék beállításai">
-
 <!ENTITY generalTabLabel "Általános">
-<!ENTITY CardBookTabLabel "??CardBook Tab??">
+<!ENTITY CardBookTabLabel "Névjegyzék lap">
 <!ENTITY typesTabLabel "Típusok">
 <!ENTITY IMPPsTabLabel "Internetes kommunikáció">
 <!ENTITY customFieldsTabLabel "Egyéni mezők">

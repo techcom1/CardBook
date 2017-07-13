@@ -50,7 +50,7 @@ function cardbookWebDAV(connection, target, etag, asJSON) {
 	this.etag = etag;
 	var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
 	var requestsTimeout = prefs.getComplexValue("extensions.cardbook.requestsTimeout", Components.interfaces.nsISupportsString).data;
-	this.userAgent = prefs.getComplexValue("extensions.cardbook.userAgent", Components.interfaces.nsISupportsString).data;
+	this.addonVersion = prefs.getComplexValue("extensions.cardbook.addonVersion", Components.interfaces.nsISupportsString).data;
 	this.timeout = requestsTimeout * 1000;
 
 	this.requestJSONResponse = false;
@@ -279,7 +279,7 @@ cardbookWebDAV.prototype = {
 
 			// headers["X-client"] = "CardBook (Thunderbird)";
 			// needed for Apple
-			headers["User-Agent"] = "Thunderbird " + this.userAgent;
+			headers["User-Agent"] = "Thunderbird CardBook/" + this.addonVersion;
 
 			// let httpAuthManager = Components.classes["@mozilla.org/network/http-auth-manager;1"].getService(Components.interfaces.nsIHttpAuthManager);
 			// httpAuthManager.clearAll();

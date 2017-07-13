@@ -1,7 +1,5 @@
-<!ENTITY wdw_cardbookConfigurationWindowLabel "CardBook voorkeuren">
-
 <!ENTITY generalTabLabel "Algemeen">
-<!ENTITY CardBookTabLabel "??CardBook Tab??">
+<!ENTITY CardBookTabLabel "CardBook tabblad">
 <!ENTITY typesTabLabel "Types">
 <!ENTITY IMPPsTabLabel "Instant Messenger adressen">
 <!ENTITY customFieldsTabLabel "Eigen rubrieken">

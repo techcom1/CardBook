@@ -33,6 +33,10 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			cardbookRepository.cardbookFileResponse[aPrefId] = 0;
 			cardbookRepository.cardbookDBRequest[aPrefId] = 0;
 			cardbookRepository.cardbookDBResponse[aPrefId] = 0;
+			cardbookRepository.cardbookComplexSearchRequest[aPrefId] = 0;
+			cardbookRepository.cardbookComplexSearchResponse[aPrefId] = 0;
+			cardbookRepository.cardbookComplexSearchReloadRequest[aPrefId] = 0;
+			cardbookRepository.cardbookComplexSearchReloadResponse[aPrefId] = 0;
 			cardbookRepository.filesFromCacheDB[aPrefId] = [];
 			cardbookRepository.cardbookServerDiscoveryRequest[aPrefId] = 0;
 			cardbookRepository.cardbookServerDiscoveryResponse[aPrefId] = 0;
@@ -97,6 +101,10 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			cardbookRepository.cardbookFileResponse = {};
 			cardbookRepository.cardbookDBRequest = {};
 			cardbookRepository.cardbookDBResponse = {};
+			cardbookRepository.cardbookComplexSearchRequest = {};
+			cardbookRepository.cardbookComplexSearchResponse = {};
+			cardbookRepository.cardbookComplexSearchReloadRequest = {};
+			cardbookRepository.cardbookComplexSearchReloadResponse = {};
 			cardbookRepository.filesFromCacheDB = {};
 			cardbookRepository.cardbookServerDiscoveryRequest = {};
 			cardbookRepository.cardbookServerDiscoveryResponse = {};
@@ -155,6 +163,8 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 
 		getRequest: function(aPrefId, aPrefName) {
 			if (aPrefId != null && aPrefId !== undefined && aPrefId != "") {
+				wdw_cardbooklog.updateStatusProgressInformationWithDebug1(aPrefName + " : debug mode : cardbookRepository.cardbookComplexSearchRequest : ", cardbookRepository.cardbookComplexSearchRequest[aPrefId]);
+				wdw_cardbooklog.updateStatusProgressInformationWithDebug1(aPrefName + " : debug mode : cardbookRepository.cardbookComplexSearchReloadRequest : ", cardbookRepository.cardbookComplexSearchReloadRequest[aPrefId]);
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1(aPrefName + " : debug mode : cardbookRepository.cardbookGoogleAccessTokenRequest : ", cardbookRepository.cardbookGoogleAccessTokenRequest[aPrefId]);
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1(aPrefName + " : debug mode : cardbookRepository.cardbookGoogleRefreshTokenRequest : ", cardbookRepository.cardbookGoogleRefreshTokenRequest[aPrefId]);
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1(aPrefName + " : debug mode : cardbookRepository.cardbookServerGetRequest : ", cardbookRepository.cardbookServerGetRequest[aPrefId]);
@@ -168,7 +178,9 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1(aPrefName + " : debug mode : cardbookRepository.cardbookDBRequest : ", cardbookRepository.cardbookDBRequest[aPrefId]);
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1(aPrefName + " : debug mode : cardbookRepository.cardbookImageGetRequest : ", cardbookRepository.cardbookImageGetRequest[aPrefId]);
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1(aPrefName + " : debug mode : cardbookRepository.cardbookServerSyncRequest : ", cardbookRepository.cardbookServerSyncRequest[aPrefId]);
-				return cardbookRepository.cardbookGoogleAccessTokenRequest[aPrefId] +
+				return cardbookRepository.cardbookComplexSearchRequest[aPrefId] +
+						cardbookRepository.cardbookComplexSearchReloadRequest[aPrefId] +
+						cardbookRepository.cardbookGoogleAccessTokenRequest[aPrefId] +
 						cardbookRepository.cardbookGoogleRefreshTokenRequest[aPrefId] +
 						cardbookRepository.cardbookServerGetRequest[aPrefId] +
 						cardbookRepository.cardbookServerGetForMergeRequest[aPrefId] +
@@ -182,6 +194,8 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						cardbookRepository.cardbookImageGetRequest[aPrefId] +
 						cardbookRepository.cardbookServerSyncRequest[aPrefId];
 			} else {
+				wdw_cardbooklog.updateStatusProgressInformationWithDebug1("Total : debug mode : cardbookRepository.cardbookComplexSearchRequest : ", cardbookUtils.sumElements(cardbookRepository.cardbookComplexSearchRequest));
+				wdw_cardbooklog.updateStatusProgressInformationWithDebug1("Total : debug mode : cardbookRepository.cardbookComplexSearchReloadRequest : ", cardbookUtils.sumElements(cardbookRepository.cardbookComplexSearchReloadRequest));
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1("Total : debug mode : cardbookRepository.cardbookGoogleAccessTokenRequest : ", cardbookUtils.sumElements(cardbookRepository.cardbookGoogleAccessTokenRequest));
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1("Total : debug mode : cardbookRepository.cardbookGoogleRefreshTokenRequest : ", cardbookUtils.sumElements(cardbookRepository.cardbookGoogleRefreshTokenRequest));
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1("Total : debug mode : cardbookRepository.cardbookServerGetRequest : ", cardbookUtils.sumElements(cardbookRepository.cardbookServerGetRequest));
@@ -195,7 +209,9 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1("Total : debug mode : cardbookRepository.cardbookDBRequest : ", cardbookUtils.sumElements(cardbookRepository.cardbookDBRequest));
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1("Total : debug mode : cardbookRepository.cardbookImageGetRequest : ", cardbookUtils.sumElements(cardbookRepository.cardbookImageGetRequest));
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1("Total : debug mode : cardbookRepository.cardbookServerSyncRequest : ", cardbookUtils.sumElements(cardbookRepository.cardbookServerSyncRequest));
-				return cardbookUtils.sumElements(cardbookRepository.cardbookGoogleAccessTokenRequest) +
+				return cardbookUtils.sumElements(cardbookRepository.cardbookComplexSearchRequest) +
+						cardbookUtils.sumElements(cardbookRepository.cardbookComplexSearchReloadRequest) +
+						cardbookUtils.sumElements(cardbookRepository.cardbookGoogleAccessTokenRequest) +
 						cardbookUtils.sumElements(cardbookRepository.cardbookGoogleRefreshTokenRequest) +
 						cardbookUtils.sumElements(cardbookRepository.cardbookServerGetRequest) +
 						cardbookUtils.sumElements(cardbookRepository.cardbookServerGetForMergeRequest) +
@@ -213,6 +229,8 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 		
 		getResponse: function(aPrefId, aPrefName) {
 			if (aPrefId != null && aPrefId !== undefined && aPrefId != "") {
+				wdw_cardbooklog.updateStatusProgressInformationWithDebug1(aPrefName + " : debug mode : cardbookRepository.cardbookComplexSearchResponse : ", cardbookRepository.cardbookComplexSearchResponse[aPrefId]);
+				wdw_cardbooklog.updateStatusProgressInformationWithDebug1(aPrefName + " : debug mode : cardbookRepository.cardbookComplexSearchReloadResponse : ", cardbookRepository.cardbookComplexSearchReloadResponse[aPrefId]);
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1(aPrefName + " : debug mode : cardbookRepository.cardbookGoogleAccessTokenResponse : ", cardbookRepository.cardbookGoogleAccessTokenResponse[aPrefId]);
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1(aPrefName + " : debug mode : cardbookRepository.cardbookGoogleRefreshTokenResponse : ", cardbookRepository.cardbookGoogleRefreshTokenResponse[aPrefId]);
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1(aPrefName + " : debug mode : cardbookRepository.cardbookServerGetResponse : ", cardbookRepository.cardbookServerGetResponse[aPrefId]);
@@ -226,7 +244,9 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1(aPrefName + " : debug mode : cardbookRepository.cardbookDBResponse : ", cardbookRepository.cardbookDBResponse[aPrefId]);
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1(aPrefName + " : debug mode : cardbookRepository.cardbookImageGetResponse : ", cardbookRepository.cardbookImageGetResponse[aPrefId]);
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1(aPrefName + " : debug mode : cardbookRepository.cardbookServerSyncResponse : ", cardbookRepository.cardbookServerSyncResponse[aPrefId]);
-				return cardbookRepository.cardbookGoogleAccessTokenResponse[aPrefId] +
+				return cardbookRepository.cardbookComplexSearchResponse[aPrefId] +
+						cardbookRepository.cardbookComplexSearchReloadResponse[aPrefId] +
+						cardbookRepository.cardbookGoogleAccessTokenResponse[aPrefId] +
 						cardbookRepository.cardbookGoogleRefreshTokenResponse[aPrefId] +
 						cardbookRepository.cardbookServerGetResponse[aPrefId] +
 						cardbookRepository.cardbookServerGetForMergeResponse[aPrefId] +
@@ -240,6 +260,8 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						cardbookRepository.cardbookImageGetResponse[aPrefId] +
 						cardbookRepository.cardbookServerSyncResponse[aPrefId];
 			} else {
+				wdw_cardbooklog.updateStatusProgressInformationWithDebug1("Total : debug mode : cardbookRepository.cardbookComplexSearchResponse : ", cardbookUtils.sumElements(cardbookRepository.cardbookComplexSearchResponse));
+				wdw_cardbooklog.updateStatusProgressInformationWithDebug1("Total : debug mode : cardbookRepository.cardbookComplexSearchReloadResponse : ", cardbookUtils.sumElements(cardbookRepository.cardbookComplexSearchReloadResponse));
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1("Total : debug mode : cardbookRepository.cardbookGoogleAccessTokenResponse : ", cardbookUtils.sumElements(cardbookRepository.cardbookGoogleAccessTokenResponse));
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1("Total : debug mode : cardbookRepository.cardbookGoogleRefreshTokenResponse : ", cardbookUtils.sumElements(cardbookRepository.cardbookGoogleRefreshTokenResponse));
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1("Total : debug mode : cardbookRepository.cardbookServerGetResponse : ", cardbookUtils.sumElements(cardbookRepository.cardbookServerGetResponse));
@@ -253,7 +275,9 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1("Total : debug mode : cardbookRepository.cardbookDBResponse : ", cardbookUtils.sumElements(cardbookRepository.cardbookDBResponse));
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1("Total : debug mode : cardbookRepository.cardbookImageGetResponse : ", cardbookUtils.sumElements(cardbookRepository.cardbookImageGetResponse));
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1("Total : debug mode : cardbookRepository.cardbookServerSyncResponse : ", cardbookUtils.sumElements(cardbookRepository.cardbookServerSyncResponse));
-				return cardbookUtils.sumElements(cardbookRepository.cardbookGoogleAccessTokenResponse) +
+				return cardbookUtils.sumElements(cardbookRepository.cardbookComplexSearchResponse) +
+						cardbookUtils.sumElements(cardbookRepository.cardbookComplexSearchReloadResponse) +
+						cardbookUtils.sumElements(cardbookRepository.cardbookGoogleAccessTokenResponse) +
 						cardbookUtils.sumElements(cardbookRepository.cardbookGoogleRefreshTokenResponse) +
 						cardbookUtils.sumElements(cardbookRepository.cardbookServerGetResponse) +
 						cardbookUtils.sumElements(cardbookRepository.cardbookServerGetForMergeResponse) +
@@ -2135,14 +2159,56 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					}, 1000, Components.interfaces.nsITimer.TYPE_REPEATING_SLACK);
 		},
 
-		loadAccounts: function () {
+		waitForComplexSearchFinished: function (aPrefId, aPrefName, aMode) {
+			cardbookRepository.lComplexSearchAll[aPrefId] = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);
+			var lComplexSearch = cardbookRepository.lComplexSearchAll[aPrefId];
+			lComplexSearch.initWithCallback({ notify: function(lComplexSearch) {
+						cardbookUtils.notifyObservers("cardbook.syncRunning");
+						var request = cardbookSynchronization.getRequest(aPrefId, aPrefName);
+						var response = cardbookSynchronization.getResponse(aPrefId, aPrefName);
+						if (request == response) {
+							cardbookSynchronization.finishMultipleOperations(aPrefId);
+							var total = cardbookSynchronization.getRequest() + cardbookSynchronization.getResponse();
+							if (total === 0) {
+								cardbookRepository.cardbookSyncMode = "NOSYNC";
+								if (aMode == "INITIAL") {
+									cardbookUtils.notifyObservers("cardbook.complexSearchInitLoaded");
+								} else {
+									cardbookUtils.notifyObservers("cardbook.complexSearchLoaded", "accountid:" + aPrefId);
+								}
+							}
+							lComplexSearch.cancel();
+						}
+					}
+					}, 1000, Components.interfaces.nsITimer.TYPE_REPEATING_SLACK);
+		},
+
+
+		loadComplexSearchAccounts: function () {
+			cardbookUtils.jsInclude(["chrome://cardbook/content/wdw_log.js", "chrome://cardbook/content/complexSearch/cardbookComplexSearch.js"]);
+			cardbookUtils.jsInclude(["chrome://cardbook/content/cardbookWebDAV.js", "chrome://cardbook/content/cardbookCardParser.js"]);
+			cardbookUtils.jsInclude(["chrome://cardbook/content/preferences/cardbookPreferences.js", "chrome://cardbook/content/cardbookPasswordManager.js"]);
 			cardbookRepository.cardbookAccounts = [];
 			cardbookRepository.cardbookAccountsCategories = {};
 			cardbookRepository.cardbookDisplayCards = {};
 			cardbookRepository.cardbookFileCacheCards = {};
 			cardbookRepository.cardbookCards = {};
 			cardbookRepository.cardbookCardSearch = {};
-	
+			cardbookRepository.cardbookComplexSearch = {};
+			
+			var myMode = "INITIAL";
+			var cardbookPrefService = new cardbookPreferenceService();
+			var result = [];
+			result = cardbookPrefService.getAllComplexSearchIds();
+			for (let i = 0; i < result.length; i++) {
+				cardbookComplexSearch.loadComplexSearchAccount(result[i], false, myMode);
+			}
+			if (result.length == 0) {
+				cardbookUtils.notifyObservers("cardbook.complexSearchInitLoaded");
+			}
+		},
+
+		loadAccounts: function () {
 			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
 			var initialSync = prefs.getBoolPref("extensions.cardbook.initialSync");
 			var myMode = "INITIAL";
@@ -2156,9 +2222,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 		},
 
 		loadAccount: function (aDirPrefId, aSync, aAddAccount, aMode) {
-			cardbookUtils.jsInclude(["chrome://cardbook/content/wdw_log.js"]);
-			cardbookUtils.jsInclude(["chrome://cardbook/content/cardbookWebDAV.js", "chrome://cardbook/content/cardbookCardParser.js"]);
-			cardbookUtils.jsInclude(["chrome://cardbook/content/preferences/cardbookPreferences.js", "chrome://cardbook/content/cardbookPasswordManager.js"]);
 			var cardbookPrefService1 = new cardbookPreferenceService(aDirPrefId);
 			var myPrefName = cardbookPrefService1.getName();
 			if (myPrefName == "") {

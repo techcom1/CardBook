@@ -20,6 +20,7 @@
 <!ENTITY cardbookToolsMenuSyncLightningLabel "Aggiungi compleanno al calendario">
 <!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "Trova i contatti duplicati in tutte le rubriche">
 <!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "Trova i contatti duplicati nella rubrica corrente">
+<!ENTITY cardbookToolsMenuPrefsLabel "Opzioni CardBook">
 
 <!ENTITY cardbookToolbarLabel "Barra degli strumenti di CardBook">
 <!ENTITY cardbookToolbarAccesskey "a">
@@ -31,8 +32,10 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Sincronizza tutte le rubriche remote">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Opzioni">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Opzioni di CardBook">
-<!ENTITY cardbookToolbarAddButtonLabel "Nuovo contatto">
-<!ENTITY cardbookToolbarAddButtonTooltip "Permetti la creazione di contatti">
+<!ENTITY cardbookToolbarAddContactButtonLabel "Nuovo contatto">
+<!ENTITY cardbookToolbarAddContactButtonTooltip "Crea un nuovo contatto in rubrica">
+<!ENTITY cardbookToolbarAddListButtonLabel "Nuova lista">
+<!ENTITY cardbookToolbarAddListButtonTooltip "Crea una nuova lista">
 <!ENTITY cardbookToolbarEditButtonLabel "Modifica">
 <!ENTITY cardbookToolbarEditButtonTooltip "Permetti la modifica dei contatti">
 <!ENTITY cardbookToolbarRemoveButtonLabel "Elimina">
@@ -53,7 +56,7 @@
 <!ENTITY technicalTabLabel "Tecnico">
 <!ENTITY vcardTabLabel "vCard">
 
-<!ENTITY GeneratedNameColumnLabel "Icona">
+<!ENTITY cardIconColumnLabel "Icona">
 <!ENTITY nameColumnLabel "Nome">
 <!ENTITY lastnameColumnLabel "Cognome">
 <!ENTITY firstnameColumnLabel "Nome">

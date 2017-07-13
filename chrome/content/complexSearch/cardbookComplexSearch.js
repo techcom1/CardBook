@@ -1,7 +1,7 @@
 if ("undefined" == typeof(cardbookComplexSearch)) {
 	var cardbookComplexSearch = {
 		
-		isMyCardFound: function (aCard) {
+		isMyCardFoundInDirPrefId: function (aCard, aComplexSearchDirPrefId) {
 			var myRegexp;
 			var inverse;
 			var myField = [];
@@ -36,15 +36,16 @@ if ("undefined" == typeof(cardbookComplexSearch)) {
 				}
 			};
 
-			for (var i = 0; i < cardbookRepository.cardbookComplexRules.length; i++) {
-				buildRegExp(aCard, cardbookRepository.cardbookComplexRules[i][0], cardbookRepository.cardbookComplexRules[i][1], cardbookRepository.cardbookComplexRules[i][2], cardbookRepository.cardbookComplexRules[i][3]);
+			for (var i = 0; i < cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules.length; i++) {
+				buildRegExp(aCard, cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules[i][0], cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules[i][1], 
+									cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules[i][2], cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules[i][3]);
 				function searchArray(element) {
 					return element.search(myRegexp) != -1;
 				};
 				if (myField.length == 0) {
-					if (cardbookRepository.cardbookComplexRules[i][2] == "IsEmpty") {
+					if (cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules[i][2] == "IsEmpty") {
 						var found = true;
-					} else if (cardbookRepository.cardbookComplexRules[i][2] == "IsntEmpty") {
+					} else if (cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules[i][2] == "IsntEmpty") {
 						var found = true;
 					}
 				} else if (myField.find(searchArray) == undefined) {
@@ -53,7 +54,7 @@ if ("undefined" == typeof(cardbookComplexSearch)) {
 					var found = true;
 				}
 				
-				if (cardbookRepository.cardbookComplexMatchAll) {
+				if (cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].matchAll) {
 					result = true;
 					if ((!found && !inverse) || (found && inverse)) {
 						result = false;
@@ -70,61 +71,17 @@ if ("undefined" == typeof(cardbookComplexSearch)) {
 			return result;
 		},
 
-		searchEngine: function (aData, aParams) {
-			cardbookComplexSearch.parseRule(aData);
-			var cardbookPrefService = new cardbookPreferenceService(aParams.aPrefId);
+		isMyCardFound: function (aCard, aComplexSearchDirPrefId) {
+			var cardbookPrefService = new cardbookPreferenceService(aComplexSearchDirPrefId);
 			if (!cardbookPrefService.getEnabled()) {
-				return;
+				return false;
 			}
-			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
-				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && (cardbookRepository.cardbookAccounts[i][6] != "SEARCH")) {
-					var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
-					if ((cardbookRepository.cardbookComplexSearchAB == myDirPrefId) || (cardbookRepository.cardbookComplexSearchAB === "allAddressBooks")) {
-						for (var j = 0; j < cardbookRepository.cardbookDisplayCards[myDirPrefId].length; j++) {
-							var myCard = cardbookRepository.cardbookDisplayCards[myDirPrefId][j];
-							if (cardbookComplexSearch.isMyCardFound(myCard)) {
-								cardbookRepository.cardbookDisplayCards[cardbookRepository.cardbookSearchValue].push(myCard);
-							}
-						}
-					}
+			if (cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId]) {
+				if ((cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].searchAB == aCard.dirPrefId) || (cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].searchAB === "allAddressBooks")) {
+					return cardbookComplexSearch.isMyCardFoundInDirPrefId(aCard, aComplexSearchDirPrefId);
 				}
 			}
-			// need to verify that the selected cards are always found
-			var myListOfSelectedCards = [];
-			if (aParams.aListOfCards) {
-				for (var i = 0; i < aParams.aListOfCards.length; i++) {
-					// selected cards may have been deleted
-					if (cardbookRepository.cardbookCards[aParams.aListOfCards[i]]) {
-						var myCard = cardbookRepository.cardbookCards[aParams.aListOfCards[i]];
-						if (cardbookComplexSearch.isMyCardFound(myCard)) {
-							myListOfSelectedCards.push(aParams.aListOfCards[i]);
-						}
-					}
-				}
-			}
-			wdw_cardbook.displaySearch(myListOfSelectedCards);
-		},
-
-		buildEngine: function (aData) {
-			cardbookElementTools.loadAddressBooks("addressbookMenupopup", "addressbookMenulist", cardbookRepository.cardbookComplexSearchAB, true, true, true, false);
-			cardbookComplexSearch.loadMatchAll(cardbookRepository.cardbookComplexMatchAll);
-			cardbookComplexSearch.constructDynamicRows("searchTerms", cardbookRepository.cardbookComplexRules, "3.0");
-			document.getElementById('searchTerms_0_valueBox').focus();
-		},
-
-		parseRule: function (aData) {
-			var relative = aData.match("^searchAB:([^:]*):searchAll:([^:]*)(.*)");
-			cardbookRepository.cardbookComplexSearchAB = relative[1];
-			if (relative[2] == "true") {
-				cardbookRepository.cardbookComplexMatchAll = true;
-			} else {
-				cardbookRepository.cardbookComplexMatchAll = false;
-			}
-			var tmpRuleArray = relative[3].split(/:case:/);
-			for (var i = 1; i < tmpRuleArray.length; i++) {
-				var relative = tmpRuleArray[i].match("([^:]*):field:([^:]*):term:([^:]*):value:([^:]*)");
-				cardbookRepository.cardbookComplexRules.push([relative[1], relative[2], relative[3], relative[4]]);
-			}
+			return false;
 		},
 
 		loadMatchAll: function (aDefaultValue) {
@@ -258,35 +215,78 @@ if ("undefined" == typeof(cardbookComplexSearch)) {
 			}
 		},
 
-		initComplexSearch: function (aSearchId) {
-			if (aSearchId != null && aSearchId !== undefined && aSearchId != "") {
-				var myFile = cardbookRepository.getRuleFile(aSearchId);
-				if (myFile.exists() && myFile.isFile()) {
-					var params = {};
-					params["showError"] = true;
-					cardbookSynchronization.getFileDataAsync(myFile.path, cardbookComplexSearch.buildEngine, params);
-				}
+		initComplexSearch: function (aDirPrefId) {
+			if (cardbookRepository.cardbookComplexSearch[aDirPrefId]) {
+				cardbookElementTools.loadAddressBooks("addressbookMenupopup", "addressbookMenulist", cardbookRepository.cardbookComplexSearch[aDirPrefId].searchAB, true, true, true, false);
+				cardbookComplexSearch.loadMatchAll(cardbookRepository.cardbookComplexSearch[aDirPrefId].matchAll);
+				cardbookComplexSearch.constructDynamicRows("searchTerms", cardbookRepository.cardbookComplexSearch[aDirPrefId].rules, "3.0");
 			} else {
 				cardbookElementTools.loadAddressBooks("addressbookMenupopup", "addressbookMenulist", "allAddressBooks", true, true, true, false);
 				cardbookComplexSearch.loadMatchAll("and");
 				cardbookComplexSearch.constructDynamicRows("searchTerms", [["","","",""]], "3.0");
-				document.getElementById('searchTerms_0_valueBox').focus();
+			}
+			document.getElementById('searchTerms_0_valueBox').focus();
+		},
+
+		loadCards: function (aComplexSearchDirPrefId) {
+			if (cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId]) {
+				for (j in cardbookRepository.cardbookCards) {
+					let myCard = cardbookRepository.cardbookCards[j];
+					if (cardbookComplexSearch.isMyCardFound(myCard, aComplexSearchDirPrefId)) {
+						cardbookRepository.addCardToCategories(myCard, aComplexSearchDirPrefId);
+						cardbookRepository.addCardToDisplay(myCard, aComplexSearchDirPrefId);
+					}
+				}
+			}
+			cardbookRepository.cardbookComplexSearchReloadResponse[aComplexSearchDirPrefId]++;
+		},
+
+		parseRule: function (aData, aDirPrefId) {
+			if (aData != null && aData !== undefined && aData != "") {
+				cardbookRepository.cardbookComplexSearch[aDirPrefId] = {}
+				var relative = aData.match("^searchAB:([^:]*):searchAll:([^:]*)(.*)");
+				cardbookRepository.cardbookComplexSearch[aDirPrefId].searchAB = relative[1];
+				if (relative[2] == "true") {
+					cardbookRepository.cardbookComplexSearch[aDirPrefId].matchAll = true;
+				} else {
+					cardbookRepository.cardbookComplexSearch[aDirPrefId].matchAll = false;
+				}
+				var tmpRuleArray = relative[3].split(/:case:/);
+				cardbookRepository.cardbookComplexSearch[aDirPrefId].rules = [];
+				for (var i = 1; i < tmpRuleArray.length; i++) {
+					var relative = tmpRuleArray[i].match("([^:]*):field:([^:]*):term:([^:]*):value:([^:]*)");
+					cardbookRepository.cardbookComplexSearch[aDirPrefId].rules.push([relative[1], relative[2], relative[3], relative[4]]);
+				}
 			}
 		},
 
-		startComplexSearch: function (aPrefId, aListOfCards) {
-			wdw_cardbook.setComplexSearchMode();
-			cardbookRepository.cardbookSearchValue=cardbookRepository.cardbookComplexSearchMode;
-			wdw_cardbook.clearCard();
-			cardbookRepository.cardbookDisplayCards[cardbookRepository.cardbookSearchValue] = [];
-			var myFile = cardbookRepository.getRuleFile(aPrefId);
+		loadComplexSearchAccountFinished: function (aData, aParams) {
+			cardbookComplexSearch.parseRule(aData, aParams.aDirPrefId);
+			cardbookRepository.cardbookComplexSearchResponse[aParams.aDirPrefId]++;
+			if (aParams.aReload) {
+				cardbookComplexSearch.loadCards(aParams.aDirPrefId);
+			}
+		},
+		
+		loadComplexSearchAccount: function (aDirPrefId, aReload, aMode) {
+			cardbookSynchronization.initSync(aDirPrefId);
+			var myFile = cardbookRepository.getRuleFile(aDirPrefId);
+			cardbookRepository.cardbookComplexSearchRequest[aDirPrefId]++;
 			if (myFile.exists() && myFile.isFile()) {
+				if (aReload) {
+					cardbookRepository.cardbookComplexSearchReloadRequest[aDirPrefId]++;
+				}
 				var params = {};
 				params["showError"] = true;
-				params["aPrefId"] = aPrefId;
-				params["aListOfCards"] = aListOfCards;
-				cardbookSynchronization.getFileDataAsync(myFile.path, cardbookComplexSearch.searchEngine, params);
+				params["aDirPrefId"] = aDirPrefId;
+				params["aReload"] = aReload;
+				cardbookSynchronization.getFileDataAsync(myFile.path, cardbookComplexSearch.loadComplexSearchAccountFinished, params);
+			} else {
+				cardbookRepository.cardbookComplexSearchResponse[aDirPrefId]++;
 			}
+			var cardbookPrefService1 = new cardbookPreferenceService(aDirPrefId);
+			var myPrefName = cardbookPrefService1.getName();
+			cardbookSynchronization.waitForComplexSearchFinished(aDirPrefId, myPrefName, aMode);
 		},
 		
 		getSearch: function () {

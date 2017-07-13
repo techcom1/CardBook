@@ -14,6 +14,31 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 			AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, this.enableSyncList);
 		},
 	
+		loadCssRules: function () {
+			for (var prop in document.styleSheets) {
+				var styleSheet = document.styleSheets[prop];
+				if (styleSheet.href == "chrome://cardbook/skin/cardbookBirthday.css") {
+					if (!(cardbookRepository.cardbookDynamicCssRules[styleSheet.href])) {
+						cardbookRepository.cardbookDynamicCssRules[styleSheet.href] = [];
+					}
+					cardbookRepository.deleteCssAllRules(styleSheet);
+					var createSearchRules = 0;
+					for (var i in cardbookBirthdaysUtils.lBirthdayAccountList) {
+						createSearchRules++;
+					}
+					for (var i in cardbookBirthdaysUtils.lBirthdayAccountList) {
+						var dirPrefId = i;
+						var cardbookPrefService = new cardbookPreferenceService(dirPrefId);
+						var color = cardbookPrefService.getColor()
+						if (createSearchRules > 1) {
+							cardbookRepository.createCssCardRules(styleSheet, dirPrefId, color);
+						}
+					}
+					cardbookRepository.reloadCss(styleSheet.href);
+				}
+			}
+		},
+
 		displayAllBirthdays: function () {
 			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			wdw_birthdayList.setupWindow();
@@ -22,6 +47,7 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 			var maxDaysUntilNextBirthday = cardbookBirthdaysUtils.getPref("extensions.cardbook.numberOfDaysForSearching");
 			cardbookBirthdaysUtils.loadBirthdays(maxDaysUntilNextBirthday);
 			cardbookBirthdaysUtils.lBirthdayList = cardbookUtils.sortArrayByNumber(cardbookBirthdaysUtils.lBirthdayList,0,1);
+			wdw_birthdayList.loadCssRules();
 
 			// if there are no birthdays in the configured timespan
 			if (cardbookBirthdaysUtils.lBirthdayList.length == 0) {
@@ -36,8 +62,16 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 				}
 			} else {
 				var treeView = {
-					rowCount : cardbookBirthdaysUtils.lBirthdayList.length,
-					getCellText : function(row,column){
+					rowCount: cardbookBirthdaysUtils.lBirthdayList.length,
+					isContainer: function(row) { return false },
+					cycleHeader: function(row) { return false },
+					getRowProperties: function(row) {
+						return "SEARCH color_" + cardbookBirthdaysUtils.lBirthdayList[row][6];
+					},
+					getCellProperties: function(row, column) {
+						return this.getRowProperties(row);
+					}, 
+					getCellText: function(row, column){
 						if (column.id == "daysleft") return cardbookBirthdaysUtils.lBirthdayList[row][0];
 						else if (column.id == "name") return cardbookBirthdaysUtils.lBirthdayList[row][1];
 						else if (column.id == "age") return cardbookBirthdaysUtils.lBirthdayList[row][2];

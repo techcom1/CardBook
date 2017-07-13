@@ -15,7 +15,7 @@ if ("undefined" == typeof(wdw_cardbookConfigurationAddCustomField)) {
 			document.getElementById('customFieldCodeTextBox').value = window.arguments[0].code;
 			document.getElementById('customFieldLabelTextBox').value = window.arguments[0].label;
 			document.getElementById('customFieldCodeTextBox').focus();
-			wdw_cardbookConfiguration.customFieldCheck(document.getElementById('customFieldCodeTextBox'));
+			wdw_cardbookConfigurationAddCustomField.checkNullCustomField(document.getElementById('customFieldCodeTextBox'));
 		},
 
 		save: function () {

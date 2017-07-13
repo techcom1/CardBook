@@ -22,7 +22,6 @@ if ("undefined" == typeof(cardbookObserver)) {
 				case "viewABContact":
 					ovl_cardbookLayout.resizePanes();
 					break;
-				case "listTabView":
 				case "mailPopularityTabView":
 				case "technicalTabView":
 				case "vcardTabView":
@@ -59,6 +58,8 @@ if ("undefined" == typeof(cardbookObserver)) {
 			observerService.addObserver(this, "cardbook.cardImportedFromFile", false);
 
 			observerService.addObserver(this, "cardbook.DBOpen", false);
+			observerService.addObserver(this, "cardbook.complexSearchInitLoaded", false);
+			observerService.addObserver(this, "cardbook.complexSearchLoaded", false);
 
 			observerService.addObserver(this, "cardbook.preferencesChanged", false);
 		},
@@ -89,6 +90,8 @@ if ("undefined" == typeof(cardbookObserver)) {
 			observerService.removeObserver(this, "cardbook.cardImportedFromFile");
 
 			observerService.removeObserver(this, "cardbook.DBOpen");
+			observerService.removeObserver(this, "cardbook.complexSearchInitLoaded");
+			observerService.removeObserver(this, "cardbook.complexSearchLoaded");
 
 			observerService.removeObserver(this, "cardbook.preferencesChanged");
 		},
@@ -122,9 +125,13 @@ if ("undefined" == typeof(cardbookObserver)) {
 				case "cardbook.ABModifiedDirect":
 				case "cardbook.cardAddedDirect":
 				case "cardbook.cardModifiedDirect":
+				case "cardbook.complexSearchLoaded":
 					wdw_cardbook.refreshWindow(aData);
 					break;
 				case "cardbook.DBOpen":
+					cardbookSynchronization.loadComplexSearchAccounts();
+					break;
+				case "cardbook.complexSearchInitLoaded":
 					cardbookSynchronization.loadAccounts();
 					if (wdw_cardbook) {
 						wdw_cardbook.loadFirstWindow();
