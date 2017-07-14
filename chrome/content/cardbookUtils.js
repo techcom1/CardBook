@@ -248,11 +248,14 @@ if ("undefined" == typeof(cardbookUtils)) {
 			function compare2(a, b) { return collator.compareString(0, a, b)*aInvert; };
 			function compare3(a, b) { return collator.compareString(0, cardbookUtils.getName(a), cardbookUtils.getName(b))*aInvert; };
 			function compare4(a, b) { return ((a.isAList === b.isAList)? 0 : a.isAList? -1 : 1)*aInvert; };
+			function compare5(a, b) { return collator.compareString(0, cardbookUtils.getCardValueByField(a, aIndex), cardbookUtils.getCardValueByField(b, aIndex))*aInvert; };
 			if (aIndex != -1) {
 				if (aIndex == "name") {
 					return aArray.sort(compare3);
 				} else if (aIndex == "cardIcon") {
 					return aArray.sort(compare4);
+				} else if (aIndex.startsWith("X-")) {
+					return aArray.sort(compare5);
 				} else {
 					return aArray.sort(compare1);
 				}

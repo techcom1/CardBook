@@ -56,7 +56,7 @@
 <!ENTITY debugModeAccesskey "m">
 <!ENTITY debugModeTooltip "Enable debug mode for extended logging.">
 <!ENTITY statusInformationLineNumberLabel "Number of lines kept in the log file">
-<!ENTITY statusInformationLineNumberAccesskey "N">
+<!ENTITY statusInformationLineNumberAccesskey "k">
 
 <!ENTITY tabsEdittingGroupboxLabel "Display Tabs">
 <!ENTITY noteTabLabel "Notes">

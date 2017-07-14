@@ -96,6 +96,60 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		document.getElementById('cardbookTabbox').selectedTab = document.getElementById("generalTab");
 	},
 
+		checkCustomColumns: function () {
+			var myTreecols = document.getElementById('cardsTreecols');
+			var childNodes = myTreecols.childNodes;
+			var toKeep = [];
+			for (var i = 0; i < childNodes.length; i++) {
+				var child = childNodes[i];
+				if (child.getAttribute('id').startsWith("X-")) {
+					if (child.getAttribute('hidden') == "false") {
+						toKeep.push(child.getAttribute('id'));
+					}
+				}
+			}
+			var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
+			str.data = toKeep.join(',');
+			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			prefs.setComplexValue("extensions.cardbook.customColumnsShown", Components.interfaces.nsISupportsString, str);
+		},
+
+   	addCustomColumns: function () {
+   		var myTreecols = document.getElementById('cardsTreecols');
+   		// first delete all custom columns
+		var childNodes = myTreecols.childNodes;
+		var toDelete = [];
+		for (var i = 0; i < childNodes.length; i++) {
+			var child = childNodes[i];
+			if (child.getAttribute('id').startsWith("X-")) {
+				toDelete.push(child);
+			}
+		}
+		for (var i = 0; i < toDelete.length; i++) {
+			var oldChild = myTreecols.removeChild(toDelete[i]);
+		}
+		// then add custom according to their persistence
+		var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+		var customColumnsShown = prefs.getComplexValue("extensions.cardbook.customColumnsShown", Components.interfaces.nsISupportsString).data;
+		var customColumnsShownArray = customColumnsShown.split(',');
+		for (var i in cardbookRepository.customFields) {
+			for (let j = 0; j < cardbookRepository.customFields[i].length; j++) {
+				var myCode = cardbookRepository.customFields[i][j][0];
+				var myLabel = cardbookRepository.customFields[i][j][1];
+				cardbookElementTools.addTreeSplitter(myTreecols);
+				var aHidden = "true";
+				for (let k = 0; k < customColumnsShownArray.length; k++) {
+					if (myCode == customColumnsShownArray[k]) {
+						var aHidden = "false";
+						break;
+					}
+				}
+				cardbookElementTools.addTreecol(myTreecols, myCode, myLabel, {flex: '1', persist: 'width ordinal hidden', style: 'text-align:left', hidden: aHidden,
+													class: 'sortDirectionIndicator', sortDirection: 'ascending'});
+			}
+		}
+	},
+
    	loadFirstWindow: function () {
 		Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 		Components.utils.import("resource://gre/modules/PluralForm.jsm");
@@ -212,9 +266,10 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					else if (column.id == "rev") return aCardList[row].rev;
 					else if (column.id == "cardurl") return aCardList[row].cardurl;
 					else if (column.id == "etag") return aCardList[row].etag;
-					else return "false";
+					else return cardbookUtils.getCardValueByField(aCardList[row], column.id);
 				}
 			}
+			wdw_cardbook.addCustomColumns();
 			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
 			cardbookRepository.showNameAs = prefs.getComplexValue("extensions.cardbook.showNameAs", Components.interfaces.nsISupportsString).data;
 			document.getElementById('cardsTree').view = accountsOrCatsTreeView;
@@ -1273,7 +1328,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 
 		cardsTreeContextShowing: function () {
 			var target = document.popupNode;
-			// If a column header was clicked, show the column picker.
+			// for persistence, save the custom columns state
 			if (target.localName == "treecol") {
 				let treecols = target.parentNode;
 				let nodeList = document.getAnonymousNodes(treecols);
@@ -2962,6 +3017,8 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			}
 			wdw_cardbook.updateStatusInformation();
 			wdw_cardbook.updateStatusProgressInformationField();
+			// to save custom columns persistency
+			wdw_cardbook.checkCustomColumns();
 		},
 
 		refreshWindow: function (aParams) {

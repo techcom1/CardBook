@@ -21,6 +21,23 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			aCaption.setAttribute('class', 'header');
 		},
 		
+		addTreeSplitter: function (aParent) {
+			var aSplitter = document.createElement('splitter');
+			aParent.appendChild(aSplitter);
+			aSplitter.setAttribute('class', 'tree-splitter');
+		},
+		
+		addTreecol: function (aParent, aId, aLabel, aParameters) {
+			var aTreecol = document.createElement('treecol');
+			aParent.appendChild(aTreecol);
+			aTreecol.setAttribute('id', aId);
+			aTreecol.setAttribute('label', aLabel);
+
+			for (var prop in aParameters) {
+				aTreecol.setAttribute(prop, aParameters[prop]);
+			}
+		},
+
 		addHBox: function (aType, aIndex, aParent) {
 			var aHBox = document.createElement('hbox');
 			aParent.appendChild(aHBox);

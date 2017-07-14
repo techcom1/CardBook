@@ -34,6 +34,7 @@ pref("extensions.cardbook.iconsMigrated", false);
 
 pref("extensions.cardbook.kindCustom", "X-ADDRESSBOOKSERVER-KIND");
 pref("extensions.cardbook.memberCustom", "X-ADDRESSBOOKSERVER-MEMBER");
+pref("extensions.cardbook.customColumnsShown", "");
 
 pref("extensions.cardbook.orgStructure", "");
 
@@ -61,4 +62,4 @@ pref("extensions.cardbook.calendarEntryCategories", "");
 pref("extensions.cardbook.viewABPane", true);
 pref("extensions.cardbook.viewABContact", true);
 
-pref("extensions.cardbook.addonVersion", "20.6");
+pref("extensions.cardbook.addonVersion", "20.7");

@@ -113,6 +113,7 @@ if ("undefined" == typeof(cardbookObserver)) {
 				case "cardbook.preferencesChanged":
 					cardbookRepository.loadCustoms();
 					wdw_cardbook.loadCssRules();
+					wdw_cardbook.addCustomColumns();
 					wdw_cardbook.refreshWindow();
 					break;
 				case "cardbook.catAddedDirect":

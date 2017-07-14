@@ -304,12 +304,9 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			var ldaysUntilNextBirthday;
 			var lDateOfBirthOld = lDateOfBirth;
 			lDateOfBirth = cardbookDates.convertDateStringToDate(lDateOfBirth, aDateFormat);
-			var consoleService = Components.classes["@mozilla.org/consoleservice;1"].getService(Components.interfaces.nsIConsoleService);
-			consoleService.logStringMessage("test getAllBirthdaysByName lDateOfBirth : " + lDateOfBirth.toSource());
 
 			endDate.setDate(date_of_today.getDate()+parseInt(lNumberOfDays2));
 			while (dateRef < endDate) {
-				consoleService.logStringMessage("test getAllBirthdaysByName OK1");
 				lnextBirthday = this.calcDateOfNextBirthday(dateRef,lDateOfBirth);
 				if (lDateOfBirth.getFullYear() == "666") {
 					lAge = "?";
@@ -317,14 +314,11 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 				} else {
 					lAge = lnextBirthday.getFullYear()-lDateOfBirth.getFullYear();
 				}
-				consoleService.logStringMessage("test getAllBirthdaysByName OK2 lAge : " + lAge.toSource());
 				ldaysUntilNextBirthday = this.daysBetween(lnextBirthday, date_of_today);
 				if (parseInt(ldaysUntilNextBirthday) <= parseInt(lNumberOfDays2)) {
 					if (ldaysUntilNextBirthday === parseInt(ldaysUntilNextBirthday)) {
-				consoleService.logStringMessage("test getAllBirthdaysByName OK3");
 						cardbookBirthdaysUtils.lBirthdayList.push([ldaysUntilNextBirthday, lName, lAge, lDateOfBirthOld, lDateOfBirthFound, lEmail, aDirPrefId]);
 					} else {
-				consoleService.logStringMessage("test getAllBirthdaysByName OK4");
 						cardbookBirthdaysUtils.lBirthdayList.push(["0", lName + " : Error", "0", "0", lDateOfBirthFound, lEmail, aDirPrefId]);
 					}
 					if (!(cardbookBirthdaysUtils.lBirthdayAccountList[aDirPrefId])) {
@@ -364,8 +358,6 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 									cardbookUtils.formatStringForOutput("birthdayEntry1Wrong", [myDirPrefName, myCard.fn, myCard.bday, dateFormat], "Warning");
 								}
 							}
-							var consoleService = Components.classes["@mozilla.org/consoleservice;1"].getService(Components.interfaces.nsIConsoleService);
-							consoleService.logStringMessage("test searchInNote : " + searchInNote.toSource());
 							if (searchInNote == true) {
 								var lNotesLine = myCard.note.split("\n");
 								for (var a = 0; a < lNotesLine.length; a++) {
@@ -375,9 +367,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 										var lNotesName = lNotesLine[a].replace(EmptyParamRegExp1, "$1").replace(/^\s+|\s+$/g,"");
 										if (lNotesLine[a].replace(EmptyParamRegExp1, "$2")!=lNotesLine[a]) {
 											var lNotesDateFound = lNotesLine[a].replace(EmptyParamRegExp1, "$2").replace(/^\s+|\s+$/g,"");
-											consoleService.logStringMessage("test birthday : lNotesDateFound : " + lNotesDateFound);
 											var lNotesDate = cardbookDates.isDateStringCorrectlyFormatted(lNotesDateFound, dateFormat);
-											consoleService.logStringMessage("test birthday : lNotesDate : " + lNotesDate);
 											if (lNotesDate != "WRONGDATE") {
 												listOfEmail = cardbookUtils.getMimeEmailsFromCards([myCard]);
 												cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, lNotesDate, lNotesName, lnumberOfDays, lNotesDateFound, listOfEmail, myDirPrefId);
@@ -387,15 +377,12 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 										}
 									}
 									// now localized
-									consoleService.logStringMessage("test EmptyParamRegExp1 : " + EmptyParamRegExp1);
 									var EmptyParamRegExp1 = new RegExp("^" + eventInNoteEventPrefix + ":([^:]*):([^:]*)([:]*)(.*)", "ig");
 									if (lNotesLine[a].replace(EmptyParamRegExp1, "$1")!=lNotesLine[a]) {
 										var lNotesName = lNotesLine[a].replace(EmptyParamRegExp1, "$1").replace(/^\s+|\s+$/g,"");
 										if (lNotesLine[a].replace(EmptyParamRegExp1, "$2")!=lNotesLine[a]) {
 											var lNotesDateFound = lNotesLine[a].replace(EmptyParamRegExp1, "$2").replace(/^\s+|\s+$/g,"");
-											consoleService.logStringMessage("test event : lNotesDateFound : " + lNotesDateFound);
 											var lNotesDate = cardbookDates.isDateStringCorrectlyFormatted(lNotesDateFound, dateFormat);
-											consoleService.logStringMessage("test event : lNotesDate : " + lNotesDate);
 											if (lNotesDate != "WRONGDATE") {
 												listOfEmail = cardbookUtils.getMimeEmailsFromCards([myCard]);
 												cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, lNotesDate, lNotesName, lnumberOfDays, lNotesDateFound, listOfEmail, myDirPrefId);
