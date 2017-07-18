@@ -10,9 +10,9 @@
 <!ENTITY whatToPrintGroupboxLabel "O que imprimir">
 <!ENTITY displayLabel "Nome de apresentação">
 <!ENTITY displayAccesskey "N">
-<!ENTITY personalLabel "Information pessoal">
+<!ENTITY personalLabel "Informação pessoal">
 <!ENTITY personalAccesskey "p">
-<!ENTITY orgLabel "Information profissional">
+<!ENTITY orgLabel "Informação profissional">
 <!ENTITY orgAccesskey "o">
 <!ENTITY categoriesLabel "Categorias">
 <!ENTITY categoriesAccesskey "C">

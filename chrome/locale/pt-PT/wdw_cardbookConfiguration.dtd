@@ -1,5 +1,5 @@
 <!ENTITY generalTabLabel "Geral">
-<!ENTITY CardBookTabLabel "Tab CardBook">
+<!ENTITY CardBookTabLabel "CardBook">
 <!ENTITY typesTabLabel "Tipos">
 <!ENTITY IMPPsTabLabel "Endereços de mensagem instantanea">
 <!ENTITY customFieldsTabLabel "Campos customizaveis">
@@ -56,8 +56,8 @@
 <!ENTITY debugModeLabel "Modo debug">
 <!ENTITY debugModeAccesskey "M">
 <!ENTITY debugModeTooltip "Activar modo de debug para log.">
-<!ENTITY statusInformationLineNumberLabel "Número de linhas para o log">
-<!ENTITY statusInformationLineNumberAccesskey "N">
+<!ENTITY statusInformaçãoLineNumberLabel "Número de linhas para o log">
+<!ENTITY statusInformaçãoLineNumberAccesskey "N">
 
 <!ENTITY tabsEdittingGroupboxLabel "Mostrar tabs">
 <!ENTITY noteTabLabel "Notas">
@@ -140,9 +140,9 @@
 <!ENTITY customFieldRankLabel "Rank">
 <!ENTITY customFieldCodeLabel "Nome do campo">
 <!ENTITY customFieldLabelLabel "Etiqueta do campo">
-<!ENTITY customFieldsPersTitleLabel "Information pessoal">
+<!ENTITY customFieldsPersTitleLabel "Informação pessoal">
 <!ENTITY customFieldsPersTitleAccesskey "p">
-<!ENTITY customFieldsOrgTitleLabel "Information profissional">
+<!ENTITY customFieldsOrgTitleLabel "Informação profissional">
 <!ENTITY customFieldsOrgTitleAccesskey "r">
 <!ENTITY addCustomFieldsLabel "Adicionar">
 <!ENTITY addCustomFieldsAccesskey "A">
