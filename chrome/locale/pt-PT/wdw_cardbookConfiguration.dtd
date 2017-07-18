@@ -56,8 +56,8 @@
 <!ENTITY debugModeLabel "Modo debug">
 <!ENTITY debugModeAccesskey "M">
 <!ENTITY debugModeTooltip "Activar modo de debug para log.">
-<!ENTITY statusInformaçãoLineNumberLabel "Número de linhas para o log">
-<!ENTITY statusInformaçãoLineNumberAccesskey "N">
+<!ENTITY statusInformationLineNumberLabel "Número de linhas para o log">
+<!ENTITY statusInformationLineNumberAccesskey "N">
 
 <!ENTITY tabsEdittingGroupboxLabel "Mostrar tabs">
 <!ENTITY noteTabLabel "Notas">
