@@ -92,14 +92,14 @@ if ("undefined" == typeof(cardbookComplexSearch)) {
 			}
 		},
 
-		getAllArray: function (aType) {
+		getAllArray: function (aType, aVersion) {
 			var i = 0;
 			var myResult = [];
 			while (true) {
 				if (document.getElementById(aType + '_' + i + '_hbox')) {
 					var mySearchCase = document.getElementById(aType + '_' + i + '_menulistCase').selectedItem.value;
 					var mySearchObj = document.getElementById(aType + '_' + i + '_menulistObj').selectedItem.value;
-					var mySearchTerm = document.getElementById(aType + '_' + i + '_menulistTerm').selectedItem.value;
+					var mySearchTerm = document.getElementById(aType + '_' + i + '_' + aVersion + '_menulistTerm').selectedItem.value;
 					var mySearchValue = document.getElementById(aType + '_' + i + '_valueBox').value;
 					myResult.push([mySearchCase, mySearchObj, mySearchTerm, mySearchValue]);
 					i++;
@@ -108,6 +108,32 @@ if ("undefined" == typeof(cardbookComplexSearch)) {
 				}
 			}
 			return myResult;
+		},
+
+		disableButtons: function (aType, aIndex, aVersion) {
+			if (aIndex == 0) {
+				if (document.getElementById(aType + '_' + aIndex + '_valueBox').value == "") {
+					if (document.getElementById(aType + '_' + aIndex + '_' + aVersion + '_menulistTerm').selectedItem.value == "IsntEmpty" || 
+							document.getElementById(aType + '_' + aIndex + '_' + aVersion + '_menulistTerm').selectedItem.value == "IsEmpty") {
+						document.getElementById(aType + '_' + aIndex + '_' + aVersion + '_cardbookaddButton').disabled = false;
+						document.getElementById(aType + '_' + aIndex + '_' + aVersion + '_cardbookremoveButton').disabled = false;
+					} else {
+						document.getElementById(aType + '_' + aIndex + '_' + aVersion + '_cardbookaddButton').disabled = true;
+						document.getElementById(aType + '_' + aIndex + '_' + aVersion + '_cardbookremoveButton').disabled = true;
+					}
+				} else {
+					document.getElementById(aType + '_' + aIndex + '_' + aVersion + '_cardbookaddButton').disabled = false;
+					document.getElementById(aType + '_' + aIndex + '_' + aVersion + '_cardbookremoveButton').disabled = false;
+				}
+			} else {
+				document.getElementById(aType + '_0_' + aVersion + '_cardbookremoveButton').disabled = false;
+				for (var i = 0; i < aIndex; i++) {
+					document.getElementById(aType + '_' + i + '_' + aVersion + '_cardbookaddButton').disabled = true;
+					document.getElementById(aType + '_' + i + '_' + aVersion + '_cardbookdownButton').disabled = false;
+				}
+			}
+			document.getElementById(aType + '_' + aIndex + '_' + aVersion + '_cardbookdownButton').disabled = true;
+			document.getElementById(aType + '_0_' + aVersion + '_cardbookupButton').disabled = true;
 		},
 
 		showOrHideForEmpty: function (aId) {
@@ -133,7 +159,7 @@ if ("undefined" == typeof(cardbookComplexSearch)) {
 
 			cardbookElementTools.addMenuCaselist(aHBox, aType, aIndex, aArray[0], {flex: "1"});
 			cardbookElementTools.addMenuObjlist(aHBox, aType, aIndex, aArray[1], {flex: "1"});
-			cardbookElementTools.addMenuTermlist(aHBox, aType, aIndex, aArray[2], {flex: "1"});
+			cardbookElementTools.addMenuTermlist(aHBox, aType, aIndex, aVersion, aArray[2], {flex: "1"});
 			cardbookElementTools.addKeyTextbox(aHBox, aType + '_' + aIndex + '_valueBox', aArray[3], {flex: "1"}, aVersion, aIndex);
 
 			function fireUpButton(event) {
@@ -141,7 +167,7 @@ if ("undefined" == typeof(cardbookComplexSearch)) {
 					return;
 				}
 				var myIdArray = this.id.split('_');
-				var myAllValuesArray = cardbookComplexSearch.getAllArray(myIdArray[0]);
+				var myAllValuesArray = cardbookComplexSearch.getAllArray(myIdArray[0], myIdArray[2]);
 				if (myAllValuesArray.length <= 1) {
 					return;
 				}
@@ -158,7 +184,7 @@ if ("undefined" == typeof(cardbookComplexSearch)) {
 					return;
 				}
 				var myIdArray = this.id.split('_');
-				var myAllValuesArray = cardbookComplexSearch.getAllArray(myIdArray[0]);
+				var myAllValuesArray = cardbookComplexSearch.getAllArray(myIdArray[0], myIdArray[2]);
 				if (myAllValuesArray.length <= 1) {
 					return;
 				}
@@ -175,7 +201,7 @@ if ("undefined" == typeof(cardbookComplexSearch)) {
 					return;
 				}
 				var myIdArray = this.id.split('_');
-				var myAllValuesArray = cardbookComplexSearch.getAllArray(myIdArray[0]);
+				var myAllValuesArray = cardbookComplexSearch.getAllArray(myIdArray[0], myIdArray[2]);
 				cardbookElementTools.deleteRowsType(myIdArray[0]);
 				if (myAllValuesArray.length == 0) {
 					cardbookComplexSearch.constructDynamicRows(myIdArray[0], myAllValuesArray, myIdArray[2]);
@@ -192,7 +218,7 @@ if ("undefined" == typeof(cardbookComplexSearch)) {
 				}
 				var myIdArray = this.id.split('_');
 				var myValue = document.getElementById(myIdArray[0] + '_' + myIdArray[1] + '_valueBox').value;
-				var myTerm = document.getElementById(myIdArray[0] + '_' + myIdArray[1] + '_menulistTerm').selectedItem.value;
+				var myTerm = document.getElementById(myIdArray[0] + '_' + myIdArray[1] + '_' + myIdArray[2] + '_menulistTerm').selectedItem.value;
 				if (myValue == "" && myTerm !== "IsEmpty" && myTerm !== "IsntEmpty") {
 					return;
 				}
@@ -201,8 +227,8 @@ if ("undefined" == typeof(cardbookComplexSearch)) {
 			};
 			cardbookElementTools.addEditButton(aHBox, aType, aIndex, aVersion, "add", fireAddButton);
 
-			cardbookTypes.disableButtons(aType, aIndex, aVersion);
-			cardbookComplexSearch.showOrHideForEmpty(aType + '_' + aIndex + '_menulistTerm');
+			cardbookComplexSearch.showOrHideForEmpty(aType + '_' + aIndex + '_' + aVersion + '_menulistTerm');
+			cardbookComplexSearch.disableButtons(aType, aIndex, aVersion);
 		},
 
 		constructDynamicRows: function (aType, aArray, aVersion) {
@@ -213,19 +239,6 @@ if ("undefined" == typeof(cardbookComplexSearch)) {
 			if (aArray.length == 0) {
 				cardbookComplexSearch.loadDynamicTypes(aType, 0, ["","","",""], aVersion);
 			}
-		},
-
-		initComplexSearch: function (aDirPrefId) {
-			if (cardbookRepository.cardbookComplexSearch[aDirPrefId]) {
-				cardbookElementTools.loadAddressBooks("addressbookMenupopup", "addressbookMenulist", cardbookRepository.cardbookComplexSearch[aDirPrefId].searchAB, true, true, true, false);
-				cardbookComplexSearch.loadMatchAll(cardbookRepository.cardbookComplexSearch[aDirPrefId].matchAll);
-				cardbookComplexSearch.constructDynamicRows("searchTerms", cardbookRepository.cardbookComplexSearch[aDirPrefId].rules, "3.0");
-			} else {
-				cardbookElementTools.loadAddressBooks("addressbookMenupopup", "addressbookMenulist", "allAddressBooks", true, true, true, false);
-				cardbookComplexSearch.loadMatchAll("and");
-				cardbookComplexSearch.constructDynamicRows("searchTerms", [["","","",""]], "3.0");
-			}
-			document.getElementById('searchTerms_0_valueBox').focus();
 		},
 
 		loadCards: function (aComplexSearchDirPrefId) {
@@ -294,7 +307,7 @@ if ("undefined" == typeof(cardbookComplexSearch)) {
 			var searchAll = document.getElementById('booleanAndGroup').selectedItem.value == "and" ? "true" : "false";
 			result = result + ":searchAll:" + searchAll;
 			var found = false;
-			var allRules = cardbookComplexSearch.getAllArray("searchTerms");
+			var allRules = cardbookComplexSearch.getAllArray("searchTerms", "3.0");
 			for (var i = 0; i < allRules.length; i++) {
 				if (allRules[i][2] == "IsEmpty") {
 					found = true;

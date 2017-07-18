@@ -321,9 +321,9 @@
 							<vbox flex="1" align="center">
 								<hbox flex="1" align="center">
 									<vbox flex="1" align="center">
-										<button class="cardbookButtonClass" id="appendlistavailableCardsTreeButton" label="&buttonAppendToListLabel;"
+										<button id="appendlistavailableCardsTreeButton" label="&buttonAppendToListLabel;"
 												accesskey="&buttonAppendToListAccesskey;" oncommand="wdw_cardEdition.modifyLists(this);"/>
-										<button class="cardbookButtonClass" id="deletelistaddedCardsTreeButton" label="&buttonRemoveFromListLabel;"
+										<button id="deletelistaddedCardsTreeButton" label="&buttonRemoveFromListLabel;"
 												accesskey="&buttonRemoveFromListAccesskey;" oncommand="wdw_cardEdition.modifyLists(this);"/>
 									</vbox>
 								</hbox>

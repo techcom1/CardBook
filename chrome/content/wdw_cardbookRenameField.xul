@@ -32,11 +32,14 @@
 				<rows>
 					<row align="center">
 						<label id="typeLabel" control="typeTextBox"/>
-						<textbox id="typeTextBox"/>
+						<textbox id="typeTextBox" oninput="wdw_cardbookRenameField.validate();"/>
 					</row>
 				</rows>
 			</grid>
 		</vbox>
+	</hbox>
+	<hbox flex="1">
+		<notificationbox id="errorNotifications" flex="1"/>
 	</hbox>
 
 	<hbox>

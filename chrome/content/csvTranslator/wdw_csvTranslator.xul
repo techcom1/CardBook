@@ -64,12 +64,12 @@
 				<vbox flex="1" align="center">
 					<hbox flex="1" align="center">
 						<vbox flex="1" align="center">
-							<button class="cardbookButtonClass" id="appendlistavailableColumnsTreeButton" label="&buttonAppendToListLabel;"
+							<button id="appendlistavailableColumnsTreeButton" label="&buttonAppendToListLabel;"
 									accesskey="&buttonAppendToListAccesskey;" oncommand="wdw_csvTranslator.modifyLists(this);"/>
-							<button class="cardbookButtonClass" id="deletelistaddedColumnsTreeButton" label="&buttonRemoveFromListLabel;"
+							<button id="deletelistaddedColumnsTreeButton" label="&buttonRemoveFromListLabel;"
 									accesskey="&buttonRemoveFromListAccesskey;" oncommand="wdw_csvTranslator.modifyLists(this);"/>
-							<button class="cardbookButtonClass" id="upAddedColumnsTreeButton" label="↑" oncommand="wdw_csvTranslator.upColumns();"/>
-							<button class="cardbookButtonClass" id="downAddedColumnsTreeButton" label="↓" oncommand="wdw_csvTranslator.downColumns(this);"/>
+							<button id="upAddedColumnsTreeButton" label="↑" oncommand="wdw_csvTranslator.upColumns();"/>
+							<button id="downAddedColumnsTreeButton" label="↓" oncommand="wdw_csvTranslator.downColumns(this);"/>
 						</vbox>
 					</hbox>
 				</vbox>

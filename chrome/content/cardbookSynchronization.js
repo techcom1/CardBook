@@ -2271,7 +2271,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 				} else if (myPrefType === "CACHE") {
 					cardbookRepository.cardbookDirRequest[aDirPrefId]++;
 					var myDir = cardbookRepository.getLocalDirectory();
-					myDir.append(cardbookRepository.cardbookCollectedCardsId);
+					myDir.append("Collected");
 					cardbookSynchronization.loadDir(myDir, "", aDirPrefId, aMode, "");
 					cardbookSynchronization.waitForDirFinished(aDirPrefId, myPrefName, aMode);
 				}

@@ -684,10 +684,11 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		},
 		
 		addOrg: function () {
-			var myListBox = document.getElementById('orgListbox');
-			var myArgs = {type: "", context: "Org", typeAction: ""};
+			var myValidationList = JSON.parse(JSON.stringify(wdw_cardbookConfiguration.allOrg));
+			var myArgs = {type: "", context: "Org", typeAction: "", validationList: myValidationList};
 			var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookRenameField.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
 			if (myArgs.typeAction == "SAVE" && myArgs.type != "") {
+				var myListBox = document.getElementById('orgListbox');
 				wdw_cardbookConfiguration.allOrg = [];
 				for (var i = 0; i < myListBox.itemCount; i++) {
 					wdw_cardbookConfiguration.allOrg.push(myListBox.getItemAtIndex(i).getAttribute("value"));
@@ -704,7 +705,8 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				return;
 			} else {
 				var myItem = myListBox.getSelectedItem(0);
-				var myArgs = {type: myItem.getAttribute("value"), context: "Org", typeAction: ""};
+				var myValidationList = JSON.parse(JSON.stringify(wdw_cardbookConfiguration.allOrg));
+				var myArgs = {type: myItem.getAttribute("value"), context: "Org", typeAction: "", validationList: myValidationList};
 				var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookRenameField.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
 				if (myArgs.typeAction == "SAVE" && myArgs.type != "") {
 					wdw_cardbookConfiguration.allOrg = [];

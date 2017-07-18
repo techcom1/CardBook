@@ -62,4 +62,5 @@ pref("extensions.cardbook.calendarEntryCategories", "");
 pref("extensions.cardbook.viewABPane", true);
 pref("extensions.cardbook.viewABContact", true);
 
-pref("extensions.cardbook.addonVersion", "20.7");
+pref("extensions.cardbook.uncategorizedCards", "");
+pref("extensions.cardbook.addonVersion", "20.8");

@@ -742,32 +742,49 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 					document.getElementById("editCard").disabled=true;
 				} else {
 					if (listOfUid[0][0] == "CATCARDBOOK") {
-						var mySepPosition = listOfUid[0][1].indexOf("::",0);
-						var myCategory = listOfUid[0][1].substr(mySepPosition+2,listOfUid[0][1].length);
-						if (myCategory == cardbookRepository.cardbookUncategorizedCards) {
-							document.getElementById("editCard").disabled=true;
+						var myAccountArray = listOfUid[0][1].split("::");
+						var myDirPrefId = myAccountArray[0];
+						var cardbookPrefService = new cardbookPreferenceService(myDirPrefId);
+						if (cardbookPrefService.getReadOnly()) {
+							wdw_cardbookContactsSidebar.disableCardModification();
 						} else {
-							document.getElementById("editCard").disabled=false;
+							wdw_cardbookContactsSidebar.enableCardModification();
+						}
+					} else if (listOfUid[0][0] == "CARDCARDBOOK" || listOfUid[0][0] == "LISTCARDBOOK") {
+						var myDirPrefId = listOfUid[0][1].dirPrefId;
+						var cardbookPrefService = new cardbookPreferenceService(myDirPrefId);
+						if (cardbookPrefService.getReadOnly()) {
+							wdw_cardbookContactsSidebar.disableCardModification();
+						} else {
+							wdw_cardbookContactsSidebar.enableCardModification();
 						}
 					} else {
-						document.getElementById("editCard").disabled=false;
+						wdw_cardbookContactsSidebar.enableCardModification();
 					}
 				}
 				document.getElementById("toEmail").disabled=false;
 				document.getElementById("ccEmail").disabled=false;
 				document.getElementById("bccEmail").disabled=false;
 				document.getElementById("replytoEmail").disabled=false;
-				document.getElementById("deleteCard").disabled=false;
 			} else {
 				document.getElementById("toEmail").disabled=true;
 				document.getElementById("ccEmail").disabled=true;
 				document.getElementById("bccEmail").disabled=true;
 				document.getElementById("replytoEmail").disabled=true;
-				document.getElementById("deleteCard").disabled=true;
-				document.getElementById("editCard").disabled=true;
+				wdw_cardbookContactsSidebar.disableCardModification();
 			}
 		},
 
+		disableCardModification: function () {
+			document.getElementById("editCard").disabled=true;
+			document.getElementById("deleteCard").disabled=true;
+		},
+		
+		enableCardModification: function () {
+			document.getElementById("editCard").disabled=false;
+			document.getElementById("deleteCard").disabled=false;
+		},
+		
 		loadPanel: function () {
 			myCardBookObserver.register();
 			myCardBookPrefObserver.register();

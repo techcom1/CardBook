@@ -8,7 +8,20 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 		gValidateURL : false,
 		gValidateDescription : "Validation module",
 		gStandardAddressbooks : [],
+		gSearchDefinition : {},
 		
+		initSearchDefinition: function () {
+			if (cardbookRepository.cardbookComplexSearch[window.arguments[0].searchId]) {
+				wdw_addressbooksAdd.gSearchDefinition['searchAB'] = cardbookRepository.cardbookComplexSearch[window.arguments[0].searchId].searchAB;
+				wdw_addressbooksAdd.gSearchDefinition['matchAll'] = cardbookRepository.cardbookComplexSearch[window.arguments[0].searchId].matchAll;
+				wdw_addressbooksAdd.gSearchDefinition['rules'] = JSON.parse(JSON.stringify(cardbookRepository.cardbookComplexSearch[window.arguments[0].searchId].rules));
+			} else {
+				wdw_addressbooksAdd.gSearchDefinition['searchAB'] = true;
+				wdw_addressbooksAdd.gSearchDefinition['matchAll'] = 'and';
+				wdw_addressbooksAdd.gSearchDefinition['rules'] = [["","","",""]];
+			}
+		},
+
 		loadWizard: function () {
 			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			let stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
@@ -19,6 +32,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				wdw_addressbooksAdd.loadStandardAddressBooks();
 				document.getElementById('addressbook-wizard').goTo("welcomePage");
 			} else if (window.arguments[0].action == "search") {
+				wdw_addressbooksAdd.initSearchDefinition();
 				document.getElementById('addressbook-wizard').goTo("searchPage");
 			} else {
 				document.getElementById('addressbook-wizard').goTo("initialPage");
@@ -249,27 +263,46 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			wdw_addressbooksAdd.gType = document.getElementById('remotePageType').selectedItem.value;
 		},
 
-		searchPageAdvance: function () {
-			wdw_addressbooksAdd.gType = "SEARCH";
-			wdw_addressbooksAdd.gTypeFile = cardbookComplexSearch.getSearch();
+		constructComplexSearch: function () {
+			cardbookElementTools.loadAddressBooks("addressbookMenupopup", "addressbookMenulist", wdw_addressbooksAdd.gSearchDefinition.searchAB, true, true, true, false);
+			cardbookComplexSearch.loadMatchAll(wdw_addressbooksAdd.gSearchDefinition.matchAll);
+			cardbookComplexSearch.constructDynamicRows("searchTerms", wdw_addressbooksAdd.gSearchDefinition.rules, "3.0");
+			document.getElementById('searchTerms_0_valueBox').focus();
 		},
 
 		checkSearch: function () {
-			cardbookComplexSearch.initComplexSearch(window.arguments[0].searchId);
-			if (window.arguments[0].searchId != null && window.arguments[0].searchId !== undefined && window.arguments[0].searchId != "") {
-				document.getElementById('addressbook-wizard').canAdvance = true;
-			} else {
-				document.getElementById('addressbook-wizard').canAdvance = false;
-			}
-			function checkTerms(event) {
+			wdw_addressbooksAdd.constructComplexSearch();
+			document.getElementById('addressbook-wizard').canAdvance = false;
+			function checkTerms() {
 				if (cardbookComplexSearch.getSearch() != "") {
 					document.getElementById('addressbook-wizard').canAdvance = true;
 				} else {
 					document.getElementById('addressbook-wizard').canAdvance = false;
 				}
 			};
+			checkTerms();
 			document.getElementById('searchTerms').addEventListener("input", checkTerms, false);
 			document.getElementById('searchTerms').addEventListener("command", checkTerms, false);
+			document.getElementById('searchTerms').addEventListener("click", checkTerms, false);
+		},
+
+		searchPageAdvance: function () {
+			wdw_addressbooksAdd.gType = "SEARCH";
+			wdw_addressbooksAdd.gTypeFile = cardbookComplexSearch.getSearch();
+
+			var relative = wdw_addressbooksAdd.gTypeFile.match("^searchAB:([^:]*):searchAll:([^:]*)(.*)");
+			wdw_addressbooksAdd.gSearchDefinition.searchAB = relative[1];
+			if (relative[2] == "true") {
+				wdw_addressbooksAdd.gSearchDefinition.matchAll = true;
+			} else {
+				wdw_addressbooksAdd.gSearchDefinition.matchAll = false;
+			}
+			var tmpRuleArray = relative[3].split(/:case:/);
+			wdw_addressbooksAdd.gSearchDefinition.rules = [];
+			for (var i = 1; i < tmpRuleArray.length; i++) {
+				var relative = tmpRuleArray[i].match("([^:]*):field:([^:]*):term:([^:]*):value:([^:]*)");
+				wdw_addressbooksAdd.gSearchDefinition.rules.push([relative[1], relative[2], relative[3], relative[4]]);
+			}
 		},
 
 		showPassword: function () {

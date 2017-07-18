@@ -43,6 +43,9 @@ overlay  chrome://messenger/content/messenger.xul chrome://cardbook/content/filt
 
 # support for filter messages
 overlay  chrome://messenger/content/FilterEditor.xul chrome://cardbook/content/filters/ovl_filterEditor.xul
+overlay  chrome://messenger/content/SearchDialog.xul chrome://cardbook/content/filters/ovl_filterEditor.xul
+overlay  chrome://messenger/content/mailViewSetup.xul chrome://cardbook/content/filters/ovl_filterEditor.xul
+overlay  chrome://messenger/content/virtualFolderProperties.xul chrome://cardbook/content/filters/ovl_filterEditor.xul
 
 # support for Lightning attendees
 overlay  chrome://calendar/content/calendar-event-dialog-attendees.xul chrome://cardbook/content/lightning/ovl_lightningAttendees.xul

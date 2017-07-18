@@ -139,8 +139,6 @@ var cardbookRepository = {
 	cardbookDynamicCssRules : {},
 
 	cardbookUncategorizedCards : "",
-	cardbookCollectedCards : "",
-	cardbookCollectedCardsId : "Collected",
 	
 	cardbookMailPopularityFile : "mailPopularityIndex.txt",
 
@@ -910,6 +908,22 @@ var cardbookRepository = {
 	renameCategoryFromCard: function(aCard, aOldCategoryName, aNewCategoryName) {
 		cardbookRepository.removeCategoryFromCard(aCard, aOldCategoryName);
 		cardbookRepository.addCategoryToCard(aCard, aNewCategoryName);
+	},
+
+	renameUncategorized: function(aOldCategoryName, aNewCategoryName) {
+		for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
+			if (!cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][0] == aOldCategoryName) {
+				cardbookRepository.cardbookAccounts[i][0] = aNewCategoryName;
+				cardbookRepository.cardbookAccounts[i][4] = cardbookRepository.cardbookAccounts[i][4].replace("::"+aOldCategoryName,"::"+aNewCategoryName);
+			} else if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5]) {
+				for (var j = 0; j < cardbookRepository.cardbookAccountsCategories[cardbookRepository.cardbookAccounts[i][4]].length; j++) {
+					if (cardbookRepository.cardbookAccountsCategories[cardbookRepository.cardbookAccounts[i][4]][j] == aOldCategoryName) {
+						cardbookRepository.cardbookAccountsCategories[cardbookRepository.cardbookAccounts[i][4]][j] = aNewCategoryName;
+					}
+				}
+			}
+		}
+		cardbookRepository.cardbookUncategorizedCards = aNewCategoryName;
 	},
 
 	removeCategoryFromDisplay: function(aCategory) {
