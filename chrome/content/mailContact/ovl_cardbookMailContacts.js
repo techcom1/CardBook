@@ -67,18 +67,6 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 			}
 		},
 
-		newInCardBook: function() {
-			try {
-				var myNewCard = new cardbookCardParser();
-				cardbookUtils.openEditionWindow(myNewCard, "CreateContact", "cardbook.cardAddedIndirect");
-			}
-			catch (e) {
-				var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
-				var errorTitle = "newInCardBook";
-				prompts.alert(null, errorTitle, e);
-			}
-		},
-
 		addToCardBook: function(aDirPrefId) {
 			try {
 				var myNewCard = new cardbookCardParser();

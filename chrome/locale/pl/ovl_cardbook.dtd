@@ -10,6 +10,8 @@
 
 <!ENTITY newCardBookCardMenuLabel "Wizytówkę CardBook…">
 <!ENTITY newCardBookCardMenuAccesskey "C">
+<!ENTITY newCardBookSearchMenuLabel "??Search CardBook…??">
+<!ENTITY newCardBookSearchMenuAccesskey "C">
 <!ENTITY addToCardBookMenuLabel "Dodaj wizytówkę CardBook">
 <!ENTITY addToCardBookMenuAccesskey "D">
 <!ENTITY editInCardBookMenuLabel "Edytuj wizytówkę CardBook">

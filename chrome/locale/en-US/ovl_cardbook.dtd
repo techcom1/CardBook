@@ -10,6 +10,8 @@
 
 <!ENTITY newCardBookCardMenuLabel "CardBook Contact…">
 <!ENTITY newCardBookCardMenuAccesskey "C">
+<!ENTITY newCardBookSearchMenuLabel "Search CardBook…">
+<!ENTITY newCardBookSearchMenuAccesskey "C">
 <!ENTITY addToCardBookMenuLabel "Add CardBook Contact">
 <!ENTITY addToCardBookMenuAccesskey "d">
 <!ENTITY editInCardBookMenuLabel "Edit CardBook Contact">
