@@ -62,6 +62,7 @@ var cardbookRepository = {
 	cardbookServerDiscoveryRequest : {},
 	cardbookServerDiscoveryResponse : {},
 	cardbookServerDiscoveryError : {},
+	cardbookServerDiscoveryErrorMsg : {},
 	cardbookServerSyncRequest : {},
 	cardbookServerSyncResponse : {},
 	cardbookServerSyncEmptyCache : {},

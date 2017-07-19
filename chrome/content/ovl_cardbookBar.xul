@@ -166,7 +166,7 @@
 				class="toolbaritem-noline chromeclass-toolbar-additional">
 				<textbox id="cardbookSearchInput" flex="1"
 					type="search" class="searchBox"
-					oncommand="wdw_cardbook.startSearch();"/>
+					oninput="wdw_cardbook.startSearch();" onclick="wdw_cardbook.startSearch();"/>
 			</toolbaritem>
 			<toolbarbutton id="cardbookToolbarComplexSearch"
 				label="&cardbookToolbarComplexSearchLabel;"

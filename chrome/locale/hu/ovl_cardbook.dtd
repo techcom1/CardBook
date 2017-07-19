@@ -10,7 +10,7 @@
 
 <!ENTITY newCardBookCardMenuLabel "Névjegy (Névjegyzék)…">
 <!ENTITY newCardBookCardMenuAccesskey "j">
-<!ENTITY newCardBookSearchMenuLabel "??Search CardBook…??">
+<!ENTITY newCardBookSearchMenuLabel "CardBook keresése…">
 <!ENTITY newCardBookSearchMenuAccesskey "C">
 <!ENTITY addToCardBookMenuLabel "Felvétel a névjegyzékbe (Névjegyzék)">
 <!ENTITY addToCardBookMenuAccesskey "v">

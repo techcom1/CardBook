@@ -24,9 +24,6 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 
 		loadWizard: function () {
 			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
-			let stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
-			let strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
-			document.getElementById('resultValidation').value = strBundle.GetStringFromName("ValidatingLabel");
 			if (window.arguments[0].action == "first") {
 				wdw_addressbooksAdd.gType = "STANDARD";
 				wdw_addressbooksAdd.loadStandardAddressBooks();
@@ -62,18 +59,6 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 					canAdvance = (eList[i].value != "");
 				}
 				document.getElementById('addressbook-wizard').canAdvance = canAdvance;
-			}
-		},
-
-		localPageCheckRequired: function () {
-			var type = document.getElementById('localPageType').selectedItem.value;
-			if (type == "createDB") {
-				var curPage = document.getElementById('addressbook-wizard').currentPage;
-				if (curPage) {
-					document.getElementById('addressbook-wizard').canAdvance = true;
-				}
-			} else {
-				wdw_addressbooksAdd.checkRequired();
 			}
 		},
 
@@ -126,7 +111,19 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 
 		localPageTypeSelect: function () {
 			document.getElementById('localPageURI').value = "";
-			wdw_addressbooksAdd.localPageCheckRequired();
+			var type = document.getElementById('localPageType').selectedItem.value;
+			if (type == "createDB") {
+				document.getElementById('localPageURI').setAttribute('required', 'false');
+				document.getElementById('localPageURILabel').setAttribute('disabled', 'true');
+				document.getElementById('localPageURI').setAttribute('disabled', 'true');
+				document.getElementById('localPageURIButton').setAttribute('disabled', 'true');
+			} else {
+				document.getElementById('localPageURI').setAttribute('required', 'true');
+				document.getElementById('localPageURILabel').setAttribute('disabled', 'false');
+				document.getElementById('localPageURI').setAttribute('disabled', 'false');
+				document.getElementById('localPageURIButton').setAttribute('disabled', 'false');
+			}
+			wdw_addressbooksAdd.checkRequired();
 		},
 
 		localPageTypeAdvance: function () {
@@ -202,7 +199,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 		},
 
 		checklocationNetwork: function () {
-			document.getElementById('resultValidation').hidden = true;
+			wdw_addressbooksAdd.setNotification("OK");
 			var canValidate = true;
 			var curPage = document.getElementById('addressbook-wizard').currentPage;
 			if (curPage) {
@@ -328,12 +325,32 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			}
 		},
 
+		setNotification: function(aReasonCode, aPriority, aCode, aMessage) {
+			var notificationBox = document.getElementById("resultNotifications");
+			var aNotificationCode = aReasonCode
+			if (aCode) {
+				aNotificationCode = aNotificationCode + aCode;
+			}
+			let existingBox = notificationBox.getNotificationWithValue(aNotificationCode);
+			if (!existingBox) {
+				notificationBox.removeAllNotifications();
+				if (aReasonCode != "OK") {
+					var strBundle = document.getElementById("cardbook-strings");
+					var aReason = strBundle.getString(aReasonCode + "Label");
+					if (aMessage) {
+						aReason = aReason + " (" + aMessage + ")";
+					}
+					notificationBox.appendNotification(aReason, aNotificationCode, null, notificationBox[aPriority], null);
+					notificationBox.getNotificationWithValue(aNotificationCode).setAttribute("hideclose", "true");
+				}
+			}
+		},
+
 		validateURL: function () {
 			document.getElementById('remotePageURI').value = wdw_addressbooksAdd.decodeURL(document.getElementById('remotePageURI').value.trim());
 			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
 			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
-			document.getElementById('resultValidation').value = strBundle.GetStringFromName("ValidatingLabel");
-			document.getElementById('resultValidation').hidden = false;
+			wdw_addressbooksAdd.setNotification("Validating", "PRIORITY_INFO_MEDIUM");
 			document.getElementById('validateButton').disabled = true;
 			
 			var type = document.getElementById('remotePageType').selectedItem.value;
@@ -348,7 +365,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			}
 			
 			if (cardbookSynchronization.getRootUrl(url) == "") {
-				document.getElementById('resultValidation').value = strBundle.GetStringFromName("ValidatingURLFailedLabel") + " : " + url;
+				wdw_addressbooksAdd.setNotification("ValidatingURLFailed", "PRIORITY_WARNING_MEDIUM");
 				return;
 			}
 
@@ -389,21 +406,21 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 						wdw_cardbooklog.updateStatusProgressInformationWithDebug1(wdw_addressbooksAdd.gValidateDescription + " : debug mode : cardbookRepository.cardbookServerDiscoveryError : ", cardbookRepository.cardbookServerDiscoveryError[aDirPrefId]);
 						wdw_cardbooklog.updateStatusProgressInformationWithDebug1(wdw_addressbooksAdd.gValidateDescription + " : debug mode : cardbookRepository.cardbookServerValidation : ", cardbookRepository.cardbookServerValidation);
 						if (cardbookRepository.cardbookServerDiscoveryError[aDirPrefId] >= 1) {
-							document.getElementById('resultValidation').value = strBundle.GetStringFromName("ValidationFailedLabel");
+							// need to keep this value because it will be removed
+							var aMessage = JSON.stringify(cardbookRepository.cardbookServerDiscoveryErrorMsg[aDirPrefId]);
+							wdw_addressbooksAdd.setNotification("ValidationFailed", "PRIORITY_WARNING_MEDIUM", 1, aMessage);
 							document.getElementById('validateButton').disabled = false;
 							cardbookSynchronization.finishMultipleOperations(aDirPrefId);
 							let cardbookPrefService = new cardbookPreferenceService(aDirPrefId);
 							cardbookPrefService.delBranch();
 							lTimerDiscovery.cancel();
 						} else if (cardbookRepository.cardbookServerDiscoveryRequest[aDirPrefId] !== cardbookRepository.cardbookServerDiscoveryResponse[aDirPrefId] || cardbookRepository.cardbookServerDiscoveryResponse[aDirPrefId] === 0) {
-							document.getElementById('resultValidation').value = strBundle.GetStringFromName("ValidatingLabel") + " : " + cardbookRepository.cardbookServerDiscoveryResponse[aDirPrefId] + "/4";
+							wdw_addressbooksAdd.setNotification("Validating", "PRIORITY_INFO_MEDIUM", cardbookRepository.cardbookServerDiscoveryResponse[aDirPrefId], cardbookRepository.cardbookServerDiscoveryResponse[aDirPrefId] + "/4");
 						} else {
-							document.getElementById('resultValidation').value = strBundle.GetStringFromName("ValidationFailedLabel");
 							wdw_addressbooksAdd.gValidateURL = false;
 							// searching if ctag have been found
 							for (var url in cardbookRepository.cardbookServerValidation) {
 								for (var i = 0; i < cardbookRepository.cardbookServerValidation[url].length; i++) {
-									document.getElementById('resultValidation').value = strBundle.GetStringFromName("ValidationOKLabel");
 									wdw_addressbooksAdd.gValidateURL = true;
 									wdw_addressbooksAdd.checklocationNetwork();
 									break;
@@ -432,14 +449,14 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			lTimerRefreshToken.initWithCallback({ notify: function(lTimerRefreshToken) {
 						if (cardbookRepository.cardbookGoogleRefreshTokenError[aPrefId]  >= 1) {
 							cardbookSynchronization.finishMultipleOperations(aPrefId);
-							document.getElementById('resultValidation').value = strBundle.GetStringFromName("ValidationFailedLabel");
+							wdw_addressbooksAdd.setNotification("ValidationFailed", "PRIORITY_WARNING_MEDIUM");
 							lTimerRefreshToken.cancel();
 							document.getElementById('validateButton').disabled = false;
 						} else if (cardbookRepository.cardbookGoogleRefreshTokenResponse[aPrefId] !== 1) {
-							document.getElementById('resultValidation').value = strBundle.GetStringFromName("ValidatingLabel");
+							wdw_addressbooksAdd.setNotification("Validating", "PRIORITY_INFO_MEDIUM");
 						} else {
 							cardbookSynchronization.finishMultipleOperations(aPrefId);
-							document.getElementById('resultValidation').value = strBundle.GetStringFromName("ValidationOKLabel");
+							wdw_addressbooksAdd.setNotification("OK");
 							document.getElementById('validateButton').disabled = false;
 							wdw_addressbooksAdd.gValidateURL = true;
 							wdw_addressbooksAdd.checklocationNetwork();

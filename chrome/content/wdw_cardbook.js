@@ -1575,35 +1575,31 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			wdw_cardbook.clearCard();
 			cardbookRepository.cardbookSearchValue = document.getElementById('cardbookSearchInput').value.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase();
 
-			if (cardbookRepository.cardbookSearchValue != "") {
-				cardbookRepository.cardbookDisplayCards[cardbookRepository.cardbookSearchValue] = [];
-
-				
-				for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
-					if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5]) {
-						var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
-						for (var j in cardbookRepository.cardbookCardSearch[myDirPrefId]) {
-							if (j.indexOf(cardbookRepository.cardbookSearchValue) >= 0) {
-								for (var k = 0; k < cardbookRepository.cardbookCardSearch[myDirPrefId][j].length; k++) {
-									cardbookRepository.cardbookDisplayCards[cardbookRepository.cardbookSearchValue].push(cardbookRepository.cardbookCardSearch[myDirPrefId][j][k]);
-								}
+			cardbookRepository.cardbookDisplayCards[cardbookRepository.cardbookSearchValue] = [];
+			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
+				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] != "SEARCH") {
+					var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
+					for (var j in cardbookRepository.cardbookCardSearch[myDirPrefId]) {
+						if (cardbookRepository.cardbookSearchValue == "" || j.indexOf(cardbookRepository.cardbookSearchValue) >= 0) {
+							for (var k = 0; k < cardbookRepository.cardbookCardSearch[myDirPrefId][j].length; k++) {
+								cardbookRepository.cardbookDisplayCards[cardbookRepository.cardbookSearchValue].push(cardbookRepository.cardbookCardSearch[myDirPrefId][j][k]);
 							}
 						}
 					}
 				}
-				// need to verify that the selected cards are always found
-				var myListOfSelectedCards = [];
-				for (var i = 0; i < listOfSelectedCard.length; i++) {
-					// selected cards may have been deleted
-					if (cardbookRepository.cardbookCards[listOfSelectedCard[i]]) {
-						var myCard = cardbookRepository.cardbookCards[listOfSelectedCard[i]];
-						if (cardbookRepository.getSearchString(myCard).indexOf(cardbookRepository.cardbookSearchValue) >= 0) {
-							myListOfSelectedCards.push(listOfSelectedCard[i]);
-						}
+			}
+			// need to verify that the selected cards are always found
+			var myListOfSelectedCards = [];
+			for (var i = 0; i < listOfSelectedCard.length; i++) {
+				// selected cards may have been deleted
+				if (cardbookRepository.cardbookCards[listOfSelectedCard[i]]) {
+					var myCard = cardbookRepository.cardbookCards[listOfSelectedCard[i]];
+					if (cardbookRepository.getSearchString(myCard).indexOf(cardbookRepository.cardbookSearchValue) >= 0) {
+						myListOfSelectedCards.push(listOfSelectedCard[i]);
 					}
 				}
-				wdw_cardbook.displaySearch(myListOfSelectedCards);
 			}
+			wdw_cardbook.displaySearch(myListOfSelectedCards);
 		},
 
 		displayBirthdayList: function() {

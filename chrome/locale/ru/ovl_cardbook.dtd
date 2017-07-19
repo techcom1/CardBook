@@ -10,7 +10,7 @@
 
 <!ENTITY newCardBookCardMenuLabel "Контакт CardBook…">
 <!ENTITY newCardBookCardMenuAccesskey "К">
-<!ENTITY newCardBookSearchMenuLabel "Поиск в CardBook…??">
+<!ENTITY newCardBookSearchMenuLabel "Поиск в CardBook…">
 <!ENTITY newCardBookSearchMenuAccesskey "Н">
 <!ENTITY addToCardBookMenuLabel "Создать контакт в CardBook">
 <!ENTITY addToCardBookMenuAccesskey "С">

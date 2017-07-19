@@ -66,7 +66,6 @@
 			next="namePage"
 			label="&wizard.label;"
 			description="&localPage.wizard.description;"
-			onpageshow="wdw_addressbooksAdd.localPageCheckRequired();"
 			onpageadvanced="wdw_addressbooksAdd.localPageTypeAdvance();">
 
 		<groupbox flex="1">
@@ -101,11 +100,8 @@
 				<rows>
 					<description>&localPage.uri.description;</description>
 					<row align="center">
-						<label value="&localPage.uri.label;" control="localPageURI"/>
-						<textbox id="localPageURI"
-							required="true"
-							disabled="true"
-							oninput="wdw_addressbooksAdd.checkRequired();"/>
+						<label id="localPageURILabel" value="&localPage.uri.label;" control="localPageURI"/>
+						<textbox id="localPageURI" oninput="wdw_addressbooksAdd.checkRequired();"/>
 						<button id="localPageURIButton" label="&localPage.uributton.label;" oncommand="wdw_addressbooksAdd.searchFile(this);"/>
 					</row>
 				</rows>
@@ -177,7 +173,7 @@
 			<separator class="groove-thin"/>
 			<hbox>
 				<spacer flex="1"/>
-				<textbox id="resultValidation" flex="1" hidden="true" disabled="true"/>
+				<notificationbox id="resultNotifications" flex="1"/>
 				<button id="validateButton" label="&remotePage.validatebutton.label;" oncommand="wdw_addressbooksAdd.validateURL();"/>
 			</hbox>
 		</groupbox>

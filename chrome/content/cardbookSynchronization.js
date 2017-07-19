@@ -41,6 +41,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			cardbookRepository.cardbookServerDiscoveryRequest[aPrefId] = 0;
 			cardbookRepository.cardbookServerDiscoveryResponse[aPrefId] = 0;
 			cardbookRepository.cardbookServerDiscoveryError[aPrefId] = 0;
+			cardbookRepository.cardbookServerDiscoveryErrorMsg[aPrefId] = "";
 			cardbookRepository.cardbookServerSyncRequest[aPrefId] = 0;
 			cardbookRepository.cardbookServerSyncResponse[aPrefId] = 0;
 			cardbookRepository.cardbookServerSyncLoadCacheDone[aPrefId] = 0;
@@ -109,6 +110,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			cardbookRepository.cardbookServerDiscoveryRequest = {};
 			cardbookRepository.cardbookServerDiscoveryResponse = {};
 			cardbookRepository.cardbookServerDiscoveryError = {};
+			cardbookRepository.cardbookServerDiscoveryErrorMsg = {};
 			cardbookRepository.cardbookServerSyncRequest = {};
 			cardbookRepository.cardbookServerSyncResponse = {};
 			cardbookRepository.cardbookServerSyncEmptyCache = {};
@@ -394,6 +396,9 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			try {
 				var urlArray1 = aUrl.split("://");
 				var urlArray2 = urlArray1[1].split("/");
+				if (urlArray1[0] != "http" && urlArray1[0] != "https") {
+					return "";
+				}
 				return urlArray1[0] + "://" + urlArray2[0];
 			}
 			catch (e) {
@@ -1255,7 +1260,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							var certificateExceptionAdded = false;
 							var certificateExceptionAdded = cardbookSynchronization.addCertificateException(cardbookSynchronization.getRootUrl(aConnection.connUrl));
 							if (certificateExceptionAdded) {
-								cardbookSynchronization.serverSyncCards(aConnection, aMode, aPrefIdType);
+								cardbookSynchronization.googleSyncCards(aConnection, aMode, aPrefIdType);
 							} else {
 								cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "googleSyncCards", aConnection.connUrl, status], "Error");
 								cardbookRepository.cardbookServerSyncError[aConnection.connPrefId]++;
@@ -1428,6 +1433,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 		validateWithoutDiscovery: function(aConnection, aRootUrl) {
 			var listener_checkpropfind4 = {
 				onDAVQueryComplete: function(status, response, askCertificate) {
+					cardbookRepository.cardbookServerDiscoveryErrorMsg[aConnection.connPrefId] = status;
 					if (status == 0) {
 						if (askCertificate) {
 							var certificateExceptionAdded = false;
@@ -1489,7 +1495,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							}
 						}
 						catch(e) {
-							wdw_cardbooklog.updateStatusProgressInformation(aConnection.connDescription + " : cardbookSynchronization.validateWithoutDiscovery error : " + e, "Error");
+							wdw_cardbooklog.updateStatusProgressInformation(aConnection.connDescription + " : cardbookSynchronization.validateWithoutDiscovery error : " + e + " : " + response.toSource(), "Error");
 							cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 						}
 						cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
@@ -1515,6 +1521,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 		discoverPhase3: function(aConnection, aRootUrl, aOperationType, aParams) {
 			var listener_checkpropfind3 = {
 				onDAVQueryComplete: function(status, response, askCertificate) {
+					cardbookRepository.cardbookServerDiscoveryErrorMsg[aConnection.connPrefId] = status;
 					if (status == 0) {
 						if (askCertificate) {
 							var certificateExceptionAdded = false;
@@ -1622,7 +1629,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							}
 						}
 						catch(e) {
-							wdw_cardbooklog.updateStatusProgressInformation(aConnection.connDescription + " : cardbookSynchronization.discoverPhase3 error : " + e, "Error");
+							wdw_cardbooklog.updateStatusProgressInformation(aConnection.connDescription + " : cardbookSynchronization.discoverPhase3 error : " + e + " : " + response.toSource(), "Error");
 							cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 						}
@@ -1648,6 +1655,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 		discoverPhase2: function(aConnection, aRootUrl, aOperationType, aParams) {
 			var listener_checkpropfind2 = {
 				onDAVQueryComplete: function(status, response, askCertificate) {
+					cardbookRepository.cardbookServerDiscoveryErrorMsg[aConnection.connPrefId] = status;
 					if (status == 0) {
 						if (askCertificate) {
 							var certificateExceptionAdded = false;
@@ -1700,7 +1708,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							}
 						}
 						catch(e) {
-							wdw_cardbooklog.updateStatusProgressInformation(aConnection.connDescription + " : cardbookSynchronization.discoverPhase2 error : " + e, "Error");
+							wdw_cardbooklog.updateStatusProgressInformation(aConnection.connDescription + " : cardbookSynchronization.discoverPhase2 error : " + e + " : " + response.toSource(), "Error");
 							cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
@@ -1726,6 +1734,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			cardbookUtils.jsInclude(["chrome://cardbook/content/cardbookWebDAV.js"]);
 			var listener_checkpropfind1 = {
 				onDAVQueryComplete: function(status, response, askCertificate) {
+					cardbookRepository.cardbookServerDiscoveryErrorMsg[aConnection.connPrefId] = status;
 					if (status == 0) {
 						if (askCertificate) {
 							var certificateExceptionAdded = false;
@@ -1774,7 +1783,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							}
 						}
 						catch(e) {
-							wdw_cardbooklog.updateStatusProgressInformation(aConnection.connDescription + " : cardbookSynchronization.discoverPhase1 error : " + e, "Error");
+							wdw_cardbooklog.updateStatusProgressInformation(aConnection.connDescription + " : cardbookSynchronization.discoverPhase1 error : " + e + " : " + response.toSource(), "Error");
 							cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
