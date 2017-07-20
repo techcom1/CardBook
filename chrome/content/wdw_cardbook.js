@@ -2295,6 +2295,10 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					return;
 				}
 				var myValidationList = JSON.parse(JSON.stringify(cardbookRepository.cardbookAccountsCategories[aDirPrefId]));
+				function filterOriginal(element) {
+					return (element != aCategoryName);
+				}
+				myValidationList = myValidationList.filter(filterOriginal);
 				var myArgs = {type: aCategoryName, context: "EditCat", typeAction: "", validationList: myValidationList};
 				var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookRenameField.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
 				if (myArgs.typeAction == "SAVE" && myArgs.type != "" && myArgs.type != aCategoryName) {

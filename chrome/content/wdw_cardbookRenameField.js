@@ -1,32 +1,18 @@
 if ("undefined" == typeof(wdw_cardbookRenameField)) {
 	var wdw_cardbookRenameField = {
 		
-		setNotification: function(aReasonCode) {
-			var notificationBox = document.getElementById("errorNotifications");
-			if (aReasonCode == "OK") {
-				notificationBox.removeAllNotifications();
-			} else {
-				let existingBox = notificationBox.getNotificationWithValue(aReasonCode);
-				if (!existingBox) {
-					var strBundle = document.getElementById("cardbook-strings");
-					var aReason = strBundle.getFormattedString("valueAlreadyExists", [document.getElementById('typeTextBox').value]);
-					notificationBox.appendNotification(aReason, aReasonCode, null, notificationBox.PRIORITY_WARNING_MEDIUM, null);
-					notificationBox.getNotificationWithValue(aReasonCode).setAttribute("hideclose", "true");
-				}
-			}
-		},
-
 		validate: function () {
+			var myValue = document.getElementById('typeTextBox').value;
 			var myValidationList = JSON.parse(JSON.stringify(window.arguments[0].validationList));
 			function filterOriginal(element) {
-				return (element != document.getElementById('typeTextBox').value);
+				return (element != myValue);
 			}
 			myValidationList = myValidationList.filter(filterOriginal);
 			if (myValidationList.length != window.arguments[0].validationList.length) {
-				wdw_cardbookRenameField.setNotification("existingValue");
+				cardbookNotifications.setNotification("errorNotifications", "valueAlreadyExists", myValue);
 				return false;
 			} else {
-				wdw_cardbookRenameField.setNotification("OK");
+				cardbookNotifications.setNotification("errorNotifications", "OK");
 				return true;
 			}
 		},

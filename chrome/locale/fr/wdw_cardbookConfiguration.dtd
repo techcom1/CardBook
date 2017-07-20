@@ -159,6 +159,8 @@
 <!ENTITY kindCustomAccesskey "T">
 <!ENTITY memberCustomLabel "Membre">
 <!ENTITY memberCustomAccesskey "M">
+<!ENTITY resetListLabel "Réinitialiser">
+<!ENTITY resetListAccesskey "R">
 
 <!ENTITY syncGroupboxLabel "Synchronisations">
 <!ENTITY syncWarn "Synchroniser est la seule méthode pour sauver vos modifications sur un serveur distant.">

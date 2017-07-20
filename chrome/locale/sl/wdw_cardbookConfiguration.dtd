@@ -158,6 +158,8 @@
 <!ENTITY kindCustomAccesskey "V">
 <!ENTITY memberCustomLabel "Član">
 <!ENTITY memberCustomAccesskey "Č">
+<!ENTITY resetListLabel "Obnovi na privzeto">
+<!ENTITY resetListAccesskey "O">
 
 <!ENTITY syncGroupboxLabel "Sinh.">
 <!ENTITY syncWarn "Sinhronizacija prenese vaše spremembe na oddaljeni strežnik in spremembe na strežniku k vam.">

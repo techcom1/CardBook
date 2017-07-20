@@ -159,6 +159,8 @@
 <!ENTITY kindCustomAccesskey "K">
 <!ENTITY memberCustomLabel "Membro">
 <!ENTITY memberCustomAccesskey "M">
+<!ENTITY resetListLabel "Restaurar para origem">
+<!ENTITY resetListAccesskey "R">
 
 <!ENTITY syncGroupboxLabel "Sinc.">
 <!ENTITY syncWarn "A Sincronização vai propagar as modificações para o servidor remoto e as modificações do servidor remoto para local.">

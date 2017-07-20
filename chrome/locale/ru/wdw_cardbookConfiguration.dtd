@@ -159,6 +159,8 @@
 <!ENTITY kindCustomAccesskey "Т">
 <!ENTITY memberCustomLabel "Участник">
 <!ENTITY memberCustomAccesskey "У">
+<!ENTITY resetListLabel "Сбросить до значений по умолчанию">
+<!ENTITY resetListAccesskey "C">
 
 <!ENTITY syncGroupboxLabel "Синхронизация">
 <!ENTITY syncWarn "Синхронизация переносит локальные изменения на удалённый сервер и изменения с сервера на диск.">

@@ -159,6 +159,8 @@
 <!ENTITY kindCustomAccesskey "T">
 <!ENTITY memberCustomLabel "Mitglied">
 <!ENTITY memberCustomAccesskey "M">
+<!ENTITY resetListLabel "Zurücksetzen auf Standard">
+<!ENTITY resetListAccesskey "Z">
 
 <!ENTITY syncGroupboxLabel "Synchronisieren">
 <!ENTITY syncWarn "Änderungen können nur durch eine Synchronisation auf den Server übertragen werden.">

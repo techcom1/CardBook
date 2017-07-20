@@ -159,6 +159,8 @@
 <!ENTITY kindCustomAccesskey "K">
 <!ENTITY memberCustomLabel "Membro">
 <!ENTITY memberCustomAccesskey "M">
+<!ENTITY resetListLabel "??Restore to Default??">
+<!ENTITY resetListAccesskey "R">
 
 <!ENTITY syncGroupboxLabel "Sincronizzazione">
 <!ENTITY syncWarn "La sincronizzazione invia le modifiche da Thunderbird a un server remoto e viceversa.">

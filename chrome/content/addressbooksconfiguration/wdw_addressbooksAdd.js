@@ -331,7 +331,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			if (aCode) {
 				aNotificationCode = aNotificationCode + aCode;
 			}
-			let existingBox = notificationBox.getNotificationWithValue(aNotificationCode);
+			var existingBox = notificationBox.getNotificationWithValue(aNotificationCode);
 			if (!existingBox) {
 				notificationBox.removeAllNotifications();
 				if (aReasonCode != "OK") {

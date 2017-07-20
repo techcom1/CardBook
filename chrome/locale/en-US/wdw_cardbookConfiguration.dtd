@@ -158,6 +158,8 @@
 <!ENTITY kindCustomAccesskey "K">
 <!ENTITY memberCustomLabel "Member">
 <!ENTITY memberCustomAccesskey "M">
+<!ENTITY resetListLabel "Restore to Default">
+<!ENTITY resetListAccesskey "R">
 
 <!ENTITY syncGroupboxLabel "Sync.">
 <!ENTITY syncWarn "Synchronizing propagates your modifications to a remote server and the server's modifications to you.">

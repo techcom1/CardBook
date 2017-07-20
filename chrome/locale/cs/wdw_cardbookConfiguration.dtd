@@ -159,6 +159,8 @@
 <!ENTITY kindCustomAccesskey "D">
 <!ENTITY memberCustomLabel "Člen">
 <!ENTITY memberCustomAccesskey "Č">
+<!ENTITY resetListLabel "Obnovit na výchozí hodnotu">
+<!ENTITY resetListAccesskey "O">
 
 <!ENTITY syncGroupboxLabel "Synch.">
 <!ENTITY syncWarn "Synchronizace zajistí odeslání vašich úprav na server a úprav na serveru k vám.">

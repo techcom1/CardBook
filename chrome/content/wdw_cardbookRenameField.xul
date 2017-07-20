@@ -14,6 +14,7 @@
 	
 	<stringbundleset id="stringbundleset"/>
 
+	<script src="chrome://cardbook/content/cardbookNotifications.js"/>
 	<script src="chrome://cardbook/content/cardEdition/wdw_cardEdition.js"/>
 	<script src="wdw_cardbookRenameField.js"/>
 

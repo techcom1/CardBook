@@ -21,6 +21,7 @@
 
 	<script src="chrome://cardbook/content/configuration/wdw_cardbookConfiguration.js"/>
 	<script src="chrome://cardbook/content/cardbookUtils.js"/>
+	<script src="chrome://cardbook/content/cardbookNotifications.js"/>
 	<script src="chrome://cardbook/content/cardbookRepository.js"/>
 	<script src="chrome://cardbook/content/wdw_log.js"/>
 	<script src="chrome://cardbook/content/preferences/cardbookPreferences.js"/>
@@ -549,20 +550,25 @@
 												accesskey="&kindCustomAccesskey;"
 												control="kindCustomTextBox"
 												id="kindCustom"/>
-											<textbox id="kindCustomTextBox" oninput="wdw_cardbookConfiguration.customFieldCheck(this);"
+											<textbox id="kindCustomTextBox" oninput="wdw_cardbookConfiguration.customFieldCheck(this);wdw_cardbookConfiguration.validateCustomValues();"
 												preference="extensions.cardbook.kindCustom"/>
+											<button id="resetListButton" label="&resetListLabel;" accesskey="&resetListAccesskey;" 
+												oncommand="wdw_cardbookConfiguration.resetList();"/>
 										</row>
 										<row align="center">
 											<label value="&memberCustomLabel;"
 												accesskey="&memberCustomAccesskey;"
 												control="memberCustomTextBox"
 												id="memberCustom"/>
-											<textbox id="memberCustomTextBox" oninput="wdw_cardbookConfiguration.customFieldCheck(this);"
+											<textbox id="memberCustomTextBox" oninput="wdw_cardbookConfiguration.customFieldCheck(this);wdw_cardbookConfiguration.validateCustomValues();"
 												preference="extensions.cardbook.memberCustom"/>
 										</row>
 									</rows>
 								</grid>
 							</vbox>
+						</hbox>
+						<hbox flex="1">
+							<notificationbox id="errorListNotifications" flex="1"/>
 						</hbox>
 					</groupbox>
 				</tabpanel>

@@ -158,6 +158,8 @@
 <!ENTITY kindCustomAccesskey "R">
 <!ENTITY memberCustomLabel "Członek">
 <!ENTITY memberCustomAccesskey "C">
+<!ENTITY resetListLabel "Przywróć domyślne">
+<!ENTITY resetListAccesskey "P">
 
 <!ENTITY syncGroupboxLabel "Synchronizacja">
 <!ENTITY syncWarn "Synchronizacja wysyła Twoje zmiany do zdalnego serwera, a zmiany na serwerze do Ciebie.">
