@@ -526,6 +526,8 @@
 									<button id="addOrgLabel" label="&addTypeLabel;" accesskey="&addTypeAccesskey;" oncommand="wdw_cardbookConfiguration.addOrg();"/>
 									<button id="renameOrgLabel" label="&renameTypeLabel;" accesskey="&renameTypeAccesskey;" oncommand="wdw_cardbookConfiguration.renameOrg();" disabled="true"/>
 									<button id="deleteOrgLabel" label="&deleteTypeLabel;" accesskey="&deleteTypeAccesskey;" oncommand="wdw_cardbookConfiguration.deleteOrg();" disabled="true"/>
+									<button id="upOrgLabel" label="↑" oncommand="wdw_cardbookConfiguration.upOrg();" disabled="true"/>
+									<button id="downOrgLabel" label="↓" oncommand="wdw_cardbookConfiguration.downOrg();" disabled="true"/>
 								</vbox>
 							</hbox>
 						</hbox>

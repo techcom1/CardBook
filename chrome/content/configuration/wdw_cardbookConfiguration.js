@@ -646,11 +646,30 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 
 		selectOrg: function() {
 			var btnEdit = document.getElementById("renameOrgLabel");
-			var listBox = document.getElementById("orgListbox");
-			if (listBox.selectedCount > 0) {
+			var btnUp = document.getElementById("upOrgLabel");
+			var btnDown = document.getElementById("downOrgLabel");
+			var myListBox = document.getElementById("orgListbox");
+			if (myListBox.selectedCount > 0) {
 				btnEdit.disabled = false;
+				if (wdw_cardbookConfiguration.allOrg.length > 1) {
+					if (myListBox.selectedIndex == 0) {
+						btnUp.disabled = true;
+					} else {
+						btnUp.disabled = false;
+					}
+					if (myListBox.selectedIndex == wdw_cardbookConfiguration.allOrg.length-1) {
+						btnDown.disabled = true;
+					} else {
+						btnDown.disabled = false;
+					}
+				} else {
+					btnUp.disabled = true;
+					btnDown.disabled = true;
+				}
 			} else {
 				btnEdit.disabled = true;
+				btnUp.disabled = true;
+				btnDown.disabled = true;
 			}
 			document.getElementById("deleteOrgLabel").disabled = btnEdit.disabled;
 		},
@@ -683,6 +702,32 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			wdw_cardbookConfiguration.refreshListBoxOrg();
 		},
 		
+		upOrg: function () {
+			var myListBox = document.getElementById('orgListbox');
+			if (myListBox.selectedIndex == -1) {
+				return;
+			} else {
+				var temp = wdw_cardbookConfiguration.allOrg[myListBox.selectedIndex-1];
+				wdw_cardbookConfiguration.allOrg[myListBox.selectedIndex-1] = wdw_cardbookConfiguration.allOrg[myListBox.selectedIndex];
+				wdw_cardbookConfiguration.allOrg[myListBox.selectedIndex] = temp;
+				wdw_cardbookConfiguration.refreshListBoxOrg();
+				wdw_cardbookConfiguration.loadFnFormula();
+			}
+		},
+
+		downOrg: function () {
+			var myListBox = document.getElementById('orgListbox');
+			if (myListBox.selectedIndex == -1) {
+				return;
+			} else {
+				var temp = wdw_cardbookConfiguration.allOrg[myListBox.selectedIndex+1];
+				wdw_cardbookConfiguration.allOrg[myListBox.selectedIndex+1] = wdw_cardbookConfiguration.allOrg[myListBox.selectedIndex];
+				wdw_cardbookConfiguration.allOrg[myListBox.selectedIndex] = temp;
+				wdw_cardbookConfiguration.refreshListBoxOrg();
+				wdw_cardbookConfiguration.loadFnFormula();
+			}
+		},
+
 		addOrg: function () {
 			var myValidationList = JSON.parse(JSON.stringify(wdw_cardbookConfiguration.allOrg));
 			var myArgs = {type: "", context: "Org", typeAction: "", validationList: myValidationList};
@@ -1536,15 +1581,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			}
 		},
 
-		loadPeriodicSync: function () {
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-			var autoSync = prefs.getBoolPref("extensions.cardbook.autoSync");
-			if (!(autoSync)) {
-				document.getElementById('autoSyncInterval').disabled = true;
-				document.getElementById('autoSyncIntervalTextBox').disabled = true;
-			}
-		},
-
 		getAllCustomsFields: function () {
 			var allcustomFieldNames = [];
 			for (var i in wdw_cardbookConfiguration.allCustomFields) {
@@ -1560,15 +1596,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			return allcustomFieldNames;
 		},
 		
-		resetList: function () {
-			document.getElementById('kindCustomTextBox').value = cardbookRepository.defaultKindCustom;
-			document.getElementById('memberCustomTextBox').value = cardbookRepository.defaultMemberCustom;
-			// should also change preferences (not automatically saved) 
-			document.getElementById('extensions.cardbook.kindCustom').value = cardbookRepository.defaultKindCustom;
-			document.getElementById('extensions.cardbook.memberCustom').value = cardbookRepository.defaultMemberCustom;
-			wdw_cardbookConfiguration.validateCustomValues();
-		},
-
 		validateCustomValues: function () {
 			var customLists = ['kindCustom', 'memberCustom'];
 			var returnFlag = true;
@@ -1597,6 +1624,24 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				cardbookNotifications.setNotification("errorListNotifications", "OK");
 			}
 			return returnFlag;
+		},
+
+		resetList: function () {
+			document.getElementById('kindCustomTextBox').value = cardbookRepository.defaultKindCustom;
+			document.getElementById('memberCustomTextBox').value = cardbookRepository.defaultMemberCustom;
+			// should also change preferences (not automatically saved) 
+			document.getElementById('extensions.cardbook.kindCustom').value = cardbookRepository.defaultKindCustom;
+			document.getElementById('extensions.cardbook.memberCustom').value = cardbookRepository.defaultMemberCustom;
+			wdw_cardbookConfiguration.validateCustomValues();
+		},
+
+		loadPeriodicSync: function () {
+			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var autoSync = prefs.getBoolPref("extensions.cardbook.autoSync");
+			if (!(autoSync)) {
+				document.getElementById('autoSyncInterval').disabled = true;
+				document.getElementById('autoSyncIntervalTextBox').disabled = true;
+			}
 		},
 
 		validateStatusInformationLineNumber: function () {

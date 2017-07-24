@@ -105,6 +105,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				wdw_addressbooksAdd.loadStandardAddressBooks();
 				page.next = 'namesPage';
 			} else if (type == 'search') {
+				wdw_addressbooksAdd.initSearchDefinition();
 				page.next = 'searchPage';
 			}
 		},

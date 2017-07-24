@@ -22,8 +22,9 @@
 	list-style-image: url("chrome://messenger/skin/addressbook/icons/remote-addrbook.png");
 }
 .cardbookTreeClass treechildren::-moz-tree-checkbox(accountTypeCheckbox, search) {
-	list-style-image: url(chrome://global/skin/icons/Search-glass.png);
+	list-style-image: url("chrome://global/skin/icons/Search-glass.png");
 	-moz-image-region: rect(0, 16px, 16px, 0);
+	/* list-style-image: url("chrome://messenger/skin/icons/search-glass.svg"); */
 }
 .cardbookTreeClass treechildren::-moz-tree-checkbox(accountReadOnly) {
 	list-style-image: url("chrome://cardbook/skin/checkbox-images.png");
