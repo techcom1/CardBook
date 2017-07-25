@@ -10,6 +10,8 @@
 
 <!ENTITY newCardBookCardMenuLabel "CardBook contactpersoon…">
 <!ENTITY newCardBookCardMenuAccesskey "C">
+<!ENTITY newCardBookSearchMenuLabel "Doorzoek CardBook…">
+<!ENTITY newCardBookSearchMenuAccesskey "C">
 <!ENTITY addToCardBookMenuLabel "Toevoegen aan CardBook">
 <!ENTITY addToCardBookMenuAccesskey "o">
 <!ENTITY editInCardBookMenuLabel "Wijzigen met CardBook">

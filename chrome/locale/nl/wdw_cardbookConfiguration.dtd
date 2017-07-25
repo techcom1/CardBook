@@ -159,6 +159,8 @@
 <!ENTITY kindCustomAccesskey "S">
 <!ENTITY memberCustomLabel "Lid">
 <!ENTITY memberCustomAccesskey "L">
+<!ENTITY resetListLabel "Herstellen naar standaardwaarde">
+<!ENTITY resetListAccesskey "H">
 
 <!ENTITY syncGroupboxLabel "Voorrang">
 <!ENTITY syncWarn "Synchroniseren werkt de wijzigingen in CardBook bij naar de server en de wijzigingen op de server naar CardBook.">
@@ -191,6 +193,8 @@
 <!ENTITY preferEmailPrefWarn "Als er geen email adres gemarkeerd is, dan worden berichten naar alle adressen van de betreffende contactpersoon verstuurd.">
 <!ENTITY warnEmptyEmailsLabel "Waarschuwing als ik een bericht verstuur naar een contactpersoon zonder e-mail adres">
 <!ENTITY warnEmptyEmailsAccesskey "W">
+<!ENTITY useOnlyEmailLabel "??Use only email addresses??">
+<!ENTITY useOnlyEmailAccesskey "U">
 <!ENTITY attachvCardWarn "Selecteer voor elke email-account een vCard om aan alle uitgaande berichten van die account(s) de betreffende vCard toe te voegen. Dit gebeurt automatisch als deze voorziening ingeschakeld is in de instellingen.">
 <!ENTITY attachvCardGroupboxLabel "vCard aan uitgaande emails toevoegen ">
 <!ENTITY mailAccountsEnabledLabel "Ingeschakeld">

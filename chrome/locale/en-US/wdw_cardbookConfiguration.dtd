@@ -56,7 +56,7 @@
 <!ENTITY debugModeAccesskey "m">
 <!ENTITY debugModeTooltip "Enable debug mode for extended logging.">
 <!ENTITY statusInformationLineNumberLabel "Number of lines kept in the log file">
-<!ENTITY statusInformationLineNumberAccesskey "N">
+<!ENTITY statusInformationLineNumberAccesskey "k">
 
 <!ENTITY tabsEdittingGroupboxLabel "Display Tabs">
 <!ENTITY noteTabLabel "Notes">
@@ -158,6 +158,8 @@
 <!ENTITY kindCustomAccesskey "K">
 <!ENTITY memberCustomLabel "Member">
 <!ENTITY memberCustomAccesskey "M">
+<!ENTITY resetListLabel "Restore to Default">
+<!ENTITY resetListAccesskey "R">
 
 <!ENTITY syncGroupboxLabel "Sync.">
 <!ENTITY syncWarn "Synchronizing propagates your modifications to a remote server and the server's modifications to you.">
@@ -190,6 +192,8 @@
 <!ENTITY preferEmailPrefWarn "If no address is marked 'PREFerred', the message is sent to all of the contact's addresses.">
 <!ENTITY warnEmptyEmailsLabel "Warn me when I attempt to email contacts without an email address">
 <!ENTITY warnEmptyEmailsAccesskey "W">
+<!ENTITY useOnlyEmailLabel "Use only email addresses">
+<!ENTITY useOnlyEmailAccesskey "U">
 <!ENTITY attachvCardWarn "To automatically add a vCard to your emails, select a vCard for each email account. If activated, CardBook will attach this vCard to every outgoing email from this account.">
 <!ENTITY attachvCardGroupboxLabel "Join a vCard">
 <!ENTITY mailAccountsEnabledLabel "Enabled">

@@ -394,6 +394,9 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			try {
 				var urlArray1 = aUrl.split("://");
 				var urlArray2 = urlArray1[1].split("/");
+				if (urlArray1[0] != "http" && urlArray1[0] != "https") {
+					return "";
+				}
 				return urlArray1[0] + "://" + urlArray2[0];
 			}
 			catch (e) {
@@ -1255,7 +1258,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							var certificateExceptionAdded = false;
 							var certificateExceptionAdded = cardbookSynchronization.addCertificateException(cardbookSynchronization.getRootUrl(aConnection.connUrl));
 							if (certificateExceptionAdded) {
-								cardbookSynchronization.serverSyncCards(aConnection, aMode, aPrefIdType);
+								cardbookSynchronization.googleSyncCards(aConnection, aMode, aPrefIdType);
 							} else {
 								cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "googleSyncCards", aConnection.connUrl, status], "Error");
 								cardbookRepository.cardbookServerSyncError[aConnection.connPrefId]++;
@@ -1425,7 +1428,8 @@ if ("undefined" == typeof(cardbookSynchronization)) {
             request.propfind(["DAV: getcontenttype", "DAV: getetag"]);
 		},
 
-		validateWithoutDiscovery: function(aConnection, aRootUrl) {
+		validateWithoutDiscovery: function(aConnection) {
+			cardbookUtils.jsInclude(["chrome://cardbook/content/cardbookWebDAV.js"]);
 			var listener_checkpropfind4 = {
 				onDAVQueryComplete: function(status, response, askCertificate) {
 					if (status == 0) {
@@ -1433,7 +1437,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							var certificateExceptionAdded = false;
 							var certificateExceptionAdded = cardbookSynchronization.addCertificateException(aRootUrl);
 							if (certificateExceptionAdded) {
-								cardbookSynchronization.validateWithoutDiscovery(aConnection, aRootUrl);
+								cardbookSynchronization.validateWithoutDiscovery(aConnection);
 							} else {
 								cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status], "Error");
 								cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
@@ -1489,7 +1493,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							}
 						}
 						catch(e) {
-							wdw_cardbooklog.updateStatusProgressInformation(aConnection.connDescription + " : cardbookSynchronization.validateWithoutDiscovery error : " + e, "Error");
+							wdw_cardbooklog.updateStatusProgressInformation(aConnection.connDescription + " : cardbookSynchronization.validateWithoutDiscovery error : " + e + " : " + response.toSource(), "Error");
 							cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 						}
 						cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
@@ -1505,6 +1509,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			if (aConnection.connUrl[aConnection.connUrl.length - 1] != '/') {
 				aConnection.connUrl += '/';
 			}
+			var aRootUrl = cardbookSynchronization.getRootUrl(aConnection.connUrl);
 			cardbookRepository.cardbookServerDiscoveryRequest[aConnection.connPrefId]++;
 			cardbookRepository.cardbookServerValidation[aRootUrl] = [];
 			cardbookUtils.formatStringForOutput("synchronizationRequestDiscovery", [aConnection.connDescription, aConnection.connUrl]);
@@ -1622,7 +1627,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							}
 						}
 						catch(e) {
-							wdw_cardbooklog.updateStatusProgressInformation(aConnection.connDescription + " : cardbookSynchronization.discoverPhase3 error : " + e, "Error");
+							wdw_cardbooklog.updateStatusProgressInformation(aConnection.connDescription + " : cardbookSynchronization.discoverPhase3 error : " + e + " : " + response.toSource(), "Error");
 							cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 						}
@@ -1700,7 +1705,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							}
 						}
 						catch(e) {
-							wdw_cardbooklog.updateStatusProgressInformation(aConnection.connDescription + " : cardbookSynchronization.discoverPhase2 error : " + e, "Error");
+							wdw_cardbooklog.updateStatusProgressInformation(aConnection.connDescription + " : cardbookSynchronization.discoverPhase2 error : " + e + " : " + response.toSource(), "Error");
 							cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
@@ -1774,7 +1779,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							}
 						}
 						catch(e) {
-							wdw_cardbooklog.updateStatusProgressInformation(aConnection.connDescription + " : cardbookSynchronization.discoverPhase1 error : " + e, "Error");
+							wdw_cardbooklog.updateStatusProgressInformation(aConnection.connDescription + " : cardbookSynchronization.discoverPhase1 error : " + e + " : " + response.toSource(), "Error");
 							cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
@@ -1791,23 +1796,10 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 				aConnection.connUrl += '/';
 			}
 			var aRootUrl = cardbookSynchronization.getRootUrl(aConnection.connUrl);
-			if (aRootUrl + '/' === aConnection.connUrl) {
-				cardbookRepository.cardbookServerDiscoveryRequest[aConnection.connPrefId]++;
-				if (aConnection.connPrefIdType !== "APPLE") {
-					aConnection.connUrl = aConnection.connUrl + '.well-known/carddav';
-				}
-				cardbookUtils.formatStringForOutput("synchronizationRequestDiscovery1", [aConnection.connDescription, aConnection.connUrl]);
-				var request = new cardbookWebDAV(aConnection, listener_checkpropfind1, "", true);
-				request.propfind(["DAV: current-user-principal"], false);
-			} else {
-				if (aOperationType == "GETDISPLAYNAME") {
-					cardbookSynchronization.validateWithoutDiscovery(aConnection, aRootUrl);
-				} else if (aOperationType == "SYNCGOOGLE") {
-					cardbookSynchronization.googleSyncCards(aConnection, aParams.aMode, aParams.aPrefIdType);
-				} else if (aOperationType == "SYNCSERVER") {
-					cardbookSynchronization.serverSyncCards(aConnection, aParams.aMode, aParams.aPrefIdType);
-				}
-			}
+			cardbookRepository.cardbookServerDiscoveryRequest[aConnection.connPrefId]++;
+			cardbookUtils.formatStringForOutput("synchronizationRequestDiscovery1", [aConnection.connDescription, aConnection.connUrl]);
+			var request = new cardbookWebDAV(aConnection, listener_checkpropfind1, "", true);
+			request.propfind(["DAV: current-user-principal"], false);
 		},
 
 		googleGetAccessToken: function(aConnection, aCode, aOperationType, aParams) {
@@ -1820,6 +1812,10 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							var responseText = JSON.parse(response);
 							aConnection.accessToken = responseText.token_type + " " + responseText.access_token;
 							aConnection.connUrl = cardbookRepository.cardbookgdata.GOOGLE_API;
+							if (aConnection.connUrl[aConnection.connUrl.length - 1] != '/') {
+								aConnection.connUrl += '/';
+							}
+							aConnection.connUrl += '.well-known/carddav';
 							cardbookSynchronization.discoverPhase1(aConnection, aOperationType, aParams);
 						}
 						catch(e) {
@@ -2006,9 +2002,12 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							var connection = {connUser: myPrefIdUser, connPrefId: aPrefId, connPrefIdType: myPrefIdType, connUrl: cardbookRepository.cardbookgdata.REFRESH_REQUEST_URL, connDescription: myPrefIdName};
 							var myCode = cardbookPasswordManager.getPassword(myPrefIdUser, myPrefIdUrl);
 							cardbookSynchronization.googleGetAccessToken(connection, myCode, "SYNCGOOGLE", params);
-						} else {
+						} else if (myPrefIdType === "APPLE" ) {
 							var connection = {connPrefId: aPrefId, connPrefIdType: myPrefIdType, connUrl: myPrefIdUrl, connDescription: myPrefIdName};
 							cardbookSynchronization.discoverPhase1(connection, "SYNCSERVER", params);
+						} else {
+							var connection = {connPrefId: aPrefId, connPrefIdType: myPrefIdType, connUrl: myPrefIdUrl, connDescription: myPrefIdName};
+							cardbookSynchronization.serverSyncCards(connection, "SYNCSERVER", params);
 						}
 						cardbookSynchronization.waitForSyncFinished(aPrefId, myPrefIdName, myMode);
 					}
@@ -2122,10 +2121,14 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 								var myCode = cardbookPasswordManager.getPassword(aPrefUser, aPrefUrl);
 								cardbookRepository.cardbookServerSyncRequest[aPrefId]++;
 								cardbookSynchronization.googleGetAccessToken(connection, myCode, "SYNCGOOGLE", params);
-							} else {
+							} else if (aPrefType === "APPLE" ) {
 								var connection = {connPrefId: aPrefId, connPrefIdType: aPrefType, connUrl: aPrefUrl, connDescription: aPrefName};
 								cardbookRepository.cardbookServerSyncRequest[aPrefId]++;
 								cardbookSynchronization.discoverPhase1(connection, "SYNCSERVER", params);
+							} else {
+								var connection = {connPrefId: aPrefId, connPrefIdType: aPrefType, connUrl: aPrefUrl, connDescription: aPrefName};
+								cardbookRepository.cardbookServerSyncRequest[aPrefId]++;
+								cardbookSynchronization.serverSyncCards(connection, "SYNCSERVER", params);
 							}
 							if (aPrefType === "GOOGLE" || aPrefType === "CARDDAV" || aPrefType === "APPLE") {
 								cardbookSynchronization.waitForSyncFinished(aPrefId, aPrefName, aMode);
@@ -2271,7 +2274,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 				} else if (myPrefType === "CACHE") {
 					cardbookRepository.cardbookDirRequest[aDirPrefId]++;
 					var myDir = cardbookRepository.getLocalDirectory();
-					myDir.append(cardbookRepository.cardbookCollectedCardsId);
+					myDir.append("Collected");
 					cardbookSynchronization.loadDir(myDir, "", aDirPrefId, aMode, "");
 					cardbookSynchronization.waitForDirFinished(aDirPrefId, myPrefName, aMode);
 				}

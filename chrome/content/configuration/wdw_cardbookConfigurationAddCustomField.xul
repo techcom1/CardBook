@@ -16,6 +16,7 @@
 	
 	<stringbundleset id="stringbundleset"/>
 
+	<script src="chrome://cardbook/content/cardbookNotifications.js"/>
 	<script src="chrome://cardbook/content/cardEdition/wdw_cardEdition.js"/>
 	<script src="chrome://cardbook/content/configuration/wdw_cardbookConfiguration.js"/>
 	<script src="chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddCustomField.js"/>
@@ -35,15 +36,18 @@
 				<rows>
 					<row align="center">
 						<label id="customFieldCodeLabel" value="&customFieldCodeLabel;" control="customFieldCodeTextBox"/>
-						<textbox id="customFieldCodeTextBox" oninput="wdw_cardbookConfiguration.customFieldCheck(this);wdw_cardbookConfigurationAddCustomField.checkNullCustomField();"/>
+						<textbox id="customFieldCodeTextBox" oninput="wdw_cardbookConfiguration.customFieldCheck(this);wdw_cardbookConfigurationAddCustomField.validate();"/>
 					</row>
 					<row align="center">
 						<label id="customFieldLabelLabel" value="&customFieldLabelLabel;" control="customFieldLabelTextBox"/>
-						<textbox id="customFieldLabelTextBox" oninput="wdw_cardbookConfigurationAddCustomField.checkNullCustomField();"/>
+						<textbox id="customFieldLabelTextBox" oninput="wdw_cardbookConfigurationAddCustomField.validate();"/>
 					</row>
 				</rows>
 			</grid>
 		</vbox>
+	</hbox>
+	<hbox flex="1">
+		<notificationbox id="errorNotifications" flex="1"/>
 	</hbox>
 
 	<hbox>

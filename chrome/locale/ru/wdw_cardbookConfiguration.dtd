@@ -159,6 +159,8 @@
 <!ENTITY kindCustomAccesskey "Т">
 <!ENTITY memberCustomLabel "Участник">
 <!ENTITY memberCustomAccesskey "У">
+<!ENTITY resetListLabel "Сбросить до значений по умолчанию">
+<!ENTITY resetListAccesskey "C">
 
 <!ENTITY syncGroupboxLabel "Синхронизация">
 <!ENTITY syncWarn "Синхронизация переносит локальные изменения на удалённый сервер и изменения с сервера на диск.">
@@ -191,6 +193,8 @@
 <!ENTITY preferEmailPrefWarn "Если адреса, отмеченные как ПРИОРитетные, отсутствуют, отправлять сообщения на все адреса email контакта.">
 <!ENTITY warnEmptyEmailsLabel "Предупреждать при попытке отправить письмо контактам, у которых нет адресов email">
 <!ENTITY warnEmptyEmailsAccesskey "W">
+<!ENTITY useOnlyEmailLabel "??Use only email addresses??">
+<!ENTITY useOnlyEmailAccesskey "U">
 <!ENTITY attachvCardWarn "Добавлять визитку vCard к отправляемым email. Выберите карточку для каждого из аккаунтов. Если эта настройка включена, CardBook будет вкладывать указанную визитку vCard к каждому исходящему email аккаунта.">
 <!ENTITY attachvCardGroupboxLabel "Добавлять визитку vCard">
 <!ENTITY mailAccountsEnabledLabel "Включено">

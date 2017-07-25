@@ -1,0 +1,55 @@
+﻿#cardbookToolbarAddServerButton {
+	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#address");
+}
+toolbar[brighttext] #cardbookToolbarAddServerButton {
+	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#address-inverted");
+}
+#cardbookToolbarSyncButton {
+	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#getmsg");
+}
+toolbar[brighttext] #cardbookToolbarSyncButton {
+	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#getmsg-inverted");
+}
+#cardbookToolbarConfigurationButton {
+	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#compact");
+}
+toolbar[brighttext] #cardbookToolbarConfigurationButton {
+	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#compact-inverted");
+}
+#cardbookToolbarPrintButton {
+	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#print");
+}
+toolbar[brighttext] #cardbookToolbarPrintButton {
+	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#print-inverted");
+}
+#cardbookToolbarComplexSearch {
+	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#filter");
+}
+toolbar[brighttext] #cardbookToolbarComplexSearch {
+	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#filter-inverted");
+}
+
+#cardbookToolbarAddContactButton {
+	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#newcard");
+}
+toolbar[brighttext] #cardbookToolbarAddContactButton {
+	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#newcard-inverted");
+}
+#cardbookToolbarAddListButton {
+	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#newlist");
+}
+toolbar[brighttext] #cardbookToolbarAddListButton {
+	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#newlist-inverted");
+}
+#cardbookToolbarEditButton {
+	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#editcard");
+}
+toolbar[brighttext] #cardbookToolbarEditButton {
+	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#editcard-inverted");
+}
+#cardbookToolbarRemoveButton {
+	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#abdelete");
+}
+toolbar[brighttext] #cardbookToolbarRemoveButton {
+	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#abdelete-inverted");
+}

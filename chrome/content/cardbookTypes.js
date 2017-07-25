@@ -281,13 +281,14 @@ if ("undefined" == typeof(cardbookTypes)) {
 		disableButtons: function (aType, aIndex, aVersion) {
 			if (aIndex == 0) {
 				if (document.getElementById(aType + '_' + aIndex + '_valueBox').value == "") {
-					document.getElementById(aType + '_' + aIndex + '_' + aVersion + '_cardbookaddButton').disabled = true;
 					document.getElementById(aType + '_' + aIndex + '_' + aVersion + '_cardbookremoveButton').disabled = true;
+					document.getElementById(aType + '_' + aIndex + '_' + aVersion + '_cardbookaddButton').disabled = true;
 				} else {
 					document.getElementById(aType + '_' + aIndex + '_' + aVersion + '_cardbookaddButton').disabled = false;
 					document.getElementById(aType + '_' + aIndex + '_' + aVersion + '_cardbookremoveButton').disabled = false;
 				}
 			} else {
+				document.getElementById(aType + '_0_' + aVersion + '_cardbookremoveButton').disabled = false;
 				for (var i = 0; i < aIndex; i++) {
 					document.getElementById(aType + '_' + i + '_' + aVersion + '_cardbookaddButton').disabled = true;
 					document.getElementById(aType + '_' + i + '_' + aVersion + '_cardbookdownButton').disabled = false;

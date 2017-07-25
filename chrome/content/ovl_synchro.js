@@ -5,11 +5,23 @@ if ("undefined" == typeof(ovl_synchro)) {
 		
 		lEventTimerSync : { notify: function(lTimerSync) {
 			if (!cardbookRepository.firstLoad) {
-				let stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
-				let strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
-				cardbookRepository.cardbookUncategorizedCards = strBundle.GetStringFromName("uncategorizedCards");
-				cardbookRepository.cardbookCollectedCards = strBundle.GetStringFromName("collectedCards");
+				// setting uncategorizedCards
 				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+				try {
+					cardbookRepository.cardbookUncategorizedCards = prefs.getComplexValue("extensions.cardbook.uncategorizedCards", Components.interfaces.nsISupportsString).data;
+					if (cardbookRepository.cardbookUncategorizedCards == "") {
+						throw "CardBook no uncategorizedCards";
+					}
+				}
+				catch (e) {
+					let stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+					let strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+					cardbookRepository.cardbookUncategorizedCards = strBundle.GetStringFromName("uncategorizedCards");
+					var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
+					str.data = cardbookRepository.cardbookUncategorizedCards;
+					prefs.setComplexValue("extensions.cardbook.uncategorizedCards", Components.interfaces.nsISupportsString, str);
+				}
+				// setting preferEmailPref for getting usefull emails
 				cardbookRepository.preferEmailPref = prefs.getBoolPref("extensions.cardbook.preferEmailPref");
 	
 				// migration functions (should be removed)

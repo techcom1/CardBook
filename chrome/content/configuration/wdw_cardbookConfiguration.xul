@@ -21,6 +21,7 @@
 
 	<script src="chrome://cardbook/content/configuration/wdw_cardbookConfiguration.js"/>
 	<script src="chrome://cardbook/content/cardbookUtils.js"/>
+	<script src="chrome://cardbook/content/cardbookNotifications.js"/>
 	<script src="chrome://cardbook/content/cardbookRepository.js"/>
 	<script src="chrome://cardbook/content/wdw_log.js"/>
 	<script src="chrome://cardbook/content/preferences/cardbookPreferences.js"/>
@@ -91,6 +92,8 @@
 				name="extensions.cardbook.preferEmailPref" type="bool"/>
 			<preference id="extensions.cardbook.warnEmptyEmails"
 				name="extensions.cardbook.warnEmptyEmails" type="bool"/>
+			<preference id="extensions.cardbook.useOnlyEmail"
+				name="extensions.cardbook.useOnlyEmail" type="bool"/>
 			<preference id="extensions.cardbook.addressBooksNameList"
 				name="extensions.cardbook.addressBooksNameList" type="string"/>
 			<preference id="extensions.cardbook.calendarsNameList"
@@ -525,6 +528,8 @@
 									<button id="addOrgLabel" label="&addTypeLabel;" accesskey="&addTypeAccesskey;" oncommand="wdw_cardbookConfiguration.addOrg();"/>
 									<button id="renameOrgLabel" label="&renameTypeLabel;" accesskey="&renameTypeAccesskey;" oncommand="wdw_cardbookConfiguration.renameOrg();" disabled="true"/>
 									<button id="deleteOrgLabel" label="&deleteTypeLabel;" accesskey="&deleteTypeAccesskey;" oncommand="wdw_cardbookConfiguration.deleteOrg();" disabled="true"/>
+									<button id="upOrgLabel" label="↑" oncommand="wdw_cardbookConfiguration.upOrg();" disabled="true"/>
+									<button id="downOrgLabel" label="↓" oncommand="wdw_cardbookConfiguration.downOrg();" disabled="true"/>
 								</vbox>
 							</hbox>
 						</hbox>
@@ -549,20 +554,25 @@
 												accesskey="&kindCustomAccesskey;"
 												control="kindCustomTextBox"
 												id="kindCustom"/>
-											<textbox id="kindCustomTextBox" oninput="wdw_cardbookConfiguration.customFieldCheck(this);"
+											<textbox id="kindCustomTextBox" oninput="wdw_cardbookConfiguration.customFieldCheck(this);wdw_cardbookConfiguration.validateCustomValues();"
 												preference="extensions.cardbook.kindCustom"/>
+											<button id="resetListButton" label="&resetListLabel;" accesskey="&resetListAccesskey;" 
+												oncommand="wdw_cardbookConfiguration.resetList();"/>
 										</row>
 										<row align="center">
 											<label value="&memberCustomLabel;"
 												accesskey="&memberCustomAccesskey;"
 												control="memberCustomTextBox"
 												id="memberCustom"/>
-											<textbox id="memberCustomTextBox" oninput="wdw_cardbookConfiguration.customFieldCheck(this);"
+											<textbox id="memberCustomTextBox" oninput="wdw_cardbookConfiguration.customFieldCheck(this);wdw_cardbookConfiguration.validateCustomValues();"
 												preference="extensions.cardbook.memberCustom"/>
 										</row>
 									</rows>
 								</grid>
 							</vbox>
+						</hbox>
+						<hbox flex="1">
+							<notificationbox id="errorListNotifications" flex="1"/>
 						</hbox>
 					</groupbox>
 				</tabpanel>
@@ -656,11 +666,13 @@
 							<image class="cardbookPrefStarClass"/>
 						</hbox>
 						<separator class="thin"/>
-						<hbox align="center">
-							<checkbox id="warnEmptyEmailsCheckBox" label="&warnEmptyEmailsLabel;"
-								accesskey="&warnEmptyEmailsAccesskey;"
-								preference="extensions.cardbook.warnEmptyEmails"/>
-						</hbox>
+						<checkbox id="warnEmptyEmailsCheckBox" label="&warnEmptyEmailsLabel;"
+							accesskey="&warnEmptyEmailsAccesskey;"
+							preference="extensions.cardbook.warnEmptyEmails"/>
+						<separator class="thin"/>
+						<checkbox id="useOnlyEmailCheckBox" label="&useOnlyEmailLabel;"
+							accesskey="&useOnlyEmailAccesskey;"
+							preference="extensions.cardbook.useOnlyEmail"/>
 					</groupbox>
 					<separator class="thin"/>
 					<groupbox flex="1">

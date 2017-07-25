@@ -248,11 +248,14 @@ if ("undefined" == typeof(cardbookUtils)) {
 			function compare2(a, b) { return collator.compareString(0, a, b)*aInvert; };
 			function compare3(a, b) { return collator.compareString(0, cardbookUtils.getName(a), cardbookUtils.getName(b))*aInvert; };
 			function compare4(a, b) { return ((a.isAList === b.isAList)? 0 : a.isAList? -1 : 1)*aInvert; };
+			function compare5(a, b) { return collator.compareString(0, cardbookUtils.getCardValueByField(a, aIndex), cardbookUtils.getCardValueByField(b, aIndex))*aInvert; };
 			if (aIndex != -1) {
 				if (aIndex == "name") {
 					return aArray.sort(compare3);
 				} else if (aIndex == "cardIcon") {
 					return aArray.sort(compare4);
+				} else if (aIndex.startsWith("X-")) {
+					return aArray.sort(compare5);
 				} else {
 					return aArray.sort(compare1);
 				}
@@ -1304,6 +1307,8 @@ if ("undefined" == typeof(cardbookUtils)) {
 						}
 					}
 				}
+			} else if (aField == "age") {
+				result.push(cardbookDates.getAge(aCard));
 			} else {
 				if (aCard[aField]) {
 					result.push(aCard[aField]);
@@ -2255,19 +2260,35 @@ if ("undefined" == typeof(cardbookUtils)) {
 			return emailResult;
 		},
 
-		getMimeEmailsFromCards: function (aListOfCards) {
+		getMimeEmailsFromCards: function (aListOfCards, aOnlyEmail) {
 			Components.utils.import("resource:///modules/mailServices.js");
+			if (aOnlyEmail) {
+				var useOnlyEmail = aOnlyEmail;
+			} else {
+				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+				var useOnlyEmail = prefs.getBoolPref("extensions.cardbook.useOnlyEmail");
+			}
 			var result = [];
 			for (var i = 0; i < aListOfCards.length; i++) {
 				for (var j = 0; j < aListOfCards[i].emails.length; j++) {
-					result.push(MailServices.headerParser.makeMimeAddress(aListOfCards[i].fn, aListOfCards[i].emails[j]));
+					if (useOnlyEmail) {
+						result.push(aListOfCards[i].emails[j]);
+					} else {
+						result.push(MailServices.headerParser.makeMimeAddress(aListOfCards[i].fn, aListOfCards[i].emails[j]));
+					}
 				}
 			}
 			return result;
 		},
 
-		getMimeEmailsFromCardsAndLists: function (aListOfCards) {
+		getMimeEmailsFromCardsAndLists: function (aListOfCards, aOnlyEmail) {
 			Components.utils.import("resource:///modules/mailServices.js");
+			if (aOnlyEmail) {
+				var useOnlyEmail = aOnlyEmail;
+			} else {
+				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+				var useOnlyEmail = prefs.getBoolPref("extensions.cardbook.useOnlyEmail");
+			}
 			var result = {};
 			result.emptyResults = [];
 			result.notEmptyResults = [];
@@ -2280,7 +2301,11 @@ if ("undefined" == typeof(cardbookUtils)) {
 							result.emptyResults.push(listOfEmail[j][0]);
 						} else {
 							for (var k = 0; k < listOfEmail[j][1].length; k++) {
-								result.notEmptyResults.push(MailServices.headerParser.makeMimeAddress(listOfEmail[j][0], listOfEmail[j][1][k]));
+								if (useOnlyEmail) {
+									result.notEmptyResults.push(listOfEmail[j][1][k]);
+								} else {
+									result.notEmptyResults.push(MailServices.headerParser.makeMimeAddress(listOfEmail[j][0], listOfEmail[j][1][k]));
+								}
 							}
 						}
 					}
@@ -2289,7 +2314,11 @@ if ("undefined" == typeof(cardbookUtils)) {
 						result.emptyResults.push(aListOfCards[i].fn);
 					} else {
 						for (var j = 0; j < aListOfCards[i].emails.length; j++) {
-							result.notEmptyResults.push(MailServices.headerParser.makeMimeAddress(aListOfCards[i].fn, aListOfCards[i].emails[j]));
+							if (useOnlyEmail) {
+								result.notEmptyResults.push(aListOfCards[i].emails[j]);
+							} else {
+								result.notEmptyResults.push(MailServices.headerParser.makeMimeAddress(aListOfCards[i].fn, aListOfCards[i].emails[j]));
+							}
 						}
 					}
 				}
@@ -2411,6 +2440,8 @@ if ("undefined" == typeof(cardbookUtils)) {
 			for (var i in cardbookRepository.allColumns) {
 				for (var j = 0; j < cardbookRepository.allColumns[i].length; j++) {
 					if (i != "arrayColumns" && i != "categories") {
+						result.push([cardbookRepository.allColumns[i][j], strBundle.getString(cardbookRepository.allColumns[i][j] + "Label")]);
+					} else if (i == "age" && aMode != "import" && aMode != "export") {
 						result.push([cardbookRepository.allColumns[i][j], strBundle.getString(cardbookRepository.allColumns[i][j] + "Label")]);
 					} else if (i == "categories") {
 						result.push([cardbookRepository.allColumns[i][j] + ".0.array", strBundle.getString(cardbookRepository.allColumns[i][j] + "Label")]);

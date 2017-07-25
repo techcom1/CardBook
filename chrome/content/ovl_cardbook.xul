@@ -37,7 +37,11 @@
 
 	<menupopup id="menu_NewPopup">
 		<menuitem id="newCardBookCardMenu" label="&newCardBookCardMenuLabel;" accesskey="&newCardBookCardMenuAccesskey;"
-				insertafter="menu_newCard" oncommand="ovl_cardbookMailContacts.newInCardBook();"/>
+				insertafter="menu_newCard" oncommand="wdw_cardbook.createContact();"/>
+	</menupopup>
+	<menupopup id="menu_FindPopup">
+		<menuitem id="newCardBookSearchMenu" label="&newCardBookSearchMenuLabel;" accesskey="&newCardBookSearchMenuAccesskey;"
+				insertafter="searchAddressesCmd" oncommand="wdw_cardbook.addAddressbook('search');"/>
 	</menupopup>
 	<menupopup id="view_layout_popup">
 		<menuitem id="cardbookABPaneItem"

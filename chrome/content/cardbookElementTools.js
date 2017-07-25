@@ -21,6 +21,23 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			aCaption.setAttribute('class', 'header');
 		},
 		
+		addTreeSplitter: function (aParent) {
+			var aSplitter = document.createElement('splitter');
+			aParent.appendChild(aSplitter);
+			aSplitter.setAttribute('class', 'tree-splitter');
+		},
+		
+		addTreecol: function (aParent, aId, aLabel, aParameters) {
+			var aTreecol = document.createElement('treecol');
+			aParent.appendChild(aTreecol);
+			aTreecol.setAttribute('id', aId);
+			aTreecol.setAttribute('label', aLabel);
+
+			for (var prop in aParameters) {
+				aTreecol.setAttribute(prop, aParameters[prop]);
+			}
+		},
+
 		addHBox: function (aType, aIndex, aParent) {
 			var aHBox = document.createElement('hbox');
 			aParent.appendChild(aHBox);
@@ -468,10 +485,10 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			}
 		},
 
-		addMenuTermlist: function (aParent, aType, aIndex, aValue, aParameters) {
+		addMenuTermlist: function (aParent, aType, aIndex, aVersion, aValue, aParameters) {
 			var aMenulist = document.createElement('menulist');
 			aParent.appendChild(aMenulist);
-			aMenulist.setAttribute('id', aType + '_' + aIndex + '_menulistTerm');
+			aMenulist.setAttribute('id', aType + '_' + aIndex + '_' + aVersion + '_menulistTerm');
 			for (var prop in aParameters) {
 				aMenulist.setAttribute(prop, aParameters[prop]);
 			}
@@ -504,6 +521,8 @@ if ("undefined" == typeof(cardbookElementTools)) {
 					return;
 				}
 				cardbookComplexSearch.showOrHideForEmpty(this.id);
+				var myIdArray = this.id.split('_');
+				cardbookComplexSearch.disableButtons(myIdArray[0], myIdArray[1], myIdArray[2]);
 			};
 			aMenulist.addEventListener("command", fireMenuTerm, false);
 		},

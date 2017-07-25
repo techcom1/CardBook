@@ -1,5 +1,5 @@
 <!ENTITY generalTabLabel "Geral">
-<!ENTITY CardBookTabLabel "Tab CardBook">
+<!ENTITY CardBookTabLabel "CardBook">
 <!ENTITY typesTabLabel "Tipos">
 <!ENTITY IMPPsTabLabel "Endereços de mensagem instantanea">
 <!ENTITY customFieldsTabLabel "Campos customizaveis">
@@ -140,9 +140,9 @@
 <!ENTITY customFieldRankLabel "Rank">
 <!ENTITY customFieldCodeLabel "Nome do campo">
 <!ENTITY customFieldLabelLabel "Etiqueta do campo">
-<!ENTITY customFieldsPersTitleLabel "Information pessoal">
+<!ENTITY customFieldsPersTitleLabel "Informação pessoal">
 <!ENTITY customFieldsPersTitleAccesskey "p">
-<!ENTITY customFieldsOrgTitleLabel "Information profissional">
+<!ENTITY customFieldsOrgTitleLabel "Informação profissional">
 <!ENTITY customFieldsOrgTitleAccesskey "r">
 <!ENTITY addCustomFieldsLabel "Adicionar">
 <!ENTITY addCustomFieldsAccesskey "A">
@@ -159,6 +159,8 @@
 <!ENTITY kindCustomAccesskey "K">
 <!ENTITY memberCustomLabel "Membro">
 <!ENTITY memberCustomAccesskey "M">
+<!ENTITY resetListLabel "Restaurar para origem">
+<!ENTITY resetListAccesskey "R">
 
 <!ENTITY syncGroupboxLabel "Sinc.">
 <!ENTITY syncWarn "A Sincronização vai propagar as modificações para o servidor remoto e as modificações do servidor remoto para local.">
@@ -191,6 +193,8 @@
 <!ENTITY preferEmailPrefWarn "Se não existir nenhum PREFerido, a mensagem será enviada para todos os endereços de email.">
 <!ENTITY warnEmptyEmailsLabel "Avisar quando tento enviar emails para contactos sem endereço de email">
 <!ENTITY warnEmptyEmailsAccesskey "W">
+<!ENTITY useOnlyEmailLabel "??Use only email addresses??">
+<!ENTITY useOnlyEmailAccesskey "U">
 <!ENTITY attachvCardWarn "Para adicionar automaticamente um vCard, seleccione um vCard para cada conta de email. Se activo, o CardBook vai anexar esse vCard para todos os emails de saída da conta seleccionada.">
 <!ENTITY attachvCardGroupboxLabel "Unir vCard">
 <!ENTITY mailAccountsEnabledLabel "Activo">

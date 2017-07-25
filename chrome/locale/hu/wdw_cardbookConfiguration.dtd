@@ -93,7 +93,7 @@
 <!ENTITY fnFormulaLabel "Képlet">
 <!ENTITY fnFormulaAccesskey "P">
 <!ENTITY resetFnFormulaLabel "Alapértelmezés">
-<!ENTITY resetFnFormulaAccesskey "p">
+<!ENTITY resetFnFormulaAccesskey "A">
 <!ENTITY miscEdittingGroupboxLabel "Különféle">
 <!ENTITY cardCreationVersionLabel "Alapértelmezett vCard verzió:">
 <!ENTITY preferEmailEditionLabel "Dupla kattintás a névjegyre a névjegy szerkesztés helyett üzenet írás">
@@ -158,6 +158,8 @@
 <!ENTITY kindCustomAccesskey "F">
 <!ENTITY memberCustomLabel "Tag">
 <!ENTITY memberCustomAccesskey "T">
+<!ENTITY resetListLabel "Alapértelmezés">
+<!ENTITY resetListAccesskey "A">
 
 <!ENTITY syncGroupboxLabel "Összehangolás">
 <!ENTITY syncWarn "Összehangolás terjed a módosítások egy távoli szerver és a kiszolgáló módosításokat az Ön számára.">
@@ -190,6 +192,8 @@
 <!ENTITY preferEmailPrefWarn "Ha e-mail cím nincs jelölve 'PREFerált', az üzenetet küldi, hogy minden névjegy email címét.">
 <!ENTITY warnEmptyEmailsLabel "Figyelmeztessen, amikor email cím nélkül üzenetet próbálok létrehozni">
 <!ENTITY warnEmptyEmailsAccesskey "F">
+<!ENTITY useOnlyEmailLabel "??Use only email addresses??">
+<!ENTITY useOnlyEmailAccesskey "U">
 <!ENTITY attachvCardWarn "Ahhoz, hogy automatikusan hozzáadni egy vCard e-mailjeit, válasszon ki egy vCard az egyes postafiókhoz. Ha be van kapcsolva, névjegyzéek csatolja ezt vCard minden kimenő postafiókból.">
 <!ENTITY attachvCardGroupboxLabel "vCard-csatlakozásra">
 <!ENTITY mailAccountsEnabledLabel "Engedélyezve">

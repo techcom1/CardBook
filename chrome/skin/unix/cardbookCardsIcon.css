@@ -1,5 +1,5 @@
 ﻿.cardIconColumnHeader {
-	list-style-image: url("chrome://messenger/skin/addressbook/icons/abcard.png");
+	list-style-image: url("chrome://cardbook/skin/abcard.png");
 }
 
 treechildren::-moz-tree-image(cardIcon) {

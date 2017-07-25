@@ -646,11 +646,30 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 
 		selectOrg: function() {
 			var btnEdit = document.getElementById("renameOrgLabel");
-			var listBox = document.getElementById("orgListbox");
-			if (listBox.selectedCount > 0) {
+			var btnUp = document.getElementById("upOrgLabel");
+			var btnDown = document.getElementById("downOrgLabel");
+			var myListBox = document.getElementById("orgListbox");
+			if (myListBox.selectedCount > 0) {
 				btnEdit.disabled = false;
+				if (wdw_cardbookConfiguration.allOrg.length > 1) {
+					if (myListBox.selectedIndex == 0) {
+						btnUp.disabled = true;
+					} else {
+						btnUp.disabled = false;
+					}
+					if (myListBox.selectedIndex == wdw_cardbookConfiguration.allOrg.length-1) {
+						btnDown.disabled = true;
+					} else {
+						btnDown.disabled = false;
+					}
+				} else {
+					btnUp.disabled = true;
+					btnDown.disabled = true;
+				}
 			} else {
 				btnEdit.disabled = true;
+				btnUp.disabled = true;
+				btnDown.disabled = true;
 			}
 			document.getElementById("deleteOrgLabel").disabled = btnEdit.disabled;
 		},
@@ -683,11 +702,38 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			wdw_cardbookConfiguration.refreshListBoxOrg();
 		},
 		
-		addOrg: function () {
+		upOrg: function () {
 			var myListBox = document.getElementById('orgListbox');
-			var myArgs = {type: "", context: "Org", typeAction: ""};
+			if (myListBox.selectedIndex == -1) {
+				return;
+			} else {
+				var temp = wdw_cardbookConfiguration.allOrg[myListBox.selectedIndex-1];
+				wdw_cardbookConfiguration.allOrg[myListBox.selectedIndex-1] = wdw_cardbookConfiguration.allOrg[myListBox.selectedIndex];
+				wdw_cardbookConfiguration.allOrg[myListBox.selectedIndex] = temp;
+				wdw_cardbookConfiguration.refreshListBoxOrg();
+				wdw_cardbookConfiguration.loadFnFormula();
+			}
+		},
+
+		downOrg: function () {
+			var myListBox = document.getElementById('orgListbox');
+			if (myListBox.selectedIndex == -1) {
+				return;
+			} else {
+				var temp = wdw_cardbookConfiguration.allOrg[myListBox.selectedIndex+1];
+				wdw_cardbookConfiguration.allOrg[myListBox.selectedIndex+1] = wdw_cardbookConfiguration.allOrg[myListBox.selectedIndex];
+				wdw_cardbookConfiguration.allOrg[myListBox.selectedIndex] = temp;
+				wdw_cardbookConfiguration.refreshListBoxOrg();
+				wdw_cardbookConfiguration.loadFnFormula();
+			}
+		},
+
+		addOrg: function () {
+			var myValidationList = JSON.parse(JSON.stringify(wdw_cardbookConfiguration.allOrg));
+			var myArgs = {type: "", context: "Org", typeAction: "", validationList: myValidationList};
 			var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookRenameField.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
 			if (myArgs.typeAction == "SAVE" && myArgs.type != "") {
+				var myListBox = document.getElementById('orgListbox');
 				wdw_cardbookConfiguration.allOrg = [];
 				for (var i = 0; i < myListBox.itemCount; i++) {
 					wdw_cardbookConfiguration.allOrg.push(myListBox.getItemAtIndex(i).getAttribute("value"));
@@ -703,8 +749,13 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			if (myListBox.selectedIndex == -1) {
 				return;
 			} else {
-				var myItem = myListBox.getSelectedItem(0);
-				var myArgs = {type: myItem.getAttribute("value"), context: "Org", typeAction: ""};
+				var myValue = myListBox.getSelectedItem(0).getAttribute("value");
+				var myValidationList = JSON.parse(JSON.stringify(wdw_cardbookConfiguration.allOrg));
+				function filterOriginal(element) {
+					return (element != myValue);
+				}
+				myValidationList = myValidationList.filter(filterOriginal);
+				var myArgs = {type: myValue, context: "Org", typeAction: "", validationList: myValidationList};
 				var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookRenameField.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
 				if (myArgs.typeAction == "SAVE" && myArgs.type != "") {
 					wdw_cardbookConfiguration.allOrg = [];
@@ -1435,7 +1486,8 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 
 		addCustomFields: function () {
 			var type = document.getElementById('customFieldsCategoryRadiogroup').selectedItem.value;
-			var myArgs = {code: "", label: "", typeAction: ""};
+			var myValidationList = wdw_cardbookConfiguration.getAllCustomsFields();
+			var myArgs = {code: "", label: "", typeAction: "", validationList: myValidationList};
 			var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddCustomField.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
 			if (myArgs.typeAction == "SAVE") {
 				var result = [];
@@ -1465,7 +1517,12 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				var myCode = myTree.view.getCellText(myTree.currentIndex, {id: "customFieldsCode"});
 				var myLabel = myTree.view.getCellText(myTree.currentIndex, {id: "customFieldsLabel"});
 				var myId = myTree.view.getCellText(myTree.currentIndex, {id: "customFieldsRank"});
-				var myArgs = {code: myCode, label: myLabel, typeAction: ""};
+				var myValidationList = wdw_cardbookConfiguration.getAllCustomsFields();
+				function filterOriginal(element) {
+					return (element != myCode);
+				}
+				myValidationList = myValidationList.filter(filterOriginal);
+				var myArgs = {code: myCode, label: myLabel, typeAction: "", validationList: myValidationList};
 				var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddCustomField.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
 				if (myArgs.typeAction == "SAVE") {
 					var result = [];
@@ -1524,52 +1581,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			}
 		},
 
-		loadPeriodicSync: function () {
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-			var autoSync = prefs.getBoolPref("extensions.cardbook.autoSync");
-			if (!(autoSync)) {
-				document.getElementById('autoSyncInterval').disabled = true;
-				document.getElementById('autoSyncIntervalTextBox').disabled = true;
-			}
-		},
-
-		validateCustomFieldName: function (aValue) {
-			var strBundle = document.getElementById("cardbook-strings");
-			var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
-			var customFieldsErrorTitle = strBundle.getString("customFieldsError");
-			if (aValue.toUpperCase() !== aValue) {
-				var customFieldsErrorMsg = strBundle.getFormattedString("customFieldsErrorUPPERCASE", [aValue]);
-				prompts.alert(null, customFieldsErrorTitle, customFieldsErrorMsg);
-				return false;
-			} else if (!(aValue.toUpperCase().startsWith("X-"))) {
-				var customFieldsErrorMsg = strBundle.getFormattedString("customFieldsErrorX", [aValue]);
-				prompts.alert(null, customFieldsErrorTitle, customFieldsErrorMsg);
-				return false;
-			} else if (aValue.toUpperCase() === "X-THUNDERBIRD-ETAG") {
-				var customFieldsErrorMsg = strBundle.getFormattedString("customFieldsErrorETAG", [aValue]);
-				prompts.alert(null, customFieldsErrorTitle, customFieldsErrorMsg);
-				return false;
-			} else if (aValue.indexOf(":") >= 1 || aValue.indexOf(",") >= 1 || aValue.indexOf(";") >= 1 || aValue.indexOf(".") >= 1) {
-				var customFieldsErrorMsg = strBundle.getFormattedString("customFieldsErrorCHAR", [aValue]);
-				prompts.alert(null, customFieldsErrorTitle, customFieldsErrorMsg);
-				return false;
-			}
-			return true;
-		},
-		
-		validateUniqueCustomFieldName: function (aList) {
-			if (cardbookUtils.cleanArray(aList).length !== cardbookUtils.cleanArray(cardbookRepository.arrayUnique(aList)).length) {
-				var strBundle = document.getElementById("cardbook-strings");
-				var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
-				var customFieldsErrorTitle = strBundle.getString("customFieldsError");
-				var customFieldsErrorMsg = strBundle.getString("customFieldsErrorUNIQUE");
-				prompts.alert(null, customFieldsErrorTitle, customFieldsErrorMsg);
-				return false;
-			}
-			return true;
-		},
-		
-		validateCustoms: function () {
+		getAllCustomsFields: function () {
 			var allcustomFieldNames = [];
 			for (var i in wdw_cardbookConfiguration.allCustomFields) {
 				for (var j = 0; j < wdw_cardbookConfiguration.allCustomFields[i].length; j++) {
@@ -1580,16 +1592,58 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			for (var i in customLists) {
 				var nameValue = document.getElementById(customLists[i] + 'TextBox').value;
 				allcustomFieldNames.push(nameValue);
-				if (!(wdw_cardbookConfiguration.validateCustomFieldName(nameValue))) {
-					return false;
-				}
 			}
-			if (!(wdw_cardbookConfiguration.validateUniqueCustomFieldName(allcustomFieldNames))) {
-				return false;
-			}
-			return true;
+			return allcustomFieldNames;
 		},
 		
+		validateCustomValues: function () {
+			var customLists = ['kindCustom', 'memberCustom'];
+			var returnFlag = true;
+			for (var i in customLists) {
+				var myValue = document.getElementById(customLists[i] + 'TextBox').value;
+				var myValidationListOrig = wdw_cardbookConfiguration.getAllCustomsFields();
+				var myValidationList = cardbookRepository.arrayUnique(myValidationListOrig);
+				if (myValidationList.length != myValidationListOrig.length) {
+					cardbookNotifications.setNotification("errorListNotifications", "customFieldsErrorUNIQUE");
+					returnFlag = false;
+				} else if (myValue.toUpperCase() !== myValue) {
+					cardbookNotifications.setNotification("errorListNotifications", "customFieldsErrorUPPERCASE", myValue);
+					returnFlag = false;
+				} else if (!(myValue.toUpperCase().startsWith("X-"))) {
+					cardbookNotifications.setNotification("errorListNotifications", "customFieldsErrorX", myValue);
+					returnFlag = false;
+				} else if (myValue.toUpperCase() === "X-THUNDERBIRD-ETAG") {
+					cardbookNotifications.setNotification("errorListNotifications", "customFieldsErrorETAG", myValue);
+					returnFlag = false;
+				} else if (myValue.indexOf(":") >= 1 || myValue.indexOf(",") >= 1 || myValue.indexOf(";") >= 1 || myValue.indexOf(".") >= 1) {
+					cardbookNotifications.setNotification("errorListNotifications", "customFieldsErrorCHAR", myValue);
+					returnFlag = false;
+				}
+			}
+			if (returnFlag) {
+				cardbookNotifications.setNotification("errorListNotifications", "OK");
+			}
+			return returnFlag;
+		},
+
+		resetList: function () {
+			document.getElementById('kindCustomTextBox').value = cardbookRepository.defaultKindCustom;
+			document.getElementById('memberCustomTextBox').value = cardbookRepository.defaultMemberCustom;
+			// should also change preferences (not automatically saved) 
+			document.getElementById('extensions.cardbook.kindCustom').value = cardbookRepository.defaultKindCustom;
+			document.getElementById('extensions.cardbook.memberCustom').value = cardbookRepository.defaultMemberCustom;
+			wdw_cardbookConfiguration.validateCustomValues();
+		},
+
+		loadPeriodicSync: function () {
+			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var autoSync = prefs.getBoolPref("extensions.cardbook.autoSync");
+			if (!(autoSync)) {
+				document.getElementById('autoSyncInterval').disabled = true;
+				document.getElementById('autoSyncIntervalTextBox').disabled = true;
+			}
+		},
+
 		validateStatusInformationLineNumber: function () {
 			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			if (document.getElementById('statusInformationLineNumberTextBox').value < 10) {
@@ -1653,12 +1707,11 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			wdw_cardbookConfiguration.validatePrefEmailPref();
 			wdw_cardbookConfiguration.validateEventEntryTitle();
 			wdw_cardbookConfiguration.validateFnFormula();
-			if (!(wdw_cardbookConfiguration.validateCustoms())) {
+			if (!(wdw_cardbookConfiguration.validateCustomValues())) {
 				// don't work
 				// return false;
 				throw "CardBook validation error";
 			}
-			// first validateCustoms then if OK save them
 			wdw_cardbookConfiguration.validateCustomFields();
 			cardbookUtils.notifyObservers("cardbook.preferencesChanged");
 		},

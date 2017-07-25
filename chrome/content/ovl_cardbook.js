@@ -38,6 +38,7 @@ if ("undefined" == typeof(cardbookTabType)) {
 				maxTabs: 1,
 				openTab: function(aTab, aArgs) {
 					aTab.title = aArgs["title"];
+					ovl_cardbookLayout.orientPanes();
 				},
 
 				showTab: function(aTab) {
@@ -56,7 +57,6 @@ if ("undefined" == typeof(cardbookTabType)) {
 				restoreTab: function(aTabmail, aState) {
 					var strBundle = document.getElementById("cardbook-strings");
 					aState.title = strBundle.getString("cardbookTitle");
-					ovl_cardbookLayout.orientPanes();
 					aTabmail.openTab('cardbook', aState);
 				},
 				

@@ -24,15 +24,18 @@ pref("extensions.cardbook.decodeReport", true);
 
 pref("extensions.cardbook.preferEmailPref", true);
 pref("extensions.cardbook.warnEmptyEmails", true);
+pref("extensions.cardbook.useOnlyEmail", false); 
 
 pref("extensions.cardbook.preferenceValueLabel", "");
 
 pref("extensions.cardbook.firstRun", true);
 pref("extensions.cardbook.firstOpen", true);
 pref("extensions.cardbook.firstOpenModern", true);
+pref("extensions.cardbook.iconsMigrated", false);
 
 pref("extensions.cardbook.kindCustom", "X-ADDRESSBOOKSERVER-KIND");
 pref("extensions.cardbook.memberCustom", "X-ADDRESSBOOKSERVER-MEMBER");
+pref("extensions.cardbook.customColumnsShown", "");
 
 pref("extensions.cardbook.orgStructure", "");
 
@@ -60,4 +63,5 @@ pref("extensions.cardbook.calendarEntryCategories", "");
 pref("extensions.cardbook.viewABPane", true);
 pref("extensions.cardbook.viewABContact", true);
 
-pref("extensions.cardbook.addonVersion", "20.4");
+pref("extensions.cardbook.uncategorizedCards", "");
+pref("extensions.cardbook.addonVersion", "21.2");

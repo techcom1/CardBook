@@ -7,6 +7,9 @@ if ("undefined" == typeof(cardbookPasswordManager)) {
 			try {
 				var urlArray1 = aUrl.split("://");
 				var urlArray2 = urlArray1[1].split("/");
+				if (urlArray1[0] != "http" && urlArray1[0] != "https") {
+					return "";
+				}
 				return urlArray1[0] + "://" + urlArray2[0];
 			}
 			catch (e) {

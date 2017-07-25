@@ -255,6 +255,8 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 			var searchAB = document.getElementById('CardBookABMenulist').value;
 			var searchCategory = document.getElementById('categoriesMenulist').value;
 			var searchInput = document.getElementById("peopleSearchInput").value.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase();
+			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var useOnlyEmail = prefs.getBoolPref("extensions.cardbook.useOnlyEmail");
 			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
 				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5]) {
 					var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
@@ -297,9 +299,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 												} else {
 													if (myCard.emails != "") {
 														var myFormattedEmails = [];
-														for (var l = 0; l < myCard.emails.length; l++) {
-															myFormattedEmails.push(MailServices.headerParser.makeMimeAddress(myCard.fn, myCard.emails[l]));
-														}
+														myFormattedEmails = cardbookUtils.getMimeEmailsFromCards([myCard], useOnlyEmail);
 														wdw_cardbookContactsSidebar.searchResults.push([myCard.fn, myDirPrefName, myCard.emails.join(', '), false, "CARDCARDBOOK", myCard, myFormattedEmails.join('@@@@@'), '']);
 													}
 												}
@@ -321,9 +321,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 													myFormattedEmails.push(MailServices.headerParser.makeMimeAddress(myCard.fn, myCard.fn));
 												} else {
 													myEmails = myEmails.concat(myCard.emails);
-													for (var l = 0; l < myCard.emails.length; l++) {
-														myFormattedEmails.push(MailServices.headerParser.makeMimeAddress(myCard.fn, myCard.emails[l]));
-													}
+													myFormattedEmails = myFormattedEmails.concat(cardbookUtils.getMimeEmailsFromCards([myCard], useOnlyEmail));
 												}
 											}
 											if (myEmails != "") {
@@ -362,9 +360,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 												} else {
 													if (myCard.emails != "") {
 														var myFormattedEmails = [];
-														for (var l = 0; l < myCard.emails.length; l++) {
-															myFormattedEmails.push(MailServices.headerParser.makeMimeAddress(myCard.fn, myCard.emails[l]));
-														}
+														myFormattedEmails = cardbookUtils.getMimeEmailsFromCards([myCard], useOnlyEmail);
 														wdw_cardbookContactsSidebar.searchResults.push([myCard.fn, myDirPrefName, myCard.emails.join(', '), false, "CARDCARDBOOK", myCard, myFormattedEmails.join('@@@@@'), '']);
 													}
 												}
@@ -394,9 +390,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 											myFormattedEmails.push(MailServices.headerParser.makeMimeAddress(myCard.fn, myCard.fn));
 										} else {
 											myEmails = myEmails.concat(myCard.emails);
-											for (var l = 0; l < myCard.emails.length; l++) {
-												myFormattedEmails.push(MailServices.headerParser.makeMimeAddress(myCard.fn, myCard.emails[l]));
-											}
+											myFormattedEmails = myFormattedEmails.concat(cardbookUtils.getMimeEmailsFromCards([myCard], useOnlyEmail));
 										}
 									}
 									if (myEmails != "") {
@@ -445,9 +439,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 											} else {
 												if (myCard.emails != "") {
 													var myFormattedEmails = [];
-													for (var l = 0; l < myCard.emails.length; l++) {
-														myFormattedEmails.push(MailServices.headerParser.makeMimeAddress(myCard.fn, myCard.emails[l]));
-													}
+													myFormattedEmails = cardbookUtils.getMimeEmailsFromCards([myCard], useOnlyEmail);
 													wdw_cardbookContactsSidebar.searchResults.push([myCard.fn, myDirPrefName, myCard.emails.join(', '), false, "CARDCARDBOOK", myCard, myFormattedEmails.join('@@@@@'), '']);
 												}
 											}
@@ -493,9 +485,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 											} else {
 												if (myCard.emails != "") {
 													var myFormattedEmails = [];
-													for (var l = 0; l < myCard.emails.length; l++) {
-														myFormattedEmails.push(MailServices.headerParser.makeMimeAddress(myCard.fn, myCard.emails[l]));
-													}
+													myFormattedEmails = cardbookUtils.getMimeEmailsFromCards([myCard], useOnlyEmail);
 													wdw_cardbookContactsSidebar.searchResults.push([myCard.fn, myDirPrefName, myCard.emails.join(', '), false, "CARDCARDBOOK", myCard, myFormattedEmails.join('@@@@@'), '']);
 												}
 											}
@@ -524,9 +514,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 											myFormattedEmails.push(MailServices.headerParser.makeMimeAddress(myCard.fn, myCard.fn));
 										} else {
 											myEmails = myEmails.concat(myCard.emails);
-											for (var l = 0; l < myCard.emails.length; l++) {
-												myFormattedEmails.push(MailServices.headerParser.makeMimeAddress(myCard.fn, myCard.emails[l]));
-											}
+											myFormattedEmails = myFormattedEmails.concat(cardbookUtils.getMimeEmailsFromCards([myCard], useOnlyEmail));
 										}
 									}
 									if (myEmails != "") {
@@ -561,7 +549,11 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 											var delim = myPrimaryEmail.indexOf("@",0);
 											myDisplayName = myPrimaryEmail.substr(0,delim);
 										}
-										wdw_cardbookContactsSidebar.searchResults.push([myDisplayName, contact.dirName, myPrimaryEmail, false, "CARDCORE", myABCard, MailServices.headerParser.makeMimeAddress(myDisplayName, myPrimaryEmail), contact.dirPrefId]);
+										if (useOnlyEmail) {
+											wdw_cardbookContactsSidebar.searchResults.push([myDisplayName, contact.dirName, myPrimaryEmail, false, "CARDCORE", myABCard, myPrimaryEmail, contact.dirPrefId]);
+										} else {
+											wdw_cardbookContactsSidebar.searchResults.push([myDisplayName, contact.dirName, myPrimaryEmail, false, "CARDCORE", myABCard, MailServices.headerParser.makeMimeAddress(myDisplayName, myPrimaryEmail), contact.dirPrefId]);
+										}
 									}
 								}
 							} else {
@@ -569,7 +561,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 								var lSearchString = myDisplayName + myABList.listNickName + myABList.description;
 								lSearchString = lSearchString.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase();
 								if (lSearchString.indexOf(searchInput) >= 0 || searchInput == "") {
-									wdw_cardbookContactsSidebar.searchResults.push([myDisplayName, contact.dirName, "", true, "LISTCORE", myABCard, MailServices.headerParser.makeMimeAddress(myDisplayName, myDisplayName), contact.dirPrefId]);
+										wdw_cardbookContactsSidebar.searchResults.push([myDisplayName, contact.dirName, "", true, "LISTCORE", myABCard, MailServices.headerParser.makeMimeAddress(myDisplayName, myDisplayName), contact.dirPrefId]);
 								}
 							}
 						}
@@ -742,32 +734,49 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 					document.getElementById("editCard").disabled=true;
 				} else {
 					if (listOfUid[0][0] == "CATCARDBOOK") {
-						var mySepPosition = listOfUid[0][1].indexOf("::",0);
-						var myCategory = listOfUid[0][1].substr(mySepPosition+2,listOfUid[0][1].length);
-						if (myCategory == cardbookRepository.cardbookUncategorizedCards) {
-							document.getElementById("editCard").disabled=true;
+						var myAccountArray = listOfUid[0][1].split("::");
+						var myDirPrefId = myAccountArray[0];
+						var cardbookPrefService = new cardbookPreferenceService(myDirPrefId);
+						if (cardbookPrefService.getReadOnly()) {
+							wdw_cardbookContactsSidebar.disableCardModification();
 						} else {
-							document.getElementById("editCard").disabled=false;
+							wdw_cardbookContactsSidebar.enableCardModification();
+						}
+					} else if (listOfUid[0][0] == "CARDCARDBOOK" || listOfUid[0][0] == "LISTCARDBOOK") {
+						var myDirPrefId = listOfUid[0][1].dirPrefId;
+						var cardbookPrefService = new cardbookPreferenceService(myDirPrefId);
+						if (cardbookPrefService.getReadOnly()) {
+							wdw_cardbookContactsSidebar.disableCardModification();
+						} else {
+							wdw_cardbookContactsSidebar.enableCardModification();
 						}
 					} else {
-						document.getElementById("editCard").disabled=false;
+						wdw_cardbookContactsSidebar.enableCardModification();
 					}
 				}
 				document.getElementById("toEmail").disabled=false;
 				document.getElementById("ccEmail").disabled=false;
 				document.getElementById("bccEmail").disabled=false;
 				document.getElementById("replytoEmail").disabled=false;
-				document.getElementById("deleteCard").disabled=false;
 			} else {
 				document.getElementById("toEmail").disabled=true;
 				document.getElementById("ccEmail").disabled=true;
 				document.getElementById("bccEmail").disabled=true;
 				document.getElementById("replytoEmail").disabled=true;
-				document.getElementById("deleteCard").disabled=true;
-				document.getElementById("editCard").disabled=true;
+				wdw_cardbookContactsSidebar.disableCardModification();
 			}
 		},
 
+		disableCardModification: function () {
+			document.getElementById("editCard").disabled=true;
+			document.getElementById("deleteCard").disabled=true;
+		},
+		
+		enableCardModification: function () {
+			document.getElementById("editCard").disabled=false;
+			document.getElementById("deleteCard").disabled=false;
+		},
+		
 		loadPanel: function () {
 			myCardBookObserver.register();
 			myCardBookPrefObserver.register();

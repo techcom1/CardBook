@@ -1,0 +1,88 @@
+﻿@@media not all and (-moz-mac-yosemite-theme) {
+	#cardbookToolbarAddServerButton {
+		list-style-image: url("chrome://messenger/skin/icons/mail-toolbar-osxlion.svg#address");
+	}
+	#cardbookToolbarSyncButton {
+		list-style-image: url("chrome://messenger/skin/icons/mail-toolbar-osxlion.svg#getmsg");
+	}
+	#cardbookToolbarConfigurationButton {
+		list-style-image: url("chrome://messenger/skin/icons/mail-toolbar-osxlion.svg#compact");
+	}
+	#cardbookToolbarPrintButton {
+		list-style-image: url("chrome://messenger/skin/icons/mail-toolbar-osxlion.svg#print");
+	}
+	#cardbookToolbarComplexSearch {
+		list-style-image: url("chrome://messenger/skin/icons/mail-toolbar-osxlion.svg#filter");
+	}
+	#cardbookToolbarAddContactButton {
+		list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar-osxlion.svg#newcard");
+	}
+	#cardbookToolbarAddListButton {
+		list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar-osxlion.svg#newlist");
+	}
+	#cardbookToolbarEditButton {
+		list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar-osxlion.svg#editcard");
+	}
+	#cardbookToolbarRemoveButton {
+		list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar-osxlion.svg#abdelete");
+	}
+}
+
+@media (-moz-mac-yosemite-theme) {
+	#cardbookToolbarAddServerButton {
+		list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#address-flat");
+	}
+	#cardbookToolbarSyncButton {
+		list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#getmsg-flat");
+	}
+	#cardbookToolbarConfigurationButton {
+		list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#compact-flat");
+	}
+	#cardbookToolbarPrintButton {
+		list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#print-flat");
+	}
+	#cardbookToolbarComplexSearch {
+		list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#filter-flat");
+	}
+	#cardbookToolbarAddContactButton {
+		list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#newcard-flat");
+	}
+	#cardbookToolbarRemoveButton {
+		list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#newlist-flat");
+	}
+	#cardbookToolbarEditButton {
+		list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#editcard-flat");
+	}
+	#cardbookToolbarRemoveButton {
+		list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#abdelete-flat");
+	}
+}
+
+toolbar[brighttext] #cardbookToolbarAddServerButton {
+	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#address-inverted");
+}
+toolbar[brighttext] #cardbookToolbarSyncButton {
+	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#getmsg-inverted");
+}
+toolbar[brighttext] #cardbookToolbarConfigurationButton {
+	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#compact-inverted");
+}
+toolbar[brighttext] #cardbookToolbarPrintButton {
+	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#print-inverted");
+}
+toolbar[brighttext] #cardbookToolbarComplexSearch {
+	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#filter-inverted");
+}
+
+toolbar[brighttext] #cardbookToolbarAddContactButton {
+	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#newcard-inverted");
+}
+toolbar[brighttext] #cardbookToolbarAddListButton {
+	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#newlist-inverted");
+}
+toolbar[brighttext] #cardbookToolbarEditButton {
+	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#editcard-inverted");
+}
+toolbar[brighttext] #cardbookToolbarRemoveButton {
+	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#abdelete-inverted");
+}

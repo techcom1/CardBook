@@ -14,6 +14,29 @@
 if ("undefined" == typeof(cardbookDates)) {
 	var cardbookDates = {
 		
+		getAge: function (aCard) {
+			if (aCard.bday == "") {
+				return "";
+			} else {
+				var cardbookPrefService = new cardbookPreferenceService(aCard.dirPrefId);
+				var dateFormat = cardbookPrefService.getDateFormat();
+				var lDateOfBirth = cardbookDates.convertDateStringToDate(aCard.bday, dateFormat);
+				if (lDateOfBirth == "WRONGDATE") {
+					return "";
+				} else if (lDateOfBirth.getFullYear() == "666") {
+					return "";
+				} else {
+					var today = new Date();
+					var age = today.getFullYear() - lDateOfBirth.getFullYear();
+					var m = today.getMonth() - lDateOfBirth.getMonth();
+					if (m < 0 || (m === 0 && today.getDate() < lDateOfBirth.getDate())) {
+						age--;
+					}
+					return age.toString();
+				}
+			}
+		},
+
 		getSeparator: function (aDateFormat) {
 			switch(aDateFormat) {
 				case "YYYY-MM-DD":

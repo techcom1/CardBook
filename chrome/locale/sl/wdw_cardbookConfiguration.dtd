@@ -158,6 +158,8 @@
 <!ENTITY kindCustomAccesskey "V">
 <!ENTITY memberCustomLabel "Član">
 <!ENTITY memberCustomAccesskey "Č">
+<!ENTITY resetListLabel "Obnovi na privzeto">
+<!ENTITY resetListAccesskey "O">
 
 <!ENTITY syncGroupboxLabel "Sinh.">
 <!ENTITY syncWarn "Sinhronizacija prenese vaše spremembe na oddaljeni strežnik in spremembe na strežniku k vam.">
@@ -190,6 +192,8 @@
 <!ENTITY preferEmailPrefWarn "Če noben naslov ni označen z oznako 'PREF', bo sporočilo poslano na vse e-poštne naslove stika.">
 <!ENTITY warnEmptyEmailsLabel "Opozori me, kadar poskušam poslati pošto stikom brez e-poštnega naslova">
 <!ENTITY warnEmptyEmailsAccesskey "O">
+<!ENTITY useOnlyEmailLabel "??Use only email addresses??">
+<!ENTITY useOnlyEmailAccesskey "U">
 <!ENTITY attachvCardWarn "Za samodejno dodajanje kartice vCard k vaši e-pošti izberite kartico vCard za vsak e-poštni račun. Če je omogočeno, jo bo CardBook pripel k vsaki odhodni e-pošti za ta račun.">
 <!ENTITY attachvCardGroupboxLabel "Dodaj kartico vCard">
 <!ENTITY mailAccountsEnabledLabel "Omogočeno">

@@ -8,17 +8,28 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 		gValidateURL : false,
 		gValidateDescription : "Validation module",
 		gStandardAddressbooks : [],
+		gSearchDefinition : {},
 		
+		initSearchDefinition: function () {
+			if (cardbookRepository.cardbookComplexSearch[window.arguments[0].searchId]) {
+				wdw_addressbooksAdd.gSearchDefinition['searchAB'] = cardbookRepository.cardbookComplexSearch[window.arguments[0].searchId].searchAB;
+				wdw_addressbooksAdd.gSearchDefinition['matchAll'] = cardbookRepository.cardbookComplexSearch[window.arguments[0].searchId].matchAll;
+				wdw_addressbooksAdd.gSearchDefinition['rules'] = JSON.parse(JSON.stringify(cardbookRepository.cardbookComplexSearch[window.arguments[0].searchId].rules));
+			} else {
+				wdw_addressbooksAdd.gSearchDefinition['searchAB'] = true;
+				wdw_addressbooksAdd.gSearchDefinition['matchAll'] = 'and';
+				wdw_addressbooksAdd.gSearchDefinition['rules'] = [["","","",""]];
+			}
+		},
+
 		loadWizard: function () {
 			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
-			let stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
-			let strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
-			document.getElementById('resultValidation').value = strBundle.GetStringFromName("ValidatingLabel");
 			if (window.arguments[0].action == "first") {
 				wdw_addressbooksAdd.gType = "STANDARD";
 				wdw_addressbooksAdd.loadStandardAddressBooks();
 				document.getElementById('addressbook-wizard').goTo("welcomePage");
 			} else if (window.arguments[0].action == "search") {
+				wdw_addressbooksAdd.initSearchDefinition();
 				document.getElementById('addressbook-wizard').goTo("searchPage");
 			} else {
 				document.getElementById('addressbook-wizard').goTo("initialPage");
@@ -48,18 +59,6 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 					canAdvance = (eList[i].value != "");
 				}
 				document.getElementById('addressbook-wizard').canAdvance = canAdvance;
-			}
-		},
-
-		localPageCheckRequired: function () {
-			var type = document.getElementById('localPageType').selectedItem.value;
-			if (type == "createDB") {
-				var curPage = document.getElementById('addressbook-wizard').currentPage;
-				if (curPage) {
-					document.getElementById('addressbook-wizard').canAdvance = true;
-				}
-			} else {
-				wdw_addressbooksAdd.checkRequired();
 			}
 		},
 
@@ -106,13 +105,26 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				wdw_addressbooksAdd.loadStandardAddressBooks();
 				page.next = 'namesPage';
 			} else if (type == 'search') {
+				wdw_addressbooksAdd.initSearchDefinition();
 				page.next = 'searchPage';
 			}
 		},
 
 		localPageTypeSelect: function () {
 			document.getElementById('localPageURI').value = "";
-			wdw_addressbooksAdd.localPageCheckRequired();
+			var type = document.getElementById('localPageType').selectedItem.value;
+			if (type == "createDB") {
+				document.getElementById('localPageURI').setAttribute('required', 'false');
+				document.getElementById('localPageURILabel').setAttribute('disabled', 'true');
+				document.getElementById('localPageURI').setAttribute('disabled', 'true');
+				document.getElementById('localPageURIButton').setAttribute('disabled', 'true');
+			} else {
+				document.getElementById('localPageURI').setAttribute('required', 'true');
+				document.getElementById('localPageURILabel').setAttribute('disabled', 'false');
+				document.getElementById('localPageURI').setAttribute('disabled', 'false');
+				document.getElementById('localPageURIButton').setAttribute('disabled', 'false');
+			}
+			wdw_addressbooksAdd.checkRequired();
 		},
 
 		localPageTypeAdvance: function () {
@@ -188,12 +200,12 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 		},
 
 		checklocationNetwork: function () {
-			document.getElementById('resultValidation').hidden = true;
 			var canValidate = true;
 			var curPage = document.getElementById('addressbook-wizard').currentPage;
 			if (curPage) {
 				if (wdw_addressbooksAdd.gValidateURL) {
 					document.getElementById('addressbook-wizard').canAdvance = wdw_addressbooksAdd.gValidateURL;
+					document.getElementById('validateButton').disabled = !wdw_addressbooksAdd.gValidateURL;
 				} else {
 					document.getElementById('addressbook-wizard').canAdvance = wdw_addressbooksAdd.gValidateURL;
 					let eList = curPage.getElementsByAttribute('required', 'true');
@@ -238,38 +250,59 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				document.getElementById('passwordCheckBox').disabled=false;
 			}
 			wdw_addressbooksAdd.checklocationNetwork();
+			cardbookNotifications.setNotification("resultNotifications", "OK");
 		},
 
 		remotePageTextboxInput: function () {
 			wdw_addressbooksAdd.gValidateURL = false;
 			wdw_addressbooksAdd.checklocationNetwork();
+			cardbookNotifications.setNotification("resultNotifications", "OK");
 		},
 
 		remotePageTypeAdvance: function () {
 			wdw_addressbooksAdd.gType = document.getElementById('remotePageType').selectedItem.value;
 		},
 
-		searchPageAdvance: function () {
-			wdw_addressbooksAdd.gType = "SEARCH";
-			wdw_addressbooksAdd.gTypeFile = cardbookComplexSearch.getSearch();
+		constructComplexSearch: function () {
+			cardbookElementTools.loadAddressBooks("addressbookMenupopup", "addressbookMenulist", wdw_addressbooksAdd.gSearchDefinition.searchAB, true, true, true, false);
+			cardbookComplexSearch.loadMatchAll(wdw_addressbooksAdd.gSearchDefinition.matchAll);
+			cardbookComplexSearch.constructDynamicRows("searchTerms", wdw_addressbooksAdd.gSearchDefinition.rules, "3.0");
+			document.getElementById('searchTerms_0_valueBox').focus();
 		},
 
 		checkSearch: function () {
-			cardbookComplexSearch.initComplexSearch(window.arguments[0].searchId);
-			if (window.arguments[0].searchId != null && window.arguments[0].searchId !== undefined && window.arguments[0].searchId != "") {
-				document.getElementById('addressbook-wizard').canAdvance = true;
-			} else {
-				document.getElementById('addressbook-wizard').canAdvance = false;
-			}
-			function checkTerms(event) {
+			wdw_addressbooksAdd.constructComplexSearch();
+			document.getElementById('addressbook-wizard').canAdvance = false;
+			function checkTerms() {
 				if (cardbookComplexSearch.getSearch() != "") {
 					document.getElementById('addressbook-wizard').canAdvance = true;
 				} else {
 					document.getElementById('addressbook-wizard').canAdvance = false;
 				}
 			};
+			checkTerms();
 			document.getElementById('searchTerms').addEventListener("input", checkTerms, false);
 			document.getElementById('searchTerms').addEventListener("command", checkTerms, false);
+			document.getElementById('searchTerms').addEventListener("click", checkTerms, false);
+		},
+
+		searchPageAdvance: function () {
+			wdw_addressbooksAdd.gType = "SEARCH";
+			wdw_addressbooksAdd.gTypeFile = cardbookComplexSearch.getSearch();
+
+			var relative = wdw_addressbooksAdd.gTypeFile.match("^searchAB:([^:]*):searchAll:([^:]*)(.*)");
+			wdw_addressbooksAdd.gSearchDefinition.searchAB = relative[1];
+			if (relative[2] == "true") {
+				wdw_addressbooksAdd.gSearchDefinition.matchAll = true;
+			} else {
+				wdw_addressbooksAdd.gSearchDefinition.matchAll = false;
+			}
+			var tmpRuleArray = relative[3].split(/:case:/);
+			wdw_addressbooksAdd.gSearchDefinition.rules = [];
+			for (var i = 1; i < tmpRuleArray.length; i++) {
+				var relative = tmpRuleArray[i].match("([^:]*):field:([^:]*):term:([^:]*):value:([^:]*)");
+				wdw_addressbooksAdd.gSearchDefinition.rules.push([relative[1], relative[2], relative[3], relative[4]]);
+			}
 		},
 
 		showPassword: function () {
@@ -299,8 +332,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			document.getElementById('remotePageURI').value = wdw_addressbooksAdd.decodeURL(document.getElementById('remotePageURI').value.trim());
 			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
 			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
-			document.getElementById('resultValidation').value = strBundle.GetStringFromName("ValidatingLabel");
-			document.getElementById('resultValidation').hidden = false;
+			cardbookNotifications.setNotification("resultNotifications", "ValidatingLabel", "", "PRIORITY_INFO_MEDIUM");
 			document.getElementById('validateButton').disabled = true;
 			
 			var type = document.getElementById('remotePageType').selectedItem.value;
@@ -315,7 +347,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			}
 			
 			if (cardbookSynchronization.getRootUrl(url) == "") {
-				document.getElementById('resultValidation').value = strBundle.GetStringFromName("ValidatingURLFailedLabel") + " : " + url;
+				cardbookNotifications.setNotification("resultNotifications", "ValidatingURLFailedLabel");
 				return;
 			}
 
@@ -327,11 +359,12 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				cardbookSynchronization.requestNewRefreshToken(connection);
 				wdw_addressbooksAdd.waitForRefreshTokenFinished(dirPrefId);
 			} else {
-				wdw_addressbooksAdd.validateCardDAVURL(dirPrefId, url, username, password, type);
+				// first try the CardDAV URL, then we'll try a discovery
+				wdw_addressbooksAdd.validateCardDAVURL(dirPrefId, url, username, password, type, false);
 			}
 		},
 
-		validateCardDAVURL: function (aDirPrefId, aUrl, aUsername, aPassword, aType) {
+		validateCardDAVURL: function (aDirPrefId, aUrl, aUsername, aPassword, aType, aDiscovery) {
 			let cardbookPrefService = new cardbookPreferenceService(aDirPrefId);
 			cardbookPrefService.setId(aDirPrefId);
 			cardbookPrefService.setUrl(aUrl);
@@ -342,11 +375,26 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			cardbookSynchronization.initURLValidation(aDirPrefId);
 			cardbookRepository.cardbookServerSyncRequest[aDirPrefId]++;
 			var connection = {connUser: aUsername, connPrefId: aDirPrefId, connPrefIdType: aType, connUrl: aUrl, connDescription: wdw_addressbooksAdd.gValidateDescription};
-			cardbookSynchronization.discoverPhase1(connection, "GETDISPLAYNAME");
-			wdw_addressbooksAdd.waitForDiscoveryFinished(aDirPrefId, aUrl, aUsername, aPassword);
+			if (aType == 'APPLE') {
+				var aTryDiscovery = false;
+				cardbookSynchronization.discoverPhase1(connection, "GETDISPLAYNAME");
+			} else {
+				if (!aDiscovery) {
+					var aTryDiscovery = true;
+					cardbookSynchronization.validateWithoutDiscovery(connection);
+				} else {
+					var aTryDiscovery = false;
+					if (connection.connUrl[connection.connUrl.length - 1] != '/') {
+						connection.connUrl += '/';
+					}
+					connection.connUrl += '.well-known/carddav';
+					cardbookSynchronization.discoverPhase1(connection, "GETDISPLAYNAME");
+				}
+			}
+			wdw_addressbooksAdd.waitForDiscoveryFinished(aDirPrefId, aUrl, aUsername, aPassword, aType, aTryDiscovery);
 		},
 
-		waitForDiscoveryFinished: function (aDirPrefId, aUrl, aUsername, aPassword, aType) {
+		waitForDiscoveryFinished: function (aDirPrefId, aUrl, aUsername, aPassword, aType, aTryDiscovery) {
 			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
 			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 			lTimerDiscovery = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);
@@ -354,36 +402,43 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 						wdw_cardbooklog.updateStatusProgressInformationWithDebug1(wdw_addressbooksAdd.gValidateDescription + " : debug mode : cardbookRepository.cardbookServerDiscoveryRequest : ", cardbookRepository.cardbookServerDiscoveryRequest[aDirPrefId]);
 						wdw_cardbooklog.updateStatusProgressInformationWithDebug1(wdw_addressbooksAdd.gValidateDescription + " : debug mode : cardbookRepository.cardbookServerDiscoveryResponse : ", cardbookRepository.cardbookServerDiscoveryResponse[aDirPrefId]);
 						wdw_cardbooklog.updateStatusProgressInformationWithDebug1(wdw_addressbooksAdd.gValidateDescription + " : debug mode : cardbookRepository.cardbookServerDiscoveryError : ", cardbookRepository.cardbookServerDiscoveryError[aDirPrefId]);
-						wdw_cardbooklog.updateStatusProgressInformationWithDebug1(wdw_addressbooksAdd.gValidateDescription + " : debug mode : cardbookRepository.cardbookServerValidation : ", cardbookRepository.cardbookServerValidation);
+						wdw_cardbooklog.updateStatusProgressInformationWithDebug1(wdw_addressbooksAdd.gValidateDescription + " : debug mode : cardbookRepository.cardbookServerValidation : ", cardbookRepository.cardbookServerValidation.toSource());
 						if (cardbookRepository.cardbookServerDiscoveryError[aDirPrefId] >= 1) {
-							document.getElementById('resultValidation').value = strBundle.GetStringFromName("ValidationFailedLabel");
-							document.getElementById('validateButton').disabled = false;
-							cardbookSynchronization.finishMultipleOperations(aDirPrefId);
-							let cardbookPrefService = new cardbookPreferenceService(aDirPrefId);
-							cardbookPrefService.delBranch();
+							if (aTryDiscovery) {
+								cardbookSynchronization.finishMultipleOperations(aDirPrefId);
+								let cardbookPrefService = new cardbookPreferenceService(aDirPrefId);
+								cardbookPrefService.delBranch();
+								document.getElementById('validateButton').disabled = true;
+								wdw_addressbooksAdd.validateCardDAVURL(aDirPrefId, aUrl, aUsername, aPassword, aType, true);
+							} else {
+								cardbookNotifications.setNotification("resultNotifications", "ValidationFailedLabel");
+								wdw_addressbooksAdd.gValidateURL = false;
+								wdw_addressbooksAdd.checklocationNetwork();
+								cardbookSynchronization.finishMultipleOperations(aDirPrefId);
+								let cardbookPrefService = new cardbookPreferenceService(aDirPrefId);
+								cardbookPrefService.delBranch();
+							}
 							lTimerDiscovery.cancel();
 						} else if (cardbookRepository.cardbookServerDiscoveryRequest[aDirPrefId] !== cardbookRepository.cardbookServerDiscoveryResponse[aDirPrefId] || cardbookRepository.cardbookServerDiscoveryResponse[aDirPrefId] === 0) {
-							document.getElementById('resultValidation').value = strBundle.GetStringFromName("ValidatingLabel") + " : " + cardbookRepository.cardbookServerDiscoveryResponse[aDirPrefId] + "/4";
+							cardbookNotifications.setNotification("resultNotifications", "ValidatingLabel", "", "PRIORITY_INFO_MEDIUM");
 						} else {
-							document.getElementById('resultValidation').value = strBundle.GetStringFromName("ValidationFailedLabel");
-							wdw_addressbooksAdd.gValidateURL = false;
 							// searching if ctag have been found
 							for (var url in cardbookRepository.cardbookServerValidation) {
-								for (var i = 0; i < cardbookRepository.cardbookServerValidation[url].length; i++) {
-									document.getElementById('resultValidation').value = strBundle.GetStringFromName("ValidationOKLabel");
+								var page = document.getElementsByAttribute('pageid', 'remotePage')[0];
+								if (cardbookRepository.cardbookServerValidation[url].length == 0) {
+									cardbookNotifications.setNotification("resultNotifications", "ValidationFailedLabel");
+									wdw_addressbooksAdd.gValidateURL = false;
+								} else if (cardbookRepository.cardbookServerValidation[url].length > 0) {
+									cardbookNotifications.setNotification("resultNotifications", "OK");
 									wdw_addressbooksAdd.gValidateURL = true;
 									wdw_addressbooksAdd.checklocationNetwork();
-									break;
+									page.next = 'namePage';
 								}
-								var page = document.getElementsByAttribute('pageid', 'remotePage')[0];
 								if (cardbookRepository.cardbookServerValidation[url].length > 1) {
 									page.next = 'namesPage';
-								} else {
-									page.next = 'namePage';
 								}
 							}
 							cardbookSynchronization.finishMultipleOperations(aDirPrefId);
-							document.getElementById('validateButton').disabled = false;
 							let cardbookPrefService = new cardbookPreferenceService(aDirPrefId);
 							cardbookPrefService.delBranch();
 							lTimerDiscovery.cancel();
@@ -398,18 +453,18 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			lTimerRefreshToken = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);
 			lTimerRefreshToken.initWithCallback({ notify: function(lTimerRefreshToken) {
 						if (cardbookRepository.cardbookGoogleRefreshTokenError[aPrefId]  >= 1) {
+							cardbookNotifications.setNotification("resultNotifications", "ValidationFailedLabel");
+							wdw_addressbooksAdd.gValidateURL = false;
+							wdw_addressbooksAdd.checklocationNetwork();
 							cardbookSynchronization.finishMultipleOperations(aPrefId);
-							document.getElementById('resultValidation').value = strBundle.GetStringFromName("ValidationFailedLabel");
 							lTimerRefreshToken.cancel();
-							document.getElementById('validateButton').disabled = false;
 						} else if (cardbookRepository.cardbookGoogleRefreshTokenResponse[aPrefId] !== 1) {
-							document.getElementById('resultValidation').value = strBundle.GetStringFromName("ValidatingLabel");
+							cardbookNotifications.setNotification("resultNotifications", "ValidatingLabel", "", "PRIORITY_INFO_MEDIUM");
 						} else {
-							cardbookSynchronization.finishMultipleOperations(aPrefId);
-							document.getElementById('resultValidation').value = strBundle.GetStringFromName("ValidationOKLabel");
-							document.getElementById('validateButton').disabled = false;
+							cardbookNotifications.setNotification("resultNotifications", "OK");
 							wdw_addressbooksAdd.gValidateURL = true;
 							wdw_addressbooksAdd.checklocationNetwork();
+							cardbookSynchronization.finishMultipleOperations(aPrefId);
 							lTimerRefreshToken.cancel();
 						}
 					}
