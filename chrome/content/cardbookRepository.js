@@ -64,7 +64,6 @@ var cardbookRepository = {
 	cardbookServerDiscoveryRequest : {},
 	cardbookServerDiscoveryResponse : {},
 	cardbookServerDiscoveryError : {},
-	cardbookServerDiscoveryErrorMsg : {},
 	cardbookServerSyncRequest : {},
 	cardbookServerSyncResponse : {},
 	cardbookServerSyncEmptyCache : {},
@@ -414,7 +413,7 @@ var cardbookRepository = {
 		lResult = lResult + aCard.fn;
 		lResult = lResult + aCard.nickname;
 		lResult = lResult + aCard.bday;
-		lResult = lResult + aCard.categories.join();
+		// lResult = lResult + aCard.categories.join();
 		for (let i = 0; i < aCard.adr.length; i++) {
 			lResult = lResult + aCard.adr[i][0].join();
 		}

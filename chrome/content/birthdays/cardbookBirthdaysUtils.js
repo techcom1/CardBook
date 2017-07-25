@@ -336,6 +336,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			loader.loadSubScript("chrome://cardbook/content/cardbookUtils.js");
 			var myContact = cardbookBirthdaysUtils.getPref("extensions.cardbook.addressBooksNameList");
 			var searchInNote = cardbookBirthdaysUtils.getPref("extensions.cardbook.searchInNote");
+			var useOnlyEmail = cardbookBirthdaysUtils.getPref("extensions.cardbook.useOnlyEmail");
 			var strBundle = document.getElementById("cardbook-strings");
 			var eventInNoteEventPrefix = strBundle.getString("eventInNoteEventPrefix");
 			cardbookBirthdaysUtils.lBirthdayList = [];
@@ -352,7 +353,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 							if (myCard.bday != "") {
 								var lDateOfBirth = cardbookDates.isDateStringCorrectlyFormatted(myCard.bday, dateFormat);
 								if (lDateOfBirth != "WRONGDATE") {
-									listOfEmail = cardbookUtils.getMimeEmailsFromCards([myCard]);
+									listOfEmail = cardbookUtils.getMimeEmailsFromCards([myCard], useOnlyEmail);
 									cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, lDateOfBirth, myCard.fn, lnumberOfDays, myCard.bday, listOfEmail, myDirPrefId);
 								} else {
 									cardbookUtils.formatStringForOutput("birthdayEntry1Wrong", [myDirPrefName, myCard.fn, myCard.bday, dateFormat], "Warning");
@@ -369,7 +370,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 											var lNotesDateFound = lNotesLine[a].replace(EmptyParamRegExp1, "$2").replace(/^\s+|\s+$/g,"");
 											var lNotesDate = cardbookDates.isDateStringCorrectlyFormatted(lNotesDateFound, dateFormat);
 											if (lNotesDate != "WRONGDATE") {
-												listOfEmail = cardbookUtils.getMimeEmailsFromCards([myCard]);
+												listOfEmail = cardbookUtils.getMimeEmailsFromCards([myCard], useOnlyEmail);
 												cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, lNotesDate, lNotesName, lnumberOfDays, lNotesDateFound, listOfEmail, myDirPrefId);
 											} else {
 												cardbookUtils.formatStringForOutput("birthdayEntry2Wrong", [myDirPrefName, myCard.fn, lNotesDateFound, dateFormat], "Warning");
@@ -384,7 +385,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 											var lNotesDateFound = lNotesLine[a].replace(EmptyParamRegExp1, "$2").replace(/^\s+|\s+$/g,"");
 											var lNotesDate = cardbookDates.isDateStringCorrectlyFormatted(lNotesDateFound, dateFormat);
 											if (lNotesDate != "WRONGDATE") {
-												listOfEmail = cardbookUtils.getMimeEmailsFromCards([myCard]);
+												listOfEmail = cardbookUtils.getMimeEmailsFromCards([myCard], useOnlyEmail);
 												cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, lNotesDate, lNotesName, lnumberOfDays, lNotesDateFound, listOfEmail, myDirPrefId);
 											} else {
 												cardbookUtils.formatStringForOutput("birthdayEntry2Wrong", [myDirPrefName, myCard.fn, lNotesDateFound, dateFormat], "Warning");

@@ -35,5 +35,4 @@
 			oncommand="LoadIdentity(false);" disableonsend="true" onchange="ovl_cardbookComposeMsg.onIdentityChanged();">
 		<menupopup id="msgIdentityPopup"/>
 	</menulist>
-	
 </overlay>

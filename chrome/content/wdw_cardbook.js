@@ -1202,13 +1202,19 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		},
 
 		emailCards: function (aListOfSelectedCard, aListOfSelectedMails, aMsgField) {
+			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var useOnlyEmail = prefs.getBoolPref("extensions.cardbook.useOnlyEmail");
 			var result = {};
 			if (aListOfSelectedCard != null && aListOfSelectedCard !== undefined && aListOfSelectedCard != "") {
-				result = cardbookUtils.getMimeEmailsFromCardsAndLists(aListOfSelectedCard);
+				result = cardbookUtils.getMimeEmailsFromCardsAndLists(aListOfSelectedCard, useOnlyEmail);
 			} else if (aListOfSelectedMails != null && aListOfSelectedMails !== undefined && aListOfSelectedMails != "") {
 				result.emptyResults = [];
 				result.notEmptyResults = [];
-				result.notEmptyResults.push(MailServices.headerParser.makeMimeAddress(aListOfSelectedMails[0], aListOfSelectedMails[1]));
+				if (useOnlyEmail) {
+					result.notEmptyResults.push(aListOfSelectedMails[1]);
+				} else {
+					result.notEmptyResults.push(MailServices.headerParser.makeMimeAddress(aListOfSelectedMails[0], aListOfSelectedMails[1]));
+				}
 			}
 			var warnCheck = true;
 			if (result.emptyResults.length != 0) {

@@ -423,7 +423,7 @@ cardbookCardParser.prototype = {
 							break;
 						default:
 							if (vCardDataArrayHeaderKey != null && vCardDataArrayHeaderKey !== undefined && vCardDataArrayHeaderKey != "") {
-								this.others.push(vCardDataArrayHeaderKey + ":" + vCardDataArrayTrailer);
+								this.others.push(vCardDataArrayHeader + ":" + vCardDataArrayTrailer);
 							}
 					}
 				}

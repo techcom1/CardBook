@@ -1,7 +1,7 @@
 if ("undefined" == typeof(cardbookNotifications)) {
 	var cardbookNotifications = {
 		
-		setNotification: function(aNotificationBoxId, aReasonCode, aValue) {
+		setNotification: function(aNotificationBoxId, aReasonCode, aValue, aPriority) {
 			var notificationBox = document.getElementById(aNotificationBoxId);
 			if (aReasonCode == "OK") {
 				notificationBox.removeAllNotifications();
@@ -14,12 +14,17 @@ if ("undefined" == typeof(cardbookNotifications)) {
 				if (!existingBox) {
 					notificationBox.removeAllNotifications();
 					var strBundle = document.getElementById("cardbook-strings");
-					if (aValue) {
-						var aReason = strBundle.getFormattedString(aReasonCode, [aValue]);
+					if (aValue && aValue != "") {
+						var myReason = strBundle.getFormattedString(aReasonCode, [aValue]);
 					} else {
-						var aReason = strBundle.getString(aReasonCode);
+						var myReason = strBundle.getString(aReasonCode);
 					}
-					notificationBox.appendNotification(aReason, aNotificationCode, null, notificationBox.PRIORITY_WARNING_MEDIUM, null);
+					if (aPriority) {
+						var myPriority = notificationBox[aPriority];
+					} else {
+						var myPriority = notificationBox.PRIORITY_WARNING_MEDIUM;
+					}
+					notificationBox.appendNotification(myReason, aNotificationCode, null, myPriority, null);
 					notificationBox.getNotificationWithValue(aNotificationCode).setAttribute("hideclose", "true");
 				}
 			}

@@ -30,6 +30,7 @@
 	
 	<script src="chrome://cardbook/content/wdw_log.js"/>
 	<script src="chrome://cardbook/content/cardbookUtils.js"/>
+	<script src="chrome://cardbook/content/cardbookNotifications.js"/>
 	<script src="chrome://cardbook/content/preferences/cardbookPreferences.js"/>
 	<script src="chrome://cardbook/content/cardbookCardParser.js"/>
 	<script src="chrome://cardbook/content/cardbookPasswordManager.js"/>

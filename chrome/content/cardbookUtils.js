@@ -2260,19 +2260,35 @@ if ("undefined" == typeof(cardbookUtils)) {
 			return emailResult;
 		},
 
-		getMimeEmailsFromCards: function (aListOfCards) {
+		getMimeEmailsFromCards: function (aListOfCards, aOnlyEmail) {
 			Components.utils.import("resource:///modules/mailServices.js");
+			if (aOnlyEmail) {
+				var useOnlyEmail = aOnlyEmail;
+			} else {
+				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+				var useOnlyEmail = prefs.getBoolPref("extensions.cardbook.useOnlyEmail");
+			}
 			var result = [];
 			for (var i = 0; i < aListOfCards.length; i++) {
 				for (var j = 0; j < aListOfCards[i].emails.length; j++) {
-					result.push(MailServices.headerParser.makeMimeAddress(aListOfCards[i].fn, aListOfCards[i].emails[j]));
+					if (useOnlyEmail) {
+						result.push(aListOfCards[i].emails[j]);
+					} else {
+						result.push(MailServices.headerParser.makeMimeAddress(aListOfCards[i].fn, aListOfCards[i].emails[j]));
+					}
 				}
 			}
 			return result;
 		},
 
-		getMimeEmailsFromCardsAndLists: function (aListOfCards) {
+		getMimeEmailsFromCardsAndLists: function (aListOfCards, aOnlyEmail) {
 			Components.utils.import("resource:///modules/mailServices.js");
+			if (aOnlyEmail) {
+				var useOnlyEmail = aOnlyEmail;
+			} else {
+				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+				var useOnlyEmail = prefs.getBoolPref("extensions.cardbook.useOnlyEmail");
+			}
 			var result = {};
 			result.emptyResults = [];
 			result.notEmptyResults = [];
@@ -2285,7 +2301,11 @@ if ("undefined" == typeof(cardbookUtils)) {
 							result.emptyResults.push(listOfEmail[j][0]);
 						} else {
 							for (var k = 0; k < listOfEmail[j][1].length; k++) {
-								result.notEmptyResults.push(MailServices.headerParser.makeMimeAddress(listOfEmail[j][0], listOfEmail[j][1][k]));
+								if (useOnlyEmail) {
+									result.notEmptyResults.push(listOfEmail[j][1][k]);
+								} else {
+									result.notEmptyResults.push(MailServices.headerParser.makeMimeAddress(listOfEmail[j][0], listOfEmail[j][1][k]));
+								}
 							}
 						}
 					}
@@ -2294,7 +2314,11 @@ if ("undefined" == typeof(cardbookUtils)) {
 						result.emptyResults.push(aListOfCards[i].fn);
 					} else {
 						for (var j = 0; j < aListOfCards[i].emails.length; j++) {
-							result.notEmptyResults.push(MailServices.headerParser.makeMimeAddress(aListOfCards[i].fn, aListOfCards[i].emails[j]));
+							if (useOnlyEmail) {
+								result.notEmptyResults.push(aListOfCards[i].emails[j]);
+							} else {
+								result.notEmptyResults.push(MailServices.headerParser.makeMimeAddress(aListOfCards[i].fn, aListOfCards[i].emails[j]));
+							}
 						}
 					}
 				}

@@ -24,6 +24,7 @@ pref("extensions.cardbook.decodeReport", true);
 
 pref("extensions.cardbook.preferEmailPref", true);
 pref("extensions.cardbook.warnEmptyEmails", true);
+pref("extensions.cardbook.useOnlyEmail", false); 
 
 pref("extensions.cardbook.preferenceValueLabel", "");
 
@@ -63,4 +64,4 @@ pref("extensions.cardbook.viewABPane", true);
 pref("extensions.cardbook.viewABContact", true);
 
 pref("extensions.cardbook.uncategorizedCards", "");
-pref("extensions.cardbook.addonVersion", "21.1");
+pref("extensions.cardbook.addonVersion", "21.2");

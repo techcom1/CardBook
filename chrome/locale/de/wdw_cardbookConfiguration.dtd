@@ -193,6 +193,8 @@
 <!ENTITY preferEmailPrefWarn "Ist keine Adresse mit dem Typ 'pref' vorhanden, so werden alle Adressen genutzt.">
 <!ENTITY warnEmptyEmailsLabel "Mich warnen, wenn ich versuche an einen Kontakt zu senden, zu dem keine E-Mailadresse gespeichert ist">
 <!ENTITY warnEmptyEmailsAccesskey "W">
+<!ENTITY useOnlyEmailLabel "??Use only email addresses??">
+<!ENTITY useOnlyEmailAccesskey "U">
 <!ENTITY attachvCardWarn "Automatisch vCard an Emails anhängen: Eine vCard pro E-Mail-Konto auswählen. Falls aktiviert wird diese vCard an jede ausgehende E-Mail angehängt.">
 <!ENTITY attachvCardGroupboxLabel "Fürs an Email anhängen">
 <!ENTITY mailAccountsEnabledLabel "Aktiviert">

@@ -192,6 +192,8 @@
 <!ENTITY preferEmailPrefWarn "Jeśli żaden z adresów nie jest oznaczony jako Podstawowy, wiadomość zostanie wysłana na wszystkie adresy z wizytówki.">
 <!ENTITY warnEmptyEmailsLabel "Ostrzegaj, jeśli próbuję wysłać e-mail do wizytówki bez adresu e-mail">
 <!ENTITY warnEmptyEmailsAccesskey "O">
+<!ENTITY useOnlyEmailLabel "??Use only email addresses??">
+<!ENTITY useOnlyEmailAccesskey "U">
 <!ENTITY attachvCardWarn "Aby automatycznie dodawać vCard do Twoich e-maili, wybierz vCard dla każdego konta pocztowego. Gdy ta opcja jest włączona, CardBook załączy wybrany vCard do każdego e-maila wychodzącego z tego konta.">
 <!ENTITY attachvCardGroupboxLabel "Dodaj vCard">
 <!ENTITY mailAccountsEnabledLabel "Włączone">

@@ -92,6 +92,8 @@
 				name="extensions.cardbook.preferEmailPref" type="bool"/>
 			<preference id="extensions.cardbook.warnEmptyEmails"
 				name="extensions.cardbook.warnEmptyEmails" type="bool"/>
+			<preference id="extensions.cardbook.useOnlyEmail"
+				name="extensions.cardbook.useOnlyEmail" type="bool"/>
 			<preference id="extensions.cardbook.addressBooksNameList"
 				name="extensions.cardbook.addressBooksNameList" type="string"/>
 			<preference id="extensions.cardbook.calendarsNameList"
@@ -664,11 +666,13 @@
 							<image class="cardbookPrefStarClass"/>
 						</hbox>
 						<separator class="thin"/>
-						<hbox align="center">
-							<checkbox id="warnEmptyEmailsCheckBox" label="&warnEmptyEmailsLabel;"
-								accesskey="&warnEmptyEmailsAccesskey;"
-								preference="extensions.cardbook.warnEmptyEmails"/>
-						</hbox>
+						<checkbox id="warnEmptyEmailsCheckBox" label="&warnEmptyEmailsLabel;"
+							accesskey="&warnEmptyEmailsAccesskey;"
+							preference="extensions.cardbook.warnEmptyEmails"/>
+						<separator class="thin"/>
+						<checkbox id="useOnlyEmailCheckBox" label="&useOnlyEmailLabel;"
+							accesskey="&useOnlyEmailAccesskey;"
+							preference="extensions.cardbook.useOnlyEmail"/>
 					</groupbox>
 					<separator class="thin"/>
 					<groupbox flex="1">
