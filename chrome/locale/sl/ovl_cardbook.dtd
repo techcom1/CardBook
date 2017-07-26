@@ -10,8 +10,8 @@
 
 <!ENTITY newCardBookCardMenuLabel "Stik CardBook …">
 <!ENTITY newCardBookCardMenuAccesskey "S">
-<!ENTITY newCardBookSearchMenuLabel "??Search CardBook…??">
-<!ENTITY newCardBookSearchMenuAccesskey "C">
+<!ENTITY newCardBookSearchMenuLabel "Išči po CardBooku …">
+<!ENTITY newCardBookSearchMenuAccesskey "š">
 <!ENTITY addToCardBookMenuLabel "Dodaj stik CardBook">
 <!ENTITY addToCardBookMenuAccesskey "D">
 <!ENTITY editInCardBookMenuLabel "Uredi stik CardBook">
