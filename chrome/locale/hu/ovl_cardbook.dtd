@@ -22,11 +22,11 @@
 <!ENTITY IMPPMenuAccesskey "C">
 <!ENTITY findAllEmailsFromContactMessengerLabel "Üzenetek az névjegy keresése">
 <!ENTITY findAllEmailsFromContactMessengerAccesskey "Ü">
-<!ENTITY findEmailsFromEmailMessengerLabel "Üzenetek az email keresése">
+<!ENTITY findEmailsFromEmailMessengerLabel "Üzenetek az e-mail keresése">
 <!ENTITY findEmailsFromEmailMessengerAccesskey "k">
 <!ENTITY findAllEventsFromContactMessengerLabel "Eseménynaptár az névjegy keresése">
 <!ENTITY findAllEventsFromContactMessengerAccesskey "E">
-<!ENTITY findEventsFromEmailMessengerLabel "Eseménynaptár az email keresése">
+<!ENTITY findEventsFromEmailMessengerLabel "Eseménynaptár az e-mail keresése">
 <!ENTITY findEventsFromEmailMessengerAccesskey "r">
 
 <!ENTITY mailContext-addToCardBookMenuLabel "Felvétel a névjegyzékbe (Névjegyzék)…">

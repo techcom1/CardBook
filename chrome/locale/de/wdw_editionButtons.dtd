@@ -12,7 +12,7 @@
 <!ENTITY cancelEditionAccesskey "A">
 <!ENTITY closeEditionLabel "Schließen">
 <!ENTITY closeEditionAccesskey "S">
-<!ENTITY buttonAppendToListLabel "Ersetzen">
+<!ENTITY buttonAppendToListLabel "Übernehmen">
 <!ENTITY buttonAppendToListAccesskey "R">
 <!ENTITY buttonRemoveFromListLabel "Entfernen">
 <!ENTITY buttonRemoveFromListAccesskey "N">

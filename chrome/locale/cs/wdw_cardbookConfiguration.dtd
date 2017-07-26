@@ -192,9 +192,9 @@
 <!ENTITY preferEmailPrefAccesskey "W">
 <!ENTITY preferEmailPrefWarn "Pokud není žádná z adres označena jako 'PREFerovaná', zprávaje poslána na všechny adresy kontaktu.">
 <!ENTITY warnEmptyEmailsLabel "Upozornit mě při pokusu o odeslání e-mailu kontaktu bez e-mailové adresy">
-<!ENTITY warnEmptyEmailsAccesskey "W">
-<!ENTITY useOnlyEmailLabel "??Use only email addresses??">
-<!ENTITY useOnlyEmailAccesskey "U">
+<!ENTITY warnEmptyEmailsAccesskey "U">
+<!ENTITY useOnlyEmailLabel "Použít pouze e-mailové adresy">
+<!ENTITY useOnlyEmailAccesskey "P">
 <!ENTITY attachvCardWarn "Pokud chcete ke každé zprávě automaticky přiložit svou vizitku, zvolte pro každý e-mailový účet, která se má použít. Pokud je aktivní, CardBook automaticky přiloží vybranou vizitku ke každé odchozí zprávě.">
 <!ENTITY attachvCardGroupboxLabel "Připojit vCard">
 <!ENTITY mailAccountsEnabledLabel "Povolen">

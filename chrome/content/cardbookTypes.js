@@ -381,7 +381,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 					} else {
 						currentRow = cardbookTypes.addRow(aOrigBox, 'orgRow_' + i);
 						cardbookTypes.addLabel(currentRow, 'orgLabel_' + i, myOrgStructure[i], 'orgTextBox_' + i, {class: 'header'});
-						var myTextBox = cardbookElementTools.addTextbox(currentRow, 'orgTextBox_' + i, myValue, {flex: '1'});
+						var myTextBox = cardbookElementTools.addTextbox(currentRow, 'orgTextBox_' + i, myValue, {flex: '1', type: 'autocomplete', autocompletesearch: 'form-history', autocompletesearchparam: 'orgTextBox_' + i, class:'padded'});
 						myTextBox.addEventListener("input", wdw_cardEdition.setDisplayName, false);
 					}
 				}
@@ -396,7 +396,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 				} else {
 					currentRow = cardbookTypes.addRow(aOrigBox, 'orgRow_0');
 					cardbookTypes.addLabel(currentRow, 'orgLabel', strBundle.getString("orgLabel"), 'orgTextBox_0', {class: 'header'});
-					var myTextBox = cardbookElementTools.addTextbox(currentRow, 'orgTextBox_0', myOrgValue, {flex: '1'});
+					var myTextBox = cardbookElementTools.addTextbox(currentRow, 'orgTextBox_0', myOrgValue, {flex: '1', type: 'autocomplete', autocompletesearch: 'form-history', autocompletesearchparam: 'orgTextBox_0', class:'padded'});
 					myTextBox.addEventListener("input", wdw_cardEdition.setDisplayName, false);
 				}
 			}
@@ -414,10 +414,10 @@ if ("undefined" == typeof(cardbookTypes)) {
 			} else {
 				currentRow = cardbookTypes.addRow(aOrigBox, 'titleRow');
 				cardbookTypes.addLabel(currentRow, 'titleLabel', strBundle.getString("titleLabel"), 'titleTextBox', {class: 'header'});
-				cardbookElementTools.addTextbox(currentRow, 'titleTextBox', aTitleValue, {flex: '1'});
+				cardbookElementTools.addTextbox(currentRow, 'titleTextBox', aTitleValue, {flex: '1', type: 'autocomplete', autocompletesearch: 'form-history', autocompletesearchparam: 'titleTextBox', class:'padded'});
 				currentRow = cardbookTypes.addRow(aOrigBox, 'roleRow');
 				cardbookTypes.addLabel(currentRow, 'roleLabel', strBundle.getString("roleLabel"), 'roleTextBox', {class: 'header'});
-				cardbookElementTools.addTextbox(currentRow, 'roleTextBox', aRoleValue, {flex: '1'});
+				cardbookElementTools.addTextbox(currentRow, 'roleTextBox', aRoleValue, {flex: '1', type: 'autocomplete', autocompletesearch: 'form-history', autocompletesearchparam: 'roleTextBox', class:'padded'});
 			}
 		},
 
@@ -592,11 +592,6 @@ if ("undefined" == typeof(cardbookTypes)) {
 				};
 				document.getElementById(aType + '_' + aIndex + '_valueBox').addEventListener("click", fireEditAdr, false);
 				document.getElementById(aType + '_' + aIndex + '_valueBox').addEventListener("input", fireEditAdr, false);
-				// save the information in case of a hiding (especially when another window opens up
-				function firePopupHidingAdr() {
-					wdw_cardEdition.validateAdrPanel();
-				};
-				document.getElementById('adrPanel').addEventListener("popuphiding", firePopupHidingAdr, false);
 			}
 		
 			for (var i = 0; i < aCardValue.length; i++) {

@@ -509,11 +509,10 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			document.getElementById('adrRegionTextBox').value = cardbookUtils.undefinedToBlank(aAdrLine[0][4]);
 			document.getElementById('adrPostalCodeTextBox').value = cardbookUtils.undefinedToBlank(aAdrLine[0][5]);
 			document.getElementById('adrCountryTextBox').value = cardbookUtils.undefinedToBlank(aAdrLine[0][6]);
-			document.getElementById('adrStreetTextBox').focus();
 			document.getElementById('adrPanel').openPopup(document.getElementById(wdw_cardEdition.currentAdrId.join("_")), 'after_start', 0, 0, false, false);
 		},
 
-		cancelAdrPanel: function () {
+		closeAdrPanel: function () {
 			document.getElementById('adrPanel').hidePopup();
 		},
 
@@ -534,8 +533,10 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				}
 			}
 			document.getElementById(myId).value = myTmpArray.join(" ");
+		},
+
+		cancelAdrPanel: function () {
 			cardbookTypes.disableButtons(wdw_cardEdition.currentAdrId[0], wdw_cardEdition.currentAdrId[1], document.getElementById("versionTextBox").value);
-			document.getElementById(myId).focus();
 		},
 
 		displayCard: function (aCard) {
@@ -719,6 +720,29 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			wdw_cardEdition.loadDefaultVersion();
 			wdw_cardEdition.displayCard(wdw_cardEdition.workingCard);
 			wdw_cardEdition.loadEditionMode();
+			
+			// address panel behaviour
+			function firePopupShownAdr(event) {
+				//to avoid this would be fired by autocomplete popups
+				if (event.target.id == 'adrPanel') {
+					document.getElementById('adrStreetTextBox').focus();
+				}
+			};
+			document.getElementById('adrPanel').addEventListener("popupshown", firePopupShownAdr, false);
+			// save the information in case of a hiding (especially when another window opens up
+			function firePopupHidingAdr() {
+				wdw_cardEdition.validateAdrPanel();
+				wdw_cardEdition.cancelAdrPanel();
+			};
+			document.getElementById('adrPanel').addEventListener("popuphiding", firePopupHidingAdr, false);
+			function firePopupHiddenAdr(event) {
+				//to avoid this would be fired by autocomplete popups
+				if (event.target.id == 'adrPanel') {
+					var myId = wdw_cardEdition.currentAdrId.join("_");
+					document.getElementById(myId).focus();
+				}
+			};
+			document.getElementById('adrPanel').addEventListener("popuphidden", firePopupHiddenAdr, false);
 		},
 
 		saveMailPopularity: function () {
@@ -741,6 +765,42 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			}
 			if (i > 0) {
 				cardbookMailPopularity.writeMailPopularity();
+			}
+		},
+
+		updateFormHistory: function (aField) {
+			var myValue = document.getElementById(aField).value;
+			if (myValue == "") {
+				return;
+			}
+			if (FormHistory.enabled) {
+				FormHistory.update({
+					op: "bump",
+					fieldname: aField,
+					value: myValue
+				}, {handleError(aError) {
+						Components.utils.reportError("Saving find to form history failed: " + aError.message);
+					}
+				});
+			}
+		},
+
+		updateFormFields: function () {
+			Components.utils.import("resource://gre/modules/FormHistory.jsm");
+			// first static fields
+			var fieldHistorized = [ 'adrLocality', 'adrRegion', 'adrPostalCode', 'adrCountry', 'title', 'role' ];
+			for (var i in fieldHistorized) {
+				wdw_cardEdition.updateFormHistory(fieldHistorized[i] + 'TextBox');
+			}
+			// then dynamic fields
+			var i = 0;
+			while (true) {
+				if (document.getElementById('orgTextBox_' + i)) {
+					wdw_cardEdition.updateFormHistory('orgTextBox_' + i);
+					i++;
+				} else {
+					break;
+				}
 			}
 		},
 
@@ -811,6 +871,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				wdw_cardEdition.saveMailPopularity();
 				window.arguments[0].cardOut = myOutCard;
 				delete wdw_cardEdition.workingCard;
+				wdw_cardEdition.updateFormFields();
 				close();
 			}
 		},
@@ -833,9 +894,9 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		returnKey: function () {
 			if (window.arguments[0].editionMode == "ViewResult" || window.arguments[0].editionMode == "ViewResultHideCreate") {
 				return;
-			// the panel for addresses does not save information otherwise
-			} else {
-				wdw_cardEdition.cancelAdrPanel();
+			} else if (document.getElementById('adrPanel').state == 'open') {
+				wdw_cardEdition.validateAdrPanel();
+				return;
 			}
 			wdw_cardEdition.save();
 		},
