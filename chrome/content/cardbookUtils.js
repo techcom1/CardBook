@@ -2049,8 +2049,14 @@ if ("undefined" == typeof(cardbookUtils)) {
 			}
 		},
 
-		getExtension: function (aFile) {
-			var myFileArray = aFile.split(".");
+		getFileExtension: function (aFile) {
+			var myFileArray = aFile.split("/");
+			var myFileArray1 = myFileArray[myFileArray.length-1].split("\\");
+			return cardbookUtils.getFileNameExtension(myFileArray1[myFileArray1.length-1]);
+		},
+
+		getFileNameExtension: function (aFileName) {
+			var myFileArray = aFileName.split(".");
 			if (myFileArray.length == 1) {
 				var myExtension = "";
 			} else {

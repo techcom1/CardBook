@@ -390,6 +390,19 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			return {result: myArgs.result, resultConfirm: myArgs.resultConfirm};
 		},
 		
+		getSlashedUrl: function (aUrl) {
+			if (aUrl[aUrl.length - 1] != '/') {
+				aUrl += '/';
+			}
+			return aUrl;
+		},
+		
+		getWellKnownUrl: function (aUrl) {
+			aUrl = cardbookSynchronization.getSlashedUrl(aUrl);
+			aUrl += '.well-known/carddav';
+			return aUrl;
+		},
+		
 		getRootUrl: function (aUrl) {
 			try {
 				var urlArray1 = aUrl.split("://");
@@ -535,8 +548,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			if (aContentType.indexOf("text/x-vcard") == 0 || aContentType.indexOf("text/vcard") == 0) {
 				return true;
 			} else {
-				var myFileArray = aFileName.split(".");
-				var myExtension =  myFileArray[myFileArray.length-1];
+				var myExtension = cardbookUtils.getFileNameExtension(aFileName);
 				if (myExtension.toLowerCase() == "vcf") {
 					return true;
 				}
@@ -549,8 +561,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			if (aContentType.indexOf("text/x-vlist") == 0) {
 				return true;
 			} else {
-				var myFileArray = aFileName.split(".");
-				var myExtension =  myFileArray[myFileArray.length-1];
+				var myExtension =  cardbookUtils.getFileNameExtension(aFileName);
 				if (myExtension.toLowerCase() == "vcf") {
 					return true;
 				}
@@ -597,12 +608,12 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						}
 						aCard[aField].localURI = "file:///" + cacheDir.path;
 						aCard[aField].value = "";
-						aCard[aField].extension = cardbookUtils.getExtension(cacheDir.path);
+						aCard[aField].extension = cardbookUtils.getFileNameExtension(cacheDir.leafName);
 					} else {
 						cardbookSynchronization.writeContentToFile(cacheDir.path, aCard[aField].value, "NOUTF8");
 						aCard[aField].localURI = "file:///" + cacheDir.path;
 						aCard[aField].value = "";
-						aCard[aField].extension = cardbookUtils.getExtension(cacheDir.path);
+						aCard[aField].extension = cardbookUtils.getFileNameExtension(cacheDir.leafName);
 						wdw_cardbooklog.updateStatusProgressInformationWithDebug2(myPrefName + " : debug mode : Contact " + aCard.fn + " " + aField + " written to cache");
 					}
 				} else if (aCard[aField].localURI != null && aCard[aField].localURI !== undefined && aCard[aField].localURI != "") {
@@ -648,7 +659,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					} else {
 						aCard[aField].localURI = "file:///" + cacheDir.path;
 						aCard[aField].value = "";
-						aCard[aField].extension = cardbookUtils.getExtension(cacheDir.path);
+						aCard[aField].extension = cardbookUtils.getFileNameExtension(cacheDir.leafName);
 					}
 				}
 			}
@@ -682,7 +693,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 				}
 			};
 			cardbookUtils.nullifyTagModification(aCard);
-
 			var request = new cardbookWebDAV(aConnection, listener_delete);
 			cardbookUtils.formatStringForOutput("serverCardSendingDeletion", [aConnection.connDescription, aCard.fn]);
 			request.delete();
@@ -1123,7 +1133,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							cardbookRepository.cardbookServerSyncDone[aParams.aConnection.connPrefId]++;
 							break;
 					}
-				} else {
+				} else if (!aCard.deleted) {
 					// "DELETEDONSERVER";
 					cardbookRepository.cardbookServerSyncTotal[aParams.aConnection.connPrefId]++;
 					cardbookUtils.formatStringForOutput("cardDeletedOnServer", [aParams.aConnection.connDescription, aCard.fn]);
@@ -1792,9 +1802,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					}
 				}
 			};
-			if (aConnection.connUrl[aConnection.connUrl.length - 1] != '/') {
-				aConnection.connUrl += '/';
-			}
 			var aRootUrl = cardbookSynchronization.getRootUrl(aConnection.connUrl);
 			cardbookRepository.cardbookServerDiscoveryRequest[aConnection.connPrefId]++;
 			cardbookUtils.formatStringForOutput("synchronizationRequestDiscovery1", [aConnection.connDescription, aConnection.connUrl]);
@@ -1811,11 +1818,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							cardbookUtils.formatStringForOutput("googleAccessTokenOK", [aConnection.connDescription, response]);
 							var responseText = JSON.parse(response);
 							aConnection.accessToken = responseText.token_type + " " + responseText.access_token;
-							aConnection.connUrl = cardbookRepository.cardbookgdata.GOOGLE_API;
-							if (aConnection.connUrl[aConnection.connUrl.length - 1] != '/') {
-								aConnection.connUrl += '/';
-							}
-							aConnection.connUrl += '.well-known/carddav';
+							aConnection.connUrl = cardbookSynchronization.getWellKnownUrl(cardbookRepository.cardbookgdata.GOOGLE_API);
 							cardbookSynchronization.discoverPhase1(aConnection, aOperationType, aParams);
 						}
 						catch(e) {
@@ -2004,6 +2007,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							cardbookSynchronization.googleGetAccessToken(connection, myCode, "SYNCGOOGLE", params);
 						} else if (myPrefIdType === "APPLE" ) {
 							var connection = {connPrefId: aPrefId, connPrefIdType: myPrefIdType, connUrl: myPrefIdUrl, connDescription: myPrefIdName};
+							connection.connUrl = cardbookSynchronization.getSlashedUrl(connection.connUrl);
 							cardbookSynchronization.discoverPhase1(connection, "SYNCSERVER", params);
 						} else {
 							var connection = {connPrefId: aPrefId, connPrefIdType: myPrefIdType, connUrl: myPrefIdUrl, connDescription: myPrefIdName};
@@ -2124,6 +2128,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							} else if (aPrefType === "APPLE" ) {
 								var connection = {connPrefId: aPrefId, connPrefIdType: aPrefType, connUrl: aPrefUrl, connDescription: aPrefName};
 								cardbookRepository.cardbookServerSyncRequest[aPrefId]++;
+								connection.connUrl = cardbookSynchronization.getSlashedUrl(connection.connUrl);
 								cardbookSynchronization.discoverPhase1(connection, "SYNCSERVER", params);
 							} else {
 								var connection = {connPrefId: aPrefId, connPrefIdType: aPrefType, connUrl: aPrefUrl, connDescription: aPrefName};

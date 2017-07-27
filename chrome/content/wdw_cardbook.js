@@ -687,7 +687,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 						return;
 					}
 
-					if (cardbookUtils.getExtension(myFile.path).toLowerCase() == "csv") {
+					if (cardbookUtils.getFileNameExtension(myFile.leafName).toLowerCase() == "csv") {
 						cardbookSynchronization.writeCardsToCSVFile(myFile.path, myFile.leafName, aListOfSelectedCard);
 					} else {
 						cardbookSynchronization.writeCardsToFile(myFile.path, aListOfSelectedCard, true);
@@ -749,7 +749,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					}
 					cardbookSynchronization.initSync(myDirPrefId);
 					cardbookRepository.cardbookFileRequest[myDirPrefId]++;
-					if (cardbookUtils.getExtension(myFile.path).toLowerCase() == "csv") {
+					if (cardbookUtils.getFileNameExtension(myFile.leafName).toLowerCase() == "csv") {
 						cardbookSynchronization.loadCSVFile(myFile, myTarget, "WINDOW", "cardbook.cardImportedFromFile");
 					} else {
 						cardbookSynchronization.loadFile(myFile, myTarget, "", "WINDOW", "cardbook.cardImportedFromFile");

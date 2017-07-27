@@ -54,7 +54,7 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 		addImageCardFromFile: function () {
 			if (document.getElementById('photolocalURITextBox').value == "") {
 				var myFile = cardbookUtils.callFilePicker("imageSelectionTitle", "OPEN", "IMAGES");
-				var myExtension = cardbookUtils.getExtension(myFile.path);
+				var myExtension = cardbookUtils.getFileNameExtension(myFile.leafName);
 				if (myExtension != "") {
 					var myCard = wdw_cardEdition.workingCard;
 					myExtension = cardbookUtils.formatExtension(myExtension, myCard.version);
@@ -73,7 +73,7 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 		addImageCardFromUrl: function () {
 			if (document.getElementById('photolocalURITextBox').value == "") {
 				var myUrl = cardbookUtils.clipboardGet();
-				var myExtension = cardbookUtils.getExtension(myUrl);
+				var myExtension = cardbookUtils.getFileExtension(myUrl);
 				if (myExtension != "") {
 					var myCard = wdw_cardEdition.workingCard;
 					myExtension = cardbookUtils.formatExtension(myExtension, myCard.version);

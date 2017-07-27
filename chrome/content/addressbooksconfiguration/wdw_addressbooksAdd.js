@@ -377,6 +377,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			var connection = {connUser: aUsername, connPrefId: aDirPrefId, connPrefIdType: aType, connUrl: aUrl, connDescription: wdw_addressbooksAdd.gValidateDescription};
 			if (aType == 'APPLE') {
 				var aTryDiscovery = false;
+				connection.connUrl = cardbookSynchronization.getSlashedUrl(connection.connUrl);
 				cardbookSynchronization.discoverPhase1(connection, "GETDISPLAYNAME");
 			} else {
 				if (!aDiscovery) {
@@ -384,10 +385,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 					cardbookSynchronization.validateWithoutDiscovery(connection);
 				} else {
 					var aTryDiscovery = false;
-					if (connection.connUrl[connection.connUrl.length - 1] != '/') {
-						connection.connUrl += '/';
-					}
-					connection.connUrl += '.well-known/carddav';
+					connection.connUrl = cardbookSynchronization.getWellKnownUrl(connection.connUrl);
 					cardbookSynchronization.discoverPhase1(connection, "GETDISPLAYNAME");
 				}
 			}
