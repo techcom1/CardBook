@@ -64,4 +64,4 @@ pref("extensions.cardbook.viewABPane", true);
 pref("extensions.cardbook.viewABContact", true);
 
 pref("extensions.cardbook.uncategorizedCards", "");
-pref("extensions.cardbook.addonVersion", "21.3");
+pref("extensions.cardbook.addonVersion", "21.4");

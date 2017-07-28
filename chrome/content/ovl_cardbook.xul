@@ -22,6 +22,7 @@
 	<script src="wdw_cardbook.js"/>
 	<script src="chrome://cardbook/content/mailContact/ovl_cardbookMailContacts.js"/>
 	<script src="chrome://cardbook/content/layout/ovl_cardbookLayout.js"/>
+	<script src="chrome://cardbook/content/formatEmailCorrespondents/ovl_formatEmailCorrespondents.js"/>
 	<script src="ovl_cardbook.js"/>
 	
 	<window id="messengerWindow">

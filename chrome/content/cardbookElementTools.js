@@ -298,6 +298,29 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			document.getElementById(aMenuName).selectedIndex = defaultIndex;
 		},
 
+		loadContacts: function (aPopupName, aMenuName, aDirPrefId, aDefaultId) {
+			var myPopup = document.getElementById(aPopupName);
+			cardbookElementTools.deleteRows(aPopupName);
+			var defaultIndex = 0;
+			var j = 0;
+			var sortedContacts = [];
+			for (var i = 0; i < cardbookRepository.cardbookDisplayCards[aDirPrefId].length; i++) {
+				sortedContacts.push([cardbookRepository.cardbookDisplayCards[aDirPrefId][i].fn, cardbookRepository.cardbookDisplayCards[aDirPrefId][i].uid]);
+			}
+			sortedContacts = cardbookUtils.sortArrayByString(sortedContacts,0,1);
+			for (var i = 0; i < sortedContacts.length; i++) {
+				var menuItem = document.createElement("menuitem");
+				menuItem.setAttribute("label", sortedContacts[i][0]);
+				menuItem.setAttribute("value", sortedContacts[i][1]);
+				myPopup.appendChild(menuItem);
+				if (sortedContacts[i][1] == aDefaultId) {
+					defaultIndex=j;
+				}
+				j++;
+			}
+			document.getElementById(aMenuName).selectedIndex = defaultIndex;
+		},
+
 		loadDateFormats: function (aPopupName, aMenuName, aDefaultValue) {
 			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
 			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");

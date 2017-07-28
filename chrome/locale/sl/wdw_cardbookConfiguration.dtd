@@ -196,14 +196,17 @@
 <!ENTITY useOnlyEmailAccesskey "U">
 <!ENTITY attachvCardWarn "Za samodejno dodajanje kartice vCard k vaši e-pošti izberite kartico vCard za vsak e-poštni račun. Če je omogočeno, jo bo CardBook pripel k vsaki odhodni e-pošti za ta račun.">
 <!ENTITY attachvCardGroupboxLabel "Dodaj kartico vCard">
-<!ENTITY mailAccountsEnabledLabel "Omogočeno">
-<!ENTITY mailAccountsNameLabel "Poštni račun">
-<!ENTITY mailAccountsFileNameLabel "Pripeta datoteka">
-<!ENTITY mailAccountsFnLabel "Stik">
-<!ENTITY choosevCardLabel "Izberi kartico vCard">
-<!ENTITY choosevCardAccesskey "z">
-<!ENTITY displayvCardLabel "Pokaži kartico vCard">
-<!ENTITY displayvCardAccesskey "P">
+<!ENTITY accountsVCardsEnabledLabel "Omogočeno">
+<!ENTITY accountsVCardsMailLabel "Poštni račun">
+<!ENTITY accountsVCardsABNameLabel "Imenik">
+<!ENTITY accountsVCardsFileNameLabel "Pripeta datoteka">
+<!ENTITY accountsVCardsFnLabel "Stik">
+<!ENTITY addVCardLabel "Dodaj">
+<!ENTITY addVCardAccesskey "D">
+<!ENTITY renameVCardLabel "Uredi">
+<!ENTITY renameVCardAccesskey "U">
+<!ENTITY deleteVCardLabel "Izbriši">
+<!ENTITY deleteVCardAccesskey "b">
 
 <!ENTITY birthdayListWarn "Obletnice se išče samo v imenikih CardBook. Oblike datuma obletnic so nastavljene v lastnostih imenika.">
 <!ENTITY addressBooksGroupboxLabel "Imeniki">

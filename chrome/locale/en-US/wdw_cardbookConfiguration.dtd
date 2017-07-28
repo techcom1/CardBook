@@ -192,18 +192,21 @@
 <!ENTITY preferEmailPrefWarn "If no address is marked 'PREFerred', the message is sent to all of the contact's addresses.">
 <!ENTITY warnEmptyEmailsLabel "Warn me when I attempt to email contacts without an email address">
 <!ENTITY warnEmptyEmailsAccesskey "W">
-<!ENTITY useOnlyEmailLabel "Only use email addresses">
-<!ENTITY useOnlyEmailAccesskey "U">
+<!ENTITY useOnlyEmailLabel "Only use email addresses, without their Display Names">
+<!ENTITY useOnlyEmailAccesskey "O">
 <!ENTITY attachvCardWarn "To automatically add a vCard to your emails, select a vCard for each email account. If activated, CardBook will attach this vCard to every outgoing email from this account.">
 <!ENTITY attachvCardGroupboxLabel "Join a vCard">
-<!ENTITY mailAccountsEnabledLabel "Enabled">
-<!ENTITY mailAccountsNameLabel "Mail Account">
-<!ENTITY mailAccountsFileNameLabel "Attached file">
-<!ENTITY mailAccountsFnLabel "Contact">
-<!ENTITY choosevCardLabel "Choose a vCard">
-<!ENTITY choosevCardAccesskey "C">
-<!ENTITY displayvCardLabel "View the vCard">
-<!ENTITY displayvCardAccesskey "V">
+<!ENTITY accountsVCardsEnabledLabel "Enabled">
+<!ENTITY accountsVCardsMailLabel "Mail Account">
+<!ENTITY accountsVCardsABNameLabel "Address Book">
+<!ENTITY accountsVCardsFileNameLabel "Attached file">
+<!ENTITY accountsVCardsFnLabel "Contact">
+<!ENTITY addVCardLabel "Add">
+<!ENTITY addVCardAccesskey "A">
+<!ENTITY renameVCardLabel "Edit">
+<!ENTITY renameVCardAccesskey "E">
+<!ENTITY deleteVCardLabel "Delete">
+<!ENTITY deleteVCardAccesskey "D">
 
 <!ENTITY birthdayListWarn "Anniversaries are only searched within CardBook address books. Anniversary date formats are set up in the address book properties.">
 <!ENTITY addressBooksGroupboxLabel "Address Books">

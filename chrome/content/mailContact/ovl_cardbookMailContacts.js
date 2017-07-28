@@ -15,8 +15,8 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 			return result;
 		},
 
-		addToCardBookMenuSubMenu: function(aMenuName) {
-			cardbookUtils.addToCardBookMenuSubMenu(aMenuName, ovl_cardbookMailContacts.getIdentityKey(), ovl_cardbookMailContacts.addToCardBook);
+		addToCardBookMenuSubMenu: function(aMenuName, aCallbackFunction) {
+			cardbookUtils.addToCardBookMenuSubMenu(aMenuName, ovl_cardbookMailContacts.getIdentityKey(), aCallbackFunction);
 		},
 
 		isEmailRegistered: function(aEmail) {

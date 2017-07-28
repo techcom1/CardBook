@@ -476,7 +476,7 @@ var cardbookRepository = {
 			cardbookPrefService.setColor(aColor);
 			cardbookPrefService.setEnabled(aEnabled);
 			cardbookPrefService.setExpanded(aExpanded);
-			cardbookPrefService.setVCard(aVCard);
+			cardbookPrefService.setVCardVersion(aVCard);
 			cardbookPrefService.setReadOnly(aReadOnly);
 			cardbookPrefService.setDateFormat(aDateFormat);
 			cardbookPrefService.setUrnuuid(aUrnuuid);
@@ -1051,7 +1051,7 @@ var cardbookRepository = {
 		var myDirPrefIdName = cardbookPrefService.getName();
 		var myDirPrefIdType = cardbookPrefService.getType();
 		var myDirPrefIdUrl = cardbookPrefService.getUrl();
-		var myDirPrefIdVCard = cardbookPrefService.getVCard();
+		var myDirPrefIdVCard = cardbookPrefService.getVCardVersion();
 		var myDirPrefIdReadOnly = cardbookPrefService.getReadOnly();
 		if (!myDirPrefIdReadOnly) {
 			var myNewCard = new cardbookCardParser();

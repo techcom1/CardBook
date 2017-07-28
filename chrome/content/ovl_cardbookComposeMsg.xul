@@ -32,7 +32,7 @@
 	
 	<menulist id="msgIdentity" type="description" flex="1"
 			disableautoselect="true" onkeypress="fromKeyPress(event);"
-			oncommand="LoadIdentity(false);" disableonsend="true" onchange="ovl_cardbookComposeMsg.onIdentityChanged();">
+			oncommand="LoadIdentity(false);ovl_cardbookComposeMsg.onIdentityChanged();" disableonsend="true">
 		<menupopup id="msgIdentityPopup"/>
 	</menulist>
 </overlay>

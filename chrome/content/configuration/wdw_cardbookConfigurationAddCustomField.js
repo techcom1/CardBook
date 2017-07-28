@@ -52,7 +52,7 @@ if ("undefined" == typeof(wdw_cardbookConfigurationAddCustomField)) {
 		},
 
 		save: function () {
-			if (wdw_cardbookConfiguration.validate()) {
+			if (wdw_cardbookConfigurationAddCustomField.validate()) {
 				window.arguments[0].code = document.getElementById('customFieldCodeTextBox').value.trim();
 				window.arguments[0].label = document.getElementById('customFieldLabelTextBox').value.trim();
 				window.arguments[0].typeAction="SAVE";

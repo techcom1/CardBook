@@ -1,15 +1,15 @@
 function cardbookPreferenceService(uniqueId) {
-    this.mPreferencesService = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-    this.prefCardBookRoot = "extensions.cardbook.";
-    this.prefCardBookData = this.prefCardBookRoot + "data.";
-    this.prefCardBookTypes = this.prefCardBookRoot + "types.";
-    this.prefCardBookTels = this.prefCardBookRoot + "tels.";
-    this.prefCardBookIMPPs = this.prefCardBookRoot + "impps.";
-    this.prefCardBookCustomFields = this.prefCardBookRoot + "customFields.";
-    this.prefCardBookMailAccount = this.prefCardBookRoot + "mailAccount.";
-    this.prefCardBookAccountRestrictions = this.prefCardBookRoot + "accountsRestrictions.";
-    this.prefCardBookEmailsCollection = this.prefCardBookRoot + "emailsCollection.";
-    this.prefPath = this.prefCardBookData + uniqueId + ".";
+	this.mPreferencesService = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+	this.prefCardBookRoot = "extensions.cardbook.";
+	this.prefCardBookData = this.prefCardBookRoot + "data.";
+	this.prefCardBookTypes = this.prefCardBookRoot + "types.";
+	this.prefCardBookTels = this.prefCardBookRoot + "tels.";
+	this.prefCardBookIMPPs = this.prefCardBookRoot + "impps.";
+	this.prefCardBookCustomFields = this.prefCardBookRoot + "customFields.";
+	this.prefCardBookAccountVCards = this.prefCardBookRoot + "vcards.";
+	this.prefCardBookAccountRestrictions = this.prefCardBookRoot + "accountsRestrictions.";
+	this.prefCardBookEmailsCollection = this.prefCardBookRoot + "emailsCollection.";
+	this.prefPath = this.prefCardBookData + uniqueId + ".";
 }
 
 cardbookPreferenceService.prototype = {
@@ -417,6 +417,45 @@ cardbookPreferenceService.prototype = {
 		}
     },
 
+    getAllVCards: function () {
+		try {
+			let count = {};
+			let finalResult = [];
+			let result = this.mPreferencesService.getChildList(this.prefCardBookAccountVCards, count);
+			for (let i = 0; i < result.length; i++) {
+				finalResult.push(this.mPreferencesService.getComplexValue(result[i], Components.interfaces.nsISupportsString).data);
+			}
+			return finalResult;
+		}
+		catch(e) {
+			return [];
+		}
+    },
+
+    delVCards: function (aVCardId) {
+		try {
+			if (aVCardId != null && aVCardId !== undefined && aVCardId != "") {
+				this.mPreferencesService.deleteBranch(this.prefCardBookAccountVCards + aVCardId);
+			} else {
+				this.mPreferencesService.deleteBranch(this.prefCardBookAccountVCards);
+			}
+		}
+		catch(e) {
+			dump("cardbookPreferenceService.delVCards : failed to delete" + this.prefCardBookAccountVCards + "\n" + e + "\n");
+		}
+    },
+
+    setVCard: function (aVCardId, aVCardValue) {
+		try {
+			var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
+			str.data = aVCardValue;
+			this.mPreferencesService.setComplexValue(this.prefCardBookAccountVCards + aVCardId, Components.interfaces.nsISupportsString, str);
+		}
+		catch(e) {
+			dump("cardbookPreferenceService.setVCard : failed to set" + this.prefCardBookAccountVCards + aVCardId + "\n" + e + "\n");
+		}
+    },
+
     getAllEmailsCollections: function () {
 		try {
 			let count = {};
@@ -453,22 +492,6 @@ cardbookPreferenceService.prototype = {
 		}
 		catch(e) {
 			dump("cardbookPreferenceService.setEmailsCollection : failed to set" + this.prefCardBookEmailsCollection + aRestrictionId + "\n" + e + "\n");
-		}
-    },
-
-    getAllMailAccounts: function () {
-		try {
-			let count = {};
-			let finalResult = [];
-			let result = this.mPreferencesService.getChildList(this.prefCardBookMailAccount, count);
-			for (let i = 0; i < result.length; i++) {
-				result[i] = result[i].replace(this.prefCardBookMailAccount,"");
-				finalResult.push(result[i].substring(0, result[i].indexOf(".")));
-			}
-			return this._arrayUnique(finalResult);
-		}
-		catch(e) {
-			return [];
 		}
     },
 
@@ -630,101 +653,6 @@ cardbookPreferenceService.prototype = {
 		}
     },
 
-    getMailAccountEnabled: function (aMailAccount) {
-		try {
-			let value = this.mPreferencesService.getBoolPref(this.prefCardBookMailAccount + aMailAccount + ".enabled");
-			return value;
-		}
-		catch(e) {
-			return false;
-		}
-    },
-
-    getMailAccountFileName: function (aMailAccount) {
-		try {
-			let value = this.mPreferencesService.getComplexValue(this.prefCardBookMailAccount + aMailAccount + ".filename", Components.interfaces.nsISupportsString).data;
-			return value;
-		}
-		catch(e) {
-			return "";
-		}
-    },
-
-    getMailAccountUid: function (aMailAccount) {
-		try {
-			let value = this.mPreferencesService.getComplexValue(this.prefCardBookMailAccount + aMailAccount + ".uid", Components.interfaces.nsISupportsString).data;
-			return value;
-		}
-		catch(e) {
-			return "";
-		}
-    },
-
-    getMailAccountDirPrefId: function (aMailAccount) {
-		try {
-			let value = this.mPreferencesService.getComplexValue(this.prefCardBookMailAccount + aMailAccount + ".dirprefid", Components.interfaces.nsISupportsString).data;
-			return value;
-		}
-		catch(e) {
-			return "";
-		}
-    },
-
-    setMailAccountEnabled: function (aMailAccount, value) {
-		try {
-			this.mPreferencesService.setBoolPref(this.prefCardBookMailAccount + aMailAccount + ".enabled", value);
-		}
-		catch(e) {
-			dump("cardbookPreferenceService.setMailAccountEnabled : failed to set" + this.prefCardBookMailAccount + aMailAccount + ".enabled" + "\n" + e + "\n");
-		}
-    },
-
-    setMailAccountFileName: function (aMailAccount, value) {
-		try {
-			var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-			str.data = value;
-			this.mPreferencesService.setComplexValue(this.prefCardBookMailAccount + aMailAccount + ".filename", Components.interfaces.nsISupportsString, str);
-		}
-		catch(e) {
-			dump("cardbookPreferenceService.setMailAccountFileName : failed to set" + this.prefCardBookMailAccount + aMailAccount + ".filename" + "\n" + e + "\n");
-		}
-    },
-
-    setMailAccountUid: function (aMailAccount, value) {
-		try {
-			var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-			str.data = value;
-			this.mPreferencesService.setComplexValue(this.prefCardBookMailAccount + aMailAccount + ".uid", Components.interfaces.nsISupportsString, str);
-		}
-		catch(e) {
-			dump("cardbookPreferenceService.setMailAccountFileName : failed to set" + this.prefCardBookMailAccount + aMailAccount + ".uid" + "\n" + e + "\n");
-		}
-    },
-
-    setMailAccountDirPrefId: function (aMailAccount, value) {
-		try {
-			var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-			str.data = value;
-			this.mPreferencesService.setComplexValue(this.prefCardBookMailAccount + aMailAccount + ".dirprefid", Components.interfaces.nsISupportsString, str);
-		}
-		catch(e) {
-			dump("cardbookPreferenceService.setMailAccountDirPrefId : failed to set" + this.prefCardBookMailAccount + aMailAccount + ".dirprefid" + "\n" + e + "\n");
-		}
-    },
-
-    delMailAccount: function (aMailAccount) {
-		try {
-			if (aMailAccount != null && aMailAccount !== undefined && aMailAccount != "") {
-				this.mPreferencesService.deleteBranch(this.prefCardBookMailAccount + aMailAccount);
-			} else {
-				this.mPreferencesService.deleteBranch(this.prefCardBookMailAccount);
-			}
-		}
-		catch(e) {
-			dump("cardbookPreferenceService.delMailAccount : failed to delete" + this.prefCardBookMailAccount + aMailAccount + "\n" + e + "\n");
-		}
-    },
-
     getId: function () {
         return this._getPref("id");
     },
@@ -828,7 +756,7 @@ cardbookPreferenceService.prototype = {
         this._setBoolPref("DBcached", DBcached);
     },
 
-    getVCard: function () {
+    getVCardVersion: function () {
         let vCard = this._getPref("vCard");
         if (vCard != null && vCard !== undefined && vCard != "") {
         	return vCard;
@@ -842,7 +770,7 @@ cardbookPreferenceService.prototype = {
         }
     },
 
-    setVCard: function (aVCard) {
+    setVCardVersion: function (aVCard) {
         if (aVCard != null && aVCard !== undefined && aVCard != "") {
         	this._setPref("vCard", aVCard);
         }

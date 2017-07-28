@@ -2242,7 +2242,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 				var myPrefColor = cardbookPrefService1.getColor();
 				var myPrefEnabled = cardbookPrefService1.getEnabled();
 				var myPrefExpanded = cardbookPrefService1.getExpanded();
-				var myPrefVCard = cardbookPrefService1.getVCard();
+				var myPrefVCard = cardbookPrefService1.getVCardVersion();
 				var myPrefReadOnly = cardbookPrefService1.getReadOnly();
 				var myPrefDateFormat = cardbookPrefService1.getDateFormat();
 				var myPrefUrnuuid = cardbookPrefService1.getUrnuuid();
@@ -2453,7 +2453,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 									}
 								}
 								var cardbookPrefService = new cardbookPreferenceService(aParams.aPrefId);
-								myCard.version = cardbookPrefService.getVCard();
+								myCard.version = cardbookPrefService.getVCardVersion();
 								cardbookUtils.setCardUUID(myCard);
 								cardbookUtils.setCalculatedFields(myCard);
 								if (myCard.fn == "") {

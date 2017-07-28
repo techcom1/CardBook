@@ -1845,7 +1845,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 						var myPrefIdUrl = cardbookPrefService.getUrl();
 						var myPrefIdUser = cardbookPrefService.getUser();
 						var myPrefIdColor = cardbookPrefService.getColor();
-						var myPrefIdVCard = cardbookPrefService.getVCard();
+						var myPrefIdVCard = cardbookPrefService.getVCardVersion();
 						var myPrefIdReadOnly = cardbookPrefService.getReadOnly();
 						var myPrefIdDateFormat = cardbookPrefService.getDateFormat();
 						var myPrefIdUrnuuid = cardbookPrefService.getUrnuuid();
@@ -1869,7 +1869,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				var cardbookPrefService = new cardbookPreferenceService(aDirPrefId);
 				cardbookPrefService.setName(aName);
 				cardbookPrefService.setColor(aColor);
-				cardbookPrefService.setVCard(aVCard);
+				cardbookPrefService.setVCardVersion(aVCard);
 				cardbookPrefService.setReadOnly(aReadOnly);
 				cardbookPrefService.setDateFormat(aDateFormat);
 				cardbookPrefService.setUrnuuid(aUrnuuid);
@@ -1892,7 +1892,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			var cardbookPrefService = new cardbookPreferenceService(aDirPrefId);
 			cardbookPrefService.setName(aName);
 			cardbookPrefService.setColor(aColor);
-			cardbookPrefService.setVCard(aVCard);
+			cardbookPrefService.setVCardVersion(aVCard);
 			cardbookPrefService.setReadOnly(aReadOnly);
 			cardbookPrefService.setDateFormat(aDateFormat);
 			cardbookPrefService.setUrnuuid(aUrnuuid);

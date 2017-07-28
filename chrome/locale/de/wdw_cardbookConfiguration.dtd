@@ -197,14 +197,17 @@
 <!ENTITY useOnlyEmailAccesskey "U">
 <!ENTITY attachvCardWarn "Automatisch vCard an Emails anhängen: Eine vCard pro E-Mail-Konto auswählen. Falls aktiviert wird diese vCard an jede ausgehende E-Mail angehängt.">
 <!ENTITY attachvCardGroupboxLabel "Fürs an Email anhängen">
-<!ENTITY mailAccountsEnabledLabel "Aktiviert">
-<!ENTITY mailAccountsNameLabel "Email-Konto">
-<!ENTITY mailAccountsFileNameLabel "Anhang">
-<!ENTITY mailAccountsFnLabel "Kontakt">
-<!ENTITY choosevCardLabel "Wählen Sie eine vCard">
-<!ENTITY choosevCardAccesskey "W">
-<!ENTITY displayvCardLabel "vCard anzeigen">
-<!ENTITY displayvCardAccesskey "V">
+<!ENTITY accountsVCardsEnabledLabel "Aktiviert">
+<!ENTITY accountsVCardsMailLabel "Email-Konto">
+<!ENTITY accountsVCardsABNameLabel "Adressbuch">
+<!ENTITY accountsVCardsFileNameLabel "Anhang">
+<!ENTITY accountsVCardsFnLabel "Kontakt">
+<!ENTITY addVCardLabel "Hinzufügen">
+<!ENTITY addVCardAccesskey "H">
+<!ENTITY renameVCardLabel "Bearbeiten">
+<!ENTITY renameVCardAccesskey "B">
+<!ENTITY deleteVCardLabel "Löschen">
+<!ENTITY deleteVCardAccesskey "L">
 
 <!ENTITY birthdayListWarn "Geburtstage werden nur in Adressbüchern von CardBook gesucht. Das Format für Geburtstage wird unten den Eigenschaften des Adressbuchs festgelegt.">
 <!ENTITY addressBooksGroupboxLabel "Adressbücher">

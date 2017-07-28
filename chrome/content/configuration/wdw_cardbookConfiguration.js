@@ -7,7 +7,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		allOrg: [],
 		allRestrictions: [],
 		allEmailsCollections: [],
-		allMailAccounts: [],
+		allVCards: [],
 		preferEmailPrefOld: false,
 		
 		customFieldCheck: function (aTextBox) {
@@ -77,14 +77,14 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				case "emailsCollectionIncludeName":
 					columnArray=8;
 					break;
-				case "mailAccountsName":
+				case "accountsVCardsMailName":
 					columnArray=2;
 					break;
-				case "mailAccountsFileName":
-					columnArray=3;
+				case "accountsVCardsFn":
+					columnArray=4;
 					break;
-				case "mailAccountsFn":
-					columnArray=6;
+				case "accountsVCardsFileName":
+					columnArray=7;
 					break;
 				case "IMPPCode":
 					columnArray=0;
@@ -105,8 +105,8 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 					columnArray=2;
 					break;
 			}
-			if (aTreeName == "mailAccountsTree") {
-				var myData = wdw_cardbookConfiguration.allMailAccounts;
+			if (aTreeName == "accountsVCardsTree") {
+				var myData = wdw_cardbookConfiguration.allVCards;
 			} else if (aTreeName == "accountsRestrictionsTree") {
 				var myData = wdw_cardbookConfiguration.allRestrictions;
 			} else if (aTreeName == "emailsCollectionTree") {
@@ -131,8 +131,8 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			myTree.setAttribute("sortDirection", order == 1 ? "ascending" : "descending");
 			myTree.setAttribute("sortResource", columnName);
 			
-			if (aTreeName == "mailAccountsTree") {
-				wdw_cardbookConfiguration.displayMailAccounts();
+			if (aTreeName == "accountsVCardsTree") {
+				wdw_cardbookConfiguration.displayVCards();
 			} else if (aTreeName == "accountsRestrictionsTree") {
 				wdw_cardbookConfiguration.displayRestrictions();
 			} else if (aTreeName == "emailsCollectionTree") {
@@ -171,8 +171,8 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				var row = { }, col = { }, child = { };
 				myTree.treeBoxObject.getCellAt(aEvent.clientX, aEvent.clientY, row, col, child);
 				if (row.value != -1) {
-					if (aTreeName == "mailAccountsTree") {
-						wdw_cardbookConfiguration.choosevCard();
+					if (aTreeName == "accountsVCardsTree") {
+						wdw_cardbookConfiguration.renameVCard();
 					} else if (aTreeName == "accountsRestrictionsTree") {
 						wdw_cardbookConfiguration.renameRestriction();
 					} else if (aTreeName == "emailsCollectionTree") {
@@ -193,131 +193,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			var addonVersion = prefs.getComplexValue("extensions.cardbook.addonVersion", Components.interfaces.nsISupportsString).data;
 			var strBundle = document.getElementById("cardbook-strings");
 			document.title = strBundle.getString("cardbookPrefTitle") + " (" + addonVersion + ")";
-		},
-
-		displayMailAccounts: function () {
-			var mailAccountsTreeView = {
-				get rowCount() { return wdw_cardbookConfiguration.allMailAccounts.length; },
-				isContainer: function(idx) { return false },
-				cycleHeader: function(idx) { return false },
-				isEditable: function(idx, column) {
-					if (column.id == "mailAccountsEnabled") return true;
-					else return false;
-				},
-				getCellText: function(idx, column) {
-					if (column.id == "mailAccountsEnabled") return wdw_cardbookConfiguration.allMailAccounts[idx][0];
-					else if (column.id == "mailAccountsId") return wdw_cardbookConfiguration.allMailAccounts[idx][1];
-					else if (column.id == "mailAccountsName") return wdw_cardbookConfiguration.allMailAccounts[idx][2];
-					else if (column.id == "mailAccountsFileName") return wdw_cardbookConfiguration.allMailAccounts[idx][3];
-					else if (column.id == "mailAccountsDirPrefId") return wdw_cardbookConfiguration.allMailAccounts[idx][4];
-					else if (column.id == "mailAccountsUid") return wdw_cardbookConfiguration.allMailAccounts[idx][5];
-					else if (column.id == "mailAccountsFn") return wdw_cardbookConfiguration.allMailAccounts[idx][6];
-				},
-				getCellValue: function(idx, column) {
-					if (column.id == "mailAccountsEnabled") return wdw_cardbookConfiguration.allMailAccounts[idx][0];
-				},
-				setCellValue: function(idx, column) {
-					if (column.id == "mailAccountsEnabled") {
-						wdw_cardbookConfiguration.allMailAccounts[idx][0] = !wdw_cardbookConfiguration.allMailAccounts[idx][0];
-					}
-				}
-			}
-			document.getElementById('mailAccountsTree').view = mailAccountsTreeView;
-		},
-
-		loadMailAccounts: function () {
-			var cardbookPrefService = new cardbookPreferenceService();
-			wdw_cardbookConfiguration.allMailAccounts = [];
-			var accounts = Components.classes["@mozilla.org/messenger/account-manager;1"].getService(Components.interfaces.nsIMsgAccountManager).accounts;
-			var accountsLength = (typeof accounts.Count === 'undefined') ? accounts.length : accounts.Count();
-			for (var i = 0; i < accountsLength; i++) {
-				var account = accounts.queryElementAt ? accounts.queryElementAt(i, Components.interfaces.nsIMsgAccount) : accounts.GetElementAt(i).QueryInterface(Components.interfaces.nsIMsgAccount);
-				if (!account.incomingServer) {
-					continue;
-				}
-				var identitiesLength = (typeof account.identities.Count === 'undefined') ? account.identities.length : account.identities.Count();
-				for (var j = 0; j < identitiesLength; j++) {
-					var identity = account.identities.queryElementAt ? account.identities.queryElementAt(j, Components.interfaces.nsIMsgIdentity) : account.identities.GetElementAt(j).QueryInterface(Components.interfaces.nsIMsgIdentity);
-					var mailAccountServer = account.incomingServer;
-					if (mailAccountServer.type == "pop3" || mailAccountServer.type == "imap") {
-						var accountPrettyName = identity.email; // gets mail account name
-						var enabled = cardbookPrefService.getMailAccountEnabled(identity.key);
-						var filename = cardbookPrefService.getMailAccountFileName(identity.key);
-						var dirPrefId = cardbookPrefService.getMailAccountDirPrefId(identity.key);
-						var uid = cardbookPrefService.getMailAccountUid(identity.key);
-						if (cardbookRepository.cardbookCards[dirPrefId+"::"+uid]) {
-							var fn = cardbookRepository.cardbookCards[dirPrefId+"::"+uid].fn;
-						} else {
-							var dirPrefId = "";
-							var uid = "";
-							var fn = "";
-						}
-						wdw_cardbookConfiguration.allMailAccounts.push([enabled, identity.key, accountPrettyName, filename, dirPrefId, uid, fn]);
-					}
-				}
-			}
-		},
-
-		validateMailAccounts: function () {
-			var cardbookPrefService = new cardbookPreferenceService();
-			var mailAccountTemp = [];
-			mailAccountTemp = cardbookPrefService.getAllMailAccounts();
-			for (var i = 0; i < wdw_cardbookConfiguration.allMailAccounts.length; i++) {
-				cardbookPrefService.setMailAccountEnabled(wdw_cardbookConfiguration.allMailAccounts[i][1], wdw_cardbookConfiguration.allMailAccounts[i][0]);
-				cardbookPrefService.setMailAccountFileName(wdw_cardbookConfiguration.allMailAccounts[i][1], wdw_cardbookConfiguration.allMailAccounts[i][3]);
-				cardbookPrefService.setMailAccountDirPrefId(wdw_cardbookConfiguration.allMailAccounts[i][1], wdw_cardbookConfiguration.allMailAccounts[i][4]);
-				cardbookPrefService.setMailAccountUid(wdw_cardbookConfiguration.allMailAccounts[i][1], wdw_cardbookConfiguration.allMailAccounts[i][5]);
-				function filterArray(element) {
-					return (element != wdw_cardbookConfiguration.allMailAccounts[i][1]);
-				}
-				mailAccountTemp = mailAccountTemp.filter(filterArray);
-			}
-			for (var i = 0; i < mailAccountTemp.length; i++) {
-				cardbookPrefService.delMailAccount(mailAccountTemp[i]);
-			}
-		},
-
-		choosevCard: function () {
-			var myTree = document.getElementById('mailAccountsTree');
-			if (myTree.currentIndex != -1) {
-				var myMailAccountId = myTree.view.getCellText(myTree.currentIndex, {id: "mailAccountsId"});
-				var myMailAccountFilename = myTree.view.getCellText(myTree.currentIndex, {id: "mailAccountsFileName"});
-				var myArgs = {filename: myMailAccountFilename, cardbookId: "", typeAction: ""};
-				var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationSearchCard.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
-				if (myArgs.typeAction == "SAVE") {
-					var tmpArray = myArgs.cardbookId.split("::");
-					if (cardbookRepository.cardbookCards[myArgs.cardbookId]) {
-						var fn = cardbookRepository.cardbookCards[myArgs.cardbookId].fn;
-					} else {
-						var fn = "";
-					}
-					for (var i = 0; i < wdw_cardbookConfiguration.allMailAccounts.length; i++) {
-						if (wdw_cardbookConfiguration.allMailAccounts[i][1] == myMailAccountId) {
-							wdw_cardbookConfiguration.allMailAccounts[i][0] = true;
-							wdw_cardbookConfiguration.allMailAccounts[i][3] = myArgs.filename;
-							wdw_cardbookConfiguration.allMailAccounts[i][4] = tmpArray[0];
-							wdw_cardbookConfiguration.allMailAccounts[i][5] = tmpArray[1];
-							wdw_cardbookConfiguration.allMailAccounts[i][6] = fn;
-							break;
-						}
-					}
-					wdw_cardbookConfiguration.sortTrees(null, "mailAccountsTree");
-				}
-			}
-		},
-
-		displayvCard: function () {
-			var myTree = document.getElementById('mailAccountsTree');
-			if (myTree.currentIndex != -1) {
-				var myMailAccountsDirPrefId = myTree.view.getCellText(myTree.currentIndex, {id: "mailAccountsDirPrefId"});
-				var myMailAccountsUid = myTree.view.getCellText(myTree.currentIndex, {id: "mailAccountsUid"});
-				if (cardbookRepository.cardbookCards[myMailAccountsDirPrefId+"::"+myMailAccountsUid]) {
-					var myCard = cardbookRepository.cardbookCards[myMailAccountsDirPrefId+"::"+myMailAccountsUid];
-					var myMailAccountFilename = myTree.view.getCellText(myTree.currentIndex, {id: "mailAccountsFileName"});
-					var myArgs = {filename: myMailAccountFilename, data: cardbookUtils.getvCardForEmail(myCard)};
-					var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationDisplayCard.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
-				}
-			}
 		},
 
 		loadPrefEmailPref: function () {
@@ -841,6 +716,134 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				}
 			}
 			return cardbookUtils.getPrefNameFromPrefId(dirPrefId);
+		},
+
+		selectVCard: function() {
+			var btnEdit = document.getElementById("renameVCardLabel");
+			var myTree = document.getElementById("accountsVCardsTree");
+			if (myTree.view.selection.getRangeCount() > 0) {
+				btnEdit.disabled = false;
+			} else {
+				btnEdit.disabled = true;
+			}
+			document.getElementById("deleteVCardLabel").disabled = btnEdit.disabled;
+		},
+
+		loadVCards: function () {
+			var cardbookPrefService = new cardbookPreferenceService();
+			var result = [];
+			result = cardbookPrefService.getAllVCards();
+			var count = 0;
+			for (var i = 0; i < result.length; i++) {
+				var resultArray = result[i].split("::");
+				var emailAccountName = wdw_cardbookConfiguration.getEmailAccountName(resultArray[1]);
+				if (emailAccountName != "") {
+					if (cardbookRepository.cardbookCards[resultArray[2]+"::"+resultArray[3]]) {
+						var index = count++;
+						var myFn = cardbookRepository.cardbookCards[resultArray[2]+"::"+resultArray[3]].fn;
+						wdw_cardbookConfiguration.allVCards.push([(resultArray[0] == "true"), index.toString(), emailAccountName, resultArray[1], myFn, resultArray[2], resultArray[3], resultArray[4]]);
+					}
+				}
+			}
+		},
+		
+		displayVCards: function () {
+			var accountsVCardsTreeView = {
+				get rowCount() { return wdw_cardbookConfiguration.allVCards.length; },
+				isContainer: function(idx) { return false },
+				cycleHeader: function(idx) { return false },
+				isEditable: function(idx, column) {
+					if (column.id == "accountsVCardsEnabled") return true;
+					else return false;
+				},
+				getCellText: function(idx, column) {
+					if (column.id == "accountsVCardsEnabled") return wdw_cardbookConfiguration.allVCards[idx][0];
+					else if (column.id == "accountsVCardsId") return wdw_cardbookConfiguration.allVCards[idx][1];
+					else if (column.id == "accountsVCardsMailName") return wdw_cardbookConfiguration.allVCards[idx][2];
+					else if (column.id == "accountsVCardsMailId") return wdw_cardbookConfiguration.allVCards[idx][3];
+					else if (column.id == "accountsVCardsFn") return wdw_cardbookConfiguration.allVCards[idx][4];
+					else if (column.id == "accountsVCardsAddressBookId") return wdw_cardbookConfiguration.allVCards[idx][5];
+					else if (column.id == "accountsVCardsContactId") return wdw_cardbookConfiguration.allVCards[idx][6];
+					else if (column.id == "accountsVCardsFileName") return wdw_cardbookConfiguration.allVCards[idx][7];
+				},
+				getCellValue: function(idx, column) {
+					if (column.id == "accountsVCardsEnabled") return wdw_cardbookConfiguration.allVCards[idx][0];
+				},
+				setCellValue: function(idx, column) {
+					if (column.id == "accountsVCardsEnabled") {
+						wdw_cardbookConfiguration.allVCards[idx][0] = !wdw_cardbookConfiguration.allVCards[idx][0];
+					}
+				}
+			}
+			document.getElementById('accountsVCardsTree').view = accountsVCardsTreeView;
+			wdw_cardbookConfiguration.selectVCard();
+		},
+		
+		addVCard: function () {
+			var myArgs = {emailAccountName: "", emailAccountId: "", fn: "", addressBookId: "", contactId: "", fileName: "",  typeAction: ""};
+			var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddVcards.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+			if (myArgs.typeAction == "SAVE") {
+				wdw_cardbookConfiguration.allVCards.push([true, wdw_cardbookConfiguration.allVCards.length.toString(), myArgs.emailAccountName, myArgs.emailAccountId, myArgs.fn, myArgs.addressBookId, myArgs.contactId, myArgs.fileName]);
+				wdw_cardbookConfiguration.allVCards = cardbookUtils.sortArrayByString(wdw_cardbookConfiguration.allVCards,1,1);
+				wdw_cardbookConfiguration.sortTrees(null, "accountsVCardsTree");
+			}
+		},
+		
+		renameVCard: function () {
+			var myTree = document.getElementById('accountsVCardsTree');
+			if (myTree.currentIndex == -1) {
+				return;
+			} else {
+				var myEnabled = myTree.view.getCellText(myTree.currentIndex, {id: "accountsVCardsEnabled"});
+				var myId = myTree.view.getCellText(myTree.currentIndex, {id: "accountsVCardsId"});
+				var myMailName = myTree.view.getCellText(myTree.currentIndex, {id: "accountsVCardsMailName"});
+				var myMailId = myTree.view.getCellText(myTree.currentIndex, {id: "accountsVCardsMailId"});
+				var myFn = myTree.view.getCellText(myTree.currentIndex, {id: "accountsVCardsFn"});
+				var myABDirPrefId = myTree.view.getCellText(myTree.currentIndex, {id: "accountsVCardsAddressBookId"});
+				var myContactId = myTree.view.getCellText(myTree.currentIndex, {id: "accountsVCardsContactId"});
+				var myFileName = myTree.view.getCellText(myTree.currentIndex, {id: "accountsVCardsFileName"});
+				var myArgs = {emailAccountName: myMailName, emailAccountId: myMailId, fn: myFn, addressBookId: myABDirPrefId, contactId: myContactId, fileName: myFileName, typeAction: ""};
+				var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddVcards.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+				if (myArgs.typeAction == "SAVE") {
+					var result = [];
+					for (let i = 0; i < wdw_cardbookConfiguration.allVCards.length; i++) {
+						if (myId === wdw_cardbookConfiguration.allVCards[i][1]) {
+							result.push([myEnabled, myId, myArgs.emailAccountName, myArgs.emailAccountId, myArgs.fn, myArgs.addressBookId, myArgs.contactId, myArgs.fileName]);
+						} else {
+							result.push(wdw_cardbookConfiguration.allVCards[i]);
+						}
+					}
+					wdw_cardbookConfiguration.allVCards = JSON.parse(JSON.stringify(result));
+					wdw_cardbookConfiguration.allVCards = cardbookUtils.sortArrayByString(wdw_cardbookConfiguration.allVCards,1,1);
+					wdw_cardbookConfiguration.sortTrees(null, "accountsVCardsTree");
+				}
+			}
+		},
+		
+		deleteVCard: function () {
+			var myTree = document.getElementById('accountsVCardsTree');
+			if (myTree.currentIndex == -1) {
+				return;
+			} else {
+				var myId = myTree.view.getCellText(myTree.currentIndex, {id: "accountsVCardsId"});
+				var result = [];
+				for (let i = 0; i < wdw_cardbookConfiguration.allVCards.length; i++) {
+					if (myId !== wdw_cardbookConfiguration.allVCards[i][1]) {
+						result.push(wdw_cardbookConfiguration.allVCards[i]);
+					}
+				}
+				wdw_cardbookConfiguration.allVCards = JSON.parse(JSON.stringify(result));
+				wdw_cardbookConfiguration.sortTrees(null, "accountsVCardsTree");
+			}
+		},
+		
+		validateVCards: function () {
+			var cardbookPrefService = new cardbookPreferenceService();
+			cardbookPrefService.delVCards();
+			for (var i = 0; i < wdw_cardbookConfiguration.allVCards.length; i++) {
+				cardbookPrefService.setVCard(i.toString(), wdw_cardbookConfiguration.allVCards[i][0].toString() + "::" + wdw_cardbookConfiguration.allVCards[i][3]
+													+ "::" + wdw_cardbookConfiguration.allVCards[i][5] + "::" + wdw_cardbookConfiguration.allVCards[i][6] + "::" + wdw_cardbookConfiguration.allVCards[i][7]);
+			}
 		},
 
 		selectRestriction: function() {
@@ -1679,8 +1682,8 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			wdw_cardbookConfiguration.displayOrg();
 			wdw_cardbookConfiguration.loadPeriodicSync();
 			wdw_cardbookConfiguration.loadAddressBooks("addressBooksNameList", false);
-			wdw_cardbookConfiguration.loadMailAccounts();
-			wdw_cardbookConfiguration.sortTrees(null, "mailAccountsTree");
+			wdw_cardbookConfiguration.loadVCards();
+			wdw_cardbookConfiguration.sortTrees(null, "accountsVCardsTree");
 			wdw_cardbookConfiguration.loadRestrictions();
 			wdw_cardbookConfiguration.sortTrees(null, "accountsRestrictionsTree");
 			wdw_cardbookConfiguration.loadEmailsCollection();
@@ -1701,7 +1704,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			wdw_cardbookConfiguration.validateTypes();
 			wdw_cardbookConfiguration.validateIMPPs();
 			wdw_cardbookConfiguration.validateOrg();
-			wdw_cardbookConfiguration.validateMailAccounts();
+			wdw_cardbookConfiguration.validateVCards();
 			wdw_cardbookConfiguration.validateRestrictions();
 			wdw_cardbookConfiguration.validateEmailsCollection();
 			wdw_cardbookConfiguration.validatePrefEmailPref();

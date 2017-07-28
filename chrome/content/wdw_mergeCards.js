@@ -279,7 +279,7 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 
 		setVersion: function (aDirPrefId) {
 			var cardbookPrefService = new cardbookPreferenceService(aDirPrefId);
-			wdw_mergeCards.version = cardbookPrefService.getVCard();
+			wdw_mergeCards.version = cardbookPrefService.getVCardVersion();
 		},
 
 		addRowFromArray: function (aListOfCards, aField) {
