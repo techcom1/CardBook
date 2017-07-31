@@ -318,8 +318,10 @@ cardbookCardParser.prototype = {
 							}
 							break;
 						case "CATEGORIES":
-							this.categories = cardbookUtils.unescapeArray(cardbookUtils.escapeString(vCardDataArrayTrailer).split(","));
-							this.categories = cardbookUtils.cleanCategories(this.categories);
+							if (vCardDataArrayTrailer != "") {
+								this.categories = cardbookUtils.unescapeArray(cardbookUtils.escapeString(vCardDataArrayTrailer).split(","));
+								this.categories = cardbookUtils.cleanCategories(this.categories);
+							}
 							break;
 						case "NOTE":
 							this.note = this.formatNote(vCardDataArrayTrailer);

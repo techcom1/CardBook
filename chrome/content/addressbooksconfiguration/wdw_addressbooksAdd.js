@@ -698,7 +698,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 							}
 						}
 					} else {
-						var url = document.getElementById('remotePageURI').value;
+						var url = cardbookRepository.cardbookServerValidation[url][0][1];
 						var name = document.getElementById('namePageName').value;
 						var color = document.getElementById('serverColorInput').value;
 						var vCardVersion = document.getElementById('vCardVersionPageName').value;

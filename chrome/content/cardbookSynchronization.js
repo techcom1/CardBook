@@ -391,6 +391,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 		},
 		
 		getSlashedUrl: function (aUrl) {
+			aUrl = aUrl.trim();
 			if (aUrl[aUrl.length - 1] != '/') {
 				aUrl += '/';
 			}
@@ -405,6 +406,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 		
 		getRootUrl: function (aUrl) {
 			try {
+				aUrl = aUrl.trim();
 				var urlArray1 = aUrl.split("://");
 				var urlArray2 = urlArray1[1].split("/");
 				if (urlArray1[0] != "http" && urlArray1[0] != "https") {
@@ -2011,7 +2013,13 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							cardbookSynchronization.discoverPhase1(connection, "SYNCSERVER", params);
 						} else {
 							var connection = {connPrefId: aPrefId, connPrefIdType: myPrefIdType, connUrl: myPrefIdUrl, connDescription: myPrefIdName};
-							cardbookSynchronization.serverSyncCards(connection, "SYNCSERVER", params);
+							// bug for supporting old format URL that might be short (for example carddav.gmx)
+							if (cardbookSynchronization.getSlashedUrl(connection.connUrl) == cardbookSynchronization.getSlashedUrl(cardbookSynchronization.getRootUrl(connection.connUrl))) {
+								connection.connUrl = cardbookSynchronization.getWellKnownUrl(connection.connUrl);
+								cardbookSynchronization.discoverPhase1(connection, "SYNCSERVER", params);
+							} else {
+								cardbookSynchronization.serverSyncCards(connection, "SYNCSERVER", params);
+							}
 						}
 						cardbookSynchronization.waitForSyncFinished(aPrefId, myPrefIdName, myMode);
 					}
