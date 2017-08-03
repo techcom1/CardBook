@@ -390,6 +390,22 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			return {result: myArgs.result, resultConfirm: myArgs.resultConfirm};
 		},
 		
+		getCardDAVUrl: function (aUrl, aUser) {
+			aUrl = cardbookSynchronization.getSlashedUrl(aUrl);
+			if (aUrl.search(/\/dav\//) != -1) {
+				var relative = aUrl.match("(.*)/dav/(.*)");
+				if (relative && relative[1]) {
+					return relative[1] + "/dav/addressbooks/" + aUser;
+				}
+			} else if (aUrl.search(/\/carddav\//) != -1) {
+				var relative = aUrl.match("(.*)/carddav/(.*)");
+				if (relative && relative[1]) {
+					return relative[1] + "/carddav/addressbooks/" + aUser;
+				}
+			}
+			return "";
+		},
+		
 		getSlashedUrl: function (aUrl) {
 			aUrl = aUrl.trim();
 			if (aUrl[aUrl.length - 1] != '/') {
@@ -397,7 +413,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			}
 			return aUrl;
 		},
-		
+
 		getWellKnownUrl: function (aUrl) {
 			aUrl = cardbookSynchronization.getSlashedUrl(aUrl);
 			aUrl += '.well-known/carddav';
@@ -1523,7 +1539,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			}
 			var aRootUrl = cardbookSynchronization.getRootUrl(aConnection.connUrl);
 			cardbookRepository.cardbookServerDiscoveryRequest[aConnection.connPrefId]++;
-			cardbookRepository.cardbookServerValidation[aRootUrl] = [];
 			cardbookUtils.formatStringForOutput("synchronizationRequestDiscovery", [aConnection.connDescription, aConnection.connUrl]);
 			var request = new cardbookWebDAV(aConnection, listener_checkpropfind4, "", true);
 			request.propfind(["DAV: resourcetype", "DAV: displayname"], true);
@@ -1656,7 +1671,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 				aConnection.connUrl += '/';
 			}
 			cardbookRepository.cardbookServerDiscoveryRequest[aConnection.connPrefId]++;
-			cardbookRepository.cardbookServerValidation[aRootUrl] = [];
 			cardbookUtils.formatStringForOutput("synchronizationRequestDiscovery3", [aConnection.connDescription, aConnection.connUrl]);
 			var request = new cardbookWebDAV(aConnection, listener_checkpropfind3, "", true);
 			request.propfind(["DAV: resourcetype", "DAV: displayname"], true);
