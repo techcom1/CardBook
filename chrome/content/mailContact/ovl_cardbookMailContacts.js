@@ -332,8 +332,8 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 		var myDisplayname = arguments[1].getAttribute("displayName");
 		var myEmailAddress = arguments[1].getAttribute("emailAddress");
 		var myCardBookResult = {};
+		myCardBookResult = ovl_formatEmailCorrespondents.getCardBookDisplayNameFromEmail(myEmailAddress, myDisplayname);
 		if (showCondensedAddresses) {
-			myCardBookResult = ovl_formatEmailCorrespondents.getCardBookDisplayNameFromEmail(myEmailAddress, myDisplayname);
 			if (exclusive) {
 				arguments[1].setAttribute("hascard", myCardBookResult.found.toString());
 				arguments[1].setAttribute("label", myCardBookResult.result);
@@ -345,6 +345,16 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 				myOtherResult = ovl_formatEmailCorrespondents.getOthersDisplayNameFromEmail(myEmailAddress, myDisplayname);
 				arguments[1].setAttribute("hascard", myOtherResult.found.toString());
 				arguments[1].setAttribute("label", myOtherResult.result);
+			}
+		} else {
+			if (exclusive) {
+				arguments[1].setAttribute("hascard", myCardBookResult.found.toString());
+			} else if (myCardBookResult.found) {
+				arguments[1].setAttribute("hascard", myCardBookResult.found.toString());
+			} else {
+				var myOtherResult = {};
+				myOtherResult = ovl_formatEmailCorrespondents.getOthersDisplayNameFromEmail(myEmailAddress, myDisplayname);
+				arguments[1].setAttribute("hascard", myOtherResult.found.toString());
 			}
 		}
 		return rv;
