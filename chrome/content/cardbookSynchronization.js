@@ -2155,7 +2155,13 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							} else {
 								var connection = {connPrefId: aPrefId, connPrefIdType: aPrefType, connUrl: aPrefUrl, connDescription: aPrefName};
 								cardbookRepository.cardbookServerSyncRequest[aPrefId]++;
-								cardbookSynchronization.serverSyncCards(connection, "SYNCSERVER", params);
+								// bug for supporting old format URL that might be short (for example carddav.gmx)
+								if (cardbookSynchronization.getSlashedUrl(connection.connUrl) == cardbookSynchronization.getSlashedUrl(cardbookSynchronization.getRootUrl(connection.connUrl))) {
+									connection.connUrl = cardbookSynchronization.getWellKnownUrl(connection.connUrl);
+									cardbookSynchronization.discoverPhase1(connection, "SYNCSERVER", params);
+								} else {
+									cardbookSynchronization.serverSyncCards(connection, "SYNCSERVER", params);
+								}
 							}
 							if (aPrefType === "GOOGLE" || aPrefType === "CARDDAV" || aPrefType === "APPLE") {
 								cardbookSynchronization.waitForSyncFinished(aPrefId, aPrefName, aMode);

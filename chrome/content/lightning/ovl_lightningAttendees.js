@@ -1,35 +1,4 @@
 if ("undefined" == typeof(ovl_lightningAttendees)) {
-	var myCardBookLightningObserver = {
-		register: function() {
-			var observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
-			observerService.addObserver(this, "cardbook.ABAddedDirect", false);
-			observerService.addObserver(this, "cardbook.ABRemovedDirect", false);
-			observerService.addObserver(this, "cardbook.ABModifiedDirect", false);
-
-			observerService.addObserver(this, "cardbook.preferencesChanged", false);
-		},
-		
-		unregister: function() {
-			var observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
-			observerService.removeObserver(this, "cardbook.ABAddedDirect");
-			observerService.removeObserver(this, "cardbook.ABRemovedDirect");
-			observerService.removeObserver(this, "cardbook.ABModifiedDirect");
-
-			observerService.removeObserver(this, "cardbook.preferencesChanged");
-		},
-		
-		observe: function(aSubject, aTopic, aData) {
-			switch (aTopic) {
-				case "cardbook.ABAddedDirect":
-				case "cardbook.ABRemovedDirect":
-				case "cardbook.ABModifiedDirect":
-				case "cardbook.preferencesChanged":
-					cardbookAutocomplete.loadCssRules();
-					break;
-			}
-		}
-	};
-
 	var ovl_lightningAttendees = {
 		onLoad: function() {
 			myCardBookLightningObserver.register();

@@ -13,6 +13,7 @@
 	<script src="cardbookSynchronization.js"/>
 	<script src="chrome://cardbook/content/preferences/cardbookPreferences.js"/>
 	<script src="wdw_cardbook.js"/>
+	<script src="cardbookObserver.js"/>
 	<script src="ovl_cardbookComposeMsg.js"/>
 	<script src="ovl_cardbook.js"/>
 
