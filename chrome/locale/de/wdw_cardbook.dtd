@@ -18,8 +18,8 @@
 <!ENTITY cardbookToolsMenuLabel "Extras">
 <!ENTITY cardbookToolsMenuBirthdayListLabel "Liste der Geburtstage ansehen">
 <!ENTITY cardbookToolsMenuSyncLightningLabel "Geburtstage zum Kalender hinzufügen">
-<!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "Suche doppelte Kontakte in allen Adressbüchern">
-<!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "Suche doppelte Kontakte im aktuellen Adressbuch">
+<!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "Doppelte Kontakte in allen Adressbüchern suchen">
+<!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "Doppelte Kontakte im aktuellen Adressbuch suchen">
 <!ENTITY cardbookToolsMenuPrefsLabel "CardBook-Einstellungen">
 
 <!ENTITY cardbookToolbarLabel "CardBook Symbolleiste">
@@ -157,13 +157,13 @@
 <!ENTITY copyCardFromCardsLabel "Kopieren">
 <!ENTITY pasteCardFromAccountsOrCatsLabel "Einfügen">
 <!ENTITY pasteCardFromCardsLabel "Einfügen">
-<!ENTITY exportCardToFileLabel "In eine Datei exportieren">
-<!ENTITY exportCardToDirLabel "In ein Verzeichnis exportieren">
-<!ENTITY importCardFromFileLabel "Kontakt aus einer Datei importieren">
-<!ENTITY importCardFromDirLabel "Kontakt aus einem Verzeichnis importieren">
+<!ENTITY exportCardToFileLabel "Exportieren in eine Datei">
+<!ENTITY exportCardToDirLabel "Exportieren in ein Verzeichnis">
+<!ENTITY importCardFromFileLabel "Importieren aus einer Datei">
+<!ENTITY importCardFromDirLabel "Importieren aus einem Verzeichnis">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Kategorie umbenennen">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Kategorie entfernen">
-<!ENTITY findDuplicatesFromAccountsOrCatsLabel "Suche doppelte Kontakte im aktuellen Adressbuch">
+<!ENTITY findDuplicatesFromAccountsOrCatsLabel "Doppelte Kontakte im aktuellen Adressbuch suchen">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Anzeigenamen erstellen">
 <!ENTITY mergeCardsFromCardsLabel "Kontakte zusammenführen">
 <!ENTITY duplicateCardFromCardsLabel "Kontakt verdoppeln">
