@@ -82,6 +82,27 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			return aTextbox;
 		},
 
+		loadAccountsOrCatsTreeMenu: function (aPopupName, aMenuName, aDefaultId) {
+			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+			var myPopup = document.getElementById(aPopupName);
+			cardbookElementTools.deleteRows(aPopupName);
+			var defaultIndex = 0;
+			var j = 0;
+			var typeName = [ 'all', 'enabled', 'disabled', 'local', 'remote', 'search' ];
+			for (var i = 0; i < typeName.length; i++) {
+				var menuItem = document.createElement("menuitem");
+				menuItem.setAttribute("label", strBundle.GetStringFromName(typeName[i] + "AccountsLabel"));
+				menuItem.setAttribute("value", typeName[i]);
+				myPopup.appendChild(menuItem);
+				if (typeName[i] == aDefaultId) {
+					defaultIndex=j;
+				}
+				j++;
+			}
+			document.getElementById(aMenuName).selectedIndex = defaultIndex;
+		},
+
 		loadInclExcl: function (aPopupName, aMenuName, aDefaultId) {
 			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
 			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");

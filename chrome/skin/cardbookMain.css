@@ -1,4 +1,9 @@
-﻿.cardbookBackgroundColorClass {
+﻿.cardbookAccountHeaderTreeClass {
+	background-color: window !important;
+	color: windowtext !important;
+}
+
+.cardbookBackgroundColorClass {
 	-moz-appearance: none !important;
 	background-color: window !important;
 	border: 0px !important;

@@ -565,9 +565,6 @@ if ("undefined" == typeof(cardbookTypes)) {
 				}
 				cardbookElementTools.addKeyTextbox(aHBox, aType + '_' + aIndex + '_valueBox', myValue, {flex: "1"}, aVersion, aIndex);
 			} else if (aType == "adr") {
-				if (aCardValue.length != 7) {
-					aCardValue = ["", "", "", "", "", "", ""];
-				}
 				var myTmpArray = [];
 				for (var i = 0; i < aCardValue.length; i++) {
 					if (aCardValue[i] != "") {
@@ -592,12 +589,18 @@ if ("undefined" == typeof(cardbookTypes)) {
 				};
 				document.getElementById(aType + '_' + aIndex + '_valueBox').addEventListener("click", fireEditAdr, false);
 				document.getElementById(aType + '_' + aIndex + '_valueBox').addEventListener("input", fireEditAdr, false);
+
+				let i = 0;
+				while ( i < 7 ) {
+					if (aCardValue[i]) {
+						cardbookElementTools.addTextbox(aHBox, aType + '_' + aIndex + '_valueBox_' + i, aCardValue[i].replace(/\n/g, "\\n"), {hidden: "true"});
+					} else {
+						cardbookElementTools.addTextbox(aHBox, aType + '_' + aIndex + '_valueBox_' + i, "", {hidden: "true"});
+					}
+					i++;
+				}
 			}
 		
-			for (var i = 0; i < aCardValue.length; i++) {
-				cardbookElementTools.addTextbox(aHBox, aType + '_' + aIndex + '_valueBox_' + i, aCardValue[i].replace(/\n/g, "\\n"), {hidden: "true"});
-			}
-			
 			function fireUpButton(event) {
 				if (document.getElementById(this.id).disabled) {
 					return;
@@ -761,9 +764,6 @@ if ("undefined" == typeof(cardbookTypes)) {
 				cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', myDisplayedTypes.join(" "), {readonly: 'true'});
 	
 				if (aType == "adr") {
-					if (aCardValue.length != 7) {
-						aCardValue = ["", "", "", "", "", "", ""];
-					}
 					var myTmpArray = [];
 					for (var i = 0; i < aCardValue.length; i++) {
 						if (aCardValue[i] != "") {

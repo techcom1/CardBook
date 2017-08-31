@@ -23,7 +23,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 				}
 				// setting preferEmailPref for getting usefull emails
 				cardbookRepository.preferEmailPref = prefs.getBoolPref("extensions.cardbook.preferEmailPref");
-	
+				
 				// migration functions (should be removed)
 				// removed : cardbookRepository.setSolveConflicts();
 				cardbookRepository.setCollected();

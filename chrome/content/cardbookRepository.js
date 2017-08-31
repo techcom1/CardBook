@@ -484,6 +484,7 @@ var cardbookRepository = {
 		}
 		
 		cardbookRepository.cardbookAccounts.push([aAccountName, true, aExpanded, true, aAccountId, aEnabled, aAccountType, aReadOnly]);
+		cardbookRepository.cardbookAccounts = cardbookUtils.sortArrayByString(cardbookRepository.cardbookAccounts,0,1);
 		cardbookRepository.cardbookDisplayCards[aAccountId] = [];
 		cardbookRepository.cardbookAccountsCategories[aAccountId] = [];
 	},
@@ -722,7 +723,7 @@ var cardbookRepository = {
 
 			if (myDirPrefIdType === "DIRECTORY") {
 				aCard.cacheuri = aFileName;
-				var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
+				var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 				myFile.initWithPath(myDirPrefIdUrl);
 				myFile.append(aFileName);
 				if (aMode === "INITIAL") {
@@ -788,7 +789,7 @@ var cardbookRepository = {
 			var myDirPrefIdType = cardbookPrefService.getType();
 			var myDirPrefIdUrl = cardbookPrefService.getUrl();
 			if (myDirPrefIdType === "DIRECTORY") {
-				var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
+				var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 				myFile.initWithPath(myDirPrefIdUrl);
 				myFile.append(aCard.cacheuri);
 				if (myFile.exists() && myFile.isFile()) {

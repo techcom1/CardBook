@@ -4,6 +4,7 @@ if ("undefined" == typeof(wdw_logEdition)) {
 		load: function () {
 			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			var myLogArray = cardbookRepository.statusInformation;
+			var myTree = document.getElementById('logEditionTree');
 			var myTreeView = {
 				rowCount : myLogArray.length,
 				isContainer: function(row) { return false },
@@ -14,7 +15,9 @@ if ("undefined" == typeof(wdw_logEdition)) {
 					else if (column.id == "logEditionType") return myLogArray[row][1];
 				}
 			}
-			document.getElementById('logEditionTree').view = myTreeView;
+			var currentFirstVisibleRow = myTree.boxObject.getFirstVisibleRow();
+			myTree.view = myTreeView;
+			myTree.boxObject.scrollToRow(currentFirstVisibleRow);
 		},
 
 		selectAllKey: function () {

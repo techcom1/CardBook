@@ -1000,11 +1000,11 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 		getFilesFromDir: function (aDirName) {
 			var listOfFileName = [];
 			try {
-				var myDirectory = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
+				var myDirectory = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 				myDirectory.initWithPath(aDirName);
 				var files = myDirectory.directoryEntries;
 				while (files.hasMoreElements()) {
-					var file = files.getNext().QueryInterface(Components.interfaces.nsILocalFile);
+					var file = files.getNext().QueryInterface(Components.interfaces.nsIFile);
 					if (file.isFile()) {
 						listOfFileName.push(file.leafName);
 					}
@@ -1080,7 +1080,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			var aListOfFileName = [];
 			aListOfFileName = cardbookSynchronization.getFilesFromDir(aDir.path);
 			for (var i = 0; i < aListOfFileName.length; i++) {
-				var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
+				var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 				myFile.initWithPath(aDir.path);
 				myFile.append(aListOfFileName[i]);
 				if (myFile.exists() && myFile.isFile()) {
@@ -2294,13 +2294,13 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					cardbookSynchronization.waitForDirFinished(aDirPrefId, myPrefName, aMode);
 				} else if (myPrefType === "FILE") {
 					cardbookRepository.cardbookFileRequest[aDirPrefId]++;
-					var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
+					var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 					myFile.initWithPath(myPrefUrl);
 					cardbookSynchronization.loadFile(myFile, "", aDirPrefId, aMode, "");
 					cardbookSynchronization.waitForDirFinished(aDirPrefId, myPrefName, aMode);
 				} else if (myPrefType === "DIRECTORY") {
 					cardbookRepository.cardbookDirRequest[aDirPrefId]++;
-					var myDir = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
+					var myDir = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 					myDir.initWithPath(myPrefUrl);
 					cardbookSynchronization.loadDir(myDir, "", aDirPrefId, aMode, "");
 					cardbookSynchronization.waitForDirFinished(aDirPrefId, myPrefName, aMode);
@@ -2673,7 +2673,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 
 		writeCardsToDir: function (aDirName, aListofCard, aMediaConversion) {
 			try {
-				var myDirectory = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
+				var myDirectory = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 				for (var i = 0; i < aListofCard.length; i++) {
 					var myCard = aListofCard[i];
 					myDirectory.initWithPath(aDirName);
@@ -2692,7 +2692,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 
 		writeContentToFile: function (aFileName, aContent, aConvertion) {
 			try {
-				var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
+				var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 				myFile.initWithPath(aFileName);
 
 				if (myFile.exists() == false){

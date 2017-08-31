@@ -1,6 +1,5 @@
 <!ENTITY wdw_cardbookWindowLabel "CardBook">
 
-<!ENTITY accountsOrCatsTreeLabel "Adresáře">
 <!ENTITY enableAccountsTooltip "Povolit nebo zakázat vyhledávání a synchronizaci adresářů.">
 <!ENTITY colorAccountsTooltip "Obarvit výsledky vyhledáváání (použít když vyhledávání zahrnují více adresářů).">
 <!ENTITY readonlyAccountsTooltip "Nastavte adresáře jako zapisovatelné, nebo jako jen pro čtení.">
@@ -95,7 +94,7 @@
 <!ENTITY cardurlColumnLabel "URL kontaktu">
 <!ENTITY dirPrefIdColumnLabel "DirPrefId">
 <!ENTITY kindColumnLabel "Druh">
-<!ENTITY revColumnLabel "Rev">
+<!ENTITY revColumnLabel "Poslední aktualizace">
 <!ENTITY etagColumnLabel "Etag">
 
 <!ENTITY categoriesGroupboxLabel "Kategorie">
@@ -125,7 +124,7 @@
 <!ENTITY dirPrefIdLabel "dirPrefId">
 <!ENTITY cardurlLabel "Card URL">
 <!ENTITY cacheuriLabel "Uložit URI do mezipaměti">
-<!ENTITY revLabel "Rev">
+<!ENTITY revLabel "Poslední aktualizace">
 <!ENTITY etagLabel "Etag">
 
 <!ENTITY localizeadrTreeLabel "Vyhledat">

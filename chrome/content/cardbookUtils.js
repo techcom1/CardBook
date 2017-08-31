@@ -1637,11 +1637,12 @@ if ("undefined" == typeof(cardbookUtils)) {
 		},
 
 		getPositionOfAccountId: function(aAccountId) {
-			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
-				if (cardbookRepository.cardbookAccounts[i][4] == aAccountId) {
+			for (var i = 0; i < cardbookDirTree.visibleData.length; i++) {
+				if (cardbookDirTree.visibleData[i][4] == aAccountId) {
 					return i;
 				}
 			}
+			
 			return -1;
 		},
 
@@ -1968,7 +1969,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			return true;
 		},
 
-		callFilePicker: function (aTitle, aMode, aType, aDefaultFileName) {
+		callFilePicker: function (aTitle, aMode, aType, aDefaultFileName, aCallback, aCallbackParam) {
 			try {
 				var strBundle = document.getElementById("cardbook-strings");
 				var myWindowTitle = strBundle.getString(aTitle);
@@ -1993,29 +1994,29 @@ if ("undefined" == typeof(cardbookUtils)) {
 				if (aDefaultFileName != null && aDefaultFileName !== undefined && aDefaultFileName != "") {
 					fp.defaultString = aDefaultFileName;
 				}
-				var ret = fp.show();
-				if (ret == nsIFilePicker.returnOK || ret == nsIFilePicker.returnReplace) {
-					return fp.file;
-				}
-				return "";
+				fp.open(rv => {
+					if (rv == nsIFilePicker.returnOK || rv == nsIFilePicker.returnReplace) {
+						aCallback(fp.file, aCallbackParam);
+					}
+				});
 			}
 			catch (e) {
 				wdw_cardbooklog.updateStatusProgressInformation("cardbookUtils.callFilePicker error : " + e, "Error");
 			}
 		},
 
-		callDirPicker: function (aTitle) {
+		callDirPicker: function (aTitle, aCallback, aCallbackParam) {
 			try {
 				var strBundle = document.getElementById("cardbook-strings");
 				var myWindowTitle = strBundle.getString(aTitle);
 				var nsIFilePicker = Components.interfaces.nsIFilePicker;
 				var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
 				fp.init(window, myWindowTitle, nsIFilePicker.modeGetFolder);
-				var ret = fp.show();
-				if (ret == nsIFilePicker.returnOK || ret == nsIFilePicker.returnReplace) {
-					return fp.file;
-				}
-				return "";
+				fp.open(rv => {
+					if (rv == nsIFilePicker.returnOK || rv == nsIFilePicker.returnReplace) {
+						aCallback(fp.file, aCallbackParam);
+					}
+				});
 			}
 			catch (e) {
 				wdw_cardbooklog.updateStatusProgressInformation("cardbookUtils.callDirPicker error : " + e, "Error");
@@ -2085,13 +2086,13 @@ if ("undefined" == typeof(cardbookUtils)) {
 		},
 
 		getFreeFileName: function(aDirName, aName, aId, aExtension) {
-			var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
+			var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 			myFile.initWithPath(aDirName);
 			myFile.append(aName.replace(/([\\\/\:\*\?\"\<\>\|]+)/g, '-') + aExtension);
 			if (myFile.exists()) {
 				var i = 0;
 				while (i < 100) {
-					var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
+					var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 					myFile.initWithPath(aDirName);
 					myFile.append(aName.replace(/([\\\/\:\*\?\"\<\>\|]+)/g, '-') + "." + i + aExtension);
 					if (!(myFile.exists())) {

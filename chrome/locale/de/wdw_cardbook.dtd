@@ -1,6 +1,5 @@
 <!ENTITY wdw_cardbookWindowLabel "CardBook">
 
-<!ENTITY accountsOrCatsTreeLabel "Adressbücher">
 <!ENTITY enableAccountsTooltip "Adressbücher zur Suche und Synchronisierung aktivieren oder deaktivieren.">
 <!ENTITY colorAccountsTooltip "Adressbuch-Farbe zur Unterscheidung mehrerer Adressbücher.">
 <!ENTITY readonlyAccountsTooltip "Setzt das Adressbuch in den schreibgeschützen oder Lese- und Schreibmodus.">
@@ -95,7 +94,7 @@
 <!ENTITY cardurlColumnLabel "Kontakt-URL">
 <!ENTITY dirPrefIdColumnLabel "DirPrefId">
 <!ENTITY kindColumnLabel "Typ">
-<!ENTITY revColumnLabel "Rev">
+<!ENTITY revColumnLabel "Zuletzt aktualisiert">
 <!ENTITY etagColumnLabel "Etag">
 
 <!ENTITY categoriesGroupboxLabel "Kategorien">
@@ -125,7 +124,7 @@
 <!ENTITY dirPrefIdLabel "dirPrefId">
 <!ENTITY cardurlLabel "Kontakt-URL">
 <!ENTITY cacheuriLabel "Cache URI">
-<!ENTITY revLabel "Rev">
+<!ENTITY revLabel "Zuletzt aktualisiert">
 <!ENTITY etagLabel "Etag">
 
 <!ENTITY localizeadrTreeLabel "Lokalisieren">

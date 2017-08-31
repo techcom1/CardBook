@@ -97,13 +97,19 @@
 				<columns>
 					<column/>
 					<column flex="1"/>
+					<column/>
 				</columns>
 				<rows>
 					<description>&localPage.uri.description;</description>
 					<row align="center">
 						<label id="localPageURILabel" value="&localPage.uri.label;" control="localPageURI"/>
 						<textbox id="localPageURI" oninput="wdw_addressbooksAdd.checkRequired();"/>
-						<button id="localPageURIButton" label="&localPage.uributton.label;" oncommand="wdw_addressbooksAdd.searchFile(this);"/>
+						<button id="localPageURIButton" label="&localPage.uributton.label;" oncommand="wdw_addressbooksAdd.searchFile();"/>
+					</row>
+					<row align="center">
+						<spacer/>
+						<notificationbox id="localPageURINotifications" flex="1"/>
+						<spacer/>
 					</row>
 				</rows>
 			</grid>
@@ -310,30 +316,6 @@
 		</grid>
 	</wizardpage>
 
-	<wizardpage pageid="locationFirstPage"
-			next="finishPage"
-			label="&wizard.label;"
-			description="&localPage.wizard.description;"
-			onpageshow="wdw_addressbooksAdd.checkRequired();"
-			onpageadvanced="wdw_addressbooksAdd.locationFirstAdvance();">
-		<description>&locationFirstPage.uri.description;</description>
-		<grid flex="1">
-			<columns>
-				<column flex="1"/>
-				<column/>
-			</columns>
-			<rows>
-				<row align="center">
-					<textbox id="locationFirstPageURI"
-						required="true"
-						disabled="true"
-						oninput="wdw_addressbooksAdd.checkRequired();"/>
-					<button id="locationFirstPageURIButton" label="&localPage.uributton.label;" oncommand="wdw_addressbooksAdd.searchFile(this);"/>
-				</row>
-			</rows>
-		</grid>
-	</wizardpage>
-	
 	<wizardpage pageid="finishPage"
 			label="&wizard.label;"
 			description="&finishPage.wizard.description;"

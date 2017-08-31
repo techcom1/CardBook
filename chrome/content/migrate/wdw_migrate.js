@@ -139,7 +139,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 
 				var email = aABCard.getProperty("PrimaryEmail", "");
 				var emailValue = aABCard.getProperty("PopularityIndex", "0");
-				if (email != "" && emailValue != "0") {
+				if (email != "" && emailValue != "0" && emailValue != " ") {
 					cardbookRepository.cardbookMailPopularityIndex[email] = emailValue;
 				}
 							

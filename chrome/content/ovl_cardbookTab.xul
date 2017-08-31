@@ -66,7 +66,9 @@
 				<vbox id="leftPaneVbox" persist="width collapsed">
 					<hbox>
 						<vbox flex="1">
-							<button id="accountsOrCatsTreeLabel" label="&accountsOrCatsTreeLabel;" flex="1"/>
+							<menulist id="accountsOrCatsTreeMenulist" flex="1" oncommand="wdw_cardbook.changeAddressbookTreeMenu();" class="cardbookAccountHeaderTreeClass">
+								<menupopup id="accountsOrCatsTreeMenupopup"/>
+							</menulist>
 						</vbox>
 					</hbox>
 					<tree id="accountsOrCatsTree"

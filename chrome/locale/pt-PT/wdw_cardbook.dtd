@@ -1,6 +1,5 @@
 <!ENTITY wdw_cardbookWindowLabel "CardBook">
 
-<!ENTITY accountsOrCatsTreeLabel "Agendas">
 <!ENTITY enableAccountsTooltip "Ligar ou deligar a procura e sincronização das agendas.">
 <!ENTITY colorAccountsTooltip "Colorir os resultados da pesquisa.">
 <!ENTITY readonlyAccountsTooltip "Colocar Agendas em modo só de leitura ou em modo de leitura e escrita.">
@@ -95,7 +94,7 @@
 <!ENTITY cardurlColumnLabel "Endereço URL do cartão">
 <!ENTITY dirPrefIdColumnLabel "DirPrefId">
 <!ENTITY kindColumnLabel "Tipo">
-<!ENTITY revColumnLabel "Rev">
+<!ENTITY revColumnLabel "Última atualização">
 <!ENTITY etagColumnLabel "Etag">
 
 <!ENTITY categoriesGroupboxLabel "Categorias">
@@ -125,7 +124,7 @@
 <!ENTITY dirPrefIdLabel "dirPrefId">
 <!ENTITY cardurlLabel "URL do cartão">
 <!ENTITY cacheuriLabel "Cache URI">
-<!ENTITY revLabel "Rev">
+<!ENTITY revLabel "Última atualização">
 <!ENTITY etagLabel "Etag">
 
 <!ENTITY localizeadrTreeLabel "Localizar">

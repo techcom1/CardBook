@@ -1,6 +1,5 @@
 <!ENTITY wdw_cardbookWindowLabel "CardBook">
 
-<!ENTITY accountsOrCatsTreeLabel "Książki adresowe">
 <!ENTITY enableAccountsTooltip "Włącz lub wyłącz przeszukiwanie i synchronizację książek adresowych.">
 <!ENTITY colorAccountsTooltip "Zaznaczaj kolorem wyniki wyszukiwania w książkach adresowych (gdy wyszukiwanie obejmuje wiele książek adresowych).">
 <!ENTITY readonlyAccountsTooltip "Ustaw książki adresowe w tryb tylko do odczytu lub odczytu i zapisu.">
@@ -95,7 +94,7 @@
 <!ENTITY cardurlColumnLabel "Card URL">
 <!ENTITY dirPrefIdColumnLabel "DirPrefId">
 <!ENTITY kindColumnLabel "Rodzaj">
-<!ENTITY revColumnLabel "Rev">
+<!ENTITY revColumnLabel "Ostatnia aktualizacja">
 <!ENTITY etagColumnLabel "Etag">
 
 <!ENTITY categoriesGroupboxLabel "Kategorie">
@@ -125,7 +124,7 @@
 <!ENTITY dirPrefIdLabel "dirPrefId">
 <!ENTITY cardurlLabel "Card URL">
 <!ENTITY cacheuriLabel "Cache URI">
-<!ENTITY revLabel "Rev">
+<!ENTITY revLabel "Ostatnia aktualizacja">
 <!ENTITY etagLabel "Etag">
 
 <!ENTITY localizeadrTreeLabel "Lokalizuj">

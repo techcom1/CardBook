@@ -155,45 +155,41 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			page.next = 'namePage';
 		},
 
-		searchFile: function (aButton) {
+		searchFile: function () {
+			cardbookNotifications.setNotification("localPageURINotifications", "OK");
 			var type = document.getElementById('localPageType').selectedItem.value;
 			switch(type) {
 				case "createDirectory":
 				case "openDirectory":
 				case "standard":
-					var myFile = cardbookUtils.callDirPicker("dirChooseTitle");
+					cardbookUtils.callDirPicker("dirChooseTitle", wdw_addressbooksAdd.checkFile);
 					break;
 				case "createFile":
-					var myFile = cardbookUtils.callFilePicker("fileCreationTitle", "SAVE", "VCF");
+					cardbookUtils.callFilePicker("fileCreationTitle", "SAVE", "VCF", "", wdw_addressbooksAdd.checkFile);
 					break;
 				case "openFile":
-					var myFile = cardbookUtils.callFilePicker("fileSelectionTitle", "OPEN", "VCF");
+					cardbookUtils.callFilePicker("fileSelectionTitle", "OPEN", "VCF", "", wdw_addressbooksAdd.checkFile);
 					break;
 			}
+		},
 
-			if (myFile != null && myFile !== undefined && myFile != "") {
-				var myTextBox = document.getElementById(aButton.id.replace("Button", ""));
+		checkFile: function (aFile) {
+			var myTextbox = document.getElementById('localPageURI');
+			var type = document.getElementById('localPageType').selectedItem.value;
+			if (aFile != null && aFile !== undefined && aFile != "") {
 				if (type == 'openFile' || type == 'createFile') {
-					if (cardbookUtils.isFileAlreadyOpen(myFile.path)) {
-						var strBundle = document.getElementById("cardbook-strings");
-						var fileAlreadyOpenMsg = strBundle.getFormattedString("fileAlreadyOpen", [myFile.path]);
-						var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
-						prompts.alert(null, null, fileAlreadyOpenMsg);
-						return;
+					if (cardbookUtils.isFileAlreadyOpen(aFile.path)) {
+						cardbookNotifications.setNotification("localPageURINotifications", "fileAlreadyOpen", aFile.path);
 					} else {
-						myTextBox.value = myFile.path;
-						wdw_addressbooksAdd.gFile = myFile;
+						myTextbox.value = aFile.path;
+						wdw_addressbooksAdd.gFile = aFile;
 					}
 				} else {
-					if (cardbookUtils.isDirectoryAlreadyOpen(myFile.path)) {
-						var strBundle = document.getElementById("cardbook-strings");
-						var directoryAlreadyOpenMsg = strBundle.getFormattedString("directoryAlreadyOpen", [myFile.path]);
-						var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
-						prompts.alert(null, null, directoryAlreadyOpenMsg);
-						return;
+					if (cardbookUtils.isDirectoryAlreadyOpen(aFile.path)) {
+						cardbookNotifications.setNotification("localPageURINotifications", "directoryAlreadyOpen", aFile.path);
 					} else {
-						myTextBox.value = myFile.path;
-						wdw_addressbooksAdd.gFile = myFile;
+						myTextbox.value = aFile.path;
+						wdw_addressbooksAdd.gFile = aFile;
 					}
 				}
 			}
@@ -634,16 +630,6 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 
 		namesAdvance: function () {
 			var page = document.getElementsByAttribute('pageid', 'namesPage')[0];
-			wdw_addressbooksAdd.createAddressbook();
-			if (wdw_addressbooksAdd.gFinishParams.length > 1) {
-				page.next = 'finishsPage';
-			} else {
-				page.next = 'finishPage';
-			}
-		},
-
-		locationFirstAdvance: function () {
-			var page = document.getElementsByAttribute('pageid', 'locationFirstPage')[0];
 			wdw_addressbooksAdd.createAddressbook();
 			if (wdw_addressbooksAdd.gFinishParams.length > 1) {
 				page.next = 'finishsPage';

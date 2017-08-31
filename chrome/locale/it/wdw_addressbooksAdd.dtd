@@ -21,7 +21,6 @@
 <!ENTITY localPage.openFile.label "Apri una rubrica esistente (File)">
 <!ENTITY localPage.uri.label "Cartella o file">
 <!ENTITY localPage.uri.description "Utilizzando il browser, scegli il percorso per la tua nuova rubrica locale. Se stai creando un nuovo file, utilizza l'estensione .vcf.">
-<!ENTITY locationFirstPage.uri.description "Scegli il percorso per le tue nuove rubriche locali.">
 <!ENTITY localPage.uributton.label "Sfoglia">
 
 <!ENTITY remotePage.wizard.description "Tipo e percorso della nuova rubrica remota.">

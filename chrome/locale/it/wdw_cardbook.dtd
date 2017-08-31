@@ -1,6 +1,5 @@
 <!ENTITY wdw_cardbookWindowLabel "CardBook">
 
-<!ENTITY accountsOrCatsTreeLabel "Rubriche">
 <!ENTITY enableAccountsTooltip "Abilita o disabilita la ricerca e la sincronizzazione delle rubriche.">
 <!ENTITY colorAccountsTooltip "Evidenzia i risultati di ricerca nelle rubriche (Da utilizzare quando si effettuano ricerche in più rubriche).">
 <!ENTITY readonlyAccountsTooltip "Imposta le rubriche in modalità sola lettura oppure in modalità lettura-scrittura.">
@@ -95,7 +94,7 @@
 <!ENTITY cardurlColumnLabel "URL della Card">
 <!ENTITY dirPrefIdColumnLabel "DirPrefId">
 <!ENTITY kindColumnLabel "Tipologia">
-<!ENTITY revColumnLabel "Rev">
+<!ENTITY revColumnLabel "Ultimo aggiornamento">
 <!ENTITY etagColumnLabel "Etag">
 
 <!ENTITY categoriesGroupboxLabel "Categorie">
@@ -125,7 +124,7 @@
 <!ENTITY dirPrefIdLabel "dirPrefId">
 <!ENTITY cardurlLabel "URL della Card">
 <!ENTITY cacheuriLabel "Cache URI">
-<!ENTITY revLabel "Rev">
+<!ENTITY revLabel "Ultimo aggiornamento">
 <!ENTITY etagLabel "Etag">
 
 <!ENTITY localizeadrTreeLabel "Localizza">

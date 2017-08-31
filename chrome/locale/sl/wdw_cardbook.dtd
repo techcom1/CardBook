@@ -1,6 +1,5 @@
 <!ENTITY wdw_cardbookWindowLabel "CardBook">
 
-<!ENTITY accountsOrCatsTreeLabel "Imeniki">
 <!ENTITY enableAccountsTooltip "Omogoči ali onemogoči iskanje in sinhronizacjo imenikov.">
 <!ENTITY colorAccountsTooltip "Obarvaj rezultate iskanja v menikih (uporabite med iskanjem v več imenikih).">
 <!ENTITY readonlyAccountsTooltip "Nastavi imenike v način samo za branje ali branje/pisanje.">
@@ -95,7 +94,7 @@
 <!ENTITY cardurlColumnLabel "URL kartice">
 <!ENTITY dirPrefIdColumnLabel "DirPrefId">
 <!ENTITY kindColumnLabel "Vrsta">
-<!ENTITY revColumnLabel "Rev">
+<!ENTITY revColumnLabel "Nazadnje posodobljeno">
 <!ENTITY etagColumnLabel "Etag">
 
 <!ENTITY categoriesGroupboxLabel "Kategorije">
@@ -125,7 +124,7 @@
 <!ENTITY dirPrefIdLabel "dirPrefId">
 <!ENTITY cardurlLabel "URL kartice">
 <!ENTITY cacheuriLabel "URI predpomnilnika">
-<!ENTITY revLabel "Rev.">
+<!ENTITY revLabel "Nazadnje posodobljeno">
 <!ENTITY etagLabel "Etag">
 
 <!ENTITY localizeadrTreeLabel "Lokaliziraj">

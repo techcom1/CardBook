@@ -730,7 +730,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 		
 		onABChange: function () {
 			var addrbookColumn = document.getElementById("addrbook");
-			if (document.getElementById('CardBookABMenulist').value != "allAddressBooks") {
+			if (document.getElementById('CardBookABMenulist').selectedItem.value != "allAddressBooks" && document.getElementById('CardBookABMenulist').selectedItem.getAttribute("ABtype") != "search") {
 				addrbookColumn.setAttribute('hidden', 'true');
 				addrbookColumn.setAttribute('ignoreincolumnpicker', "true");
 			} else {
@@ -738,7 +738,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 				addrbookColumn.removeAttribute('ignoreincolumnpicker');
 			}
 
-			var ABList = document.getElementById('CardBookABMenulist');
+			var ABList = document.getElementById('CardBookABMenulist').selectedItem;
 			if (ABList.value != null && ABList.value !== undefined && ABList.value != "") {
 				var ABDefaultValue = ABList.value;
 			} else {

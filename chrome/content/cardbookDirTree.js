@@ -103,3 +103,59 @@ if ("undefined" == typeof(cardbookDirTree)) {
 		}
 	};
 };
+
+if ("undefined" == typeof(cardbookDirTreeUtils)) {
+	var cardbookDirTreeUtils = {
+		
+		newArray: [],
+		
+		filterTree: function() {
+			var accountsShown = document.getElementById('accountsOrCatsTreeMenulist').selectedItem.value;
+			var enabledColumn = document.getElementById('accountEnabled');
+			var typeColumn = document.getElementById('accountTypeCheckbox');
+			cardbookDirTreeUtils.newArray = JSON.parse(JSON.stringify(cardbookRepository.cardbookAccounts));
+			
+			typeColumn.removeAttribute('hidden');
+			enabledColumn.removeAttribute('hidden');
+			switch(accountsShown) {
+				case "enabled":
+					function enabledAccount(element) {
+						return (element[5]);
+					}
+					cardbookDirTreeUtils.newArray = cardbookDirTreeUtils.newArray.filter(enabledAccount);
+					enabledColumn.setAttribute('hidden', 'true');
+					break;
+				case "disabled":
+					function disabledAccount(element) {
+						return (!element[5]);
+					}
+					cardbookDirTreeUtils.newArray = cardbookDirTreeUtils.newArray.filter(disabledAccount);
+					enabledColumn.setAttribute('hidden', 'true');
+					break;
+				case "local":
+					function localAccount(element) {
+						return (element[6] === "LOCALDB" || element[6] === "FILE" || element[6] === "DIRECTORY" || element[6] === "CACHE");
+					}
+					cardbookDirTreeUtils.newArray = cardbookDirTreeUtils.newArray.filter(localAccount);
+					typeColumn.setAttribute('hidden', 'true');
+					break;
+				case "remote":
+					function remoteAccount(element) {
+						return (element[6] === "GOOGLE" || element[6] === "CARDDAV" || element[6] === "APPLE");
+					}
+					cardbookDirTreeUtils.newArray = cardbookDirTreeUtils.newArray.filter(remoteAccount);
+					typeColumn.setAttribute('hidden', 'true');
+					break;
+				case "search":
+					function searchAccount(element) {
+						return (element[6] === "SEARCH");
+					}
+					cardbookDirTreeUtils.newArray = cardbookDirTreeUtils.newArray.filter(searchAccount);
+					typeColumn.setAttribute('hidden', 'true');
+					break;
+			};
+			return cardbookDirTreeUtils.newArray;
+		}
+	};
+};
+		

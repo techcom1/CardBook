@@ -21,7 +21,6 @@
 <!ENTITY localPage.openFile.label "Otwórz istniejącą książkę adresową (plik)">
 <!ENTITY localPage.uri.label "Katalog lub plik">
 <!ENTITY localPage.uri.description "Wybierz położenie nowej książki adresowej. Jeśli tworzysz nowy plik, nadaj mu rozszerzenie .vcf.">
-<!ENTITY locationFirstPage.uri.description "Wybierz położenie nowych książek adresowych.">
 <!ENTITY localPage.uributton.label "Przeglądaj">
 
 <!ENTITY remotePage.wizard.description "Rodzaj i położenie nowej zdalnej książki adresowej.">

@@ -22,6 +22,7 @@
 
 	<script src="chrome://global/content/printUtils.js"/>
 	<script src="chrome://global/content/globalOverlay.js"/>
+	<script src="chrome://cardbook/content/cardbookObserver.js"/>
 	<script src="chrome://cardbook/content/wdw_log.js"/>
 	<script src="chrome://cardbook/content/preferences/cardbookPreferences.js"/>
 	<script src="chrome://cardbook/content/cardbookUtils.js"/>

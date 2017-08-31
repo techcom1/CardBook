@@ -37,6 +37,7 @@
 
 	<hbox>
 		<spacer flex="1"/>
+		<button id="refreshLogEditionLabel" label="&refreshLogEditionLabel;" accesskey="&refreshLogEditionAccesskey;" oncommand="wdw_logEdition.load();"/>
 		<button id="flushLogEditionLabel" label="&flushLogEditionLabel;" accesskey="&flushLogEditionAccesskey;" oncommand="wdw_logEdition.flush();"/>
 		<button id="clipboardLogEditionLabel" label="&clipboardLogEditionLabel;" accesskey="&clipboardLogEditionAccesskey;" oncommand="wdw_logEdition.clipboard();"/>
 		<button id="cancelLogEditionLabel" label="&cancelLogEditionLabel;" accesskey="&cancelLogEditionAccesskey;" oncommand="wdw_logEdition.cancel();"/>

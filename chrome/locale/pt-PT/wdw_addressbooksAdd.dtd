@@ -21,7 +21,6 @@
 <!ENTITY localPage.openFile.label "Abrir uma agenda existente (Ficherio)">
 <!ENTITY localPage.uri.label "Directoria ou Ficheiro">
 <!ENTITY localPage.uri.description "Usando o browser, escolha uma localização para a nova agenda local. Se está a criar uma nova ficherio, especifique .vcf como extensão.">
-<!ENTITY locationFirstPage.uri.description "Escolha a localização da nova agenda local.">
 <!ENTITY localPage.uributton.label "navegue">
 
 <!ENTITY remotePage.wizard.description "Tipo e localização de nova agenda remota.">

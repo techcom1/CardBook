@@ -1,6 +1,8 @@
 <!ENTITY wdw_logEditionTitle "Ansicht des Protokolls">
 
 <!ENTITY logEditionValueLabel "Zeile">
+<!ENTITY refreshLogEditionLabel "Aktualisieren">
+<!ENTITY refreshLogEditionAccesskey "A">
 <!ENTITY flushLogEditionLabel "Flush">
 <!ENTITY flushLogEditionAccesskey "F">
 <!ENTITY clipboardLogEditionLabel "In die Zwischenablage kopieren">

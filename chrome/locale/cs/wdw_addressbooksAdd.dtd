@@ -21,7 +21,6 @@
 <!ENTITY localPage.openFile.label "Otevřít existující adresář (soubor)">
 <!ENTITY localPage.uri.label "Adresář nebo soubor">
 <!ENTITY localPage.uri.description "S použitím prohlížeče zvolte umístění pro váš nový místní adresář. Pokud vytváříte nový soubor, jako příponu zadejte .vcf.">
-<!ENTITY locationFirstPage.uri.description "Zvolte umístění pro vaše nové místní adresáře.">
 <!ENTITY localPage.uributton.label "Procházet">
 
 <!ENTITY remotePage.wizard.description "Typ a umístění nového vzdáleného adresáře.">
