@@ -40,6 +40,7 @@ Community efforts:
 ### Contribution
 
 You are welcomed to contribute to this project by:
+* providing translations,
 * creating issues about problems,
 * creating issues about possible improvements,
 * helping people who have problems or questions,
