@@ -40,7 +40,7 @@ Community efforts:
 ### Contribution
 
 You are welcomed to contribute to this project by:
-* providing translations,
+* adding translations at [locale](https://github.com/CardBook/CardBook/tree/master/chrome/locale),
 * creating issues about problems,
 * creating issues about possible improvements,
 * helping people who have problems or questions,
