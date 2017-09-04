@@ -53,27 +53,30 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 
 		addImageCardFromFile: function () {
 			if (document.getElementById('photolocalURITextBox').value == "") {
-				var myFile = cardbookUtils.callFilePicker("imageSelectionTitle", "OPEN", "IMAGES");
-				var myExtension = cardbookUtils.getExtension(myFile.path);
-				if (myExtension != "") {
-					var myCard = wdw_cardEdition.workingCard;
-					myExtension = cardbookUtils.formatExtension(myExtension, myCard.version);
-					var targetFile = cardbookUtils.getEditionPhotoTempFile(myExtension);
-					var ioService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
-					var myFileURISpec = "file:///" + targetFile.path;
-					var myFileURI = ioService.newURI(myFileURISpec, null, null);
-					var myFile1 = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
-					myFile.copyToFollowingLinks(myFile1.parent, myFile1.leafName);
-					cardbookUtils.formatStringForOutput("imageSavedToFile", [myFile1.path]);
-					wdw_imageEdition.addImageCard(myFile1, myCard, myExtension);
-				}
+				cardbookUtils.callFilePicker("imageSelectionTitle", "OPEN", "IMAGES", "", wdw_imageEdition.addImageCardFromFileNext);
+			}
+		},
+
+		addImageCardFromFileNext: function (aFile) {
+			var myExtension = cardbookUtils.getFileNameExtension(aFile.leafName);
+			if (myExtension != "") {
+				var myCard = wdw_cardEdition.workingCard;
+				myExtension = cardbookUtils.formatExtension(myExtension, myCard.version);
+				var targetFile = cardbookUtils.getEditionPhotoTempFile(myExtension);
+				var ioService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
+				var myFileURISpec = "file:///" + targetFile.path;
+				var myFileURI = ioService.newURI(myFileURISpec, null, null);
+				var myFile1 = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
+				aFile.copyToFollowingLinks(myFile1.parent, myFile1.leafName);
+				cardbookUtils.formatStringForOutput("imageSavedToFile", [myFile1.path]);
+				wdw_imageEdition.addImageCard(myFile1, myCard, myExtension);
 			}
 		},
 
 		addImageCardFromUrl: function () {
 			if (document.getElementById('photolocalURITextBox').value == "") {
 				var myUrl = cardbookUtils.clipboardGet();
-				var myExtension = cardbookUtils.getExtension(myUrl);
+				var myExtension = cardbookUtils.getFileExtension(myUrl);
 				if (myExtension != "") {
 					var myCard = wdw_cardEdition.workingCard;
 					myExtension = cardbookUtils.formatExtension(myExtension, myCard.version);
@@ -132,16 +135,17 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 
 		saveImageCard: function () {
 			if (document.getElementById('photolocalURITextBox').value !== "") {
-				var myFile = cardbookUtils.callFilePicker("imageSaveTitle", "SAVE", "IMAGES");
-				if (myFile != null && myFile !== undefined && myFile != "") {
-					var ioService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
-					var myFileURISpec = document.getElementById('photolocalURITextBox').value;
-					var myFileURI = ioService.newURI(myFileURISpec, null, null);
-					var myFile1 = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
-					myFile1.copyToFollowingLinks(myFile.parent,myFile.leafName);
-					cardbookUtils.formatStringForOutput("imageSavedToFile", [myFile.path]);
-				}
+				cardbookUtils.callFilePicker("imageSaveTitle", "SAVE", "IMAGES", "", wdw_imageEdition.saveImageCardNext);
 			}
+		},
+
+		saveImageCardNext: function (aFile) {
+			var ioService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
+			var myFileURISpec = document.getElementById('photolocalURITextBox').value;
+			var myFileURI = ioService.newURI(myFileURISpec, null, null);
+			var myFile1 = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
+			myFile1.copyToFollowingLinks(aFile.parent,aFile.leafName);
+			cardbookUtils.formatStringForOutput("imageSavedToFile", [aFile.path]);
 		},
 
 		deleteImageCard: function () {

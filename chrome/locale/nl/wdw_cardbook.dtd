@@ -1,6 +1,5 @@
 <!ENTITY wdw_cardbookWindowLabel "CardBook">
 
-<!ENTITY accountsOrCatsTreeLabel "Adresboeken">
 <!ENTITY enableAccountsTooltip "In- of uitschakelen van zoeken en synchroniseren van adresboeken.">
 <!ENTITY colorAccountsTooltip "Kleur adresboek.">
 <!ENTITY readonlyAccountsTooltip "Zet adresboeken in lezen-/schrijven-modus of in alleen lezen-modus">
@@ -24,6 +23,8 @@
 
 <!ENTITY cardbookToolbarLabel "CardBook knoppenbalk">
 <!ENTITY cardbookToolbarAccesskey "C">
+<!ENTITY cardbookABPaneToolbarLabel "??CardBook Address Book Pane Toolbar??">
+<!ENTITY cardbookABPaneToolbarAccesskey "??d??">
 <!ENTITY CustomizeCardBookToolbarLabel "Aanpassen…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "A">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Nieuw adresboek">
@@ -95,7 +96,7 @@
 <!ENTITY cardurlColumnLabel "Contactpersoon URL">
 <!ENTITY dirPrefIdColumnLabel "DirPrefId">
 <!ENTITY kindColumnLabel "Soort">
-<!ENTITY revColumnLabel "Rev">
+<!ENTITY revColumnLabel "Laatst bijgewerkt">
 <!ENTITY etagColumnLabel "Etag">
 
 <!ENTITY categoriesGroupboxLabel "Categorieën">
@@ -125,7 +126,7 @@
 <!ENTITY dirPrefIdLabel "dirPrefId">
 <!ENTITY cardurlLabel "Contactpersoon URL">
 <!ENTITY cacheuriLabel "Bestand van vCard">
-<!ENTITY revLabel "Rev">
+<!ENTITY revLabel "Laatst bijgewerkt">
 <!ENTITY etagLabel "Etag">
 
 <!ENTITY localizeadrTreeLabel "Localiseren">

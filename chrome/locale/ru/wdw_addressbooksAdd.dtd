@@ -21,7 +21,6 @@
 <!ENTITY localPage.openFile.label "Открыть существующую адресную книгу (Файл)">
 <!ENTITY localPage.uri.label "Каталог или файл">
 <!ENTITY localPage.uri.description "Используя просмотр, укажите расположение для хранения новых адресных книг. При создании нового файла, укажите расширение «.vcf»">
-<!ENTITY locationFirstPage.uri.description "Выберете расположение для новых локальных адресных книг.">
 <!ENTITY localPage.uributton.label "Просмотреть">
 
 <!ENTITY remotePage.wizard.description "Тип и расположение новой удалённой адресной книги.">

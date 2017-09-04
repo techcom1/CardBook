@@ -1,6 +1,5 @@
 <!ENTITY wdw_cardbookWindowLabel "Névjegyzék">
 
-<!ENTITY accountsOrCatsTreeLabel "Minden mappa">
 <!ENTITY enableAccountsTooltip "Engedélyezése vagy letiltása a keresési és összehangolásai névjegytárak.">
 <!ENTITY colorAccountsTooltip "Színes névjegytárat keresés eredménye (használatra keresések kiterj több névjegytárakat).">
 <!ENTITY readonlyAccountsTooltip "Állítsa névjegytárak csak olvasható vagy írható-olvasható módban.">
@@ -24,6 +23,8 @@
 
 <!ENTITY cardbookToolbarLabel "Névjegyzék eszköztár">
 <!ENTITY cardbookToolbarAccesskey "N">
+<!ENTITY cardbookABPaneToolbarLabel "??CardBook Address Book Pane Toolbar??">
+<!ENTITY cardbookABPaneToolbarAccesskey "??d??">
 <!ENTITY CustomizeCardBookToolbarLabel "Testreszabás…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "T">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Új névjegytár">
@@ -95,7 +96,7 @@
 <!ENTITY cardurlColumnLabel "Kártya webcím">
 <!ENTITY dirPrefIdColumnLabel "DirPrefId">
 <!ENTITY kindColumnLabel "Fajta">
-<!ENTITY revColumnLabel "Felülvizsgálat">
+<!ENTITY revColumnLabel "Utoljára frissítve">
 <!ENTITY etagColumnLabel "Elektronikus címke">
 
 <!ENTITY categoriesGroupboxLabel "Kategória">
@@ -125,7 +126,7 @@
 <!ENTITY dirPrefIdLabel "dirPrefId">
 <!ENTITY cardurlLabel "Névjegy webcím">
 <!ENTITY cacheuriLabel "Tárolt webcím">
-<!ENTITY revLabel "Felülvizsgálat">
+<!ENTITY revLabel "Utoljára frissítve">
 <!ENTITY etagLabel "Elektronikus címke">
 
 <!ENTITY localizeadrTreeLabel "Mutasd a térképen">

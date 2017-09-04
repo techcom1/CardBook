@@ -1,6 +1,5 @@
 <!ENTITY wdw_cardbookWindowLabel "CardBook">
 
-<!ENTITY accountsOrCatsTreeLabel "Address Books">
 <!ENTITY enableAccountsTooltip "Enable or disable search and synchronization of address books.">
 <!ENTITY colorAccountsTooltip "Color address books search results (use when searches span multiple address books).">
 <!ENTITY readonlyAccountsTooltip "Set address books in read-only or read-write mode.">
@@ -24,6 +23,8 @@
 
 <!ENTITY cardbookToolbarLabel "CardBook Toolbar">
 <!ENTITY cardbookToolbarAccesskey "a">
+<!ENTITY cardbookABPaneToolbarLabel "CardBook Address Book Pane Toolbar">
+<!ENTITY cardbookABPaneToolbarAccesskey "d">
 <!ENTITY CustomizeCardBookToolbarLabel "Customize…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "C">
 <!ENTITY cardbookToolbarAddServerButtonLabel "New Address Book">
@@ -86,16 +87,16 @@
 <!ENTITY categoriesColumnLabel "Categories">
 <!ENTITY noteColumnLabel "Notes">
 <!ENTITY prodidColumnLabel "Prodid">
-<!ENTITY sortstringColumnLabel "Sort string">
+<!ENTITY sortstringColumnLabel "Sort String">
 <!ENTITY uidColumnLabel "Uid">
 <!ENTITY dispurlColumnLabel "URL">
 <!ENTITY versionColumnLabel "Version">
 <!ENTITY class1ColumnLabel "Class">
-<!ENTITY dispimppColumnLabel "Instant messaging">
+<!ENTITY dispimppColumnLabel "Instant Messaging">
 <!ENTITY cardurlColumnLabel "Card URL">
 <!ENTITY dirPrefIdColumnLabel "DirPrefId">
 <!ENTITY kindColumnLabel "Kind">
-<!ENTITY revColumnLabel "Rev">
+<!ENTITY revColumnLabel "Last Updated">
 <!ENTITY etagColumnLabel "Etag">
 
 <!ENTITY categoriesGroupboxLabel "Categories">
@@ -125,7 +126,7 @@
 <!ENTITY dirPrefIdLabel "dirPrefId">
 <!ENTITY cardurlLabel "Card URL">
 <!ENTITY cacheuriLabel "Cache URI">
-<!ENTITY revLabel "Rev">
+<!ENTITY revLabel "Last Updated">
 <!ENTITY etagLabel "Etag">
 
 <!ENTITY localizeadrTreeLabel "Localize">

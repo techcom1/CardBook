@@ -1,6 +1,5 @@
 <!ENTITY wdw_cardbookWindowLabel "CardBook">
 
-<!ENTITY accountsOrCatsTreeLabel "Adressbücher">
 <!ENTITY enableAccountsTooltip "Adressbücher zur Suche und Synchronisierung aktivieren oder deaktivieren.">
 <!ENTITY colorAccountsTooltip "Adressbuch-Farbe zur Unterscheidung mehrerer Adressbücher.">
 <!ENTITY readonlyAccountsTooltip "Setzt das Adressbuch in den schreibgeschützen oder Lese- und Schreibmodus.">
@@ -18,12 +17,14 @@
 <!ENTITY cardbookToolsMenuLabel "Extras">
 <!ENTITY cardbookToolsMenuBirthdayListLabel "Liste der Geburtstage ansehen">
 <!ENTITY cardbookToolsMenuSyncLightningLabel "Geburtstage zum Kalender hinzufügen">
-<!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "Suche doppelte Kontakte in allen Adressbüchern">
-<!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "Suche doppelte Kontakte im aktuellen Adressbuch">
+<!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "Doppelte Kontakte in allen Adressbüchern suchen">
+<!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "Doppelte Kontakte im aktuellen Adressbuch suchen">
 <!ENTITY cardbookToolsMenuPrefsLabel "CardBook-Einstellungen">
 
 <!ENTITY cardbookToolbarLabel "CardBook Symbolleiste">
 <!ENTITY cardbookToolbarAccesskey "C">
+<!ENTITY cardbookABPaneToolbarLabel "??CardBook Address Book Pane Toolbar??">
+<!ENTITY cardbookABPaneToolbarAccesskey "??d??">
 <!ENTITY CustomizeCardBookToolbarLabel "Anpassen…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "A">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Neues Adressbuch">
@@ -95,7 +96,7 @@
 <!ENTITY cardurlColumnLabel "Kontakt-URL">
 <!ENTITY dirPrefIdColumnLabel "DirPrefId">
 <!ENTITY kindColumnLabel "Typ">
-<!ENTITY revColumnLabel "Rev">
+<!ENTITY revColumnLabel "Zuletzt aktualisiert">
 <!ENTITY etagColumnLabel "Etag">
 
 <!ENTITY categoriesGroupboxLabel "Kategorien">
@@ -125,7 +126,7 @@
 <!ENTITY dirPrefIdLabel "dirPrefId">
 <!ENTITY cardurlLabel "Kontakt-URL">
 <!ENTITY cacheuriLabel "Cache URI">
-<!ENTITY revLabel "Rev">
+<!ENTITY revLabel "Zuletzt aktualisiert">
 <!ENTITY etagLabel "Etag">
 
 <!ENTITY localizeadrTreeLabel "Lokalisieren">
@@ -157,15 +158,15 @@
 <!ENTITY copyCardFromCardsLabel "Kopieren">
 <!ENTITY pasteCardFromAccountsOrCatsLabel "Einfügen">
 <!ENTITY pasteCardFromCardsLabel "Einfügen">
-<!ENTITY exportCardToFileLabel "In eine Datei exportieren">
-<!ENTITY exportCardToDirLabel "In ein Verzeichnis exportieren">
-<!ENTITY importCardFromFileLabel "Kontakt aus einer Datei importieren">
-<!ENTITY importCardFromDirLabel "Kontakt aus einem Verzeichnis importieren">
+<!ENTITY exportCardToFileLabel "Exportieren in eine Datei">
+<!ENTITY exportCardToDirLabel "Exportieren in ein Verzeichnis">
+<!ENTITY importCardFromFileLabel "Importieren aus einer Datei">
+<!ENTITY importCardFromDirLabel "Importieren aus einem Verzeichnis">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Kategorie umbenennen">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Kategorie entfernen">
-<!ENTITY findDuplicatesFromAccountsOrCatsLabel "Suche doppelte Kontakte im aktuellen Adressbuch">
+<!ENTITY findDuplicatesFromAccountsOrCatsLabel "Doppelte Kontakte im aktuellen Adressbuch suchen">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Anzeigenamen erstellen">
-<!ENTITY mergeCardsFromCardsLabel "Kontakten zusammenführen">
+<!ENTITY mergeCardsFromCardsLabel "Kontakte zusammenführen">
 <!ENTITY duplicateCardFromCardsLabel "Kontakt verdoppeln">
 <!ENTITY convertListToCategoryFromCardsLabel "Konvertiere die Liste zu einer Kategorie">
 <!ENTITY editAccountFromAccountsOrCatsLabel "Adressbuch bearbeiten">

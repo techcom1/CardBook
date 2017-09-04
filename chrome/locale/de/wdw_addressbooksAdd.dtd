@@ -21,7 +21,6 @@
 <!ENTITY localPage.openFile.label "Existierendes Adressbuch öffnen (Datei)">
 <!ENTITY localPage.uri.label "Verzeichnis oder Datei">
 <!ENTITY localPage.uri.description "Wählen Sie den Speicherort für das neue lokale Adressbuch. Falls Sie eine neue Datei erstellen, sollten Sie .vcf als Dateiendung verwenden.">
-<!ENTITY locationFirstPage.uri.description "Wählen Sie das Verzeichnis für die neuen lokalen Adressbücher.">
 <!ENTITY localPage.uributton.label "Durchsuchen">
 
 <!ENTITY remotePage.wizard.description "Art und Ort des neuen Netzwerk-Adressbuchs">

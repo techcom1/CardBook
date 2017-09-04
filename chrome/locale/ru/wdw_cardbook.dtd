@@ -1,6 +1,5 @@
 <!ENTITY wdw_cardbookWindowLabel "CardBook">
 
-<!ENTITY accountsOrCatsTreeLabel "Адресные книги">
 <!ENTITY enableAccountsTooltip "Включение и отключение поиска и синхронизации адресных книг.">
 <!ENTITY colorAccountsTooltip "Выделять цветом адресные книги в результатах поиска (используется при сквозном поиске в нескольких адресных книгах).">
 <!ENTITY readonlyAccountsTooltip "Установить адресную книгу в режим «только чтение» или «чтение—запись».">
@@ -24,6 +23,8 @@
 
 <!ENTITY cardbookToolbarLabel "Панель инструментов CardBook">
 <!ENTITY cardbookToolbarAccesskey "П">
+<!ENTITY cardbookABPaneToolbarLabel "??CardBook Address Book Pane Toolbar??">
+<!ENTITY cardbookABPaneToolbarAccesskey "??d??">
 <!ENTITY CustomizeCardBookToolbarLabel "Настроить…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "Н">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Добавить адресную книгу">
@@ -95,7 +96,7 @@
 <!ENTITY cardurlColumnLabel "URL карточки">
 <!ENTITY dirPrefIdColumnLabel "DirPrefId">
 <!ENTITY kindColumnLabel "Вид">
-<!ENTITY revColumnLabel "Рев.">
+<!ENTITY revColumnLabel "Последнее обновление">
 <!ENTITY etagColumnLabel "Etag">
 
 <!ENTITY categoriesGroupboxLabel "Категории">
@@ -125,7 +126,7 @@
 <!ENTITY dirPrefIdLabel "dirPrefId">
 <!ENTITY cardurlLabel "URL карточки">
 <!ENTITY cacheuriLabel "URI в кеше">
-<!ENTITY revLabel "Ревизия">
+<!ENTITY revLabel "Последнее обновление">
 <!ENTITY etagLabel "Etag">
 
 <!ENTITY localizeadrTreeLabel "Показать на карте">

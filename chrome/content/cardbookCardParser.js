@@ -126,14 +126,10 @@ cardbookCardParser.prototype = {
 				headerTmpArray = headerTmp.toUpperCase().split(";");
 				if (trailerTmp.indexOf(cacheDir.path) >= 0) {
 					this[aField].localURI = trailerTmp;
-					var myFileArray1 = trailerTmp.split("/");
-					var myFileArray2 = myFileArray1[myFileArray1.length-1].split(".");
-					this[aField].extension = myFileArray2[myFileArray2.length-1];
+					this[aField].extension = cardbookUtils.getFileExtension(trailerTmp);
 				} else if ((trailerTmp.search(/^http/i) >= 0) || (trailerTmp.search(/^file/i) >= 0)) {
 					this[aField].URI = trailerTmp;
-					var myFileArray1 = trailerTmp.split("/");
-					var myFileArray2 = myFileArray1[myFileArray1.length-1].split(".");
-					this[aField].extension = myFileArray2[myFileArray2.length-1];
+					this[aField].extension = cardbookUtils.getFileExtension(trailerTmp);
 				} else {
 					this[aField].value = atob(trailerTmp);
 					this[aField].types = JSON.parse(JSON.stringify(headerTmpArray));
@@ -322,8 +318,10 @@ cardbookCardParser.prototype = {
 							}
 							break;
 						case "CATEGORIES":
-							this.categories = cardbookUtils.unescapeArray(cardbookUtils.escapeString(vCardDataArrayTrailer).split(","));
-							this.categories = cardbookUtils.cleanCategories(this.categories);
+							if (vCardDataArrayTrailer != "") {
+								this.categories = cardbookUtils.unescapeArray(cardbookUtils.escapeString(vCardDataArrayTrailer).split(","));
+								this.categories = cardbookUtils.cleanCategories(this.categories);
+							}
 							break;
 						case "NOTE":
 							this.note = this.formatNote(vCardDataArrayTrailer);

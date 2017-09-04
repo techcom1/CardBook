@@ -193,18 +193,21 @@
 <!ENTITY preferEmailPrefWarn "Se não existir nenhum PREFerido, a mensagem será enviada para todos os endereços de email.">
 <!ENTITY warnEmptyEmailsLabel "Avisar quando tento enviar emails para contactos sem endereço de email">
 <!ENTITY warnEmptyEmailsAccesskey "W">
-<!ENTITY useOnlyEmailLabel "??Use only email addresses??">
+<!ENTITY useOnlyEmailLabel "Usar apenas endereço de email">
 <!ENTITY useOnlyEmailAccesskey "U">
 <!ENTITY attachvCardWarn "Para adicionar automaticamente um vCard, seleccione um vCard para cada conta de email. Se activo, o CardBook vai anexar esse vCard para todos os emails de saída da conta seleccionada.">
 <!ENTITY attachvCardGroupboxLabel "Unir vCard">
-<!ENTITY mailAccountsEnabledLabel "Activo">
-<!ENTITY mailAccountsNameLabel "Conta de email">
-<!ENTITY mailAccountsFileNameLabel "Ficheiro anexado">
-<!ENTITY mailAccountsFnLabel "Contacto">
-<!ENTITY choosevCardLabel "Escolha um vCard">
-<!ENTITY choosevCardAccesskey "E">
-<!ENTITY displayvCardLabel "Ver um vCard">
-<!ENTITY displayvCardAccesskey "V">
+<!ENTITY accountsVCardsEnabledLabel "Activo">
+<!ENTITY accountsVCardsMailLabel "Conta de email">
+<!ENTITY accountsVCardsABNameLabel "Agenda">
+<!ENTITY accountsVCardsFileNameLabel "Ficheiro anexado">
+<!ENTITY accountsVCardsFnLabel "Contacto">
+<!ENTITY addVCardLabel "Adicionar">
+<!ENTITY addVCardAccesskey "A">
+<!ENTITY renameVCardLabel "Editar">
+<!ENTITY renameVCardAccesskey "E">
+<!ENTITY deleteVCardLabel "Apagar">
+<!ENTITY deleteVCardAccesskey "g">
 
 <!ENTITY birthdayListWarn "Os aniversários são procurados dentro das agendas no CardBook. O formato das datas de aniversários é configurado nas propriedades da agenda.">
 <!ENTITY addressBooksGroupboxLabel "Agendas">

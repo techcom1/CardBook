@@ -259,19 +259,19 @@
 										</row>
 										<row align="center">
 											<label value="&adrLocalityLabel;" control="adrLocalityTextBox" class="header"/>
-											<textbox id="adrLocalityTextBox"/>
+											<textbox id="adrLocalityTextBox" type="autocomplete" autocompletesearch="form-history" autocompletesearchparam="adrLocalityTextBox" class="padded"/>
 										</row>
 										<row align="center">
 											<label value="&adrRegionLabel;" control="adrRegionTextBox" class="header"/>
-											<textbox id="adrRegionTextBox"/>
+											<textbox id="adrRegionTextBox" type="autocomplete" autocompletesearch="form-history" autocompletesearchparam="adrRegionTextBox" class="padded"/>
 										</row>
 										<row align="center">
 											<label value="&adrPostalCodeLabel;" control="adrPostalCodeTextBox" class="header"/>
-											<textbox id="adrPostalCodeTextBox"/>
+											<textbox id="adrPostalCodeTextBox" type="autocomplete" autocompletesearch="form-history" autocompletesearchparam="adrPostalCodeTextBox" class="padded"/>
 										</row>
 										<row align="center">
 											<label value="&adrCountryLabel;" control="adrCountryTextBox" class="header"/>
-											<textbox id="adrCountryTextBox"/>
+											<textbox id="adrCountryTextBox" type="autocomplete" autocompletesearch="form-history" autocompletesearchparam="adrCountryTextBox" class="padded"/>
 										</row>
 									</rows>
 								</grid>
@@ -279,7 +279,7 @@
 						</hbox>
 						<hbox>
 							<spacer flex="1"/>
-							<button id="validateEditionLabel" label="&validateEditionLabel;" accesskey="&validateEditionAccesskey;" oncommand="wdw_cardEdition.cancelAdrPanel();"/>
+							<button id="validateEditionLabel" label="&validateEditionLabel;" accesskey="&validateEditionAccesskey;" oncommand="wdw_cardEdition.closeAdrPanel();"/>
 						</hbox>
 					</panel>
 				</vbox>

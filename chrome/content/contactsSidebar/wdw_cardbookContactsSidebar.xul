@@ -31,6 +31,7 @@
 	<script src="chrome://cardbook/content/cardbookUtils.js"/>
 	<script src="chrome://cardbook/content/cardbookElementTools.js"/>
 	<script src="chrome://cardbook/content/cardbookCardParser.js"/>
+	<script src="chrome://cardbook/content/cardbookObserver.js"/>
 	<script src="chrome://cardbook/content/wdw_cardbook.js"/>
 	<script src="chrome://cardbook/content/cardbookSynchronization.js"/>
 	<script src="chrome://cardbook/content/preferences/cardbookPreferences.js"/>

@@ -124,11 +124,10 @@ if ("undefined" == typeof(wdw_migrate)) {
 				if (photoType == "file") {
 					var ioService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
 					var myFileURI = ioService.newURI(photoURI, null, null);
-					var myFileURIArray = photoURI.split(".");
-					myCard.photo.extension = cardbookUtils.getExtension(photoURI);
+					myCard.photo.extension = cardbookUtils.getFileExtension(photoURI);
 					myCard.photo.value = cardbookSynchronization.getFileBinary(myFileURI);
 				} else if (photoType == "web") {
-					myCard.photo.extension = cardbookUtils.getExtension(photoURI);
+					myCard.photo.extension = cardbookUtils.getFileExtension(photoURI);
 					myCard.photo.URI = photoURI;
 				}
 				wdw_migrate.getNotNullFn(myCard, aABCard);
@@ -140,7 +139,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 
 				var email = aABCard.getProperty("PrimaryEmail", "");
 				var emailValue = aABCard.getProperty("PopularityIndex", "0");
-				if (email != "" && emailValue != "0") {
+				if (email != "" && emailValue != "0" && emailValue != " ") {
 					cardbookRepository.cardbookMailPopularityIndex[email] = emailValue;
 				}
 							

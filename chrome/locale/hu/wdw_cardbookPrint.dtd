@@ -20,7 +20,7 @@
 <!ENTITY adrAccesskey "k">
 <!ENTITY telLabel "Telefonszámok">
 <!ENTITY telAccesskey "T">
-<!ENTITY emailLabel "Email címek">
+<!ENTITY emailLabel "E-mail címek">
 <!ENTITY emailAccesskey "E">
 <!ENTITY imppLabel "Internetes kommunikáció">
 <!ENTITY imppAccesskey "I">

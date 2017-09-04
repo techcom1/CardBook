@@ -21,7 +21,6 @@
 <!ENTITY localPage.openFile.label "Ouvrir un carnet d'adresses existant (Fichier)">
 <!ENTITY localPage.uri.label "Répertoire ou fichier">
 <!ENTITY localPage.uri.description "Choisissez l'emplacement du nouveau carnet d'adresses local. Si c'est un nouveau fichier, il est conseillé de choisir une extension en .vcf.">
-<!ENTITY locationFirstPage.uri.description "Choisissez l'emplacement des nouveaux carnets d'adresses locaux.">
 <!ENTITY localPage.uributton.label "Naviguer">
 
 <!ENTITY remotePage.wizard.description "Type et emplacement du nouveau carnet d'adresses distant.">

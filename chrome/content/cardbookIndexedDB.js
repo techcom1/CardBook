@@ -100,10 +100,19 @@ if ("undefined" == typeof(cardbookIndexedDB)) {
 			cursorRequest.onsuccess = function(e) {
 				var result = e.target.result;
 				if (result) {
-					cardbookRepository.addCardToRepository(result.value, myMode, result.value.cacheuri);
+					if (!result.value.deleted) {
+						cardbookRepository.addCardToRepository(result.value, myMode, result.value.cacheuri);
+						cardbookUtils.formatStringForOutput("cardLoadedFromCacheDB", [aDirPrefName, result.value.fn]);
+					} else {
+						if (cardbookRepository.cardbookFileCacheCards[aDirPrefId]) {
+							cardbookRepository.cardbookFileCacheCards[aDirPrefId][result.value.cacheuri] = result.value;
+						} else {
+							cardbookRepository.cardbookFileCacheCards[aDirPrefId] = {};
+							cardbookRepository.cardbookFileCacheCards[aDirPrefId][result.value.cacheuri] = result.value;
+						}
+					}
 					cardbookRepository.cardbookServerSyncDone[aDirPrefId]++;
 					cardbookRepository.cardbookServerSyncTotal[aDirPrefId]++;
-					cardbookUtils.formatStringForOutput("cardLoadedFromCacheDB", [aDirPrefName, result.value.fn]);
 					result.continue();
 				}
 			};

@@ -21,7 +21,6 @@
 <!ENTITY localPage.openFile.label "Odpri obstoječi imenik (datoteko)">
 <!ENTITY localPage.uri.label "Mapa ali datoteka">
 <!ENTITY localPage.uri.description "Z uporabo brskalnika izberite mesto svojega novega krajevnega imenika. Če ustvarjate novo datoteko, kot končnico navedite .vcf.">
-<!ENTITY locationFirstPage.uri.description "Izberite mesto svojih novih krajevnih imenikov">
 <!ENTITY localPage.uributton.label "Brskaj">
 
 <!ENTITY remotePage.wizard.description "Type and location of the new remote address book.">

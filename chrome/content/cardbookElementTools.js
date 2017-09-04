@@ -82,6 +82,31 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			return aTextbox;
 		},
 
+		loadAccountsOrCatsTreeMenu: function (aPopupName, aMenuName, aDefaultId) {
+			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+			var myPopup = document.getElementById(aPopupName);
+			cardbookElementTools.deleteRows(aPopupName);
+			var defaultIndex = 0;
+			var j = 0;
+			var typeName = [ 'all', 'enabled', 'disabled', 'local', 'remote', 'search' ];
+			for (var i = 0; i < typeName.length; i++) {
+				var menuItem = document.getElementById(aMenuName).appendItem(strBundle.GetStringFromName(typeName[i] + "AccountsLabel"), typeName[i]);
+				// var menuItem = document.createElement("menuitem");
+				// menuItem.setAttribute("label", strBundle.GetStringFromName(typeName[i] + "AccountsLabel"));
+				// menuItem.setAttribute("value", typeName[i]);
+				menuItem.setAttribute("type", "radio");
+				menuItem.setAttribute("checked", "false");
+				myPopup.appendChild(menuItem);
+				if (typeName[i] == aDefaultId) {
+					defaultIndex=j;
+					menuItem.setAttribute("checked", "true");
+				}
+				j++;
+			}
+			document.getElementById(aMenuName).selectedIndex = defaultIndex;
+		},
+
 		loadInclExcl: function (aPopupName, aMenuName, aDefaultId) {
 			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
 			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
@@ -291,6 +316,29 @@ if ("undefined" == typeof(cardbookElementTools)) {
 				menuItem.setAttribute("value", sortedCategories[i][1]);
 				myPopup.appendChild(menuItem);
 				if (sortedCategories[i][1] == aDefaultCatId) {
+					defaultIndex=j;
+				}
+				j++;
+			}
+			document.getElementById(aMenuName).selectedIndex = defaultIndex;
+		},
+
+		loadContacts: function (aPopupName, aMenuName, aDirPrefId, aDefaultId) {
+			var myPopup = document.getElementById(aPopupName);
+			cardbookElementTools.deleteRows(aPopupName);
+			var defaultIndex = 0;
+			var j = 0;
+			var sortedContacts = [];
+			for (var i = 0; i < cardbookRepository.cardbookDisplayCards[aDirPrefId].length; i++) {
+				sortedContacts.push([cardbookRepository.cardbookDisplayCards[aDirPrefId][i].fn, cardbookRepository.cardbookDisplayCards[aDirPrefId][i].uid]);
+			}
+			sortedContacts = cardbookUtils.sortArrayByString(sortedContacts,0,1);
+			for (var i = 0; i < sortedContacts.length; i++) {
+				var menuItem = document.createElement("menuitem");
+				menuItem.setAttribute("label", sortedContacts[i][0]);
+				menuItem.setAttribute("value", sortedContacts[i][1]);
+				myPopup.appendChild(menuItem);
+				if (sortedContacts[i][1] == aDefaultId) {
 					defaultIndex=j;
 				}
 				j++;

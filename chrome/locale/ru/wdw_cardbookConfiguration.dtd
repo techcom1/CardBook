@@ -193,18 +193,21 @@
 <!ENTITY preferEmailPrefWarn "Если адреса, отмеченные как ПРИОРитетные, отсутствуют, отправлять сообщения на все адреса email контакта.">
 <!ENTITY warnEmptyEmailsLabel "Предупреждать при попытке отправить письмо контактам, у которых нет адресов email">
 <!ENTITY warnEmptyEmailsAccesskey "W">
-<!ENTITY useOnlyEmailLabel "??Use only email addresses??">
-<!ENTITY useOnlyEmailAccesskey "U">
+<!ENTITY useOnlyEmailLabel "??Only use email addresses, without their Display Names??">
+<!ENTITY useOnlyEmailAccesskey "O">
 <!ENTITY attachvCardWarn "Добавлять визитку vCard к отправляемым email. Выберите карточку для каждого из аккаунтов. Если эта настройка включена, CardBook будет вкладывать указанную визитку vCard к каждому исходящему email аккаунта.">
 <!ENTITY attachvCardGroupboxLabel "Добавлять визитку vCard">
-<!ENTITY mailAccountsEnabledLabel "Включено">
-<!ENTITY mailAccountsNameLabel "Почтовый аккаунт">
-<!ENTITY mailAccountsFileNameLabel "Вложенный файл">
-<!ENTITY mailAccountsFnLabel "Контакт">
-<!ENTITY choosevCardLabel "Выбрать визитку vCard">
-<!ENTITY choosevCardAccesskey "В">
-<!ENTITY displayvCardLabel "Посмотреть визитку vCard">
-<!ENTITY displayvCardAccesskey "П">
+<!ENTITY accountsVCardsEnabledLabel "Включено">
+<!ENTITY accountsVCardsMailLabel "Почтовый аккаунт">
+<!ENTITY accountsVCardsABNameLabel "Адресная книга">
+<!ENTITY accountsVCardsFileNameLabel "Вложенный файл">
+<!ENTITY accountsVCardsFnLabel "Контакт">
+<!ENTITY addVCardLabel "Добавить">
+<!ENTITY addVCardAccesskey "Д">
+<!ENTITY renameVCardLabel "Правка">
+<!ENTITY renameVCardAccesskey "П">
+<!ENTITY deleteVCardLabel "Удалить">
+<!ENTITY deleteVCardAccesskey "У">
 
 <!ENTITY birthdayListWarn "Поиск дней рождения производиться только по адресным книгам CardBook. Формат даты для записей дней рождения задаётся в свойствах адресной книги.">
 <!ENTITY addressBooksGroupboxLabel "Контакты">

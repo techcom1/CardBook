@@ -7,32 +7,36 @@ if ("undefined" == typeof(ovl_attachvCard)) {
 			var cardbookPrefService = new cardbookPreferenceService();
 			var selected = document.getElementById("msgIdentity").selectedItem;
 			var key = selected.getAttribute("identitykey");
-			if (cardbookPrefService.getMailAccountEnabled(key)) {
-				var filename = cardbookPrefService.getMailAccountFileName(key)
-				if (filename != null && filename !== undefined && filename != "") {
-					var cardbookId = cardbookPrefService.getMailAccountDirPrefId(key)+"::"+cardbookPrefService.getMailAccountUid(key)
-					if (cardbookRepository.cardbookCards[cardbookId]) {
-						var myCard = cardbookRepository.cardbookCards[cardbookId];
-						var attachment = Components.classes["@mozilla.org/messengercompose/attachment;1"].createInstance(Components.interfaces.nsIMsgAttachment);
-						attachment.contentType = "text/vcard";
-						attachment.name = filename;
-						var myFile = cardbookUtils.getTempFile();
-						myFile.append("cardbook-send-messages");
-						myFile.append(filename);
-						if (myFile.exists() && myFile.isFile()) {
-							try {
-								myFile.remove(true);
-							} catch(e) {
-								cardbookUtils.formatStringForOutput("errorAttachingFile", [myFile.path, e], "Error");
-								return;
+			var result = [];
+			result = cardbookPrefService.getAllVCards();
+			for (var i = 0; i < result.length; i++) {
+				var resultArray = result[i].split("::");
+				if (resultArray[0] == "true") {
+					if (resultArray[1] == key || resultArray[1] == "allMailAccounts") {
+						var myFilename = resultArray[4];
+						if (cardbookRepository.cardbookCards[resultArray[2]+"::"+resultArray[3]]) {
+							var myCard = cardbookRepository.cardbookCards[resultArray[2]+"::"+resultArray[3]];
+							var attachment = Components.classes["@mozilla.org/messengercompose/attachment;1"].createInstance(Components.interfaces.nsIMsgAttachment);
+							attachment.contentType = "text/vcard";
+							attachment.name = myFilename;
+							var myFile = cardbookUtils.getTempFile();
+							myFile.append("cardbook-send-messages");
+							myFile.append(myFilename);
+							if (myFile.exists() && myFile.isFile()) {
+								try {
+									myFile.remove(true);
+								} catch(e) {
+									cardbookUtils.formatStringForOutput("errorAttachingFile", [myFile.path, e], "Error");
+									return;
+								}
 							}
-						}
-						cardbookSynchronization.writeContentToFile(myFile.path, cardbookUtils.getvCardForEmail(myCard), "UTF8");
-						if (myFile.exists() && myFile.isFile()) {
-							attachment.url = "file:///" + myFile.path;
-							gMsgCompose.compFields.addAttachment(attachment);
-						} else {
-							cardbookUtils.formatStringForOutput("errorAttachingFile", [myFile.path], "Error");
+							cardbookSynchronization.writeContentToFile(myFile.path, cardbookUtils.getvCardForEmail(myCard), "UTF8");
+							if (myFile.exists() && myFile.isFile()) {
+								attachment.url = "file:///" + myFile.path;
+								gMsgCompose.compFields.addAttachment(attachment);
+							} else {
+								cardbookUtils.formatStringForOutput("errorAttachingFile", [myFile.path], "Error");
+							}
 						}
 					}
 				}

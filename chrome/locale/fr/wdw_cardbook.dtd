@@ -1,6 +1,5 @@
 <!ENTITY wdw_cardbookWindowLabel "CardBook">
 
-<!ENTITY accountsOrCatsTreeLabel "Carnets d'adresses">
 <!ENTITY enableAccountsTooltip "Activer ou désactiver les carnets d'adresses lors des recherches et des synchronisations.">
 <!ENTITY colorAccountsTooltip "Choisir une couleur pour les carnets d'adresses lors des recherches sur plusieurs carnets d'adresses.">
 <!ENTITY readonlyAccountsTooltip "Mettre ou non les carnets d'adresses en lecture seule.">
@@ -24,6 +23,8 @@
 
 <!ENTITY cardbookToolbarLabel "Barre d'outils CardBook">
 <!ENTITY cardbookToolbarAccesskey "C">
+<!ENTITY cardbookABPaneToolbarLabel "Barre d'outils du panneau des carnets d'adresses CardBook">
+<!ENTITY cardbookABPaneToolbarAccesskey "p">
 <!ENTITY CustomizeCardBookToolbarLabel "Personnaliser…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "P">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Nouveau carnet d’adresses">
@@ -95,7 +96,7 @@
 <!ENTITY cardurlColumnLabel "Card URL">
 <!ENTITY dirPrefIdColumnLabel "DirPrefId">
 <!ENTITY kindColumnLabel "Type">
-<!ENTITY revColumnLabel "Rev">
+<!ENTITY revColumnLabel "Dernière mise à jour">
 <!ENTITY etagColumnLabel "Etag">
 
 <!ENTITY categoriesGroupboxLabel "Catégories">
@@ -125,7 +126,7 @@
 <!ENTITY dirPrefIdLabel "dirPrefId">
 <!ENTITY cardurlLabel "URL du contact">
 <!ENTITY cacheuriLabel "URI du cache">
-<!ENTITY revLabel "Rev">
+<!ENTITY revLabel "Dernière mise à jour">
 <!ENTITY etagLabel "Etag">
 
 <!ENTITY localizeadrTreeLabel "Localiser">

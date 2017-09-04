@@ -193,18 +193,21 @@
 <!ENTITY preferEmailPrefWarn "Als er geen email adres gemarkeerd is, dan worden berichten naar alle adressen van de betreffende contactpersoon verstuurd.">
 <!ENTITY warnEmptyEmailsLabel "Waarschuwing als ik een bericht verstuur naar een contactpersoon zonder e-mail adres">
 <!ENTITY warnEmptyEmailsAccesskey "W">
-<!ENTITY useOnlyEmailLabel "??Use only email addresses??">
-<!ENTITY useOnlyEmailAccesskey "U">
+<!ENTITY useOnlyEmailLabel "Gebruik alleen technische e-mail adressen">
+<!ENTITY useOnlyEmailAccesskey "G">
 <!ENTITY attachvCardWarn "Selecteer voor elke email-account een vCard om aan alle uitgaande berichten van die account(s) de betreffende vCard toe te voegen. Dit gebeurt automatisch als deze voorziening ingeschakeld is in de instellingen.">
 <!ENTITY attachvCardGroupboxLabel "vCard aan uitgaande emails toevoegen ">
-<!ENTITY mailAccountsEnabledLabel "Ingeschakeld">
-<!ENTITY mailAccountsNameLabel "Mail account">
-<!ENTITY mailAccountsFileNameLabel "Bijlage">
-<!ENTITY mailAccountsFnLabel "Contactpersoon">
-<!ENTITY choosevCardLabel "Kies een vCard">
-<!ENTITY choosevCardAccesskey "K">
-<!ENTITY displayvCardLabel "Bekijk de vCard">
-<!ENTITY displayvCardAccesskey "B">
+<!ENTITY accountsVCardsEnabledLabel "Ingeschakeld">
+<!ENTITY accountsVCardsMailLabel "Mail account">
+<!ENTITY accountsVCardsABNameLabel "Adresboek">
+<!ENTITY accountsVCardsFileNameLabel "Bijlage">
+<!ENTITY accountsVCardsFnLabel "Contactpersoon">
+<!ENTITY addVCardLabel "Toevoegen">
+<!ENTITY addVCardAccesskey "T">
+<!ENTITY renameVCardLabel "Bewerken">
+<!ENTITY renameVCardAccesskey "B">
+<!ENTITY deleteVCardLabel "Verwijderen">
+<!ENTITY deleteVCardAccesskey "V">
 
 <!ENTITY birthdayListWarn "Let op: geboortedata worden uitsluitend in CardBook adresboeken gezocht. Datumformaten zijn instelbaar per adresboek.">
 <!ENTITY addressBooksGroupboxLabel "Adresboeken">

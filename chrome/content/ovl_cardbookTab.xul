@@ -64,11 +64,18 @@
 			
 			<hbox id="mainHbox" flex="1">
 				<vbox id="leftPaneVbox" persist="width collapsed">
-					<hbox>
-						<vbox flex="1">
-							<button id="accountsOrCatsTreeLabel" label="&accountsOrCatsTreeLabel;" flex="1"/>
-						</vbox>
-					</hbox>
+					<toolbar id="cardbook-folderPane-toolbar"
+						class="inline-toolbar"
+						toolboxid="cardbook-toolbox"
+						toolbarname="&cardbookABPaneToolbarLabel;"
+						accesskey="&cardbookABPaneToolbarAccesskey;"
+						customizable="true"
+						align="start"
+						mode="icons" defaultmode="icons" lockmode="true"
+						iconsize="small" defaulticonsize="small" lockiconsize="true"
+						context="toolbar-context-menu"
+						defaultset="accountsOrCatsTreeToolbaritem"
+						collapsed="false"/>
 					<tree id="accountsOrCatsTree"
 						class="cardbookTreeClass cardbookAccountTreeClass"
 						seltype="single"

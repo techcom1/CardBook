@@ -21,7 +21,6 @@
 <!ENTITY localPage.openFile.label "Open an existing address book (File)">
 <!ENTITY localPage.uri.label "Directory or file">
 <!ENTITY localPage.uri.description "Using the browser, choose the location for your new local address book. If you are creating a new file, specify .vcf as the file extension.">
-<!ENTITY locationFirstPage.uri.description "Choose the location for your new local address books.">
 <!ENTITY localPage.uributton.label "Browse">
 
 <!ENTITY remotePage.wizard.description "Type and location of the new remote address book.">

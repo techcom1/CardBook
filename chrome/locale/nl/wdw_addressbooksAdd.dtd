@@ -21,7 +21,6 @@
 <!ENTITY localPage.openFile.label "Open een bestaand adresboek (Bestand)">
 <!ENTITY localPage.uri.label "Map of bestand">
 <!ENTITY localPage.uri.description "Gebruik Verkenner om de lokatie van het nieuwe adresboek te kiezen. In geval van een nieuw bestand, kies '.vcf' als bestandsextensie.">
-<!ENTITY locationFirstPage.uri.description "Kies de lokatie voor het nieuwe adresboek">
 <!ENTITY localPage.uributton.label "Verkenner">
 
 <!ENTITY remotePage.wizard.description "Type en plaats van het nieuwe internet-adresboek.">

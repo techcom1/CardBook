@@ -5,7 +5,7 @@
 <!ENTITY customFieldsTabLabel "Egyéni mezők">
 <!ENTITY listsTabLabel "Listák">
 <!ENTITY syncTabLabel "Összehangolás">
-<!ENTITY emailTabLabel "Email">
+<!ENTITY emailTabLabel "E-mail">
 <!ENTITY birthdaylistTabLabel "Évforduló">
 <!ENTITY synclistTabLabel "Évforduló emlékeztetők">
 
@@ -102,7 +102,7 @@
 <!ENTITY typesGroupboxLabel "Típusok">
 <!ENTITY typesCategoryAdrLabel "Cím">
 <!ENTITY typesCategoryAdrAccesskey "C">
-<!ENTITY typesCategoryEmailLabel "Email">
+<!ENTITY typesCategoryEmailLabel "E-mail">
 <!ENTITY typesCategoryEmailAccesskey "m">
 <!ENTITY typesCategoryImppLabel "IMPP">
 <!ENTITY typesCategoryImppAccesskey "I">
@@ -189,21 +189,24 @@
 <!ENTITY miscEmailGroupboxLabel "Üzenet küldés">
 <!ENTITY preferEmailPrefLabel "Inkább e-mail címek jelölt részesített">
 <!ENTITY preferEmailPrefAccesskey "r">
-<!ENTITY preferEmailPrefWarn "Ha e-mail cím nincs jelölve 'PREFerált', az üzenetet küldi, hogy minden névjegy email címét.">
-<!ENTITY warnEmptyEmailsLabel "Figyelmeztessen, amikor email cím nélkül üzenetet próbálok létrehozni">
+<!ENTITY preferEmailPrefWarn "Ha e-mail cím nincs jelölve 'PREFerált', az üzenetet küldi, hogy minden névjegy e-mail címét.">
+<!ENTITY warnEmptyEmailsLabel "Figyelmeztessen, amikor e-mail cím nélkül üzenetet próbálok létrehozni">
 <!ENTITY warnEmptyEmailsAccesskey "F">
-<!ENTITY useOnlyEmailLabel "??Use only email addresses??">
-<!ENTITY useOnlyEmailAccesskey "U">
+<!ENTITY useOnlyEmailLabel "Csak az e-mail címek használata">
+<!ENTITY useOnlyEmailAccesskey "C">
 <!ENTITY attachvCardWarn "Ahhoz, hogy automatikusan hozzáadni egy vCard e-mailjeit, válasszon ki egy vCard az egyes postafiókhoz. Ha be van kapcsolva, névjegyzéek csatolja ezt vCard minden kimenő postafiókból.">
 <!ENTITY attachvCardGroupboxLabel "vCard-csatlakozásra">
-<!ENTITY mailAccountsEnabledLabel "Engedélyezve">
-<!ENTITY mailAccountsNameLabel "Postafiók">
-<!ENTITY mailAccountsFileNameLabel "Csatolt fájl">
-<!ENTITY mailAccountsFnLabel "Névjegy">
-<!ENTITY choosevCardLabel "vCard kiválasztás">
-<!ENTITY choosevCardAccesskey "v">
-<!ENTITY displayvCardLabel "vCard nézes">
-<!ENTITY displayvCardAccesskey "n">
+<!ENTITY accountsVCardsEnabledLabel "Engedélyezve">
+<!ENTITY accountsVCardsMailLabel "Postafiók">
+<!ENTITY accountsVCardsABNameLabel "Névjegytár">
+<!ENTITY accountsVCardsFileNameLabel "Csatolt fájl">
+<!ENTITY accountsVCardsFnLabel "Névjegy">
+<!ENTITY addVCardLabel "Új…">
+<!ENTITY addVCardAccesskey "j">
+<!ENTITY renameVCardLabel "Szerkesztés…">
+<!ENTITY renameVCardAccesskey "z">
+<!ENTITY deleteVCardLabel "Törlés…">
+<!ENTITY deleteVCardAccesskey "T">
 
 <!ENTITY birthdayListWarn "Az évfordulókat csak a névjegyzék kiegészítő program névjegytárában keresi. Az évfordulók dátumformátumait a névjegytár beállításai tartalmazzák.">
 <!ENTITY addressBooksGroupboxLabel "Minden mappa">

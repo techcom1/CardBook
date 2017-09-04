@@ -683,30 +683,33 @@
 						<hbox flex="1">
 							<vbox flex="1">
 								<hbox flex="1">
-									<tree id="mailAccountsTree" class="cardbookTreeChildrenConfigClass" hidecolumnpicker="true" flex="1" seltype="single" enableColumnDrag="false" editable="true" sortDirection="ascending" sortResource="mailAccountsName">
-										<treecols id="mailAccountsTreeCols">
-											<treecol id="mailAccountsEnabled" label="&mailAccountsEnabledLabel;" type="checkbox" persist="width ordinal hidden" style="text-align:center" editable="true"/>
+									<tree id="accountsVCardsTree" class="cardbookTreeChildrenConfigClass" hidecolumnpicker="true" flex="1" seltype="single" enableColumnDrag="false" editable="true" onselect="wdw_cardbookConfiguration.selectVCard();" sortDirection="ascending" sortResource="accountsVCardsMailName">
+										<treecols id="accountsVCardsTreeCols">
+											<treecol id="accountsVCardsEnabled" label="&accountsVCardsEnabledLabel;" type="checkbox" persist="width ordinal hidden" style="text-align:center" editable="true"/>
 											<splitter class="tree-splitter"/>
-											<treecol id="mailAccountsId" flex="1" hidden="true" persist="width ordinal hidden" style="text-align:left" editable="false"/>
+											<treecol id="accountsVCardsId" flex="1" hidden="true" persist="width ordinal hidden" style="text-align:left" editable="false"/>
 											<splitter class="tree-splitter"/>
-											<treecol id="mailAccountsName" label="&mailAccountsNameLabel;" flex="1" persist="width ordinal hidden" onclick="wdw_cardbookConfiguration.sortTreesFromCol(event, this, 'mailAccountsTree');" style="text-align:left" editable="false"/>
+											<treecol id="accountsVCardsMailName" label="&accountsVCardsMailLabel;" flex="1" persist="width ordinal hidden" onclick="wdw_cardbookConfiguration.sortTreesFromCol(event, this, 'accountsVCardsTree');" style="text-align:left" editable="false"/>
 											<splitter class="tree-splitter"/>
-											<treecol id="mailAccountsFileName" label="&mailAccountsFileNameLabel;" flex="1" onclick="wdw_cardbookConfiguration.sortTreesFromCol(event, this, 'mailAccountsTree');" persist="width ordinal hidden" style="text-align:left" editable="false"/>
+											<treecol id="accountsVCardsMailId" flex="1" hidden="true" persist="width ordinal hidden" style="text-align:left" editable="false"/>
 											<splitter class="tree-splitter"/>
-											<treecol id="mailAccountsDirPrefId" flex="1" hidden="true" persist="width ordinal hidden" style="text-align:left" editable="false"/>
+											<treecol id="accountsVCardsFn" label="&accountsVCardsFnLabel;" flex="1" onclick="wdw_cardbookConfiguration.sortTreesFromCol(event, this, 'accountsVCardsTree');" hidden="false" persist="width ordinal hidden" style="text-align:left" editable="false"/>
 											<splitter class="tree-splitter"/>
-											<treecol id="mailAccountsUid" flex="1" hidden="true" persist="width ordinal hidden" style="text-align:left" editable="false"/>
+											<treecol id="accountsVCardsAddressBookId" flex="1" hidden="true" persist="width ordinal hidden" style="text-align:left" editable="false"/>
 											<splitter class="tree-splitter"/>
-											<treecol id="mailAccountsFn" label="&mailAccountsFnLabel;" flex="1" onclick="wdw_cardbookConfiguration.sortTreesFromCol(event, this, 'mailAccountsTree');" hidden="false" persist="width ordinal hidden" style="text-align:left" editable="false"/>
+											<treecol id="accountsVCardsContactId" flex="1" hidden="true" persist="width ordinal hidden" style="text-align:left" editable="false"/>
+											<splitter class="tree-splitter"/>
+											<treecol id="accountsVCardsFileName" label="&accountsVCardsFileNameLabel;" flex="1" onclick="wdw_cardbookConfiguration.sortTreesFromCol(event, this, 'accountsVCardsTree');" persist="width ordinal hidden" style="text-align:left" editable="false"/>
 										</treecols>
-										<treechildren id="mailAccountsTreeChildren" ondblclick="wdw_cardbookConfiguration.doubleClickTree(event, 'mailAccountsTree');"/>
+										<treechildren id="accountsVCardsTreeChildren" ondblclick="wdw_cardbookConfiguration.doubleClickTree(event, 'accountsVCardsTree');"/>
 									</tree>
 								</hbox>
 							</vbox>
 							<hbox align="top">
 								<vbox flex="1">
-									<button id="choosevCard" label="&choosevCardLabel;" accesskey="&choosevCardAccesskey;" oncommand="wdw_cardbookConfiguration.choosevCard();"/>
-									<button id="displayvCard" label="&displayvCardLabel;" accesskey="&displayvCardAccesskey;" oncommand="wdw_cardbookConfiguration.displayvCard();"/>
+									<button id="addVCardLabel" label="&addVCardLabel;" accesskey="&addVCardAccesskey;" oncommand="wdw_cardbookConfiguration.addVCard();"/>
+									<button id="renameVCardLabel" label="&renameVCardLabel;" accesskey="&renameVCardAccesskey;" oncommand="wdw_cardbookConfiguration.renameVCard();" disabled="true"/>
+									<button id="deleteVCardLabel" label="&deleteVCardLabel;" accesskey="&deleteVCardAccesskey;" oncommand="wdw_cardbookConfiguration.deleteVCard();" disabled="true"/>
 								</vbox>
 							</hbox>
 						</hbox>

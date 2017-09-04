@@ -15,7 +15,7 @@
 <!ENTITY autocompletionTooltip "Erweitert die standardmäßige Autovervollständigung von Kontakten in Adressbüchern von Thunderbird um eine Autovervollständigung von Kontakten in Adressbüchern von CardBook.">
 <!ENTITY autocompleteSortByPopularityLabel "Sortiere Email-Adressen nach Popularität">
 <!ENTITY autocompleteSortByPopularityAccesskey "S">
-<!ENTITY autocompleteShowAddressbookLabel "Zeite den Namen des Adressbuchs">
+<!ENTITY autocompleteShowAddressbookLabel "Zeige den Namen des Adressbuchs">
 <!ENTITY autocompleteShowAddressbookAccesskey "Z">
 <!ENTITY autocompleteWithColorLabel "Benutze die Farbe des Adressbuchs">
 <!ENTITY autocompleteWithColorAccesskey "F">
@@ -193,18 +193,21 @@
 <!ENTITY preferEmailPrefWarn "Ist keine Adresse mit dem Typ 'pref' vorhanden, so werden alle Adressen genutzt.">
 <!ENTITY warnEmptyEmailsLabel "Mich warnen, wenn ich versuche an einen Kontakt zu senden, zu dem keine E-Mailadresse gespeichert ist">
 <!ENTITY warnEmptyEmailsAccesskey "W">
-<!ENTITY useOnlyEmailLabel "??Use only email addresses??">
+<!ENTITY useOnlyEmailLabel "Nur die E-Mail-Adressen verwenden">
 <!ENTITY useOnlyEmailAccesskey "U">
 <!ENTITY attachvCardWarn "Automatisch vCard an Emails anhängen: Eine vCard pro E-Mail-Konto auswählen. Falls aktiviert wird diese vCard an jede ausgehende E-Mail angehängt.">
 <!ENTITY attachvCardGroupboxLabel "Fürs an Email anhängen">
-<!ENTITY mailAccountsEnabledLabel "Aktiviert">
-<!ENTITY mailAccountsNameLabel "Email-Konto">
-<!ENTITY mailAccountsFileNameLabel "Anhang">
-<!ENTITY mailAccountsFnLabel "Kontakt">
-<!ENTITY choosevCardLabel "Wählen Sie eine vCard">
-<!ENTITY choosevCardAccesskey "W">
-<!ENTITY displayvCardLabel "vCard anzeigen">
-<!ENTITY displayvCardAccesskey "V">
+<!ENTITY accountsVCardsEnabledLabel "Aktiviert">
+<!ENTITY accountsVCardsMailLabel "Email-Konto">
+<!ENTITY accountsVCardsABNameLabel "Adressbuch">
+<!ENTITY accountsVCardsFileNameLabel "Anhang">
+<!ENTITY accountsVCardsFnLabel "Kontakt">
+<!ENTITY addVCardLabel "Hinzufügen">
+<!ENTITY addVCardAccesskey "H">
+<!ENTITY renameVCardLabel "Bearbeiten">
+<!ENTITY renameVCardAccesskey "B">
+<!ENTITY deleteVCardLabel "Löschen">
+<!ENTITY deleteVCardAccesskey "L">
 
 <!ENTITY birthdayListWarn "Geburtstage werden nur in Adressbüchern von CardBook gesucht. Das Format für Geburtstage wird unten den Eigenschaften des Adressbuchs festgelegt.">
 <!ENTITY addressBooksGroupboxLabel "Adressbücher">

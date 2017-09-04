@@ -476,7 +476,7 @@ var cardbookRepository = {
 			cardbookPrefService.setColor(aColor);
 			cardbookPrefService.setEnabled(aEnabled);
 			cardbookPrefService.setExpanded(aExpanded);
-			cardbookPrefService.setVCard(aVCard);
+			cardbookPrefService.setVCardVersion(aVCard);
 			cardbookPrefService.setReadOnly(aReadOnly);
 			cardbookPrefService.setDateFormat(aDateFormat);
 			cardbookPrefService.setUrnuuid(aUrnuuid);
@@ -484,6 +484,7 @@ var cardbookRepository = {
 		}
 		
 		cardbookRepository.cardbookAccounts.push([aAccountName, true, aExpanded, true, aAccountId, aEnabled, aAccountType, aReadOnly]);
+		cardbookRepository.cardbookAccounts = cardbookUtils.sortArrayByString(cardbookRepository.cardbookAccounts,0,1);
 		cardbookRepository.cardbookDisplayCards[aAccountId] = [];
 		cardbookRepository.cardbookAccountsCategories[aAccountId] = [];
 	},
@@ -722,7 +723,7 @@ var cardbookRepository = {
 
 			if (myDirPrefIdType === "DIRECTORY") {
 				aCard.cacheuri = aFileName;
-				var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
+				var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 				myFile.initWithPath(myDirPrefIdUrl);
 				myFile.append(aFileName);
 				if (aMode === "INITIAL") {
@@ -788,7 +789,7 @@ var cardbookRepository = {
 			var myDirPrefIdType = cardbookPrefService.getType();
 			var myDirPrefIdUrl = cardbookPrefService.getUrl();
 			if (myDirPrefIdType === "DIRECTORY") {
-				var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
+				var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 				myFile.initWithPath(myDirPrefIdUrl);
 				myFile.append(aCard.cacheuri);
 				if (myFile.exists() && myFile.isFile()) {
@@ -1051,7 +1052,7 @@ var cardbookRepository = {
 		var myDirPrefIdName = cardbookPrefService.getName();
 		var myDirPrefIdType = cardbookPrefService.getType();
 		var myDirPrefIdUrl = cardbookPrefService.getUrl();
-		var myDirPrefIdVCard = cardbookPrefService.getVCard();
+		var myDirPrefIdVCard = cardbookPrefService.getVCardVersion();
 		var myDirPrefIdReadOnly = cardbookPrefService.getReadOnly();
 		if (!myDirPrefIdReadOnly) {
 			var myNewCard = new cardbookCardParser();

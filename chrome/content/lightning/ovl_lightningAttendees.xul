@@ -10,6 +10,7 @@
 	<stringbundleset id="stringbundleset"/>
 
 	<script src="chrome://cardbook/content/wdw_log.js"/>
+	<script src="chrome://cardbook/content/cardbookObserver.js"/>
 	<script src="chrome://cardbook/content/preferences/cardbookPreferences.js"/>
 	<script src="chrome://cardbook/content/autocomplete/cardbookAutocomplete.js"/>
 	<script src="chrome://cardbook/content/lightning/ovl_lightningAttendees.js"/>
