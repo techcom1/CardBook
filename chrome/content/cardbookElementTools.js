@@ -91,12 +91,16 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			var j = 0;
 			var typeName = [ 'all', 'enabled', 'disabled', 'local', 'remote', 'search' ];
 			for (var i = 0; i < typeName.length; i++) {
-				var menuItem = document.createElement("menuitem");
-				menuItem.setAttribute("label", strBundle.GetStringFromName(typeName[i] + "AccountsLabel"));
-				menuItem.setAttribute("value", typeName[i]);
+				var menuItem = document.getElementById(aMenuName).appendItem(strBundle.GetStringFromName(typeName[i] + "AccountsLabel"), typeName[i]);
+				// var menuItem = document.createElement("menuitem");
+				// menuItem.setAttribute("label", strBundle.GetStringFromName(typeName[i] + "AccountsLabel"));
+				// menuItem.setAttribute("value", typeName[i]);
+				menuItem.setAttribute("type", "radio");
+				menuItem.setAttribute("checked", "false");
 				myPopup.appendChild(menuItem);
 				if (typeName[i] == aDefaultId) {
 					defaultIndex=j;
+					menuItem.setAttribute("checked", "true");
 				}
 				j++;
 			}

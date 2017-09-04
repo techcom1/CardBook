@@ -23,6 +23,8 @@
 
 <!ENTITY cardbookToolbarLabel "Barra de ferramentas do Cardbook">
 <!ENTITY cardbookToolbarAccesskey "C">
+<!ENTITY cardbookABPaneToolbarLabel "??CardBook Address Book Pane Toolbar??">
+<!ENTITY cardbookABPaneToolbarAccesskey "??d??">
 <!ENTITY CustomizeCardBookToolbarLabel "Personalizar…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "P">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Novo agenda">

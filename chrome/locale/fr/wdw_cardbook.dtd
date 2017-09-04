@@ -23,6 +23,8 @@
 
 <!ENTITY cardbookToolbarLabel "Barre d'outils CardBook">
 <!ENTITY cardbookToolbarAccesskey "C">
+<!ENTITY cardbookABPaneToolbarLabel "Barre d'outils du panneau des carnets d'adresses CardBook">
+<!ENTITY cardbookABPaneToolbarAccesskey "p">
 <!ENTITY CustomizeCardBookToolbarLabel "Personnaliser…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "P">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Nouveau carnet d’adresses">

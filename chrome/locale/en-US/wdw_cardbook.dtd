@@ -23,6 +23,8 @@
 
 <!ENTITY cardbookToolbarLabel "CardBook Toolbar">
 <!ENTITY cardbookToolbarAccesskey "a">
+<!ENTITY cardbookABPaneToolbarLabel "CardBook Address Book Pane Toolbar">
+<!ENTITY cardbookABPaneToolbarAccesskey "d">
 <!ENTITY CustomizeCardBookToolbarLabel "Customize…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "C">
 <!ENTITY cardbookToolbarAddServerButtonLabel "New Address Book">

@@ -23,6 +23,8 @@
 
 <!ENTITY cardbookToolbarLabel "Panel nástrojů CardBooku">
 <!ENTITY cardbookToolbarAccesskey "C">
+<!ENTITY cardbookABPaneToolbarLabel "??CardBook Address Book Pane Toolbar??">
+<!ENTITY cardbookABPaneToolbarAccesskey "??d??">
 <!ENTITY CustomizeCardBookToolbarLabel "Vlastní…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "V">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Nové adresář">

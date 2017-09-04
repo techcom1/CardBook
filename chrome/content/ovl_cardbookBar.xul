@@ -177,6 +177,12 @@
 				class="toolbarbutton-1 button-appmenu"
 				label="&cardbookToolbarThMenuButtonLabel;"
 				tooltiptext="&cardbookToolbarThMenuButtonTooltip;"/>
+
+			<toolbaritem id="accountsOrCatsTreeToolbaritem" align="center" flex="1" class="cardbookAccountHeaderTreeClass">
+				<menulist id="accountsOrCatsTreeMenulist" oncommand="wdw_cardbook.changeAddressbookTreeMenu();" sizetopopup="none" crop="center" flex="1">
+					<menupopup id="accountsOrCatsTreeMenupopup" flex="1"/>
+				</menulist>
+			</toolbaritem>
  		</toolbarpalette>
 
 		<toolbar id="cardbook-toolbar" class="inline-toolbar chromeclass-toolbar"

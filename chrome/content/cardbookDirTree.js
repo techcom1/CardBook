@@ -113,10 +113,12 @@ if ("undefined" == typeof(cardbookDirTreeUtils)) {
 			var accountsShown = document.getElementById('accountsOrCatsTreeMenulist').selectedItem.value;
 			var enabledColumn = document.getElementById('accountEnabled');
 			var typeColumn = document.getElementById('accountTypeCheckbox');
+			var accountColumn = document.getElementById('accountColor');
 			cardbookDirTreeUtils.newArray = JSON.parse(JSON.stringify(cardbookRepository.cardbookAccounts));
 			
 			typeColumn.removeAttribute('hidden');
 			enabledColumn.removeAttribute('hidden');
+			accountColumn.removeAttribute('hidden');
 			switch(accountsShown) {
 				case "enabled":
 					function enabledAccount(element) {
@@ -152,6 +154,7 @@ if ("undefined" == typeof(cardbookDirTreeUtils)) {
 					}
 					cardbookDirTreeUtils.newArray = cardbookDirTreeUtils.newArray.filter(searchAccount);
 					typeColumn.setAttribute('hidden', 'true');
+					accountColumn.setAttribute('hidden', 'true');
 					break;
 			};
 			return cardbookDirTreeUtils.newArray;
