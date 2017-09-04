@@ -23,8 +23,8 @@
 
 <!ENTITY cardbookToolbarLabel "Névjegyzék eszköztár">
 <!ENTITY cardbookToolbarAccesskey "N">
-<!ENTITY cardbookABPaneToolbarLabel "??CardBook Address Book Pane Toolbar??">
-<!ENTITY cardbookABPaneToolbarAccesskey "??d??">
+<!ENTITY cardbookABPaneToolbarLabel "Névjegytár mappa ablaktábla eszköztára">
+<!ENTITY cardbookABPaneToolbarAccesskey "a">
 <!ENTITY CustomizeCardBookToolbarLabel "Testreszabás…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "T">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Új névjegytár">
