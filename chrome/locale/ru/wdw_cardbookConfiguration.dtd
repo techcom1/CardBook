@@ -10,10 +10,10 @@
 <!ENTITY synclistTabLabel "Напоминания о днях рождения">
 
 <!ENTITY integrationGroupboxLabel "Интеграция в Thunderbird">
-<!ENTITY autocompletionLabel "Автозавершение адресов email">
+<!ENTITY autocompletionLabel "Автозавершение адресов эл. почты">
 <!ENTITY autocompletionAccesskey "А">
 <!ENTITY autocompletionTooltip "Расширяет стандартное автоматическое завершение ввода для контактов из адресной книги Thunderbird добавлением контактов из CardBook.">
-<!ENTITY autocompleteSortByPopularityLabel "Сортировка адресов email по популярности">
+<!ENTITY autocompleteSortByPopularityLabel "Сортировка адресов эл. почты по популярности">
 <!ENTITY autocompleteSortByPopularityAccesskey "п">
 <!ENTITY autocompleteShowAddressbookLabel "Показывать название адресной книги">
 <!ENTITY autocompleteShowAddressbookAccesskey "а">
@@ -97,7 +97,7 @@
 <!ENTITY resetFnFormulaAccesskey "у">
 <!ENTITY miscEdittingGroupboxLabel "Различное">
 <!ENTITY cardCreationVersionLabel "Версия протокола vCard по умолчанию:">
-<!ENTITY preferEmailEditionLabel "Двойной щелчок открывает контакт для редактирования, а не для отправки email">
+<!ENTITY preferEmailEditionLabel "Использовать двойной щелчок для редактирования контакта, а не для отправки письма">
 <!ENTITY preferEmailEditionAccesskey "Д">
 
 <!ENTITY typesGroupboxLabel "Типы">
@@ -187,15 +187,15 @@
 <!ENTITY decodeReportLabel "Декодировать URL для запросов REPORT">
 <!ENTITY decodeReportAccesskey "Д">
 
-<!ENTITY miscEmailGroupboxLabel "Отправка email">
-<!ENTITY preferEmailPrefLabel "Предпочитать адрес email, помеченный как ПРИОРитетный">
+<!ENTITY miscEmailGroupboxLabel "Отправка эл.почты">
+<!ENTITY preferEmailPrefLabel "Предпочитать ПРИОРитетный адрес эл почты">
 <!ENTITY preferEmailPrefAccesskey "П">
-<!ENTITY preferEmailPrefWarn "Если адреса, отмеченные как ПРИОРитетные, отсутствуют, отправлять сообщения на все адреса email контакта.">
-<!ENTITY warnEmptyEmailsLabel "Предупреждать при попытке отправить письмо контактам, у которых нет адресов email">
+<!ENTITY preferEmailPrefWarn "Если адреса, отмеченные как ПРИОРитетные, отсутствуют, отправлять сообщения на все адреса эл.почты контакта.">
+<!ENTITY warnEmptyEmailsLabel "Предупреждать при попытке отправить письма контактам, у которых нет адреса эл. почты">
 <!ENTITY warnEmptyEmailsAccesskey "W">
-<!ENTITY useOnlyEmailLabel "??Only use email addresses, without their Display Names??">
+<!ENTITY useOnlyEmailLabel "Не использовать отображаемое имя, а только адрес эл. почты">
 <!ENTITY useOnlyEmailAccesskey "O">
-<!ENTITY attachvCardWarn "Добавлять визитку vCard к отправляемым email. Выберите карточку для каждого из аккаунтов. Если эта настройка включена, CardBook будет вкладывать указанную визитку vCard к каждому исходящему email аккаунта.">
+<!ENTITY attachvCardWarn "Добавлять визитку vCard к отправляемым писмам. Выберите карточку для каждого из аккаунтов. Если эта настройка включена, CardBook будет вкладывать указанную визитку vCard к каждому исходящему email аккаунта.">
 <!ENTITY attachvCardGroupboxLabel "Добавлять визитку vCard">
 <!ENTITY accountsVCardsEnabledLabel "Включено">
 <!ENTITY accountsVCardsMailLabel "Почтовый аккаунт">
