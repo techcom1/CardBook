@@ -23,8 +23,8 @@
 
 <!ENTITY cardbookToolbarLabel "Панель инструментов CardBook">
 <!ENTITY cardbookToolbarAccesskey "П">
-<!ENTITY cardbookABPaneToolbarLabel "??CardBook Address Book Pane Toolbar??">
-<!ENTITY cardbookABPaneToolbarAccesskey "??d??">
+<!ENTITY cardbookABPaneToolbarLabel "Панель адресных книг CardBook">
+<!ENTITY cardbookABPaneToolbarAccesskey "д">
 <!ENTITY CustomizeCardBookToolbarLabel "Настроить…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "Н">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Добавить адресную книгу">
