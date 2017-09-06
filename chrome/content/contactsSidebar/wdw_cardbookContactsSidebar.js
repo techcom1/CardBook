@@ -526,17 +526,25 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 				} else if (listOfUid[i][0] === "CATCARDBOOK") {
 					var myCatArray = listOfUid[i][1].split("::");
 					wdw_cardbook.removeCategory(myCatArray[0], myCatArray[1], "cardbook.catRemovedIndirect", false);
-				} else if (listOfUid[i][0] === "CARDCORE" || listOfUid[i][0] === "LISTCORE") {
-					var myCard = listOfUid[i][1];
+				} else if (listOfUid[i][0] === "LISTCORE") {
+					wdw_cardbooklog.updateStatusProgressInformation("test LIST", "Error");
 					gAddressBookBundle = document.getElementById("bundle_addressBook");
-					if (listOfUid[i][0] === "CARDCORE") {
-						confirmDeleteMessage = gAddressBookBundle.getString("confirmDeleteContact");
-					} else if (listOfUid[i][0] === "LISTCORE") {
-						confirmDeleteMessage = gAddressBookBundle.getString("confirmDeleteMailingList");
-					} else {
-						return;
+					var myCard = listOfUid[i][1];
+					AbDeleteDirectory(myCard.mailListURI);
+				} else if (listOfUid[i][0] === "CARDCORE") {
+					gAddressBookBundle = document.getElementById("bundle_addressBook");
+					var myCard = listOfUid[i][1];
+					try {
+						var confirmDeleteMessage = gAddressBookBundle.getString("confirmDeleteContact");
+						var confirmDeleteTitle = null;
 					}
-					if (Services.prompt.confirm(window, null, confirmDeleteMessage)) {
+					// for new Thunderbird versions
+					catch (e) {
+						var confirmDeleteMessage = gAddressBookBundle.getString("confirmDeleteThisContact");
+						confirmDeleteMessage = confirmDeleteMessage.replace("#1", myCard.displayName);
+						var confirmDeleteTitle = gAddressBookBundle.getString("confirmDeleteThisContactTitle");
+					}
+					if (Services.prompt.confirm(window, confirmDeleteTitle, confirmDeleteMessage)) {
 						let cardArray = Components.classes["@mozilla.org/array;1"].createInstance(Components.interfaces.nsIMutableArray);
 						cardArray.appendElement(myCard, false);
 						AB.deleteCards(cardArray);

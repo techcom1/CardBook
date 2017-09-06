@@ -23,8 +23,8 @@
 
 <!ENTITY cardbookToolbarLabel "CardBook knoppenbalk">
 <!ENTITY cardbookToolbarAccesskey "C">
-<!ENTITY cardbookABPaneToolbarLabel "??CardBook Address Book Pane Toolbar??">
-<!ENTITY cardbookABPaneToolbarAccesskey "??d??">
+<!ENTITY cardbookABPaneToolbarLabel "CardBook adresboeken-panel toolbar">
+<!ENTITY cardbookABPaneToolbarAccesskey "p">
 <!ENTITY CustomizeCardBookToolbarLabel "Aanpassen…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "A">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Nieuw adresboek">

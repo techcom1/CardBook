@@ -25,7 +25,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			var lCalendars = calendarManager.getCalendars({});
 
 			for (var i = 0; i < lCalendars.length; i++) {
-				if (myCalendar.indexOf(lCalendars[i].id) >= 0) {
+				if (myCalendar.includes(lCalendars[i].id)) {
 					cardbookBirthdaysUtils.lCalendarList.push(lCalendars[i]);
 				}
 			}
@@ -346,7 +346,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 					var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
 					var cardbookPrefService = new cardbookPreferenceService(myDirPrefId);
 					var dateFormat = cardbookPrefService.getDateFormat();
-					if ((myContact.indexOf(myDirPrefId) >= 0 ) || (myContact === "allAddressBooks")) {
+					if (myContact.includes(myDirPrefId) || myContact === "allAddressBooks") {
 						var myDirPrefName = cardbookUtils.getPrefNameFromPrefId(myDirPrefId);
 						for (var j = 0; j < cardbookRepository.cardbookDisplayCards[myDirPrefId].length; j++) {
 							var myCard = cardbookRepository.cardbookDisplayCards[myDirPrefId][j];

@@ -39,16 +39,21 @@ cardbookListConversion.prototype = {
 		var addresses = {}, names = {}, fullAddresses = {};
 		MailServices.headerParser.parseHeadersWithArray(aEmails, addresses, names, fullAddresses);
 		for (var i = 0; i < addresses.value.length; i++) {
-			if (addresses.value[i].indexOf("@") > 0) {
+			if (addresses.value[i].includes("@")) {
 				if (useOnlyEmail) {
 					this.emailResult.push(addresses.value[i]);
 				} else {
 					this.emailResult.push(MailServices.headerParser.makeMimeAddress(names.value[i], addresses.value[i]));
 				}
+			// for Mail Merge compatibility
+			} else if (fullAddresses.value[i].includes("{{") && fullAddresses.value[i].includes("}}")) {
+				this.emailResult.push(fullAddresses.value[i]);
 			} else {
+				var found = false;
 				for (j in cardbookRepository.cardbookCards) {
 					var myCard = cardbookRepository.cardbookCards[j];
-					if (myCard.fn == names.value[i]) {
+					if (myCard.isAList && myCard.fn == names.value[i]) {
+						found = true;
 						this.recursiveList.push(names.value[i]);
 						if (myCard.version == "4.0") {
 							for (var k = 0; k < myCard.member.length; k++) {
@@ -75,6 +80,9 @@ cardbookListConversion.prototype = {
 						}
 					break;
 					}
+				}
+				if (!found) {
+					this.emailResult.push(fullAddresses.value[i]);
 				}
 			}
 		}

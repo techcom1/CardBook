@@ -605,10 +605,12 @@ var cardbookRepository = {
 	removeAccountFromComplexSearch: function (aDirPrefId) {
 		if (cardbookRepository.cardbookDisplayCards[aDirPrefId]) {
 			for (var i in cardbookRepository.cardbookComplexSearch) {
-				for (var j = 0; j < cardbookRepository.cardbookDisplayCards[aDirPrefId].length; j++) {
-					var myCard = cardbookRepository.cardbookDisplayCards[aDirPrefId][j];
-					cardbookRepository.removeCardFromCategories(myCard, i);
-					cardbookRepository.removeCardFromDisplay(myCard, i);
+				if (cardbookRepository.cardbookDisplayCards[i].length != 0) {
+					for (var j = 0; j < cardbookRepository.cardbookDisplayCards[aDirPrefId].length; j++) {
+						var myCard = cardbookRepository.cardbookDisplayCards[aDirPrefId][j];
+						cardbookRepository.removeCardFromCategories(myCard, i);
+						cardbookRepository.removeCardFromDisplay(myCard, i);
+					}
 				}
 			}
 		}
@@ -839,10 +841,10 @@ var cardbookRepository = {
 					function searchCategory(element) {
 						if (element != aCard.categories[j]) {
 							return true;
-						} else if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+aCard.categories[j]].length > 1) {
+						} else if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+element].length > 1) {
 							return true;
-						} else if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+aCard.categories[j]].length == 1) {
-							if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+aCard.categories[j]][0].uid == aCard.uid) {
+						} else if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+element].length == 1) {
+							if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+element][0].dirPrefId+"::"+cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+element][0].uid == aCard.dirPrefId+"::"+aCard.uid) {
 								return false;
 							} else {
 								return true;
@@ -850,15 +852,6 @@ var cardbookRepository = {
 						}
 					}
 					cardbookRepository.cardbookAccountsCategories[aDirPrefId] = cardbookRepository.cardbookAccountsCategories[aDirPrefId].filter(searchCategory);
-				}
-				
-				if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+aCard.categories[j]]) {
-					if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+aCard.categories[j]].length === 1) {
-						cardbookRepository.removeCategoryFromAccounts(aDirPrefId+"::"+aCard.categories[j]);
-						cardbookRepository.removeCategoryFromCategories(aDirPrefId, aCard.categories[j]);
-					} else if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+aCard.categories[j]].length === 0) {
-						cardbookRepository.removeCategoryFromDisplay(aDirPrefId+"::"+aCard.categories[j]);
-					}
 				}
 			}
 		} else {
@@ -870,30 +863,8 @@ var cardbookRepository = {
 				}
 				cardbookRepository.cardbookAccountsCategories[aDirPrefId] = cardbookRepository.cardbookAccountsCategories[aDirPrefId].filter(searchCategory);
 			}
-
-			if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+uncategorizedCards]) {
-				if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+uncategorizedCards].length === 1) {
-					cardbookRepository.removeCategoryFromAccounts(aDirPrefId+"::"+uncategorizedCards);
-				} else if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+uncategorizedCards].length === 0) {
-					cardbookRepository.removeCategoryFromDisplay(aDirPrefId+"::"+uncategorizedCards);
-				}
-			}
 		}
 		cardbookRepository.setEmptyContainer(aDirPrefId);
-	},
-
-	removeCategoryFromAccounts: function(aCategory) {
-		function searchAccount(element) {
-			return (element[4] !== aCategory);
-		}
-		cardbookRepository.cardbookAccounts = cardbookRepository.cardbookAccounts.filter(searchAccount);
-	},
-
-	removeCategoryFromCategories: function(aDirPrefId, aCategoryName) {
-		function searchCategory(element) {
-			return (element !== aCategoryName);
-		}
-		cardbookRepository.cardbookAccountsCategories[aDirPrefId] = cardbookRepository.cardbookAccountsCategories[aDirPrefId].filter(searchCategory);
 	},
 
 	addCategoryToCard: function(aCard, aCategoryName) {
@@ -927,10 +898,6 @@ var cardbookRepository = {
 			}
 		}
 		cardbookRepository.cardbookUncategorizedCards = aNewCategoryName;
-	},
-
-	removeCategoryFromDisplay: function(aCategory) {
-		delete cardbookRepository.cardbookDisplayCards[aCategory];
 	},
 
 	addCardToDisplay: function(aCard, aDirPrefId) {
@@ -967,14 +934,14 @@ var cardbookRepository = {
 	removeCardFromDisplay: function(aCard, aDirPrefId) {
 		if (cardbookRepository.cardbookDisplayCards[aDirPrefId]) {
 			function searchCard(element) {
-				return (element.uid != aCard.uid);
+				return (element.dirPrefId+"::"+element.uid != aCard.dirPrefId+"::"+aCard.uid);
 			}
 			cardbookRepository.cardbookDisplayCards[aDirPrefId] = cardbookRepository.cardbookDisplayCards[aDirPrefId].filter(searchCard);
 			if (aCard.categories.length != 0) {
 				for (let j = 0; j < aCard.categories.length; j++) {
 					if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+aCard.categories[j]]) {
 						function searchCard(element) {
-							return (element.uid != aCard.uid);
+							return (element.dirPrefId+"::"+element.uid != aCard.dirPrefId+"::"+aCard.uid);
 						}
 						cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+aCard.categories[j]] = cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+aCard.categories[j]].filter(searchCard);
 						if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+aCard.categories[j]].length == 0) {
@@ -986,7 +953,7 @@ var cardbookRepository = {
 				var uncategorizedCards = cardbookRepository.cardbookUncategorizedCards;
 				if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+uncategorizedCards]) {
 					function searchCard(element) {
-						return (element.uid != aCard.uid);
+						return (element.dirPrefId+"::"+element.uid != aCard.dirPrefId+"::"+aCard.uid);
 					}
 					cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+uncategorizedCards] = cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+uncategorizedCards].filter(searchCard);
 				}

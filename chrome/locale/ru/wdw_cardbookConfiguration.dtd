@@ -10,10 +10,10 @@
 <!ENTITY synclistTabLabel "Напоминания о днях рождения">
 
 <!ENTITY integrationGroupboxLabel "Интеграция в Thunderbird">
-<!ENTITY autocompletionLabel "Автозавершение адресов эл. почты">
+<!ENTITY autocompletionLabel "Автозавершение адресов эл. почты"> 
 <!ENTITY autocompletionAccesskey "А">
 <!ENTITY autocompletionTooltip "Расширяет стандартное автоматическое завершение ввода для контактов из адресной книги Thunderbird добавлением контактов из CardBook.">
-<!ENTITY autocompleteSortByPopularityLabel "Сортировка адресов эл. почты по популярности">
+<!ENTITY autocompleteSortByPopularityLabel "Сортировка адресов эл. почты по популярности"> 
 <!ENTITY autocompleteSortByPopularityAccesskey "п">
 <!ENTITY autocompleteShowAddressbookLabel "Показывать название адресной книги">
 <!ENTITY autocompleteShowAddressbookAccesskey "а">
@@ -97,7 +97,7 @@
 <!ENTITY resetFnFormulaAccesskey "у">
 <!ENTITY miscEdittingGroupboxLabel "Различное">
 <!ENTITY cardCreationVersionLabel "Версия протокола vCard по умолчанию:">
-<!ENTITY preferEmailEditionLabel "Использовать двойной щелчок для редактирования контакта, а не для отправки письма">
+<!ENTITY preferEmailEditionLabel "Использовать двойной щелчок для редактирования контакта, а не для отправки письма"> 
 <!ENTITY preferEmailEditionAccesskey "Д">
 
 <!ENTITY typesGroupboxLabel "Типы">
