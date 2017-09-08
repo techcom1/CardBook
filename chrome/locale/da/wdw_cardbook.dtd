@@ -1,0 +1,176 @@
+<!ENTITY wdw_cardbookWindowLabel "CardBook">
+
+<!ENTITY enableAccountsTooltip "AKtiver eller deaktiver søgning og synkronisering af adressebøger.">
+<!ENTITY colorAccountsTooltip "Farv søgeresultater fra adressebøger (brugt når søgninger spænder over flere adressebøger).">
+<!ENTITY readonlyAccountsTooltip "Sæt adressebøger i skrivebeskyttet eller skrivbar tilstand.">
+
+<!ENTITY cardbookAccountMenuLabel "Adressebog">
+
+<!ENTITY cardbookAccountMenuAddServerLabel "Ny adressebog">
+<!ENTITY cardbookAccountMenuEditServerLabel "Rediger adressebog">
+<!ENTITY cardbookAccountMenuCloseServerLabel "Slet adressebog">
+<!ENTITY cardbookAccountMenuSyncLabel "Synkroniser adressebog">
+<!ENTITY cardbookAccountMenuSyncsLabel "Synkroniser alle adressebøger">
+
+<!ENTITY cardbookContactsMenuLabel "Kontakter">
+
+<!ENTITY cardbookToolsMenuLabel "Værktøjer">
+<!ENTITY cardbookToolsMenuBirthdayListLabel "Vis mærkedagsliste">
+<!ENTITY cardbookToolsMenuSyncLightningLabel "Tilføj mærkedage til kalender">
+<!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "Find duplikerede kontakter i alle adressebøger">
+<!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "Find duplikerede kontakter i nuværende adressebog">
+<!ENTITY cardbookToolsMenuPrefsLabel "CardBook-indstillinger">
+
+<!ENTITY cardbookToolbarLabel "CardBook-værktøjsbjælke">
+<!ENTITY cardbookToolbarAccesskey "a">
+<!ENTITY cardbookABPaneToolbarLabel "CardBook-adressebogsrudes værktøjsbjælke">
+<!ENTITY cardbookABPaneToolbarAccesskey "d">
+<!ENTITY CustomizeCardBookToolbarLabel "Tilpas…">
+<!ENTITY CustomizeCardBookToolbarAccesskey "T">
+<!ENTITY cardbookToolbarAddServerButtonLabel "Ny adressebog">
+<!ENTITY cardbookToolbarAddServerButtonTooltip "Tilføj en fjern eller lokal adressebog">
+<!ENTITY cardbookToolbarSyncButtonLabel "Synkroniser">
+<!ENTITY cardbookToolbarSyncButtonTooltip "Synkroniser alle fjerne adressebøger">
+<!ENTITY cardbookToolbarConfigurationButtonLabel "Indstillinger">
+<!ENTITY cardbookToolbarConfigurationButtonTooltip "CardBook-indstillinger">
+<!ENTITY cardbookToolbarAddContactButtonLabel "Ny kontakt">
+<!ENTITY cardbookToolbarAddContactButtonTooltip "Opret en ny adressebogskontakt">
+<!ENTITY cardbookToolbarAddListButtonLabel "Ny liste">
+<!ENTITY cardbookToolbarAddListButtonTooltip "Ny mailingliste">
+<!ENTITY cardbookToolbarEditButtonLabel "Rediger">
+<!ENTITY cardbookToolbarEditButtonTooltip "Rediger den valgte kontakt">
+<!ENTITY cardbookToolbarRemoveButtonLabel "Slet">
+<!ENTITY cardbookToolbarRemoveButtonTooltip "Slet den valgte kontakt">
+<!ENTITY cardbookToolbarPrintButtonLabel "Vis udskrift">
+<!ENTITY cardbookToolbarPrintButtonTooltip "Vis udskrift af de markerede">
+<!ENTITY cardbookToolbarAppMenuButtonLabel "CardBook-menu">
+<!ENTITY cardbookToolbarAppMenuButtonTooltip "CardBook-menu">
+<!ENTITY cardbookToolbarSearchBoxLabel "Søg kontakter">
+<!ENTITY cardbookToolbarSearchBoxTooltip "Søg kontakter">
+<!ENTITY cardbookToolbarComplexSearchLabel "Gemt søgning">
+<!ENTITY cardbookToolbarComplexSearchTooltip "Opret en ny folder til gemte søgninger">
+<!ENTITY cardbookToolbarThMenuButtonLabel "Menu">
+<!ENTITY cardbookToolbarThMenuButtonTooltip "Vis &brandShortName;-menuen">
+
+<!ENTITY generalTabLabel "Generelt">
+<!ENTITY mailPopularityTabLabel "Mailpopularitet">
+<!ENTITY technicalTabLabel "Teknisk">
+<!ENTITY vcardTabLabel "vCard">
+
+<!ENTITY cardIconColumnLabel "Ikon">
+<!ENTITY nameColumnLabel "Navn">
+<!ENTITY lastnameColumnLabel "Efternavn">
+<!ENTITY firstnameColumnLabel "Fornavn">
+<!ENTITY othernameColumnLabel "Andet navn">
+<!ENTITY prefixnameColumnLabel "Præfix">
+<!ENTITY suffixnameColumnLabel "Suffix">
+<!ENTITY fnColumnLabel "Vist navn">
+<!ENTITY nicknameColumnLabel "Kaldenavn">
+<!ENTITY genderColumnLabel "Køn">
+<!ENTITY bdayColumnLabel "Fødselsdag">
+<!ENTITY dispadrColumnLabel "Adresser">
+<!ENTITY disphomeadrColumnLabel "Hjemmeadresser">
+<!ENTITY dispworkadrColumnLabel "Arbejdsadresser">
+<!ENTITY disptelColumnLabel "Telefoner">
+<!ENTITY disphometelColumnLabel "Hjemmetelefoner">
+<!ENTITY dispworktelColumnLabel "Arbejdstelefoner">
+<!ENTITY dispcelltelColumnLabel "Mobiltelefoner">
+<!ENTITY dispemailColumnLabel "E-mails">
+<!ENTITY disphomeemailColumnLabel "Hjemme-e-mails">
+<!ENTITY dispworkemailColumnLabel "Arbejds-e-mails">
+<!ENTITY mailerColumnLabel "Mailer">
+<!ENTITY tzColumnLabel "Tidszone">
+<!ENTITY geoColumnLabel "Geo">
+<!ENTITY titleColumnLabel "Titel">
+<!ENTITY roleColumnLabel "Rolle">
+<!ENTITY orgColumnLabel "Organisation">
+<!ENTITY categoriesColumnLabel "Kategorier">
+<!ENTITY noteColumnLabel "Noter">
+<!ENTITY prodidColumnLabel "Prodid">
+<!ENTITY sortstringColumnLabel "Sorteringsstreng">
+<!ENTITY uidColumnLabel "Uid">
+<!ENTITY dispurlColumnLabel "URL">
+<!ENTITY versionColumnLabel "Version">
+<!ENTITY class1ColumnLabel "Klasse">
+<!ENTITY dispimppColumnLabel "Instant Messaging">
+<!ENTITY cardurlColumnLabel "Kort-URL">
+<!ENTITY dirPrefIdColumnLabel "DirPrefId">
+<!ENTITY kindColumnLabel "Type">
+<!ENTITY revColumnLabel "Senest opdateret">
+<!ENTITY etagColumnLabel "Etag">
+
+<!ENTITY categoriesGroupboxLabel "Kategorier">
+<!ENTITY noteTabLabel "Noter">
+
+<!ENTITY miscGroupboxLabel "Diverse">
+<!ENTITY othersGroupboxLabel "Andet">
+<!ENTITY techGroupboxLabel "Teknisk">
+<!ENTITY labelGroupboxLabel "Etiketter">
+<!ENTITY class1Label "Klasse">
+<!ENTITY geoLabel "Geo">
+<!ENTITY mailerLabel "Mailer">
+<!ENTITY agentLabel "Agent">
+<!ENTITY keyLabel "Nøgle">
+<!ENTITY photolocalURILabel "Lokalt foto">
+<!ENTITY logolocalURILabel "Lokalt logo">
+<!ENTITY soundlocalURILabel "Lokal lyd">
+<!ENTITY photoURILabel "Foto">
+<!ENTITY logoURILabel "Logo">
+<!ENTITY soundURILabel "Lyd">
+<!ENTITY prodidLabel "Prodid">
+<!ENTITY sortstringLabel "Sorteringsstreng">
+<!ENTITY uidLabel "UID">
+<!ENTITY versionLabel "Version">
+<!ENTITY tzLabel "Tidszone">
+
+<!ENTITY dirPrefIdLabel "dirPrefId">
+<!ENTITY cardurlLabel "Kort-URL">
+<!ENTITY cacheuriLabel "URI til mellemlager">
+<!ENTITY revLabel "Senest opdateret">
+<!ENTITY etagLabel "Etag">
+
+<!ENTITY localizeadrTreeLabel "Lokaliser">
+<!ENTITY toEmailEmailTreeLabel "Send e-mail til e-mailadresse">
+<!ENTITY ccEmailEmailTreeLabel "Send e-mail til e-mailadresse (kopi / cc)">
+<!ENTITY bccemailemailTreeLabel "Send e-mail til e-mailadresse (blind kopi / bcc)">
+<!ENTITY findemailemailTreeLabel "Find e-mails relateret til denne e-mailadresse">
+<!ENTITY findeventemailTreeLabel "Find kalenderbegivenheder relateret til denne e-mailadresse">
+<!ENTITY openURLTreeLabel "Åbn URL">
+
+<!ENTITY copyCardTreeLabel "Kopier e-mailadresse">
+
+<!ENTITY toEmailCardFromAccountsOrCatsLabel "Send e-mail">
+<!ENTITY toEmailCardFromCardsLabel "Send e-mail">
+<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Send e-mail (kopi / cc)">
+<!ENTITY ccEmailCardFromCardsLabel "Send e-mail (kopi / cc)">
+<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Send e-mail (blind kopi / bcc)">
+<!ENTITY bccEmailCardFromCardsLabel "Send e-mail (blind kopi / bcc)">
+<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Del via e-mail">
+<!ENTITY shareCardByEmailFromCardsLabel "Del via e-mail">
+<!ENTITY categoryLabel "Kategori">
+<!ENTITY findEmailsFromCardsLabel "Find e-mails relateret til denne kontakt">
+<!ENTITY findEventsFromCardsLabel "Find kalenderbegivenheder relateret til denne kontakt">
+<!ENTITY localizeCardFromCardsLabel "Lokaliser">
+<!ENTITY openURLCardFromCardsLabel "Åbn URL'er">
+<!ENTITY cutCardFromAccountsOrCatsLabel "Klip">
+<!ENTITY cutCardFromCardsLabel "Klip">
+<!ENTITY copyCardFromAccountsOrCatsLabel "Kopier">
+<!ENTITY copyCardFromCardsLabel "Kopier">
+<!ENTITY pasteCardFromAccountsOrCatsLabel "Indsæt">
+<!ENTITY pasteCardFromCardsLabel "Indsæt">
+<!ENTITY exportCardToFileLabel "Eksporter til en fil">
+<!ENTITY exportCardToDirLabel "Eksporter til et katalog">
+<!ENTITY importCardFromFileLabel "Importer kontakter fra en fil">
+<!ENTITY importCardFromDirLabel "Importer kontakter fra et katalog">
+<!ENTITY renameCatFromAccountsOrCatsLabel "Omdøb kategori">
+<!ENTITY removeCatFromAccountsOrCatsLabel "Fjern kategori">
+<!ENTITY findDuplicatesFromAccountsOrCatsLabel "Find duplikerede kontakter i nuværende adressebog">
+<!ENTITY generateFnFromAccountsOrCatsLabel "Generer viste navne">
+<!ENTITY mergeCardsFromCardsLabel "Flet kontakter">
+<!ENTITY duplicateCardFromCardsLabel "Dupliker kontakt">
+<!ENTITY convertListToCategoryFromCardsLabel "Konverter liste til kategori">
+<!ENTITY editAccountFromAccountsOrCatsLabel "Rediger adressebog">
+<!ENTITY syncAccountFromAccountsOrCatsLabel "Synkroniser adressebog">
+<!ENTITY removeAccountFromAccountsOrCatsLabel "Slet adressebog">
+
+<!ENTITY IMPPMenuLabel "Forbind til">
