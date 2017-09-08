@@ -5,6 +5,7 @@ resource cardbook-modules modules/
 content  cardbook       chrome/content/
 
 locale   cardbook cs    chrome/locale/cs/
+locale   cardbook da    chrome/locale/da/
 locale   cardbook de    chrome/locale/de/
 locale   cardbook en-US chrome/locale/en-US/
 locale   cardbook fr    chrome/locale/fr/

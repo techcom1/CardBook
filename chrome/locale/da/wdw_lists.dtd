@@ -1,0 +1,8 @@
+<!ENTITY listTabLabel "Lister">
+<!ENTITY kindLabel "Type">
+<!ENTITY kindAccesskey "T">
+<!ENTITY availableCardsGroupboxLabel "Tilgængelige kontakter">
+<!ENTITY addedCardsGroupboxLabel "Kontaktliste">
+<!ENTITY appendlistTreeLabel "Tilføj til liste">
+<!ENTITY deletelistTreeLabel "Fjern fra liste">
+<!ENTITY editCardFromListLabel "Rediger denne kontakt">
