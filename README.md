@@ -63,6 +63,7 @@ Main contributors:
 
 Translations by:
 * Lukáš Tyrychtr (cs)
+* Johnny Nielsen (da)
 * Alexander Bergmann (de)
 * Markus Mauerer (de)
 * Oliver Schuppe (de)
