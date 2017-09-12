@@ -485,7 +485,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 		unescapeArray: function (vArray) {
 			for (let i = 0; i<vArray.length; i++){
 				if (vArray[i] && vArray[i] != ""){
-					vArray[i] = vArray[i].replace(/@ESCAPEDSEMICOLON@/g,";").replace(/\\;/g,";").replace(/@ESCAPEDCOMMA@/g,",").replace(/\\,/g,",");
+					vArray[i] = cardbookUtils.unescapeString(vArray[i]);
 				}
 			}
 			return vArray;
@@ -564,7 +564,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			vCardData = this.appendToVcardData2(vCardData,"BDAY",false,vCard.bday);
 			vCardData = this.appendToVcardData2(vCardData,"TITLE",false,this.escapeStrings(vCard.title));
 			vCardData = this.appendToVcardData2(vCardData,"ROLE",false,this.escapeStrings(vCard.role));
-			vCardData = this.appendToVcardData2(vCardData,"ORG",false,vCard.org);
+			vCardData = this.appendToVcardData2(vCardData,"ORG",false,vCard.org.replace(/,/g,"\\,"));
 			vCardData = this.appendToVcardData2(vCardData,"CLASS",false,vCard.class1);
 			vCardData = this.appendToVcardData2(vCardData,"REV",false,vCard.rev);
 
@@ -1843,7 +1843,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 				mediaFile.append("mediacache");
 				if (!mediaFile.exists() || !mediaFile.isDirectory()) {
 					// read and write permissions to owner and group, read-only for others.
-					mediaFile.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0774);
+					mediaFile.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0o774);
 				}
 				var fileName = aUid.replace(/^urn:uuid:/i, "") + "." + aEtag + "." + aType + "." + aExtension.toLowerCase();
 				fileName = fileName.replace(/([\\\/\:\*\?\"\<\>\|]+)/g, '-');
@@ -1928,47 +1928,6 @@ if ("undefined" == typeof(cardbookUtils)) {
 			}
 		},
 
-		clipboardGetImage: function(aFile) {
-			var extension = "png";
-			var clip = Components.classes["@mozilla.org/widget/clipboard;1"].createInstance(Components.interfaces.nsIClipboard);
-			var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
-			trans.addDataFlavor("image/" + extension);
-			clip.getData(trans,clip.kGlobalClipboard);
-			var data = {};
-			var dataLength = {};
-			trans.getTransferData("image/" + extension,data,dataLength);
-			if (data && data.value) {
-				// remove an existing image (overwrite)
-				if (aFile.exists()) {
-					aFile.remove(true);
-				}
-				aFile.create( Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420 );
-				var outStream = Components.classes["@mozilla.org/network/file-output-stream;1"].createInstance(Components.interfaces.nsIFileOutputStream);
-				outStream.init(aFile, 0x04 | 0x08 | 0x20, -1, 0); // readwrite, create, truncate
-				var inputStream = data.value.QueryInterface(Components.interfaces.nsIInputStream)
-				var binInputStream = Components.classes["@mozilla.org/binaryinputstream;1"].createInstance(Components.interfaces.nsIBinaryInputStream);
-				binInputStream.setInputStream(inputStream);
-				try {
-					while(true) {
-						var len = Math.min(512,binInputStream.available());
-						if (len == 0) break;
-						var data = binInputStream.readBytes(len);
-						if (!data || !data.length) break; outStream.write(data, data.length);
-					}
-				}
-				catch(e) { return false; }
-				try {
-					inputStream.close();
-					binInputStream.close();
-					outStream.close();
-				}
-				catch(e) { return false; }
-			} else {
-				return false;
-			}
-			return true;
-		},
-
 		callFilePicker: function (aTitle, aMode, aType, aDefaultFileName, aCallback, aCallbackParam) {
 			try {
 				var strBundle = document.getElementById("cardbook-strings");
@@ -2028,17 +1987,6 @@ if ("undefined" == typeof(cardbookUtils)) {
 			if (aFileName) {
 				myFile.append(aFileName);
 			}
-			return myFile;
-		},
-
-		getEditionPhotoTempFile: function (aExtension) {
-			var myFile = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties).get("TmpD", Components.interfaces.nsIFile);
-			myFile.append("cardbook");
-			if (!myFile.exists() || !myFile.isDirectory()) {
-				// read and write permissions to owner and group, read-only for others.
-				myFile.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0774);
-			}
-			myFile.append(cardbookUtils.getUUID() + "." + aExtension);
 			return myFile;
 		},
 
@@ -2777,15 +2725,21 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		openEditionWindow: function(aCard, aMode, aSource) {
 			try {
-				var myArgs = {cardIn: aCard, cardOut: {}, editionMode: aMode, cardEditionAction: ""};
-				var myWindow = window.openDialog("chrome://cardbook/content/cardEdition/wdw_cardEdition.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
-				if (myArgs.cardEditionAction == "SAVE") {
-					cardbookRepository.saveCard(aCard, myArgs.cardOut, aSource);
-					cardbookRepository.reWriteFiles([myArgs.cardOut.dirPrefId]);
-				}
+				var myArgs = {cardIn: aCard, cardOut: {}, editionMode: aMode, editionSource: aSource, cardEditionAction: "", editionCallback: cardbookUtils.openEditionWindowSave};
+				var myWindow = window.openDialog("chrome://cardbook/content/cardEdition/wdw_cardEdition.xul", "", "chrome,resizable,centerscreen", myArgs);
 			}
 			catch (e) {
 				wdw_cardbooklog.updateStatusProgressInformation("cardbookUtils.openEditionWindow error : " + e, "Error");
+			}
+		},
+
+		openEditionWindowSave: function(aOrigCard, aOutCard, aSource) {
+			try {
+				cardbookRepository.saveCard(aOrigCard, aOutCard, aSource);
+				cardbookRepository.reWriteFiles([aOutCard.dirPrefId]);
+			}
+			catch (e) {
+				wdw_cardbooklog.updateStatusProgressInformation("cardbookUtils.openEditionWindowSave error : " + e, "Error");
 			}
 		},
 

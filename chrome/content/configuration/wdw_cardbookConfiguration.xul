@@ -58,8 +58,6 @@
 				name="extensions.cardbook.vcardTabView" type="bool"/>
 			<preference id="extensions.cardbook.preferEmailEdition"
 				name="extensions.cardbook.preferEmailEdition" type="bool"/>
-			<preference id="extensions.cardbook.cardCreationVersion"
-				name="extensions.cardbook.cardCreationVersion" type="string"/>
 			<preference id="extensions.cardbook.localizeEngine"
 				name="extensions.cardbook.localizeEngine" type="string"/>
 			<preference id="extensions.cardbook.showNameAs"
@@ -369,18 +367,6 @@
 
 					<groupbox>
 						<caption label="&miscEdittingGroupboxLabel;"/>
-						<hbox flex="1" align="center">
-							<label value="&cardCreationVersionLabel;"
-								control="cardCreationVersionRadiogroup"
-								id="cardCreationVersion"/>
-						</hbox>
-						<hbox flex="1" align="center">
-							<radiogroup id="cardCreationVersionRadiogroup" orient="horizontal" preference="extensions.cardbook.cardCreationVersion"  class="indent">
-								<radio value="3.0" label="3.0" accesskey="3"/>
-								<radio value="4.0" label="4.0" accesskey="4"/>
-							</radiogroup>
-						</hbox>
-						<separator class="thin"/>
 						<hbox align="center">
 							<checkbox id="preferEmailEditionCheckBox" label="&preferEmailEditionLabel;"
 								accesskey="&preferEmailEditionAccesskey;"

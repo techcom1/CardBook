@@ -95,7 +95,6 @@
 <!ENTITY resetFnFormulaLabel "Restore to Default">
 <!ENTITY resetFnFormulaAccesskey "R">
 <!ENTITY miscEdittingGroupboxLabel "Miscellaneous">
-<!ENTITY cardCreationVersionLabel "Default vCard version:">
 <!ENTITY preferEmailEditionLabel "Double-click on a contact edits it instead of emails it">
 <!ENTITY preferEmailEditionAccesskey "k">
 

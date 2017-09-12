@@ -96,7 +96,6 @@
 <!ENTITY resetFnFormulaLabel "Zurücksetzen auf Standard">
 <!ENTITY resetFnFormulaAccesskey "Z">
 <!ENTITY miscEdittingGroupboxLabel "Sonstiges">
-<!ENTITY cardCreationVersionLabel "Standardversion der vCard:">
 <!ENTITY preferEmailEditionLabel "Durch einen Doppelklick den Kontakt bearbeiten anstatt eine E-Mail zu verfassen">
 <!ENTITY preferEmailEditionAccesskey "D">
 

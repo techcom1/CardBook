@@ -45,6 +45,7 @@
 <!ENTITY emailsCollectionMailNameLabel "Mailkonto">
 <!ENTITY emailsCollectionABNameLabel "Adressebog">
 <!ENTITY emailsCollectionCatNameLabel "Kategori">
+<!ENTITY emailsCollectionIncludeNameLabel "Type">
 <!ENTITY addEmailsCollectionLabel "Tilføj">
 <!ENTITY addEmailsCollectionAccesskey "T">
 <!ENTITY renameEmailsCollectionLabel "Rediger">
@@ -95,7 +96,6 @@
 <!ENTITY resetFnFormulaLabel "Gendan standardvalg">
 <!ENTITY resetFnFormulaAccesskey "d">
 <!ENTITY miscEdittingGroupboxLabel "Diverse">
-<!ENTITY cardCreationVersionLabel "Standard vCard-version:">
 <!ENTITY preferEmailEditionLabel "Dobbeltklik på en kontakt redigerer den i stedet for at e-maile den">
 <!ENTITY preferEmailEditionAccesskey "l">
 
@@ -209,7 +209,6 @@
 <!ENTITY deleteVCardAccesskey "S">
 
 <!ENTITY birthdayListWarn "Mærkedage bliver kun søgt i CardBook-adressebøger. Datoformater for mærkedage, indstilles i adressebogens egenskaber. ">
-
 <!ENTITY addressBooksGroupboxLabel "Adressebøger">
 <!ENTITY calendarsGroupboxLabel "Kalendre">
 <!ENTITY searchGroupboxLabel "Søg">

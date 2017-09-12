@@ -716,7 +716,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			try {
 				if (aDirectory != null && aDirectory !== undefined && aDirectory != "") {
 					if (aDirectory.exists() == false){
-						aDirectory.create( Components.interfaces.nsIFile.DIRECTORY_TYPE, 0774 );
+						aDirectory.create( Components.interfaces.nsIFile.DIRECTORY_TYPE, 0o774 );
 					}
 	
 					if (cardbookUtils.isDirectoryAlreadyOpen(aDirectory.path)) {
@@ -1820,7 +1820,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 								if (prompts.confirm(window, confirmTitle, confirmMsg)) {
 									myDir.remove(true);
 									try {
-										myDir.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0774);
+										myDir.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0o774);
 									}
 									catch (e) {
 										wdw_cardbooklog.updateStatusProgressInformation("cannot create directory : " + myDir.path + " : error : " + e, "Error");
@@ -1834,7 +1834,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 							}
 						} else {
 							try {
-								myDir.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0774);
+								myDir.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0o774);
 							}
 							catch (e) {
 								wdw_cardbooklog.updateStatusProgressInformation("cannot create directory : " + myDir.path + " : error : " + e, "Error");
@@ -2763,9 +2763,11 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					if (cardbookPrefService.getReadOnly()) {
 						wdw_cardbook.enableOrDisableElement(['generateFnFromAccountsOrCats'], true);
 						wdw_cardbook.enableOrDisableElement(['cutCardsFromAccountsOrCats'], true);
+						wdw_cardbook.setElementLabelWithBundle('readOnlyOrReadWriteFromAccountsOrCats', "readWriteFromAccountsOrCats");
 					} else {
 						wdw_cardbook.enableOrDisableElement(['generateFnFromAccountsOrCats'], false);
 						wdw_cardbook.enableOrDisableElement(['cutCardsFromAccountsOrCats'], false);
+						wdw_cardbook.setElementLabelWithBundle('readOnlyOrReadWriteFromAccountsOrCats', "readOnlyFromAccountsOrCats");
 					}
 					wdw_cardbook.enableOrDisableElement(['addAccountFromAccountsOrCats', 'editAccountFromAccountsOrCats', 'removeAccountFromAccountsOrCats',
 														'enableOrDisableFromAccountsOrCats', 'readOnlyOrReadWriteFromAccountsOrCats'], false);

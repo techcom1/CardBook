@@ -253,11 +253,8 @@
 				<row id="vcardVersionRow" align="center">
 					<label value="&namePage.vCardVersion.label;" control="vCardVersionPageName"/>
 					<hbox align="center" flex="1">
-						<menulist id="vCardVersionPageName">
-							<menupopup id="vCardVersionPageNameMenupopup">
-								<menuitem label="3.0" value="3.0"/>
-								<menuitem label="4.0" value="4.0"/>
-							</menupopup>
+						<menulist id="vCardVersionPageName" onpopuphiding="wdw_addressbooksAdd.vCardHidingMenu(this);">
+							<menupopup id="vCardVersionPageNameMenupopup"/>
 						</menulist>
 					</hbox>
 				</row>

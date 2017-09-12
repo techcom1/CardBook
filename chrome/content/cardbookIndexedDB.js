@@ -35,7 +35,7 @@ if ("undefined" == typeof(cardbookIndexedDB)) {
 			// when error, call the observer for starting the load cache and maybe the sync
 			request.onerror = function(e) {
 				cardbookUtils.notifyObservers("cardbook.DBOpen");
-				cardbookRepository.cardbookDatabase.onerror();
+				cardbookRepository.cardbookDatabase.onerror(e);
 			};
 		},
 

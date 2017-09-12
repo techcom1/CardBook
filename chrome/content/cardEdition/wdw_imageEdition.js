@@ -1,6 +1,62 @@
 if ("undefined" == typeof(wdw_imageEdition)) {
 	var wdw_imageEdition = {
 
+		writeImageToFile: function (aFile, aDataValue) {
+			// remove an existing image (overwrite)
+			if (aFile.exists()) {
+				aFile.remove(true);
+			}
+			aFile.create( Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420 );
+			var outStream = Components.classes["@mozilla.org/network/file-output-stream;1"].createInstance(Components.interfaces.nsIFileOutputStream);
+			outStream.init(aFile, 0x04 | 0x08 | 0x20, -1, 0); // readwrite, create, truncate
+			var inputStream = aDataValue.QueryInterface(Components.interfaces.nsIInputStream)
+			var binInputStream = Components.classes["@mozilla.org/binaryinputstream;1"].createInstance(Components.interfaces.nsIBinaryInputStream);
+			binInputStream.setInputStream(inputStream);
+			try {
+				while(true) {
+					var len = Math.min(512,binInputStream.available());
+					if (len == 0) break;
+					var data = binInputStream.readBytes(len);
+					if (!data || !data.length) break; outStream.write(data, data.length);
+				}
+			}
+			catch(e) { return false; }
+			try {
+				inputStream.close();
+				binInputStream.close();
+				outStream.close();
+			}
+			catch(e) { return false; }
+			return true;
+		},
+
+		getEditionPhotoTempFile: function (aExtension) {
+			var myFile = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties).get("TmpD", Components.interfaces.nsIFile);
+			myFile.append("cardbook");
+			if (!myFile.exists() || !myFile.isDirectory()) {
+				// read and write permissions to owner and group, read-only for others.
+				myFile.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0o774);
+			}
+			myFile.append(cardbookUtils.getUUID() + "." + aExtension);
+			return myFile;
+		},
+
+		clipboardGetImage: function(aFile) {
+			var extension = "png";
+			var clip = Components.classes["@mozilla.org/widget/clipboard;1"].createInstance(Components.interfaces.nsIClipboard);
+			var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
+			trans.addDataFlavor("image/" + extension);
+			clip.getData(trans,clip.kGlobalClipboard);
+			var data = {};
+			var dataLength = {};
+			trans.getTransferData("image/" + extension,data,dataLength);
+			if (data && data.value) {
+				return wdw_imageEdition.writeImageToFile(aFile, data.value);
+			} else {
+				return false;
+			}
+		},
+
 		displayImageCard: function (aCard, aDisplayDefault) {
 			if (aCard.photo.localURI != null && aCard.photo.localURI !== undefined && aCard.photo.localURI != "") {
 				document.getElementById('imageBox').removeAttribute('hidden');
@@ -62,7 +118,7 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 			if (myExtension != "") {
 				var myCard = wdw_cardEdition.workingCard;
 				myExtension = cardbookUtils.formatExtension(myExtension, myCard.version);
-				var targetFile = cardbookUtils.getEditionPhotoTempFile(myExtension);
+				var targetFile = wdw_imageEdition.getEditionPhotoTempFile(myExtension);
 				var ioService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
 				var myFileURISpec = "file:///" + targetFile.path;
 				var myFileURI = ioService.newURI(myFileURISpec, null, null);
@@ -80,20 +136,25 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 				if (myExtension != "") {
 					var myCard = wdw_cardEdition.workingCard;
 					myExtension = cardbookUtils.formatExtension(myExtension, myCard.version);
-					var targetFile = cardbookUtils.getEditionPhotoTempFile(myExtension);
-					
-					Components.utils.import("resource://gre/modules/Downloads.jsm");
-					Components.utils.import("resource://gre/modules/Task.jsm");
+					var targetFile = wdw_imageEdition.getEditionPhotoTempFile(myExtension);
 					try {
-						Task.spawn(function () {
-							// Fetch a file in the background.
-							let download_1 = Downloads.fetch(myUrl, targetFile);
-							yield Promise.all([download_1]);
-							
-							// Do something with the saved files.
-							cardbookUtils.formatStringForOutput("urlDownloaded", [myUrl]);
-							wdw_imageEdition.addImageCard(targetFile, myCard, myExtension);
-						});
+						cardbookUtils.jsInclude(["chrome://cardbook/content/cardbookWebDAV.js"]);
+						var listener_getimage = {
+							onDAVQueryComplete: function(status, response, askCertificate, etag) {
+								if (status > 199 && status < 400) {
+									cardbookUtils.formatStringForOutput("urlDownloaded", [myUrl]);
+									cardbookSynchronization.writeContentToFile(targetFile.path, response, "NOUTF8");
+									wdw_imageEdition.addImageCard(targetFile, myCard, myExtension);
+								} else {
+									cardbookUtils.formatStringForOutput("imageErrorWithMessage", [e]);
+								}
+							}
+						};
+						var aDescription = cardbookUtils.getPrefNameFromPrefId(myCard.dirPrefId);
+						var aImageConnection = {connPrefId: myCard.dirPrefId, connUrl: myUrl, connDescription: aDescription};
+						var request = new cardbookWebDAV(aImageConnection, listener_getimage);
+						cardbookUtils.formatStringForOutput("serverCardGettingImage", [aImageConnection.connDescription, myCard.fn]);
+						request.getimage();
 					}
 					catch(e) {
 						cardbookUtils.formatStringForOutput("imageErrorWithMessage", [e]);
@@ -106,8 +167,8 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 			if (document.getElementById('photolocalURITextBox').value == "") {
 				var myExtension = "png";
 				var myCard = wdw_cardEdition.workingCard;
-				var targetFile = cardbookUtils.getEditionPhotoTempFile(myExtension);
-				var myResult = cardbookUtils.clipboardGetImage(targetFile);
+				var targetFile = wdw_imageEdition.getEditionPhotoTempFile(myExtension);
+				var myResult = wdw_imageEdition.clipboardGetImage(targetFile);
 				if (myResult) {
 					wdw_imageEdition.addImageCard(targetFile, myCard, myExtension);
 				} else {

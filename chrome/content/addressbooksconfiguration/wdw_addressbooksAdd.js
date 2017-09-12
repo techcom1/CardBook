@@ -311,6 +311,15 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			}
 		},
 
+		vCardHidingMenu: function (aMenu) {
+			var myId = aMenu.id.replace('vCardVersionPageName', '');
+			if (document.getElementById(aMenu.id).selectedItem.value == "3.0") {
+				cardbookElementTools.loadDateFormats('dateFormatMenuPopup' + myId, 'dateFormatMenuList' + myId, "YYYY-MM-DD");
+			} else {
+				cardbookElementTools.loadDateFormats('dateFormatMenuPopup' + myId, 'dateFormatMenuList' + myId, "YYYYMMDD");
+			}
+		},
+
 		decodeURL: function (aURL) {
 			var relative = aURL.match("(https?)(://[^/]*)/([^#?]*)");
 			if (relative && relative[3]) {
@@ -326,6 +335,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 		},
 
 		validateURL: function () {
+			document.getElementById('addressbook-wizard').canAdvance = false;
 			document.getElementById('remotePageURI').value = wdw_addressbooksAdd.decodeURL(document.getElementById('remotePageURI').value.trim());
 			document.getElementById('validateButton').disabled = true;
 			
@@ -514,7 +524,8 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				}
 				var aTextbox = document.getElementById('serverColorInput');
 				aTextbox.value = cardbookUtils.randomColor(100);
-				cardbookElementTools.loadDateFormats("dateFormatMenuPopup", "dateFormatMenuList", "YYYYMMDD");
+				cardbookElementTools.loadVCardVersions("vCardVersionPageNameMenupopup", "vCardVersionPageName", "3.0");
+				cardbookElementTools.loadDateFormats("dateFormatMenuPopup", "dateFormatMenuList", "YYYY-MM-DD");
 			}
 			wdw_addressbooksAdd.checkRequired();
 		},
@@ -578,23 +589,16 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			var aMenuPopup = document.createElement('menupopup');
 			aMenuList.appendChild(aMenuPopup);
 			aMenuPopup.setAttribute('id', 'vCardVersionPageNameMenupopup' + aId);
-			var aMenuItem = document.createElement('menuitem');
-			aMenuPopup.appendChild(aMenuItem);
-			aMenuItem.setAttribute('id', 'vCardVersionPageNameMenuitem3' + aId);
-			aMenuItem.setAttribute('label', '3.0');
-			aMenuItem.setAttribute('value', '3.0');
-			var aMenuItem = document.createElement('menuitem');
-			aMenuPopup.appendChild(aMenuItem);
-			aMenuItem.setAttribute('id', 'vCardVersionPageNameMenuitem4' + aId);
-			aMenuItem.setAttribute('label', '4.0');
-			aMenuItem.setAttribute('value', '4.0');
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-			var cardCreationVersion = prefs.getComplexValue("extensions.cardbook.cardCreationVersion", Components.interfaces.nsISupportsString).data;
-			if (cardCreationVersion == "3.0") {
-				aMenuList.selectedIndex = 0;
-			} else {
-				aMenuList.selectedIndex = 1;
-			}
+			cardbookElementTools.loadVCardVersions(aMenuPopup.id, aMenuList.id, "3.0");
+			// different default date formats
+			aMenuList.addEventListener("popuphiding", function() {
+					var myId = this.id.replace('vCardVersionPageName', '');
+					if (document.getElementById(this.id).selectedItem.value == "3.0") {
+						cardbookElementTools.loadDateFormats('dateFormatMenuPopup' + myId, 'dateFormatMenuList' + myId, "YYYY-MM-DD");
+					} else {
+						cardbookElementTools.loadDateFormats('dateFormatMenuPopup' + myId, 'dateFormatMenuList' + myId, "YYYYMMDD");
+					}
+				}, false);
 
 			var aMenuList = document.createElement('menulist');
 			aRow.appendChild(aMenuList);
@@ -602,7 +606,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			var aMenuPopup = document.createElement('menupopup');
 			aMenuList.appendChild(aMenuPopup);
 			aMenuPopup.setAttribute('id', 'dateFormatMenuPopup' + aId);
-			cardbookElementTools.loadDateFormats(aMenuPopup.id, aMenuList.id, "YYYYMMDD");
+			cardbookElementTools.loadDateFormats(aMenuPopup.id, aMenuList.id, "YYYY-MM-DD");
 
 			var aCheckbox1 = document.createElement('checkbox');
 			aRow.appendChild(aCheckbox1);
@@ -624,8 +628,11 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			for (var i = 0; i < wdw_addressbooksAdd.gStandardAddressbooks.length; i++) {
 				wdw_addressbooksAdd.createBoxes(wdw_addressbooksAdd.gStandardAddressbooks[i][0], wdw_addressbooksAdd.gStandardAddressbooks[i][1], wdw_addressbooksAdd.checkStandardLinesRequired);
 			}
-			wdw_addressbooksAdd.checkUrlLinesRequired();
-			wdw_addressbooksAdd.checkStandardLinesRequired();
+			if (wdw_addressbooksAdd.gStandardAddressbooks.length > 0) {
+				wdw_addressbooksAdd.checkStandardLinesRequired();
+			} else {
+				wdw_addressbooksAdd.checkUrlLinesRequired();
+			}
 		},
 
 		namesAdvance: function () {

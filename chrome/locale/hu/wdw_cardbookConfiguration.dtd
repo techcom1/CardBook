@@ -95,7 +95,6 @@
 <!ENTITY resetFnFormulaLabel "Alapértelmezés">
 <!ENTITY resetFnFormulaAccesskey "A">
 <!ENTITY miscEdittingGroupboxLabel "Különféle">
-<!ENTITY cardCreationVersionLabel "Alapértelmezett vCard verzió:">
 <!ENTITY preferEmailEditionLabel "Dupla kattintás a névjegyre a névjegy szerkesztés helyett üzenet írás">
 <!ENTITY preferEmailEditionAccesskey "D">
 

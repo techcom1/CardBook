@@ -95,7 +95,6 @@
 <!ENTITY resetFnFormulaLabel "Obnovi na privzeto">
 <!ENTITY resetFnFormulaAccesskey "n">
 <!ENTITY miscEdittingGroupboxLabel "Razno">
-<!ENTITY cardCreationVersionLabel "Privzeta različica vCard:">
 <!ENTITY preferEmailEditionLabel "Dvoklik na stik ga uredi namesto pošlje">
 <!ENTITY preferEmailEditionAccesskey "D">
 

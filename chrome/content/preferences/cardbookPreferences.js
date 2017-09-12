@@ -761,12 +761,7 @@ cardbookPreferenceService.prototype = {
         if (vCard != null && vCard !== undefined && vCard != "") {
         	return vCard;
         } else {
-        	vCard = this._getRootPref(this.prefCardBookRoot + "cardCreationVersion");
-	if (vCard != null && vCard !== undefined && vCard != "") {
-		return vCard;
-	} else {
-		return "3.0";
-	}
+        	return "3.0";
         }
     },
 

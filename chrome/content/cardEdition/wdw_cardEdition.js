@@ -399,7 +399,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			wdw_cardEdition.removeContacts();
 			document.getElementById('dirPrefIdTextBox').value = document.getElementById('addressbookMenulist').selectedItem.value;
 			wdw_cardEdition.loadSourceCategories(document.getElementById('addressbookMenulist').selectedItem.value);
-			delete wdw_cardEdition.workingCard;
+			wdw_cardEdition.workingCard = null;
 			wdw_cardEdition.workingCard = new cardbookCardParser();
 			cardbookUtils.cloneCard(window.arguments[0].cardIn, wdw_cardEdition.workingCard);
 			wdw_cardEdition.workingCard.dirPrefId = document.getElementById('addressbookMenulist').selectedItem.value;
@@ -411,14 +411,14 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			var myDirPrefId = document.getElementById('addressbookMenulist').selectedItem.value;
 			var myUid = document.getElementById('contactMenulist').selectedItem.value;
 			if (myUid != null && myUid !== undefined && myUid != "") {
-				delete wdw_cardEdition.workingCard;
+				wdw_cardEdition.workingCard = null;
 				wdw_cardEdition.workingCard = new cardbookCardParser();
 				cardbookUtils.cloneCard(cardbookRepository.cardbookCards[myDirPrefId+"::"+myUid], wdw_cardEdition.workingCard);
 				if (window.arguments[0].editionMode == "AddEmail" ) {
 					wdw_cardEdition.workingCard.email.push(wdw_cardEdition.emailToAdd);
 				}
 			} else {
-				delete wdw_cardEdition.workingCard;
+				wdw_cardEdition.workingCard = null;
 				wdw_cardEdition.workingCard = new cardbookCardParser();
 				cardbookUtils.cloneCard(window.arguments[0].cardIn, wdw_cardEdition.workingCard);
 			}
@@ -870,8 +870,11 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				wdw_cardEdition.calculateResult(myOutCard);
 				wdw_cardEdition.saveMailPopularity();
 				window.arguments[0].cardOut = myOutCard;
-				delete wdw_cardEdition.workingCard;
+				wdw_cardEdition.workingCard = null;
 				wdw_cardEdition.updateFormFields();
+				if (window.arguments[0].editionCallback) {
+					window.arguments[0].editionCallback(window.arguments[0].cardIn, window.arguments[0].cardOut, window.arguments[0].editionSource);
+				}
 				close();
 			}
 		},

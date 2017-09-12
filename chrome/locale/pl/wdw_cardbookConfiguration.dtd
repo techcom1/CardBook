@@ -95,7 +95,6 @@
 <!ENTITY resetFnFormulaLabel "Przywróć domyślne">
 <!ENTITY resetFnFormulaAccesskey "P">
 <!ENTITY miscEdittingGroupboxLabel "Różne">
-<!ENTITY cardCreationVersionLabel "Domyślna wersja vCard:">
 <!ENTITY preferEmailEditionLabel "Podwójne kliknięcie na wizytówce edytuje zamiast wysyłać e-mail">
 <!ENTITY preferEmailEditionAccesskey "o">
 

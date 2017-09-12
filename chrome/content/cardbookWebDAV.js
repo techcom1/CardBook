@@ -335,6 +335,9 @@ cardbookWebDAV.prototype = {
 			var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
 			var errorTitle = "_sendHTTPRequest error";
 			prompts.alert(null, errorTitle, e);
+			if (this.target && this.target.onDAVQueryComplete) {
+				this.target.onDAVQueryComplete(666, "", this.askCertificate, "", 0);
+			}
 		}
     },
 

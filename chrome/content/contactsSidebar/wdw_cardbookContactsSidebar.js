@@ -527,7 +527,6 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 					var myCatArray = listOfUid[i][1].split("::");
 					wdw_cardbook.removeCategory(myCatArray[0], myCatArray[1], "cardbook.catRemovedIndirect", false);
 				} else if (listOfUid[i][0] === "LISTCORE") {
-					wdw_cardbooklog.updateStatusProgressInformation("test LIST", "Error");
 					gAddressBookBundle = document.getElementById("bundle_addressBook");
 					var myCard = listOfUid[i][1];
 					AbDeleteDirectory(myCard.mailListURI);

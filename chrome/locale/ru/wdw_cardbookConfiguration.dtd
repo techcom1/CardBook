@@ -96,7 +96,6 @@
 <!ENTITY resetFnFormulaLabel "Сбросить до значений по умолчанию">
 <!ENTITY resetFnFormulaAccesskey "у">
 <!ENTITY miscEdittingGroupboxLabel "Различное">
-<!ENTITY cardCreationVersionLabel "Версия протокола vCard по умолчанию:">
 <!ENTITY preferEmailEditionLabel "Использовать двойной щелчок для редактирования контакта, а не для отправки письма"> 
 <!ENTITY preferEmailEditionAccesskey "Д">
 

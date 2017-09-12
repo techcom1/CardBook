@@ -387,7 +387,7 @@ var cardbookRepository = {
 		
 		if (!localDir.exists() || !localDir.isDirectory()) {
 			// read and write permissions to owner and group, read-only for others.
-			localDir.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0774);
+			localDir.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0o774);
 		}
 		return localDir;
 	},
@@ -462,9 +462,9 @@ var cardbookRepository = {
 		var cacheDir = cardbookRepository.getLocalDirectory();
 		cacheDir.append(aAccountId);
 		if (!cacheDir.exists() || !cacheDir.isDirectory()) {
-			cacheDir.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0774);
+			cacheDir.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0o774);
 			cacheDir.append("mediacache");
-			cacheDir.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0774);
+			cacheDir.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0o774);
 		}
 		if (aPrefInsertion) {
 			let cardbookPrefService = new cardbookPreferenceService(aAccountId);
@@ -677,7 +677,7 @@ var cardbookRepository = {
 				cardbookRepository.removeCardFromCache(aCard);
 			}
 			cardbookRepository.removeCardFromList(aCard);
-			delete aCard;
+			aCard = null;
 		}
 		catch (e) {
 			wdw_cardbooklog.updateStatusProgressInformation("cardbookRepository.removeCardFromRepository error : " + e, "Error");
@@ -1327,7 +1327,7 @@ var cardbookRepository = {
 				wdw_cardbooklog.addActivity("cardCreatedOK", [myDirPrefIdName, aNewCard.fn], "addItem");
 				cardbookUtils.notifyObservers(aSource, "cardid:" + aNewCard.dirPrefId + "::" + aNewCard.uid);
 			}
-			delete aOldCard;
+			aOldCard = null;
 			for (var i = 0; i < newCats.length; i++) {
 				cardbookUtils.formatStringForOutput("categoryCreatedOK", [myDirPrefIdName, newCats[i]]);
 				wdw_cardbooklog.addActivity("categoryCreatedOK", [myDirPrefIdName, newCats[i]], "addItem");
@@ -1378,7 +1378,7 @@ var cardbookRepository = {
 	},
 
 	reWriteFiles: function (aListOfFiles) {
-		listOfFilesToRewrite = cardbookRepository.arrayUnique(aListOfFiles);
+		var listOfFilesToRewrite = cardbookRepository.arrayUnique(aListOfFiles);
 		for (var i = 0; i < listOfFilesToRewrite.length; i++) {
 			var cardbookPrefService = new cardbookPreferenceService(listOfFilesToRewrite[i]);
 			if (cardbookPrefService.getType() === "FILE" && !cardbookPrefService.getReadOnly()) {

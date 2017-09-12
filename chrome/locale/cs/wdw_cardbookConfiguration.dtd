@@ -96,7 +96,6 @@
 <!ENTITY resetFnFormulaLabel "Obnovit na výchozí hodnotu">
 <!ENTITY resetFnFormulaAccesskey "h">
 <!ENTITY miscEdittingGroupboxLabel "Ost.">
-<!ENTITY cardCreationVersionLabel "Výchozí verze vCard:">
 <!ENTITY preferEmailEditionLabel "Dvojklik na kontakt ho upraví namísto odeslání e-mailu">
 <!ENTITY preferEmailEditionAccesskey "D">
 

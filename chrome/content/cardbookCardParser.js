@@ -314,7 +314,7 @@ cardbookCardParser.prototype = {
 							break;
 						case "ORG":
 							if (vCardDataArrayTrailer != ";") {
-								this.org = vCardDataArrayTrailer.replace(/;+$/, "").replace(/\\+$/, "");
+								this.org = vCardDataArrayTrailer.replace(/\\,/g,",").replace(/;+$/, "").replace(/\\+$/, "");
 							}
 							break;
 						case "CATEGORIES":

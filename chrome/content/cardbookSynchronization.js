@@ -2507,7 +2507,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							} else {
 								cardbookSynchronization.importCard(myCard, aParams.aTarget, true);
 							}
-							delete myCard;
+							myCard = null;
 							cardbookRepository.cardbookServerSyncDone[aParams.aPrefId]++;
 						}
 						if (aParams.aPrefIdType === "FILE") {
