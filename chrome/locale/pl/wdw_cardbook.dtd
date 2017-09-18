@@ -31,6 +31,8 @@
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Dodaj zdalną lub lokalną książkę adresową">
 <!ENTITY cardbookToolbarSyncButtonLabel "Synchronizuj">
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synchronizuj wszystkie zdalne książki adresowe">
+<!ENTITY cardbookToolbarWriteButtonLabel "Napisz">
+<!ENTITY cardbookToolbarWriteButtonTooltip "Utwórz nową wiadomość">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Ustawienia">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Ustawienia programu CardBook">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Nowa wizytówka">

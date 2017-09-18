@@ -111,7 +111,9 @@ var cardbookRepository = {
 	cardbookImageGetResponse : {},
 	cardbookImageGetError : {},
 	cardbookSyncMode : "NOSYNC",
-
+	
+	cardbookServerChangedPwd : {},
+	
 	cardbookSearchMode : "NOSEARCH",
 	cardbookSearchValue : "",
 	cardbookComplexSearchMode : "NOSEARCH",

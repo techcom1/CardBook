@@ -10,6 +10,12 @@ toolbar[brighttext] #cardbookToolbarAddServerButton {
 toolbar[brighttext] #cardbookToolbarSyncButton {
 	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#getmsg-inverted");
 }
+#cardbookToolbarWriteButton {
+	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#newmessage");
+}
+toolbar[brighttext] #cardbookToolbarWriteButton {
+	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#newmessage-inverted");
+}
 #cardbookToolbarConfigurationButton {
 	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#compact");
 }

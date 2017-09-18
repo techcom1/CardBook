@@ -96,9 +96,9 @@ if ("undefined" == typeof(cardbookDates)) {
 			var lThirdField;
 			if (aDateString.length < 3) {
 				lReturn = "WRONGDATE";
-			} else if (lSeparator != "" && aDateString.indexOf(lSeparator) == -1) {
+			} else if (lSeparator != "" && !aDateString.includes(lSeparator)) {
 				lReturn = "WRONGDATE";
-			} else if (lSeparator == "" && (aDateString.indexOf("-") >= 0 || aDateString.indexOf(".") >= 0 || aDateString.indexOf("/") >= 0)) {
+			} else if (lSeparator == "" && (aDateString.includes("-") || aDateString.includes(".") || aDateString.includes("/"))) {
 				lReturn = "WRONGDATE";
 			} else {
 				switch(aDateFormat) {
@@ -346,6 +346,44 @@ if ("undefined" == typeof(cardbookDates)) {
 					break;
 				default:
 					lReturn = "WRONGDATE";
+			}
+			return lReturn;
+		},
+
+		convertDateStringToDateString: function (aDay, aMonth, aYear, aDateFormat) {
+			var lSeparator = cardbookDates.getSeparator(aDateFormat);
+			if (! isNaN(aMonth) && aMonth.length == 1) {
+				aMonth = "0" + aMonth;
+			}
+			if (! isNaN(aDay) && aDay.length == 1) {
+				aDay = "0" + aDay;
+			}
+			switch(aDateFormat) {
+				case "YYYY-MM-DD":
+				case "YYYY.MM.DD":
+				case "YYYY/MM/DD":
+					lReturn = aYear + lSeparator + aMonth + lSeparator + aDay;
+					break;
+				case "DD-MM-YYYY":
+				case "DD.MM.YYYY":
+				case "DD/MM/YYYY":
+					lReturn = aDay + lSeparator + aMonth + lSeparator + aYear;
+					break;
+				break;
+				case "MM-DD-YYYY":
+				case "MM.DD.YYYY":
+				case "MM/DD/YYYY":
+					lReturn = aMonth + lSeparator + aDay + lSeparator + aYear;
+					break;
+				case "YYYYMMDD":
+					lReturn = aYear + aMonth + aDay;
+					break;
+				case "DDMMYYYY":
+					lReturn = aDay + aMonth + aYear;
+					break;
+				case "MMDDYYYY":
+					lReturn = aMonth + aDay + aYear;
+					break;
 			}
 			return lReturn;
 		},

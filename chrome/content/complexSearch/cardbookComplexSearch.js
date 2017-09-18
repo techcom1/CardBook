@@ -282,7 +282,7 @@ if ("undefined" == typeof(cardbookComplexSearch)) {
 		},
 		
 		loadComplexSearchAccount: function (aDirPrefId, aReload, aMode) {
-			cardbookSynchronization.initSync(aDirPrefId);
+			cardbookSynchronization.initSyncWithPrefId(aDirPrefId);
 			var myFile = cardbookRepository.getRuleFile(aDirPrefId);
 			cardbookRepository.cardbookComplexSearchRequest[aDirPrefId]++;
 			if (myFile.exists() && myFile.isFile()) {

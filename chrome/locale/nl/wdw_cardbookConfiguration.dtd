@@ -85,6 +85,8 @@
 <!ENTITY showNameAsLabel "Naam tonen als">
 <!ENTITY showNameAsLFLabel "Achternaam Roepnaam">
 <!ENTITY showNameAsLFAccesskey "A">
+<!ENTITY showNameAsLFCommaLabel "Achternaam, Roepnaam">
+<!ENTITY showNameAsLFCommaAccesskey "e">
 <!ENTITY showNameAsFLLabel "Roepnaam Achternaam">
 <!ENTITY showNameAsFLAccesskey "R">
 <!ENTITY showNameAsDSPLabel "Getoonde naam">

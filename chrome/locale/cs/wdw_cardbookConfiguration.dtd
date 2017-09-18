@@ -85,6 +85,8 @@
 <!ENTITY showNameAsLabel "Zobrazit jméno jako">
 <!ENTITY showNameAsLFLabel "Příjmení Křestní jméno">
 <!ENTITY showNameAsLFAccesskey "P">
+<!ENTITY showNameAsLFCommaLabel "Příjmení, Křestní jméno">
+<!ENTITY showNameAsLFCommaAccesskey "j">
 <!ENTITY showNameAsFLLabel "Křestní jméno Příjmení">
 <!ENTITY showNameAsFLAccesskey "K">
 <!ENTITY showNameAsDSPLabel "Zobrazované jméno">

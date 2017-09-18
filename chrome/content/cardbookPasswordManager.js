@@ -23,7 +23,7 @@ if ("undefined" == typeof(cardbookPasswordManager)) {
 			var myUrl = cardbookPrefService.getUrl();
 			var result = cardbookPasswordManager.getPassword(aUsername, myUrl);
 			if (result == "") {
-				var myArgs = {site: myUrl, username: aUsername, password: "", action: ""};
+				var myArgs = {site: myUrl, username: aUsername, password: "", context: "Missing", action: ""};
 				var myWindow = window.openDialog("chrome://cardbook/content/wdw_password.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
 				if (myArgs.action == "SAVE") {
 					cardbookPasswordManager.removeAccount(aUsername, myUrl);
@@ -32,6 +32,20 @@ if ("undefined" == typeof(cardbookPasswordManager)) {
 				}
 			}
 			return result;
+		},
+		
+		getChangedPassword: function (aUsername, aPrefId) {
+			cardbookUtils.jsInclude(["chrome://cardbook/content/preferences/cardbookPreferences.js"]);
+			var cardbookPrefService = new cardbookPreferenceService(aPrefId);
+			var myUrl = cardbookPrefService.getUrl();
+			var myArgs = {site: myUrl, username: aUsername, password: "", context: "Wrong", action: ""};
+			var myWindow = window.openDialog("chrome://cardbook/content/wdw_password.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+			if (myArgs.action == "SAVE") {
+				cardbookPasswordManager.removeAccount(aUsername, myUrl);
+				cardbookPasswordManager.addAccount(aUsername, myUrl, myArgs.password);
+				return myArgs.password;
+			}
+			return "";
 		},
 		
 		getPassword: function (aUsername, aUrl) {

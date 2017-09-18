@@ -64,5 +64,5 @@ pref("extensions.cardbook.viewABContact", true);
 
 pref("extensions.cardbook.accountsShown", "all");
 pref("extensions.cardbook.uncategorizedCards", "");
-pref("extensions.cardbook.addonVersion", "22.0");
+pref("extensions.cardbook.addonVersion", "22.1");
 

@@ -31,6 +31,8 @@
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Добавить удалённую или локальную адресную книгу">
 <!ENTITY cardbookToolbarSyncButtonLabel "Синхронизация">
 <!ENTITY cardbookToolbarSyncButtonTooltip "Синхронизирует все удалённые адресные книги">
+<!ENTITY cardbookToolbarWriteButtonLabel "Создать сообщение">
+<!ENTITY cardbookToolbarWriteButtonTooltip "Создать сообщение">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Настройки">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Открывает панель настроек CardBook">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Создать контакт">

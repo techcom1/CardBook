@@ -314,6 +314,7 @@
 						<hbox flex="1" align="center">
 							<radiogroup id="showNameAsRadiogroup" orient="horizontal" preference="extensions.cardbook.showNameAs">
 								<radio value="LF" label="&showNameAsLFLabel;" accesskey="&showNameAsLFAccesskey;"/>
+								<radio value="LFCOMMA" label="&showNameAsLFCommaLabel;" accesskey="&showNameAsLFCommaAccesskey;"/>
 								<radio value="FL" label="&showNameAsFLLabel;" accesskey="&showNameAsFLAccesskey;"/>
 								<radio value="DSP" label="&showNameAsDSPLabel;" accesskey="&showNameAsDSPAccesskey;"/>
 							</radiogroup>

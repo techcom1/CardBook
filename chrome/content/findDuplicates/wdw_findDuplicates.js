@@ -64,7 +64,8 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 					myResultSure.push(myCleanEmail);
 				}
 				for (var i = 0; i < aCard.tel.length; i++) {
-					var myTel = aCard.tel[i][0][0].replace(/\D/g, "");
+					// +33 6 45 44 42 25 should be equal to 06 45 44 42 25 should be equal to 00 33 6 45 44 42 25 should be equal to 0645444225
+					var myTel = aCard.tel[i][0][0].replace(/^\+\d+\s+/g, "").replace(/^00\s+\d+\s+/g, "").replace(/\D/g, "").replace(/^0/g, "");
 					if (myTel != "") {
 						myResultSure.push(myTel);
 					}

@@ -85,6 +85,8 @@
 <!ENTITY showNameAsLabel "Mostra nomi come">
 <!ENTITY showNameAsLFLabel "Cognome Nome">
 <!ENTITY showNameAsLFAccesskey "C">
+<!ENTITY showNameAsLFCommaLabel "Cognome, Nome">
+<!ENTITY showNameAsLFCommaAccesskey "e">
 <!ENTITY showNameAsFLLabel "Nome Cognome">
 <!ENTITY showNameAsFLAccesskey "N">
 <!ENTITY showNameAsDSPLabel "Mostra nome">

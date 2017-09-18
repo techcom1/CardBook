@@ -31,6 +31,8 @@
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Új helyi, távoli vagy mentett kérés névjegytár mappa">
 <!ENTITY cardbookToolbarSyncButtonLabel "Összehangolás">
 <!ENTITY cardbookToolbarSyncButtonTooltip "Minden távoli névjegytár összehangolása">
+<!ENTITY cardbookToolbarWriteButtonLabel "Új üzenet">
+<!ENTITY cardbookToolbarWriteButtonTooltip "Új üzenet létrehozása">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Beállítások">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Névjegyzék beállítások">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Új névjegy">

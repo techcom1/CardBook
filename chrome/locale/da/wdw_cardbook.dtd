@@ -31,6 +31,8 @@
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Tilføj en fjern eller lokal adressebog">
 <!ENTITY cardbookToolbarSyncButtonLabel "Synkroniser">
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synkroniser alle fjerne adressebøger">
+<!ENTITY cardbookToolbarWriteButtonLabel "Skriv">
+<!ENTITY cardbookToolbarWriteButtonTooltip "Skriv en ny meddelelse">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Indstillinger">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "CardBook-indstillinger">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Ny kontakt">

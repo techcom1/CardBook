@@ -175,7 +175,6 @@ cardbookCardParser.prototype = {
 	},
 
     _parseCard: function (vCardData, vSiteUrl, vEtag, vDirPrefId) {
-
 		this.dirPrefId = vDirPrefId;
 		
 		this.jsInclude(["chrome://cardbook/content/cardbookUtils.js"]);
@@ -422,6 +421,24 @@ cardbookCardParser.prototype = {
 						default:
 							if (vCardDataArrayHeaderKey != null && vCardDataArrayHeaderKey !== undefined && vCardDataArrayHeaderKey != "") {
 								this.others.push(vCardDataArrayHeader + ":" + vCardDataArrayTrailer);
+							}
+							// for users that shares Thunderbird contacts between profiles, it's good to automatically record Thunderbird custom fields
+							if (vCardDataArrayHeader == "X-CUSTOM1" || vCardDataArrayHeader == "X-CUSTOM2" || vCardDataArrayHeader == "X-CUSTOM3" || vCardDataArrayHeader == "X-CUSTOM4") {
+								var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+								var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+								var customLabel = strBundle.GetStringFromName("customLabel");
+								var cardbookPrefService = new cardbookPreferenceService(this.dirPrefId);
+								var found = false
+								for (var i = 0; i < cardbookRepository.customFields['pers'].length; i++) {
+									if (cardbookRepository.customFields['pers'][i][0] == vCardDataArrayHeader) {
+										found = true;
+										break;
+									}
+								}
+								if (!found) {
+									cardbookPrefService.setCustomFields('pers', cardbookRepository.customFields['pers'].length, vCardDataArrayHeader + ":" + customLabel + vCardDataArrayHeader.replace("X-CUSTOM", ""));
+									cardbookRepository.loadCustoms();
+								}
 							}
 					}
 				}

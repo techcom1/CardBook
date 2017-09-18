@@ -85,6 +85,8 @@
 <!ENTITY showNameAsLabel "Afficher le nom comme">
 <!ENTITY showNameAsLFLabel "Nom de famille Prénom">
 <!ENTITY showNameAsLFAccesskey "o">
+<!ENTITY showNameAsLFCommaLabel "Nom de famille, Prénom">
+<!ENTITY showNameAsLFCommaAccesskey "f">
 <!ENTITY showNameAsFLLabel "Prénom Nom de famille">
 <!ENTITY showNameAsFLAccesskey "P">
 <!ENTITY showNameAsDSPLabel "Nom affiché">

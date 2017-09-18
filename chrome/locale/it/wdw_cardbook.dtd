@@ -31,6 +31,8 @@
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Aggiungi una rubrica locale o remota">
 <!ENTITY cardbookToolbarSyncButtonLabel "Sincronizza">
 <!ENTITY cardbookToolbarSyncButtonTooltip "Sincronizza tutte le rubriche remote">
+<!ENTITY cardbookToolbarWriteButtonLabel "Scrivi">
+<!ENTITY cardbookToolbarWriteButtonTooltip "Crea un nuovo messaggio">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Opzioni">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Opzioni di CardBook">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Nuovo contatto">

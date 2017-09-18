@@ -85,6 +85,8 @@
 <!ENTITY showNameAsLabel "Показывать имя как">
 <!ENTITY showNameAsLFLabel "Фамилия Имя">
 <!ENTITY showNameAsLFAccesskey "Ф">
+<!ENTITY showNameAsLFCommaLabel "Фамилия, Имя">
+<!ENTITY showNameAsLFCommaAccesskey "я">
 <!ENTITY showNameAsFLLabel "Имя Фамилия">
 <!ENTITY showNameAsFLAccesskey "И">
 <!ENTITY showNameAsDSPLabel "Отображаемое имя">

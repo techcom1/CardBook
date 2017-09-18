@@ -31,6 +31,8 @@
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Lokales oder auf einem Server gespeichertes Adressbuch hinzufügen">
 <!ENTITY cardbookToolbarSyncButtonLabel "Synchronisieren">
 <!ENTITY cardbookToolbarSyncButtonTooltip "Alle Netzwerk-Adressbücher synchronisieren">
+<!ENTITY cardbookToolbarWriteButtonLabel "Verfassen">
+<!ENTITY cardbookToolbarWriteButtonTooltip "Eine neue Nachricht schreiben">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Einstellungen">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "CardBook-Einstellungen">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Neuer Kontakt">

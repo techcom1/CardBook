@@ -230,6 +230,8 @@ if ("undefined" == typeof(cardbookUtils)) {
 					result = aCard.lastname + " " + aCard.firstname;
 				} else if (cardbookRepository.showNameAs == "FL") {
 					result = aCard.firstname + " " + aCard.lastname;
+				} else if (cardbookRepository.showNameAs == "LFCOMMA") {
+					result = aCard.lastname + ", " + aCard.firstname;
 				}
 				return result.trim();
 			} else {

@@ -31,6 +31,8 @@
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Add a remote or local address book">
 <!ENTITY cardbookToolbarSyncButtonLabel "Synchronize">
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synchronize all remote address books">
+<!ENTITY cardbookToolbarWriteButtonLabel "Write">
+<!ENTITY cardbookToolbarWriteButtonTooltip "Create a new message">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Preferences">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "CardBook Preferences">
 <!ENTITY cardbookToolbarAddContactButtonLabel "New Contact">

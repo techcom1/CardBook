@@ -17,7 +17,7 @@ if ("undefined" == typeof(ovl_collected)) {
 			
 			if (resultEmailsCollections && resultEmailsCollections.length != 0) {
 				var myFields = gMsgCompose.compFields;
-				var listToCollect = ["replyTo", "to", "cc", "fcc", "bcc", "followupTo"];
+				var listToCollect = ["replyTo", "to", "cc", "bcc", "followupTo"];
 				for (var i = 0; i < listToCollect.length; i++) {
 					if (myFields[listToCollect[i]]) {
 						if (myFields[listToCollect[i]] != null && myFields[listToCollect[i]] !== undefined && myFields[listToCollect[i]] != "") {
@@ -47,7 +47,7 @@ if ("undefined" == typeof(ovl_collected)) {
 				}
 			} else {
 				var myFields = gMsgCompose.compFields;
-				var listToCollect = ["replyTo", "to", "cc", "fcc", "bcc", "followupTo"];
+				var listToCollect = ["replyTo", "to", "cc", "bcc", "followupTo"];
 				for (var i = 0; i < listToCollect.length; i++) {
 					if (myFields[listToCollect[i]]) {
 						if (myFields[listToCollect[i]] != null && myFields[listToCollect[i]] !== undefined && myFields[listToCollect[i]] != "") {

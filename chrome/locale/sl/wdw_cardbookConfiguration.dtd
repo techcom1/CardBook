@@ -84,6 +84,8 @@
 <!ENTITY showNameAsLabel "Prikaži ime kot">
 <!ENTITY showNameAsLFLabel "Priimek Ime">
 <!ENTITY showNameAsLFAccesskey "P">
+<!ENTITY showNameAsLFCommaLabel "Priimek, Ime">
+<!ENTITY showNameAsLFCommaAccesskey "m">
 <!ENTITY showNameAsFLLabel "Ime Priimek">
 <!ENTITY showNameAsFLAccesskey "I">
 <!ENTITY showNameAsDSPLabel "Prikazano ime">

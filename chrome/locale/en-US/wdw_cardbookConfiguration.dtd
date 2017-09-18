@@ -84,6 +84,8 @@
 <!ENTITY showNameAsLabel "Show Name As">
 <!ENTITY showNameAsLFLabel "Family Name Given Name">
 <!ENTITY showNameAsLFAccesskey "F">
+<!ENTITY showNameAsLFCommaLabel "Family Name, Given Name">
+<!ENTITY showNameAsLFCommaAccesskey "i">
 <!ENTITY showNameAsFLLabel "Given Name Family Name">
 <!ENTITY showNameAsFLAccesskey "e">
 <!ENTITY showNameAsDSPLabel "Display Name">

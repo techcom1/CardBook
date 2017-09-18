@@ -31,6 +31,8 @@
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Přidat místní nebo vzdálený adresář">
 <!ENTITY cardbookToolbarSyncButtonLabel "Synchronizovat">
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synchronizovat všechny adresáře">
+<!ENTITY cardbookToolbarWriteButtonLabel "Napsat zprávu">
+<!ENTITY cardbookToolbarWriteButtonTooltip "Vytvoří novou zprávu">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Předvolby">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Nastavení CardBooku">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Nový kontakt">

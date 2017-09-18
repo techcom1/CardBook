@@ -85,6 +85,8 @@
 <!ENTITY showNameAsLabel "Namen anzeigen">
 <!ENTITY showNameAsLFLabel "Nachname Vorname">
 <!ENTITY showNameAsLFAccesskey "c">
+<!ENTITY showNameAsLFCommaLabel "Nachname, Vorname">
+<!ENTITY showNameAsLFCommaAccesskey "h">
 <!ENTITY showNameAsFLLabel "Vorname Nachname">
 <!ENTITY showNameAsFLAccesskey "m">
 <!ENTITY showNameAsDSPLabel "Anzeigename">

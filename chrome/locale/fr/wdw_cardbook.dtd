@@ -31,6 +31,8 @@
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Ajouter un carnet d'adresses local ou distant">
 <!ENTITY cardbookToolbarSyncButtonLabel "Synchroniser">
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synchroniser tous les carnets d'adresses distants">
+<!ENTITY cardbookToolbarWriteButtonLabel "Écrire">
+<!ENTITY cardbookToolbarWriteButtonTooltip "Créer un nouveau message">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Préférences">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Préférences de CardBook">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Nouveau contact">

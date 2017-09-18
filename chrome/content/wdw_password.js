@@ -19,6 +19,8 @@ if ("undefined" == typeof(wdw_password)) {
 		},
 
 		load: function () {
+			var strBundle = document.getElementById("cardbook-strings");
+			document.title = strBundle.getString("wdw_password" + window.arguments[0].context + "Title");
 			document.getElementById('siteTextBox').value = window.arguments[0].site;
 			document.getElementById('usernameTextBox').value = window.arguments[0].username;
 			document.getElementById('passwordTextBox').focus();

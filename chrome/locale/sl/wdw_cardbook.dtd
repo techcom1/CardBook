@@ -31,6 +31,8 @@
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Dodaj oddaljeni ali krajevni imenik">
 <!ENTITY cardbookToolbarSyncButtonLabel "Sinhroniziraj">
 <!ENTITY cardbookToolbarSyncButtonTooltip "Sinhroniziraj vse oddaljene imenike">
+<!ENTITY cardbookToolbarWriteButtonLabel "Sestavi">
+<!ENTITY cardbookToolbarWriteButtonTooltip "Ustvari novo sporočilo">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Nastavitve">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Nastavitve CardBook">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Nov stik">

@@ -5,12 +5,16 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 		autoSyncInterval: "",
 		autoSyncId: "",
 
+		initSync: function() {
+			cardbookRepository.cardbookServerChangedPwd = {};
+		},
+		
 		initRefreshToken: function(aPrefId) {
 			cardbookRepository.cardbookServerValidation = {};
 			cardbookSynchronization.initMultipleOperations(aPrefId);
 		},
 		
-		initSync: function(aPrefId) {
+		initSyncWithPrefId: function(aPrefId) {
 			cardbookRepository.cardbookSyncMode = "SYNC";
 			cardbookSynchronization.initMultipleOperations(aPrefId);
 		},
@@ -155,6 +159,8 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			cardbookRepository.cardbookImageGetRequest = {};
 			cardbookRepository.cardbookImageGetResponse = {};
 			cardbookRepository.cardbookImageGetError = {};
+
+			cardbookRepository.cardbookServerChangedPwd = {};
 		},
 
 		finishMultipleOperations: function(aPrefId) {
@@ -320,7 +326,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 				return cardbookUtils.sumElements(cardbookRepository.cardbookServerSyncTotal);
 			}
 		},
-		
+
 		finishOpenFile: function(aPrefId, aPrefName) {
 			var errorNum = cardbookRepository.cardbookServerUpdatedError[aPrefId] + cardbookRepository.cardbookServerCreatedError[aPrefId];
 			if (errorNum === 0) {
@@ -382,6 +388,37 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			cardbookUtils.formatStringForOutput("importCardsKO", [aPrefName, cardbookRepository.cardbookServerSyncError[aPrefId]]);
 		},
 		
+		handleWrondPassword: function(aConnection, aStatus, aResponse) {
+			if (aStatus == 401) {
+				if (!aResponse) {
+					return false;
+				// Owncloud bug ?
+				} else if (aResponse && aResponse.error && aResponse.error[0] && aResponse.error[0].message && aResponse.error[0].message[0] == "No basic authentication headers were found") {
+					return false;
+				}
+				cardbookUtils.formatStringForOutput("synchronizationUnauthorized", [aConnection.connDescription], "Warning");
+				// first register the problem
+				var myPwdGetId = aConnection.connUser + "::" + cardbookSynchronization.getRootUrl(aConnection.connUrl);
+				if (!cardbookRepository.cardbookServerChangedPwd[myPwdGetId]) {
+					cardbookRepository.cardbookServerChangedPwd[myPwdGetId] = {dirPrefIdList: [aConnection.connPrefId], openWindow: false, pwdChanged: false};
+				} else {
+					cardbookRepository.cardbookServerChangedPwd[myPwdGetId].dirPrefIdList.push(aConnection.connPrefId);
+				}
+				// then ask for a new password
+				// if never asked, ask
+				// else finish ok : the sync would be done again if the password is changed
+				if (!cardbookRepository.cardbookServerChangedPwd[myPwdGetId].openWindow) {
+					cardbookRepository.cardbookServerChangedPwd[myPwdGetId].openWindow = true;
+					var newPwd = cardbookPasswordManager.getChangedPassword(aConnection.connUser, aConnection.connPrefId);
+					if (newPwd != "") {
+						cardbookRepository.cardbookServerChangedPwd[myPwdGetId].pwdChanged = true;
+					}
+				}
+				return true;
+			}
+			return false;
+		},
+
 		askUser: function(aMessage, aButton1, aButton2, aButton3, aButton4, aConfirmMessage, aConfirmValue) {
 			var myArgs = {message: aMessage, button1: aButton1, button2: aButton2, button3: aButton3, button4: aButton4,
 							confirmMessage: aConfirmMessage, confirmValue: aConfirmValue, 
@@ -965,7 +1002,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					} else {
 						cardbookRepository.cardbookServerSyncDone[aConnection.connPrefId] = cardbookRepository.cardbookServerSyncDone[aConnection.connPrefId] + length;
 						cardbookRepository.cardbookServerMultiGetError[aConnection.connPrefId]++;
-						wdw_cardbooklog.updateStatusProgressInformation(aConnection.connDescription + " : cardbookSynchronization.serverMultiGet error, status : " + status, "Error");
 					}
 					cardbookRepository.cardbookServerMultiGetResponse[aConnection.connPrefId]++;
 				}
@@ -1044,11 +1080,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			if (aSync) {
 				cardbookSynchronization.waitForLoadCacheFinished(aPrefId, aPrefName, aPrefType, aPrefUser, aPrefUrl, aMode);
 			} else {
-				if (aPrefType === "GOOGLE" || aPrefType === "CARDDAV" || aPrefType === "APPLE") {
-					cardbookSynchronization.waitForSyncFinished(aPrefId, aPrefName, aMode);
-				} else {
-					cardbookSynchronization.waitForDirFinished(aPrefId, aPrefName, aMode);
-				}
+				cardbookSynchronization.waitForSyncFinished(aPrefId, aPrefName, aMode);
 			}
 
 		},
@@ -1441,7 +1473,9 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						}
 						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 					} else {
-						cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "serverSyncCards", aConnection.connUrl, status], "Error");
+						if (!cardbookSynchronization.handleWrondPassword(aConnection, status, response)) {
+							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "serverSyncCards", aConnection.connUrl, status], "Error");
+						}
 						cardbookRepository.cardbookServerSyncError[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 					}
@@ -1456,6 +1490,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
             request.propfind(["DAV: getcontenttype", "DAV: getetag"]);
 		},
 
+		// only called at setup
 		validateWithoutDiscovery: function(aConnection) {
 			cardbookUtils.jsInclude(["chrome://cardbook/content/cardbookWebDAV.js"]);
 			var listener_checkpropfind4 = {
@@ -1660,7 +1695,10 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						}
 						cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
 					} else {
-						cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "discoverPhase3", aConnection.connUrl, status], "Error");
+						// only if it is not an initial setup
+						if (aOperationType == "GETDISPLAYNAME" || !cardbookSynchronization.handleWrondPassword(aConnection, status, response)) {
+							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "discoverPhase3", aConnection.connUrl, status], "Error");
+						}
 						cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
@@ -1737,7 +1775,10 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 						}
 					} else {
-						cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "discoverPhase2", aConnection.connUrl, status], "Error");
+						// only if it is not an initial setup
+						if (aOperationType == "GETDISPLAYNAME" || !cardbookSynchronization.handleWrondPassword(aConnection, status, response)) {
+							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "discoverPhase2", aConnection.connUrl, status], "Error");
+						}
 						cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
@@ -1811,7 +1852,10 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 						}
 					} else {
-						cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "discoverPhase1", aConnection.connUrl, status], "Error");
+						// only if it is not an initial setup
+						if (aOperationType == "GETDISPLAYNAME" || !cardbookSynchronization.handleWrondPassword(aConnection, status, response)) {
+							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "discoverPhase1", aConnection.connUrl, status], "Error");
+						}
 						cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
@@ -1986,14 +2030,17 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 				var cardbookPrefService = new cardbookPreferenceService();
 				var result = [];
 				result = cardbookPrefService.getAllPrefIds();
+				cardbookSynchronization.initSync();
 				for (let i = 0; i < result.length; i++) {
 					var myPrefId = result[i];
 					var cardbookPrefService1 = new cardbookPreferenceService(myPrefId);
-					if (cardbookPrefService1.getType() !== "FILE" && cardbookPrefService1.getType() !== "DIRECTORY" && cardbookPrefService1.getType() !== "CACHE"
-						&& cardbookPrefService1.getType() !== "SEARCH" && cardbookPrefService1.getType() !== "LOCALDB" && cardbookPrefService1.getEnabled()) {
-						cardbookUtils.formatStringForOutput("periodicSyncSyncing");
-						cardbookSynchronization.initSync(myPrefId);
-						cardbookSynchronization.syncAccount(myPrefId);
+					if (cardbookPrefService1.getEnabled()) {
+						var myPrefIdType = cardbookPrefService1.getType();
+						if (myPrefIdType === "GOOGLE" || myPrefIdType === "CARDDAV" || myPrefIdType === "APPLE") {
+							cardbookUtils.formatStringForOutput("periodicSyncSyncing");
+							cardbookSynchronization.initSyncWithPrefId(myPrefId);
+							cardbookSynchronization.syncAccount(myPrefId);
+						}
 					}
 				}
 			}
@@ -2022,11 +2069,11 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							var myCode = cardbookPasswordManager.getPassword(myPrefIdUser, myPrefIdUrl);
 							cardbookSynchronization.googleGetAccessToken(connection, myCode, "SYNCGOOGLE", params);
 						} else if (myPrefIdType === "APPLE" ) {
-							var connection = {connPrefId: aPrefId, connPrefIdType: myPrefIdType, connUrl: myPrefIdUrl, connDescription: myPrefIdName};
+							var connection = {connUser: myPrefIdUser, connPrefId: aPrefId, connPrefIdType: myPrefIdType, connUrl: myPrefIdUrl, connDescription: myPrefIdName};
 							connection.connUrl = cardbookSynchronization.getSlashedUrl(connection.connUrl);
 							cardbookSynchronization.discoverPhase1(connection, "SYNCSERVER", params);
 						} else {
-							var connection = {connPrefId: aPrefId, connPrefIdType: myPrefIdType, connUrl: myPrefIdUrl, connDescription: myPrefIdName};
+							var connection = {connUser: myPrefIdUser, connPrefId: aPrefId, connPrefIdType: myPrefIdType, connUrl: myPrefIdUrl, connDescription: myPrefIdName};
 							// bug for supporting old format URL that might be short (for example carddav.gmx)
 							if (cardbookSynchronization.getSlashedUrl(connection.connUrl) == cardbookSynchronization.getSlashedUrl(cardbookSynchronization.getRootUrl(connection.connUrl))) {
 								connection.connUrl = cardbookSynchronization.getWellKnownUrl(connection.connUrl);
@@ -2040,7 +2087,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 				}
 			}
 			catch (e) {
-				wdw_cardbooklog.updateStatusProgressInformation("wdw_cardbook.syncAccount error : " + e, "Error");
+				wdw_cardbooklog.updateStatusProgressInformation("cardbookSynchronization.syncAccount error : " + e, "Error");
 			}
 		},
 
@@ -2071,19 +2118,47 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 								if (cardbookRepository.cardbookServerSyncAgain[aPrefId]) {
 									cardbookSynchronization.finishMultipleOperations(aPrefId);
 									cardbookUtils.formatStringForOutput("synchroForcedToResync", [aPrefName]);
-									cardbookSynchronization.initSync(aPrefId);
+									cardbookSynchronization.initSyncWithPrefId(aPrefId);
 									cardbookSynchronization.syncAccount(aPrefId);
 								} else {
 									cardbookSynchronization.finishMultipleOperations(aPrefId);
 									var total = cardbookSynchronization.getRequest() + cardbookSynchronization.getTotal() + cardbookSynchronization.getResponse() + cardbookSynchronization.getDone();
+									// all sync are finished
 									if (total === 0) {
-										cardbookRepository.cardbookSyncMode = "NOSYNC";
-										cardbookUtils.formatStringForOutput("synchroAllFinished");
-										if (aMode == "INITIAL") {
-											cardbookUtils.jsInclude(["chrome://cardbook/content/birthdays/cardbookBirthdaysUtils.js",
-																		"chrome://cardbook/content/cardbookDates.js",
-																		"chrome://cardbook/content/birthdays/ovl_birthdays.js"]);
-											ovl_birthdays.onLoad();
+										// should check if some should be restarted because of a changed password
+										var syncAgain = [];
+										var syncFailed = [];
+										for (i in cardbookRepository.cardbookServerChangedPwd) {
+											if (cardbookRepository.cardbookServerChangedPwd[i].pwdChanged) {
+												syncAgain = syncAgain.concat(cardbookRepository.cardbookServerChangedPwd[i].dirPrefIdList);
+											} else {
+												syncFailed = syncFailed.concat(cardbookRepository.cardbookServerChangedPwd[i].dirPrefIdList);
+											}
+										}
+										if (syncAgain.length > 0) {
+											cardbookSynchronization.initSync();
+										}
+										for (var j = 0; j < syncAgain.length; j++) {
+											var myPrefId = syncAgain[j];
+											var myPrefName = cardbookUtils.getPrefNameFromPrefId(myPrefId);
+											cardbookUtils.formatStringForOutput("synchroForcedToResync", [myPrefName]);
+											cardbookSynchronization.initSyncWithPrefId(myPrefId);
+											cardbookSynchronization.syncAccount(myPrefId);
+										}
+										for (var j = 0; j < syncFailed.length; j++) {
+											var myPrefId = syncFailed[j];
+											var cardbookPrefService = new cardbookPreferenceService(myPrefId);
+											cardbookUtils.formatStringForOutput("synchronizationFailed", [cardbookPrefService.getName(), "passwordNotChanged", cardbookPrefService.getUrl(), 401], "Error");
+										}
+										if (syncAgain.length == 0) {
+											cardbookRepository.cardbookSyncMode = "NOSYNC";
+											cardbookUtils.formatStringForOutput("synchroAllFinished");
+											if (aMode == "INITIAL") {
+												cardbookUtils.jsInclude(["chrome://cardbook/content/birthdays/cardbookBirthdaysUtils.js",
+																			"chrome://cardbook/content/cardbookDates.js",
+																			"chrome://cardbook/content/birthdays/ovl_birthdays.js"]);
+												ovl_birthdays.onLoad();
+											}
 										}
 									}
 								}
@@ -2138,36 +2213,12 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						((!cardbookRepository.cardbookServerSyncEmptyCache[aPrefId]) && 
 							(cardbookRepository.cardbookServerSyncLoadCacheDone[aPrefId] + cardbookRepository.cardbookDBRequest[aPrefId] == 
 								cardbookRepository.cardbookServerSyncLoadCacheTotal[aPrefId] + cardbookRepository.cardbookDBResponse[aPrefId]))) {
-							var params = {aMode: aMode, aPrefIdType: aPrefType};
 							var cardbookPrefService = new cardbookPreferenceService(aPrefId);
 							cardbookPrefService.setDBCached(true);
-							wdw_cardbooklog.initSyncActivity(aPrefId, aPrefName);
-							if (aPrefType === "GOOGLE" ) {
-								var connection = {connUser: aPrefUser, connPrefId: aPrefId, connPrefIdType: aPrefType, connUrl: cardbookRepository.cardbookgdata.REFRESH_REQUEST_URL, connDescription: aPrefName};
-								var myCode = cardbookPasswordManager.getPassword(aPrefUser, aPrefUrl);
-								cardbookRepository.cardbookServerSyncRequest[aPrefId]++;
-								cardbookSynchronization.googleGetAccessToken(connection, myCode, "SYNCGOOGLE", params);
-							} else if (aPrefType === "APPLE" ) {
-								var connection = {connPrefId: aPrefId, connPrefIdType: aPrefType, connUrl: aPrefUrl, connDescription: aPrefName};
-								cardbookRepository.cardbookServerSyncRequest[aPrefId]++;
-								connection.connUrl = cardbookSynchronization.getSlashedUrl(connection.connUrl);
-								cardbookSynchronization.discoverPhase1(connection, "SYNCSERVER", params);
-							} else {
-								var connection = {connPrefId: aPrefId, connPrefIdType: aPrefType, connUrl: aPrefUrl, connDescription: aPrefName};
-								cardbookRepository.cardbookServerSyncRequest[aPrefId]++;
-								// bug for supporting old format URL that might be short (for example carddav.gmx)
-								if (cardbookSynchronization.getSlashedUrl(connection.connUrl) == cardbookSynchronization.getSlashedUrl(cardbookSynchronization.getRootUrl(connection.connUrl))) {
-									connection.connUrl = cardbookSynchronization.getWellKnownUrl(connection.connUrl);
-									cardbookSynchronization.discoverPhase1(connection, "SYNCSERVER", params);
-								} else {
-									cardbookSynchronization.serverSyncCards(connection, "SYNCSERVER", params);
-								}
-							}
-							if (aPrefType === "GOOGLE" || aPrefType === "CARDDAV" || aPrefType === "APPLE") {
-								cardbookSynchronization.waitForSyncFinished(aPrefId, aPrefName, aMode);
-							} else {
-								cardbookSynchronization.waitForDirFinished(aPrefId, aPrefName, aMode);
-							}
+							// synchro web requests are delayed from 5 s
+							setTimeout(function() { 
+									cardbookSynchronization.syncAccount(aPrefId); 
+							}, 5000);
 							lTimerLoadCache.cancel();
 						}
 					}
@@ -2248,6 +2299,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
 			var initialSync = prefs.getBoolPref("extensions.cardbook.initialSync");
 			var myMode = "INITIAL";
+			cardbookSynchronization.initSync();
 			var cardbookPrefService = new cardbookPreferenceService();
 			var result = [];
 			result = cardbookPrefService.getAllPrefIds();
@@ -2284,7 +2336,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 
 			if (myPrefEnabled) {
 				if (myPrefType !== "SEARCH") {
-					cardbookSynchronization.initSync(aDirPrefId);
+					cardbookSynchronization.initSyncWithPrefId(aDirPrefId);
 				}
 				if (myPrefType === "GOOGLE" || myPrefType === "CARDDAV" || myPrefType === "APPLE") {
 					cardbookSynchronization.loadCache(aDirPrefId, myPrefName, myPrefType, myPrefUser, myPrefUrl, aSync, aMode, myPrefDBCached);

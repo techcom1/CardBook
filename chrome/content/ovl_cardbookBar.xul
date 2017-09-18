@@ -48,6 +48,18 @@
 				tooltiptext="&cardbookToolbarSyncButtonTooltip;"
 				oncommand="wdw_cardbook.syncAccounts();"
 				class="toolbarbutton-1"/>
+			<toolbarbutton id="cardbookToolbarWriteButton"
+				label="&cardbookToolbarWriteButtonLabel;"
+				tooltiptext="&cardbookToolbarWriteButtonTooltip;"
+				oncommand="wdw_cardbook.emailCardsFromWriteButton('2', 'to');"
+				class="toolbarbutton-1"
+				type="menu-button">
+				<menupopup>
+					<menuitem id="cardbookContactsMenuToEmailCards" label="&toEmailCardFromCardsLabel;" oncommand="wdw_cardbook.emailCardsFromWriteButton('1', 'to');"/>
+					<menuitem id="cardbookContactsMenuCcEmailCards" label="&ccEmailCardFromCardsLabel;" oncommand="wdw_cardbook.emailCardsFromWriteButton('1', 'cc');"/>
+					<menuitem id="cardbookContactsMenuBccEmailCards" label="&bccEmailCardFromCardsLabel;" oncommand="wdw_cardbook.emailCardsFromWriteButton('1', 'bcc');"/>
+				</menupopup>
+			</toolbarbutton>
 			<toolbarbutton id="cardbookToolbarConfigurationButton"
 				label="&cardbookToolbarConfigurationButtonLabel;"
 				tooltiptext="&cardbookToolbarConfigurationButtonTooltip;"
@@ -191,7 +203,7 @@
 			fullscreentoolbar="true" mode="full"
 			customizable="true"
 			context="cardbook-toolbar-context"
-			defaultset="cardbookToolbarAppMenuButton,cardbookToolbarSyncButton,cardbookToolbarConfigurationButton,spring,cardbookToolbarSearchBox,cardbookToolbarAddContactButton,cardbookToolbarAddListButton,cardbookToolbarEditButton,cardbookToolbarRemoveButton,cardbookToolbarThMenuButton"/>
+			defaultset="cardbookToolbarAppMenuButton,cardbookToolbarSyncButton,cardbookToolbarWriteButton,cardbookToolbarConfigurationButton,spring,cardbookToolbarSearchBox,cardbookToolbarAddContactButton,cardbookToolbarAddListButton,cardbookToolbarEditButton,cardbookToolbarRemoveButton,cardbookToolbarThMenuButton"/>
 		<toolbarset id="cardbookToolbars" context="cardbook-toolbar-context"/>
 	</toolbox>
 

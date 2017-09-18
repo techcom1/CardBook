@@ -85,6 +85,8 @@
 <!ENTITY showNameAsLabel "Nevek megjelenítése">
 <!ENTITY showNameAsLFLabel "Családnév Keresztnév">
 <!ENTITY showNameAsLFAccesskey "C">
+<!ENTITY showNameAsLFCommaLabel "Családnév, Keresztnév">
+<!ENTITY showNameAsLFCommaAccesskey "s">
 <!ENTITY showNameAsFLLabel "Keresztnév Családnév">
 <!ENTITY showNameAsFLAccesskey "K">
 <!ENTITY showNameAsDSPLabel "Megjelenítendő név">

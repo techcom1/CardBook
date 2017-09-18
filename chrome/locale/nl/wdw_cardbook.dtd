@@ -31,6 +31,8 @@
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Locaal of internt adresboek toevoegen">
 <!ENTITY cardbookToolbarSyncButtonLabel "Synchroniseren">
 <!ENTITY cardbookToolbarSyncButtonTooltip "Internet adresboeken synchroniseren">
+<!ENTITY cardbookToolbarWriteButtonLabel "Opstellen">
+<!ENTITY cardbookToolbarWriteButtonTooltip "Een nieuw bericht aanmaken">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Voorkeuren">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "CardBook voorkeuren">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Nieuw contact">

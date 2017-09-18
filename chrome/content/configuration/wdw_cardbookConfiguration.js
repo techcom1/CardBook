@@ -389,7 +389,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				for (var i = 0; i < sortedCalendars.length; i++) {
 					var aItem = aListBox.appendItem(sortedCalendars[i][0], sortedCalendars[i][1]);
 					aItem.setAttribute('type', 'checkbox');
-					if (aPref.value.indexOf(sortedCalendars[i][1]) >= 0) {
+					if (aPref.value.includes(sortedCalendars[i][1])) {
 						totalChecked++;
 						aItem.setAttribute('checked', true);
 					} else {
@@ -477,7 +477,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				var aItem = aListBox.appendItem(sortedAddressBooks[i][0], sortedAddressBooks[i][1]);
 				aItem.setAttribute('id', aCheckBox.id + '_' + i);
 				aItem.setAttribute('type', 'checkbox');
-				if ( (aPref.value.indexOf(sortedAddressBooks[i][1]) >= 0) || (aPref.value === "allAddressBooks") ) {
+				if ( (aPref.value.includes(sortedAddressBooks[i][1])) || (aPref.value === "allAddressBooks") ) {
 					totalChecked++;
 					aItem.setAttribute('checked', true);
 				} else {
@@ -1618,7 +1618,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				} else if (myValue.toUpperCase() === "X-THUNDERBIRD-ETAG") {
 					cardbookNotifications.setNotification("errorListNotifications", "customFieldsErrorETAG", myValue);
 					returnFlag = false;
-				} else if (myValue.indexOf(":") >= 1 || myValue.indexOf(",") >= 1 || myValue.indexOf(";") >= 1 || myValue.indexOf(".") >= 1) {
+				} else if (myValue.includes(":") || myValue.includes(",") || myValue.includes(";") || myValue.includes(".")) {
 					cardbookNotifications.setNotification("errorListNotifications", "customFieldsErrorCHAR", myValue);
 					returnFlag = false;
 				}

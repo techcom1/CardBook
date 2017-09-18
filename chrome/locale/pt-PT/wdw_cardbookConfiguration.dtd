@@ -85,6 +85,8 @@
 <!ENTITY showNameAsLabel "Mostrar nome como">
 <!ENTITY showNameAsLFLabel "Nome Apelido">
 <!ENTITY showNameAsLFAccesskey "A">
+<!ENTITY showNameAsLFCommaLabel "Nome, Apelido">
+<!ENTITY showNameAsLFCommaAccesskey "i">
 <!ENTITY showNameAsFLLabel "Apelido Nome">
 <!ENTITY showNameAsFLAccesskey "N">
 <!ENTITY showNameAsDSPLabel "Nome de apresentação">

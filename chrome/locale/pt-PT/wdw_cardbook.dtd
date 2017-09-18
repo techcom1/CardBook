@@ -31,6 +31,8 @@
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Adicionar uma agenda local ou remota">
 <!ENTITY cardbookToolbarSyncButtonLabel "Sincronizar">
 <!ENTITY cardbookToolbarSyncButtonTooltip "Sincronizar todas as agendas remotas">
+<!ENTITY cardbookToolbarWriteButtonLabel "Escrever">
+<!ENTITY cardbookToolbarWriteButtonTooltip "Criar nova mensagem">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Preferências">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Preferências do CardBook">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Novo contacto">

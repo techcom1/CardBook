@@ -338,7 +338,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			document.getElementById('addressbook-wizard').canAdvance = false;
 			document.getElementById('remotePageURI').value = wdw_addressbooksAdd.decodeURL(document.getElementById('remotePageURI').value.trim());
 			document.getElementById('validateButton').disabled = true;
-			
+
 			var type = document.getElementById('remotePageType').selectedItem.value;
 			var username = document.getElementById('remotePageUsername').value;
 			var password = document.getElementById('remotePagePassword').value;
@@ -349,6 +349,10 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				wdw_addressbooksAdd.gCardDAVURLs.push([cardbookSynchronization.getSlashedUrl(url), true]); // [url, discovery]
 			} else {
 				var url = document.getElementById('remotePageURI').value;
+				if (cardbookSynchronization.getRootUrl(url) == "") {
+					cardbookNotifications.setNotification("resultNotifications", "ValidatingURLFailedLabel");
+					return;
+				}
 				wdw_addressbooksAdd.gCardDAVURLs.push([url, false]); // [url, discovery]
 				wdw_addressbooksAdd.gCardDAVURLs.push([cardbookSynchronization.getWellKnownUrl(url), true]);
 				var carddavURL = cardbookSynchronization.getCardDAVUrl(url, username);
@@ -357,11 +361,6 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				}
 			}
 			
-			if (cardbookSynchronization.getRootUrl(url) == "") {
-				cardbookNotifications.setNotification("resultNotifications", "ValidatingURLFailedLabel");
-				return;
-			}
-
 			var dirPrefId = cardbookUtils.getUUID();
 			if (type == 'GOOGLE') {
 				cardbookNotifications.setNotification("resultNotifications", "ValidatingLabel", url, "PRIORITY_INFO_MEDIUM");

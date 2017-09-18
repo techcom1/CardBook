@@ -30,12 +30,12 @@ if ("undefined" == typeof(wdw_migrate)) {
 			cardbookRepository.loadCustoms();
 		},
 
-		translateStandardCards: function (aDirPrefIdTarget, aDirPrefIdTargetName, aABCard, aMode) {
+		translateStandardCards: function (aDirPrefIdTarget, aDirPrefIdTargetName, aABCard, aVersion, aDateFormat, aMode) {
 			try {
 				var myCard = new cardbookCardParser();
 				myCard.dirPrefId = aDirPrefIdTarget;
 				cardbookUtils.setCardUUID(myCard);
-				myCard.version = "3.0";
+				myCard.version = aVersion;
 				var myMap = [ ["FirstName", "firstname"], ["LastName", "lastname"], ["DisplayName", "fn"], ["NickName", "nickname"], ["JobTitle", "title"], ["Notes", "note"] ];
 				for (var i = 0; i < myMap.length; i++) {
 					var myMapData = aABCard.getProperty(myMap[i][0],"");
@@ -99,25 +99,9 @@ if ("undefined" == typeof(wdw_migrate)) {
 				}
 				
 				var day = aABCard.getProperty("BirthDay", "");
-				if (! isNaN(day) && day.length == 1) {
-					day = "0" + day;
-				}
 				var month = aABCard.getProperty("BirthMonth", "");
-				if (! isNaN(month) && month.length == 1) {
-					month = "0" + month;
-				}
 				var year = aABCard.getProperty("BirthYear", "");
-				if (year != "") {
-					if (day != "") {
-						myCard.bday = year + "-" + month + "-" + day;
-					} else { 
-						myCard.bday = year;
-					}
-				} else {
-					if (day != "") {
-						myCard.bday = month + "-" + day;
-					}
-				}
+				myCard.bday = cardbookDates.convertDateStringToDateString(day, month, year, aDateFormat)
 
 				var photoURI = aABCard.getProperty("PhotoURI", "");
 				var photoType = aABCard.getProperty("PhotoType", "");
@@ -152,12 +136,12 @@ if ("undefined" == typeof(wdw_migrate)) {
 			}
 		},
 
-		translateStandardLists: function (aDirPrefIdTarget, aDirPrefIdTargetName, aABList, aMode) {
+		translateStandardLists: function (aDirPrefIdTarget, aDirPrefIdTargetName, aABList, aVersion, aMode) {
 			try {
 				var myCard = new cardbookCardParser();
 				myCard.dirPrefId = aDirPrefIdTarget;
 				cardbookUtils.setCardUUID(myCard);
-				myCard.version = "3.0";
+				myCard.version = aVersion;
 				var myMap = [ ["dirName", "fn"], ["listNickName", "nickname"], ["description", "note"] ];
 				for (var i = 0; i < myMap.length; i++) {
 					myCard[myMap[i][1]] = aABList[myMap[i][0]];
@@ -218,7 +202,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 			}
 		},
 
-		importCards: function (aDirPrefIdSource, aDirPrefIdTarget, aDirPrefIdTargetName, aMode) {
+		importCards: function (aDirPrefIdSource, aDirPrefIdTarget, aDirPrefIdTargetName, aVersion, aDateFormat, aMode) {
 			var contactManager = Components.classes["@mozilla.org/abmanager;1"].getService(Components.interfaces.nsIAbManager);
 			var contacts = contactManager.directories;
 			while ( contacts.hasMoreElements() ) {
@@ -230,7 +214,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 						myABCard = myABCard.QueryInterface(Components.interfaces.nsIAbCard);
 						if (!myABCard.isMailList) {
 							cardbookRepository.cardbookServerSyncTotal[aDirPrefIdTarget]++;
-							wdw_migrate.translateStandardCards(aDirPrefIdTarget, aDirPrefIdTargetName, myABCard, aMode);
+							wdw_migrate.translateStandardCards(aDirPrefIdTarget, aDirPrefIdTargetName, myABCard, aVersion, aDateFormat, aMode);
 						}
 					}
 					var abCardsEnumerator = contact.childCards;
@@ -240,7 +224,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 						if (myABCard.isMailList) {
 							var myABList = contactManager.getDirectory(myABCard.mailListURI);
 							cardbookRepository.cardbookServerSyncTotal[aDirPrefIdTarget]++;
-							wdw_migrate.translateStandardLists(aDirPrefIdTarget, aDirPrefIdTargetName, myABList, aMode);
+							wdw_migrate.translateStandardLists(aDirPrefIdTarget, aDirPrefIdTargetName, myABList, aVersion, aMode);
 						}
 					}
 					break;

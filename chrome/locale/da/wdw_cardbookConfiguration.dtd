@@ -85,6 +85,8 @@
 <!ENTITY showNameAsLabel "Vis navn som">
 <!ENTITY showNameAsLFLabel "Efternavn Fornavn">
 <!ENTITY showNameAsLFAccesskey "E">
+<!ENTITY showNameAsLFCommaLabel "Efternavn, Fornavn">
+<!ENTITY showNameAsLFCommaAccesskey "f">
 <!ENTITY showNameAsFLLabel "Fornavn Efternavn">
 <!ENTITY showNameAsFLAccesskey "F">
 <!ENTITY showNameAsDSPLabel "Vist navn">
