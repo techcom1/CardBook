@@ -53,8 +53,9 @@ You are welcomed to contribute to this project by:
 
 Main contributors:
 * Philippe Vigneau (author and maintainer)
-* Alexander Bergmann
-* R. Kent James
+* [Alexander Bergmann](https://addons.mozilla.org/thunderbird/user/tempuser/)
+*	[Günter Gersdorf](https://addons.mozilla.org/thunderbird/user/guenter-gersdorf/)
+* [R. Kent James](https://github.com/rkent)
 * Timothe Litt
 * Christoph Mair
 * Boris Prüssmann
@@ -76,7 +77,7 @@ Translations by:
 * Han Knols (nl)
 * Adam Gorzkiewicz (pl)
 * Dominik Wnęk (pl)
-* André Bação (pt-PT)  - https://github.com/abacao
+* [André Bação (pt-PT)](https://github.com/abacao)
 * Alexander Yavorsky (ru)
 * Peter Klofutar (sl)
 
