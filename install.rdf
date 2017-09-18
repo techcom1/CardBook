@@ -11,6 +11,7 @@
 		<em:description>vCard Address Book</em:description>
 		<em:creator>Philippe Vigneau</em:creator>
 		<em:contributor>Alexander Bergmann</em:contributor>
+		<em:contributor>Günter Gersdorf</em:contributor>
 		<em:contributor>R. Kent James</em:contributor>
 		<em:contributor>Timothe Litt</em:contributor>
 		<em:contributor>Christoph Mair</em:contributor>
@@ -52,6 +53,7 @@
 				<em:name>CardBook</em:name>
 				<em:description>Adresář vCard</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
@@ -84,6 +86,7 @@
 				<em:name>CardBook</em:name>
 				<em:description>vCard Adressebog</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
@@ -116,6 +119,7 @@
 				<em:name>CardBook</em:name>
 				<em:description>vCard Adressbuch</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
@@ -148,6 +152,7 @@
 				<em:name>CardBook</em:name>
 				<em:description>vCard address book</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
@@ -180,6 +185,7 @@
 				<em:name>CardBook</em:name>
 				<em:description>Carnet d'adresses vCard</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
@@ -212,6 +218,7 @@
 				<em:name>Névjegyzék (CardBook)</em:name>
 				<em:description>vCard névjegyzék</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
@@ -244,6 +251,7 @@
 				<em:name>CardBook</em:name>
 				<em:description>Rubrica vCard</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
@@ -276,6 +284,7 @@
 				<em:name>CardBook</em:name>
 				<em:description>vCard adresboek</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
@@ -308,6 +317,7 @@
 				<em:name>CardBook</em:name>
 				<em:description>Książka adresowa z obsługą vCard</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
@@ -340,6 +350,7 @@
 				<em:name>CardBook</em:name>
 				<em:description>Agenda vCard</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
@@ -372,6 +383,7 @@
 				<em:name>CardBook</em:name>
 				<em:description>Адресная книга vCard</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
@@ -404,6 +416,7 @@
 				<em:name>CardBook</em:name>
 				<em:description>Imenik vCard</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
