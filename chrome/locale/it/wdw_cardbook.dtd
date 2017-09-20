@@ -33,6 +33,8 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Sincronizza tutte le rubriche remote">
 <!ENTITY cardbookToolbarWriteButtonLabel "Scrivi">
 <!ENTITY cardbookToolbarWriteButtonTooltip "Crea un nuovo messaggio">
+<!ENTITY cardbookToolbarChatButtonLabel "Žinutė">
+<!ENTITY cardbookToolbarChatButtonTooltip "Invia un messaggio istantaneo o avvia la chat">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Opzioni">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Opzioni di CardBook">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Nuovo contatto">
@@ -165,6 +167,7 @@
 <!ENTITY importCardFromFileLabel "Importa contatti da file">
 <!ENTITY importCardFromDirLabel "Importa contatti da cartella">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Rinomina categoria">
+<!ENTITY convertCatFromAccountsOrCatsLabel "??Convert category to list??">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Elimina categoria">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Trova i contatti duplicati nella rubrica corrente">
 <!ENTITY generateFnFromAccountsOrCatsLabel "??Generate Display Names??">

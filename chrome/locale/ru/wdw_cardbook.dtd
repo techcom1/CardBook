@@ -33,6 +33,8 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Синхронизирует все удалённые адресные книги">
 <!ENTITY cardbookToolbarWriteButtonLabel "Создать сообщение">
 <!ENTITY cardbookToolbarWriteButtonTooltip "Создать сообщение">
+<!ENTITY cardbookToolbarChatButtonLabel "Мгновенное сообщение">
+<!ENTITY cardbookToolbarChatButtonTooltip "Отправить мгновенное сообщение или начать беседу">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Настройки">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Открывает панель настроек CardBook">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Создать контакт">
@@ -165,6 +167,7 @@
 <!ENTITY importCardFromFileLabel "Импортировать контакт из файла">
 <!ENTITY importCardFromDirLabel "Импортировать контакт из каталога">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Переименовать категорию">
+<!ENTITY convertCatFromAccountsOrCatsLabel "??Convert category to list??">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Удалить категорию">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Искать повторяющиеся контакты во текущей адресной книге">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Формировать поле «Отображаемое имя»">

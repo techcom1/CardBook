@@ -33,6 +33,8 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synchroniser tous les carnets d'adresses distants">
 <!ENTITY cardbookToolbarWriteButtonLabel "Écrire">
 <!ENTITY cardbookToolbarWriteButtonTooltip "Créer un nouveau message">
+<!ENTITY cardbookToolbarChatButtonLabel "Message instantané">
+<!ENTITY cardbookToolbarChatButtonTooltip "Envoyer un message instantané ou amorcer un chat">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Préférences">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Préférences de CardBook">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Nouveau contact">
@@ -165,6 +167,7 @@
 <!ENTITY importCardFromFileLabel "Importer des contacts depuis un fichier">
 <!ENTITY importCardFromDirLabel "Importer des contacts depuis un répertoire">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Renommer la catégorie">
+<!ENTITY convertCatFromAccountsOrCatsLabel "Convertir la catégorie en liste">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Supprimer la catégorie">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Recherche des contacts dupliqués dans le carnet d'adresses courant">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Générer les noms affichés">

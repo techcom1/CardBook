@@ -33,6 +33,8 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synkroniser alle fjerne adressebøger">
 <!ENTITY cardbookToolbarWriteButtonLabel "Skriv">
 <!ENTITY cardbookToolbarWriteButtonTooltip "Skriv en ny meddelelse">
+<!ENTITY cardbookToolbarChatButtonLabel "IM">
+<!ENTITY cardbookToolbarChatButtonTooltip "Send en &quot;instant message&quot; eller chat">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Indstillinger">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "CardBook-indstillinger">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Ny kontakt">
@@ -165,6 +167,7 @@
 <!ENTITY importCardFromFileLabel "Importer kontakter fra en fil">
 <!ENTITY importCardFromDirLabel "Importer kontakter fra et katalog">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Omdøb kategori">
+<!ENTITY convertCatFromAccountsOrCatsLabel "??Convert category to list??">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Fjern kategori">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Find duplikerede kontakter i nuværende adressebog">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Generer viste navne">

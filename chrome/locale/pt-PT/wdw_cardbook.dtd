@@ -33,6 +33,8 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Sincronizar todas as agendas remotas">
 <!ENTITY cardbookToolbarWriteButtonLabel "Escrever">
 <!ENTITY cardbookToolbarWriteButtonTooltip "Criar nova mensagem">
+<!ENTITY cardbookToolbarChatButtonLabel "Mensagem instantânea">
+<!ENTITY cardbookToolbarChatButtonTooltip "Enviar mensagem instantânea ou de chat">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Preferências">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Preferências do CardBook">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Novo contacto">
@@ -165,6 +167,7 @@
 <!ENTITY importCardFromFileLabel "Importar cartões de ficheiro">
 <!ENTITY importCardFromDirLabel "Importar cartões de diretoria">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Renomear categoria">
+<!ENTITY convertCatFromAccountsOrCatsLabel "??Convert category to list??">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Remover categoria">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Procurar duplicados na agenda actual">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Gerar nomes de apresentação">

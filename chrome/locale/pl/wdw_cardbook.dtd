@@ -33,6 +33,8 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synchronizuj wszystkie zdalne książki adresowe">
 <!ENTITY cardbookToolbarWriteButtonLabel "Napisz">
 <!ENTITY cardbookToolbarWriteButtonTooltip "Utwórz nową wiadomość">
+<!ENTITY cardbookToolbarChatButtonLabel "Nowa wiadomość błyskawiczna">
+<!ENTITY cardbookToolbarChatButtonTooltip "Połącz z adresatem za pomocą komunikatora">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Ustawienia">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Ustawienia programu CardBook">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Nowa wizytówka">
@@ -165,6 +167,7 @@
 <!ENTITY importCardFromFileLabel "Importuj wizytówkę z pliku">
 <!ENTITY importCardFromDirLabel "Importuj wizytówkę z katalogu">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Zmień nazwę kategorii">
+<!ENTITY convertCatFromAccountsOrCatsLabel "??Convert category to list??">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Usuń kategorię">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Znajdź powielone wizytówki w bieżącej książce adresowej">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Stwórz Wyświetlane nazwy">

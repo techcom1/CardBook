@@ -33,6 +33,8 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synchronize all remote address books">
 <!ENTITY cardbookToolbarWriteButtonLabel "Write">
 <!ENTITY cardbookToolbarWriteButtonTooltip "Create a new message">
+<!ENTITY cardbookToolbarChatButtonLabel "Instant Message">
+<!ENTITY cardbookToolbarChatButtonTooltip "Send an instant message or chat">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Preferences">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "CardBook Preferences">
 <!ENTITY cardbookToolbarAddContactButtonLabel "New Contact">
@@ -132,9 +134,9 @@
 <!ENTITY etagLabel "Etag">
 
 <!ENTITY localizeadrTreeLabel "Localize">
-<!ENTITY toEmailEmailTreeLabel "Email entry">
-<!ENTITY ccEmailEmailTreeLabel "Email entry (copy / cc)">
-<!ENTITY bccemailemailTreeLabel "Email entry (blind copy / bcc)">
+<!ENTITY toEmailEmailTreeLabel "Send email">
+<!ENTITY ccEmailEmailTreeLabel "Send email (copy / cc)">
+<!ENTITY bccemailemailTreeLabel "Send email (blind copy / bcc)">
 <!ENTITY findemailemailTreeLabel "Find emails related to this email address">
 <!ENTITY findeventemailTreeLabel "Find calendar events related to this email address">
 <!ENTITY openURLTreeLabel "Open URL">
@@ -165,6 +167,7 @@
 <!ENTITY importCardFromFileLabel "Import contacts from a file">
 <!ENTITY importCardFromDirLabel "Import contacts from a directory">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Rename category">
+<!ENTITY convertCatFromAccountsOrCatsLabel "Convert category to list">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Remove category">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Find duplicate contacts in current address book">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Generate Display Names">

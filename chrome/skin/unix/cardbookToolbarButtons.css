@@ -16,6 +16,12 @@ toolbar[brighttext] #cardbookToolbarSyncButton {
 toolbar[brighttext] #cardbookToolbarWriteButton {
 	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#newmessage-inverted");
 }
+#cardbookToolbarChatButton {
+	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#newim");
+}
+toolbar[brighttext] #cardbookToolbarChatButton {
+	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#newim-inverted");
+}
 #cardbookToolbarConfigurationButton {
 	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#compact");
 }

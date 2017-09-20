@@ -2569,27 +2569,22 @@ if ("undefined" == typeof(cardbookUtils)) {
 			}
 		},
 
-		// used from the CardBook tab 
-		addToIMPPMenuSubMenu: function(aMenuName) {
+		connectCardsFromChatButton: function(aButton) {
 			try {
 				if (cardbookRepository.cardbookSyncMode === "NOSYNC") {
-					var selectedUid = cardbookUtils.getSelectedCardsId();
-					if (selectedUid.length == 1) {
-						if (cardbookRepository.cardbookCards[selectedUid[0]]) {
-							cardbookUtils.addCardToIMPPMenuSubMenu(cardbookRepository.cardbookCards[selectedUid], aMenuName)
-						} else {
-							cardbookUtils.addCardToIMPPMenuSubMenu(null, aMenuName);
-						}
+					var myPopup = document.getElementById(aButton.id + "MenuPopup");
+					if (myPopup.childNodes.length == 0) {
+						return;
+					} else if (myPopup.childNodes.length == 1) {
+						myPopup.firstChild.doCommand();
 					} else {
-						cardbookUtils.addCardToIMPPMenuSubMenu(null, aMenuName);
+						myPopup.openPopup(aButton, 'after_start', 0, 0, false, false);
 					}
-				} else {
-					cardbookUtils.addCardToIMPPMenuSubMenu(null, aMenuName);
 				}
 			}
 			catch (e) {
 				var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
-				var errorTitle = "addToIMPPMenuSubMenu";
+				var errorTitle = "connectCardsFromChatButton";
 				prompts.alert(null, errorTitle, e);
 			}
 		},
@@ -2668,11 +2663,15 @@ if ("undefined" == typeof(cardbookUtils)) {
 							}
 						}
 					}
+					if (!myPopup.hasChildNodes()) {
+						myMenu.disabled=true;
+					}
+
 				}
 			}
 			catch (e) {
 				var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
-				var errorTitle = "addToIMPPMenuSubMenu";
+				var errorTitle = "addCardToIMPPMenuSubMenu";
 				prompts.alert(null, errorTitle, e);
 			}
 		},

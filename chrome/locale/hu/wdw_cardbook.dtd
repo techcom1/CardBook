@@ -33,6 +33,8 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Minden távoli névjegytár összehangolása">
 <!ENTITY cardbookToolbarWriteButtonLabel "Új üzenet">
 <!ENTITY cardbookToolbarWriteButtonTooltip "Új üzenet létrehozása">
+<!ENTITY cardbookToolbarChatButtonLabel "Azonnali üzenet">
+<!ENTITY cardbookToolbarChatButtonTooltip "Üzenet küldése vagy csevegés">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Beállítások">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Névjegyzék beállítások">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Új névjegy">
@@ -165,6 +167,7 @@
 <!ENTITY importCardFromFileLabel "Megnyitás és mentés fájlból">
 <!ENTITY importCardFromDirLabel "Megnyitás és mentés mappából">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Kategória átnevezése">
+<!ENTITY convertCatFromAccountsOrCatsLabel "??Convert category to list??">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Kategória eltávolítása">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "A jelenlegi névjegytárban ismétlődő névjegy keresése">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Megjelenítendő nevek létrehozása">

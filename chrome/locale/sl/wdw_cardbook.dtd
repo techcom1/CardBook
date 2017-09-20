@@ -33,6 +33,8 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Sinhroniziraj vse oddaljene imenike">
 <!ENTITY cardbookToolbarWriteButtonLabel "Sestavi">
 <!ENTITY cardbookToolbarWriteButtonTooltip "Ustvari novo sporočilo">
+<!ENTITY cardbookToolbarChatButtonLabel "Neposredno sporočilo">
+<!ENTITY cardbookToolbarChatButtonTooltip "Pošlji neposredno sporočilo ali klepetaj">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Nastavitve">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Nastavitve CardBook">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Nov stik">
@@ -165,6 +167,7 @@
 <!ENTITY importCardFromFileLabel "Uvozi stike iz datoteke">
 <!ENTITY importCardFromDirLabel "Uvozi stike iz mape">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Preimenuj kategorijo">
+<!ENTITY convertCatFromAccountsOrCatsLabel "??Convert category to list??">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Odstrani kategorijo">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Poišči podvojene stike v trenutnem imeniku">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Ustvari prikazana imena">

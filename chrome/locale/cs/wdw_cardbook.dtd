@@ -33,6 +33,8 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synchronizovat všechny adresáře">
 <!ENTITY cardbookToolbarWriteButtonLabel "Napsat zprávu">
 <!ENTITY cardbookToolbarWriteButtonTooltip "Vytvoří novou zprávu">
+<!ENTITY cardbookToolbarChatButtonLabel "Zpráva přes IM">
+<!ENTITY cardbookToolbarChatButtonTooltip "Pošle krátkou zprávu nebo začne rozhovor">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Předvolby">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Nastavení CardBooku">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Nový kontakt">
@@ -165,6 +167,7 @@
 <!ENTITY importCardFromFileLabel "Importovat kontakty ze souboru">
 <!ENTITY importCardFromDirLabel "Importovat kontakty z adresáře">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Přejmenovat kategorii">
+<!ENTITY convertCatFromAccountsOrCatsLabel "??Convert category to list??">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Odstranit kategorii">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Najít duplicitní kontakty v aktuálním adresáři">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Generovat zobrazovaná jména">

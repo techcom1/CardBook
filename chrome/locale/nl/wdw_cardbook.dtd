@@ -33,6 +33,8 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Internet adresboeken synchroniseren">
 <!ENTITY cardbookToolbarWriteButtonLabel "Opstellen">
 <!ENTITY cardbookToolbarWriteButtonTooltip "Een nieuw bericht aanmaken">
+<!ENTITY cardbookToolbarChatButtonLabel "Instant-bericht">
+<!ENTITY cardbookToolbarChatButtonTooltip "Een instant-bericht sturen of chatten">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Voorkeuren">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "CardBook voorkeuren">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Nieuw contact">
@@ -165,6 +167,7 @@
 <!ENTITY importCardFromFileLabel "Importeer contactpersoon van een bestand">
 <!ENTITY importCardFromDirLabel "Importeer contactpersoon van een map">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Categorie hernoemen">
+<!ENTITY convertCatFromAccountsOrCatsLabel "??Convert category to list??">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Categorie verwijderen">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Zoek overeenkomende contactpersonen in huidige adresboek">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Genereer getoonde namen">

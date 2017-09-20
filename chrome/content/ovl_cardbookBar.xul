@@ -60,6 +60,14 @@
 					<menuitem id="cardbookContactsMenuBccEmailCards" label="&bccEmailCardFromCardsLabel;" oncommand="wdw_cardbook.emailCardsFromWriteButton('1', 'bcc');"/>
 				</menupopup>
 			</toolbarbutton>
+			<toolbarbutton id="cardbookToolbarChatButton"
+				label="&cardbookToolbarChatButtonLabel;"
+				tooltiptext="&cardbookToolbarChatButtonTooltip;"
+				oncommand="cardbookUtils.connectCardsFromChatButton(this);"
+				class="toolbarbutton-1"
+				type="menu-button">
+				<menupopup id="cardbookToolbarChatButtonMenuPopup"/>
+			</toolbarbutton>
 			<toolbarbutton id="cardbookToolbarConfigurationButton"
 				label="&cardbookToolbarConfigurationButtonLabel;"
 				tooltiptext="&cardbookToolbarConfigurationButtonTooltip;"
@@ -264,6 +272,7 @@
 		<menuitem id="pasteCardsFromAccountsOrCats" label="&pasteCardFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.pasteCards();"/>
 		<menuseparator/>
 		<menuitem id="renameCatFromAccountsOrCats" label="&renameCatFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.selectCategoryToAction('RENAME');"/>
+		<menuitem id="convertCatFromAccountsOrCats" label="&convertCatFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.selectCategoryToAction('CONVERT');"/>
 		<menuitem id="removeCatFromAccountsOrCats" label="&removeCatFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.selectCategoryToAction('REMOVE');"/>
 		<menuseparator/>
 		<menuitem id="findDuplicatesFromAccountsOrCats" label="&findDuplicatesFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.findDuplicatesFromAccountsOrCats();"/>
