@@ -2592,6 +2592,9 @@ if ("undefined" == typeof(cardbookUtils)) {
 		addCardToIMPPMenuSubMenu: function(aCard, aMenuName) {
 			try {
 				if (cardbookRepository.cardbookSyncMode === "NOSYNC") {
+					if (!document.getElementById(aMenuName)) {
+						return;
+					}
 					var myPopup = document.getElementById(aMenuName);
 					var myMenu = document.getElementById(aMenuName.replace("MenuPopup", ""));
 					while (myPopup.hasChildNodes()) {
