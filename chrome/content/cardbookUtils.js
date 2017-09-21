@@ -1192,13 +1192,11 @@ if ("undefined" == typeof(cardbookUtils)) {
 			aCard.dispcategories = aCard.categories.join(" ");
 			aCard.isAList = cardbookUtils.isMyCardAList(aCard);
 			if (!aCard.isAList) {
-				aCard.emails = cardbookUtils.getEmailsFromCard(aCard, cardbookRepository.preferEmailPref);
+				aCard.emails = cardbookUtils.getPrefAddressFromCard(aCard, "email", cardbookRepository.preferEmailPref);
+				aCard.impps = cardbookUtils.getPrefAddressFromCard(aCard, "impp", cardbookRepository.preferIMPPPref);
 			}
 			if (aCard.dirPrefId != "" && aCard.uid != "") {
 				aCard.cbid = aCard.dirPrefId + "::" + aCard.uid;
-			}
-			if (aCard.dirPrefId) {
-				aCard.emails = cardbookUtils.getEmailsFromCard(aCard, cardbookRepository.preferEmailPref);
 			}
 		},
 
@@ -2110,6 +2108,53 @@ if ("undefined" == typeof(cardbookUtils)) {
 			return cardbookPrefService.getReadOnly();
 		},
 
+		getPrefAddressFromCard: function (aCard, aType, aAddressPref) {
+			var listOfAddress = [];
+			cardbookUtils.jsInclude(["chrome://cardbook/content/cardbookMailPopularity.js", "chrome://cardbook/content/cardbookSynchronization.js", "chrome://cardbook/content/wdw_log.js"]);
+			if (aCard != null && aCard !== undefined && aCard != "") {
+				var notfoundOnePrefAddress = true;
+				var listOfPrefAddress = [];
+				var myPrefValue;
+				var myOldPrefValue = 0;
+				for (var j = 0; j < aCard[aType].length; j++) {
+					var addressText = aCard[aType][j][0][0];
+					if (aAddressPref) {
+						for (var k = 0; k < aCard[aType][j][1].length; k++) {
+							if (aCard[aType][j][1][k].toUpperCase().indexOf("PREF") >= 0) {
+								if (aCard[aType][j][1][k].toUpperCase().indexOf("PREF=") >= 0) {
+									myPrefValue = aCard[aType][j][1][k].toUpperCase().replace("PREF=","");
+								} else {
+									myPrefValue = 1;
+								}
+								if (myPrefValue == myOldPrefValue || myOldPrefValue === 0) {
+									listOfPrefAddress.push(addressText);
+									myOldPrefValue = myPrefValue;
+								} else if (myPrefValue < myOldPrefValue) {
+									listOfPrefAddress = [];
+									listOfPrefAddress.push(addressText);
+									myOldPrefValue = myPrefValue;
+								}
+								notfoundOnePrefAddress = false;
+							}
+						}
+					} else {
+						listOfAddress.push(addressText);
+						notfoundOnePrefAddress = false;
+					}
+				}
+				if (notfoundOnePrefAddress) {
+					for (var j = 0; j < aCard[aType].length; j++) {
+						listOfAddress.push(aCard[aType][j][0][0]);
+					}
+				} else {
+					for (var j = 0; j < listOfPrefAddress.length; j++) {
+						listOfAddress.push(listOfPrefAddress[j]);
+					}
+				}
+			}
+			return listOfAddress;
+		},
+
 		getEmailsFromCard: function (aCard, aEmailPref) {
 			var listOfEmail = [];
 			cardbookUtils.jsInclude(["chrome://cardbook/content/cardbookMailPopularity.js", "chrome://cardbook/content/cardbookSynchronization.js", "chrome://cardbook/content/wdw_log.js"]);
@@ -2628,7 +2673,11 @@ if ("undefined" == typeof(cardbookUtils)) {
 								myMenu.disabled = false;
 							}
 						}
-						for (var i = 0; i < aCard.impp.length; i++) {
+						// for migration reason
+						if (!aCard.impps) {
+							aCard.impps = cardbookUtils.getPrefAddressFromCard(aCard, "impp", cardbookRepository.preferIMPPPref);
+						}
+						for (var i = 0; i < aCard.impps.length; i++) {
 							var serviceCode = cardbookTypes.getIMPPCode(aCard.impp[i][1]);
 							var serviceProtocol = cardbookTypes.getIMPPProtocol(aCard.impp[i][0]);
 							if (serviceCode != "") {

@@ -21,8 +21,9 @@ if ("undefined" == typeof(ovl_synchro)) {
 					str.data = cardbookRepository.cardbookUncategorizedCards;
 					prefs.setComplexValue("extensions.cardbook.uncategorizedCards", Components.interfaces.nsISupportsString, str);
 				}
-				// setting preferEmailPref for getting usefull emails
+				// setting preferEmailPref and preferIMPPPref for getting usefull emails and impps
 				cardbookRepository.preferEmailPref = prefs.getBoolPref("extensions.cardbook.preferEmailPref");
+				cardbookRepository.preferIMPPPref = prefs.getBoolPref("extensions.cardbook.preferIMPPPref");
 				
 				// migration functions (should be removed)
 				// removed : cardbookRepository.setSolveConflicts();

@@ -127,6 +127,9 @@
 
 <!ENTITY IMPPGroupboxWarn "This setup allows Internet communications using the intended protocol.">
 <!ENTITY IMPPGroupboxLabel "Internet Communications">
+<!ENTITY preferIMPPPrefLabel "Prefer Internet Communications marked with ">
+<!ENTITY preferIMPPPrefAccesskey "P">
+<!ENTITY preferIMPPPrefWarn "If no address is marked, a connection is proposed for all of the contact's addresses.">
 <!ENTITY IMPPCodeLabel "Code">
 <!ENTITY IMPPLabelLabel "Label">
 <!ENTITY IMPPProtocolLabel "Protocol">
@@ -188,9 +191,9 @@
 <!ENTITY decodeReportAccesskey "D">
 
 <!ENTITY miscEmailGroupboxLabel "Sending Emails">
-<!ENTITY preferEmailPrefLabel "Prefer email addresses marked PREFerred">
+<!ENTITY preferEmailPrefLabel "Prefer email addresses marked with ">
 <!ENTITY preferEmailPrefAccesskey "P">
-<!ENTITY preferEmailPrefWarn "If no address is marked 'PREFerred', the message is sent to all of the contact's addresses.">
+<!ENTITY preferEmailPrefWarn "If no address is marked, the message is sent to all of the contact's addresses.">
 <!ENTITY warnEmptyEmailsLabel "Warn me when I attempt to email contacts without an email address">
 <!ENTITY warnEmptyEmailsAccesskey "W">
 <!ENTITY useOnlyEmailLabel "Only use email addresses, without their Display Names">

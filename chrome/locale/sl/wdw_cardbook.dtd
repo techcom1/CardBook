@@ -33,7 +33,7 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Sinhroniziraj vse oddaljene imenike">
 <!ENTITY cardbookToolbarWriteButtonLabel "Sestavi">
 <!ENTITY cardbookToolbarWriteButtonTooltip "Ustvari novo sporočilo">
-<!ENTITY cardbookToolbarChatButtonLabel "Neposredno sporočilo">
+<!ENTITY cardbookToolbarChatButtonLabel "Poveži se s/z">
 <!ENTITY cardbookToolbarChatButtonTooltip "Pošlji neposredno sporočilo ali klepetaj">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Nastavitve">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Nastavitve CardBook">
@@ -134,21 +134,21 @@
 <!ENTITY etagLabel "Etag">
 
 <!ENTITY localizeadrTreeLabel "Lokaliziraj">
-<!ENTITY toEmailEmailTreeLabel "Vnos e-pošte">
-<!ENTITY ccEmailEmailTreeLabel "Vnos e-pošte (kopija/kp)">
-<!ENTITY bccemailemailTreeLabel "Vnos e-pošte (skrita kopija/skp)">
+<!ENTITY toEmailEmailTreeLabel "Sestavi novo sporočilo">
+<!ENTITY ccEmailEmailTreeLabel "Sestavi novo sporočilo (kopija/kp)">
+<!ENTITY bccemailemailTreeLabel "Sestavi novo sporočilo (skrita kopija/skp)">
 <!ENTITY findemailemailTreeLabel "Poišči e-pošto, povezano s tem e-poštnim naslovom">
 <!ENTITY findeventemailTreeLabel "Poišči dogodke koledarja, povezane s tem e-poštnim naslovom">
 <!ENTITY openURLTreeLabel "Odpri URL">
 
 <!ENTITY copyCardTreeLabel "Kopiraj vnos">
 
-<!ENTITY toEmailCardFromAccountsOrCatsLabel "Pošlji pošto">
-<!ENTITY toEmailCardFromCardsLabel "Pošlji pošto">
-<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Pošlji pošto (kopija/kp)">
-<!ENTITY ccEmailCardFromCardsLabel "Pošlji pošto (kopija/kp)">
-<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Pošlji pošto (skrita kopija/skp)">
-<!ENTITY bccEmailCardFromCardsLabel "Pošlji pošto (skrita kopija/skp)">
+<!ENTITY toEmailCardFromAccountsOrCatsLabel "Sestavi novo sporočilo">
+<!ENTITY toEmailCardFromCardsLabel "Sestavi novo sporočilo">
+<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Sestavi novo sporočilo (kopija/kp)">
+<!ENTITY ccEmailCardFromCardsLabel "Sestavi novo sporočilo (kopija/kp)">
+<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Sestavi novo sporočilo (skrita kopija/skp)">
+<!ENTITY bccEmailCardFromCardsLabel "Sestavi novo sporočilo (skrita kopija/skp)">
 <!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Deli po e-pošti">
 <!ENTITY shareCardByEmailFromCardsLabel "Deli po e-pošti">
 <!ENTITY categoryLabel "Kategorija">

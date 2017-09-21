@@ -33,7 +33,7 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Minden távoli névjegytár összehangolása">
 <!ENTITY cardbookToolbarWriteButtonLabel "Új üzenet">
 <!ENTITY cardbookToolbarWriteButtonTooltip "Új üzenet létrehozása">
-<!ENTITY cardbookToolbarChatButtonLabel "Azonnali üzenet">
+<!ENTITY cardbookToolbarChatButtonLabel "Csatlakozni">
 <!ENTITY cardbookToolbarChatButtonTooltip "Üzenet küldése vagy csevegés">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Beállítások">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Névjegyzék beállítások">
@@ -134,21 +134,21 @@
 <!ENTITY etagLabel "Elektronikus címke">
 
 <!ENTITY localizeadrTreeLabel "Mutasd a térképen">
-<!ENTITY toEmailEmailTreeLabel "Új üzenet (címzett)">
-<!ENTITY ccEmailEmailTreeLabel "Új üzenet (másolat)">
-<!ENTITY bccemailemailTreeLabel "Új üzenet (rejtett másolat)">
+<!ENTITY toEmailEmailTreeLabel "Új üzenet létrehozása (címzett)">
+<!ENTITY ccEmailEmailTreeLabel "Új üzenet létrehozása (másolat)">
+<!ENTITY bccemailemailTreeLabel "Új üzenet létrehozása (rejtett másolat)">
 <!ENTITY findemailemailTreeLabel "E-mailek keresése (e-mail alapján)">
 <!ENTITY findeventemailTreeLabel "Naptári események keresése (e-mail alapján)">
 <!ENTITY openURLTreeLabel "Webcím hívatkozás megnyitása böngészőben">
 
 <!ENTITY copyCardTreeLabel "Másolás">
 
-<!ENTITY toEmailCardFromAccountsOrCatsLabel "Új üzenetek (címzettek)">
-<!ENTITY toEmailCardFromCardsLabel "Új üzenetek (címzettek)">
-<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Új üzenetek (másolatok)">
-<!ENTITY ccEmailCardFromCardsLabel "Új üzenetek (másolatok)">
-<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Új üzenetek (rejtett másolatok)">
-<!ENTITY bccEmailCardFromCardsLabel "Új üzenetek (rejtett másolatok)">
+<!ENTITY toEmailCardFromAccountsOrCatsLabel "Új üzenet létrehozása (címzettek)">
+<!ENTITY toEmailCardFromCardsLabel "Új üzenet létrehozása (címzettek)">
+<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Új üzenet létrehozása (másolatok)">
+<!ENTITY ccEmailCardFromCardsLabel "Új üzenet létrehozása (másolatok)">
+<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Új üzenet létrehozása (rejtett másolatok)">
+<!ENTITY bccEmailCardFromCardsLabel "Új üzenet létrehozása (rejtett másolatok)">
 <!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Új üzenet (névjegy melléklettel)">
 <!ENTITY shareCardByEmailFromCardsLabel "Új üzenet (névjegy melléklettel)">
 <!ENTITY categoryLabel "Kategória">

@@ -128,6 +128,9 @@
 
 <!ENTITY IMPPGroupboxWarn "Ce paramétrage permet d'ouvrir directement l'adresse de messagerie instantanée en suivant le protocole désiré.">
 <!ENTITY IMPPGroupboxLabel "Communications internet">
+<!ENTITY preferIMPPPrefLabel "Préférer les communications internet marqués avec ">
+<!ENTITY preferIMPPPrefAccesskey "P">
+<!ENTITY preferIMPPPrefWarn "Pour cette option, si il n'y a pas de communications internet de type 'pref', toutes les communications internet sont prises en compte.">
 <!ENTITY IMPPCodeLabel "Code">
 <!ENTITY IMPPLabelLabel "Label">
 <!ENTITY IMPPProtocolLabel "Protocole">
@@ -189,7 +192,7 @@
 <!ENTITY decodeReportAccesskey "D">
 
 <!ENTITY miscEmailGroupboxLabel "Envoi d'emails">
-<!ENTITY preferEmailPrefLabel "Préférer les email de type 'pref'">
+<!ENTITY preferEmailPrefLabel "Préférer les emails marqués avec ">
 <!ENTITY preferEmailPrefAccesskey "P">
 <!ENTITY preferEmailPrefWarn "Pour cette option, si il n'y a pas d'email de type 'pref', tous les emails sont pris en compte.">
 <!ENTITY warnEmptyEmailsLabel "M'avertir lorsque je tente d'envoyer un email à un contact qui n'a pas d'adresse email">

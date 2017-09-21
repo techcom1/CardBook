@@ -68,6 +68,8 @@
 				name="extensions.cardbook.localizeTarget" type="string"/>
 			<preference id="extensions.cardbook.preferenceValueLabel"
 				name="extensions.cardbook.preferenceValueLabel" type="string"/>
+			<preference id="extensions.cardbook.preferIMPPPref"
+				name="extensions.cardbook.preferIMPPPref" type="bool"/>
 			<preference id="extensions.cardbook.kindCustom"
 				name="extensions.cardbook.kindCustom" type="string"/>
 			<preference id="extensions.cardbook.memberCustom"
@@ -431,6 +433,17 @@
 					<groupbox flex="1">
 						<caption label="&IMPPGroupboxLabel;"/>
 						<hbox align="center">
+							<checkbox id="preferIMPPPrefCheckBox" label="&preferIMPPPrefLabel;"
+								accesskey="&preferIMPPPrefAccesskey;"
+								preference="extensions.cardbook.preferIMPPPref"/>
+							<image class="cardbookPrefStarClass" haspref="true"/>
+						</hbox>
+						<separator class="thin"/>
+						<hbox align="center">
+							<caption label="&preferIMPPPrefWarn;" class="indent"/>
+						</hbox>
+						<separator class="thin"/>
+						<hbox align="center">
 							<radiogroup id="imppsCategoryRadiogroup" orient="horizontal" onselect="wdw_cardbookConfiguration.selectIMPPsCategory();">
 								<radio value="impp" label="&typesCategoryImppLabel;" accesskey="&typesCategoryImppAccesskey;" selected="true"/>
 								<radio value="tel" label="&typesCategoryTelLabel;" accesskey="&typesCategoryTelAccesskey;"/>
@@ -649,8 +662,7 @@
 						</hbox>
 						<separator class="thin"/>
 						<hbox align="center">
-							<caption label="&preferEmailPrefWarn;"/>
-							<image class="cardbookPrefStarClass"/>
+							<caption label="&preferEmailPrefWarn;" class="indent"/>
 						</hbox>
 						<separator class="thin"/>
 						<checkbox id="warnEmptyEmailsCheckBox" label="&warnEmptyEmailsLabel;"

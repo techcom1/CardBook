@@ -33,7 +33,7 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synchronizovat všechny adresáře">
 <!ENTITY cardbookToolbarWriteButtonLabel "Napsat zprávu">
 <!ENTITY cardbookToolbarWriteButtonTooltip "Vytvoří novou zprávu">
-<!ENTITY cardbookToolbarChatButtonLabel "Zpráva přes IM">
+<!ENTITY cardbookToolbarChatButtonLabel "Připojit">
 <!ENTITY cardbookToolbarChatButtonTooltip "Pošle krátkou zprávu nebo začne rozhovor">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Předvolby">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Nastavení CardBooku">
@@ -134,21 +134,21 @@
 <!ENTITY etagLabel "Etag">
 
 <!ENTITY localizeadrTreeLabel "Vyhledat">
-<!ENTITY toEmailEmailTreeLabel "Poslat e-mail">
-<!ENTITY ccEmailEmailTreeLabel "Poslat e-mail (kopie / cc)">
-<!ENTITY bccemailemailTreeLabel "Poslat e-mail (skrytá kopie / bcc)">
+<!ENTITY toEmailEmailTreeLabel "Vytvořit novou zprávu">
+<!ENTITY ccEmailEmailTreeLabel "Vytvořit novou zprávu (kopie / cc)">
+<!ENTITY bccemailemailTreeLabel "Vytvořit novou zprávu (skrytá kopie / bcc)">
 <!ENTITY findemailemailTreeLabel "Najít e-maily vztahující se k této e-mailové adrese">
 <!ENTITY findeventemailTreeLabel "Najít v kalendáři události vztahující se k této e-mailové adrese">
 <!ENTITY openURLTreeLabel "Otevřít URL">
 
 <!ENTITY copyCardTreeLabel "Kopírovat záznam">
 
-<!ENTITY toEmailCardFromAccountsOrCatsLabel "Poslat e-mail">
-<!ENTITY toEmailCardFromCardsLabel "Poslat e-mail">
-<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Poslat e-mail (kopie / cc)">
-<!ENTITY ccEmailCardFromCardsLabel "Poslat e-mail (kopie / cc)">
-<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Poslat e-mail (skrytá kopie / bcc)">
-<!ENTITY bccEmailCardFromCardsLabel "Poslat e-mail (skrytá kopie / bcc)">
+<!ENTITY toEmailCardFromAccountsOrCatsLabel "Vytvořit novou zprávu">
+<!ENTITY toEmailCardFromCardsLabel "Vytvořit novou zprávu">
+<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Vytvořit novou zprávu (kopie / cc)">
+<!ENTITY ccEmailCardFromCardsLabel "Vytvořit novou zprávu (kopie / cc)">
+<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Vytvořit novou zprávu (skrytá kopie / bcc)">
+<!ENTITY bccEmailCardFromCardsLabel "Vytvořit novou zprávu (skrytá kopie / bcc)">
 <!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Sdílet e-mailem">
 <!ENTITY shareCardByEmailFromCardsLabel "Sdílet e-mailem">
 <!ENTITY categoryLabel "Kategorie">

@@ -22,6 +22,7 @@ pref("extensions.cardbook.multiget", "40");
 pref("extensions.cardbook.decodeReport", true);
 
 pref("extensions.cardbook.preferEmailPref", true);
+pref("extensions.cardbook.preferIMPPPref", true);
 pref("extensions.cardbook.warnEmptyEmails", true);
 pref("extensions.cardbook.useOnlyEmail", false); 
 

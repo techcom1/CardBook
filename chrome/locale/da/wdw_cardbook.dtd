@@ -33,7 +33,7 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synkroniser alle fjerne adressebøger">
 <!ENTITY cardbookToolbarWriteButtonLabel "Skriv">
 <!ENTITY cardbookToolbarWriteButtonTooltip "Skriv en ny meddelelse">
-<!ENTITY cardbookToolbarChatButtonLabel "IM">
+<!ENTITY cardbookToolbarChatButtonLabel "Forbind til">
 <!ENTITY cardbookToolbarChatButtonTooltip "Send en &quot;instant message&quot; eller chat">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Indstillinger">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "CardBook-indstillinger">
@@ -134,21 +134,21 @@
 <!ENTITY etagLabel "Etag">
 
 <!ENTITY localizeadrTreeLabel "Lokaliser">
-<!ENTITY toEmailEmailTreeLabel "Send e-mail til e-mailadresse">
-<!ENTITY ccEmailEmailTreeLabel "Send e-mail til e-mailadresse (kopi / cc)">
-<!ENTITY bccemailemailTreeLabel "Send e-mail til e-mailadresse (blind kopi / bcc)">
+<!ENTITY toEmailEmailTreeLabel "Skriv en ny meddelelse til e-mailadresse">
+<!ENTITY ccEmailEmailTreeLabel "Skriv en ny meddelelse til e-mailadresse (kopi / cc)">
+<!ENTITY bccemailemailTreeLabel "Skriv en ny meddelelse til e-mailadresse (blind kopi / bcc)">
 <!ENTITY findemailemailTreeLabel "Find e-mails relateret til denne e-mailadresse">
 <!ENTITY findeventemailTreeLabel "Find kalenderbegivenheder relateret til denne e-mailadresse">
 <!ENTITY openURLTreeLabel "Åbn URL">
 
 <!ENTITY copyCardTreeLabel "Kopier e-mailadresse">
 
-<!ENTITY toEmailCardFromAccountsOrCatsLabel "Send e-mail">
-<!ENTITY toEmailCardFromCardsLabel "Send e-mail">
-<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Send e-mail (kopi / cc)">
-<!ENTITY ccEmailCardFromCardsLabel "Send e-mail (kopi / cc)">
-<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Send e-mail (blind kopi / bcc)">
-<!ENTITY bccEmailCardFromCardsLabel "Send e-mail (blind kopi / bcc)">
+<!ENTITY toEmailCardFromAccountsOrCatsLabel "Skriv en ny meddelelse">
+<!ENTITY toEmailCardFromCardsLabel "Skriv en ny meddelelse">
+<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Skriv en ny meddelelse (kopi / cc)">
+<!ENTITY ccEmailCardFromCardsLabel "Skriv en ny meddelelse (kopi / cc)">
+<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Skriv en ny meddelelse (blind kopi / bcc)">
+<!ENTITY bccEmailCardFromCardsLabel "Skriv en ny meddelelse (blind kopi / bcc)">
 <!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Del via e-mail">
 <!ENTITY shareCardByEmailFromCardsLabel "Del via e-mail">
 <!ENTITY categoryLabel "Kategori">

@@ -33,7 +33,7 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synchronize all remote address books">
 <!ENTITY cardbookToolbarWriteButtonLabel "Write">
 <!ENTITY cardbookToolbarWriteButtonTooltip "Create a new message">
-<!ENTITY cardbookToolbarChatButtonLabel "Instant Message">
+<!ENTITY cardbookToolbarChatButtonLabel "Connect To">
 <!ENTITY cardbookToolbarChatButtonTooltip "Send an instant message or chat">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Preferences">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "CardBook Preferences">
@@ -134,21 +134,21 @@
 <!ENTITY etagLabel "Etag">
 
 <!ENTITY localizeadrTreeLabel "Localize">
-<!ENTITY toEmailEmailTreeLabel "Send email">
-<!ENTITY ccEmailEmailTreeLabel "Send email (copy / cc)">
-<!ENTITY bccemailemailTreeLabel "Send email (blind copy / bcc)">
+<!ENTITY toEmailEmailTreeLabel "Write a new message">
+<!ENTITY ccEmailEmailTreeLabel "Write a new message (copy / cc)">
+<!ENTITY bccemailemailTreeLabel "Write a new message (blind copy / bcc)">
 <!ENTITY findemailemailTreeLabel "Find emails related to this email address">
 <!ENTITY findeventemailTreeLabel "Find calendar events related to this email address">
 <!ENTITY openURLTreeLabel "Open URL">
 
 <!ENTITY copyCardTreeLabel "Copy entry">
 
-<!ENTITY toEmailCardFromAccountsOrCatsLabel "Send email">
-<!ENTITY toEmailCardFromCardsLabel "Send email">
-<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Send email (copy / cc)">
-<!ENTITY ccEmailCardFromCardsLabel "Send email (copy / cc)">
-<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Send email (blind copy / bcc)">
-<!ENTITY bccEmailCardFromCardsLabel "Send email (blind copy / bcc)">
+<!ENTITY toEmailCardFromAccountsOrCatsLabel "Write a new message">
+<!ENTITY toEmailCardFromCardsLabel "Write a new message">
+<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Write a new message (copy / cc)">
+<!ENTITY ccEmailCardFromCardsLabel "Write a new message (copy / cc)">
+<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Write a new message (blind copy / bcc)">
+<!ENTITY bccEmailCardFromCardsLabel "Write a new message (blind copy / bcc)">
 <!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Share by email">
 <!ENTITY shareCardByEmailFromCardsLabel "Share by email">
 <!ENTITY categoryLabel "Category">

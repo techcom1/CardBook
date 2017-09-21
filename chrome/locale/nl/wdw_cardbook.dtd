@@ -33,7 +33,7 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Internet adresboeken synchroniseren">
 <!ENTITY cardbookToolbarWriteButtonLabel "Opstellen">
 <!ENTITY cardbookToolbarWriteButtonTooltip "Een nieuw bericht aanmaken">
-<!ENTITY cardbookToolbarChatButtonLabel "Instant-bericht">
+<!ENTITY cardbookToolbarChatButtonLabel "Verbinden">
 <!ENTITY cardbookToolbarChatButtonTooltip "Een instant-bericht sturen of chatten">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Voorkeuren">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "CardBook voorkeuren">
@@ -134,21 +134,21 @@
 <!ENTITY etagLabel "Etag">
 
 <!ENTITY localizeadrTreeLabel "Localiseren">
-<!ENTITY toEmailEmailTreeLabel "Email entry">
-<!ENTITY ccEmailEmailTreeLabel "Email entry (copy / cc)">
-<!ENTITY bccemailemailTreeLabel "Email entry (blind copy / bcc)">
+<!ENTITY toEmailEmailTreeLabel "Nieuw bericht aanmaken">
+<!ENTITY ccEmailEmailTreeLabel "Nieuw bericht aanmaken (copy / cc)">
+<!ENTITY bccemailemailTreeLabel "Nieuw bericht aanmaken (blind copy / bcc)">
 <!ENTITY findemailemailTreeLabel "Zoek e-mails gerelateerd aan dit e-mail adres">
 <!ENTITY findeventemailTreeLabel "Zoek agenda-gebeurtenissen gerelateerd aan dit e-mail adres">
 <!ENTITY openURLTreeLabel "Open URL">
 
 <!ENTITY copyCardTreeLabel "Kopieëren entry">
 
-<!ENTITY toEmailCardFromAccountsOrCatsLabel "Email">
-<!ENTITY toEmailCardFromCardsLabel "Email">
-<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Email (copy / cc)">
-<!ENTITY ccEmailCardFromCardsLabel "Email (copy / cc)">
-<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Email (blind copy / bcc)">
-<!ENTITY bccEmailCardFromCardsLabel "Email (blind copy / bcc)">
+<!ENTITY toEmailCardFromAccountsOrCatsLabel "Nieuw bericht aanmaken">
+<!ENTITY toEmailCardFromCardsLabel "Nieuw bericht aanmaken">
+<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Nieuw bericht aanmaken (copy / cc)">
+<!ENTITY ccEmailCardFromCardsLabel "Nieuw bericht aanmaken (copy / cc)">
+<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Nieuw bericht aanmaken (blind copy / bcc)">
+<!ENTITY bccEmailCardFromCardsLabel "Nieuw bericht aanmaken (blind copy / bcc)">
 <!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Gegevens van contactpersoon aan iemand anders mailen">
 <!ENTITY shareCardByEmailFromCardsLabel "Gegevens van contactpersoon aan iemand anders mailen">
 <!ENTITY categoryLabel "Categorie">

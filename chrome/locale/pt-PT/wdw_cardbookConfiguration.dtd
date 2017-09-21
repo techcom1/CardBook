@@ -128,6 +128,9 @@
 
 <!ENTITY IMPPGroupboxWarn "Esta configuração permite abrir uma mensagem instantanea usando o protocolo seleccionado.">
 <!ENTITY IMPPGroupboxLabel "Endereços de mensagem instantanea">
+<!ENTITY preferIMPPPrefLabel "??Prefer Internet Communications marked with ??">
+<!ENTITY preferIMPPPrefAccesskey "P">
+<!ENTITY preferIMPPPrefWarn "??If no address is marked, a connection is proposed for all of the contact's addresses.??">
 <!ENTITY IMPPCodeLabel "Codigo">
 <!ENTITY IMPPLabelLabel "Etiqueta">
 <!ENTITY IMPPProtocolLabel "Protocolo">

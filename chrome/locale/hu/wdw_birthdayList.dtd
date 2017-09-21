@@ -4,7 +4,7 @@
 <!ENTITY dateOfBirthColumnLabel "Születési dátum">
 <!ENTITY dateOfBirthFoundColumnLabel "Dátum talált">
 <!ENTITY emailColumnLabel "E-mail">
-<!ENTITY sendEmailLabel "Új üzenet">
+<!ENTITY sendEmailLabel "Új üzenet létrehozása">
 <!ENTITY sendEmailAccesskey "ü">
 <!ENTITY syncLightningMenuItemLabel "Lightning szinkronizálása">
 <!ENTITY syncLightningMenuAccesskey "s">

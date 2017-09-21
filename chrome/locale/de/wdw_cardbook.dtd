@@ -33,7 +33,7 @@
 <!ENTITY cardbookToolbarSyncButtonTooltip "Alle Netzwerk-Adressbücher synchronisieren">
 <!ENTITY cardbookToolbarWriteButtonLabel "Verfassen">
 <!ENTITY cardbookToolbarWriteButtonTooltip "Eine neue Nachricht schreiben">
-<!ENTITY cardbookToolbarChatButtonLabel "Messenger">
+<!ENTITY cardbookToolbarChatButtonLabel "Verbinden">
 <!ENTITY cardbookToolbarChatButtonTooltip "Neue Sofortnachricht (instant message) oder neuen Chat verfassen">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Einstellungen">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "CardBook-Einstellungen">
@@ -134,21 +134,21 @@
 <!ENTITY etagLabel "Etag">
 
 <!ENTITY localizeadrTreeLabel "Lokalisieren">
-<!ENTITY toEmailEmailTreeLabel "Email an Kontakt verfassen">
-<!ENTITY ccEmailEmailTreeLabel "Email an Kontakt verfassen (Kopie / Cc)">
-<!ENTITY bccemailemailTreeLabel "Email an Kontakt verfassen (Blindkopie / Bcc)">
+<!ENTITY toEmailEmailTreeLabel "Neue Nachricht verfassen">
+<!ENTITY ccEmailEmailTreeLabel "Neue Nachricht verfassen (Kopie / Cc)">
+<!ENTITY bccemailemailTreeLabel "Neue Nachricht verfassen (Blindkopie / Bcc)">
 <!ENTITY findemailemailTreeLabel "Suche Emails in Bezug auf diese Email-Adresse">
 <!ENTITY findeventemailTreeLabel "Suche Termine in Bezug auf diese Email-Adresse">
 <!ENTITY openURLTreeLabel "URL öffnen">
 
 <!ENTITY copyCardTreeLabel "Eintrag kopieren">
 
-<!ENTITY toEmailCardFromAccountsOrCatsLabel "Email verfassen (An / To)">
-<!ENTITY toEmailCardFromCardsLabel "Email verfassen (An / To)">
-<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Email verfassen (Kopie / Cc)">
-<!ENTITY ccEmailCardFromCardsLabel "Email verfassen (Kopie / Cc)">
-<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Email verfassen (Blindkopie / Bcc)">
-<!ENTITY bccEmailCardFromCardsLabel "Email verfassen (Blindkopie / Bcc)">
+<!ENTITY toEmailCardFromAccountsOrCatsLabel "Neue Nachricht verfassen (An / To)">
+<!ENTITY toEmailCardFromCardsLabel "Neue Nachricht verfassen (An / To)">
+<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Neue Nachricht verfassen (Kopie / Cc)">
+<!ENTITY ccEmailCardFromCardsLabel "Neue Nachricht verfassen (Kopie / Cc)">
+<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Neue Nachricht verfassen (Blindkopie / Bcc)">
+<!ENTITY bccEmailCardFromCardsLabel "Neue Nachricht verfassen (Blindkopie / Bcc)">
 <!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Per E-Mail senden">
 <!ENTITY shareCardByEmailFromCardsLabel "Per E-Mail senden">
 <!ENTITY categoryLabel "Kategorie">

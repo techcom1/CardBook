@@ -4,7 +4,7 @@
 <!ENTITY dateOfBirthColumnLabel "Dato for begivenhed">
 <!ENTITY dateOfBirthFoundColumnLabel "Dato fundet">
 <!ENTITY emailColumnLabel "E-mail">
-<!ENTITY sendEmailLabel "Send en e-mail">
+<!ENTITY sendEmailLabel "Skriv en ny meddelelse">
 <!ENTITY sendEmailAccesskey "S">
 <!ENTITY syncLightningMenuItemLabel "Synkroniser med Lightning">
 <!ENTITY syncLightningMenuAccesskey "y">
