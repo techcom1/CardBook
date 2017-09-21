@@ -53,7 +53,7 @@
 		<menuitem id="cardbookContactPaneItem"
 			type="checkbox" key="key_toggleMessagePane"
 			label="&cardbookContactPaneItemLabel;" accesskey="&cardbookContactPaneItemAccesskey;"
-			oncommand="ovl_cardbookLayout.changeResizePanes('viewABContact')"
+			command="cmd_toggleMessagePane"
 			insertafter="menu_showMessage"/>
 	</menupopup>
 	<menupopup id="taskPopup">

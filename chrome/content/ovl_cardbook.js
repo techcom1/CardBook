@@ -67,11 +67,20 @@ if ("undefined" == typeof(cardbookTabType)) {
 				
 				supportsCommand: function supportsCommand(aCommand, aTab) {
 					switch (aCommand) {
+						case "cmd_toggleMessagePane":
 						case "cmd_viewClassicMailLayout":
 						case "cmd_viewVerticalMailLayout":
 						case "cmd_printSetup":
 						case "cmd_print":
 						case "cmd_printpreview":
+						case "cmd_selectAll":
+						case "cmd_copy":
+						case "cmd_cut":
+						case "cmd_paste":
+						case "cmd_delete":
+						case "cmd_find":
+						case "cmd_findAgain":
+						case "cmd_showQuickFilterBar":
 							return true;
 						default:
 							return false;
@@ -80,11 +89,20 @@ if ("undefined" == typeof(cardbookTabType)) {
 				
 				isCommandEnabled: function isCommandEnabled(aCommand, aTab) {
 					switch (aCommand) {
+						case "cmd_toggleMessagePane":
 						case "cmd_viewClassicMailLayout":
 						case "cmd_viewVerticalMailLayout":
 						case "cmd_printSetup":
 						case "cmd_print":
 						case "cmd_printpreview":
+						case "cmd_selectAll":
+						case "cmd_copy":
+						case "cmd_cut":
+						case "cmd_paste":
+						case "cmd_delete":
+						case "cmd_find":
+						case "cmd_findAgain":
+						case "cmd_showQuickFilterBar":
 							return true;
 						default:
 							return false;
@@ -93,6 +111,9 @@ if ("undefined" == typeof(cardbookTabType)) {
 				
 				doCommand: function doCommand(aCommand, aTab) {
 					switch (aCommand) {
+						case "cmd_toggleMessagePane":
+							ovl_cardbookLayout.changeResizePanes('viewABContact');
+							break;
 						case "cmd_viewClassicMailLayout":
 						case "cmd_viewVerticalMailLayout":
 							ovl_cardbookLayout.changeOrientPanes(aCommand);
@@ -103,6 +124,26 @@ if ("undefined" == typeof(cardbookTabType)) {
 						case "cmd_print":
 						case "cmd_printpreview":
 							wdw_cardbook.print();
+							break;
+						case "cmd_selectAll":
+							wdw_cardbook.selectAllKey();
+							break;
+						case "cmd_copy":
+							wdw_cardbook.copyKey();
+							break;
+						case "cmd_cut":
+							wdw_cardbook.cutKey();
+							break;
+						case "cmd_paste":
+							wdw_cardbook.pasteKey();
+							break;
+						case "cmd_delete":
+							wdw_cardbook.deleteKey();
+							break;
+						case "cmd_find":
+						case "cmd_findAgain":
+						case "cmd_showQuickFilterBar":
+							wdw_cardbook.findKey();
 							break;
 					}
 				},

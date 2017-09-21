@@ -11,8 +11,7 @@
 	onclose="wdw_logEdition.cancel();"
 	id="wdw_logEdition" title="&wdw_logEditionTitle;"
 	persist="screenX screenY width height"
-	style="min-width:400px;min-height:100px;"
-	onkeypress="wdw_logEdition.chooseActionForKey(event);">
+	style="min-width:400px;min-height:100px;">
 	
 	<stringbundleset id="stringbundleset"/>
 
@@ -20,23 +19,27 @@
 	<script src="wdw_log.js"/>
 	<script src="wdw_logEdition.js"/>
 
-	<vbox flex="1">
-		<hbox flex="1">
-			<tree id="logEditionTree" class="cardbookTreeChildrenLogEditionClass" flex="1" hidecolumnpicker="true">
-				<treecols>
-					<treecol id="logEditionValue" label="&logEditionValueLabel;" flex="1" persist="width ordinal" style="text-align:left"/>
-					<treecol id="logEditionType" hidden="true"/>
-				</treecols>
-				<treechildren/>
-			</tree>
-		</hbox>
-	
-		<hbox>
-			<spacer flex="1"/>
-			<button id="refreshLogEditionLabel" label="&refreshLogEditionLabel;" accesskey="&refreshLogEditionAccesskey;" oncommand="wdw_logEdition.load();"/>
-			<button id="flushLogEditionLabel" label="&flushLogEditionLabel;" accesskey="&flushLogEditionAccesskey;" oncommand="wdw_logEdition.flush();"/>
-			<button id="clipboardLogEditionLabel" label="&clipboardLogEditionLabel;" accesskey="&clipboardLogEditionAccesskey;" oncommand="wdw_logEdition.clipboard();"/>
-			<button id="cancelLogEditionLabel" label="&cancelLogEditionLabel;" accesskey="&cancelLogEditionAccesskey;" oncommand="wdw_logEdition.cancel();"/>
-		</hbox>
-	</vbox>
+	<keyset id="wdw_logEdition-keys">
+		<key id="escapeKey" keycode="VK_ESCAPE" oncommand="wdw_logEdition.cancel();"/>
+		<key id="selectAllKey" modifiers="accel" key="A" oncommand="wdw_logEdition.selectAllKey();"/>
+		<key id="copyKey" modifiers="accel" key="C" oncommand="wdw_logEdition.clipboard();"/>
+	</keyset>
+
+	<hbox flex="1">
+		<tree id="logEditionTree" class="cardbookTreeChildrenLogEditionClass" flex="1" hidecolumnpicker="true">
+			<treecols>
+				<treecol id="logEditionValue" label="&logEditionValueLabel;" flex="1" persist="width ordinal" style="text-align:left"/>
+				<treecol id="logEditionType" hidden="true"/>
+			</treecols>
+			<treechildren/>
+		</tree>
+	</hbox>
+
+	<hbox>
+		<spacer flex="1"/>
+		<button id="refreshLogEditionLabel" label="&refreshLogEditionLabel;" accesskey="&refreshLogEditionAccesskey;" oncommand="wdw_logEdition.load();"/>
+		<button id="flushLogEditionLabel" label="&flushLogEditionLabel;" accesskey="&flushLogEditionAccesskey;" oncommand="wdw_logEdition.flush();"/>
+		<button id="clipboardLogEditionLabel" label="&clipboardLogEditionLabel;" accesskey="&clipboardLogEditionAccesskey;" oncommand="wdw_logEdition.clipboard();"/>
+		<button id="cancelLogEditionLabel" label="&cancelLogEditionLabel;" accesskey="&cancelLogEditionAccesskey;" oncommand="wdw_logEdition.cancel();"/>
+	</hbox>
 </window>

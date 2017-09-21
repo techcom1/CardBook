@@ -1,28 +1,6 @@
 if ("undefined" == typeof(wdw_logEdition)) {
 	var wdw_logEdition = {
 		
-		chooseActionForKey: function (aEvent) {
-			if (aEvent.ctrlKey && !aEvent.shiftKey) {
-				switch(aEvent.key) {
-					case "a":
-					case "A":
-						wdw_logEdition.selectAllKey();
-						aEvent.stopPropagation();
-						break;
-					case "c":
-					case "C":
-						wdw_logEdition.clipboard();
-						aEvent.stopPropagation();
-						break;
-				}
-			} else {
-				if (aEvent.key == "Escape") {
-					wdw_logEdition.cancel();
-					aEvent.stopPropagation();
-				}
-			}
-		},
-		
 		load: function () {
 			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			var myLogArray = cardbookRepository.statusInformation;

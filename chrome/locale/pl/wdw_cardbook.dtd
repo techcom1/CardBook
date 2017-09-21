@@ -23,10 +23,10 @@
 
 <!ENTITY cardbookToolbarLabel "Pasek narzędzi CardBook">
 <!ENTITY cardbookToolbarAccesskey "a">
-<!ENTITY cardbookABPaneToolbarLabel "??CardBook Address Book Pane Toolbar??">
-<!ENTITY cardbookABPaneToolbarAccesskey "??d??">
+<!ENTITY cardbookABPaneToolbarLabel "Pasek wyboru książki adresowej CardBook">
+<!ENTITY cardbookABPaneToolbarAccesskey "W">
 <!ENTITY CustomizeCardBookToolbarLabel "Dostosuj…">
-<!ENTITY CustomizeCardBookToolbarAccesskey "C">
+<!ENTITY CustomizeCardBookToolbarAccesskey "T">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Nowa książka adresowa">
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Dodaj zdalną lub lokalną książkę adresową">
 <!ENTITY cardbookToolbarSyncButtonLabel "Synchronizuj">
