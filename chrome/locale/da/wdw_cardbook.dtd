@@ -167,7 +167,7 @@
 <!ENTITY importCardFromFileLabel "Importer kontakter fra en fil">
 <!ENTITY importCardFromDirLabel "Importer kontakter fra et katalog">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Omdøb kategori">
-<!ENTITY convertCatFromAccountsOrCatsLabel "??Convert category to list??">
+<!ENTITY convertCatFromAccountsOrCatsLabel "Konverter kategori til liste">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Fjern kategori">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Find duplikerede kontakter i nuværende adressebog">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Generer viste navne">
