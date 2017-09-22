@@ -128,7 +128,7 @@
 <!ENTITY IMPPGroupboxWarn "Internet kommunikációs Jegyzőkönyv beállítási.">
 <!ENTITY IMPPGroupboxLabel "Internetes kommunikáció">
 <!ENTITY preferIMPPPrefLabel "Az Internetes kommunikáció forma előnyben részesítése az ">
-<!ENTITY preferIMPPPrefAccesskey "P">
+<!ENTITY preferIMPPPrefAccesskey "I">
 <!ENTITY preferIMPPPrefWarn "Ha nincs Internetes kommunikáció forma megjelölve a kapcsolat tartást minden címen mutatja.">
 <!ENTITY IMPPCodeLabel "Kód">
 <!ENTITY IMPPLabelLabel "Címke">
