@@ -128,9 +128,9 @@
 
 <!ENTITY IMPPGroupboxWarn "Denne instilling tillader internetkommunikation ved brug af den korrekte protokol.">
 <!ENTITY IMPPGroupboxLabel "Internetkommunikation">
-<!ENTITY preferIMPPPrefLabel "??Prefer Internet Communications marked with ??">
-<!ENTITY preferIMPPPrefAccesskey "P">
-<!ENTITY preferIMPPPrefWarn "??If no address is marked, a connection is proposed for all of the contact's addresses.??">
+<!ENTITY preferIMPPPrefLabel "Foretræk internetkommunikation markeret med ">
+<!ENTITY preferIMPPPrefAccesskey "F">
+<!ENTITY preferIMPPPrefWarn "Hvis ingen adresse er markeret, foreslås en forbindelse til alle kontaktens adresser.">
 <!ENTITY IMPPCodeLabel "Kode">
 <!ENTITY IMPPLabelLabel "Etiket">
 <!ENTITY IMPPProtocolLabel "Protokol">
