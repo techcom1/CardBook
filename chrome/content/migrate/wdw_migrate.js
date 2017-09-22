@@ -101,7 +101,9 @@ if ("undefined" == typeof(wdw_migrate)) {
 				var day = aABCard.getProperty("BirthDay", "");
 				var month = aABCard.getProperty("BirthMonth", "");
 				var year = aABCard.getProperty("BirthYear", "");
-				myCard.bday = cardbookDates.convertDateStringToDateString(day, month, year, aDateFormat)
+				if (day != "" || month != "" || year != "" ) {
+					myCard.bday = cardbookDates.convertDateStringToDateString(day, month, year, aDateFormat)
+				}
 
 				var photoURI = aABCard.getProperty("PhotoURI", "");
 				var photoType = aABCard.getProperty("PhotoType", "");

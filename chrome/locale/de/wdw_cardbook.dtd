@@ -167,7 +167,7 @@
 <!ENTITY importCardFromFileLabel "Importieren aus einer Datei">
 <!ENTITY importCardFromDirLabel "Importieren aus einem Verzeichnis">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Kategorie umbenennen">
-<!ENTITY convertCatFromAccountsOrCatsLabel "??Convert category to list??">
+<!ENTITY convertCatFromAccountsOrCatsLabel "Konvertiere die Kategorie zu einer Liste">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Kategorie entfernen">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Doppelte Kontakte im aktuellen Adressbuch suchen">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Anzeigenamen erstellen">
