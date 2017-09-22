@@ -167,7 +167,7 @@
 <!ENTITY importCardFromFileLabel "Importovat kontakty ze souboru">
 <!ENTITY importCardFromDirLabel "Importovat kontakty z adresáře">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Přejmenovat kategorii">
-<!ENTITY convertCatFromAccountsOrCatsLabel "??Convert category to list??">
+<!ENTITY convertCatFromAccountsOrCatsLabel "Převést kategorii na seznam">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Odstranit kategorii">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Najít duplicitní kontakty v aktuálním adresáři">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Generovat zobrazovaná jména">

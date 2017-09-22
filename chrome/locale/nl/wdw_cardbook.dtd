@@ -167,7 +167,7 @@
 <!ENTITY importCardFromFileLabel "Importeer contactpersoon van een bestand">
 <!ENTITY importCardFromDirLabel "Importeer contactpersoon van een map">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Categorie hernoemen">
-<!ENTITY convertCatFromAccountsOrCatsLabel "??Convert category to list??">
+<!ENTITY convertCatFromAccountsOrCatsLabel "Categorie omzetten naar lijst">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Categorie verwijderen">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Zoek overeenkomende contactpersonen in huidige adresboek">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Genereer getoonde namen">

@@ -128,9 +128,9 @@
 
 <!ENTITY IMPPGroupboxWarn "Deze instelling opent een IM-adres met gebruikmaking van het protocol.">
 <!ENTITY IMPPGroupboxLabel "Instant Messenger adressen">
-<!ENTITY preferIMPPPrefLabel "??Prefer Internet Communications marked with ??">
-<!ENTITY preferIMPPPrefAccesskey "P">
-<!ENTITY preferIMPPPrefWarn "??If no address is marked, a connection is proposed for all of the contact's addresses.??">
+<!ENTITY preferIMPPPrefLabel "Voorkeur voor internet communicatie gemarkeerd met ">
+<!ENTITY preferIMPPPrefAccesskey "i">
+<!ENTITY preferIMPPPrefWarn "Als er geen adres gemarkeerd is, dan wordt er een verbinding voor alle adressen voorgesteld.">
 <!ENTITY IMPPCodeLabel "Code">
 <!ENTITY IMPPLabelLabel "Naam">
 <!ENTITY IMPPProtocolLabel "Protocol">

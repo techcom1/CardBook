@@ -60,7 +60,6 @@ cardbookCardParser.prototype = {
 		this.class1 = "";
 		this.key = "";
 		this.impp = [];
-		this.impps = [];
 		this.others = [];
 		this.cbid = "";
 

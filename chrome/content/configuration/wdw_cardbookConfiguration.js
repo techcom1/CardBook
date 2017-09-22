@@ -9,7 +9,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		allEmailsCollections: [],
 		allVCards: [],
 		preferEmailPrefOld: false,
-		preferIMPPPrefOld: false,
 		
 		customFieldCheck: function (aTextBox) {
 			var myValue = aTextBox.value.trim();
@@ -207,29 +206,15 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				for (j in cardbookRepository.cardbookCards) {
 					let myCard = cardbookRepository.cardbookCards[j];
 					if (!myCard.isAList) {
-						myCard.emails = cardbookUtils.getPrefAddressFromCard(myCard, "email", cardbookRepository.preferEmailPref);
+						myCard.emails = cardbookUtils.getPrefAddressFromCard(myCard, "email", myNewCheck);
 					}
 				}
 				cardbookRepository.preferEmailPref = myNewCheck;
 			}
 		},
 
-		loadPrefIMPPPref: function () {
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-			wdw_cardbookConfiguration.preferIMPPPrefOld = prefs.getBoolPref("extensions.cardbook.preferIMPPPref");
-		},
-
 		validatePrefIMPPPref: function () {
-			var myNewCheck = document.getElementById('preferIMPPPrefCheckBox').checked;
-			if (myNewCheck !== wdw_cardbookConfiguration.preferIMPPPrefOld) {
-				for (j in cardbookRepository.cardbookCards) {
-					let myCard = cardbookRepository.cardbookCards[j];
-					if (!myCard.isAList) {
-						myCard.impps = cardbookUtils.getPrefAddressFromCard(myCard, "impp", cardbookRepository.preferEmailPref);
-					}
-				}
-				cardbookRepository.preferIMPPPref = myNewCheck;
-			}
+			cardbookRepository.preferIMPPPref = document.getElementById('preferIMPPPrefCheckBox').checked;
 		},
 
 		loadFnFormula: function () {
@@ -1708,7 +1693,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			wdw_cardbookConfiguration.loadEmailsCollection();
 			wdw_cardbookConfiguration.sortTrees(null, "emailsCollectionTree");
 			wdw_cardbookConfiguration.loadPrefEmailPref();
-			wdw_cardbookConfiguration.loadPrefIMPPPref();
 			// loadFnFormula() depends on loadOrg()
 			wdw_cardbookConfiguration.loadFnFormula();
 			Components.utils.import("resource://gre/modules/AddonManager.jsm");  

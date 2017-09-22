@@ -1193,7 +1193,6 @@ if ("undefined" == typeof(cardbookUtils)) {
 			aCard.isAList = cardbookUtils.isMyCardAList(aCard);
 			if (!aCard.isAList) {
 				aCard.emails = cardbookUtils.getPrefAddressFromCard(aCard, "email", cardbookRepository.preferEmailPref);
-				aCard.impps = cardbookUtils.getPrefAddressFromCard(aCard, "impp", cardbookRepository.preferIMPPPref);
 			}
 			if (aCard.dirPrefId != "" && aCard.uid != "") {
 				aCard.cbid = aCard.dirPrefId + "::" + aCard.uid;
@@ -2659,10 +2658,11 @@ if ("undefined" == typeof(cardbookUtils)) {
 							var telProtocolLineArray = telProtocolLine.split(':');
 							var telLabel = telProtocolLineArray[1];
 							var telProtocol = telProtocolLineArray[2];
-							for (var i = 0; i < aCard.tel.length; i++) {
+							var myTels = cardbookUtils.getPrefAddressFromCard(aCard, "tel", cardbookRepository.preferIMPPPref);
+							for (var i = 0; i < myTels.length; i++) {
 								var menuItem = document.createElement("menuitem");
 								var myRegexp = new RegExp("^" + telProtocol + ":");
-								var myAddress = aCard.tel[i][0][0].replace(myRegexp, "");
+								var myAddress = myTels[i].replace(myRegexp, "");
 								menuItem.setAttribute("id", telProtocol + ":" + myAddress);
 								menuItem.addEventListener("command", function(aEvent) {
 										cardbookUtils.openExternalURL(cardbookUtils.formatTelForOpenning(this.id));
@@ -2673,45 +2673,23 @@ if ("undefined" == typeof(cardbookUtils)) {
 								myMenu.disabled = false;
 							}
 						}
-						// for migration reason
-						if (!aCard.impps) {
-							aCard.impps = cardbookUtils.getPrefAddressFromCard(aCard, "impp", cardbookRepository.preferIMPPPref);
-						}
-						for (var i = 0; i < aCard.impps.length; i++) {
-							var serviceCode = cardbookTypes.getIMPPCode(aCard.impp[i][1]);
-							var serviceProtocol = cardbookTypes.getIMPPProtocol(aCard.impp[i][0]);
-							if (serviceCode != "") {
-								var serviceLine = [];
-								serviceLine = cardbookTypes.getIMPPLineForCode(serviceCode)
-								if (serviceLine[0]) {
-									var menuItem = document.createElement("menuitem");
-									var myRegexp = new RegExp("^" + serviceLine[2] + ":");
-									var myAddress = aCard.impp[i][0][0].replace(myRegexp, "");
-									menuItem.setAttribute("id", serviceLine[2] + ":" + myAddress);
-									menuItem.addEventListener("command", function(aEvent) {
-											cardbookUtils.openExternalURL(cardbookUtils.formatIMPPForOpenning(this.id));
-											aEvent.stopPropagation();
-										}, false);
-									menuItem.setAttribute("label", serviceLine[1] + ": " + myAddress);
-									myPopup.appendChild(menuItem);
-									myMenu.disabled = false;
-								}
-							} else if (serviceProtocol != "") {
-								var serviceLine = [];
-								serviceLine = cardbookTypes.getIMPPLineForProtocol(serviceProtocol)
-								if (serviceLine[0]) {
-									var menuItem = document.createElement("menuitem");
-									var myRegexp = new RegExp("^" + serviceLine[2] + ":");
-									var myAddress = aCard.impp[i][0][0].replace(myRegexp, "");
-									menuItem.setAttribute("id", serviceLine[2] + ":" + myAddress);
-									menuItem.addEventListener("command", function(aEvent) {
-											cardbookUtils.openExternalURL(cardbookUtils.formatIMPPForOpenning(this.id));
-											aEvent.stopPropagation();
-										}, false);
-									menuItem.setAttribute("label", serviceLine[1] + ": " + myAddress);
-									myPopup.appendChild(menuItem);
-									myMenu.disabled = false;
-								}
+						var myIMPPs = cardbookUtils.getPrefAddressFromCard(aCard, "impp", cardbookRepository.preferIMPPPref);
+						for (var i = 0; i < myIMPPs.length; i++) {
+							var serviceProtocol = cardbookTypes.getIMPPProtocol([myIMPPs[i]]);
+							var serviceLine = [];
+							serviceLine = cardbookTypes.getIMPPLineForProtocol(serviceProtocol)
+							if (serviceLine[0]) {
+								var menuItem = document.createElement("menuitem");
+								var myRegexp = new RegExp("^" + serviceLine[2] + ":");
+								var myAddress = myIMPPs[i].replace(myRegexp, "");
+								menuItem.setAttribute("id", serviceLine[2] + ":" + myAddress);
+								menuItem.addEventListener("command", function(aEvent) {
+										cardbookUtils.openExternalURL(cardbookUtils.formatIMPPForOpenning(this.id));
+										aEvent.stopPropagation();
+									}, false);
+								menuItem.setAttribute("label", serviceLine[1] + ": " + myAddress);
+								myPopup.appendChild(menuItem);
+								myMenu.disabled = false;
 							}
 						}
 					}

@@ -128,9 +128,9 @@
 
 <!ENTITY IMPPGroupboxWarn "Toto nastavení umožňuje přímé otevření adresy IM s použitím správného protokolu.">
 <!ENTITY IMPPGroupboxLabel "Adresy IM">
-<!ENTITY preferIMPPPrefLabel "??Prefer Internet Communications marked with ??">
-<!ENTITY preferIMPPPrefAccesskey "P">
-<!ENTITY preferIMPPPrefWarn "??If no address is marked, a connection is proposed for all of the contact's addresses.??">
+<!ENTITY preferIMPPPrefLabel "Upřednostňovat internetovou komunikaci označenou ">
+<!ENTITY preferIMPPPrefAccesskey "i">
+<!ENTITY preferIMPPPrefWarn "Pokud není žádná adresa označena, je navrženo propojení všech adres kontaktu.">
 <!ENTITY IMPPCodeLabel "Kód">
 <!ENTITY IMPPLabelLabel "Popisek">
 <!ENTITY IMPPProtocolLabel "Protokol">
