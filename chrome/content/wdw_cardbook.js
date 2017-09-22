@@ -893,7 +893,6 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					var myTree = document.getElementById('accountsOrCatsTree');
 					var myTarget = myTree.view.getCellText(myTree.currentIndex, {id: "accountId"});
 					var myDirPrefId = cardbookUtils.getAccountId(myTarget);
-					var cardbookPrefService = new cardbookPreferenceService(myDirPrefId);
 					var myListOfCard = [];
 					
 					var dataArray = str.split("@@@@@");
@@ -902,6 +901,10 @@ if ("undefined" == typeof(wdw_cardbook)) {
 						for (var i = 0; i < dataLength; i++) {
 							if (cardbookRepository.cardbookCards[dataArray[i]]) {
 								var myCard = cardbookRepository.cardbookCards[dataArray[i]];
+								if (cardbookRepository.cardbookSearchMode === "SEARCH" || cardbookRepository.cardbookComplexSearchMode === "SEARCH") {
+									var myTarget = myCard.dirPrefId;
+									var myDirPrefId = myCard.dirPrefId;
+								}
 								if (myDirPrefId == myCard.dirPrefId) {
 									cardbookRepository.importConflictChoicePersist = true;
 									cardbookRepository.importConflictChoice = "duplicate";
