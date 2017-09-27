@@ -128,9 +128,9 @@
 
 <!ENTITY IMPPGroupboxWarn "Эти настройки позволяют осуществлять связь через Интернет, используя указанный протокол.">
 <!ENTITY IMPPGroupboxLabel "Интернет–связь">
-<!ENTITY preferIMPPPrefLabel "??Prefer Internet Communications marked with ??">
-<!ENTITY preferIMPPPrefAccesskey "P">
-<!ENTITY preferIMPPPrefWarn "??If no address is marked, a connection is proposed for all of the contact's addresses.??">
+<!ENTITY preferIMPPPrefLabel "Предпочитать способы интернет-связи, помеченные">
+<!ENTITY preferIMPPPrefAccesskey "и">
+<!ENTITY preferIMPPPrefWarn "Если ни один из способов связи не помечен, будет предложено установление соединения со всеми доступными адресами контакта.">
 <!ENTITY IMPPCodeLabel "Код">
 <!ENTITY IMPPLabelLabel "Метка">
 <!ENTITY IMPPProtocolLabel "Протокол">
