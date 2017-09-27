@@ -167,7 +167,7 @@
 <!ENTITY importCardFromFileLabel "Импортировать контакт из файла">
 <!ENTITY importCardFromDirLabel "Импортировать контакт из каталога">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Переименовать категорию">
-<!ENTITY convertCatFromAccountsOrCatsLabel "??Convert category to list??">
+<!ENTITY convertCatFromAccountsOrCatsLabel "Преобразовать категорию в список">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Удалить категорию">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Искать повторяющиеся контакты во текущей адресной книге">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Формировать поле «Отображаемое имя»">
