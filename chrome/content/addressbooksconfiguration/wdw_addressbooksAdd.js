@@ -64,13 +64,20 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 		},
 
 		checkUrlLinesRequired: function () {
-			for (var url in cardbookRepository.cardbookServerValidation) {
-				wdw_addressbooksAdd.checkLinesRequired(cardbookRepository.cardbookServerValidation[url]);
+			var myArray = [];
+			for (var rootUrl in cardbookRepository.cardbookServerValidation) {
+				for (var url in cardbookRepository.cardbookServerValidation[rootUrl]) {
+					if (url == "length") {
+						continue;
+					}
+					myArray.push([cardbookRepository.cardbookServerValidation[rootUrl][url].displayName]);
+				}
 			}
+			wdw_addressbooksAdd.checkLinesRequired(myArray);
 		},
 
 		checkStandardLinesRequired: function () {
-				wdw_addressbooksAdd.checkLinesRequired(wdw_addressbooksAdd.gStandardAddressbooks);
+			wdw_addressbooksAdd.checkLinesRequired(wdw_addressbooksAdd.gStandardAddressbooks);
 		},
 
 		checkLinesRequired: function (aArray) {
@@ -384,13 +391,14 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			if (wdw_addressbooksAdd.gCardDAVURLs.length > 0) {
 				cardbookNotifications.setNotification("resultNotifications", "ValidatingLabel", wdw_addressbooksAdd.gCardDAVURLs[0][0], "PRIORITY_INFO_MEDIUM");
 				cardbookSynchronization.initURLValidation(aDirPrefId);
-				cardbookRepository.cardbookServerValidation[aUrl] = [];
+				cardbookRepository.cardbookServerValidation[aUrl] = {length: 0};
 				cardbookRepository.cardbookServerSyncRequest[aDirPrefId]++;
 				var connection = {connUser: aUsername, connPrefId: aDirPrefId, connPrefIdType: aType, connUrl: wdw_addressbooksAdd.gCardDAVURLs[0][0], connDescription: wdw_addressbooksAdd.gValidateDescription};
+				var params = {aPrefIdType: document.getElementById('remotePageType').selectedItem.value};
 				if (wdw_addressbooksAdd.gCardDAVURLs[0][1]) {
-					cardbookSynchronization.discoverPhase1(connection, "GETDISPLAYNAME");
+					cardbookSynchronization.discoverPhase1(connection, "GETDISPLAYNAME", params);
 				} else {
-					cardbookSynchronization.validateWithoutDiscovery(connection);
+					cardbookSynchronization.validateWithoutDiscovery(connection, "GETDISPLAYNAME", params);
 				}
 				wdw_addressbooksAdd.waitForDiscoveryFinished(aDirPrefId, aUrl, aUsername, aPassword, aType);
 			}
@@ -514,16 +522,36 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				document.getElementById('urnuuidRow').removeAttribute('hidden');
 				if (wdw_addressbooksAdd.gType == 'FILE' || wdw_addressbooksAdd.gType == 'DIRECTORY') {
 					aTextbox.value = wdw_addressbooksAdd.gFile.leafName;
+					cardbookElementTools.loadVCardVersions("vCardVersionPageNameMenupopup", "vCardVersionPageName", "3.0");
 				} else if (wdw_addressbooksAdd.gType == 'GOOGLE') {
 					aTextbox.value = document.getElementById('remotePageUsername').value;
+					// does not work with 4.0
+					cardbookElementTools.loadVCardVersions("vCardVersionPageNameMenupopup", "vCardVersionPageName", "3.0", ["3.0"]);
+				} else if (wdw_addressbooksAdd.gType == 'APPLE') {
+					aTextbox.value = document.getElementById('remotePageUsername').value;
+					// list cannot be easily created in 4.0
+					cardbookElementTools.loadVCardVersions("vCardVersionPageNameMenupopup", "vCardVersionPageName", "3.0", ["3.0"]);
 				} else {
-					for (var url in cardbookRepository.cardbookServerValidation) {
-						aTextbox.value = cardbookUtils.undefinedToBlank(cardbookRepository.cardbookServerValidation[url][0][0]);
+					for (var rootUrl in cardbookRepository.cardbookServerValidation) {
+						for (var url in cardbookRepository.cardbookServerValidation[rootUrl]) {
+							if (url == "length") {
+								continue;
+							}
+							aTextbox.value = cardbookUtils.undefinedToBlank(cardbookRepository.cardbookServerValidation[rootUrl][url].displayName);
+						}
+					}
+					if (cardbookRepository.cardbookServerValidation[rootUrl][url].version.length > 0) {
+						if (cardbookRepository.cardbookServerValidation[rootUrl][url].version.includes("4.0")) {
+							cardbookElementTools.loadVCardVersions("vCardVersionPageNameMenupopup", "vCardVersionPageName", "4.0", cardbookRepository.cardbookServerValidation[rootUrl][url].version);
+						} else {
+							cardbookElementTools.loadVCardVersions("vCardVersionPageNameMenupopup", "vCardVersionPageName", "3.0", cardbookRepository.cardbookServerValidation[rootUrl][url].version);
+						}
+					} else {
+						cardbookElementTools.loadVCardVersions("vCardVersionPageNameMenupopup", "vCardVersionPageName", "3.0");
 					}
 				}
 				var aTextbox = document.getElementById('serverColorInput');
 				aTextbox.value = cardbookUtils.randomColor(100);
-				cardbookElementTools.loadVCardVersions("vCardVersionPageNameMenupopup", "vCardVersionPageName", "3.0");
 				cardbookElementTools.loadDateFormats("dateFormatMenuPopup", "dateFormatMenuList", "YYYY-MM-DD");
 			}
 			wdw_addressbooksAdd.checkRequired();
@@ -544,7 +572,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			}
 		},
 
-		createBoxes: function (aId, aName, aCallback) {
+		createBoxes: function (aId, aName, aVersionList, aCallback) {
 			var aListRows = document.getElementById('namesRows');
 			var aRow = document.createElement('row');
 			aListRows.appendChild(aRow);
@@ -588,7 +616,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			var aMenuPopup = document.createElement('menupopup');
 			aMenuList.appendChild(aMenuPopup);
 			aMenuPopup.setAttribute('id', 'vCardVersionPageNameMenupopup' + aId);
-			cardbookElementTools.loadVCardVersions(aMenuPopup.id, aMenuList.id, "3.0");
+			cardbookElementTools.loadVCardVersions(aMenuPopup.id, aMenuList.id, "3.0", aVersionList);
 			// different default date formats
 			aMenuList.addEventListener("popuphiding", function() {
 					var myId = this.id.replace('vCardVersionPageName', '');
@@ -619,13 +647,18 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 
 		loadNames: function () {
 			wdw_addressbooksAdd.deleteBoxes();
-			for (var url in cardbookRepository.cardbookServerValidation) {
-				for (var i = 0; i < cardbookRepository.cardbookServerValidation[url].length; i++) {
-					wdw_addressbooksAdd.createBoxes(cardbookRepository.cardbookServerValidation[url][i][0], cardbookRepository.cardbookServerValidation[url][i][0], wdw_addressbooksAdd.checkUrlLinesRequired);
+			for (var rootUrl in cardbookRepository.cardbookServerValidation) {
+				for (var url in cardbookRepository.cardbookServerValidation[rootUrl]) {
+					if (url == "length") {
+						continue;
+					}
+					wdw_addressbooksAdd.createBoxes(cardbookRepository.cardbookServerValidation[rootUrl][url].displayName, cardbookRepository.cardbookServerValidation[rootUrl][url].displayName,
+													cardbookRepository.cardbookServerValidation[rootUrl][url].version, wdw_addressbooksAdd.checkUrlLinesRequired);
 				}
 			}
 			for (var i = 0; i < wdw_addressbooksAdd.gStandardAddressbooks.length; i++) {
-				wdw_addressbooksAdd.createBoxes(wdw_addressbooksAdd.gStandardAddressbooks[i][0], wdw_addressbooksAdd.gStandardAddressbooks[i][1], wdw_addressbooksAdd.checkStandardLinesRequired);
+				wdw_addressbooksAdd.createBoxes(wdw_addressbooksAdd.gStandardAddressbooks[i][0], wdw_addressbooksAdd.gStandardAddressbooks[i][1],
+												cardbookRepository.supportedVersion, wdw_addressbooksAdd.checkStandardLinesRequired);
 			}
 			if (wdw_addressbooksAdd.gStandardAddressbooks.length > 0) {
 				wdw_addressbooksAdd.checkStandardLinesRequired();
@@ -683,34 +716,36 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				wdw_addressbooksAdd.gFinishParams.push({url: url, name: name, username: username, color: color, vcard: vCardVersion, readonly: readonly, dirPrefId: dirPrefId, dateFormat: dateFormat,
 															urnuuid: urnuuid, DBcached: true, firstAction: false});
 			} else if (wdw_addressbooksAdd.gType == 'CARDDAV') {
-				for (var url in cardbookRepository.cardbookServerValidation) {
-					if (cardbookRepository.cardbookServerValidation[url].length > 1) {
-						for (var i = 0; i < cardbookRepository.cardbookServerValidation[url].length; i++) {
-							var aCheckbox = document.getElementById('namesCheckbox' + cardbookRepository.cardbookServerValidation[url][i][0]);
+				for (var rootUrl in cardbookRepository.cardbookServerValidation) {
+					for (var url in cardbookRepository.cardbookServerValidation[rootUrl]) {
+						if (url == "length") {
+							continue;
+						}
+						if (cardbookRepository.cardbookServerValidation[rootUrl].length > 1) {
+							var aCheckbox = document.getElementById('namesCheckbox' + cardbookRepository.cardbookServerValidation[rootUrl][url].displayName);
 							if (aCheckbox.checked) {
 								var dirPrefId = cardbookUtils.getUUID();
-								var aAddressbookName = document.getElementById('namesTextbox' + cardbookRepository.cardbookServerValidation[url][i][0]).value;
-								var aAddressbookColor = document.getElementById('serverColorInput' + cardbookRepository.cardbookServerValidation[url][i][0]).value;
-								var aAddressbookVCard = document.getElementById('vCardVersionPageName' + cardbookRepository.cardbookServerValidation[url][i][0]).value;
-								var aAddressbookReadOnly = document.getElementById('readonlyCheckbox' + cardbookRepository.cardbookServerValidation[url][i][0]).checked;
-								var aAddressbookDateFormat = document.getElementById('dateFormatMenuList' + cardbookRepository.cardbookServerValidation[url][i][0]).value;
-								var aAddressbookUrnuuid = document.getElementById('urnuuidCheckbox' + cardbookRepository.cardbookServerValidation[url][i][0]).checked;
-								wdw_addressbooksAdd.gFinishParams.push({url: cardbookRepository.cardbookServerValidation[url][i][1], name: aAddressbookName, username: username, color: aAddressbookColor, 
+								var aAddressbookName = document.getElementById('namesTextbox' + cardbookRepository.cardbookServerValidation[rootUrl][url].displayName).value;
+								var aAddressbookColor = document.getElementById('serverColorInput' + cardbookRepository.cardbookServerValidation[rootUrl][url].displayName).value;
+								var aAddressbookVCard = document.getElementById('vCardVersionPageName' + cardbookRepository.cardbookServerValidation[rootUrl][url].displayName).value;
+								var aAddressbookReadOnly = document.getElementById('readonlyCheckbox' + cardbookRepository.cardbookServerValidation[rootUrl][url].displayName).checked;
+								var aAddressbookDateFormat = document.getElementById('dateFormatMenuList' + cardbookRepository.cardbookServerValidation[rootUrl][url].displayName).value;
+								var aAddressbookUrnuuid = document.getElementById('urnuuidCheckbox' + cardbookRepository.cardbookServerValidation[rootUrl][url].displayName).checked;
+								wdw_addressbooksAdd.gFinishParams.push({url: url, name: aAddressbookName, username: username, color: aAddressbookColor, 
 																		vcard: aAddressbookVCard, readonly: aAddressbookReadOnly, dirPrefId: dirPrefId, dateFormat: aAddressbookDateFormat,
 																		urnuuid: aAddressbookUrnuuid, DBcached: true, firstAction: false});
 							}
+						} else {
+							var name = document.getElementById('namePageName').value;
+							var color = document.getElementById('serverColorInput').value;
+							var vCardVersion = document.getElementById('vCardVersionPageName').value;
+							var readonly = document.getElementById('readonlyPageName').checked;
+							var dateFormat = document.getElementById('dateFormatMenuList').value;
+							var urnuuid = document.getElementById('urnuuidPageName').checked;
+							var dirPrefId = cardbookUtils.getUUID();
+							wdw_addressbooksAdd.gFinishParams.push({url: url, name: name, username: username, color: color, vcard: vCardVersion, readonly: readonly, dirPrefId: dirPrefId, dateFormat: dateFormat,
+																		urnuuid: urnuuid, DBcached: true, firstAction: false});
 						}
-					} else {
-						var url = cardbookRepository.cardbookServerValidation[url][0][1];
-						var name = document.getElementById('namePageName').value;
-						var color = document.getElementById('serverColorInput').value;
-						var vCardVersion = document.getElementById('vCardVersionPageName').value;
-						var readonly = document.getElementById('readonlyPageName').checked;
-						var dateFormat = document.getElementById('dateFormatMenuList').value;
-						var urnuuid = document.getElementById('urnuuidPageName').checked;
-						var dirPrefId = cardbookUtils.getUUID();
-						wdw_addressbooksAdd.gFinishParams.push({url: url, name: name, username: username, color: color, vcard: vCardVersion, readonly: readonly, dirPrefId: dirPrefId, dateFormat: dateFormat,
-																	urnuuid: urnuuid, DBcached: true, firstAction: false});
 					}
 				}
 			} else if (wdw_addressbooksAdd.gType == 'STANDARD') {

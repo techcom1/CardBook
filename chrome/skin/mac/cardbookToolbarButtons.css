@@ -3,7 +3,7 @@
 		list-style-image: url("chrome://messenger/skin/icons/mail-toolbar-osxlion.svg#address");
 	}
 	#cardbookToolbarSyncButton {
-		list-style-image: url("chrome://messenger/skin/icons/mail-toolbar-osxlion.svg#getmsg");
+		list-style-image: url("chrome://cardbook/skin/calendar-toolbar.svg#synchronize");
 	}
 	#cardbookToolbarWriteButton {
 		list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar-osxlion.svg#newmessage");
@@ -39,7 +39,7 @@
 		list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#address-flat");
 	}
 	#cardbookToolbarSyncButton {
-		list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#getmsg-flat");
+		list-style-image: url("chrome://cardbook/skin/calendar-toolbar.svg#synchronize-flat");
 	}
 	#cardbookToolbarWriteButton {
 		list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#newmessage-flat");
@@ -74,7 +74,7 @@ toolbar[brighttext] #cardbookToolbarAddServerButton {
 	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#address-inverted");
 }
 toolbar[brighttext] #cardbookToolbarSyncButton {
-	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#getmsg-inverted");
+	list-style-image: url("chrome://cardbook/skin/calendar-toolbar.svg#synchronize-inverted");
 }
 toolbar[brighttext] #cardbookToolbarWriteButton {
 	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#newmessage-inverted");

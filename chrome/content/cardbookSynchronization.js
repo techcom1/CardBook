@@ -442,7 +442,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			}
 			return "";
 		},
-		
+
 		getSlashedUrl: function (aUrl) {
 			aUrl = aUrl.trim();
 			if (aUrl[aUrl.length - 1] != '/') {
@@ -1491,7 +1491,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 		},
 
 		// only called at setup
-		validateWithoutDiscovery: function(aConnection) {
+		validateWithoutDiscovery: function(aConnection, aOperationType, aParams) {
 			cardbookUtils.jsInclude(["chrome://cardbook/content/cardbookWebDAV.js"]);
 			var listener_checkpropfind4 = {
 				onDAVQueryComplete: function(status, response, askCertificate) {
@@ -1500,7 +1500,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							var certificateExceptionAdded = false;
 							var certificateExceptionAdded = cardbookSynchronization.addCertificateException(aRootUrl);
 							if (certificateExceptionAdded) {
-								cardbookSynchronization.validateWithoutDiscovery(aConnection);
+								cardbookSynchronization.validateWithoutDiscovery(aConnection, aOperationType, aParams);
 							} else {
 								cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status], "Error");
 								cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
@@ -1536,18 +1536,22 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 												let rsrcType = prop["resourcetype"][0];
 												wdw_cardbooklog.updateStatusProgressInformationWithDebug2(aConnection.connDescription + " : rsrcType found : " + rsrcType.toSource());
 												if (rsrcType["vcard-collection"] || rsrcType["addressbook"]) {
-													var displayname = "";
+													var displayName = "";
 													if (prop["displayname"] != null && prop["displayname"] !== undefined && prop["displayname"] != "") {
-														displayname = prop["displayname"][0];
+														displayName = prop["displayname"][0];
 													}
 													wdw_cardbooklog.updateStatusProgressInformationWithDebug2(aConnection.connDescription + " : href found : " + href);
-													wdw_cardbooklog.updateStatusProgressInformationWithDebug2(aConnection.connDescription + " : displayname found : " + displayname);
+													wdw_cardbooklog.updateStatusProgressInformationWithDebug2(aConnection.connDescription + " : displayName found : " + displayName);
 													if (href.indexOf(aRootUrl) >= 0 ) {
 														aConnection.connUrl = href;
 													} else {
 														aConnection.connUrl = aRootUrl + href;
 													}
-													cardbookRepository.cardbookServerValidation[aRootUrl].push([displayname, aConnection.connUrl]);
+													cardbookRepository.cardbookServerValidation[aRootUrl]['length']++;
+													cardbookRepository.cardbookServerValidation[aRootUrl][aConnection.connUrl] = {}
+													cardbookRepository.cardbookServerValidation[aRootUrl][aConnection.connUrl].displayName = displayName;
+													var aABConnection = {connPrefId: aConnection.connPrefId, connUrl: aConnection.connUrl, connDescription: aConnection.connDescription};
+													cardbookSynchronization.discoverPhase4(aABConnection, aRootUrl, aOperationType, aParams);
 												}
 											}
 										}
@@ -1569,14 +1573,68 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					}
 				}
 			};
-			if (aConnection.connUrl[aConnection.connUrl.length - 1] != '/') {
-				aConnection.connUrl += '/';
-			}
 			var aRootUrl = cardbookSynchronization.getRootUrl(aConnection.connUrl);
 			cardbookRepository.cardbookServerDiscoveryRequest[aConnection.connPrefId]++;
 			cardbookUtils.formatStringForOutput("synchronizationRequestDiscovery", [aConnection.connDescription, aConnection.connUrl]);
 			var request = new cardbookWebDAV(aConnection, listener_checkpropfind4, "", true);
 			request.propfind(["DAV: resourcetype", "DAV: displayname"], true);
+		},
+
+		discoverPhase4: function(aConnection, aRootUrl, aOperationType, aParams) {
+			var listener_checkpropfind4 = {
+				onDAVQueryComplete: function(status, responseXML, askCertificate) {
+					if (status == 0) {
+						if (askCertificate) {
+							var certificateExceptionAdded = false;
+							var certificateExceptionAdded = cardbookSynchronization.addCertificateException(aRootUrl);
+							if (certificateExceptionAdded) {
+								cardbookSynchronization.discoverPhase4(aConnection, aRootUrl, aOperationType, aParams);
+							} else {
+								cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status], "Error");
+								cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
+								cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
+							}
+						} else {
+							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status], "Error");
+							cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
+							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
+						}
+						cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
+					} else if (responseXML && (status > 199 && status < 400)) {
+						if (responseXML.getElementsByTagName("card:address-data-type")) {
+							var versions = responseXML.getElementsByTagName("card:address-data-type");
+							for (let i = 0; i < versions.length; i++) {
+								if (versions[i].getAttribute("content-type") == "text/vcard") {
+									if (versions[i].getAttribute("version")) {
+										var myVersion = versions[i].getAttribute("version");
+										wdw_cardbooklog.updateStatusProgressInformationWithDebug2(aConnection.connDescription + " : version found : " + myVersion + " (" + aConnection.connUrl + ")");
+										cardbookRepository.cardbookServerValidation[aRootUrl][aConnection.connUrl].version.push(myVersion);
+									}
+								}
+							}
+						}
+						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
+						cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
+					} else {
+						// only if it is not an initial setup
+						if (aOperationType == "GETDISPLAYNAME" || !cardbookSynchronization.handleWrondPassword(aConnection, status, response)) {
+							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "discoverPhase4", aConnection.connUrl, status], "Error");
+						}
+						cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
+						cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
+						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
+					}
+				}
+			};
+			aConnection.connUrl = cardbookSynchronization.getSlashedUrl(aConnection.connUrl);
+			cardbookRepository.cardbookServerValidation[aRootUrl][aConnection.connUrl].version = [];
+			if (aParams.aPrefIdType == "APPLE") {
+				return;
+			}
+			cardbookRepository.cardbookServerDiscoveryRequest[aConnection.connPrefId]++;
+			cardbookUtils.formatStringForOutput("synchronizationRequestDiscovery4", [aConnection.connDescription, aConnection.connUrl]);
+			var request = new cardbookWebDAV(aConnection, listener_checkpropfind4, "", false);
+			request.propfind(["urn:ietf:params:xml:ns:carddav supported-address-data"], true);
 		},
 
 		discoverPhase3: function(aConnection, aRootUrl, aOperationType, aParams) {
@@ -1644,7 +1702,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 								prompts.alert(null, multipleAddressBooksTitle, multipleAddressBooksMsg);
 								cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 								cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
-								cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
 							} else {
 								for (var prop in jsonResponses) {
 									var jsonResponse = jsonResponses[prop];
@@ -1662,19 +1719,23 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 													let rsrcType = prop["resourcetype"][0];
 													wdw_cardbooklog.updateStatusProgressInformationWithDebug2(aConnection.connDescription + " : rsrcType found : " + rsrcType.toSource());
 													if (rsrcType["vcard-collection"] || rsrcType["addressbook"]) {
-														var displayname = "";
+														var displayName = "";
 														if (prop["displayname"] != null && prop["displayname"] !== undefined && prop["displayname"] != "") {
-															displayname = prop["displayname"][0];
+															displayName = prop["displayname"][0];
 														}
 														wdw_cardbooklog.updateStatusProgressInformationWithDebug2(aConnection.connDescription + " : href found : " + href);
-														wdw_cardbooklog.updateStatusProgressInformationWithDebug2(aConnection.connDescription + " : displayname found : " + displayname);
+														wdw_cardbooklog.updateStatusProgressInformationWithDebug2(aConnection.connDescription + " : displayName found : " + displayName);
 														if (href.indexOf("http") == 0 ) {
 															aConnection.connUrl = href;
 														} else {
 															aConnection.connUrl = aRootUrl + href;
 														}
 														if (aOperationType == "GETDISPLAYNAME") {
-															cardbookRepository.cardbookServerValidation[aRootUrl].push([displayname, aConnection.connUrl]);
+															cardbookRepository.cardbookServerValidation[aRootUrl]['length']++;
+															cardbookRepository.cardbookServerValidation[aRootUrl][aConnection.connUrl] = {}
+															cardbookRepository.cardbookServerValidation[aRootUrl][aConnection.connUrl].displayName = displayName;
+															var aABConnection = {connPrefId: aConnection.connPrefId, connUrl: aConnection.connUrl, connDescription: aConnection.connDescription};
+															cardbookSynchronization.discoverPhase4(aABConnection, aRootUrl, aOperationType, aParams);
 														} else if (aOperationType == "SYNCGOOGLE") {
 															cardbookSynchronization.googleSyncCards(aConnection, aParams.aMode, aParams.aPrefIdType);
 														} else if (aOperationType == "SYNCSERVER") {
@@ -1705,9 +1766,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					}
 				}
 			};
-			if (aConnection.connUrl[aConnection.connUrl.length - 1] != '/') {
-				aConnection.connUrl += '/';
-			}
+			aConnection.connUrl = cardbookSynchronization.getSlashedUrl(aConnection.connUrl);
 			cardbookRepository.cardbookServerDiscoveryRequest[aConnection.connPrefId]++;
 			cardbookUtils.formatStringForOutput("synchronizationRequestDiscovery3", [aConnection.connDescription, aConnection.connUrl]);
 			var request = new cardbookWebDAV(aConnection, listener_checkpropfind3, "", true);
@@ -1762,7 +1821,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 												aConnection.connUrl = aRootUrl + href;
 											}
 											cardbookSynchronization.discoverPhase3(aConnection, aRootUrl, aOperationType, aParams);
-											cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
 										}
 									}
 								}
@@ -1771,9 +1829,9 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						catch(e) {
 							wdw_cardbooklog.updateStatusProgressInformation(aConnection.connDescription + " : cardbookSynchronization.discoverPhase2 error : " + e + " : " + response.toSource(), "Error");
 							cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
-							cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 						}
+						cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
 					} else {
 						// only if it is not an initial setup
 						if (aOperationType == "GETDISPLAYNAME" || !cardbookSynchronization.handleWrondPassword(aConnection, status, response)) {
@@ -1785,9 +1843,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					}
 				}
 			};
-			if (aConnection.connUrl[aConnection.connUrl.length - 1] != '/') {
-				aConnection.connUrl += '/';
-			}
+			aConnection.connUrl = cardbookSynchronization.getSlashedUrl(aConnection.connUrl);
 			cardbookRepository.cardbookServerDiscoveryRequest[aConnection.connPrefId]++;
 			cardbookUtils.formatStringForOutput("synchronizationRequestDiscovery2", [aConnection.connDescription, aConnection.connUrl]);
 			var request = new cardbookWebDAV(aConnection, listener_checkpropfind2, "", true);
@@ -1839,7 +1895,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 											wdw_cardbooklog.updateStatusProgressInformationWithDebug2(aConnection.connDescription + " : current-user-principal found : " + href);
 											aConnection.connUrl = aRootUrl + href;
 											cardbookSynchronization.discoverPhase2(aConnection, aRootUrl, aOperationType, aParams);
-											cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
 										}
 									}
 								}
@@ -1848,9 +1903,9 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						catch(e) {
 							wdw_cardbooklog.updateStatusProgressInformation(aConnection.connDescription + " : cardbookSynchronization.discoverPhase1 error : " + e + " : " + response.toSource(), "Error");
 							cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
-							cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 						}
+						cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
 					} else {
 						// only if it is not an initial setup
 						if (aOperationType == "GETDISPLAYNAME" || !cardbookSynchronization.handleWrondPassword(aConnection, status, response)) {

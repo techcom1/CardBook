@@ -383,12 +383,16 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			document.getElementById(aMenuName).selectedIndex = defaultIndex;
 		},
 
-		loadVCardVersions: function (aPopupName, aMenuName, aDefaultValue) {
+		loadVCardVersions: function (aPopupName, aMenuName, aDefaultValue, aDefaultList) {
 			var myPopup = document.getElementById(aPopupName);
 			cardbookElementTools.deleteRows(aPopupName);
 			var defaultIndex = 0;
 			var j = 0;
-			var versions = [ '3.0', '4.0' ];
+			if (aDefaultList) {
+				var versions = aDefaultList;
+			} else {
+				var versions = cardbookRepository.supportedVersion;
+			}
 
 			for (var i in versions) {
 				var menuItem = document.createElement("menuitem");

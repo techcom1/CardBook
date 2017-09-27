@@ -28,6 +28,8 @@ var cardbookRepository = {
 
 	typesSeed : {"adr": ["HOME","WORK"], "email": ["HOME","WORK"], "impp": ["HOME","WORK"], "tel": ["CELL", "FAX", "HOME","WORK"], "url": ["HOME","WORK"]},
 
+	supportedVersion : ["3.0", "4.0"],
+
 	preferEmailPref : true,
 	preferIMPPPref : true,
 	
