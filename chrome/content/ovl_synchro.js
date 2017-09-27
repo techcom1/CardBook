@@ -25,6 +25,11 @@ if ("undefined" == typeof(ovl_synchro)) {
 				cardbookRepository.preferEmailPref = prefs.getBoolPref("extensions.cardbook.preferEmailPref");
 				cardbookRepository.preferIMPPPref = prefs.getBoolPref("extensions.cardbook.preferIMPPPref");
 				
+				// setting addonVersion, userAgent and prodid
+				cardbookRepository.addonVersion = prefs.getComplexValue("extensions.cardbook.addonVersion", Components.interfaces.nsISupportsString).data;
+				cardbookRepository.userAgent = "Thunderbird/" + Application.version + " CardBook/" + cardbookRepository.addonVersion;
+				cardbookRepository.prodid = "Thunderbird/" + Application.version + " CardBook/" + cardbookRepository.addonVersion;
+				
 				// migration functions (should be removed)
 				// removed : cardbookRepository.setSolveConflicts();
 				cardbookRepository.setCollected();

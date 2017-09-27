@@ -190,9 +190,8 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 
 		loadTitle: function () {
 			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-			var addonVersion = prefs.getComplexValue("extensions.cardbook.addonVersion", Components.interfaces.nsISupportsString).data;
 			var strBundle = document.getElementById("cardbook-strings");
-			document.title = strBundle.getString("cardbookPrefTitle") + " (" + addonVersion + ")";
+			document.title = strBundle.getString("cardbookPrefTitle") + " (" + cardbookRepository.addonVersion + ")";
 		},
 
 		loadPrefEmailPref: function () {

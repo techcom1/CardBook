@@ -39,8 +39,12 @@ if ("undefined" == typeof(wdw_logEdition)) {
 							myLogArray.push(myTree.view.getCellText(j, {id: "logEditionValue"}));
 						}
 					}
-					cardbookUtils.clipboardSet(myLogArray.join("\n"));
+				} else {
+					for (var i = 0; i < myTree.view.rowCount; i++) {
+						myLogArray.push(myTree.view.getCellText(i, {id: "logEditionValue"}));
+					}
 				}
+				cardbookUtils.clipboardSet(myLogArray.join("\n"));
 			}
 			catch (e) {
 				var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);

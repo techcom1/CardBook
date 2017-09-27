@@ -1197,6 +1197,9 @@ if ("undefined" == typeof(cardbookUtils)) {
 			if (aCard.dirPrefId != "" && aCard.uid != "") {
 				aCard.cbid = aCard.dirPrefId + "::" + aCard.uid;
 			}
+			if (aCard.prodid == "") {
+				aCard.prodid = cardbookRepository.prodid;
+			}
 		},
 
 		setCalculatedFields: function(aCard) {

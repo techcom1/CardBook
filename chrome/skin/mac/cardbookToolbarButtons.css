@@ -27,7 +27,7 @@
 		list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar-osxlion.svg#newlist");
 	}
 	#cardbookToolbarEditButton {
-		list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar-osxlion.svg#editcard");
+		list-style-image: url("chrome://cardbook/skin/calendar-toolbar.svg#edit");
 	}
 	#cardbookToolbarRemoveButton {
 		list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar-osxlion.svg#abdelete");
@@ -63,7 +63,7 @@
 		list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#newlist-flat");
 	}
 	#cardbookToolbarEditButton {
-		list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#editcard-flat");
+		list-style-image: url("chrome://cardbook/skin/calendar-toolbar.svg#edit-flat");
 	}
 	#cardbookToolbarRemoveButton {
 		list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#abdelete-flat");
@@ -99,7 +99,7 @@ toolbar[brighttext] #cardbookToolbarAddListButton {
 	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#newlist-inverted");
 }
 toolbar[brighttext] #cardbookToolbarEditButton {
-	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#editcard-inverted");
+	list-style-image: url("chrome://cardbook/skin/calendar-toolbar.svg#edit-inverted");
 }
 toolbar[brighttext] #cardbookToolbarRemoveButton {
 	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#abdelete-inverted");

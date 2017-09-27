@@ -54,10 +54,10 @@ toolbar[brighttext] #cardbookToolbarAddListButton {
 	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#newlist-inverted");
 }
 #cardbookToolbarEditButton {
-	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#editcard");
+	list-style-image: url("chrome://cardbook/skin/calendar-toolbar.svg#edit");
 }
 toolbar[brighttext] #cardbookToolbarEditButton {
-	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#editcard-inverted");
+	list-style-image: url("chrome://cardbook/skin/calendar-toolbar.svg#edit-inverted");
 }
 #cardbookToolbarRemoveButton {
 	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#abdelete");

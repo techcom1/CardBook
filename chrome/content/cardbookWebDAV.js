@@ -279,7 +279,7 @@ cardbookWebDAV.prototype = {
 
 			// headers["X-client"] = "CardBook (Thunderbird)";
 			// needed for Apple
-			headers["User-Agent"] = "Thunderbird CardBook/" + this.addonVersion;
+			headers["User-Agent"] = cardbookRepository.userAgent; // "Thunderbird CardBook/" + this.addonVersion;
 
 			// let httpAuthManager = Components.classes["@mozilla.org/network/http-auth-manager;1"].getService(Components.interfaces.nsIHttpAuthManager);
 			// httpAuthManager.clearAll();

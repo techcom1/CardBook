@@ -33,6 +33,10 @@ var cardbookRepository = {
 	preferEmailPref : true,
 	preferIMPPPref : true,
 	
+	addonVersion : "",
+	userAgent : "",
+	prodid : "",
+
 	cardbookAccounts : [],
 	cardbookAccountsCategories : {},
 	cardbookCards : {},

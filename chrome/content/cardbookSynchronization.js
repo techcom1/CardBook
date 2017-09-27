@@ -1550,7 +1550,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 													cardbookRepository.cardbookServerValidation[aRootUrl]['length']++;
 													cardbookRepository.cardbookServerValidation[aRootUrl][aConnection.connUrl] = {}
 													cardbookRepository.cardbookServerValidation[aRootUrl][aConnection.connUrl].displayName = displayName;
-													var aABConnection = {connPrefId: aConnection.connPrefId, connUrl: aConnection.connUrl, connDescription: aConnection.connDescription};
+													var aABConnection = {connPrefId: aConnection.connPrefId, connUser: aConnection.connUser, connUrl: aConnection.connUrl, connDescription: aConnection.connDescription};
 													cardbookSynchronization.discoverPhase4(aABConnection, aRootUrl, aOperationType, aParams);
 												}
 											}
@@ -1590,12 +1590,12 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							if (certificateExceptionAdded) {
 								cardbookSynchronization.discoverPhase4(aConnection, aRootUrl, aOperationType, aParams);
 							} else {
-								cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status], "Error");
+								cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "discoverPhase4", aConnection.connUrl, status], "Error");
 								cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 								cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 							}
 						} else {
-							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status], "Error");
+							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "discoverPhase4", aConnection.connUrl, status], "Error");
 							cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 						}
@@ -1734,7 +1734,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 															cardbookRepository.cardbookServerValidation[aRootUrl]['length']++;
 															cardbookRepository.cardbookServerValidation[aRootUrl][aConnection.connUrl] = {}
 															cardbookRepository.cardbookServerValidation[aRootUrl][aConnection.connUrl].displayName = displayName;
-															var aABConnection = {connPrefId: aConnection.connPrefId, connUrl: aConnection.connUrl, connDescription: aConnection.connDescription};
+															var aABConnection = {connPrefId: aConnection.connPrefId, connUser: aConnection.connUser, connUrl: aConnection.connUrl, connDescription: aConnection.connDescription};
 															cardbookSynchronization.discoverPhase4(aABConnection, aRootUrl, aOperationType, aParams);
 														} else if (aOperationType == "SYNCGOOGLE") {
 															cardbookSynchronization.googleSyncCards(aConnection, aParams.aMode, aParams.aPrefIdType);
