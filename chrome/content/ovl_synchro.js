@@ -27,8 +27,8 @@ if ("undefined" == typeof(ovl_synchro)) {
 				
 				// setting addonVersion, userAgent and prodid
 				cardbookRepository.addonVersion = prefs.getComplexValue("extensions.cardbook.addonVersion", Components.interfaces.nsISupportsString).data;
-				cardbookRepository.userAgent = "Thunderbird/" + Application.version + " CardBook/" + cardbookRepository.addonVersion;
-				cardbookRepository.prodid = "Thunderbird/" + Application.version + " CardBook/" + cardbookRepository.addonVersion;
+				cardbookRepository.userAgent = "Thunderbird CardBook/" + cardbookRepository.addonVersion;
+				cardbookRepository.prodid = "-//Thunderbird.org/NONSGML Thunderbird CardBook V"+ cardbookRepository.addonVersion + "//EN";
 				
 				// migration functions (should be removed)
 				// removed : cardbookRepository.setSolveConflicts();

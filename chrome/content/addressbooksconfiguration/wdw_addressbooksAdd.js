@@ -522,15 +522,15 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				document.getElementById('urnuuidRow').removeAttribute('hidden');
 				if (wdw_addressbooksAdd.gType == 'FILE' || wdw_addressbooksAdd.gType == 'DIRECTORY') {
 					aTextbox.value = wdw_addressbooksAdd.gFile.leafName;
-					cardbookElementTools.loadVCardVersions("vCardVersionPageNameMenupopup", "vCardVersionPageName", "3.0");
+					cardbookElementTools.loadVCardVersions("vCardVersionPageNameMenupopup", "vCardVersionPageName");
 				} else if (wdw_addressbooksAdd.gType == 'GOOGLE') {
 					aTextbox.value = document.getElementById('remotePageUsername').value;
 					// does not work with 4.0
-					cardbookElementTools.loadVCardVersions("vCardVersionPageNameMenupopup", "vCardVersionPageName", "3.0", ["3.0"]);
+					cardbookElementTools.loadVCardVersions("vCardVersionPageNameMenupopup", "vCardVersionPageName", ["3.0"]);
 				} else if (wdw_addressbooksAdd.gType == 'APPLE') {
 					aTextbox.value = document.getElementById('remotePageUsername').value;
 					// list cannot be easily created in 4.0
-					cardbookElementTools.loadVCardVersions("vCardVersionPageNameMenupopup", "vCardVersionPageName", "3.0", ["3.0"]);
+					cardbookElementTools.loadVCardVersions("vCardVersionPageNameMenupopup", "vCardVersionPageName", ["3.0"]);
 				} else {
 					for (var rootUrl in cardbookRepository.cardbookServerValidation) {
 						for (var url in cardbookRepository.cardbookServerValidation[rootUrl]) {
@@ -541,18 +541,18 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 						}
 					}
 					if (cardbookRepository.cardbookServerValidation[rootUrl][url].version.length > 0) {
-						if (cardbookRepository.cardbookServerValidation[rootUrl][url].version.includes("4.0")) {
-							cardbookElementTools.loadVCardVersions("vCardVersionPageNameMenupopup", "vCardVersionPageName", "4.0", cardbookRepository.cardbookServerValidation[rootUrl][url].version);
-						} else {
-							cardbookElementTools.loadVCardVersions("vCardVersionPageNameMenupopup", "vCardVersionPageName", "3.0", cardbookRepository.cardbookServerValidation[rootUrl][url].version);
-						}
+						cardbookElementTools.loadVCardVersions("vCardVersionPageNameMenupopup", "vCardVersionPageName", cardbookRepository.cardbookServerValidation[rootUrl][url].version);
 					} else {
-						cardbookElementTools.loadVCardVersions("vCardVersionPageNameMenupopup", "vCardVersionPageName", "3.0");
+						cardbookElementTools.loadVCardVersions("vCardVersionPageNameMenupopup", "vCardVersionPageName");
 					}
 				}
 				var aTextbox = document.getElementById('serverColorInput');
 				aTextbox.value = cardbookUtils.randomColor(100);
-				cardbookElementTools.loadDateFormats("dateFormatMenuPopup", "dateFormatMenuList", "YYYY-MM-DD");
+				if (document.getElementById("vCardVersionPageName").selectedItem.value == "3.0") {
+					cardbookElementTools.loadDateFormats("dateFormatMenuPopup", "dateFormatMenuList", "YYYY-MM-DD");
+				} else {
+					cardbookElementTools.loadDateFormats("dateFormatMenuPopup", "dateFormatMenuList", "YYYYMMDD");
+				}
 			}
 			wdw_addressbooksAdd.checkRequired();
 		},
@@ -616,7 +616,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			var aMenuPopup = document.createElement('menupopup');
 			aMenuList.appendChild(aMenuPopup);
 			aMenuPopup.setAttribute('id', 'vCardVersionPageNameMenupopup' + aId);
-			cardbookElementTools.loadVCardVersions(aMenuPopup.id, aMenuList.id, "3.0", aVersionList);
+			cardbookElementTools.loadVCardVersions(aMenuPopup.id, aMenuList.id, aVersionList);
 			// different default date formats
 			aMenuList.addEventListener("popuphiding", function() {
 					var myId = this.id.replace('vCardVersionPageName', '');
@@ -633,7 +633,11 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			var aMenuPopup = document.createElement('menupopup');
 			aMenuList.appendChild(aMenuPopup);
 			aMenuPopup.setAttribute('id', 'dateFormatMenuPopup' + aId);
-			cardbookElementTools.loadDateFormats(aMenuPopup.id, aMenuList.id, "YYYY-MM-DD");
+			if (document.getElementById('vCardVersionPageName' + aId).selectedItem.value == "3.0") {
+				cardbookElementTools.loadDateFormats(aMenuPopup.id, aMenuList.id, "YYYY-MM-DD");
+			} else {
+				cardbookElementTools.loadDateFormats(aMenuPopup.id, aMenuList.id, "YYYYMMDD");
+			}
 
 			var aCheckbox1 = document.createElement('checkbox');
 			aRow.appendChild(aCheckbox1);

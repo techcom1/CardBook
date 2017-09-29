@@ -1,5 +1,6 @@
 <!ENTITY cardbookMenuItemLabel "CardBook">
 <!ENTITY cardbookMenuItemAccesskey "b">
+<!ENTITY cardbookMenuItemKey "b">
 <!ENTITY cardbookMenuItemTooltip "Switch to the CardBook tab">
 
 <!ENTITY cardbookToolbarButtonLabel "CardBook">
@@ -10,6 +11,7 @@
 
 <!ENTITY newCardBookCardMenuLabel "CardBook Contact…">
 <!ENTITY newCardBookCardMenuAccesskey "C">
+<!ENTITY newCardBookCardMenuKey "N">
 <!ENTITY newCardBookSearchMenuLabel "Search CardBook…">
 <!ENTITY newCardBookSearchMenuAccesskey "C">
 <!ENTITY addToCardBookMenuLabel "Add CardBook Contact">

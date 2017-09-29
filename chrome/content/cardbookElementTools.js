@@ -383,7 +383,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			document.getElementById(aMenuName).selectedIndex = defaultIndex;
 		},
 
-		loadVCardVersions: function (aPopupName, aMenuName, aDefaultValue, aDefaultList) {
+		loadVCardVersions: function (aPopupName, aMenuName, aDefaultList) {
 			var myPopup = document.getElementById(aPopupName);
 			cardbookElementTools.deleteRows(aPopupName);
 			var defaultIndex = 0;
@@ -393,13 +393,18 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			} else {
 				var versions = cardbookRepository.supportedVersion;
 			}
+			if (versions.includes("4.0")) {
+				var defaultValue = "4.0";
+			} else {
+				var defaultValue = "3.0";
+			}
 
 			for (var i in versions) {
 				var menuItem = document.createElement("menuitem");
 				menuItem.setAttribute("label", versions[i]);
 				menuItem.setAttribute("value", versions[i]);
 				myPopup.appendChild(menuItem);
-				if (versions[i] == aDefaultValue) {
+				if (versions[i] == defaultValue) {
 					defaultIndex=j;
 				}
 				j++;

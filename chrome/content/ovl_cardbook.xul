@@ -31,14 +31,16 @@
 		</broadcasterset>
 	</window>
 
-	<!-- horrible hack to have the CardBookKey defined -->
+	<!-- horrible hack to have the CardBook keys defined -->
 	<keyset id="viewZoomKeys">
-		<key id="CardBookKey" key="&cardbookMenuItemAccesskey;" modifiers="accel, shift" oncommand="ovl_cardbook.open();"/>
+		<key id="CardBookKey" key="&cardbookMenuItemKey;" modifiers="accel, shift" oncommand="ovl_cardbook.open();"/>
+		<key id="CardBookNewContactKey" key="&newCardBookCardMenuKey;" modifiers="accel, shift" oncommand="wdw_cardbook.newKey();"/>
 	</keyset>
 
 	<menupopup id="menu_NewPopup">
 		<menuitem id="newCardBookCardMenu" label="&newCardBookCardMenuLabel;" accesskey="&newCardBookCardMenuAccesskey;"
-				insertafter="menu_newCard" oncommand="wdw_cardbook.createContact();"/>
+				key="CardBookNewContactKey"
+				insertafter="menu_newCard" oncommand="wdw_cardbook.newKey();"/>
 	</menupopup>
 	<menupopup id="menu_FindPopup">
 		<menuitem id="newCardBookSearchMenu" label="&newCardBookSearchMenuLabel;" accesskey="&newCardBookSearchMenuAccesskey;"

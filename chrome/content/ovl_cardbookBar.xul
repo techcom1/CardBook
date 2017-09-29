@@ -3,6 +3,8 @@
 <?xml-stylesheet href="chrome://messenger/skin/searchBox.css" type="text/css"?>
 <!-- for the icons of the CardBook main toolbar -->
 <?xml-stylesheet href="chrome://cardbook-os/skin/cardbookToolbarButtons.css" type="text/css"?>
+<!-- for the icons of the CardBook menus -->
+<?xml-stylesheet href="chrome://cardbook-os/skin/menuIcons.css" type="text/css"?>
 
 <!DOCTYPE window [
     <!ENTITY % brandDTD SYSTEM "chrome://branding/locale/brand.dtd"> %brandDTD;
@@ -76,7 +78,7 @@
 			<toolbarbutton id="cardbookToolbarAddContactButton"
 				label="&cardbookToolbarAddContactButtonLabel;"
 				tooltiptext="&cardbookToolbarAddContactButtonTooltip;"
-				oncommand="wdw_cardbook.createContact();"
+				oncommand="wdw_cardbook.newKey();"
 				class="toolbarbutton-1"/>
 			<toolbarbutton id="cardbookToolbarAddListButton"
 				label="&cardbookToolbarAddListButtonLabel;"
@@ -126,7 +128,7 @@
 					</menu>
 					<menu id="cardbookContactsMenu" label="&cardbookContactsMenuLabel;">
 						<menupopup onpopupshowing="wdw_cardbook.cardbookContactsMenuContextShowing();">
-							<menuitem id="cardbookContactsMenuAddContact" label="&cardbookToolbarAddContactButtonLabel;" oncommand="wdw_cardbook.createContact();"/>
+							<menuitem id="cardbookContactsMenuAddContact" label="&cardbookToolbarAddContactButtonLabel;" oncommand="wdw_cardbook.newKey();"/>
 							<menuitem id="cardbookContactsMenuAddList" label="&cardbookToolbarAddListButtonLabel;" oncommand="wdw_cardbook.createList();"/>
 							<menuitem id="cardbookContactsMenuEditContact" label="&cardbookToolbarEditButtonLabel;" oncommand="wdw_cardbook.editCard();"/>
 							<menuitem id="cardbookContactsMenuRemoveCard" label="&cardbookToolbarRemoveButtonLabel;" oncommand="wdw_cardbook.deleteCardsAndValidate('cardbook.cardRemovedDirect');"/>
@@ -289,7 +291,7 @@
 	</menupopup>
 
 	<menupopup id="cardsTreeContextMenu" onpopupshowing="return wdw_cardbook.cardsTreeContextShowing();">
-		<menuitem id="addContactFromCards" label="&cardbookToolbarAddContactButtonLabel;" oncommand="wdw_cardbook.createContact();"/>
+		<menuitem id="addContactFromCards" label="&cardbookToolbarAddContactButtonLabel;" oncommand="wdw_cardbook.newKey();"/>
 		<menuitem id="addListFromCards" label="&cardbookToolbarAddListButtonLabel;" oncommand="wdw_cardbook.createList();"/>
 		<menuitem id="editCardFromCards" label="&cardbookToolbarEditButtonLabel;" oncommand="wdw_cardbook.editCard();"/>
 		<menuitem id="removeCardFromCards" label="&cardbookToolbarRemoveButtonLabel;" oncommand="wdw_cardbook.deleteCardsAndValidate('cardbook.cardRemovedDirect');"/>

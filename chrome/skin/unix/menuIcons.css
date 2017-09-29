@@ -1,0 +1,63 @@
+﻿#cardbookToolsMenuOptions {
+	list-style-image: url("moz-icon://stock/gtk-preferences?size=menu");
+}
+
+#printFromAccountsOrCats,
+#printFromCards {
+  list-style-image: url("moz-icon://stock/gtk-print-preview?size=menu");
+}
+
+#cardbookAccountMenuCloseServer,
+#removeAccountFromAccountsOrCats {
+  list-style-image: url("moz-icon://stock/gtk-close?size=menu");
+}
+
+#removeCatFromAccountsOrCats,
+#cardbookContactsMenuRemoveCard,
+#removeCardFromCards {
+  list-style-image: url("moz-icon://stock/gtk-delete?size=menu");
+}
+
+#cardbookContactsMenuCutCards,
+#cutCardsFromAccountsOrCats,
+#cutCardsFromCards {
+  list-style-image: url("moz-icon://stock/gtk-cut?size=menu");
+}
+#cardbookContactsMenuCutCards[disabled],
+#cutCardsFromAccountsOrCats[disabled],
+#cutCardsFromCards[disabled] {
+  list-style-image: url("moz-icon://stock/gtk-cut?size=menu&state=disabled");
+}
+
+#copyadrTree,
+#copytelTree,
+#copyemailTree,
+#copyimppTree,
+#copyurlTree,
+#cardbookContactsMenuCopyCards,
+#copyCardsFromAccountsOrCats,
+#copyCardsFromCards {
+  list-style-image: url("moz-icon://stock/gtk-copy?size=menu");
+}
+#copyadrTree[disabled],
+#copytelTree[disabled],
+#copyemailTree[disabled],
+#copyimppTree[disabled],
+#copyurlTree[disabled],
+#cardbookContactsMenuCopyCards[disabled],
+#copyCardsFromAccountsOrCats[disabled],
+#copyCardsFromCards[disabled] {
+  list-style-image: url("moz-icon://stock/gtk-copy?size=menu&state=disabled");
+}
+
+#cardbookContactsMenuPasteCards,
+#pasteCardsFromAccountsOrCats,
+#pasteCardsFromCards {
+  list-style-image: url("moz-icon://stock/gtk-paste?size=menu");
+}
+#cardbookContactsMenuPasteCards[disabled],
+#pasteCardsFromAccountsOrCats[disabled],
+#pasteCardsFromCards[disabled] {
+  list-style-image: url("moz-icon://stock/gtk-paste?size=menu&state=disabled");
+}
+

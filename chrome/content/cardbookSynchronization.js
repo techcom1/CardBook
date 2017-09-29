@@ -1601,12 +1601,15 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						}
 						cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
 					} else if (responseXML && (status > 199 && status < 400)) {
-						if (responseXML.getElementsByTagName("card:address-data-type")) {
-							var versions = responseXML.getElementsByTagName("card:address-data-type");
-							for (let i = 0; i < versions.length; i++) {
-								if (versions[i].getAttribute("content-type") == "text/vcard") {
-									if (versions[i].getAttribute("version")) {
-										var myVersion = versions[i].getAttribute("version");
+						var prefixs = ["x0", "card"];
+						for (var i in prefixs) {
+							if (responseXML.getElementsByTagName(prefixs[i] + ":address-data-type")) {
+								var versions = responseXML.getElementsByTagName(prefixs[i] + ":address-data-type");
+							}
+							for (let j = 0; j < versions.length; j++) {
+								if (versions[j].getAttribute("content-type") == "text/vcard") {
+									if (versions[j].getAttribute("version")) {
+										var myVersion = versions[j].getAttribute("version");
 										wdw_cardbooklog.updateStatusProgressInformationWithDebug2(aConnection.connDescription + " : version found : " + myVersion + " (" + aConnection.connUrl + ")");
 										cardbookRepository.cardbookServerValidation[aRootUrl][aConnection.connUrl].version.push(myVersion);
 									}

@@ -973,11 +973,6 @@ if ("undefined" == typeof(wdw_cardbook)) {
 						wdw_cardbook.editComplexSearch();
 						aEvent.stopPropagation();
 						break;
-					case "n":
-					case "N":
-						wdw_cardbook.newKey();
-						aEvent.stopPropagation();
-						break;
 				}
 			} else {
 				if (aEvent.key == "Enter") {
