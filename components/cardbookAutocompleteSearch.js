@@ -355,7 +355,7 @@ cardbookAutocompleteSearch.prototype = {
 								for (var l = 0; l < myCard.email.length; l++) {
 									var myCurrentPopularity = 0;
 									if (cardbookRepository.cardbookMailPopularityIndex[myCard.email[l][0][0].toLowerCase()]) {
-										myCurrentPopularity = cardbookRepository.cardbookMailPopularityIndex[myCard.email[l][0][0].toLowerCase()];
+										myCurrentPopularity = parseInt(cardbookRepository.cardbookMailPopularityIndex[myCard.email[l][0][0].toLowerCase()]);
 										if (first) {
 											myMinPopularity = myCurrentPopularity;
 											first = false;

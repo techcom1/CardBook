@@ -1782,9 +1782,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 		},
 
 		addEtag: function(aCard, aEtag) {
-			if (!(aEtag != null && aEtag !== undefined && aEtag != "")) {
-				aEtag = "0";
-			} else {
+			if (aEtag != null && aEtag !== undefined && aEtag != "") {
 				var cardbookPrefService = new cardbookPreferenceService(aCard.dirPrefId);
 				var myPrefType = cardbookPrefService.getType();
 				if (myPrefType != "FILE" || myPrefType != "CACHE" || myPrefType != "DIRECTORY" || myPrefType != "LOCALDB") {

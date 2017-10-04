@@ -199,7 +199,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			var myCurrentDirPrefId = document.getElementById('dirPrefIdTextBox').value;
 			if (myCurrentDirPrefId != "") {
 				for (var i in cardbookRepository.cardbookCardSearch[myCurrentDirPrefId]) {
-					if (i.indexOf(searchValue) >= 0 || searchValue == "") {
+					if (i.includes(searchValue) || searchValue == "") {
 						for (var j = 0; j < cardbookRepository.cardbookCardSearch[myCurrentDirPrefId][i].length; j++) {
 							var myCard = cardbookRepository.cardbookCardSearch[myCurrentDirPrefId][i][j];
 							if (myCard.dirPrefId == myCurrentDirPrefId) {
