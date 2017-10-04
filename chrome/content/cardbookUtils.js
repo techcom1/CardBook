@@ -1487,7 +1487,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			return dataForExport;
 		},
 
-		getSelectedCardsForList: function (aTree) {
+		getSelectedColumnsForList: function (aTree) {
 			var myTreeName = aTree.id.replace("Tree", "");
 			var listOfUid = [];
 			var numRanges = aTree.view.selection.getRangeCount();
@@ -1502,11 +1502,26 @@ if ("undefined" == typeof(cardbookUtils)) {
 			return listOfUid;
 		},
 
+		getSelectedCardsForList: function (aTree) {
+			var myTreeName = aTree.id.replace("Tree", "");
+			var listOfUid = [];
+			var numRanges = aTree.view.selection.getRangeCount();
+			var start = new Object();
+			var end = new Object();
+			for (var i = 0; i < numRanges; i++) {
+				aTree.view.selection.getRangeAt(i,start,end);
+				for (var j = start.value; j <= end.value; j++){
+					listOfUid.push(aTree.view.getCellText(j, {id: myTreeName + "Uid"}));
+				}
+			}
+			return listOfUid;
+		},
+
 		setSelectedCardsForList: function (aTree, aListOfUid) {
 			var myTreeName = aTree.id.replace("Tree", "");
 			for (let i = 0; i < aTree.view.rowCount; i++) {
 				for (let j = 0; j < aListOfUid.length; j++) {
-					if (aTree.view.getCellText(i, {id: myTreeName + "Id"}) == aListOfUid[j][0]) {
+					if (aTree.view.getCellText(i, {id: myTreeName + "Id"}) == aListOfUid[j]) {
 						aTree.view.selection.rangedSelect(i,i,true);
 						break;
 					}
@@ -1577,28 +1592,6 @@ if ("undefined" == typeof(cardbookUtils)) {
 			}
 		},
 
-		setSelectedCardsId: function (aListOfUid, aFirstVisibleRow, aLastVisibleRow) {
-			if (aListOfUid.length == 0) {
-				return;
-			}
-			var foundIndex;
-			var myTree = document.getElementById('cardsTree');
-			for (var i = 0; i < aListOfUid.length; i++) {
-				for (var j = 0; j < myTree.view.rowCount; j++) {
-					if (myTree.view.getCellText(j, {id: "dirPrefId"})+"::"+myTree.view.getCellText(j, {id: "uid"}) == aListOfUid[i]) {
-						myTree.view.selection.rangedSelect(j,j,true);
-						foundIndex = j;
-						break;
-					}
-				}
-			}
-			if (foundIndex < aFirstVisibleRow || foundIndex > aLastVisibleRow) {
-				myTree.boxObject.scrollToRow(foundIndex);
-			} else {
-				myTree.boxObject.scrollToRow(aFirstVisibleRow);
-			}
-		},
-
 		getSelectedCardsDirPrefId: function () {
 			var myTree = document.getElementById('cardsTree');
 			var listOfUid = [];
@@ -1655,6 +1648,29 @@ if ("undefined" == typeof(cardbookUtils)) {
 				}
 			}
 			return -1;
+		},
+
+		displayColumnsPicker: function () {
+			if (document && document.popupNode) {
+				var target = document.popupNode;
+				// for persistence, save the custom columns state
+				if (target.localName == "treecol") {
+					let treecols = target.parentNode;
+					let nodeList = document.getAnonymousNodes(treecols);
+					let treeColPicker;
+					for (let i = 0; i < nodeList.length; i++) {
+						if (nodeList.item(i).localName == "treecolpicker") {
+							treeColPicker = nodeList.item(i);
+							break;
+						}
+					}
+					let popup = document.getAnonymousElementByAttribute(treeColPicker, "anonid", "popup");
+					treeColPicker.buildPopup(popup);
+					popup.openPopup(target, "after_start", 0, 0, true);
+					return false;
+				}
+			}
+			return true;
 		},
 
 		isThereNetworkAccountToSync: function() {

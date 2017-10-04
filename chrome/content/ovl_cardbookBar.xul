@@ -4,7 +4,7 @@
 <!-- for the icons of the CardBook main toolbar -->
 <?xml-stylesheet href="chrome://cardbook-os/skin/cardbookToolbarButtons.css" type="text/css"?>
 <!-- for the icons of the CardBook menus -->
-<?xml-stylesheet href="chrome://cardbook-os/skin/menuIcons.css" type="text/css"?>
+<?xml-stylesheet href="chrome://cardbook-os/skin/cardbookMenuIcons.css" type="text/css"?>
 
 <!DOCTYPE window [
     <!ENTITY % brandDTD SYSTEM "chrome://branding/locale/brand.dtd"> %brandDTD;

@@ -120,8 +120,8 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 			}
 			var myAvailableColumnsTree = document.getElementById('availableColumnsTree');
 			var myAddedColumnsTree = document.getElementById('addedColumnsTree');
-			var myAvailableColumns = cardbookUtils.getSelectedCardsForList(myAvailableColumnsTree);
-			var myAddedColumns = cardbookUtils.getSelectedCardsForList(myAddedColumnsTree);
+			var myAvailableColumns = cardbookUtils.getSelectedColumnsForList(myAvailableColumnsTree);
+			var myAddedColumns = cardbookUtils.getSelectedColumnsForList(myAddedColumnsTree);
 			switch (myAction) {
 				case "appendlistavailableColumnsTree":
 					for (var i = 0; i < myAvailableColumns.length; i++) {

@@ -27,7 +27,7 @@ if ("undefined" == typeof(wdw_birthdaySync)) {
 			if (cardbookBirthdaysUtils.lBirthdayList.length == 0) {
 				var today = new Date();
 				today = new Date(today.getTime() + maxDaysUntilNextBirthday * 24*60*60*1000);
-				var noBirthdaysFoundMessage = strBundle.getFormattedString("noBirthdaysFoundMessage", new Array(convertDateToString(today)));
+				var noBirthdaysFoundMessage = strBundle.getFormattedString("noBirthdaysFoundMessage", [cardbookDates.convertDateToDateString(today, 'YYYYMMDD')]);
 				var treeView = {
 					rowCount : 1,
 					getCellText : function(row,column){

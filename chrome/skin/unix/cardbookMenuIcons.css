@@ -1,4 +1,15 @@
-﻿#cardbookToolsMenuOptions {
+﻿#syncAccountFromAccountsOrCats,
+#cardbookAccountMenuSync,
+#cardbookAccountMenuSyncs {
+  list-style-image: url("moz-icon://stock/gtk-refresh?size=menu");
+}
+#syncAccountFromAccountsOrCats[disabled],
+#cardbookAccountMenuSync[disabled],
+#cardbookAccountMenuSyncs[disabled] {
+  list-style-image: url("moz-icon://stock/gtk-refresh?size=menu&state=disabled");
+}
+
+#cardbookToolsMenuOptions {
 	list-style-image: url("moz-icon://stock/gtk-preferences?size=menu");
 }
 
@@ -12,6 +23,7 @@
   list-style-image: url("moz-icon://stock/gtk-close?size=menu");
 }
 
+#deleteCard,
 #removeCatFromAccountsOrCats,
 #cardbookContactsMenuRemoveCard,
 #removeCardFromCards {

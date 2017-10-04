@@ -5,13 +5,18 @@ if ("undefined" == typeof(wdw_cardbookEventContacts)) {
 		attendeeId: "",
 		attendeeName: "",
 
-		sortTreesFromCol: function (aEvent, aColumn) {
-			if (aEvent.button == 0) {
-				wdw_cardbookEventContacts.sortTrees(aColumn);
+		sortTrees: function (aEvent) {
+			wdw_cardbookEventContacts.buttonShowing();
+			if (aEvent.button != 0) {
+				return;
+			}
+			var target = aEvent.originalTarget;
+			if (target.localName == "treecol") {
+				wdw_cardbookEventContacts.sortCardsTreeCol(target);
 			}
 		},
 
-		sortTrees: function (aColumn) {
+		sortCardsTreeCol: function (aColumn) {
 			var myTree = document.getElementById('eventsTree');
 			if (aColumn) {
 				if (myTree.currentIndex !== -1) {
@@ -79,27 +84,6 @@ if ("undefined" == typeof(wdw_cardbookEventContacts)) {
 			}
 		},
 
-		columnSelectorContextShowing: function (aEvent) {
-			var target = document.popupNode;
-			// If a column header was clicked, show the column picker.
-			if (target.localName == "treecol") {
-				let treecols = target.parentNode;
-				let nodeList = document.getAnonymousNodes(treecols);
-				let treeColPicker;
-				for (let i = 0; i < nodeList.length; i++) {
-					if (nodeList.item(i).localName == "treecolpicker") {
-						treeColPicker = nodeList.item(i);
-						break;
-					}
-				}
-				let popup = document.getAnonymousElementByAttribute(treeColPicker, "anonid", "popup");
-				treeColPicker.buildPopup(popup);
-				popup.openPopup(target, "after_start", 0, 0, true);
-				return false;
-			}
-			return true;
-		},
-
 		displayEvents: function () {
 			var eventsTreeView = {
 				get rowCount() { return wdw_cardbookEventContacts.allEvents.length; },
@@ -123,7 +107,7 @@ if ("undefined" == typeof(wdw_cardbookEventContacts)) {
 				}
 			}
 			document.getElementById('eventsTree').view = eventsTreeView;
-			wdw_cardbookEventContacts.selectEvents();
+			wdw_cardbookEventContacts.buttonShowing();
 		},
 
 		formatEventDateTime: function (aDatetime) {
@@ -138,7 +122,26 @@ if ("undefined" == typeof(wdw_cardbookEventContacts)) {
 			return null;
 		},
 
-		selectEvents: function() {
+		eventsTreeContextShowing: function () {
+			if (cardbookUtils.displayColumnsPicker()) {
+				wdw_cardbookEventContacts.eventsTreeContextShowingNext();
+				return true;
+			} else {
+				return false;
+			}
+		},
+
+		eventsTreeContextShowingNext: function () {
+			var menuEdit = document.getElementById("editEvent");
+			var myTree = document.getElementById("eventsTree");
+			if (myTree.view.selection.getRangeCount() > 0) {
+				menuEdit.disabled = false;
+			} else {
+				menuEdit.disabled = true;
+			}
+		},
+
+		buttonShowing: function () {
 			var btnEdit = document.getElementById("editEventLabel");
 			var myTree = document.getElementById("eventsTree");
 			if (myTree.view.selection.getRangeCount() > 0) {
@@ -255,7 +258,7 @@ if ("undefined" == typeof(wdw_cardbookEventContacts)) {
 					i--;
 				}
 			}
-			wdw_cardbookEventContacts.sortTrees(null);
+			wdw_cardbookEventContacts.sortCardsTreeCol(null);
 		},
 
 		loadEvents: function () {

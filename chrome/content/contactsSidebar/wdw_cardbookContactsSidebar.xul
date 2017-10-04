@@ -2,6 +2,8 @@
 <?xml-stylesheet href="chrome://messenger/skin/searchBox.css" type="text/css"?>
 <?xml-stylesheet href="chrome://messenger/skin/addressbook/abContactsPanel.css" type="text/css"?>
 <?xml-stylesheet href="chrome://cardbook/skin/cardbookAddressBooks.css" type="text/css"?>
+<!-- for the icons of the CardBook menus -->
+<?xml-stylesheet href="chrome://cardbook-os/skin/cardbookMenuIcons.css" type="text/css"?>
 
 <?xul-overlay href="chrome://cardbook/content/ovl_cardbookStringBundle.xul"?>
 
@@ -44,7 +46,7 @@
 		<key id="selectAllKey" modifiers="control" key="a" oncommand="wdw_cardbookContactsSidebar.selectAllKey();"/>
 	</keyset>
 
-	<menupopup id="cardProperties" onpopupshowing="return wdw_cardbookContactsSidebar.cardPropertiesMenuContextShowing(event);">
+	<menupopup id="cardProperties" onpopupshowing="return wdw_cardbookContactsSidebar.cardPropertiesMenuContextShowing();">
 		<menuitem id="toEmail" label="&addtoToFieldMenu.label;" accesskey="&addtoToFieldMenu.accesskey;" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_to');"/>
 		<menuitem id="ccEmail" label="&addtoCcFieldMenu.label;" accesskey="&addtoCcFieldMenu.accesskey;" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_cc');"/>
 		<menuitem id="bccEmail" label="&addtoBccFieldMenu.label;" accesskey="&addtoBccFieldMenu.accesskey;" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_bcc');"/>

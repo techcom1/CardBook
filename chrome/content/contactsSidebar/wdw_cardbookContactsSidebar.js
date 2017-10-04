@@ -593,26 +593,13 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 			myTree.view.selection.selectAll();
 		},
 
-		cardPropertiesMenuContextShowing: function (aEvent) {
-			var target = document.popupNode;
-			// If a column header was clicked, show the column picker.
-			if (target.localName == "treecol") {
-				let treecols = target.parentNode;
-				let nodeList = document.getAnonymousNodes(treecols);
-				let treeColPicker;
-				for (let i = 0; i < nodeList.length; i++) {
-					if (nodeList.item(i).localName == "treecolpicker") {
-						treeColPicker = nodeList.item(i);
-						break;
-					}
-				}
-				let popup = document.getAnonymousElementByAttribute(treeColPicker, "anonid", "popup");
-				treeColPicker.buildPopup(popup);
-				popup.openPopup(target, "after_start", 0, 0, true);
+		cardPropertiesMenuContextShowing: function () {
+			if (cardbookUtils.displayColumnsPicker()) {
+				wdw_cardbookContactsSidebar.cardPropertiesMenuContextShowingNext();
+				return true;
+			} else {
 				return false;
 			}
-			wdw_cardbookContactsSidebar.cardPropertiesMenuContextShowingNext();
-			return true;
 		},
 
 		cardPropertiesMenuContextShowingNext: function () {

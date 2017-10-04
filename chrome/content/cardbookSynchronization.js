@@ -2690,6 +2690,12 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						}
 						cardbookRepository.saveCard(myNullCard, aNewCard, aSource);
 						break;
+					case "update":
+						if (cardbookRepository.cardbookCards[myTargetPrefId+"::"+aNewCard.uid]) {
+							var myTargetCard = cardbookRepository.cardbookCards[myTargetPrefId+"::"+aNewCard.uid];
+							cardbookRepository.saveCard(myTargetCard, aNewCard, aSource);
+						}
+						break;
 					case "merge":
 						var myTargetCard = cardbookRepository.cardbookCards[myTargetPrefId+"::"+aNewCard.uid];
 						var myArgs = {cardsIn: [myTargetCard, aNewCard], cardsOut: [], hideCreate: false, action: ""};

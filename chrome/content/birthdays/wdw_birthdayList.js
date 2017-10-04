@@ -1,6 +1,32 @@
 if ("undefined" == typeof(wdw_birthdayList)) {  
 	var wdw_birthdayList = {
 		
+		sortTrees: function (aEvent) {
+			wdw_birthdayList.buttonShowing();
+			if (aEvent.button != 0) {
+				return;
+			}
+		},
+
+		birthdayListTreeContextShowing: function () {
+			if (cardbookUtils.displayColumnsPicker()) {
+				wdw_birthdayList.birthdayListTreeContextShowingNext();
+				return true;
+			} else {
+				return false;
+			}
+		},
+
+		birthdayListTreeContextShowingNext: function () {
+			var menuSend = document.getElementById("sendEmail");
+			var myTree = document.getElementById("birthdayListTree");
+			if (myTree.view.selection.getRangeCount() > 0) {
+				menuSend.disabled = false;
+			} else {
+				menuSend.disabled = true;
+			}
+		},
+
 		enableSyncList: function(addon) {
 			if (addon && addon.isActive) {
 				document.getElementById('syncLightningMenuItemLabel').disabled = false;
@@ -53,7 +79,7 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 			if (cardbookBirthdaysUtils.lBirthdayList.length == 0) {
 				var today = new Date();
 				today = new Date(today.getTime() + maxDaysUntilNextBirthday *24*60*60*1000);
-				var noBirthdaysFoundMessage = strBundle.getFormattedString("noBirthdaysFoundMessage", new Array(convertDateToString(today)));
+				var noBirthdaysFoundMessage = strBundle.getFormattedString("noBirthdaysFoundMessage", [cardbookDates.convertDateToDateString(today, 'YYYYMMDD')]);
 				var treeView = {
 					rowCount : 1,
 					getCellText : function(row,column){
@@ -84,6 +110,7 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 			}
 			document.getElementById('birthdayListTree').view = treeView;
 			document.title=strBundle.getFormattedString("birthdaysListWindowLabel", [cardbookBirthdaysUtils.lBirthdayList.length.toString()]);
+			wdw_birthdayList.buttonShowing();
 		},
 	
 		configure: function () {
@@ -94,6 +121,16 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 	
 		displaySyncList: function() {
 			var MyWindows = window.openDialog("chrome://cardbook/content/birthdays/wdw_birthdaySync.xul", "", "chrome,centerscreen,modal,resizable");
+		},
+
+		buttonShowing: function () {
+			var btnSend = document.getElementById("sendEmailLabel");
+			var myTree = document.getElementById("birthdayListTree");
+			if (myTree.view.selection.getRangeCount() > 0) {
+				btnSend.disabled = false;
+			} else {
+				btnSend.disabled = true;
+			}
 		},
 
 		sendEmail: function () {
