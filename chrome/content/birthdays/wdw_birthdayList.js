@@ -1,4 +1,4 @@
-if ("undefined" == typeof(wdw_birthdayList)) {  
+if ("undefined" == typeof(wdw_birthdayList)) {
 	var wdw_birthdayList = {
 		
 		sortTrees: function (aEvent) {
@@ -36,7 +36,7 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 		},
 
 		setupWindow: function () {
-			Components.utils.import("resource://gre/modules/AddonManager.jsm");  
+			Components.utils.import("resource://gre/modules/AddonManager.jsm");
 			AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, this.enableSyncList);
 		},
 	
@@ -96,7 +96,7 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 					},
 					getCellProperties: function(row, column) {
 						return this.getRowProperties(row);
-					}, 
+					},
 					getCellText: function(row, column){
 						if (column.id == "daysleft") return cardbookBirthdaysUtils.lBirthdayList[row][0];
 						else if (column.id == "name") return cardbookBirthdaysUtils.lBirthdayList[row][1];
@@ -175,5 +175,5 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 		do_close: function () {
 			close();
 		}
-	}; 
+	};
 };

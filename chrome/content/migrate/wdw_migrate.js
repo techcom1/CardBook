@@ -84,7 +84,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 						if (myProp != "") {
 							if (lString != "") {
 								lString = lString + "\n" + myProp;
-							} else { 
+							} else {
 								lString = myProp;
 							}
 						}
@@ -231,7 +231,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 					}
 					break;
 				}
-			}	
+			}
 			cardbookMailPopularity.writeMailPopularity();
 			wdw_migrate.writeCustomToPreference();
 			cardbookRepository.cardbookDirResponse[aDirPrefIdTarget]++;

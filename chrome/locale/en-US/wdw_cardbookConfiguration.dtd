@@ -90,7 +90,7 @@
 <!ENTITY showNameAsFLAccesskey "e">
 <!ENTITY showNameAsDSPLabel "Display Name">
 <!ENTITY showNameAsDSPAccesskey "D">
-<!ENTITY fnLabelExplanation "It is possible to customize the way CardBook generates its Display Name. This formula consists in blocks enclosed by '()'. In these blocks, there are two parts delimited by '|'. 
+<!ENTITY fnLabelExplanation "It is possible to customize the way CardBook generates its Display Name. This formula consists in blocks enclosed by '()'. In these blocks, there are two parts delimited by '|'.
 								The first part applies when the term involved, for example {{1}}, is not null, the second part applies when the term involved is null.">
 <!ENTITY fnFormulaLabel "Generate Display Name">
 <!ENTITY fnFormulaAccesskey "y">

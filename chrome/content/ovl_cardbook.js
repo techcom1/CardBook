@@ -237,7 +237,7 @@ window.addEventListener("load", function(e) {
 
 	// for CardBook toolbar if Lightning is not installed
 	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
-	Components.utils.import("resource://gre/modules/AddonManager.jsm");  
+	Components.utils.import("resource://gre/modules/AddonManager.jsm");
 	AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, ovl_cardbook.overrideToolbarMenu);
 	
 	window.removeEventListener('load', arguments.callee, true);

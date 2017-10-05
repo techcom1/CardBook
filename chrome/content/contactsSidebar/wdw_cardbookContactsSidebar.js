@@ -771,7 +771,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 			}
 		},
 		
-		// works only for the initial start, not when the identity is changed 
+		// works only for the initial start, not when the identity is changed
 		waitForMsgIdentityFinished: function () {
 			var lTimerMsgIdentity = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);
 			lTimerMsgIdentity.initWithCallback({ notify: function(lTimerMsgIdentity) {

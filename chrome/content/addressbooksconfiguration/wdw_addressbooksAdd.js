@@ -735,7 +735,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 								var aAddressbookReadOnly = document.getElementById('readonlyCheckbox' + cardbookRepository.cardbookServerValidation[rootUrl][url].displayName).checked;
 								var aAddressbookDateFormat = document.getElementById('dateFormatMenuList' + cardbookRepository.cardbookServerValidation[rootUrl][url].displayName).value;
 								var aAddressbookUrnuuid = document.getElementById('urnuuidCheckbox' + cardbookRepository.cardbookServerValidation[rootUrl][url].displayName).checked;
-								wdw_addressbooksAdd.gFinishParams.push({url: url, name: aAddressbookName, username: username, color: aAddressbookColor, 
+								wdw_addressbooksAdd.gFinishParams.push({url: url, name: aAddressbookName, username: username, color: aAddressbookColor,
 																		vcard: aAddressbookVCard, readonly: aAddressbookReadOnly, dirPrefId: dirPrefId, dateFormat: aAddressbookDateFormat,
 																		urnuuid: aAddressbookUrnuuid, DBcached: true, firstAction: false});
 							}
@@ -769,7 +769,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 							var aFirstAction = false;
 						}
 						wdw_addressbooksAdd.gFinishParams.push({sourceDirPrefId: wdw_addressbooksAdd.gStandardAddressbooks[i][0],
-																name: aAddressbookName, username: "", color: aAddressbookColor, vcard: aAddressbookVCard, readonly: aAddressbookReadOnly, 
+																name: aAddressbookName, username: "", color: aAddressbookColor, vcard: aAddressbookVCard, readonly: aAddressbookReadOnly,
 																dirPrefId: aAddressbookId, collected: wdw_addressbooksAdd.gStandardAddressbooks[i][2], dateFormat: aAddressbookDateFormat,
 																urnuuid: aAddressbookUrnuuid, DBcached: true, firstAction: aFirstAction});
 					}
@@ -793,7 +793,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				var dateFormat = document.getElementById('dateFormatMenuList').value;
 				var urnuuid = document.getElementById('urnuuidPageName').checked;
 				var dirPrefId = cardbookUtils.getUUID();
-				wdw_addressbooksAdd.gFinishParams.push({actionType: wdw_addressbooksAdd.gTypeFile, file: wdw_addressbooksAdd.gFile, dirname: dirname, name: name, username: "", 
+				wdw_addressbooksAdd.gFinishParams.push({actionType: wdw_addressbooksAdd.gTypeFile, file: wdw_addressbooksAdd.gFile, dirname: dirname, name: name, username: "",
 														color: color, vcard: vCardVersion, readonly: readonly, dirPrefId: dirPrefId, dateFormat: dateFormat, urnuuid: urnuuid, DBcached: false, firstAction: false});
 			}
 		},

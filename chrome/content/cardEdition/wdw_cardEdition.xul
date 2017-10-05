@@ -75,7 +75,7 @@
 	<tabbox id="wdw_cardEditionTabbox" flex="1">
 		
 		<tabs>
-			<tab id="generalTab" label="&generalTabLabel;"/>        
+			<tab id="generalTab" label="&generalTabLabel;"/>
 			<tab id="noteTab" label="&noteTabLabel;"/>
 			<tab id="mailPopularityTab" label="&mailPopularityTabLabel;"/>
 		</tabs>

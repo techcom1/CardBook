@@ -42,7 +42,7 @@
 	</tree>
 
 	<hbox>
-		<spacer flex="1"/>  
+		<spacer flex="1"/>
 		<button label="&closeEditionLabel;" accesskey="&closeEditionAccesskey;" oncommand="wdw_birthdaySync.do_close();"/>
 	</hbox>
 </window>

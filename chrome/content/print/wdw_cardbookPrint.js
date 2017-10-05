@@ -5,7 +5,7 @@ if ("undefined" == typeof(wdw_cardbookPrint)) {
             var iframeDoc = document.getElementById("content").contentDocument;
 			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			cardbookRepository.reloadCss("chrome://cardbook/skin/cardbookDataPrint.css");
-            var myHTML = cardbookPrint.buildHTML(window.arguments[0].listOfCards, document.getElementById("titleTextBox").value, 
+            var myHTML = cardbookPrint.buildHTML(window.arguments[0].listOfCards, document.getElementById("titleTextBox").value,
 																		{ display: document.getElementById("displayCheckBox").checked,
 																			headers: document.getElementById("displayHeadersCheckBox").checked,
 																			fieldNames: document.getElementById("displayFieldNamesCheckBox").checked,
@@ -103,7 +103,7 @@ if ("undefined" == typeof(wdw_cardbookPrint)) {
 			
 			/* See if we got arguments.
 			* Window was opened via window.openDialog.  Copy argument
-			* and perform compose initialization 
+			* and perform compose initialization
 			*/
 			if ( window.arguments && window.arguments[0] != null ) {
 				wdw_cardbookPrint.printEngine.doPrintPreview = window.arguments[0].doPrintPreview;

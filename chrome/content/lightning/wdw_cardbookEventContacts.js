@@ -1,4 +1,4 @@
-if ("undefined" == typeof(wdw_cardbookEventContacts)) {  
+if ("undefined" == typeof(wdw_cardbookEventContacts)) {
 	var wdw_cardbookEventContacts = {
 		allEvents: [],
 		emailArray: [],
@@ -287,7 +287,7 @@ if ("undefined" == typeof(wdw_cardbookEventContacts)) {
 		do_close: function () {
 			close();
 		}
-	}; 
+	};
 };
 
 function ensureCalendarVisible(aCalendar) {};

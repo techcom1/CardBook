@@ -227,7 +227,7 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 			if (window.arguments[0].mode == "import") {
 				wdw_csvTranslator.loadFoundColumns();
 			}
-            
+
 		},
 
 		save: function () {

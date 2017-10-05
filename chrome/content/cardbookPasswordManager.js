@@ -18,7 +18,6 @@ if ("undefined" == typeof(cardbookPasswordManager)) {
 		},
 		
 		getNotNullPassword: function (aUsername, aPrefId) {
-			cardbookUtils.jsInclude(["chrome://cardbook/content/preferences/cardbookPreferences.js"]);
 			var cardbookPrefService = new cardbookPreferenceService(aPrefId);
 			var myUrl = cardbookPrefService.getUrl();
 			var result = cardbookPasswordManager.getPassword(aUsername, myUrl);
@@ -35,7 +34,6 @@ if ("undefined" == typeof(cardbookPasswordManager)) {
 		},
 		
 		getChangedPassword: function (aUsername, aPrefId) {
-			cardbookUtils.jsInclude(["chrome://cardbook/content/preferences/cardbookPreferences.js"]);
 			var cardbookPrefService = new cardbookPreferenceService(aPrefId);
 			var myUrl = cardbookPrefService.getUrl();
 			var myArgs = {site: myUrl, username: aUsername, password: "", context: "Wrong", action: ""};
@@ -96,4 +94,6 @@ if ("undefined" == typeof(cardbookPasswordManager)) {
 		
 	};
 
+	var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
+	loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");
 };

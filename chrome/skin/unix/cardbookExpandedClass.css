@@ -1,4 +1,4 @@
-﻿.cardbookExpandedClass {
+.cardbookExpandedClass {
 	list-style-image: url("chrome://global/skin/tree/twisty-clsd.png");
 }
 .cardbookExpandedClass[expanded="true"] {

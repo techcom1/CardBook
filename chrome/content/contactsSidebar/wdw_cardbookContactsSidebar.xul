@@ -28,7 +28,7 @@
 	<script type="application/javascript" src="chrome://messenger/content/addressbook/abCommon.js"/>
 	<!-- for drag and drop -->
 	<script type="application/javascript" src="chrome://global/content/nsDragAndDrop.js"/>
-  
+
 	<script src="chrome://cardbook/content/wdw_log.js"/>
 	<script src="chrome://cardbook/content/cardbookUtils.js"/>
 	<script src="chrome://cardbook/content/cardbookElementTools.js"/>

@@ -53,7 +53,7 @@
 	</tree>
 
 	<hbox>
-		<spacer flex="1"/>  
+		<spacer flex="1"/>
 		<button id="sendEmailLabel" label="&sendEmailLabel;" accesskey="&sendEmailAccesskey;" oncommand="wdw_birthdayList.sendEmail();"/>
 		<button id="syncLightningMenuItemLabel" label="&syncLightningMenuItemLabel;" accesskey="&syncLightningMenuAccesskey;" oncommand="wdw_birthdayList.displaySyncList();"/>
 		<button id="configurationButtonLabel" label="&configurationButtonLabel;" accesskey="&configurationButtonAccesskey;" oncommand="wdw_birthdayList.configure();"/>

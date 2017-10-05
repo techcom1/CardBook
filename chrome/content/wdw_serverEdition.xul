@@ -82,9 +82,9 @@
 					<row align="center">
 						<label value="&dateFormatLabel;" control="dateFormatMenuList"/>
 						<hbox align="center">
-							<menulist id="dateFormatMenuList">  
+							<menulist id="dateFormatMenuList">
 								<menupopup id="dateFormatMenuPopup"/>
-							</menulist>    
+							</menulist>
 						</hbox>
 					</row>
 				</rows>

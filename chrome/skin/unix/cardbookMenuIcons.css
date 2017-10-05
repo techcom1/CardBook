@@ -1,4 +1,4 @@
-﻿#syncAccountFromAccountsOrCats,
+#syncAccountFromAccountsOrCats,
 #cardbookAccountMenuSync,
 #cardbookAccountMenuSyncs {
   list-style-image: url("moz-icon://stock/gtk-refresh?size=menu");
@@ -17,6 +17,10 @@
 #printFromCards {
   list-style-image: url("moz-icon://stock/gtk-print-preview?size=menu");
 }
+#printFromAccountsOrCats[disabled],
+#printFromCards[disabled] {
+  list-style-image: url("moz-icon://stock/gtk-print-preview?size=menu&state=disabled");
+}
 
 #cardbookAccountMenuCloseServer,
 #removeAccountFromAccountsOrCats {
@@ -28,6 +32,12 @@
 #cardbookContactsMenuRemoveCard,
 #removeCardFromCards {
   list-style-image: url("moz-icon://stock/gtk-delete?size=menu");
+}
+#deleteCard[disabled],
+#removeCatFromAccountsOrCats[disabled],
+#cardbookContactsMenuRemoveCard[disabled],
+#removeCardFromCards[disabled] {
+  list-style-image: url("moz-icon://stock/gtk-delete?size=menu&state=disabled");
 }
 
 #cardbookContactsMenuCutCards,

@@ -142,7 +142,7 @@ if ("undefined" == typeof(ovl_list)) {
 		// 	let inputValue = awGetInputElement(row).value.trim();
 		// 	ovl_list.mailListNameExistsInCardBook(inputValue.replace(/ *<.*>/, ""));
 		// }
-        // 
+        //
 		// return the original result
 		gSendLocked = false;
 		// return rv;

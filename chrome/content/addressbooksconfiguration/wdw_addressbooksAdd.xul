@@ -261,9 +261,9 @@
 				<separator class="groove-thin"/>
 				<row id="dateFormatRow" align="center">
 					<label value="&dateFormatLabel;" control="dateFormatMenuList"/>
-					<menulist id="dateFormatMenuList">  
+					<menulist id="dateFormatMenuList">
 						<menupopup id="dateFormatMenuPopup"/>
-					</menulist>    
+					</menulist>
 				</row>
 				<separator class="groove-thin"/>
 				<row id="readonlyRow" align="center">

@@ -1156,7 +1156,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		displayTypes: function () {
 			var typesTreeView = {
 				typeField: document.getElementById('typesCategoryRadiogroup').selectedItem.value,
-				get rowCount() { 
+				get rowCount() {
 					if (wdw_cardbookConfiguration.allTypes[this.typeField]) {
 						return wdw_cardbookConfiguration.allTypes[this.typeField].length;
 					} else {
@@ -1313,7 +1313,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		displayIMPPs: function () {
 			var IMPPsTreeView = {
 				typeField: document.getElementById('imppsCategoryRadiogroup').selectedItem.value,
-				get rowCount() { 
+				get rowCount() {
 					if (wdw_cardbookConfiguration.allIMPPs[this.typeField]) {
 						return wdw_cardbookConfiguration.allIMPPs[this.typeField].length;
 					} else {
@@ -1442,7 +1442,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		displayCustomFields: function () {
 			var customFieldsTreeView = {
 				typeField: document.getElementById('customFieldsCategoryRadiogroup').selectedItem.value,
-				get rowCount() { 
+				get rowCount() {
 					if (wdw_cardbookConfiguration.allCustomFields[this.typeField]) {
 						return wdw_cardbookConfiguration.allCustomFields[this.typeField].length;
 					} else {
@@ -1635,7 +1635,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		resetList: function () {
 			document.getElementById('kindCustomTextBox').value = cardbookRepository.defaultKindCustom;
 			document.getElementById('memberCustomTextBox').value = cardbookRepository.defaultMemberCustom;
-			// should also change preferences (not automatically saved) 
+			// should also change preferences (not automatically saved)
 			document.getElementById('extensions.cardbook.kindCustom').value = cardbookRepository.defaultKindCustom;
 			document.getElementById('extensions.cardbook.memberCustom').value = cardbookRepository.defaultMemberCustom;
 			wdw_cardbookConfiguration.validateCustomValues();
@@ -1694,7 +1694,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			wdw_cardbookConfiguration.loadPrefEmailPref();
 			// loadFnFormula() depends on loadOrg()
 			wdw_cardbookConfiguration.loadFnFormula();
-			Components.utils.import("resource://gre/modules/AddonManager.jsm");  
+			Components.utils.import("resource://gre/modules/AddonManager.jsm");
 			AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, wdw_cardbookConfiguration.loadCalendars);
 			wdw_cardbookConfiguration.remindViaPopup();
 			wdw_cardbookConfiguration.cardbookAutoComplete();

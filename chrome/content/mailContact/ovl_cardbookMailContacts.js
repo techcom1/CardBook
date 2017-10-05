@@ -262,7 +262,7 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 
 			document.getElementById("findEventsFromEmailMessenger").setAttribute("hidden", true);
 			document.getElementById("findAllEventsFromContactMessenger").setAttribute("hidden", true);
-			Components.utils.import("resource://gre/modules/AddonManager.jsm");  
+			Components.utils.import("resource://gre/modules/AddonManager.jsm");
 			AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, ovl_cardbookMailContacts.hideOrShowLightningEntries);
 		}
 	};

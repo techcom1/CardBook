@@ -193,10 +193,10 @@ if ("undefined" == typeof(wdw_cardbook)) {
 							return "";
 						}
 					}
-				}, 
+				},
 				getCellProperties: function(row, column) {
 					return this.getRowProperties(row);
-				}, 
+				},
 				getCellText: function(row,column){
 					if (column.id == "cardIcon") return "";
 					else if (column.id == "name") return cardbookUtils.getName(aCardList[row]);
@@ -962,7 +962,8 @@ if ("undefined" == typeof(wdw_cardbook)) {
 								var myDirPrefIdName = cardbookPrefService.getName();
 								cardbookUtils.formatStringForOutput("addressbookReadOnly", [myDirPrefIdName]);
 							}
-		
+		
+
 						} else {
 							var myDirPrefIdName = cardbookPrefService.getName();
 							cardbookUtils.formatStringForOutput("addressbookDisabled", [myDirPrefIdName]);
@@ -1710,7 +1711,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			for (var i = 0; i < aFinishParams.length; i++) {
 				let cardbookPrefService = new cardbookPreferenceService(aFinishParams[i].dirPrefId);
 				if (cardbookPrefService.getType() === "SEARCH" && aFinishAction === "SEARCH") {
-					wdw_cardbook.modifySearchAddressbook(aFinishParams[i].dirPrefId, aFinishParams[i].name, aFinishParams[i].color, aFinishParams[i].vcard, aFinishParams[i].readonly, 
+					wdw_cardbook.modifySearchAddressbook(aFinishParams[i].dirPrefId, aFinishParams[i].name, aFinishParams[i].color, aFinishParams[i].vcard, aFinishParams[i].readonly,
 													aFinishParams[i].dateFormat, aFinishParams[i].urnuuid, aFinishParams[i].searchDef);
 					return;
 				}
@@ -2660,7 +2661,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		cardbookAccountMenuContextShowing: function () {
 			var myTree = document.getElementById('accountsOrCatsTree');
 			if (cardbookRepository.cardbookAccounts.length == 0) {
-				wdw_cardbook.enableOrDisableElement(['cardbookAccountMenuEditServer', 'cardbookAccountMenuCloseServer', 'cardbookAccountMenuEnableOrDisableAddressbook', 
+				wdw_cardbook.enableOrDisableElement(['cardbookAccountMenuEditServer', 'cardbookAccountMenuCloseServer', 'cardbookAccountMenuEnableOrDisableAddressbook',
 													'cardbookAccountMenuReadOnlyOrReadWriteAddressbook', 'cardbookAccountMenuSync', 'cardbookAccountMenuExportToFile', 'cardbookAccountMenuImportFromFile',
 													'cardbookAccountMenuExportToDir', 'cardbookAccountMenuImportFromDir'], true);
 				wdw_cardbook.setElementLabelWithBundle('cardbookAccountMenuEnableOrDisableAddressbook', "disableFromAccountsOrCats");
@@ -2713,12 +2714,12 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					wdw_cardbook.enableOrDisableElement(['cardbookAccountMenuExportToFile', 'cardbookAccountMenuImportFromFile', 'cardbookAccountMenuExportToDir', 'cardbookAccountMenuImportFromDir'], true);
 				}
 				if (cardbookRepository.cardbookComplexSearchMode === "SEARCH") {
-					wdw_cardbook.enableOrDisableElement(['cardbookAccountMenuEditServer', 'cardbookAccountMenuCloseServer', 'cardbookAccountMenuEnableOrDisableAddressbook', 
+					wdw_cardbook.enableOrDisableElement(['cardbookAccountMenuEditServer', 'cardbookAccountMenuCloseServer', 'cardbookAccountMenuEnableOrDisableAddressbook',
 														'cardbookAccountMenuExportToFile', 'cardbookAccountMenuExportToDir', ''], false);
 					wdw_cardbook.enableOrDisableElement(['cardbookAccountMenuReadOnlyOrReadWriteAddressbook', 'cardbookAccountMenuSync', 'cardbookAccountMenuImportFromFile', 'cardbookAccountMenuImportFromDir'], true);
 				}
 			} else {
-				wdw_cardbook.enableOrDisableElement(['cardbookAccountMenuEditServer', 'cardbookAccountMenuCloseServer', 'cardbookAccountMenuEnableOrDisableAddressbook', 
+				wdw_cardbook.enableOrDisableElement(['cardbookAccountMenuEditServer', 'cardbookAccountMenuCloseServer', 'cardbookAccountMenuEnableOrDisableAddressbook',
 													'cardbookAccountMenuReadOnlyOrReadWriteAddressbook', 'cardbookAccountMenuSync', 'cardbookAccountMenuExportToFile', 'cardbookAccountMenuImportFromFile',
 													'cardbookAccountMenuExportToDir', 'cardbookAccountMenuImportFromDir'], true);
 				wdw_cardbook.setElementLabelWithBundle('cardbookAccountMenuEnableOrDisableAddressbook', "disableFromAccountsOrCats");
@@ -2744,7 +2745,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 														'cardbookContactsMenuOpenURL', 'cardbookContactsMenuCutCards', 'cardbookContactsMenuCopyCards', 'cardbookContactsMenuPasteCards', 'cardbookContactsMenuExportCardsToFile',
 														'cardbookContactsMenuExportCardsToDir', 'cardbookContactsMenuDuplicateCards', 'cardbookContactsMenuCategories'], false);
 					wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuMergeCards'], true);
-					Components.utils.import("resource://gre/modules/AddonManager.jsm");  
+					Components.utils.import("resource://gre/modules/AddonManager.jsm");
 					AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, wdw_cardbook.cardbookContactsMenuLightningContextShowing);
 				} else {
 					wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuToEmailCards', 'cardbookContactsMenuCcEmailCards', 'cardbookContactsMenuBccEmailCards', 'cardbookContactsMenuLocalizeCards',
@@ -2798,7 +2799,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		},
 
 		cardbookToolsMenuContextShowing: function () {
-			Components.utils.import("resource://gre/modules/AddonManager.jsm");  
+			Components.utils.import("resource://gre/modules/AddonManager.jsm");
 			AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, wdw_cardbook.cardbookToolsMenuSyncLightning);
 		},
 
@@ -2879,7 +2880,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 															'addAccountFromAccountsOrCats', 'editAccountFromAccountsOrCats', 'removeAccountFromAccountsOrCats', 'enableOrDisableFromAccountsOrCats',
 															'printFromAccountsOrCats'], false);
 						wdw_cardbook.enableOrDisableElement(['pasteCardsFromAccountsOrCats', 'importCardsFromFileFromAccountsOrCats', 'importCardsFromDirFromAccountsOrCats',
-															'readOnlyOrReadWriteFromAccountsOrCats', 'syncAccountFromAccountsOrCats', 'generateFnFromAccountsOrCats', 
+															'readOnlyOrReadWriteFromAccountsOrCats', 'syncAccountFromAccountsOrCats', 'generateFnFromAccountsOrCats',
 															'findDuplicatesFromAccountsOrCats'], true);
 					}
 				} else {
@@ -2938,7 +2939,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 						} else {
 							wdw_cardbook.enableOrDisableElement(['convertListToCategoryFromCards'], false);
 						}
-						Components.utils.import("resource://gre/modules/AddonManager.jsm");  
+						Components.utils.import("resource://gre/modules/AddonManager.jsm");
 						AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, wdw_cardbook.cardsTreeLightningContextShowing);
 					} else {
 						wdw_cardbook.enableOrDisableElement(['toEmailCardsFromCards', 'ccEmailCardsFromCards', 'bccEmailCardsFromCards', 'shareCardsByEmailFromCards', 'localizeCardsFromCards',
@@ -2994,7 +2995,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
 			wdw_cardbook.enableOrDisableElement(['findemailemailTree'], !prefs.getBoolPref("mailnews.database.global.indexer.enabled"));
 			document.getElementById("findeventemailTree").setAttribute("hidden", true);
-			Components.utils.import("resource://gre/modules/AddonManager.jsm");  
+			Components.utils.import("resource://gre/modules/AddonManager.jsm");
 			AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, wdw_cardbook.emailTreeLightningContextShowing);
 		},
 

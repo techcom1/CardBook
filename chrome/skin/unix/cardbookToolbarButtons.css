@@ -1,4 +1,4 @@
-﻿#cardbookToolbarAddServerButton {
+#cardbookToolbarAddServerButton {
 	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#address");
 }
 toolbar[brighttext] #cardbookToolbarAddServerButton {

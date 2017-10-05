@@ -44,9 +44,6 @@ if ("undefined" == typeof(ovl_attachments)) {
 		},
 
 		loadAttachment: function(aAttachment, aDirPrefId) {
-			var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
-			loader.loadSubScript("chrome://cardbook/content/cardbookSynchronization.js");
-			loader.loadSubScript("chrome://cardbook/content/cardbookUtils.js");
 			var myFileArray = aAttachment.name.split(".");
 			var myExtension =  myFileArray[myFileArray.length-1];
 			if (myExtension.toLowerCase() == "vcf") {
@@ -90,7 +87,10 @@ if ("undefined" == typeof(ovl_attachments)) {
 				}
 			}
 		}
-	}
+	};
+	var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
+	loader.loadSubScript("chrome://cardbook/content/cardbookSynchronization.js");
+	loader.loadSubScript("chrome://cardbook/content/cardbookUtils.js");
 };
 
 // for the displaying or not import into CardBook for all attachments

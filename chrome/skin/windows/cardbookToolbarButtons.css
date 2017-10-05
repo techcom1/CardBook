@@ -1,4 +1,4 @@
-﻿@media (-moz-os-version: windows-win8) and (-moz-windows-default-theme),
+@media (-moz-os-version: windows-win8) and (-moz-windows-default-theme),
        (-moz-os-version: windows-win10) and (-moz-windows-default-theme) {
 	#cardbookToolbarAddServerButton {
 		list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#address-flat");
@@ -34,7 +34,7 @@
 		list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar.svg#abdelete-flat");
 	}
 }
-	   
+
 #cardbookToolbarAddServerButton {
 	list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#address");
 }

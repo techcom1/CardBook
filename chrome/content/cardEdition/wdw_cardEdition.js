@@ -501,7 +501,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		},
 
 		chooseCalendarPanel: function () {
-			Components.utils.import("resource://gre/modules/AddonManager.jsm");  
+			Components.utils.import("resource://gre/modules/AddonManager.jsm");
 			AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, wdw_cardEdition.chooseCalendarPanelEnd);
 		},
 

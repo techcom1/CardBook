@@ -1,4 +1,4 @@
-﻿.cardbookTreeClass treechildren::-moz-tree-checkbox(dummyForScroll) {
+.cardbookTreeClass treechildren::-moz-tree-checkbox(dummyForScroll) {
 	list-style-image: url("chrome://cardbook/skin/checkbox-images.png");
 	-moz-image-region: rect(0 65px 13px 52px);
 }

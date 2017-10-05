@@ -57,7 +57,7 @@ if ("undefined" == typeof(cardbookIndexedDB)) {
 			cursorRequest.onerror = cardbookRepository.cardbookDatabase.onerror;
 		},
 		
-		// add or override the contact to the cache 
+		// add or override the contact to the cache
 		addItem: function (aDirPrefIdName, aCard) {
 			var db = cardbookRepository.cardbookDatabase.db;
 			var transaction = db.transaction(["cards"], "readwrite");

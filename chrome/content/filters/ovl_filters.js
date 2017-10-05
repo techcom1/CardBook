@@ -15,8 +15,6 @@ if ("undefined" == typeof(ovl_filters)) {
 
 		_addEmails: function(aMsgHdrs, aActionValue, aField) {
 			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
-			var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
-			loader.loadSubScript("chrome://cardbook/content/cardbookUtils.js");
 			if (!cardbookUtils.isMyAccountEnabled(aActionValue)) {
 				loader.loadSubScript("chrome://cardbook/content/wdw_log.js");
 				cardbookUtils.formatStringForOutput("errorFiltersAddEmailsABNotEnabled", [aField, aActionValue], "Error");
@@ -38,8 +36,6 @@ if ("undefined" == typeof(ovl_filters)) {
 		_matchEmails: function(aMsgHdrEmails, aSearchValue, aSearchOp) {
 			Components.utils.import("resource:///modules/jsmime.jsm");
 			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
-			var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
-			loader.loadSubScript("chrome://cardbook/content/cardbookUtils.js");
 			if (!cardbookUtils.isMyAccountEnabled(aSearchValue)) {
 				loader.loadSubScript("chrome://cardbook/content/wdw_log.js");
 				cardbookUtils.formatStringForOutput("errorFiltersMatchEmailsABNotEnabled", [aSearchValue], "Error");
@@ -58,7 +54,7 @@ if ("undefined" == typeof(ovl_filters)) {
 							} else {
 								matches = false;
 							}
-						} else { 
+						} else {
 							if (cardbookRepository.isEmailInPrefIdRegistered(aSearchValue, addresses.value[i])) {
 								matches = (matches && true);
 							} else {
@@ -285,8 +281,10 @@ if ("undefined" == typeof(ovl_filters)) {
 
 			window.removeEventListener('load', arguments.callee, true);
 		}
-
-	}
+	};
+	
+	var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
+	loader.loadSubScript("chrome://cardbook/content/cardbookUtils.js");
 };
 
 window.addEventListener("load", function(e) { ovl_filters.onLoad(e); }, false);

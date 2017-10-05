@@ -10,10 +10,10 @@
 <!ENTITY synclistTabLabel "Напоминания о днях рождения">
 
 <!ENTITY integrationGroupboxLabel "Интеграция в Thunderbird">
-<!ENTITY autocompletionLabel "Автозавершение адресов эл. почты"> 
+<!ENTITY autocompletionLabel "Автозавершение адресов эл. почты">
 <!ENTITY autocompletionAccesskey "А">
 <!ENTITY autocompletionTooltip "Расширяет стандартное автоматическое завершение ввода для контактов из адресной книги Thunderbird добавлением контактов из CardBook.">
-<!ENTITY autocompleteSortByPopularityLabel "Сортировка адресов эл. почты по популярности"> 
+<!ENTITY autocompleteSortByPopularityLabel "Сортировка адресов эл. почты по популярности">
 <!ENTITY autocompleteSortByPopularityAccesskey "п">
 <!ENTITY autocompleteShowAddressbookLabel "Показывать название адресной книги">
 <!ENTITY autocompleteShowAddressbookAccesskey "а">
@@ -91,14 +91,14 @@
 <!ENTITY showNameAsFLAccesskey "И">
 <!ENTITY showNameAsDSPLabel "Отображаемое имя">
 <!ENTITY showNameAsDSPAccesskey "О">
-<!ENTITY fnLabelExplanation "Возможна настройка правила, согласно которому CardBook заполняет поле «Отображаемое имя». Эта формула состоит из блоков, ограниченных «()». В каждом из блоков есть две части, разделяемые «|». 
+<!ENTITY fnLabelExplanation "Возможна настройка правила, согласно которому CardBook заполняет поле «Отображаемое имя». Эта формула состоит из блоков, ограниченных «()». В каждом из блоков есть две части, разделяемые «|».
 								Первая часть применяется, если указанное поле присутствует, например {{1}} — не пустое значение, вторая часть применяется если указанное значение является пустым.">
 <!ENTITY fnFormulaLabel "Формировать отображаемое имя">
 <!ENTITY fnFormulaAccesskey "Ф">
 <!ENTITY resetFnFormulaLabel "Сбросить до значений по умолчанию">
 <!ENTITY resetFnFormulaAccesskey "у">
 <!ENTITY miscEdittingGroupboxLabel "Различное">
-<!ENTITY preferEmailEditionLabel "Использовать двойной щелчок для редактирования контакта, а не для отправки письма"> 
+<!ENTITY preferEmailEditionLabel "Использовать двойной щелчок для редактирования контакта, а не для отправки письма">
 <!ENTITY preferEmailEditionAccesskey "Д">
 
 <!ENTITY typesGroupboxLabel "Типы">

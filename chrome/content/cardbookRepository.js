@@ -184,18 +184,6 @@ var cardbookRepository = {
 	
 	cardbookBirthdayPopup : 0,
 	
-	jsInclude: function(files, target) {
-		var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
-		for (var i = 0; i < files.length; i++) {
-			try {
-				loader.loadSubScript(files[i], target);
-			}
-			catch(e) {
-				dump("cardbookRepository.jsInclude : failed to include '" + files[i] + "'\n" + e + "\n");
-			}
-		}
-	},
-		
     loadCustoms: function () {
 		// for file opened with version <= 19.6
 		var typeList = [ 'Name', 'Org' ];
@@ -641,7 +629,7 @@ var cardbookRepository = {
 		}
 	},
 
-	// only used from the import of Thunderbird standard address books 
+	// only used from the import of Thunderbird standard address books
 	addAccountToCollected: function (aDirPrefId) {
 		var cardbookPrefService = new cardbookPreferenceService();
 		var result = [];
@@ -1023,7 +1011,6 @@ var cardbookRepository = {
 				aDisplayName = aEmail;
 			}
 		}
-		this.jsInclude(["chrome://cardbook/content/cardbookCardParser.js"]);
 		var cardbookPrefService = new cardbookPreferenceService(aDirPrefId);
 		var myDirPrefIdName = cardbookPrefService.getName();
 		var myDirPrefIdType = cardbookPrefService.getType();
@@ -1499,10 +1486,12 @@ var cardbookRepository = {
 
 };
 
-cardbookRepository.jsInclude(["chrome://cardbook/content/preferences/cardbookPreferences.js"]);
-cardbookRepository.jsInclude(["chrome://cardbook/content/wdw_log.js"]);
-cardbookRepository.jsInclude(["chrome://cardbook/content/cardbookUtils.js"]);
-cardbookRepository.jsInclude(["chrome://cardbook/content/cardbookDates.js"]);
-cardbookRepository.jsInclude(["chrome://cardbook/content/cardbookIndexedDB.js"]);
-cardbookRepository.jsInclude(["chrome://cardbook/content/cardbookSynchronization.js"]);
-cardbookRepository.jsInclude(["chrome://cardbook/content/complexSearch/cardbookComplexSearch.js"]);
+var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
+loader.loadSubScript("chrome://cardbook/content/cardbookCardParser.js");
+loader.loadSubScript("chrome://cardbook/content/cardbookDates.js");
+loader.loadSubScript("chrome://cardbook/content/cardbookIndexedDB.js");
+loader.loadSubScript("chrome://cardbook/content/cardbookSynchronization.js");
+loader.loadSubScript("chrome://cardbook/content/cardbookUtils.js");
+loader.loadSubScript("chrome://cardbook/content/complexSearch/cardbookComplexSearch.js");
+loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");
+loader.loadSubScript("chrome://cardbook/content/wdw_log.js");

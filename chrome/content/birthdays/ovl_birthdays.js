@@ -1,4 +1,4 @@
-if ("undefined" == typeof(ovl_birthdays)) {  
+if ("undefined" == typeof(ovl_birthdays)) {
 	var ovl_birthdays = {
 		lTimerPopup : null,
 		lPopupShowed : 0,
@@ -41,7 +41,7 @@ if ("undefined" == typeof(ovl_birthdays)) {
 			}
 			
 			if (cardbookBirthdaysUtils.getPref("extensions.cardbook.syncWithLightningOnStartup")) {
-				Components.utils.import("resource://gre/modules/AddonManager.jsm");  
+				Components.utils.import("resource://gre/modules/AddonManager.jsm");
 				AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, ovl_birthdays.displaySyncListAddon);
 			}
 		},

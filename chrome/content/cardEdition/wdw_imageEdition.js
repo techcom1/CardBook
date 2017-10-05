@@ -138,7 +138,6 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 					myExtension = cardbookUtils.formatExtension(myExtension, myCard.version);
 					var targetFile = wdw_imageEdition.getEditionPhotoTempFile(myExtension);
 					try {
-						cardbookUtils.jsInclude(["chrome://cardbook/content/cardbookWebDAV.js"]);
 						var listener_getimage = {
 							onDAVQueryComplete: function(status, response, askCertificate, etag) {
 								if (status > 199 && status < 400) {
@@ -238,4 +237,6 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 
 	};
 
+	var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
+	loader.loadSubScript("chrome://cardbook/content/cardbookWebDAV.js");
 };

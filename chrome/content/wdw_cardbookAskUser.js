@@ -50,7 +50,7 @@ if ("undefined" == typeof(wdw_cardbookAskUser)) {
 		},
 
 		fireButton: function (aButton) {
-			var myButton = aButton.id.replace("askUser", "").toLowerCase(); 
+			var myButton = aButton.id.replace("askUser", "").toLowerCase();
 			window.arguments[0].resultConfirm = document.getElementById('confirmCheckBox').checked;
 			window.arguments[0].result = window.arguments[0][myButton];
 			wdw_cardbookAskUser.close();

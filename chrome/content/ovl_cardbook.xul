@@ -74,7 +74,7 @@
 			oncommand="ovl_cardbook.open()"
 			insertafter="appmenu_addressBook"/>
 	</menupopup>
-                      
+
 	<toolbarpalette id="MailToolbarPalette">
 		<toolbarbutton id="cardbookToolbarButton"
 			label="&cardbookToolbarButtonLabel;"
@@ -89,7 +89,7 @@
 				oncommand="ovl_cardbook.open();"/>
 		</commandset>
 	</window>
-  
+
 	<toolbar id="tabbar-toolbar">
 		<toolbarbutton id="cardbookTabButton"
 			class="toolbarbutton-1"

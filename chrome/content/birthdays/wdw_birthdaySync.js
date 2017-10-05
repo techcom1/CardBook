@@ -1,4 +1,4 @@
-if ("undefined" == typeof(wdw_birthdaySync)) {  
+if ("undefined" == typeof(wdw_birthdaySync)) {
 	var wdw_birthdaySync = {
 		lTimerSync : null,
 		lEventTimerSync : { notify: function(lTimerSync) {

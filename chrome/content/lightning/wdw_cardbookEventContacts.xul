@@ -64,7 +64,7 @@
 	</tree>
 
 	<hbox>
-		<spacer flex="1"/>  
+		<spacer flex="1"/>
 		<button id="createEventLabel" label="&createEventLabel;" accesskey="&createEventAccesskey;" oncommand="wdw_cardbookEventContacts.createEvent();"/>
 		<button id="editEventLabel" label="&editEventLabel;" accesskey="&editEventAccesskey;" oncommand="wdw_cardbookEventContacts.editEvent();"/>
 		<button id="closeEditionLabel" label="&closeEditionLabel;" accesskey="&closeEditionAccesskey;" oncommand="wdw_cardbookEventContacts.do_close();"/>

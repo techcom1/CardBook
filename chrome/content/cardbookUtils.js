@@ -1,20 +1,6 @@
 if ("undefined" == typeof(cardbookUtils)) {
 	var cardbookUtils = {
 		
-		jsInclude: function(files, target) {
-			var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
-			for (var i = 0; i < files.length; i++) {
-				try {
-					loader.loadSubScript(files[i], target);
-				}
-				catch(e) {
-					loader.loadSubScript("chrome://cardbook/content/wdw_log.js");
-					wdw_cardbooklog.updateStatusProgressInformation("cardbookUtils.jsInclude : failed to include '" + files[i] + "'\n" + e + "\n");
-					dump("cardbookUtils.jsInclude : failed to include '" + files[i] + "'\n" + e + "\n");
-				}
-			}
-		},
-
 		formatTelForOpenning: function (aString) {
 			return aString.replace(/\s*/g, "");
 		},
@@ -164,7 +150,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 						}
 					}
 					if (!found) {
-						// if not open the popup 
+						// if not open the popup
 						myPanel.openPopup(aEvent.target, 'after_start');
 						if (!myListBox.selectedItem) {
 							myListBox.selectedItem = myListBox.firstChild;
@@ -1116,7 +1102,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 					var textbox = document.getElementById(nullableFields[i][j] + 'TextBox');
 					var label = document.getElementById(nullableFields[i][j] + 'Label');
 					if (textbox) {
-						var myTestValue = ""; 
+						var myTestValue = "";
 						if (textbox.value) {
 							myTestValue = textbox.value;
 						} else {
@@ -1675,7 +1661,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		isThereNetworkAccountToSync: function() {
 			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
-				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][6] != "FILE" && cardbookRepository.cardbookAccounts[i][6] != "CACHE" 
+				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][6] != "FILE" && cardbookRepository.cardbookAccounts[i][6] != "CACHE"
 					&& cardbookRepository.cardbookAccounts[i][6] != "DIRECTORY" && cardbookRepository.cardbookAccounts[i][6] != "SEARCH" && cardbookRepository.cardbookAccounts[i][6] != "LOCALDB"
 					&& cardbookRepository.cardbookAccounts[i][5]) {
 					return true;
@@ -1695,7 +1681,6 @@ if ("undefined" == typeof(cardbookUtils)) {
 		},
 
 		isFileAlreadyOpen: function(aAccountPath) {
-			cardbookUtils.jsInclude(["chrome://cardbook/content/preferences/cardbookPreferences.js"]);
 			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
 				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] == "FILE") {
 					var cardbookPrefService = new cardbookPreferenceService(cardbookRepository.cardbookAccounts[i][4]);
@@ -1708,7 +1693,6 @@ if ("undefined" == typeof(cardbookUtils)) {
 		},
 
 		isDirectoryAlreadyOpen: function(aAccountPath) {
-			cardbookUtils.jsInclude(["chrome://cardbook/content/preferences/cardbookPreferences.js"]);
 			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
 				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] == "DIRECTORY") {
 					var cardbookPrefService = new cardbookPreferenceService(cardbookRepository.cardbookAccounts[i][4]);
@@ -1865,7 +1849,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 				fileName = fileName.replace(/([\\\/\:\*\?\"\<\>\|]+)/g, '-');
 				mediaFile.append(fileName);
 				// bug on windows (with Apple photo)
-				var osString = Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULRuntime).OS;  
+				var osString = Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULRuntime).OS;
 				if ((osString == "WINNT") && (mediaFile.path.length > 259)) {
 					mediaFile.initWithPath(mediaFile.path.substring(0, 259));
 				}
@@ -2044,7 +2028,6 @@ if ("undefined" == typeof(cardbookUtils)) {
 		},
 
 		getPrefNameFromPrefId: function(aPrefId) {
-			cardbookUtils.jsInclude(["chrome://cardbook/content/preferences/cardbookPreferences.js"]);
 			let cardbookPrefService = new cardbookPreferenceService(aPrefId);
 			return cardbookPrefService.getName();
 		},
@@ -2113,20 +2096,17 @@ if ("undefined" == typeof(cardbookUtils)) {
 		},
 
 		isMyAccountEnabled: function(aDirPrefId) {
-			cardbookUtils.jsInclude(["chrome://cardbook/content/preferences/cardbookPreferences.js"]);
 			var cardbookPrefService = new cardbookPreferenceService(aDirPrefId);
 			return cardbookPrefService.getEnabled();
 		},
 
 		isMyAccountReadOnly: function(aDirPrefId) {
-			cardbookUtils.jsInclude(["chrome://cardbook/content/preferences/cardbookPreferences.js"]);
 			var cardbookPrefService = new cardbookPreferenceService(aDirPrefId);
 			return cardbookPrefService.getReadOnly();
 		},
 
 		getPrefAddressFromCard: function (aCard, aType, aAddressPref) {
 			var listOfAddress = [];
-			cardbookUtils.jsInclude(["chrome://cardbook/content/cardbookMailPopularity.js", "chrome://cardbook/content/cardbookSynchronization.js", "chrome://cardbook/content/wdw_log.js"]);
 			if (aCard != null && aCard !== undefined && aCard != "") {
 				var notfoundOnePrefAddress = true;
 				var listOfPrefAddress = [];
@@ -2173,7 +2153,6 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		getEmailsFromCard: function (aCard, aEmailPref) {
 			var listOfEmail = [];
-			cardbookUtils.jsInclude(["chrome://cardbook/content/cardbookMailPopularity.js", "chrome://cardbook/content/cardbookSynchronization.js", "chrome://cardbook/content/wdw_log.js"]);
 			if (aCard != null && aCard !== undefined && aCard != "") {
 				var notfoundOnePrefEmail = true;
 				var listOfPrefEmail = [];
@@ -2836,4 +2815,10 @@ if ("undefined" == typeof(cardbookUtils)) {
 		}
 
 	};
+
+	var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
+	loader.loadSubScript("chrome://cardbook/content/cardbookMailPopularity.js");
+	loader.loadSubScript("chrome://cardbook/content/cardbookSynchronization.js");
+	loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");
+	loader.loadSubScript("chrome://cardbook/content/wdw_log.js");
 };
