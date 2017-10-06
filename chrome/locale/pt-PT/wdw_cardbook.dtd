@@ -23,8 +23,8 @@
 
 <!ENTITY cardbookToolbarLabel "Barra de ferramentas do Cardbook">
 <!ENTITY cardbookToolbarAccesskey "C">
-<!ENTITY cardbookABPaneToolbarLabel "??CardBook Address Book Pane Toolbar??">
-<!ENTITY cardbookABPaneToolbarAccesskey "??d??">
+<!ENTITY cardbookABPaneToolbarLabel "Barra de ferramentas Cardbook">
+<!ENTITY cardbookABPaneToolbarAccesskey "d">
 <!ENTITY CustomizeCardBookToolbarLabel "Personalizar…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "P">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Novo agenda">
@@ -167,7 +167,7 @@
 <!ENTITY importCardFromFileLabel "Importar cartões de ficheiro">
 <!ENTITY importCardFromDirLabel "Importar cartões de diretoria">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Renomear categoria">
-<!ENTITY convertCatFromAccountsOrCatsLabel "??Convert category to list??">
+<!ENTITY convertCatFromAccountsOrCatsLabel "Converter categoria para lista">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Remover categoria">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Procurar duplicados na agenda actual">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Gerar nomes de apresentação">
