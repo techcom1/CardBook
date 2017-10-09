@@ -37,7 +37,7 @@
 <!ENTITY addAllAttachementsToCardBookMenuLabel "Tout dans CardBook…">
 <!ENTITY addAttachementToCardBookMenuLabel "Dans CardBook…">
 
-<!ENTITY cardbookABPaneItemLabel "Paneau des carnets d'adresses">
+<!ENTITY cardbookABPaneItemLabel "Panneau des carnets d'adresses">
 <!ENTITY cardbookABPaneItemAccesskey "A">
-<!ENTITY cardbookContactPaneItemLabel "Paneau du contact">
+<!ENTITY cardbookContactPaneItemLabel "Panneau du contact">
 <!ENTITY cardbookContactPaneItemAccesskey "O">
