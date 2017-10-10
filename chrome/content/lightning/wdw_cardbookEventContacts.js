@@ -1,4 +1,7 @@
 if ("undefined" == typeof(wdw_cardbookEventContacts)) {
+	Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var wdw_cardbookEventContacts = {
 		allEvents: [],
 		emailArray: [],
@@ -273,8 +276,6 @@ if ("undefined" == typeof(wdw_cardbookEventContacts)) {
 
 		load: function () {
 			Components.utils.import("resource://calendar/modules/calUtils.jsm");
-			Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			var strBundle = document.getElementById("cardbook-strings");
 			wdw_cardbookEventContacts.emailArray = window.arguments[0].listOfEmail;
 			wdw_cardbookEventContacts.attendeeId = window.arguments[0].attendeeId;

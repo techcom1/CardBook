@@ -1,4 +1,7 @@
 if ("undefined" == typeof(ovl_birthdays)) {
+	Components.utils.import("resource://gre/modules/AddonManager.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var ovl_birthdays = {
 		lTimerPopup : null,
 		lPopupShowed : 0,
@@ -35,19 +38,16 @@ if ("undefined" == typeof(ovl_birthdays)) {
 		} },
 	
 		onLoad: function() {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			if (cardbookBirthdaysUtils.getPref("extensions.cardbook.showPopupOnStartup")) {
 				ovl_birthdays.onShowPopup();
 			}
 			
 			if (cardbookBirthdaysUtils.getPref("extensions.cardbook.syncWithLightningOnStartup")) {
-				Components.utils.import("resource://gre/modules/AddonManager.jsm");
 				AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, ovl_birthdays.displaySyncListAddon);
 			}
 		},
 	
 		displayBirthdayList: function() {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			if (cardbookRepository.cardbookBirthdayPopup == 0) {
 				cardbookRepository.cardbookBirthdayPopup++;
 				var MyWindows = window.openDialog("chrome://cardbook/content/birthdays/wdw_birthdayList.xul", "", "chrome,centerscreen,modal,resizable");

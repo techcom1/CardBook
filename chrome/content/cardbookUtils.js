@@ -1,4 +1,7 @@
 if ("undefined" == typeof(cardbookUtils)) {
+	Components.utils.import("resource:///modules/mailServices.js");
+	Components.utils.import("resource://gre/modules/Services.jsm");
+
 	var cardbookUtils = {
 		
 		formatTelForOpenning: function (aString) {
@@ -226,7 +229,6 @@ if ("undefined" == typeof(cardbookUtils)) {
 		},
 
 		sortCardsTreeArrayByString: function (aArray, aIndex, aInvert) {
-			Components.utils.import("resource://gre/modules/Services.jsm");
 			if (Services.locale.getApplicationLocale) {
 				var collator = Components.classes["@mozilla.org/intl/collation-factory;1"].getService(Components.interfaces.nsICollationFactory).CreateCollation(Services.locale.getApplicationLocale());
 			} else {
@@ -253,7 +255,6 @@ if ("undefined" == typeof(cardbookUtils)) {
 		},
 		
 		sortArrayByString: function (aArray, aIndex, aInvert) {
-			Components.utils.import("resource://gre/modules/Services.jsm");
 			if (Services.locale.getApplicationLocale) {
 				var collator = Components.classes["@mozilla.org/intl/collation-factory;1"].getService(Components.interfaces.nsICollationFactory).CreateCollation(Services.locale.getApplicationLocale());
 			} else {
@@ -605,6 +606,19 @@ if ("undefined" == typeof(cardbookUtils)) {
 			return tmpArray.join("\r\n");
 		},
 
+		// to avoid passing technical fields to server
+		// X-THUNDERBIRD-MODIFICATION is removed before so no need to remove it here
+		getvCardForServer: function(aCard) {
+			var cardContent = cardbookUtils.cardToVcardData(aCard, true);
+			var re = /[\n\u0085\u2028\u2029]|\r\n?/;
+			var tmpArray = cardContent.split(re);
+			function filterArray(element) {
+				return (element.search(/^X-THUNDERBIRD-ETAG:/) == -1);
+			}
+			tmpArray = tmpArray.filter(filterArray);
+			return tmpArray.join("\r\n");
+		},
+
 		getMediaContentForCard: function(aCard, aType, aMediaConversion) {
 			try {
 				var result = "";
@@ -613,7 +627,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 						result = "VALUE=URI:" + aCard[aType].URI;
 					} else if (aCard[aType].localURI != null && aCard[aType].localURI !== undefined && aCard[aType].localURI != "") {
 						result = "VALUE=URI:" + aCard[aType].localURI;
-						var ioService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
+						var ioService = Services.io;
 						var myFileURI = ioService.newURI(aCard[aType].localURI, null, null);
 						var content = btoa(cardbookSynchronization.getFileBinary(myFileURI));
 						if (aCard.version === "4.0") {
@@ -643,45 +657,6 @@ if ("undefined" == typeof(cardbookUtils)) {
 				wdw_cardbooklog.updateStatusProgressInformation("cardbookUtils.getMediaContentForCard error : " + e, "Error");
 			}
 		},
-
-		/*getMediaContentForCard: function(aCard, aType, aMediaConversion) {
-			try {
-				var result = "";
-				if (aMediaConversion) {
-					if (aCard[aType].URI != null && aCard[aType].URI !== undefined && aCard[aType].URI != "") {
-						result = "VALUE=uri:" + aCard[aType].URI;
-					} else if (aCard[aType].localURI != null && aCard[aType].localURI !== undefined && aCard[aType].localURI != "") {
-						result = "VALUE=uri:" + aCard[aType].localURI;
-						var ioService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
-						var myFileURI = ioService.newURI(aCard[aType].localURI, null, null);
-						var content = btoa(cardbookSynchronization.getFileBinary(myFileURI));
-						if (aCard.version === "4.0") {
-							if (aCard[aType].extension != "") {
-								result = "data:image/" + aCard[aType].extension + ";base64," + content;
-							} else {
-								result = "base64," + content;
-							}
-						} else if (aCard.version === "3.0") {
-							if (aCard[aType].extension != "") {
-								result = "ENCODING=b;TYPE=" + aCard[aType].extension + ":" + content;
-							} else {
-								result = "ENCODING=b:" + content;
-							}
-						}
-					}
-				} else {
-					if (aCard[aType].URI != null && aCard[aType].URI !== undefined && aCard[aType].URI != "") {
-						result = "VALUE=uri:" + aCard[aType].URI;
-					} else if (aCard[aType].localURI != null && aCard[aType].localURI !== undefined && aCard[aType].localURI != "") {
-						result = "VALUE=uri:" + aCard[aType].localURI;
-					}
-				}
-				return result;
-			}
-			catch (e) {
-				wdw_cardbooklog.updateStatusProgressInformation("cardbookUtils.getMediaContentForCard error : " + e, "Error");
-			}
-		},*/
 
 		// only used by getDisplayedName
 		// used to fill the second part of the blocks (first part|second part)
@@ -747,7 +722,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 		getDisplayedName: function(aNewN, aNewOrg) {
 			var fnFormula = "";
 			var result =  "";
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var prefs = Services.prefs;
 			fnFormula = prefs.getComplexValue("extensions.cardbook.fnFormula", Components.interfaces.nsISupportsString).data;
 			if (fnFormula == "") {
 				fnFormula = cardbookRepository.defaultFnFormula;
@@ -843,7 +818,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 					aCard.member.push(aMemberLines[i][0]);
 				}
 			} else if (aCard.version == "3.0") {
-				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+				var prefs = Services.prefs;
 				var kindCustom = prefs.getComplexValue("extensions.cardbook.kindCustom", Components.interfaces.nsISupportsString).data;
 				var memberCustom = prefs.getComplexValue("extensions.cardbook.memberCustom", Components.interfaces.nsISupportsString).data;
 				for (var i = 0; i < aCard.others.length; i++) {
@@ -1849,7 +1824,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 				fileName = fileName.replace(/([\\\/\:\*\?\"\<\>\|]+)/g, '-');
 				mediaFile.append(fileName);
 				// bug on windows (with Apple photo)
-				var osString = Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULRuntime).OS;
+				var osString = Services.appinfo.OS;
 				if ((osString == "WINNT") && (mediaFile.path.length > 259)) {
 					mediaFile.initWithPath(mediaFile.path.substring(0, 259));
 				}
@@ -1862,7 +1837,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		changeMediaFromFileToContent: function (aCard) {
 			try {
-				var ioService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
+				var ioService = Services.io;
 				var mediaName = [ 'photo', 'logo', 'sound' ];
 
 				for (var i in mediaName) {
@@ -1907,7 +1882,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		clipboardGet: function () {
 			try {
-				let clipboard = Components.classes["@mozilla.org/widget/clipboard;1"].getService(Components.interfaces.nsIClipboard);
+				let clipboard = Services.clipboard;
 	
 				let trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
 				trans.addDataFlavor("text/unicode");
@@ -1983,7 +1958,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 		},
 
 		getTempFile: function (aFileName) {
-			var myFile = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties).get("TmpD", Components.interfaces.nsIFile);
+			var myFile = Services.dirsvc.get("TmpD", Components.interfaces.nsIFile);
 			if (aFileName) {
 				myFile.append(aFileName);
 			}
@@ -1991,7 +1966,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 		},
 
 		purgeEditionPhotoTempFile: function () {
-			var myFile = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties).get("TmpD", Components.interfaces.nsIFile);
+			var myFile = Services.dirsvc.get("TmpD", Components.interfaces.nsIFile);
 			myFile.append("cardbook");
 			if (myFile.exists()) {
 				myFile.remove(true);
@@ -2235,7 +2210,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 						}
 					}
 				} else if (aList.version == "3.0") {
-					var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+					var prefs = Services.prefs;
 					var memberCustom = prefs.getComplexValue("extensions.cardbook.memberCustom", Components.interfaces.nsISupportsString).data;
 					for (var k = 0; k < aList.others.length; k++) {
 						var localDelim1 = aList.others[k].indexOf(":",0);
@@ -2258,11 +2233,10 @@ if ("undefined" == typeof(cardbookUtils)) {
 		},
 
 		getMimeEmailsFromCards: function (aListOfCards, aOnlyEmail) {
-			Components.utils.import("resource:///modules/mailServices.js");
 			if (aOnlyEmail) {
 				var useOnlyEmail = aOnlyEmail;
 			} else {
-				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+				var prefs = Services.prefs;
 				var useOnlyEmail = prefs.getBoolPref("extensions.cardbook.useOnlyEmail");
 			}
 			var result = [];
@@ -2279,11 +2253,10 @@ if ("undefined" == typeof(cardbookUtils)) {
 		},
 
 		getMimeEmailsFromCardsAndLists: function (aListOfCards, aOnlyEmail) {
-			Components.utils.import("resource:///modules/mailServices.js");
 			if (aOnlyEmail) {
 				var useOnlyEmail = aOnlyEmail;
 			} else {
-				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+				var prefs = Services.prefs;
 				var useOnlyEmail = prefs.getBoolPref("extensions.cardbook.useOnlyEmail");
 			}
 			var result = {};
@@ -2351,20 +2324,20 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		openURL: function (aUrl) {
 			try {
-				var ioService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
+				var ioService = Services.io;
 				var uri = ioService.newURI(aUrl, null, null);
 			}
 			catch(e) {
 				cardbookUtils.formatStringForOutput("invalidURL", [aUrl], "Error");
 				return;
 			}
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var prefs = Services.prefs;
 			var localizeTarget = prefs.getComplexValue("extensions.cardbook.localizeTarget", Components.interfaces.nsISupportsString).data;
 			if (localizeTarget === "in") {
 				let tabmail = document.getElementById("tabmail");
 				if (!tabmail) {
 					// Try opening new tabs in an existing 3pane window
-					let mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator).getMostRecentWindow("mail:3pane");
+					let mail3PaneWindow = Services.wm.getMostRecentWindow("mail:3pane");
 					if (mail3PaneWindow) {
 						tabmail = mail3PaneWindow.document.getElementById("tabmail");
 						mail3PaneWindow.focus();
@@ -2405,7 +2378,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 		},
 
 		openExternalURL: function (aUrl) {
-			var ioService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
+			var ioService = Services.io;
 			var uri = ioService.newURI(aUrl, null, null);
 			var externalProtocolService = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"].getService(Components.interfaces.nsIExternalProtocolService);
 			externalProtocolService.loadURI(uri, null);
@@ -2415,7 +2388,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			if (aCard.version == "4.0") {
 				return (aCard.kind.toLowerCase() == 'group');
 			} else if (aCard.version == "3.0") {
-				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+				var prefs = Services.prefs;
 				var kindCustom = prefs.getComplexValue("extensions.cardbook.kindCustom", Components.interfaces.nsISupportsString).data;
 				for (var i = 0; i < aCard.others.length; i++) {
 					var localDelim1 = aCard.others[i].indexOf(":",0);
@@ -2603,7 +2576,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 				}
 			}
 			catch (e) {
-				var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+				var prompts = Services.prompt;
 				var errorTitle = "addToCardBookMenuSubMenu";
 				prompts.alert(null, errorTitle, e);
 			}
@@ -2623,7 +2596,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 				}
 			}
 			catch (e) {
-				var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+				var prompts = Services.prompt;
 				var errorTitle = "connectCardsFromChatButton";
 				prompts.alert(null, errorTitle, e);
 			}
@@ -2643,7 +2616,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 					
 					myMenu.disabled = true;
 					if (aCard != null && aCard !== undefined && aCard != "") {
-						var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+						var prefs = Services.prefs;
 						var telProtocolLine = "";
 						try {
 							var telProtocolLine = prefs.getComplexValue("extensions.cardbook.tels.0", Components.interfaces.nsISupportsString).data;
@@ -2696,7 +2669,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 				}
 			}
 			catch (e) {
-				var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+				var prompts = Services.prompt;
 				var errorTitle = "addCardToIMPPMenuSubMenu";
 				prompts.alert(null, errorTitle, e);
 			}
@@ -2744,7 +2717,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 				}
 			}
 			catch (e) {
-				var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+				var prompts = Services.prompt;
 				var errorTitle = "addCardToCategoryMenuSubMenu";
 				prompts.alert(null, errorTitle, e);
 			}
@@ -2792,12 +2765,12 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		notifyObservers: function (aTopic, aParam) {
 			if (aTopic != null && aTopic !== undefined && aTopic != "") {
-				Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService).notifyObservers(null, aTopic, aParam);
+				Services.obs.notifyObservers(null, aTopic, aParam);
 			}
 		},
 
 		formatStringForOutput: function(aStringCode, aValuesArray, aErrorCode) {
-			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+			var stringBundleService = Services.strings;
 			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 			if (aValuesArray) {
 				if (aErrorCode) {
@@ -2816,7 +2789,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 	};
 
-	var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
+	var loader = Services.scriptloader;
 	loader.loadSubScript("chrome://cardbook/content/cardbookMailPopularity.js");
 	loader.loadSubScript("chrome://cardbook/content/cardbookSynchronization.js");
 	loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");

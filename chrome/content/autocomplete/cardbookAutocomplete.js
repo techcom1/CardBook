@@ -1,4 +1,7 @@
 if ("undefined" == typeof(cardbookAutocomplete)) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var cardbookAutocomplete = {
 		
 		iconRuleStrings: {},
@@ -115,8 +118,7 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 					var OSName="LINUX";
 				}
 				cardbookAutocomplete.defineMsgIconsRules();
-				Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
-				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+				var prefs = Services.prefs;
 				var autocompleteWithColor = prefs.getBoolPref("extensions.cardbook.autocompleteWithColor");
 				var useColor = prefs.getComplexValue("extensions.cardbook.useColor", Components.interfaces.nsISupportsString).data;
 				if (useColor == "text") {
@@ -152,7 +154,7 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 
 		setCompletion: function(aTextBox) {
 			try {
-				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+				var prefs = Services.prefs;
 				if (prefs.getBoolPref("extensions.cardbook.autocompletion")) {
 					aTextBox.setAttribute('autocompletesearch', 'addrbook-cardbook');
 				} else {

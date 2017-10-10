@@ -1,4 +1,6 @@
 if ("undefined" == typeof(wdw_birthdaySync)) {
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var wdw_birthdaySync = {
 		lTimerSync : null,
 		lEventTimerSync : { notify: function(lTimerSync) {
@@ -6,7 +8,6 @@ if ("undefined" == typeof(wdw_birthdaySync)) {
 		} },
 		
 		syncAllBirthdays: function () {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			cardbookBirthdaysUtils.syncWithLightning();
 			wdw_birthdaySync.do_refresh();
 			

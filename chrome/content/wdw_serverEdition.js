@@ -1,8 +1,9 @@
 if ("undefined" == typeof(wdw_serverEdition)) {
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var wdw_serverEdition = {
 
 		load: function () {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			document.getElementById("serverNameTextBox").value = window.arguments[0].serverEditionName;
 			document.getElementById("serverTypeTextBox").value = window.arguments[0].serverEditionType;
 			document.getElementById("serverUserTextBox").value = window.arguments[0].serverEditionUser;

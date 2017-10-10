@@ -1,9 +1,10 @@
 if ("undefined" == typeof(wdw_cardbookPrint)) {
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var wdw_cardbookPrint = {
 		
 		refreshHTML: function () {
             var iframeDoc = document.getElementById("content").contentDocument;
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			cardbookRepository.reloadCss("chrome://cardbook/skin/cardbookDataPrint.css");
             var myHTML = cardbookPrint.buildHTML(window.arguments[0].listOfCards, document.getElementById("titleTextBox").value,
 																		{ display: document.getElementById("displayCheckBox").checked,

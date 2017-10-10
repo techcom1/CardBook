@@ -1,4 +1,7 @@
 if ("undefined" == typeof(wdw_csvTranslator)) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var wdw_csvTranslator = {
 
 		cardbookeditlists : {},
@@ -142,7 +145,7 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 		validateImportColumns: function () {
 			if (wdw_csvTranslator.cardbookeditlists.foundColumns.length != wdw_csvTranslator.cardbookeditlists.addedColumns.length) {
 				var strBundle = document.getElementById("cardbook-strings");
-				var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+				var prompts = Services.prompt;
 				var confirmTitle = strBundle.getString("confirmTitle");
 				var confirmMsg = strBundle.getString("missingColumnsConfirmMessage");
 				if (!prompts.confirm(window, confirmTitle, confirmMsg)) {
@@ -195,7 +198,6 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 		},
 
 		load: function () {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			wdw_csvTranslator.setSyncControl();
 
 			var strBundle = document.getElementById("cardbook-strings");

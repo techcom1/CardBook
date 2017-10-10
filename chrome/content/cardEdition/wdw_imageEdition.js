@@ -1,4 +1,6 @@
 if ("undefined" == typeof(wdw_imageEdition)) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+
 	var wdw_imageEdition = {
 
 		writeImageToFile: function (aFile, aDataValue) {
@@ -31,7 +33,7 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 		},
 
 		getEditionPhotoTempFile: function (aExtension) {
-			var myFile = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties).get("TmpD", Components.interfaces.nsIFile);
+			var myFile = Services.dirsvc.get("TmpD", Components.interfaces.nsIFile);
 			myFile.append("cardbook");
 			if (!myFile.exists() || !myFile.isDirectory()) {
 				// read and write permissions to owner and group, read-only for others.
@@ -119,7 +121,7 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 				var myCard = wdw_cardEdition.workingCard;
 				myExtension = cardbookUtils.formatExtension(myExtension, myCard.version);
 				var targetFile = wdw_imageEdition.getEditionPhotoTempFile(myExtension);
-				var ioService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
+				var ioService = Services.io;
 				var myFileURISpec = "file:///" + targetFile.path;
 				var myFileURI = ioService.newURI(myFileURISpec, null, null);
 				var myFile1 = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
@@ -200,7 +202,7 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 		},
 
 		saveImageCardNext: function (aFile) {
-			var ioService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
+			var ioService = Services.io;
 			var myFileURISpec = document.getElementById('photolocalURITextBox').value;
 			var myFileURI = ioService.newURI(myFileURISpec, null, null);
 			var myFile1 = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
@@ -237,6 +239,6 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 
 	};
 
-	var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
+	var loader = Services.scriptloader;
 	loader.loadSubScript("chrome://cardbook/content/cardbookWebDAV.js");
 };

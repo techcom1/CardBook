@@ -1,12 +1,15 @@
 if ("undefined" == typeof(wdw_cardbookAskUser)) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var myAskUserObserver = {
 		register: function() {
-			var observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
+			var observerService = Services.obs;
 			observerService.addObserver(this, "cardbook.importConflictChoicePersist", false);
 		},
 		
 		unregister: function() {
-			var observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
+			var observerService = Services.obs;
 			observerService.removeObserver(this, "cardbook.importConflictChoicePersist");
 		},
 		
@@ -21,7 +24,6 @@ if ("undefined" == typeof(wdw_cardbookAskUser)) {
 
 	var wdw_cardbookAskUser = {
 		load: function () {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			myAskUserObserver.register();
 			var strBundle = document.getElementById("cardbook-strings");
 			document.title = strBundle.getString("askUserTitle");

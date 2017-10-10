@@ -1,10 +1,10 @@
 if ("undefined" == typeof(cardbookIndexedDB)) {
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var cardbookIndexedDB = {
 
 		// first step in the initial load data
 		openDB: function () {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
-			
 			// generic output when errors on DB
 			cardbookRepository.cardbookDatabase.onerror = function(e) {
 				wdw_cardbooklog.updateStatusProgressInformation("Database error : " + e.value, "Error");

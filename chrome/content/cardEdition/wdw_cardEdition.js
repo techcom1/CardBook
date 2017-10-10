@@ -1,4 +1,9 @@
 if ("undefined" == typeof(wdw_cardEdition)) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("resource://gre/modules/FormHistory.jsm");
+	Components.utils.import("resource://gre/modules/AddonManager.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var wdw_cardEdition = {
 
 		contactNotLoaded : true,
@@ -51,7 +56,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				}
 			} else if (aCard.version == "3.0") {
 				document.getElementById('kindTextBox').value = "";
-				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+				var prefs = Services.prefs;
 				var kindCustom = prefs.getComplexValue("extensions.cardbook.kindCustom", Components.interfaces.nsISupportsString).data;
 				var memberCustom = prefs.getComplexValue("extensions.cardbook.memberCustom", Components.interfaces.nsISupportsString).data;
 				for (var i = 0; i < aCard.others.length; i++) {
@@ -501,7 +506,6 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		},
 
 		chooseCalendarPanel: function () {
-			Components.utils.import("resource://gre/modules/AddonManager.jsm");
 			AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, wdw_cardEdition.chooseCalendarPanelEnd);
 		},
 
@@ -706,8 +710,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		},
 	
 		load: function () {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var prefs = Services.prefs;
 			document.getElementById('mailPopularityTab').setAttribute("collapsed", !prefs.getBoolPref("extensions.cardbook.mailPopularityTabView"));
 
 			cardbookUtils.purgeEditionPhotoTempFile();
@@ -791,7 +794,6 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		},
 
 		updateFormFields: function () {
-			Components.utils.import("resource://gre/modules/FormHistory.jsm");
 			// first static fields
 			var fieldHistorized = [ 'adrLocality', 'adrRegion', 'adrPostalCode', 'adrCountry', 'title', 'role' ];
 			for (var i in fieldHistorized) {

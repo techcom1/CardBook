@@ -24,7 +24,6 @@ if ("undefined" == typeof(wdw_cardbookConfigurationAddVcards)) {
 		},
 				
 		load: function () {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			wdw_cardbookConfigurationAddVcards.loadMailAccounts();
 			wdw_cardbookConfigurationAddVcards.loadAB();
 			wdw_cardbookConfigurationAddVcards.loadContacts();

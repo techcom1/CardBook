@@ -1,4 +1,6 @@
 if ("undefined" == typeof(cardbookPrint)) {
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var cardbookPrint = {
 		result: "",
 		indentation: "",
@@ -58,7 +60,6 @@ if ("undefined" == typeof(cardbookPrint)) {
 		},
 
 		buildHTML: function (aListOfCards, aTitle, aColumnChoice) {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			var strBundle = document.getElementById("cardbook-strings");
 			cardbookPrint.result = '';
 			for (var i = 0; i < aListOfCards.length; i++) {

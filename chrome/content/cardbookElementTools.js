@@ -1,4 +1,7 @@
 if ("undefined" == typeof(cardbookElementTools)) {
+	Components.utils.import("resource:///modules/mailServices.js");
+	Components.utils.import("resource://gre/modules/Services.jsm");
+
 	var cardbookElementTools = {
 		
 		deleteRowsType: function (aType) {
@@ -83,7 +86,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 		},
 
 		loadAccountsOrCatsTreeMenu: function (aPopupName, aMenuName, aDefaultId) {
-			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+			var stringBundleService = Services.strings;
 			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 			var myPopup = document.getElementById(aPopupName);
 			cardbookElementTools.deleteRows(aPopupName);
@@ -108,7 +111,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 		},
 
 		loadInclExcl: function (aPopupName, aMenuName, aDefaultId) {
-			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+			var stringBundleService = Services.strings;
 			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 			var myPopup = document.getElementById(aPopupName);
 			cardbookElementTools.deleteRows(aPopupName);
@@ -134,7 +137,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			var defaultIndex = 0;
 			var j = 0;
 			if (aAddAllMailAccounts) {
-				var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+				var stringBundleService = Services.strings;
 				var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 				var menuItem = document.createElement("menuitem");
 				menuItem.setAttribute("label", strBundle.GetStringFromName("allMailAccounts"));
@@ -146,7 +149,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 				j++;
 			}
 			var sortedEmailAccounts = [];
-			var accounts = Components.classes["@mozilla.org/messenger/account-manager;1"].getService(Components.interfaces.nsIMsgAccountManager).accounts;
+			var accounts = MailServices.accounts.accounts;
 			var accountsLength = (typeof accounts.Count === 'undefined') ? accounts.length : accounts.Count();
 			for (var i = 0; i < accountsLength; i++) {
 				var account = accounts.queryElementAt ? accounts.queryElementAt(i, Components.interfaces.nsIMsgAccount) : accounts.GetElementAt(i).QueryInterface(Components.interfaces.nsIMsgAccount);
@@ -182,7 +185,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			var defaultIndex = 0;
 			var j = 0;
 			if (aAddAllABs) {
-				var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+				var stringBundleService = Services.strings;
 				var strBundle = stringBundleService.createBundle("chrome://messenger/locale/addressbook/addressBook.properties");
 				var menuItem = document.createElement("menuitem");
 				menuItem.setAttribute("label", strBundle.GetStringFromName("allAddressBooks"));
@@ -210,7 +213,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 				}
 			}
 			if (!aExclusive) {
-				var contactManager = Components.classes["@mozilla.org/abmanager;1"].getService(Components.interfaces.nsIAbManager);
+				var contactManager = MailServices.ab;
 				var contacts = contactManager.directories;
 				while ( contacts.hasMoreElements() ) {
 					var contact = contacts.getNext().QueryInterface(Components.interfaces.nsIAbDirectory);
@@ -257,7 +260,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			}
 			if (!(aInclRestrictionList && aInclRestrictionList[aDefaultPrefId])) {
 				if (aAddAllCats) {
-					var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+					var stringBundleService = Services.strings;
 					var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 					var menuItem = document.createElement("menuitem");
 					menuItem.setAttribute("label", strBundle.GetStringFromName("allCategories"));
@@ -269,7 +272,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 					j++;
 				}
 				if (aAddOnlyCats) {
-					var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+					var stringBundleService = Services.strings;
 					var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 					var menuItem = document.createElement("menuitem");
 					menuItem.setAttribute("label", strBundle.GetStringFromName("onlyCategories"));
@@ -281,7 +284,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 					j++;
 				}
 				if (aAddNoCats) {
-					var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+					var stringBundleService = Services.strings;
 					var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 					var menuItem = document.createElement("menuitem");
 					menuItem.setAttribute("label", strBundle.GetStringFromName("noCategory"));
@@ -347,7 +350,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 		},
 
 		loadDateFormats: function (aPopupName, aMenuName, aDefaultValue) {
-			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+			var stringBundleService = Services.strings;
 			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 			var myPopup = document.getElementById(aPopupName);
 			cardbookElementTools.deleteRows(aPopupName);
@@ -574,7 +577,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			aMenulist.appendChild(aMenupopup);
 			aMenupopup.setAttribute('id', aType + '_' + aIndex + '_menupopupTerm');
 			cardbookElementTools.deleteRows(aMenupopup.id);
-			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+			var stringBundleService = Services.strings;
 			var strBundle = stringBundleService.createBundle("chrome://messenger/locale/search-operators.properties");
 			var found = false;
 			var operators = ['Contains', 'DoesntContain', 'Is', 'Isnt', 'BeginsWith', 'EndsWith', 'IsEmpty', 'IsntEmpty']

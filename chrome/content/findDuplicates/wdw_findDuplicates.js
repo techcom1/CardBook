@@ -1,4 +1,7 @@
 if ("undefined" == typeof(wdw_findDuplicates)) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var wdw_findDuplicates = {
 		
 		gResults: [],
@@ -32,7 +35,7 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 						var dirPrefId = wdw_findDuplicates.gResultsDirPrefId[i];
 						var cardbookPrefService = new cardbookPreferenceService(dirPrefId);
 						var color = cardbookPrefService.getColor()
-						var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+						var prefs = Services.prefs;
 						var useColor = prefs.getComplexValue("extensions.cardbook.useColor", Components.interfaces.nsISupportsString).data;
 						if (useColor == "text") {
 							var colorProperty = "color";
@@ -240,7 +243,6 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 		},
 
 		load: function () {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			wdw_findDuplicates.compareCards(window.arguments[0].dirPrefId);
 			if (!(window.arguments[0].dirPrefId != null && window.arguments[0].dirPrefId !== undefined && window.arguments[0].dirPrefId != "")) {
 				wdw_findDuplicates.loadCssRules();

@@ -1,4 +1,7 @@
 if ("undefined" == typeof(wdw_cardbooklog)) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var wdw_cardbooklog = {
 
 		syncActivity : {},
@@ -16,8 +19,7 @@ if ("undefined" == typeof(wdw_cardbooklog)) {
 		},
 
 		updateStatusProgressInformation: function(aLogLine, aErrorType) {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var prefs = Services.prefs;
 			var statusInformationLength = prefs.getComplexValue("extensions.cardbook.statusInformationLineNumber", Components.interfaces.nsISupportsString).data;
 			
 			if (cardbookRepository.statusInformation.length >= statusInformationLength) {
@@ -28,13 +30,13 @@ if ("undefined" == typeof(wdw_cardbooklog)) {
 			} else {
 				cardbookRepository.statusInformation.push([wdw_cardbooklog.getTime() + " : " + aLogLine, "Normal"]);
 			}
-			// var consoleService = Components.classes["@mozilla.org/consoleservice;1"].getService(Components.interfaces.nsIConsoleService);
+			// var consoleService = Services.console;
 			// consoleService.logStringMessage(wdw_cardbooklog.getTime() + " : " + aLogLine);
 		},
 
 		updateStatusProgressInformationWithDebug1: function(aLogLine, aResponse) {
 			if (aResponse) {
-				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+				var prefs = Services.prefs;
 				var debugMode = prefs.getBoolPref("extensions.cardbook.debugMode");
 				if (debugMode) {
 					wdw_cardbooklog.updateStatusProgressInformation(aLogLine + aResponse.toSource());
@@ -43,7 +45,7 @@ if ("undefined" == typeof(wdw_cardbooklog)) {
 		},
 
 		updateStatusProgressInformationWithDebug2: function(aLogLine) {
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var prefs = Services.prefs;
 			var debugMode = prefs.getBoolPref("extensions.cardbook.debugMode");
 			if (debugMode) {
 				wdw_cardbooklog.updateStatusProgressInformation(aLogLine);
@@ -54,7 +56,7 @@ if ("undefined" == typeof(wdw_cardbooklog)) {
 			var gActivityManager = Components.classes["@mozilla.org/activity-manager;1"].getService(Components.interfaces.nsIActivityManager);
 			var process = Components.classes["@mozilla.org/activity-process;1"].createInstance(Components.interfaces.nsIActivityProcess);
 			
-			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+			var stringBundleService = Services.strings;
 			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 			var processName = strBundle.formatStringFromName("synchroRunning", [aDirPrefName], 1);
 
@@ -74,7 +76,7 @@ if ("undefined" == typeof(wdw_cardbooklog)) {
 		
 		fetchSyncActivity: function(aDirPrefId, aCountDone, aCountTotal) {
 			if (wdw_cardbooklog.syncActivity[aDirPrefId] && wdw_cardbooklog.syncActivity[aDirPrefId].syncProcess) {
-				var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+				var stringBundleService = Services.strings;
 				var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 				var processMessage = strBundle.formatStringFromName("synchroProcessed", [aCountDone, aCountTotal], 2);
 				wdw_cardbooklog.syncActivity[aDirPrefId].syncProcess.setProgress(processMessage, aCountDone, aCountTotal);
@@ -97,7 +99,7 @@ if ("undefined" == typeof(wdw_cardbooklog)) {
 					gActivityManager.removeActivity(wdw_cardbooklog.syncActivity[aDirPrefId].syncEvent.id);
 				}
 			}
-			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+			var stringBundleService = Services.strings;
 			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 			var eventName = strBundle.formatStringFromName("synchroFinished", [aDirPrefName], 1);
 			var event = Components.classes["@mozilla.org/activity-event;1"].createInstance(Components.interfaces.nsIActivityEvent);
@@ -109,7 +111,7 @@ if ("undefined" == typeof(wdw_cardbooklog)) {
 			
 		addActivity: function(aMessageCode, aArray, aIcon) {
 			var gActivityManager = Components.classes["@mozilla.org/activity-manager;1"].getService(Components.interfaces.nsIActivityManager);
-			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+			var stringBundleService = Services.strings;
 			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 			var eventName = strBundle.formatStringFromName(aMessageCode, aArray, aArray.length);
 			var event = Components.classes["@mozilla.org/activity-event;1"].createInstance(Components.interfaces.nsIActivityEvent);

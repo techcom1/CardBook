@@ -1,4 +1,9 @@
 if ("undefined" == typeof(ovl_filters)) {
+	Components.utils.import("resource:///modules/mailServices.js");
+	Components.utils.import("resource:///modules/jsmime.jsm");
+	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var ovl_filters = {
 		
 		_isLocalSearch: function(aSearchScope) {
@@ -14,7 +19,6 @@ if ("undefined" == typeof(ovl_filters)) {
 		},
 
 		_addEmails: function(aMsgHdrs, aActionValue, aField) {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			if (!cardbookUtils.isMyAccountEnabled(aActionValue)) {
 				loader.loadSubScript("chrome://cardbook/content/wdw_log.js");
 				cardbookUtils.formatStringForOutput("errorFiltersAddEmailsABNotEnabled", [aField, aActionValue], "Error");
@@ -34,8 +38,6 @@ if ("undefined" == typeof(ovl_filters)) {
 		},
 
 		_matchEmails: function(aMsgHdrEmails, aSearchValue, aSearchOp) {
-			Components.utils.import("resource:///modules/jsmime.jsm");
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			if (!cardbookUtils.isMyAccountEnabled(aSearchValue)) {
 				loader.loadSubScript("chrome://cardbook/content/wdw_log.js");
 				cardbookUtils.formatStringForOutput("errorFiltersMatchEmailsABNotEnabled", [aSearchValue], "Error");
@@ -73,7 +75,7 @@ if ("undefined" == typeof(ovl_filters)) {
 		},
 
 		onLoad: function () {
-			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+			var stringBundleService = Services.strings;
 			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 
 			var searchFrom = {
@@ -98,7 +100,7 @@ if ("undefined" == typeof(ovl_filters)) {
 					return ovl_filters._matchEmails(aMsgHdr.author, aSearchValue, aSearchOp);
 				}
 			};
-			var filterService = Components.classes["@mozilla.org/messenger/services/filters;1"].getService(Components.interfaces.nsIMsgFilterService);
+			var filterService = MailServices.filters;
 			filterService.addCustomTerm(searchFrom);
 
 			var searchTo = {
@@ -123,7 +125,7 @@ if ("undefined" == typeof(ovl_filters)) {
 					return ovl_filters._matchEmails(aMsgHdr.recipients, aSearchValue, aSearchOp);
 				}
 			};
-			var filterService = Components.classes["@mozilla.org/messenger/services/filters;1"].getService(Components.interfaces.nsIMsgFilterService);
+			var filterService = MailServices.filters;
 			filterService.addCustomTerm(searchTo);
 
 			var searchCc = {
@@ -148,7 +150,7 @@ if ("undefined" == typeof(ovl_filters)) {
 					return ovl_filters._matchEmails(aMsgHdr.ccList, aSearchValue, aSearchOp);
 				}
 			};
-			var filterService = Components.classes["@mozilla.org/messenger/services/filters;1"].getService(Components.interfaces.nsIMsgFilterService);
+			var filterService = MailServices.filters;
 			filterService.addCustomTerm(searchCc);
 
 			var searchBcc = {
@@ -173,7 +175,7 @@ if ("undefined" == typeof(ovl_filters)) {
 					return ovl_filters._matchEmails(aMsgHdr.bccList, aSearchValue, aSearchOp);
 				}
 			};
-			var filterService = Components.classes["@mozilla.org/messenger/services/filters;1"].getService(Components.interfaces.nsIMsgFilterService);
+			var filterService = MailServices.filters;
 			filterService.addCustomTerm(searchBcc);
 
 			var searchAll = {
@@ -203,7 +205,7 @@ if ("undefined" == typeof(ovl_filters)) {
 							ovl_filters._matchEmails(aMsgHdr.bccList, aSearchValue, aSearchOp));
 				}
 			};
-			var filterService = Components.classes["@mozilla.org/messenger/services/filters;1"].getService(Components.interfaces.nsIMsgFilterService);
+			var filterService = MailServices.filters;
 			filterService.addCustomTerm(searchAll);
 
 			var addFrom = {
@@ -217,7 +219,7 @@ if ("undefined" == typeof(ovl_filters)) {
 					ovl_filters._addEmails(aMsgHdrs, aActionValue, "author");
 				}
 			};
-			var filterService = Components.classes["@mozilla.org/messenger/services/filters;1"].getService(Components.interfaces.nsIMsgFilterService);
+			var filterService = MailServices.filters;
 			filterService.addCustomAction(addFrom);
 
 			var addTo = {
@@ -231,7 +233,7 @@ if ("undefined" == typeof(ovl_filters)) {
 					ovl_filters._addEmails(aMsgHdrs, aActionValue, "recipients");
 				}
 			};
-			var filterService = Components.classes["@mozilla.org/messenger/services/filters;1"].getService(Components.interfaces.nsIMsgFilterService);
+			var filterService = MailServices.filters;
 			filterService.addCustomAction(addTo);
 
 			var addCc = {
@@ -245,7 +247,7 @@ if ("undefined" == typeof(ovl_filters)) {
 					ovl_filters._addEmails(aMsgHdrs, aActionValue, "ccList");
 				}
 			};
-			var filterService = Components.classes["@mozilla.org/messenger/services/filters;1"].getService(Components.interfaces.nsIMsgFilterService);
+			var filterService = MailServices.filters;
 			filterService.addCustomAction(addCc);
 
 			var addBcc = {
@@ -259,7 +261,7 @@ if ("undefined" == typeof(ovl_filters)) {
 					ovl_filters._addEmails(aMsgHdrs, aActionValue, "bccList");
 				}
 			};
-			var filterService = Components.classes["@mozilla.org/messenger/services/filters;1"].getService(Components.interfaces.nsIMsgFilterService);
+			var filterService = MailServices.filters;
 			filterService.addCustomAction(addBcc);
 
 			var addAll = {
@@ -276,14 +278,14 @@ if ("undefined" == typeof(ovl_filters)) {
 					ovl_filters._addEmails(aMsgHdrs, aActionValue, "bccList");
 				}
 			};
-			var filterService = Components.classes["@mozilla.org/messenger/services/filters;1"].getService(Components.interfaces.nsIMsgFilterService);
+			var filterService = MailServices.filters;
 			filterService.addCustomAction(addAll);
 
 			window.removeEventListener('load', arguments.callee, true);
 		}
 	};
 	
-	var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
+	var loader = Services.scriptloader;
 	loader.loadSubScript("chrome://cardbook/content/cardbookUtils.js");
 };
 

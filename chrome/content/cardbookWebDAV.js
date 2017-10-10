@@ -1,7 +1,7 @@
 if ("undefined" == typeof(cardbookWebDAV)) {
-
 	Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
-	
+	Components.utils.import("resource://gre/modules/Services.jsm");
+
 	function XMLToJSONParser(doc) {
 		this._buildTree(doc);
 	}
@@ -50,7 +50,7 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 		this.logDescription = connection.connDescription;
 		this.target = target;
 		this.etag = etag;
-		var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+		var prefs = Services.prefs;
 		var requestsTimeout = prefs.getComplexValue("extensions.cardbook.requestsTimeout", Components.interfaces.nsISupportsString).data;
 		this.addonVersion = prefs.getComplexValue("extensions.cardbook.addonVersion", Components.interfaces.nsISupportsString).data;
 		this.timeout = requestsTimeout * 1000;
@@ -250,7 +250,7 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 				}
 			}
 			catch(e) {
-				var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+				var prompts = Services.prompt;
 				var errorTitle = "_dumpSecurityInfo error";
 				prompts.alert(null, errorTitle, e);
 			}
@@ -311,17 +311,14 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 				}
 	
 				if (body) {
-					let converter = Components.classes["@mozilla.org/intl/scriptableunicodeconverter"].createInstance(Components.interfaces.nsIScriptableUnicodeConverter);
-					converter.charset = "UTF-8";
-					let stream = converter.convertToInputStream(body);
-					httpChannel.send(stream);
+					httpChannel.send(body);
 				} else {
 					httpChannel.send();
 				}
 	
 			}
 			catch(e) {
-				var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+				var prompts = Services.prompt;
 				var errorTitle = "_sendHTTPRequest error";
 				prompts.alert(null, errorTitle, e);
 				if (this.target && this.target.onDAVQueryComplete) {
@@ -476,7 +473,7 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 		_formatRelativeHref: function(aString) {
 			var decodeReport = true;
 			try {
-				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+				var prefs = Services.prefs;
 				decodeReport = prefs.getBoolPref("extensions.cardbook.decodeReport");
 			} catch (e) {
 				decodeReport = true;
@@ -499,7 +496,7 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 		}
 	};
 
-	var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
+	var loader = Services.scriptloader;
 	loader.loadSubScript("chrome://cardbook/content/cardbookPasswordManager.js");
 	loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");
 };

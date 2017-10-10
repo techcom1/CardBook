@@ -1,11 +1,14 @@
 if ("undefined" == typeof(wdw_migrate)) {
+	Components.utils.import("resource:///modules/mailServices.js");
+	Components.utils.import("resource://gre/modules/Services.jsm");
+
 	var wdw_migrate = {
 		
 		customMap : [ ["1", false], ["2", false], ["3", false], ["4", false] ],
 
 		writeCustomToPreference: function () {
 			var myType = 'pers';
-			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+			var stringBundleService = Services.strings;
 			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 			var customLabel = strBundle.GetStringFromName("customLabel");
 			var cardbookPrefService = new cardbookPreferenceService();
@@ -108,7 +111,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 				var photoURI = aABCard.getProperty("PhotoURI", "");
 				var photoType = aABCard.getProperty("PhotoType", "");
 				if (photoType == "file") {
-					var ioService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
+					var ioService = Services.io;
 					var myFileURI = ioService.newURI(photoURI, null, null);
 					myCard.photo.extension = cardbookUtils.getFileExtension(photoURI);
 					myCard.photo.value = cardbookSynchronization.getFileBinary(myFileURI);
@@ -205,7 +208,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 		},
 
 		importCards: function (aDirPrefIdSource, aDirPrefIdTarget, aDirPrefIdTargetName, aVersion, aDateFormat, aMode) {
-			var contactManager = Components.classes["@mozilla.org/abmanager;1"].getService(Components.interfaces.nsIAbManager);
+			var contactManager = MailServices.ab;
 			var contacts = contactManager.directories;
 			while ( contacts.hasMoreElements() ) {
 				var contact = contacts.getNext().QueryInterface(Components.interfaces.nsIAbDirectory);

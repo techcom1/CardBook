@@ -1,6 +1,8 @@
 if ("undefined" == typeof(cardbookPreferenceService)) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+
 	function cardbookPreferenceService(uniqueId) {
-		this.mPreferencesService = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+		this.mPreferencesService = Services.prefs;
 		this.prefCardBookRoot = "extensions.cardbook.";
 		this.prefCardBookData = this.prefCardBookRoot + "data.";
 		this.prefCardBookTypes = this.prefCardBookRoot + "types.";
@@ -109,7 +111,7 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 		},
 	
 		insertIMPPsSeed: function () {
-			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+			var stringBundleService = Services.strings;
 			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 			this.setIMPPs(0,"skype:" + strBundle.GetStringFromName("impp.skype") + ":skype");
 			this.setIMPPs(1,"jabber:" + strBundle.GetStringFromName("impp.jabber") + ":xmpp");
@@ -165,7 +167,7 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 						}
 					} else {
 						try {
-							var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+							var stringBundleService = Services.strings;
 							var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 							var translated = strBundle.GetStringFromName("types." + aType.toLowerCase() + "." + finalResult[i].toLowerCase());
 							if (translated != null && translated !== undefined && translated != "") {
@@ -795,7 +797,7 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 			if (prefValueLabel != null && prefValueLabel !== undefined && prefValueLabel != "") {
 				return prefValueLabel;
 			} else {
-		let stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+		let stringBundleService = Services.strings;
 		let strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 				return strBundle.GetStringFromName("prefValueLabel");
 			}
@@ -811,6 +813,6 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 		}
 	};
 
-	var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
+	var loader = Services.scriptloader;
 	loader.loadSubScript("chrome://cardbook/content/cardbookUtils.js");
 };

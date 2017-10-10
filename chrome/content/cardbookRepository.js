@@ -1,4 +1,5 @@
 var EXPORTED_SYMBOLS = ["cardbookRepository"];
+Components.utils.import("resource://gre/modules/Services.jsm");
 
 var cardbookRepository = {
 	cardbookDatabase : {},
@@ -193,7 +194,7 @@ var cardbookRepository = {
 			for (var j in numberList) {
 				try {
 					var mySourceField = "extensions.cardbook.customs.customField" + numberList[j] + typeList[i];
-					var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+					var prefs = Services.prefs;
 					var mySourceValue = prefs.getComplexValue(mySourceField, Components.interfaces.nsISupportsString).data;
 					var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
 					if (typeList[i] === "Name") {
@@ -219,7 +220,7 @@ var cardbookRepository = {
     setCollected: function () {
 		try {
 			// for file opened with version <= 18.7
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var prefs = Services.prefs;
 			var emailsCollection = prefs.getComplexValue("extensions.cardbook.emailsCollection", Components.interfaces.nsISupportsString).data;
 			var emailsCollectionCat = "";
 			try {
@@ -359,7 +360,7 @@ var cardbookRepository = {
 	setSolveConflicts: function() {
 		try {
 			// for file opened with version <= 14.0
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var prefs = Services.prefs;
 			var preferDisk = prefs.getBoolPref("extensions.cardbook.preferDisk");
 			var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
 			if (preferDisk) {
@@ -376,7 +377,7 @@ var cardbookRepository = {
 	},
 
 	getLocalDirectory: function() {
-		let directoryService = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties);
+		let directoryService = Services.dirsvc;
 		// this is a reference to the profile dir (ProfD) now.
 		let localDir = directoryService.get("ProfD", Components.interfaces.nsIFile);
 		
@@ -647,7 +648,7 @@ var cardbookRepository = {
 	},
 
 	removeAccountFromBirthday: function (aDirPrefId) {
-		var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+		var prefs = Services.prefs;
 		var addressBooks = prefs.getComplexValue("extensions.cardbook.addressBooksNameList", Components.interfaces.nsISupportsString).data;
 		var addressBooksList = [];
 		addressBooksList = addressBooks.split(',');
@@ -1426,7 +1427,7 @@ var cardbookRepository = {
 	},
 
 	createCssCardRules: function (aStyleSheet, aDirPrefId, aColor) {
-		var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+		var prefs = Services.prefs;
 		var useColor = prefs.getComplexValue("extensions.cardbook.useColor", Components.interfaces.nsISupportsString).data;
 		if (useColor == "text") {
 			var ruleString = ".cardbookCardsTreeClass treechildren::-moz-tree-cell-text(SEARCH odd color_" + aDirPrefId + ") {color: " + aColor + ";}";
@@ -1447,7 +1448,7 @@ var cardbookRepository = {
 
 	unregisterCss: function (aChromeUri) {
 		var sss = Components.classes['@mozilla.org/content/style-sheet-service;1'].getService(Components.interfaces.nsIStyleSheetService);
-		var ios = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
+		var ios = Services.io;
 		var uri = ios.newURI(aChromeUri, null, null);
 		if (sss.sheetRegistered(uri, sss.AUTHOR_SHEET)) {
 			sss.unregisterSheet(uri, sss.AUTHOR_SHEET);
@@ -1456,7 +1457,7 @@ var cardbookRepository = {
 
 	reloadCss: function (aChromeUri) {
 		var sss = Components.classes['@mozilla.org/content/style-sheet-service;1'].getService(Components.interfaces.nsIStyleSheetService);
-		var ios = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
+		var ios = Services.io;
 		var uri = ios.newURI(aChromeUri, null, null);
 		if (sss.sheetRegistered(uri, sss.AUTHOR_SHEET)) {
 			sss.unregisterSheet(uri, sss.AUTHOR_SHEET);
@@ -1486,7 +1487,7 @@ var cardbookRepository = {
 
 };
 
-var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
+var loader = Services.scriptloader;
 loader.loadSubScript("chrome://cardbook/content/cardbookCardParser.js");
 loader.loadSubScript("chrome://cardbook/content/cardbookDates.js");
 loader.loadSubScript("chrome://cardbook/content/cardbookIndexedDB.js");

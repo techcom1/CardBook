@@ -1,4 +1,6 @@
 if ("undefined" == typeof(cardbookCardParser)) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+
 	function cardbookCardParser(vCardData, vSiteUrl, vEtag, vDirPrefId) {
 		this._init();
 		
@@ -412,7 +414,7 @@ if ("undefined" == typeof(cardbookCardParser)) {
 								}
 								// for users that shares Thunderbird contacts between profiles, it's good to automatically record Thunderbird custom fields
 								if (vCardDataArrayHeader == "X-CUSTOM1" || vCardDataArrayHeader == "X-CUSTOM2" || vCardDataArrayHeader == "X-CUSTOM3" || vCardDataArrayHeader == "X-CUSTOM4") {
-									var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+									var stringBundleService = Services.strings;
 									var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 									var customLabel = strBundle.GetStringFromName("customLabel");
 									var cardbookPrefService = new cardbookPreferenceService(this.dirPrefId);
@@ -452,6 +454,6 @@ if ("undefined" == typeof(cardbookCardParser)) {
 		}
 	};
 	
-	var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
+	var loader = Services.scriptloader;
 	loader.loadSubScript("chrome://cardbook/content/cardbookUtils.js");
 };

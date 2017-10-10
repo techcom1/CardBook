@@ -1,4 +1,8 @@
 if ("undefined" == typeof(cardbookBirthdaysUtils)) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("resource://gre/modules/AddonManager.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var cardbookBirthdaysUtils = {
 		lBirthdayList : [],
 		lBirthdayAccountList : {},
@@ -39,7 +43,6 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			
 			if (cardbookBirthdaysUtils.lBirthdayList.length != 0) {
 				cardbookBirthdaysUtils.lBirthdaySyncResult = [];
-				Components.utils.import("resource://gre/modules/AddonManager.jsm");
 				AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, cardbookBirthdaysUtils.doSyncWithLightning);
 			}
 		},
@@ -54,7 +57,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 
 		syncCalendar: function (aCalendar) {
 			var strBundle = document.getElementById("cardbook-strings");
-			var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+			var prompts = Services.prompt;
 			var errorTitle;
 			var errorMsg;
 
@@ -248,7 +251,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 		},
 
 		getPref: function (Name) {
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var prefs = Services.prefs;
 			if (prefs.getPrefType(Name) == prefs.PREF_STRING){
 				var a = prefs.getComplexValue(Name, Components.interfaces.nsISupportsString).data;
 				return a;
@@ -328,7 +331,6 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 		},
 	
 		loadBirthdays: function (lnumberOfDays) {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			var myContact = cardbookBirthdaysUtils.getPref("extensions.cardbook.addressBooksNameList");
 			var searchInNote = cardbookBirthdaysUtils.getPref("extensions.cardbook.searchInNote");
 			var useOnlyEmail = cardbookBirthdaysUtils.getPref("extensions.cardbook.useOnlyEmail");
@@ -396,7 +398,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 		}
 	};
 
-	var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
+	var loader = Services.scriptloader;
 	loader.loadSubScript("chrome://cardbook/content/wdw_log.js");
 	loader.loadSubScript("chrome://cardbook/content/cardbookUtils.js");
 };

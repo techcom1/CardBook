@@ -1,4 +1,9 @@
 if ("undefined" == typeof(cardbookSynchronization)) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("resource://gre/modules/NetUtil.jsm");
+	Components.utils.import("resource://gre/modules/FileUtils.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var cardbookSynchronization = {
 
 		autoSync: "",
@@ -490,8 +495,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 		},
 
 		getFileDataAsync: function (aFilePath, aCallback, aParams) {
-			Components.utils.import("resource://gre/modules/FileUtils.jsm");
-			Components.utils.import("resource://gre/modules/NetUtil.jsm");
 			function readFile(aFile, aCallback, aParams) {
 				NetUtil.asyncFetch(aFile, function (inputStream, status) {
 					if (!Components.isSuccessCode(status)) {
@@ -527,8 +530,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 		},
 
 		writeFileDataAsync: function (aFilePath, aData, aCallback, aParams) {
-			Components.utils.import("resource://gre/modules/FileUtils.jsm");
-			Components.utils.import("resource://gre/modules/NetUtil.jsm");
 			function writeFile(aFile, aData, aCallback, aParams) {
 				var ostream = FileUtils.openSafeFileOutputStream(aFile)
 				var converter = Components.classes["@mozilla.org/intl/scriptableunicodeconverter"].createInstance(Components.interfaces.nsIScriptableUnicodeConverter);
@@ -673,7 +674,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					}
 				} else if (aCard[aField].localURI != null && aCard[aField].localURI !== undefined && aCard[aField].localURI != "") {
 					if (!cacheDir.exists()) {
-						var ioService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
+						var ioService = Services.io;
 						var myFileURI = ioService.newURI(aCard[aField].localURI, null, null);
 						var myFile1 = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
 						myFile1.copyToFollowingLinks(cacheDir.parent,cacheDir.leafName);
@@ -703,7 +704,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							cardbookRepository.cardbookImageGetRequest[aCard.dirPrefId]++;
 							request.getimage();
 						} else {
-							var ioService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
+							var ioService = Services.io;
 							var myFileURI = ioService.newURI(aCard[aField].URI, null, null);
 							var fileContent = btoa(cardbookSynchronization.getFileBinary(myFileURI));
 							cardbookSynchronization.writeContentToFile(cacheDir.path, fileContent, "NOUTF8");
@@ -781,7 +782,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			cardbookUtils.nullifyTagModification(aModifiedCard);
 
 			var request = new cardbookWebDAV(aConnection, listener_update, aModifiedCard.etag);
-			var cardContent = cardbookUtils.cardToVcardData(aModifiedCard, true);
+			var cardContent = cardbookUtils.getvCardForServer(aModifiedCard, true);
 			cardbookUtils.formatStringForOutput("serverCardSendingUpdate", [aConnection.connDescription, aModifiedCard.fn]);
 			request.put(cardContent, "text/vcard; charset=utf-8");
 		},
@@ -819,7 +820,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			cardbookUtils.addEtag(aCard, "0");
 
 			var request = new cardbookWebDAV(aConnection, listener_create, aCard.etag);
-			var cardContent = cardbookUtils.cardToVcardData(aCard, true);
+			var cardContent = cardbookUtils.getvCardForServer(aCard, true);
 			cardbookUtils.formatStringForOutput("serverCardSendingCreate", [aConnection.connDescription, aCard.fn]);
 			request.put(cardContent, "text/vcard; charset=utf-8");
 		},
@@ -841,7 +842,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							cardbookRepository.cardbookServerGetForMergeResponse[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerGetForMergeError[aConnection.connPrefId]++;
 							if (e.message == "") {
-								var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+								var stringBundleService = Services.strings;
 								var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 								cardbookUtils.formatStringForOutput("parsingCardError", [aConnection.connDescription, strBundle.GetStringFromName(e.code), response], "Error");
 							} else {
@@ -887,7 +888,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							cardbookRepository.cardbookServerGetResponse[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerGetError[aConnection.connPrefId]++;
 							if (e.message == "") {
-								var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+								var stringBundleService = Services.strings;
 								var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 								cardbookUtils.formatStringForOutput("parsingCardError", [aParams.aPrefIdName, strBundle.GetStringFromName(e.code), cardContent], "Error");
 							} else {
@@ -959,7 +960,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 													cardbookRepository.cardbookServerGetResponse[aConnection.connPrefId]++;
 													cardbookRepository.cardbookServerGetError[aConnection.connPrefId]++;
 													if (e.message == "") {
-														var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+														var stringBundleService = Services.strings;
 														var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 														cardbookUtils.formatStringForOutput("parsingCardError", [aConnection.connDescription, strBundle.GetStringFromName(e.code), myContent], "Error");
 													} else {
@@ -1005,7 +1006,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					cardbookRepository.cardbookServerMultiGetResponse[aConnection.connPrefId]++;
 				}
 			};
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var prefs = Services.prefs;
 			var multiget = prefs.getComplexValue("extensions.cardbook.multiget", Components.interfaces.nsISupportsString).data;
 			for (var i = 0; i < cardbookRepository.cardbookServerMultiGetArray[aConnection.connPrefId].length; i = i + +multiget) {
 				var subArray = cardbookRepository.cardbookServerMultiGetArray[aConnection.connPrefId].slice(i, i + +multiget);
@@ -1151,14 +1152,14 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					cardbookUtils.formatStringForOutput("cardUpdatedOnDiskDeletedOnServer", [aParams.aConnection.connDescription, aCard.fn]);
 					cardbookRepository.cardbookServerSyncTotal[aParams.aConnection.connPrefId]++;
 					cardbookRepository.cardbookServerSyncUpdatedOnDiskDeletedOnServer[aParams.aConnection.connPrefId]++;
-					var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+					var prefs = Services.prefs;
 					var solveConflicts = prefs.getComplexValue("extensions.cardbook.solveConflicts", Components.interfaces.nsISupportsString).data;
 					if (solveConflicts === "Local") {
 						var conflictResult = "keep";
 					} else if (solveConflicts === "Remote") {
 						var conflictResult = "delete";
 					} else {
-						var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+						var stringBundleService = Services.strings;
 						var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 						var message = strBundle.formatStringFromName("cardUpdatedOnDiskDeletedOnServer", [aParams.aConnection.connDescription, aCard.fn], 2);
 						var askUserResult = cardbookSynchronization.askUser(message, "keep", "delete");
@@ -1230,14 +1231,14 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					// "DELETEDONDISKUPDATEDONSERVER";
 					cardbookRepository.cardbookServerSyncDeletedOnDiskUpdatedOnServer[aConnection.connPrefId]++;
 					cardbookUtils.formatStringForOutput("cardDeletedOnDiskUpdatedOnServer", [aConnection.connDescription, myCacheCard.fn]);
-					var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+					var prefs = Services.prefs;
 					var solveConflicts = prefs.getComplexValue("extensions.cardbook.solveConflicts", Components.interfaces.nsISupportsString).data;
 					if (solveConflicts === "Local") {
 						var conflictResult = "delete";
 					} else if (solveConflicts === "Remote") {
 						var conflictResult = "keep";
 					} else {
-						var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+						var stringBundleService = Services.strings;
 						var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 						var message = strBundle.formatStringFromName("cardDeletedOnDiskUpdatedOnServer", [aConnection.connDescription, myCacheCard.fn], 2);
 						var askUserResult = cardbookSynchronization.askUser(message, "keep", "delete");
@@ -1262,14 +1263,14 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					// "UPDATEDONBOTH";
 					cardbookRepository.cardbookServerSyncUpdatedOnBoth[aConnection.connPrefId]++;
 					cardbookUtils.formatStringForOutput("cardUpdatedOnBoth", [aConnection.connDescription, myCacheCard.fn]);
-					var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+					var prefs = Services.prefs;
 					var solveConflicts = prefs.getComplexValue("extensions.cardbook.solveConflicts", Components.interfaces.nsISupportsString).data;
 					if (solveConflicts === "Local") {
 						var conflictResult = "local";
 					} else if (solveConflicts === "Remote") {
 						var conflictResult = "remote";
 					} else {
-						var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+						var stringBundleService = Services.strings;
 						var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 						var message = strBundle.formatStringFromName("cardUpdatedOnBoth", [aConnection.connDescription, myCacheCard.fn], 2);
 						var askUserResult = cardbookSynchronization.askUser(message, "local", "remote", "merge");
@@ -1697,7 +1698,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							}
 							if (allAddressbooks.length > 1 && aOperationType !== "GETDISPLAYNAME") {
 								var strBundle = document.getElementById("cardbook-strings");
-								var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+								var prompts = Services.prompt;
 								var multipleAddressBooksTitle = strBundle.getString("multipleAddressBooksTitle");
 								var multipleAddressBooksMsg = strBundle.getFormattedString("multipleAddressBooksMsg", [aRootUrl]) + "\r\n\r\n" + allAddressbooks.join("\r\n");
 								prompts.alert(null, multipleAddressBooksTitle, multipleAddressBooksMsg);
@@ -2051,9 +2052,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 		},
 
 		setPeriodicSync: function () {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
-
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var prefs = Services.prefs;
 			var autoSync = prefs.getBoolPref("extensions.cardbook.autoSync");
 			var autoSyncInterval = prefs.getComplexValue("extensions.cardbook.autoSyncInterval", Components.interfaces.nsISupportsString).data;
 			if ((cardbookSynchronization.autoSync == "") ||
@@ -2332,7 +2331,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 		},
 
 		loadAccounts: function () {
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var prefs = Services.prefs;
 			var initialSync = prefs.getBoolPref("extensions.cardbook.initialSync");
 			var myMode = "INITIAL";
 			cardbookSynchronization.initSync();
@@ -2449,7 +2448,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 								cardbookRepository.cardbookServerSyncError[aParams.aPrefId]++;
 								cardbookRepository.cardbookServerSyncDone[aParams.aPrefId]++;
 								if (e.message == "") {
-									var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+									var stringBundleService = Services.strings;
 									var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 									cardbookUtils.formatStringForOutput("parsingCardError", [aParams.aPrefIdName, strBundle.GetStringFromName(e.code), fileContentArray[i]], "Error");
 								} else {
@@ -2578,7 +2577,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 								cardbookRepository.cardbookServerSyncError[aParams.aPrefId]++;
 								cardbookRepository.cardbookServerSyncDone[aParams.aPrefId]++;
 								if (e.message == "") {
-									var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+									var stringBundleService = Services.strings;
 									var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 									cardbookUtils.formatStringForOutput("parsingCardError", [aParams.aPrefIdName, strBundle.GetStringFromName(e.code), fileContentArray[i]], "Error");
 								} else {
@@ -2633,7 +2632,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					}
 				}
 
-				var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+				var stringBundleService = Services.strings;
 				var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 				if (aAskUser && !cardbookRepository.importConflictChoicePersist && cardbookRepository.cardbookCards[myTargetPrefId+"::"+aNewCard.uid]) {
 					var message = strBundle.formatStringFromName("cardAlreadyExisting", [myTargetPrefIdName, aNewCard.fn], 2);
@@ -2812,7 +2811,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 
 	};
 
-	var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
+	var loader = Services.scriptloader;
 	loader.loadSubScript("chrome://cardbook/content/addressbooksconfiguration/wdw_newGoogleToken.js");
 	loader.loadSubScript("chrome://cardbook/content/birthdays/cardbookBirthdaysUtils.js");
 	loader.loadSubScript("chrome://cardbook/content/birthdays/ovl_birthdays.js");

@@ -1,4 +1,6 @@
 if ("undefined" == typeof(ovl_synchro)) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+
 	var ovl_synchro = {
 
 		lTimerSync: null,
@@ -6,7 +8,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 		lEventTimerSync : { notify: function(lTimerSync) {
 			if (!cardbookRepository.firstLoad) {
 				// setting uncategorizedCards
-				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+				var prefs = Services.prefs;
 				try {
 					cardbookRepository.cardbookUncategorizedCards = prefs.getComplexValue("extensions.cardbook.uncategorizedCards", Components.interfaces.nsISupportsString).data;
 					if (cardbookRepository.cardbookUncategorizedCards == "") {
@@ -14,7 +16,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 					}
 				}
 				catch (e) {
-					let stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+					let stringBundleService = Services.strings;
 					let strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 					cardbookRepository.cardbookUncategorizedCards = strBundle.GetStringFromName("uncategorizedCards");
 					var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);

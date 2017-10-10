@@ -1,4 +1,8 @@
 if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
+	Components.utils.import("resource:///modules/mailServices.js");
+	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var CardBookResultsPaneObserver = {
 		onDragStart: function (aEvent, aXferData, aDragAction) {
 			var listOfEmails = wdw_cardbookContactsSidebar.getSelectedEmails();
@@ -136,7 +140,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 			var searchAB = document.getElementById('CardBookABMenulist').value;
 			var searchCategory = document.getElementById('categoriesMenulist').value;
 			var searchInput = document.getElementById("peopleSearchInput").value.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase();
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var prefs = Services.prefs;
 			var useOnlyEmail = prefs.getBoolPref("extensions.cardbook.useOnlyEmail");
 			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
 				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5]) {
@@ -408,9 +412,9 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 					}
 				}
 			}
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var prefs = Services.prefs;
 			if (!prefs.getBoolPref("extensions.cardbook.exclusive")) {
-				var contactManager = Components.classes["@mozilla.org/abmanager;1"].getService(Components.interfaces.nsIAbManager);
+				var contactManager = MailServices.ab;
 				var contacts = contactManager.directories;
 				while ( contacts.hasMoreElements() ) {
 					var contact = contacts.getNext().QueryInterface(Components.interfaces.nsIAbDirectory);
@@ -656,7 +660,6 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 			myCardBookSideBarObserver.register();
 			myCardBookSideBarPrefObserver.register();
 			document.title = parent.document.getElementById("sidebar-title").value;
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			wdw_cardbookContactsSidebar.waitForMsgIdentityFinished();
 		},
 		
@@ -713,7 +716,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 			} else {
 				var ABDefaultValue = 0;
 			}
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var prefs = Services.prefs;
 			cardbookElementTools.loadAddressBooks("CardBookABMenupopup", "CardBookABMenulist", ABDefaultValue, prefs.getBoolPref("extensions.cardbook.exclusive"), true, true, true,
 													wdw_cardbookContactsSidebar.ABInclRestrictions, wdw_cardbookContactsSidebar.ABExclRestrictions);
 			wdw_cardbookContactsSidebar.onABChange();

@@ -1,8 +1,10 @@
 if ("undefined" == typeof(ovl_attachvCard)) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var ovl_attachvCard = {
 		
 		attachvCard: function () {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			var cardbookPrefService = new cardbookPreferenceService();
 			var selected = document.getElementById("msgIdentity").selectedItem;
 			var key = selected.getAttribute("identitykey");
@@ -43,7 +45,7 @@ if ("undefined" == typeof(ovl_attachvCard)) {
 		}
 	};
 
-	var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
+	var loader = Services.scriptloader;
 	loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");
 };
 

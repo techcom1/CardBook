@@ -1,4 +1,6 @@
 if ("undefined" == typeof(cardbookPasswordManager)) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+
 	var cardbookPasswordManager = {
 
 		googleHostname : "chrome://cardbook/oauth",
@@ -47,7 +49,7 @@ if ("undefined" == typeof(cardbookPasswordManager)) {
 		},
 		
 		getPassword: function (aUsername, aUrl) {
-			var myLoginManager = Components.classes["@mozilla.org/login-manager;1"].getService(Components.interfaces.nsILoginManager);
+			var myLoginManager = Services.logins;
 			if (aUrl.indexOf(cardbookRepository.cardbookgdata.GOOGLE_API) === -1) {
 				var logins = myLoginManager.findLogins({}, cardbookPasswordManager.getRootUrl(aUrl), "User login", null);
 			} else {
@@ -63,7 +65,7 @@ if ("undefined" == typeof(cardbookPasswordManager)) {
 		},
 		
 		addAccount: function (aUsername, aUrl, aPassword) {
-			var myLoginManager = Components.classes["@mozilla.org/login-manager;1"].getService(Components.interfaces.nsILoginManager);
+			var myLoginManager = Services.logins;
 			var nsLoginInfo = new Components.Constructor("@mozilla.org/login-manager/loginInfo;1", Components.interfaces.nsILoginInfo, "init");
 			if (aUrl != null && aUrl !== undefined && aUrl != "") {
 				var login_info = new nsLoginInfo(cardbookPasswordManager.getRootUrl(aUrl), "User login", null, aUsername, aPassword, "", "");
@@ -76,7 +78,7 @@ if ("undefined" == typeof(cardbookPasswordManager)) {
 		},
 		
 		removeAccount: function (aUsername, aUrl) {
-			var myLoginManager = Components.classes["@mozilla.org/login-manager;1"].getService(Components.interfaces.nsILoginManager);
+			var myLoginManager = Services.logins;
 			if (aUrl != null && aUrl !== undefined && aUrl != "") {
 				var logins = myLoginManager.findLogins({}, cardbookPasswordManager.getRootUrl(aUrl), "User login", null);
 			} else {
@@ -94,6 +96,6 @@ if ("undefined" == typeof(cardbookPasswordManager)) {
 		
 	};
 
-	var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
+	var loader = Services.scriptloader;
 	loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");
 };

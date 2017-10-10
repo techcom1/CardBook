@@ -1,4 +1,8 @@
 if ("undefined" == typeof(cardbookTabType)) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("resource://gre/modules/AddonManager.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var cardbookTabMonitor = {
 		monitorName: "cardbook",
 		onTabTitleChanged: function() {},
@@ -182,13 +186,13 @@ if ("undefined" == typeof(ovl_cardbook)) {
 			var tabmail = document.getElementById("tabmail");
 			if (!tabmail) {
 				// Try opening new tabs in an existing 3pane window
-				let mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator).getMostRecentWindow("mail:3pane");
+				let mail3PaneWindow = Services.wm.getMostRecentWindow("mail:3pane");
 				if (mail3PaneWindow) {
 					tabmail = mail3PaneWindow.document.getElementById("tabmail");
 					mail3PaneWindow.focus();
 				}
 			}
-			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+			var stringBundleService = Services.strings;
 			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 			tabmail.openTab('cardbook', {title: strBundle.GetStringFromName("cardbookTitle")});
 		}
@@ -202,7 +206,7 @@ window.addEventListener("load", function(e) {
 		tabmail.registerTabMonitor(cardbookTabMonitor);
 	}
 
-	var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+	var prefs = Services.prefs;
 	var firstRun = prefs.getBoolPref("extensions.cardbook.firstRun");
 
 	if (firstRun) {
@@ -236,8 +240,6 @@ window.addEventListener("load", function(e) {
 	}
 
 	// for CardBook toolbar if Lightning is not installed
-	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
-	Components.utils.import("resource://gre/modules/AddonManager.jsm");
 	AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, ovl_cardbook.overrideToolbarMenu);
 	
 	window.removeEventListener('load', arguments.callee, true);

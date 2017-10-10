@@ -1,4 +1,9 @@
 if ("undefined" == typeof(wdw_birthdayList)) {
+	Components.utils.import("resource:///modules/mailServices.js");
+	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("resource://gre/modules/AddonManager.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var wdw_birthdayList = {
 		
 		sortTrees: function (aEvent) {
@@ -36,7 +41,6 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 		},
 
 		setupWindow: function () {
-			Components.utils.import("resource://gre/modules/AddonManager.jsm");
 			AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, this.enableSyncList);
 		},
 	
@@ -66,7 +70,6 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 		},
 
 		displayAllBirthdays: function () {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			wdw_birthdayList.setupWindow();
 			
 			var strBundle = document.getElementById("cardbook-strings");
@@ -135,7 +138,7 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 
 		sendEmail: function () {
 			var strBundle = document.getElementById("cardbook-strings");
-			var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+			var prompts = Services.prompt;
 			var myTree = document.getElementById('birthdayListTree');
 			var numRanges = myTree.view.selection.getRangeCount();
 			var start = new Object();
@@ -153,7 +156,7 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 					} else {
 						var msgComposeType = Components.interfaces.nsIMsgCompType;
 						var msgComposFormat = Components.interfaces.nsIMsgCompFormat;
-						var msgComposeService = Components.classes["@mozilla.org/messengercompose;1"].getService();
+						var msgComposeService = MailServices.compose;
 						var params = Components.classes["@mozilla.org/messengercompose/composeparams;1"].createInstance(Components.interfaces.nsIMsgComposeParams);
 						
 						msgComposeService = msgComposeService.QueryInterface(Components.interfaces.nsIMsgComposeService);

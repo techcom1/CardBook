@@ -1,4 +1,7 @@
 if ("undefined" == typeof(wdw_addressbooksAdd)) {
+	Components.utils.import("resource:///modules/mailServices.js");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var wdw_addressbooksAdd = {
 
 		gType : "",
@@ -24,7 +27,6 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 		},
 
 		loadWizard: function () {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			if (window.arguments[0].action == "first") {
 				wdw_addressbooksAdd.gType = "STANDARD";
 				wdw_addressbooksAdd.loadStandardAddressBooks();
@@ -39,7 +41,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 
 		loadStandardAddressBooks: function () {
 			wdw_addressbooksAdd.gStandardAddressbooks = [];
-			var contactManager = Components.classes["@mozilla.org/abmanager;1"].getService(Components.interfaces.nsIAbManager);
+			var contactManager = MailServices.ab;
 			var contacts = contactManager.directories;
 			while ( contacts.hasMoreElements() ) {
 				var contact = contacts.getNext().QueryInterface(Components.interfaces.nsIAbDirectory);

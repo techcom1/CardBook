@@ -1,4 +1,6 @@
 if ("undefined" == typeof(ovl_formatEmailCorrespondents)) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+
 	var ovl_formatEmailCorrespondents = {
 
 		getCardBookDisplayNameFromEmail: function(aEmail, aDefaultDisplay) {
@@ -33,7 +35,7 @@ if ("undefined" == typeof(ovl_formatEmailCorrespondents)) {
 		},
 
 		getDisplayNameColumn: function(aEmails, aContext) {
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var prefs = Services.prefs;
 			var showCondensedAddresses = prefs.getBoolPref("mail.showCondensedAddresses");
 			var exclusive = prefs.getBoolPref("extensions.cardbook.exclusive");
 			var results = [];
@@ -174,7 +176,7 @@ ovl_formatEmailCorrespondents.createObserver = {
 };
 
 ovl_formatEmailCorrespondents.addObserver = function() {
-	var ObserverService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
+	var ObserverService = Services.obs;
 	ObserverService.addObserver(ovl_formatEmailCorrespondents.createObserver, "MsgCreateDBView", false);
 };
 
@@ -193,7 +195,7 @@ window.addEventListener("load", ovl_formatEmailCorrespondents.addObserver, false
 	FormatDisplayName = function() {
 		
 		// Execute some action afterwards.
-		var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+		var prefs = Services.prefs;
 		var exclusive = prefs.getBoolPref("extensions.cardbook.exclusive");
 		var showCondensedAddresses = prefs.getBoolPref("mail.showCondensedAddresses");
 		var rv = "";
