@@ -1603,12 +1603,14 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			wdw_cardbook.clearCard();
 			cardbookRepository.cardbookSearchValue = document.getElementById('cardbookSearchInput').value.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase();
 
+			var myRegexp = new RegExp(cardbookRepository.cardbookSearchValue.replace("*", "(.*)"), "i");
 			cardbookRepository.cardbookDisplayCards[cardbookRepository.cardbookSearchValue] = [];
 			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
 				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] != "SEARCH") {
 					var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
 					for (var j in cardbookRepository.cardbookCardSearch[myDirPrefId]) {
-						if (cardbookRepository.cardbookSearchValue == "" || j.indexOf(cardbookRepository.cardbookSearchValue) >= 0) {
+						// test if (cardbookRepository.cardbookSearchValue == "" || j.indexOf(cardbookRepository.cardbookSearchValue) >= 0) {
+						if (cardbookRepository.cardbookSearchValue == "" || j.search(myRegexp) != -1) {
 							for (var k = 0; k < cardbookRepository.cardbookCardSearch[myDirPrefId][j].length; k++) {
 								cardbookRepository.cardbookDisplayCards[cardbookRepository.cardbookSearchValue].push(cardbookRepository.cardbookCardSearch[myDirPrefId][j][k]);
 							}
@@ -2879,10 +2881,9 @@ if ("undefined" == typeof(wdw_cardbook)) {
 						wdw_cardbook.enableOrDisableElement(['toEmailCardsFromAccountsOrCats', 'ccEmailCardsFromAccountsOrCats', 'bccEmailCardsFromAccountsOrCats', 'shareCardsByEmailFromAccountsOrCats', 'cutCardsFromAccountsOrCats',
 															'copyCardsFromAccountsOrCats', 'exportCardsToFileFromAccountsOrCats', 'exportCardsToDirFromAccountsOrCats',
 															'addAccountFromAccountsOrCats', 'editAccountFromAccountsOrCats', 'removeAccountFromAccountsOrCats', 'enableOrDisableFromAccountsOrCats',
-															'printFromAccountsOrCats'], false);
+															'printFromAccountsOrCats', 'findDuplicatesFromAccountsOrCats'], false);
 						wdw_cardbook.enableOrDisableElement(['pasteCardsFromAccountsOrCats', 'importCardsFromFileFromAccountsOrCats', 'importCardsFromDirFromAccountsOrCats',
-															'readOnlyOrReadWriteFromAccountsOrCats', 'syncAccountFromAccountsOrCats', 'generateFnFromAccountsOrCats',
-															'findDuplicatesFromAccountsOrCats'], true);
+															'readOnlyOrReadWriteFromAccountsOrCats', 'syncAccountFromAccountsOrCats', 'generateFnFromAccountsOrCats'], true);
 					}
 				} else {
 					wdw_cardbook.enableOrDisableElement(['toEmailCardsFromAccountsOrCats', 'ccEmailCardsFromAccountsOrCats', 'bccEmailCardsFromAccountsOrCats', 'shareCardsByEmailFromAccountsOrCats', 'cutCardsFromAccountsOrCats',

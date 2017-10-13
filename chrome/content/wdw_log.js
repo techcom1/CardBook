@@ -30,6 +30,7 @@ if ("undefined" == typeof(wdw_cardbooklog)) {
 			} else {
 				cardbookRepository.statusInformation.push([wdw_cardbooklog.getTime() + " : " + aLogLine, "Normal"]);
 			}
+			// Components.utils.import("resource://gre/modules/Services.jsm");
 			// var consoleService = Services.console;
 			// consoleService.logStringMessage(wdw_cardbooklog.getTime() + " : " + aLogLine);
 		},

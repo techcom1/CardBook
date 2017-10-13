@@ -95,7 +95,7 @@ if ("undefined" == typeof(cardbookListConversion)) {
 									}
 								}
 							}
-						break;
+							break;
 						}
 					}
 					if (!found) {
