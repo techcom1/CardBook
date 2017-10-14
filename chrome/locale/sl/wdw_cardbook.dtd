@@ -167,7 +167,7 @@
 <!ENTITY importCardFromFileLabel "Uvozi stike iz datoteke">
 <!ENTITY importCardFromDirLabel "Uvozi stike iz mape">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Preimenuj kategorijo">
-<!ENTITY convertCatFromAccountsOrCatsLabel "??Convert category to list??">
+<!ENTITY convertCatFromAccountsOrCatsLabel "Pretvori kategorijo v seznam">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Odstrani kategorijo">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Poišči podvojene stike v trenutnem imeniku">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Ustvari prikazana imena">
