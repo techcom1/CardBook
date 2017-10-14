@@ -23,14 +23,18 @@
 
 <!ENTITY cardbookToolbarLabel "Panel nástrojů CardBooku">
 <!ENTITY cardbookToolbarAccesskey "C">
-<!ENTITY cardbookABPaneToolbarLabel "??CardBook Address Book Pane Toolbar??">
-<!ENTITY cardbookABPaneToolbarAccesskey "??d??">
+<!ENTITY cardbookABPaneToolbarLabel "Panel nástrojů panelu adresářů CardBooku">
+<!ENTITY cardbookABPaneToolbarAccesskey "d">
 <!ENTITY CustomizeCardBookToolbarLabel "Vlastní…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "V">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Nové adresář">
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Přidat místní nebo vzdálený adresář">
 <!ENTITY cardbookToolbarSyncButtonLabel "Synchronizovat">
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synchronizovat všechny adresáře">
+<!ENTITY cardbookToolbarWriteButtonLabel "Napsat zprávu">
+<!ENTITY cardbookToolbarWriteButtonTooltip "Vytvoří novou zprávu">
+<!ENTITY cardbookToolbarChatButtonLabel "Připojit">
+<!ENTITY cardbookToolbarChatButtonTooltip "Pošle krátkou zprávu nebo začne rozhovor">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Předvolby">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Nastavení CardBooku">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Nový kontakt">
@@ -130,21 +134,21 @@
 <!ENTITY etagLabel "Etag">
 
 <!ENTITY localizeadrTreeLabel "Vyhledat">
-<!ENTITY toEmailEmailTreeLabel "Poslat e-mail">
-<!ENTITY ccEmailEmailTreeLabel "Poslat e-mail (kopie / cc)">
-<!ENTITY bccemailemailTreeLabel "Poslat e-mail (skrytá kopie / bcc)">
+<!ENTITY toEmailEmailTreeLabel "Vytvořit novou zprávu">
+<!ENTITY ccEmailEmailTreeLabel "Vytvořit novou zprávu (kopie / cc)">
+<!ENTITY bccemailemailTreeLabel "Vytvořit novou zprávu (skrytá kopie / bcc)">
 <!ENTITY findemailemailTreeLabel "Najít e-maily vztahující se k této e-mailové adrese">
 <!ENTITY findeventemailTreeLabel "Najít v kalendáři události vztahující se k této e-mailové adrese">
 <!ENTITY openURLTreeLabel "Otevřít URL">
 
 <!ENTITY copyCardTreeLabel "Kopírovat záznam">
 
-<!ENTITY toEmailCardFromAccountsOrCatsLabel "Poslat e-mail">
-<!ENTITY toEmailCardFromCardsLabel "Poslat e-mail">
-<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Poslat e-mail (kopie / cc)">
-<!ENTITY ccEmailCardFromCardsLabel "Poslat e-mail (kopie / cc)">
-<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Poslat e-mail (skrytá kopie / bcc)">
-<!ENTITY bccEmailCardFromCardsLabel "Poslat e-mail (skrytá kopie / bcc)">
+<!ENTITY toEmailCardFromAccountsOrCatsLabel "Vytvořit novou zprávu">
+<!ENTITY toEmailCardFromCardsLabel "Vytvořit novou zprávu">
+<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Vytvořit novou zprávu (kopie / cc)">
+<!ENTITY ccEmailCardFromCardsLabel "Vytvořit novou zprávu (kopie / cc)">
+<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Vytvořit novou zprávu (skrytá kopie / bcc)">
+<!ENTITY bccEmailCardFromCardsLabel "Vytvořit novou zprávu (skrytá kopie / bcc)">
 <!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Sdílet e-mailem">
 <!ENTITY shareCardByEmailFromCardsLabel "Sdílet e-mailem">
 <!ENTITY categoryLabel "Kategorie">
@@ -163,6 +167,7 @@
 <!ENTITY importCardFromFileLabel "Importovat kontakty ze souboru">
 <!ENTITY importCardFromDirLabel "Importovat kontakty z adresáře">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Přejmenovat kategorii">
+<!ENTITY convertCatFromAccountsOrCatsLabel "Převést kategorii na seznam">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Odstranit kategorii">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Najít duplicitní kontakty v aktuálním adresáři">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Generovat zobrazovaná jména">

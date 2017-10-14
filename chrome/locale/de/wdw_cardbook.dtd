@@ -22,15 +22,19 @@
 <!ENTITY cardbookToolsMenuPrefsLabel "CardBook-Einstellungen">
 
 <!ENTITY cardbookToolbarLabel "CardBook Symbolleiste">
-<!ENTITY cardbookToolbarAccesskey "C">
-<!ENTITY cardbookABPaneToolbarLabel "??CardBook Address Book Pane Toolbar??">
-<!ENTITY cardbookABPaneToolbarAccesskey "??d??">
+<!ENTITY cardbookToolbarAccesskey "y">
+<!ENTITY cardbookABPaneToolbarLabel "CardBook Seitenleiste">
+<!ENTITY cardbookABPaneToolbarAccesskey "e">
 <!ENTITY CustomizeCardBookToolbarLabel "Anpassen…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "A">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Neues Adressbuch">
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Lokales oder auf einem Server gespeichertes Adressbuch hinzufügen">
 <!ENTITY cardbookToolbarSyncButtonLabel "Synchronisieren">
 <!ENTITY cardbookToolbarSyncButtonTooltip "Alle Netzwerk-Adressbücher synchronisieren">
+<!ENTITY cardbookToolbarWriteButtonLabel "Verfassen">
+<!ENTITY cardbookToolbarWriteButtonTooltip "Eine neue Nachricht schreiben">
+<!ENTITY cardbookToolbarChatButtonLabel "Verbinden">
+<!ENTITY cardbookToolbarChatButtonTooltip "Neue Sofortnachricht (instant message) oder neuen Chat verfassen">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Einstellungen">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "CardBook-Einstellungen">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Neuer Kontakt">
@@ -130,21 +134,21 @@
 <!ENTITY etagLabel "Etag">
 
 <!ENTITY localizeadrTreeLabel "Lokalisieren">
-<!ENTITY toEmailEmailTreeLabel "Email an Kontakt verfassen">
-<!ENTITY ccEmailEmailTreeLabel "Email an Kontakt verfassen (Kopie / Cc)">
-<!ENTITY bccemailemailTreeLabel "Email an Kontakt verfassen (Blindkopie / Bcc)">
+<!ENTITY toEmailEmailTreeLabel "Neue Nachricht verfassen">
+<!ENTITY ccEmailEmailTreeLabel "Neue Nachricht verfassen (Kopie / Cc)">
+<!ENTITY bccemailemailTreeLabel "Neue Nachricht verfassen (Blindkopie / Bcc)">
 <!ENTITY findemailemailTreeLabel "Suche Emails in Bezug auf diese Email-Adresse">
 <!ENTITY findeventemailTreeLabel "Suche Termine in Bezug auf diese Email-Adresse">
 <!ENTITY openURLTreeLabel "URL öffnen">
 
 <!ENTITY copyCardTreeLabel "Eintrag kopieren">
 
-<!ENTITY toEmailCardFromAccountsOrCatsLabel "Email verfassen (An / To)">
-<!ENTITY toEmailCardFromCardsLabel "Email verfassen (An / To)">
-<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Email verfassen (Kopie / Cc)">
-<!ENTITY ccEmailCardFromCardsLabel "Email verfassen (Kopie / Cc)">
-<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Email verfassen (Blindkopie / Bcc)">
-<!ENTITY bccEmailCardFromCardsLabel "Email verfassen (Blindkopie / Bcc)">
+<!ENTITY toEmailCardFromAccountsOrCatsLabel "Neue Nachricht verfassen (An / To)">
+<!ENTITY toEmailCardFromCardsLabel "Neue Nachricht verfassen (An / To)">
+<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Neue Nachricht verfassen (Kopie / Cc)">
+<!ENTITY ccEmailCardFromCardsLabel "Neue Nachricht verfassen (Kopie / Cc)">
+<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Neue Nachricht verfassen (Blindkopie / Bcc)">
+<!ENTITY bccEmailCardFromCardsLabel "Neue Nachricht verfassen (Blindkopie / Bcc)">
 <!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Per E-Mail senden">
 <!ENTITY shareCardByEmailFromCardsLabel "Per E-Mail senden">
 <!ENTITY categoryLabel "Kategorie">
@@ -163,6 +167,7 @@
 <!ENTITY importCardFromFileLabel "Importieren aus einer Datei">
 <!ENTITY importCardFromDirLabel "Importieren aus einem Verzeichnis">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Kategorie umbenennen">
+<!ENTITY convertCatFromAccountsOrCatsLabel "Konvertiere die Kategorie zu einer Liste">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Kategorie entfernen">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Doppelte Kontakte im aktuellen Adressbuch suchen">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Anzeigenamen erstellen">

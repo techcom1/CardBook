@@ -1,11 +1,14 @@
 if ("undefined" == typeof(wdw_migrate)) {
+	Components.utils.import("resource:///modules/mailServices.js");
+	Components.utils.import("resource://gre/modules/Services.jsm");
+
 	var wdw_migrate = {
 		
 		customMap : [ ["1", false], ["2", false], ["3", false], ["4", false] ],
 
 		writeCustomToPreference: function () {
 			var myType = 'pers';
-			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+			var stringBundleService = Services.strings;
 			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 			var customLabel = strBundle.GetStringFromName("customLabel");
 			var cardbookPrefService = new cardbookPreferenceService();
@@ -30,12 +33,12 @@ if ("undefined" == typeof(wdw_migrate)) {
 			cardbookRepository.loadCustoms();
 		},
 
-		translateStandardCards: function (aDirPrefIdTarget, aDirPrefIdTargetName, aABCard, aMode) {
+		translateStandardCards: function (aDirPrefIdTarget, aDirPrefIdTargetName, aABCard, aVersion, aDateFormat, aMode) {
 			try {
 				var myCard = new cardbookCardParser();
 				myCard.dirPrefId = aDirPrefIdTarget;
 				cardbookUtils.setCardUUID(myCard);
-				myCard.version = "3.0";
+				myCard.version = aVersion;
 				var myMap = [ ["FirstName", "firstname"], ["LastName", "lastname"], ["DisplayName", "fn"], ["NickName", "nickname"], ["JobTitle", "title"], ["Notes", "note"] ];
 				for (var i = 0; i < myMap.length; i++) {
 					var myMapData = aABCard.getProperty(myMap[i][0],"");
@@ -84,7 +87,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 						if (myProp != "") {
 							if (lString != "") {
 								lString = lString + "\n" + myProp;
-							} else { 
+							} else {
 								lString = myProp;
 							}
 						}
@@ -99,30 +102,16 @@ if ("undefined" == typeof(wdw_migrate)) {
 				}
 				
 				var day = aABCard.getProperty("BirthDay", "");
-				if (! isNaN(day) && day.length == 1) {
-					day = "0" + day;
-				}
 				var month = aABCard.getProperty("BirthMonth", "");
-				if (! isNaN(month) && month.length == 1) {
-					month = "0" + month;
-				}
 				var year = aABCard.getProperty("BirthYear", "");
-				if (year != "") {
-					if (day != "") {
-						myCard.bday = year + "-" + month + "-" + day;
-					} else { 
-						myCard.bday = year;
-					}
-				} else {
-					if (day != "") {
-						myCard.bday = month + "-" + day;
-					}
+				if (day != "" || month != "" || year != "" ) {
+					myCard.bday = cardbookDates.convertDateStringToDateString(day, month, year, aDateFormat)
 				}
 
 				var photoURI = aABCard.getProperty("PhotoURI", "");
 				var photoType = aABCard.getProperty("PhotoType", "");
 				if (photoType == "file") {
-					var ioService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
+					var ioService = Services.io;
 					var myFileURI = ioService.newURI(photoURI, null, null);
 					myCard.photo.extension = cardbookUtils.getFileExtension(photoURI);
 					myCard.photo.value = cardbookSynchronization.getFileBinary(myFileURI);
@@ -152,12 +141,12 @@ if ("undefined" == typeof(wdw_migrate)) {
 			}
 		},
 
-		translateStandardLists: function (aDirPrefIdTarget, aDirPrefIdTargetName, aABList, aMode) {
+		translateStandardLists: function (aDirPrefIdTarget, aDirPrefIdTargetName, aABList, aVersion, aMode) {
 			try {
 				var myCard = new cardbookCardParser();
 				myCard.dirPrefId = aDirPrefIdTarget;
 				cardbookUtils.setCardUUID(myCard);
-				myCard.version = "3.0";
+				myCard.version = aVersion;
 				var myMap = [ ["dirName", "fn"], ["listNickName", "nickname"], ["description", "note"] ];
 				for (var i = 0; i < myMap.length; i++) {
 					myCard[myMap[i][1]] = aABList[myMap[i][0]];
@@ -218,8 +207,8 @@ if ("undefined" == typeof(wdw_migrate)) {
 			}
 		},
 
-		importCards: function (aDirPrefIdSource, aDirPrefIdTarget, aDirPrefIdTargetName, aMode) {
-			var contactManager = Components.classes["@mozilla.org/abmanager;1"].getService(Components.interfaces.nsIAbManager);
+		importCards: function (aDirPrefIdSource, aDirPrefIdTarget, aDirPrefIdTargetName, aVersion, aDateFormat, aMode) {
+			var contactManager = MailServices.ab;
 			var contacts = contactManager.directories;
 			while ( contacts.hasMoreElements() ) {
 				var contact = contacts.getNext().QueryInterface(Components.interfaces.nsIAbDirectory);
@@ -230,7 +219,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 						myABCard = myABCard.QueryInterface(Components.interfaces.nsIAbCard);
 						if (!myABCard.isMailList) {
 							cardbookRepository.cardbookServerSyncTotal[aDirPrefIdTarget]++;
-							wdw_migrate.translateStandardCards(aDirPrefIdTarget, aDirPrefIdTargetName, myABCard, aMode);
+							wdw_migrate.translateStandardCards(aDirPrefIdTarget, aDirPrefIdTargetName, myABCard, aVersion, aDateFormat, aMode);
 						}
 					}
 					var abCardsEnumerator = contact.childCards;
@@ -240,12 +229,12 @@ if ("undefined" == typeof(wdw_migrate)) {
 						if (myABCard.isMailList) {
 							var myABList = contactManager.getDirectory(myABCard.mailListURI);
 							cardbookRepository.cardbookServerSyncTotal[aDirPrefIdTarget]++;
-							wdw_migrate.translateStandardLists(aDirPrefIdTarget, aDirPrefIdTargetName, myABList, aMode);
+							wdw_migrate.translateStandardLists(aDirPrefIdTarget, aDirPrefIdTargetName, myABList, aVersion, aMode);
 						}
 					}
 					break;
 				}
-			}	
+			}
 			cardbookMailPopularity.writeMailPopularity();
 			wdw_migrate.writeCustomToPreference();
 			cardbookRepository.cardbookDirResponse[aDirPrefIdTarget]++;

@@ -85,6 +85,8 @@
 <!ENTITY showNameAsLabel "Namen anzeigen">
 <!ENTITY showNameAsLFLabel "Nachname Vorname">
 <!ENTITY showNameAsLFAccesskey "c">
+<!ENTITY showNameAsLFCommaLabel "Nachname, Vorname">
+<!ENTITY showNameAsLFCommaAccesskey "h">
 <!ENTITY showNameAsFLLabel "Vorname Nachname">
 <!ENTITY showNameAsFLAccesskey "m">
 <!ENTITY showNameAsDSPLabel "Anzeigename">
@@ -96,7 +98,6 @@
 <!ENTITY resetFnFormulaLabel "Zurücksetzen auf Standard">
 <!ENTITY resetFnFormulaAccesskey "Z">
 <!ENTITY miscEdittingGroupboxLabel "Sonstiges">
-<!ENTITY cardCreationVersionLabel "Standardversion der vCard:">
 <!ENTITY preferEmailEditionLabel "Durch einen Doppelklick den Kontakt bearbeiten anstatt eine E-Mail zu verfassen">
 <!ENTITY preferEmailEditionAccesskey "D">
 
@@ -127,6 +128,9 @@
 
 <!ENTITY IMPPGroupboxWarn "Diese Einstellungen ermöglichen das direkte Öffnen einer IM Adresse mit dem angegebenen Protokoll.">
 <!ENTITY IMPPGroupboxLabel "IM Adressen">
+<!ENTITY preferIMPPPrefLabel "Bevorzuge IM Adressen markiert mit Stern ">
+<!ENTITY preferIMPPPrefAccesskey "I">
+<!ENTITY preferIMPPPrefWarn "Ist keine IM Adresse markiert mit Stern, so werden alle IM Adressen vorgeschlagen.">
 <!ENTITY IMPPCodeLabel "Code">
 <!ENTITY IMPPLabelLabel "Label">
 <!ENTITY IMPPProtocolLabel "Protokoll">

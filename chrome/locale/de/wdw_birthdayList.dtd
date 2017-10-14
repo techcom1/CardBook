@@ -4,7 +4,7 @@
 <!ENTITY dateOfBirthColumnLabel "Geburtstag">
 <!ENTITY dateOfBirthFoundColumnLabel "Geburtstag (gefunden)">
 <!ENTITY emailColumnLabel "Email">
-<!ENTITY sendEmailLabel "Email senden">
+<!ENTITY sendEmailLabel "Neue Nachricht verfassen">
 <!ENTITY sendEmailAccesskey "m">
 <!ENTITY syncLightningMenuItemLabel "Synchronisieren mit Lightning">
 <!ENTITY syncLightningMenuAccesskey "L">

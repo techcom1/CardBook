@@ -1,7 +1,9 @@
 if ("undefined" == typeof(ovl_cardbookComposeMsg)) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var ovl_cardbookComposeMsg = {
 		onIdentityChanged: function() {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			var outerID = content.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsIDOMWindowUtils).outerWindowID;
 			cardbookRepository.composeMsgIdentity[outerID] = document.getElementById("msgIdentity").selectedItem.getAttribute("identitykey");
 			// this event is used only when the identity is changed, not for the initial start
@@ -14,7 +16,7 @@ if ("undefined" == typeof(ovl_cardbookComposeMsg)) {
 				cardbookUtils.openEditionWindow(myNewCard, "CreateContact", "cardbook.cardAddedIndirect");
 			}
 			catch (e) {
-				var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+				var prompts = Services.prompt;
 				var errorTitle = "newInCardBook";
 				prompts.alert(null, errorTitle, e);
 			}
@@ -23,7 +25,7 @@ if ("undefined" == typeof(ovl_cardbookComposeMsg)) {
 		setAB: function() {
 			document.getElementById("tasksMenuAddressBook").removeAttribute("key");
 			document.getElementById("key_addressbook").setAttribute("key", "");
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var prefs = Services.prefs;
 			var exclusive = prefs.getBoolPref("extensions.cardbook.exclusive");
 			var myPopup = document.getElementById("menu_NewPopup");
 			if (exclusive) {
@@ -34,7 +36,7 @@ if ("undefined" == typeof(ovl_cardbookComposeMsg)) {
 				document.getElementById('tasksMenuAddressBook').removeAttribute('hidden');
 			}
 
-			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+			var stringBundleService = Services.strings;
 			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 			var myMenuItem = document.createElement("menuitem");
 			myMenuItem.setAttribute("id", "newCardBookCardFromMsgMenu");

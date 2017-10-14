@@ -20,7 +20,7 @@ if ("undefined" == typeof(wdw_cardbookConfigurationAddCustomField)) {
 			} else if (myValue.toUpperCase() === "X-THUNDERBIRD-ETAG") {
 				cardbookNotifications.setNotification("errorNotifications", "customFieldsErrorETAG", myValue);
 				return false;
-			} else if (myValue.indexOf(":") >= 1 || myValue.indexOf(",") >= 1 || myValue.indexOf(";") >= 1 || myValue.indexOf(".") >= 1) {
+			} else if (myValue.includes(":") || myValue.includes(",") || myValue.includes(";") || myValue.includes(".")) {
 				cardbookNotifications.setNotification("errorNotifications", "customFieldsErrorCHAR", myValue);
 				return false;
 			} else {

@@ -4,7 +4,7 @@
 <!ENTITY dateOfBirthColumnLabel "Datum rojstva">
 <!ENTITY dateOfBirthFoundColumnLabel "Datum odkritja">
 <!ENTITY emailColumnLabel "E-pošta">
-<!ENTITY sendEmailLabel "Pošlji e-pošto">
+<!ENTITY sendEmailLabel "Sestavi novo sporočilo">
 <!ENTITY sendEmailAccesskey "P">
 <!ENTITY syncLightningMenuItemLabel "Sinhroniziraj z Lightningom">
 <!ENTITY syncLightningMenuAccesskey "S">

@@ -1,8 +1,10 @@
 if ("undefined" == typeof(wdw_logEdition)) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var wdw_logEdition = {
 		
 		load: function () {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			var myLogArray = cardbookRepository.statusInformation;
 			var myTree = document.getElementById('logEditionTree');
 			var myTreeView = {
@@ -39,11 +41,15 @@ if ("undefined" == typeof(wdw_logEdition)) {
 							myLogArray.push(myTree.view.getCellText(j, {id: "logEditionValue"}));
 						}
 					}
-					cardbookUtils.clipboardSet(myLogArray.join("\n"));
+				} else {
+					for (var i = 0; i < myTree.view.rowCount; i++) {
+						myLogArray.push(myTree.view.getCellText(i, {id: "logEditionValue"}));
+					}
 				}
+				cardbookUtils.clipboardSet(myLogArray.join("\n"));
 			}
 			catch (e) {
-				var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+				var prompts = Services.prompt;
 				var errorTitle = "clipboard error";
 				prompts.alert(null, errorTitle, e);
 			}

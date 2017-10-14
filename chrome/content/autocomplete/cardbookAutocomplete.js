@@ -1,4 +1,7 @@
 if ("undefined" == typeof(cardbookAutocomplete)) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var cardbookAutocomplete = {
 		
 		iconRuleStrings: {},
@@ -107,16 +110,15 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 
 		loadCssRules: function () {
 			try {
-				if (navigator.appVersion.indexOf("Win") != -1) {
+				if (navigator.appVersion.includes("Win")) {
 					var OSName="WIN";
-				} else if (navigator.appVersion.indexOf("Mac") != -1) {
+				} else if (navigator.appVersion.includes("Mac")) {
 					var OSName="OSX";
 				} else {
 					var OSName="LINUX";
 				}
 				cardbookAutocomplete.defineMsgIconsRules();
-				Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
-				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+				var prefs = Services.prefs;
 				var autocompleteWithColor = prefs.getBoolPref("extensions.cardbook.autocompleteWithColor");
 				var useColor = prefs.getComplexValue("extensions.cardbook.useColor", Components.interfaces.nsISupportsString).data;
 				if (useColor == "text") {
@@ -152,7 +154,7 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 
 		setCompletion: function(aTextBox) {
 			try {
-				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+				var prefs = Services.prefs;
 				if (prefs.getBoolPref("extensions.cardbook.autocompletion")) {
 					aTextBox.setAttribute('autocompletesearch', 'addrbook-cardbook');
 				} else {

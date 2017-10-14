@@ -1,5 +1,6 @@
 <!ENTITY cardbookMenuItemLabel "CardBook">
 <!ENTITY cardbookMenuItemAccesskey "b">
+<!ENTITY cardbookMenuItemKey "b">
 <!ENTITY cardbookMenuItemTooltip "Preklopi na zavihek CardBook">
 
 <!ENTITY cardbookToolbarButtonLabel "CardBook">
@@ -10,6 +11,7 @@
 
 <!ENTITY newCardBookCardMenuLabel "Stik CardBook …">
 <!ENTITY newCardBookCardMenuAccesskey "S">
+<!ENTITY newCardBookCardMenuKey "N">
 <!ENTITY newCardBookSearchMenuLabel "Išči po CardBooku …">
 <!ENTITY newCardBookSearchMenuAccesskey "š">
 <!ENTITY addToCardBookMenuLabel "Dodaj stik CardBook">

@@ -1,5 +1,6 @@
 <!ENTITY cardbookMenuItemLabel "CardBook">
 <!ENTITY cardbookMenuItemAccesskey "b">
+<!ENTITY cardbookMenuItemKey "b">
 <!ENTITY cardbookMenuItemTooltip "Aller à l'onglet CardBook">
 
 <!ENTITY cardbookToolbarButtonLabel "CardBook">
@@ -10,6 +11,7 @@
 
 <!ENTITY newCardBookCardMenuLabel "Contact CardBook…">
 <!ENTITY newCardBookCardMenuAccesskey "C">
+<!ENTITY newCardBookCardMenuKey "N">
 <!ENTITY newCardBookSearchMenuLabel "Rechercher dans CardBook…">
 <!ENTITY newCardBookSearchMenuAccesskey "C">
 <!ENTITY addToCardBookMenuLabel "Ajouter à CardBook">
@@ -35,7 +37,7 @@
 <!ENTITY addAllAttachementsToCardBookMenuLabel "Tout dans CardBook…">
 <!ENTITY addAttachementToCardBookMenuLabel "Dans CardBook…">
 
-<!ENTITY cardbookABPaneItemLabel "Paneau des carnets d'adresses">
+<!ENTITY cardbookABPaneItemLabel "Panneau des carnets d'adresses">
 <!ENTITY cardbookABPaneItemAccesskey "A">
-<!ENTITY cardbookContactPaneItemLabel "Paneau du contact">
+<!ENTITY cardbookContactPaneItemLabel "Panneau du contact">
 <!ENTITY cardbookContactPaneItemAccesskey "O">

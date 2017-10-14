@@ -85,6 +85,8 @@
 <!ENTITY showNameAsLabel "Nevek megjelenítése">
 <!ENTITY showNameAsLFLabel "Családnév Keresztnév">
 <!ENTITY showNameAsLFAccesskey "C">
+<!ENTITY showNameAsLFCommaLabel "Családnév, Keresztnév">
+<!ENTITY showNameAsLFCommaAccesskey "s">
 <!ENTITY showNameAsFLLabel "Keresztnév Családnév">
 <!ENTITY showNameAsFLAccesskey "K">
 <!ENTITY showNameAsDSPLabel "Megjelenítendő név">
@@ -95,7 +97,6 @@
 <!ENTITY resetFnFormulaLabel "Alapértelmezés">
 <!ENTITY resetFnFormulaAccesskey "A">
 <!ENTITY miscEdittingGroupboxLabel "Különféle">
-<!ENTITY cardCreationVersionLabel "Alapértelmezett vCard verzió:">
 <!ENTITY preferEmailEditionLabel "Dupla kattintás a névjegyre a névjegy szerkesztés helyett üzenet írás">
 <!ENTITY preferEmailEditionAccesskey "D">
 
@@ -126,6 +127,9 @@
 
 <!ENTITY IMPPGroupboxWarn "Internet kommunikációs Jegyzőkönyv beállítási.">
 <!ENTITY IMPPGroupboxLabel "Internetes kommunikáció">
+<!ENTITY preferIMPPPrefLabel "Az Internetes kommunikáció forma előnyben részesítése az ">
+<!ENTITY preferIMPPPrefAccesskey "I">
+<!ENTITY preferIMPPPrefWarn "Ha nincs Internetes kommunikáció forma megjelölve a kapcsolat tartást minden címen mutatja.">
 <!ENTITY IMPPCodeLabel "Kód">
 <!ENTITY IMPPLabelLabel "Címke">
 <!ENTITY IMPPProtocolLabel "Jegyzőkönyv">

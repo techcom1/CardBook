@@ -28,7 +28,6 @@ if ("undefined" == typeof(wdw_cardbookConfigurationAddEmails)) {
 		},
 		
 		load: function () {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			var strBundle = document.getElementById("cardbook-strings");
 			document.title = strBundle.getString("wdw_cardbookConfigurationAddEmails" + window.arguments[0].context + "Title");
 			wdw_cardbookConfigurationAddEmails.loadInclExcl();

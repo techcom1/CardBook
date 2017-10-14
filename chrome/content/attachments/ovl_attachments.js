@@ -1,4 +1,7 @@
 if ("undefined" == typeof(ovl_attachments)) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var ovl_attachments = {
 		
 		setCardBookMenus: function (aValue) {
@@ -7,7 +10,6 @@ if ("undefined" == typeof(ovl_attachments)) {
 			document.getElementById('attachment1CardBookImport').disabled = aValue;
 			document.getElementById('attachment2CardBookImport').disabled = aValue;
 			if (!aValue) {
-				Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 				cardbookUtils.addToCardBookMenuSubMenu('attachments1CardBookImportPopup', ovl_cardbookMailContacts.getIdentityKey(), ovl_attachments.importFileIntoCardBook);
 				cardbookUtils.addToCardBookMenuSubMenu('attachments2CardBookImportPopup', ovl_cardbookMailContacts.getIdentityKey(), ovl_attachments.importFileIntoCardBook);
 				cardbookUtils.addToCardBookMenuSubMenu('attachment1CardBookImportPopup', ovl_cardbookMailContacts.getIdentityKey(), ovl_attachments.importFileIntoCardBook);
@@ -44,13 +46,10 @@ if ("undefined" == typeof(ovl_attachments)) {
 		},
 
 		loadAttachment: function(aAttachment, aDirPrefId) {
-			var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
-			loader.loadSubScript("chrome://cardbook/content/cardbookSynchronization.js");
-			loader.loadSubScript("chrome://cardbook/content/cardbookUtils.js");
 			var myFileArray = aAttachment.name.split(".");
 			var myExtension =  myFileArray[myFileArray.length-1];
 			if (myExtension.toLowerCase() == "vcf") {
-				var myFile = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties).get("TmpD", Components.interfaces.nsIFile);
+				var myFile = Services.dirsvc.get("TmpD", Components.interfaces.nsIFile);
 				var myUuid = cardbookUtils.getUUID();
 				var myFileName = myUuid + ".vcf";
 				myFile.append(myFileName);
@@ -90,7 +89,10 @@ if ("undefined" == typeof(ovl_attachments)) {
 				}
 			}
 		}
-	}
+	};
+	var loader = Services.scriptloader;
+	loader.loadSubScript("chrome://cardbook/content/cardbookSynchronization.js");
+	loader.loadSubScript("chrome://cardbook/content/cardbookUtils.js");
 };
 
 // for the displaying or not import into CardBook for all attachments

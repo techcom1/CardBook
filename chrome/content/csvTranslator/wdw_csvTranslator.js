@@ -1,4 +1,7 @@
 if ("undefined" == typeof(wdw_csvTranslator)) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var wdw_csvTranslator = {
 
 		cardbookeditlists : {},
@@ -120,8 +123,8 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 			}
 			var myAvailableColumnsTree = document.getElementById('availableColumnsTree');
 			var myAddedColumnsTree = document.getElementById('addedColumnsTree');
-			var myAvailableColumns = cardbookUtils.getSelectedCardsForList(myAvailableColumnsTree);
-			var myAddedColumns = cardbookUtils.getSelectedCardsForList(myAddedColumnsTree);
+			var myAvailableColumns = cardbookUtils.getSelectedColumnsForList(myAvailableColumnsTree);
+			var myAddedColumns = cardbookUtils.getSelectedColumnsForList(myAddedColumnsTree);
 			switch (myAction) {
 				case "appendlistavailableColumnsTree":
 					for (var i = 0; i < myAvailableColumns.length; i++) {
@@ -142,7 +145,7 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 		validateImportColumns: function () {
 			if (wdw_csvTranslator.cardbookeditlists.foundColumns.length != wdw_csvTranslator.cardbookeditlists.addedColumns.length) {
 				var strBundle = document.getElementById("cardbook-strings");
-				var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+				var prompts = Services.prompt;
 				var confirmTitle = strBundle.getString("confirmTitle");
 				var confirmMsg = strBundle.getString("missingColumnsConfirmMessage");
 				if (!prompts.confirm(window, confirmTitle, confirmMsg)) {
@@ -195,7 +198,6 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 		},
 
 		load: function () {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			wdw_csvTranslator.setSyncControl();
 
 			var strBundle = document.getElementById("cardbook-strings");
@@ -227,7 +229,7 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 			if (window.arguments[0].mode == "import") {
 				wdw_csvTranslator.loadFoundColumns();
 			}
-            
+
 		},
 
 		save: function () {

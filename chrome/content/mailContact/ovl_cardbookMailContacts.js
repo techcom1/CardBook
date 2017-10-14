@@ -1,4 +1,9 @@
 if ("undefined" == typeof(ovl_cardbookMailContacts)) {
+	Components.utils.import("resource:///modules/gloda/msg_search.js");
+	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("resource://gre/modules/AddonManager.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var ovl_cardbookMailContacts = {
 		knownContacts: false,
 
@@ -62,7 +67,7 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 				UpdateEmailNodeDetails(myEmail, myEmailNode);
 			}
 			catch (e) {
-				var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+				var prompts = Services.prompt;
 				var errorTitle = "addToCardBook";
 				prompts.alert(null, errorTitle, e);
 			}
@@ -78,7 +83,7 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 				cardbookUtils.openEditionWindow(myNewCard, "AddEmail", "cardbook.cardAddedIndirect");
 			}
 			catch (e) {
-				var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+				var prompts = Services.prompt;
 				var errorTitle = "mailContextAddToCardBook";
 				prompts.alert(null, errorTitle, e);
 			}
@@ -160,14 +165,13 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 			var tabmail = document.getElementById("tabmail");
 			if (!tabmail) {
 				// Try opening new tabs in an existing 3pane window
-				let mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator).getMostRecentWindow("mail:3pane");
+				let mail3PaneWindow = Services.wm.getMostRecentWindow("mail:3pane");
 				if (mail3PaneWindow) {
 					tabmail = mail3PaneWindow.document.getElementById("tabmail");
 					mail3PaneWindow.focus();
 				}
 			}
 			// gloda is not defined when used from an independant window
-			Components.utils.import("resource:///modules/gloda/msg_search.js");
 			tabmail.openTab("glodaFacet", {searcher: new GlodaMsgSearcher(null, '"' + listOfEmail.join('" "') + '"', false)});
 		},
 
@@ -262,7 +266,6 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 
 			document.getElementById("findEventsFromEmailMessenger").setAttribute("hidden", true);
 			document.getElementById("findAllEventsFromContactMessenger").setAttribute("hidden", true);
-			Components.utils.import("resource://gre/modules/AddonManager.jsm");  
 			AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, ovl_cardbookMailContacts.hideOrShowLightningEntries);
 		}
 	};
@@ -280,11 +283,10 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 		var rv = _original.apply(null, arguments);
 		
 		// Execute some action afterwards.
-		var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+		var prefs = Services.prefs;
 		var exclusive = prefs.getBoolPref("extensions.cardbook.exclusive");
 		ovl_cardbookMailContacts.hideOldAddressbook(exclusive);
 
-		Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 		var myEmail = arguments[0].getAttribute('emailAddress');
 		var isEmailRegistered = ovl_cardbookMailContacts.isEmailRegistered(myEmail);
 		ovl_cardbookMailContacts.hideOrShowNewAddressbook(isEmailRegistered);
@@ -292,7 +294,7 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 		if (isEmailRegistered) {
 			var myCard = ovl_cardbookMailContacts.getCardFromEmail(myEmail);
 			var cardbookPrefService = new cardbookPreferenceService(myCard.dirPrefId);
-			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+			var stringBundleService = Services.strings;
 			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 			document.getElementById("editInCardBookMenu").setAttribute("cardbookId", myCard.dirPrefId+"::"+myCard.uid);
 			if (cardbookPrefService.getReadOnly()) {
@@ -326,7 +328,7 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 		var rv = _original.apply(null, arguments);
 
 		// Execute some action afterwards.
-		var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+		var prefs = Services.prefs;
 		var exclusive = prefs.getBoolPref("extensions.cardbook.exclusive");
 		var showCondensedAddresses = prefs.getBoolPref("mail.showCondensedAddresses");
 		var myDisplayname = arguments[1].getAttribute("displayName");
@@ -340,21 +342,12 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 			} else if (myCardBookResult.found) {
 				arguments[1].setAttribute("hascard", myCardBookResult.found.toString());
 				arguments[1].setAttribute("label", myCardBookResult.result);
-			} else {
-				var myOtherResult = {};
-				myOtherResult = ovl_formatEmailCorrespondents.getOthersDisplayNameFromEmail(myEmailAddress, myDisplayname);
-				arguments[1].setAttribute("hascard", myOtherResult.found.toString());
-				arguments[1].setAttribute("label", myOtherResult.result);
 			}
 		} else {
 			if (exclusive) {
 				arguments[1].setAttribute("hascard", myCardBookResult.found.toString());
 			} else if (myCardBookResult.found) {
 				arguments[1].setAttribute("hascard", myCardBookResult.found.toString());
-			} else {
-				var myOtherResult = {};
-				myOtherResult = ovl_formatEmailCorrespondents.getOthersDisplayNameFromEmail(myEmailAddress, myDisplayname);
-				arguments[1].setAttribute("hascard", myOtherResult.found.toString());
 			}
 		}
 		return rv;
@@ -387,7 +380,7 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 		var rv = _original.apply(null, arguments);
 
 		// Execute some action afterwards.
-		var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+		var prefs = Services.prefs;
 		var exclusive = prefs.getBoolPref("extensions.cardbook.exclusive");
 		var event = arguments[0];
 		var gContextMenu = new nsContextMenu(event.target, event.shiftKey);

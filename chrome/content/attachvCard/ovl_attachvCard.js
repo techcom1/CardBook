@@ -1,9 +1,10 @@
 if ("undefined" == typeof(ovl_attachvCard)) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var ovl_attachvCard = {
 		
 		attachvCard: function () {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
-			cardbookUtils.jsInclude(["chrome://cardbook/content/preferences/cardbookPreferences.js"]);
 			var cardbookPrefService = new cardbookPreferenceService();
 			var selected = document.getElementById("msgIdentity").selectedItem;
 			var key = selected.getAttribute("identitykey");
@@ -42,7 +43,10 @@ if ("undefined" == typeof(ovl_attachvCard)) {
 				}
 			}
 		}
-	}
+	};
+
+	var loader = Services.scriptloader;
+	loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");
 };
 
 window.addEventListener("compose-send-message", function(e) { ovl_attachvCard.attachvCard(e); }, true);

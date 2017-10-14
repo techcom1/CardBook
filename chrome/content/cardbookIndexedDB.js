@@ -1,10 +1,10 @@
 if ("undefined" == typeof(cardbookIndexedDB)) {
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var cardbookIndexedDB = {
 
 		// first step in the initial load data
 		openDB: function () {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
-			
 			// generic output when errors on DB
 			cardbookRepository.cardbookDatabase.onerror = function(e) {
 				wdw_cardbooklog.updateStatusProgressInformation("Database error : " + e.value, "Error");
@@ -35,7 +35,7 @@ if ("undefined" == typeof(cardbookIndexedDB)) {
 			// when error, call the observer for starting the load cache and maybe the sync
 			request.onerror = function(e) {
 				cardbookUtils.notifyObservers("cardbook.DBOpen");
-				cardbookRepository.cardbookDatabase.onerror();
+				cardbookRepository.cardbookDatabase.onerror(e);
 			};
 		},
 
@@ -57,7 +57,7 @@ if ("undefined" == typeof(cardbookIndexedDB)) {
 			cursorRequest.onerror = cardbookRepository.cardbookDatabase.onerror;
 		},
 		
-		// add or override the contact to the cache 
+		// add or override the contact to the cache
 		addItem: function (aDirPrefIdName, aCard) {
 			var db = cardbookRepository.cardbookDatabase.db;
 			var transaction = db.transaction(["cards"], "readwrite");

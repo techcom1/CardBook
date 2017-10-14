@@ -1,5 +1,6 @@
 <!ENTITY cardbookMenuItemLabel "Névjegyzék">
 <!ENTITY cardbookMenuItemAccesskey "N">
+<!ENTITY cardbookMenuItemKey "b">
 <!ENTITY cardbookMenuItemTooltip "A névjegyzék megjelenítése">
 
 <!ENTITY cardbookToolbarButtonLabel "Névjegyzék">
@@ -10,6 +11,7 @@
 
 <!ENTITY newCardBookCardMenuLabel "Névjegy (Névjegyzék)…">
 <!ENTITY newCardBookCardMenuAccesskey "j">
+<!ENTITY newCardBookCardMenuKey "N">
 <!ENTITY newCardBookSearchMenuLabel "CardBook keresése…">
 <!ENTITY newCardBookSearchMenuAccesskey "C">
 <!ENTITY addToCardBookMenuLabel "Felvétel a névjegyzékbe (Névjegyzék)">

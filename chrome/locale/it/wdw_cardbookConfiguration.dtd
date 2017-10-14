@@ -85,18 +85,19 @@
 <!ENTITY showNameAsLabel "Mostra nomi come">
 <!ENTITY showNameAsLFLabel "Cognome Nome">
 <!ENTITY showNameAsLFAccesskey "C">
+<!ENTITY showNameAsLFCommaLabel "Cognome, Nome">
+<!ENTITY showNameAsLFCommaAccesskey "e">
 <!ENTITY showNameAsFLLabel "Nome Cognome">
 <!ENTITY showNameAsFLAccesskey "N">
 <!ENTITY showNameAsDSPLabel "Mostra nome">
 <!ENTITY showNameAsDSPAccesskey "M">
-<!ENTITY fnLabelExplanation "??It is possible to customize the way CardBook generates its Display Name. This formula consists in blocks enclosed by '()'. In these blocks, there are two parts delimited by '|'. 
+<!ENTITY fnLabelExplanation "??It is possible to customize the way CardBook generates its Display Name. This formula consists in blocks enclosed by '()'. In these blocks, there are two parts delimited by '|'.
 								The first part applies when the term involved, for example {{1}}, is not null, the second part applies when the term involved is null.??">
 <!ENTITY fnFormulaLabel "??Generate Display Name??">
 <!ENTITY fnFormulaAccesskey "P">
 <!ENTITY resetFnFormulaLabel "??Restore to Default??">
 <!ENTITY resetFnFormulaAccesskey "R">
 <!ENTITY miscEdittingGroupboxLabel "Varie">
-<!ENTITY cardCreationVersionLabel "Versione vCard preimpostata:">
 <!ENTITY preferEmailEditionLabel "Doppio click su un contatto apre la modifica anziché inviare una email.">
 <!ENTITY preferEmailEditionAccesskey "D">
 
@@ -127,6 +128,9 @@
 
 <!ENTITY IMPPGroupboxWarn "Questa impostazione permette di aprire direttamente un profilo di messaggistica istantanea (IM) utilizzando il protocollo selezionato.">
 <!ENTITY IMPPGroupboxLabel "Indirizzi di messaggistica istantanea">
+<!ENTITY preferIMPPPrefLabel "??Prefer Internet Communications marked with ??">
+<!ENTITY preferIMPPPrefAccesskey "P">
+<!ENTITY preferIMPPPrefWarn "??If no address is marked, a connection is proposed for all of the contact's addresses.??">
 <!ENTITY IMPPCodeLabel "Codice">
 <!ENTITY IMPPLabelLabel "Etichetta">
 <!ENTITY IMPPProtocolLabel "Protocollo">

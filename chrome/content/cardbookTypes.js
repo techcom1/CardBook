@@ -1,4 +1,6 @@
 if ("undefined" == typeof(cardbookTypes)) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+
 	var cardbookTypes = {
 		
 		allIMPPs: [],
@@ -111,7 +113,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 								}
 							}
 							var strBundle = document.getElementById("cardbook-strings");
-							var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+							var prompts = Services.prompt;
 							var errorTitle = strBundle.getString("errorTitle");
 							var validateIntegerMsg = strBundle.getFormattedString("validateIntegerMsg", [field, limit, data]);
 							prompts.alert(null, errorTitle, validateIntegerMsg);
@@ -143,7 +145,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 						}
 					}
 					var strBundle = document.getElementById("cardbook-strings");
-					var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+					var prompts = Services.prompt;
 					var errorTitle = strBundle.getString("errorTitle");
 					var validateIntegerMsg = strBundle.getFormattedString("validateIntegerMsg", [field, limit, data]);
 					prompts.alert(null, errorTitle, validateIntegerMsg);
@@ -361,7 +363,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 		constructOrg: function (aReadOnly, aOrgValue, aTitleValue, aRoleValue) {
 			var strBundle = document.getElementById("cardbook-strings");
 			var aOrigBox = document.getElementById('orgRows');
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var prefs = Services.prefs;
 			var orgStructure = prefs.getComplexValue("extensions.cardbook.orgStructure", Components.interfaces.nsISupportsString).data;
 			var currentRow;
 			if (orgStructure != "") {
@@ -777,7 +779,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 				if (aType == "url" || aType == "email" || aType == "adr") {
 					myValueTextbox.setAttribute('link', 'true');
 				} else if (aType == "tel") {
-					var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+					var prefs = Services.prefs;
 					var telProtocol = "";
 					try {
 						var telProtocol = prefs.getComplexValue("extensions.cardbook.tels.0", Components.interfaces.nsISupportsString).data;
@@ -858,7 +860,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 					}
 				}
 			} else if (aCard.version == "3.0") {
-				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+				var prefs = Services.prefs;
 				var kindCustom = prefs.getComplexValue("extensions.cardbook.kindCustom", Components.interfaces.nsISupportsString).data;
 				var memberCustom = prefs.getComplexValue("extensions.cardbook.memberCustom", Components.interfaces.nsISupportsString).data;
 				for (var i = 0; i < aCard.others.length; i++) {

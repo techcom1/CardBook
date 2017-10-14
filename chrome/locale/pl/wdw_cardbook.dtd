@@ -23,14 +23,18 @@
 
 <!ENTITY cardbookToolbarLabel "Pasek narzędzi CardBook">
 <!ENTITY cardbookToolbarAccesskey "a">
-<!ENTITY cardbookABPaneToolbarLabel "??CardBook Address Book Pane Toolbar??">
-<!ENTITY cardbookABPaneToolbarAccesskey "??d??">
+<!ENTITY cardbookABPaneToolbarLabel "Pasek wyboru książki adresowej CardBook">
+<!ENTITY cardbookABPaneToolbarAccesskey "W">
 <!ENTITY CustomizeCardBookToolbarLabel "Dostosuj…">
-<!ENTITY CustomizeCardBookToolbarAccesskey "C">
+<!ENTITY CustomizeCardBookToolbarAccesskey "T">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Nowa książka adresowa">
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Dodaj zdalną lub lokalną książkę adresową">
 <!ENTITY cardbookToolbarSyncButtonLabel "Synchronizuj">
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synchronizuj wszystkie zdalne książki adresowe">
+<!ENTITY cardbookToolbarWriteButtonLabel "Napisz">
+<!ENTITY cardbookToolbarWriteButtonTooltip "Utwórz nową wiadomość">
+<!ENTITY cardbookToolbarChatButtonLabel "Connect To">
+<!ENTITY cardbookToolbarChatButtonTooltip "Połącz z adresatem za pomocą komunikatora">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Ustawienia">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Ustawienia programu CardBook">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Nowa wizytówka">
@@ -130,21 +134,21 @@
 <!ENTITY etagLabel "Etag">
 
 <!ENTITY localizeadrTreeLabel "Lokalizuj">
-<!ENTITY toEmailEmailTreeLabel "E-mail">
-<!ENTITY ccEmailEmailTreeLabel "E-mail (kopia/cc)">
-<!ENTITY bccemailemailTreeLabel "E-mail (ukryta kopia/bcc)">
+<!ENTITY toEmailEmailTreeLabel "Napisz nową wiadomość">
+<!ENTITY ccEmailEmailTreeLabel "Napisz nową wiadomość (kopia/cc)">
+<!ENTITY bccemailemailTreeLabel "Napisz nową wiadomość (ukryta kopia/bcc)">
 <!ENTITY findemailemailTreeLabel "Znajdź e-maile związane z tym adresem e-mail">
 <!ENTITY findeventemailTreeLabel "Znajdź wydarzenia związane z tym adresem e-mail">
 <!ENTITY openURLTreeLabel "Otwórz adres URL">
 
 <!ENTITY copyCardTreeLabel "Kopiuj pozycję">
 
-<!ENTITY toEmailCardFromAccountsOrCatsLabel "Wyślij e-mail">
-<!ENTITY toEmailCardFromCardsLabel "Wyślij e-mail">
-<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Wyślij e-mail (kopia)">
-<!ENTITY ccEmailCardFromCardsLabel "Wyślij e-mail (kopia)">
-<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Wyślij e-mail (ukryta kopia)">
-<!ENTITY bccEmailCardFromCardsLabel "Wyślij e-mail (ukryta kopia)">
+<!ENTITY toEmailCardFromAccountsOrCatsLabel "Napisz nową wiadomość">
+<!ENTITY toEmailCardFromCardsLabel "Napisz nową wiadomość">
+<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Napisz nową wiadomość (kopia)">
+<!ENTITY ccEmailCardFromCardsLabel "Napisz nową wiadomość (kopia)">
+<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Napisz nową wiadomość (ukryta kopia)">
+<!ENTITY bccEmailCardFromCardsLabel "Napisz nową wiadomość (ukryta kopia)">
 <!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Wyślij e-mailem">
 <!ENTITY shareCardByEmailFromCardsLabel "Wyślij e-mailem">
 <!ENTITY categoryLabel "Kategoria">
@@ -163,6 +167,7 @@
 <!ENTITY importCardFromFileLabel "Importuj wizytówkę z pliku">
 <!ENTITY importCardFromDirLabel "Importuj wizytówkę z katalogu">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Zmień nazwę kategorii">
+<!ENTITY convertCatFromAccountsOrCatsLabel "??Convert category to list??">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Usuń kategorię">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Znajdź powielone wizytówki w bieżącej książce adresowej">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Stwórz Wyświetlane nazwy">

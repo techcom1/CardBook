@@ -21,8 +21,8 @@
 
 	<keyset id="wdw_logEdition-keys">
 		<key id="escapeKey" keycode="VK_ESCAPE" oncommand="wdw_logEdition.cancel();"/>
-		<key id="selectAllKey" modifiers="control" key="a" oncommand="wdw_logEdition.selectAllKey();"/>
-		<key id="copyKey" modifiers="control" key="c" oncommand="wdw_logEdition.clipboard();"/>
+		<key id="selectAllKey" modifiers="accel" key="A" oncommand="wdw_logEdition.selectAllKey();"/>
+		<key id="copyKey" modifiers="accel" key="C" oncommand="wdw_logEdition.clipboard();"/>
 	</keyset>
 
 	<hbox flex="1">

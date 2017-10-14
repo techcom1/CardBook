@@ -46,8 +46,8 @@
 					</columns>
 					<rows>
 						<row align="center">
-							<label value="&titleLabel;" 
-								accesskey="&titleAccesskey;" 
+							<label value="&titleLabel;"
+								accesskey="&titleAccesskey;"
 								control="titleTextBox"
 								id="titleLabel"/>
 							<textbox id="titleTextBox" oninput="wdw_cardbookPrint.refreshHTML();"/>

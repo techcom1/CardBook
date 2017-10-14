@@ -31,6 +31,10 @@
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Add a remote or local address book">
 <!ENTITY cardbookToolbarSyncButtonLabel "Synchronize">
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synchronize all remote address books">
+<!ENTITY cardbookToolbarWriteButtonLabel "Write">
+<!ENTITY cardbookToolbarWriteButtonTooltip "Create a new message">
+<!ENTITY cardbookToolbarChatButtonLabel "Connect To">
+<!ENTITY cardbookToolbarChatButtonTooltip "Send an instant message or chat">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Preferences">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "CardBook Preferences">
 <!ENTITY cardbookToolbarAddContactButtonLabel "New Contact">
@@ -130,21 +134,21 @@
 <!ENTITY etagLabel "Etag">
 
 <!ENTITY localizeadrTreeLabel "Localize">
-<!ENTITY toEmailEmailTreeLabel "Email entry">
-<!ENTITY ccEmailEmailTreeLabel "Email entry (copy / cc)">
-<!ENTITY bccemailemailTreeLabel "Email entry (blind copy / bcc)">
+<!ENTITY toEmailEmailTreeLabel "Write a new message">
+<!ENTITY ccEmailEmailTreeLabel "Write a new message (copy / cc)">
+<!ENTITY bccemailemailTreeLabel "Write a new message (blind copy / bcc)">
 <!ENTITY findemailemailTreeLabel "Find emails related to this email address">
 <!ENTITY findeventemailTreeLabel "Find calendar events related to this email address">
 <!ENTITY openURLTreeLabel "Open URL">
 
 <!ENTITY copyCardTreeLabel "Copy entry">
 
-<!ENTITY toEmailCardFromAccountsOrCatsLabel "Send email">
-<!ENTITY toEmailCardFromCardsLabel "Send email">
-<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Send email (copy / cc)">
-<!ENTITY ccEmailCardFromCardsLabel "Send email (copy / cc)">
-<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Send email (blind copy / bcc)">
-<!ENTITY bccEmailCardFromCardsLabel "Send email (blind copy / bcc)">
+<!ENTITY toEmailCardFromAccountsOrCatsLabel "Write a new message">
+<!ENTITY toEmailCardFromCardsLabel "Write a new message">
+<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Write a new message (copy / cc)">
+<!ENTITY ccEmailCardFromCardsLabel "Write a new message (copy / cc)">
+<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Write a new message (blind copy / bcc)">
+<!ENTITY bccEmailCardFromCardsLabel "Write a new message (blind copy / bcc)">
 <!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Share by email">
 <!ENTITY shareCardByEmailFromCardsLabel "Share by email">
 <!ENTITY categoryLabel "Category">
@@ -163,6 +167,7 @@
 <!ENTITY importCardFromFileLabel "Import contacts from a file">
 <!ENTITY importCardFromDirLabel "Import contacts from a directory">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Rename category">
+<!ENTITY convertCatFromAccountsOrCatsLabel "Convert category to list">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Remove category">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Find duplicate contacts in current address book">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Generate Display Names">

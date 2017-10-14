@@ -6,11 +6,12 @@
 	<Description about="urn:mozilla:install-manifest">
 		<em:id>cardbook@vigneau.philippe</em:id>
 		<em:name>CardBook</em:name>
-		<em:version>21.9</em:version>
+		<em:version>23.0</em:version>
 		<em:type>2</em:type>
 		<em:description>vCard Address Book</em:description>
 		<em:creator>Philippe Vigneau</em:creator>
 		<em:contributor>Alexander Bergmann</em:contributor>
+		<em:contributor>Günter Gersdorf</em:contributor>
 		<em:contributor>R. Kent James</em:contributor>
 		<em:contributor>Timothe Litt</em:contributor>
 		<em:contributor>Christoph Mair</em:contributor>
@@ -18,6 +19,7 @@
 		<em:contributor>Michael Roland</em:contributor>
 		<em:contributor>Lukáš Tyrychtr</em:contributor>
 		<em:translator>Lukáš Tyrychtr (cs)</em:translator>
+		<em:translator>Johnny Nielsen (da)</em:translator>
 		<em:translator>Alexander Bergmann (de)</em:translator>
 		<em:translator>Markus Mauerer (de)</em:translator>
 		<em:translator>Oliver Schuppe (de)</em:translator>
@@ -40,8 +42,8 @@
 		<em:targetApplication>
 			<Description>
 				<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
-				<em:minVersion>30.0</em:minVersion>
-				<em:maxVersion>55.*</em:maxVersion>
+				<em:minVersion>45.*</em:minVersion>
+				<em:maxVersion>56.*</em:maxVersion>
 			</Description>
 		</em:targetApplication>
 
@@ -51,6 +53,7 @@
 				<em:name>CardBook</em:name>
 				<em:description>Adresář vCard</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
@@ -58,6 +61,7 @@
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
+				<em:translator>Johnny Nielsen (da)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
 				<em:translator>Oliver Schuppe (de)</em:translator>
@@ -75,13 +79,14 @@
 				<em:translator>Peter Klofutar (sl)</em:translator>
 			</Description>
 		</em:localized>
-		
+
 		<em:localized>
 			<Description>
-				<em:locale>de</em:locale>
+				<em:locale>da</em:locale>
 				<em:name>CardBook</em:name>
-				<em:description>vCard Adressbuch</em:description>
+				<em:description>vCard Adressebog</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
@@ -89,6 +94,40 @@
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
+				<em:translator>Johnny Nielsen (da)</em:translator>
+				<em:translator>Alexander Bergmann (de)</em:translator>
+				<em:translator>Markus Mauerer (de)</em:translator>
+				<em:translator>Oliver Schuppe (de)</em:translator>
+				<em:translator>SusiTux (de)</em:translator>
+				<em:translator>Timothe Litt (en-US)</em:translator>
+				<em:translator>Óvári (en-US)</em:translator>
+				<em:translator>Philippe Vigneau (fr)</em:translator>
+				<em:translator>Óvári (hu)</em:translator>
+				<em:translator>Agnese Morettini (it)</em:translator>
+				<em:translator>Han Knols (nl)</em:translator>
+				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
+				<em:translator>Dominik Wnęk (pl)</em:translator>
+				<em:translator>André Bação (pt-PT)</em:translator>
+				<em:translator>Alexander Yavorsky (ru)</em:translator>
+				<em:translator>Peter Klofutar (sl)</em:translator>
+			</Description>
+		</em:localized>
+
+		<em:localized>
+			<Description>
+				<em:locale>de</em:locale>
+				<em:name>CardBook</em:name>
+				<em:description>vCard Adressbuch</em:description>
+				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
+				<em:contributor>R. Kent James</em:contributor>
+				<em:contributor>Timothe Litt</em:contributor>
+				<em:contributor>Christoph Mair</em:contributor>
+				<em:contributor>Boris Prüssmann</em:contributor>
+				<em:contributor>Michael Roland</em:contributor>
+				<em:contributor>Lukáš Tyrychtr</em:contributor>
+				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
+				<em:translator>Johnny Nielsen (da)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
 				<em:translator>Oliver Schuppe (de)</em:translator>
@@ -113,6 +152,7 @@
 				<em:name>CardBook</em:name>
 				<em:description>vCard address book</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
@@ -120,6 +160,7 @@
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
+				<em:translator>Johnny Nielsen (da)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
 				<em:translator>Oliver Schuppe (de)</em:translator>
@@ -144,6 +185,7 @@
 				<em:name>CardBook</em:name>
 				<em:description>Carnet d'adresses vCard</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
@@ -151,6 +193,7 @@
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
+				<em:translator>Johnny Nielsen (da)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
 				<em:translator>Oliver Schuppe (de)</em:translator>
@@ -175,6 +218,7 @@
 				<em:name>Névjegyzék (CardBook)</em:name>
 				<em:description>vCard névjegyzék</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
@@ -182,6 +226,7 @@
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
+				<em:translator>Johnny Nielsen (da)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
 				<em:translator>Oliver Schuppe (de)</em:translator>
@@ -206,6 +251,7 @@
 				<em:name>CardBook</em:name>
 				<em:description>Rubrica vCard</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
@@ -213,6 +259,7 @@
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
+				<em:translator>Johnny Nielsen (da)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
 				<em:translator>Oliver Schuppe (de)</em:translator>
@@ -237,6 +284,7 @@
 				<em:name>CardBook</em:name>
 				<em:description>vCard adresboek</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
@@ -244,6 +292,7 @@
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
+				<em:translator>Johnny Nielsen (da)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
 				<em:translator>Oliver Schuppe (de)</em:translator>
@@ -268,6 +317,7 @@
 				<em:name>CardBook</em:name>
 				<em:description>Książka adresowa z obsługą vCard</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
@@ -275,6 +325,7 @@
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
+				<em:translator>Johnny Nielsen (da)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
 				<em:translator>Oliver Schuppe (de)</em:translator>
@@ -299,6 +350,7 @@
 				<em:name>CardBook</em:name>
 				<em:description>Agenda vCard</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
@@ -306,6 +358,7 @@
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
+				<em:translator>Johnny Nielsen (da)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
 				<em:translator>Oliver Schuppe (de)</em:translator>
@@ -323,13 +376,14 @@
 				<em:translator>Peter Klofutar (sl)</em:translator>
 			</Description>
 		</em:localized>
-        
+
         <em:localized>
 			<Description>
 				<em:locale>ru</em:locale>
 				<em:name>CardBook</em:name>
 				<em:description>Адресная книга vCard</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
@@ -337,6 +391,7 @@
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
+				<em:translator>Johnny Nielsen (da)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
 				<em:translator>Oliver Schuppe (de)</em:translator>
@@ -354,13 +409,14 @@
 				<em:translator>Peter Klofutar (sl)</em:translator>
 			</Description>
 		</em:localized>
-        
+
         <em:localized>
 			<Description>
 				<em:locale>sl</em:locale>
 				<em:name>CardBook</em:name>
 				<em:description>Imenik vCard</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
@@ -368,6 +424,7 @@
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
 				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
+				<em:translator>Johnny Nielsen (da)</em:translator>
 				<em:translator>Alexander Bergmann (de)</em:translator>
 				<em:translator>Markus Mauerer (de)</em:translator>
 				<em:translator>Oliver Schuppe (de)</em:translator>

@@ -1,4 +1,6 @@
-if ("undefined" == typeof(wdw_birthdaySync)) {  
+if ("undefined" == typeof(wdw_birthdaySync)) {
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var wdw_birthdaySync = {
 		lTimerSync : null,
 		lEventTimerSync : { notify: function(lTimerSync) {
@@ -6,7 +8,6 @@ if ("undefined" == typeof(wdw_birthdaySync)) {
 		} },
 		
 		syncAllBirthdays: function () {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			cardbookBirthdaysUtils.syncWithLightning();
 			wdw_birthdaySync.do_refresh();
 			
@@ -27,7 +28,7 @@ if ("undefined" == typeof(wdw_birthdaySync)) {
 			if (cardbookBirthdaysUtils.lBirthdayList.length == 0) {
 				var today = new Date();
 				today = new Date(today.getTime() + maxDaysUntilNextBirthday * 24*60*60*1000);
-				var noBirthdaysFoundMessage = strBundle.getFormattedString("noBirthdaysFoundMessage", new Array(convertDateToString(today)));
+				var noBirthdaysFoundMessage = strBundle.getFormattedString("noBirthdaysFoundMessage", [cardbookDates.convertDateToDateString(today, 'YYYYMMDD')]);
 				var treeView = {
 					rowCount : 1,
 					getCellText : function(row,column){

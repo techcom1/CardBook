@@ -84,18 +84,19 @@
 <!ENTITY showNameAsLabel "Show Name As">
 <!ENTITY showNameAsLFLabel "Family Name Given Name">
 <!ENTITY showNameAsLFAccesskey "F">
+<!ENTITY showNameAsLFCommaLabel "Family Name, Given Name">
+<!ENTITY showNameAsLFCommaAccesskey "i">
 <!ENTITY showNameAsFLLabel "Given Name Family Name">
 <!ENTITY showNameAsFLAccesskey "e">
 <!ENTITY showNameAsDSPLabel "Display Name">
 <!ENTITY showNameAsDSPAccesskey "D">
-<!ENTITY fnLabelExplanation "It is possible to customize the way CardBook generates its Display Name. This formula consists in blocks enclosed by '()'. In these blocks, there are two parts delimited by '|'. 
+<!ENTITY fnLabelExplanation "It is possible to customize the way CardBook generates its Display Name. This formula consists in blocks enclosed by '()'. In these blocks, there are two parts delimited by '|'.
 								The first part applies when the term involved, for example {{1}}, is not null, the second part applies when the term involved is null.">
 <!ENTITY fnFormulaLabel "Generate Display Name">
 <!ENTITY fnFormulaAccesskey "y">
 <!ENTITY resetFnFormulaLabel "Restore to Default">
 <!ENTITY resetFnFormulaAccesskey "R">
 <!ENTITY miscEdittingGroupboxLabel "Miscellaneous">
-<!ENTITY cardCreationVersionLabel "Default vCard version:">
 <!ENTITY preferEmailEditionLabel "Double-click on a contact edits it instead of emails it">
 <!ENTITY preferEmailEditionAccesskey "k">
 
@@ -126,6 +127,9 @@
 
 <!ENTITY IMPPGroupboxWarn "This setup allows Internet communications using the intended protocol.">
 <!ENTITY IMPPGroupboxLabel "Internet Communications">
+<!ENTITY preferIMPPPrefLabel "Prefer Internet Communications marked with ">
+<!ENTITY preferIMPPPrefAccesskey "P">
+<!ENTITY preferIMPPPrefWarn "If no address is marked, a connection is proposed for all of the contact's addresses.">
 <!ENTITY IMPPCodeLabel "Code">
 <!ENTITY IMPPLabelLabel "Label">
 <!ENTITY IMPPProtocolLabel "Protocol">
@@ -187,9 +191,9 @@
 <!ENTITY decodeReportAccesskey "D">
 
 <!ENTITY miscEmailGroupboxLabel "Sending Emails">
-<!ENTITY preferEmailPrefLabel "Prefer email addresses marked PREFerred">
+<!ENTITY preferEmailPrefLabel "Prefer email addresses marked with ">
 <!ENTITY preferEmailPrefAccesskey "P">
-<!ENTITY preferEmailPrefWarn "If no address is marked 'PREFerred', the message is sent to all of the contact's addresses.">
+<!ENTITY preferEmailPrefWarn "If no address is marked, the message is sent to all of the contact's addresses.">
 <!ENTITY warnEmptyEmailsLabel "Warn me when I attempt to email contacts without an email address">
 <!ENTITY warnEmptyEmailsAccesskey "W">
 <!ENTITY useOnlyEmailLabel "Only use email addresses, without their Display Names">

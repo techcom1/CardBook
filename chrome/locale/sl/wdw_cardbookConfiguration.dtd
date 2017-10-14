@@ -84,18 +84,19 @@
 <!ENTITY showNameAsLabel "Prikaži ime kot">
 <!ENTITY showNameAsLFLabel "Priimek Ime">
 <!ENTITY showNameAsLFAccesskey "P">
+<!ENTITY showNameAsLFCommaLabel "Priimek, Ime">
+<!ENTITY showNameAsLFCommaAccesskey "m">
 <!ENTITY showNameAsFLLabel "Ime Priimek">
 <!ENTITY showNameAsFLAccesskey "I">
 <!ENTITY showNameAsDSPLabel "Prikazano ime">
 <!ENTITY showNameAsDSPAccesskey "k">
-<!ENTITY fnLabelExplanation "Cardbookovo ustvarjanje prikazanega imena je mogoče prilagoditi. Ta formula vsebuje bloke, ki so obdani z '()'. V teh blokih sta dva dela, ki sta ločena z '|'. 
+<!ENTITY fnLabelExplanation "Cardbookovo ustvarjanje prikazanega imena je mogoče prilagoditi. Ta formula vsebuje bloke, ki so obdani z '()'. V teh blokih sta dva dela, ki sta ločena z '|'.
 								Prvi del se uporabi, kadar vrednost vpletenega izraza, npr. {{1}}, ni prazna, drugi del pa, kadar je vrednost vpletenega izraza prazna.">
 <!ENTITY fnFormulaLabel "Ustvari prikazano ime">
 <!ENTITY fnFormulaAccesskey "U">
 <!ENTITY resetFnFormulaLabel "Obnovi na privzeto">
 <!ENTITY resetFnFormulaAccesskey "n">
 <!ENTITY miscEdittingGroupboxLabel "Razno">
-<!ENTITY cardCreationVersionLabel "Privzeta različica vCard:">
 <!ENTITY preferEmailEditionLabel "Dvoklik na stik ga uredi namesto pošlje">
 <!ENTITY preferEmailEditionAccesskey "D">
 
@@ -126,6 +127,9 @@
 
 <!ENTITY IMPPGroupboxWarn "Te nastavitve omogočajo internetno komunikacijo z uporabo namenskega protokola.">
 <!ENTITY IMPPGroupboxLabel "Int. komunikacija">
+<!ENTITY preferIMPPPrefLabel "??Prefer Internet Communications marked with ??">
+<!ENTITY preferIMPPPrefAccesskey "P">
+<!ENTITY preferIMPPPrefWarn "??If no address is marked, a connection is proposed for all of the contact's addresses.??">
 <!ENTITY IMPPCodeLabel "Koda">
 <!ENTITY IMPPLabelLabel "Oznaka">
 <!ENTITY IMPPProtocolLabel "Protokol">

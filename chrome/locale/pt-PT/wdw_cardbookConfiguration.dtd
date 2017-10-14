@@ -85,6 +85,8 @@
 <!ENTITY showNameAsLabel "Mostrar nome como">
 <!ENTITY showNameAsLFLabel "Nome Apelido">
 <!ENTITY showNameAsLFAccesskey "A">
+<!ENTITY showNameAsLFCommaLabel "Nome, Apelido">
+<!ENTITY showNameAsLFCommaAccesskey "i">
 <!ENTITY showNameAsFLLabel "Apelido Nome">
 <!ENTITY showNameAsFLAccesskey "N">
 <!ENTITY showNameAsDSPLabel "Nome de apresentação">
@@ -96,7 +98,6 @@
 <!ENTITY resetFnFormulaLabel "Restaurar para origem">
 <!ENTITY resetFnFormulaAccesskey "R">
 <!ENTITY miscEdittingGroupboxLabel "Diversos">
-<!ENTITY cardCreationVersionLabel "Versão do vCard por omissão:">
 <!ENTITY preferEmailEditionLabel "Duplo clique no contacto para edita-lo em vez de enviar email">
 <!ENTITY preferEmailEditionAccesskey "E">
 
@@ -127,6 +128,9 @@
 
 <!ENTITY IMPPGroupboxWarn "Esta configuração permite abrir uma mensagem instantanea usando o protocolo seleccionado.">
 <!ENTITY IMPPGroupboxLabel "Endereços de mensagem instantanea">
+<!ENTITY preferIMPPPrefLabel "Meio de comunicação preferido ">
+<!ENTITY preferIMPPPrefAccesskey "M">
+<!ENTITY preferIMPPPrefWarn "Se nenhuma Agenda estiver seleccionada, uma ligação será proposta para todos os contactos.">
 <!ENTITY IMPPCodeLabel "Codigo">
 <!ENTITY IMPPLabelLabel "Etiqueta">
 <!ENTITY IMPPProtocolLabel "Protocolo">

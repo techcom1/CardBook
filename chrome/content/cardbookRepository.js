@@ -1,4 +1,5 @@
 var EXPORTED_SYMBOLS = ["cardbookRepository"];
+Components.utils.import("resource://gre/modules/Services.jsm");
 
 var cardbookRepository = {
 	cardbookDatabase : {},
@@ -28,8 +29,15 @@ var cardbookRepository = {
 
 	typesSeed : {"adr": ["HOME","WORK"], "email": ["HOME","WORK"], "impp": ["HOME","WORK"], "tel": ["CELL", "FAX", "HOME","WORK"], "url": ["HOME","WORK"]},
 
+	supportedVersion : ["3.0", "4.0"],
+
 	preferEmailPref : true,
+	preferIMPPPref : true,
 	
+	addonVersion : "",
+	userAgent : "",
+	prodid : "",
+
 	cardbookAccounts : [],
 	cardbookAccountsCategories : {},
 	cardbookCards : {},
@@ -40,6 +48,7 @@ var cardbookRepository = {
 	cardbookComplexSearch : {},
 
 	cardbookMailPopularityIndex : {},
+	cardbookDuplicateIndex : {},
 
 	cardbookDirRequest : {},
 	cardbookDirResponse : {},
@@ -111,7 +120,9 @@ var cardbookRepository = {
 	cardbookImageGetResponse : {},
 	cardbookImageGetError : {},
 	cardbookSyncMode : "NOSYNC",
-
+	
+	cardbookServerChangedPwd : {},
+	
 	cardbookSearchMode : "NOSEARCH",
 	cardbookSearchValue : "",
 	cardbookComplexSearchMode : "NOSEARCH",
@@ -143,6 +154,7 @@ var cardbookRepository = {
 	cardbookUncategorizedCards : "",
 	
 	cardbookMailPopularityFile : "mailPopularityIndex.txt",
+	cardbookDuplicateFile : "duplicateIndex.txt",
 
 	customFields : {},
 									
@@ -175,18 +187,6 @@ var cardbookRepository = {
 	
 	cardbookBirthdayPopup : 0,
 	
-	jsInclude: function(files, target) {
-		var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
-		for (var i = 0; i < files.length; i++) {
-			try {
-				loader.loadSubScript(files[i], target);
-			}
-			catch(e) {
-				dump("cardbookRepository.jsInclude : failed to include '" + files[i] + "'\n" + e + "\n");
-			}
-		}
-	},
-		
     loadCustoms: function () {
 		// for file opened with version <= 19.6
 		var typeList = [ 'Name', 'Org' ];
@@ -196,7 +196,7 @@ var cardbookRepository = {
 			for (var j in numberList) {
 				try {
 					var mySourceField = "extensions.cardbook.customs.customField" + numberList[j] + typeList[i];
-					var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+					var prefs = Services.prefs;
 					var mySourceValue = prefs.getComplexValue(mySourceField, Components.interfaces.nsISupportsString).data;
 					var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
 					if (typeList[i] === "Name") {
@@ -222,7 +222,7 @@ var cardbookRepository = {
     setCollected: function () {
 		try {
 			// for file opened with version <= 18.7
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var prefs = Services.prefs;
 			var emailsCollection = prefs.getComplexValue("extensions.cardbook.emailsCollection", Components.interfaces.nsISupportsString).data;
 			var emailsCollectionCat = "";
 			try {
@@ -362,7 +362,7 @@ var cardbookRepository = {
 	setSolveConflicts: function() {
 		try {
 			// for file opened with version <= 14.0
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+			var prefs = Services.prefs;
 			var preferDisk = prefs.getBoolPref("extensions.cardbook.preferDisk");
 			var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
 			if (preferDisk) {
@@ -379,7 +379,7 @@ var cardbookRepository = {
 	},
 
 	getLocalDirectory: function() {
-		let directoryService = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties);
+		let directoryService = Services.dirsvc;
 		// this is a reference to the profile dir (ProfD) now.
 		let localDir = directoryService.get("ProfD", Components.interfaces.nsIFile);
 		
@@ -387,7 +387,7 @@ var cardbookRepository = {
 		
 		if (!localDir.exists() || !localDir.isDirectory()) {
 			// read and write permissions to owner and group, read-only for others.
-			localDir.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0774);
+			localDir.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0o774);
 		}
 		return localDir;
 	},
@@ -396,7 +396,7 @@ var cardbookRepository = {
 		var a = array.concat();
 		for (var i=0; i<a.length; ++i) {
 			for (var j=i+1; j<a.length; ++j) {
-				if (a[i] === a[j])
+				if (a[i] == a[j])
 					a.splice(j--, 1);
 			}
 		}
@@ -462,9 +462,9 @@ var cardbookRepository = {
 		var cacheDir = cardbookRepository.getLocalDirectory();
 		cacheDir.append(aAccountId);
 		if (!cacheDir.exists() || !cacheDir.isDirectory()) {
-			cacheDir.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0774);
+			cacheDir.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0o774);
 			cacheDir.append("mediacache");
-			cacheDir.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0774);
+			cacheDir.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0o774);
 		}
 		if (aPrefInsertion) {
 			let cardbookPrefService = new cardbookPreferenceService(aAccountId);
@@ -605,10 +605,12 @@ var cardbookRepository = {
 	removeAccountFromComplexSearch: function (aDirPrefId) {
 		if (cardbookRepository.cardbookDisplayCards[aDirPrefId]) {
 			for (var i in cardbookRepository.cardbookComplexSearch) {
-				for (var j = 0; j < cardbookRepository.cardbookDisplayCards[aDirPrefId].length; j++) {
-					var myCard = cardbookRepository.cardbookDisplayCards[aDirPrefId][j];
-					cardbookRepository.removeCardFromCategories(myCard, i);
-					cardbookRepository.removeCardFromDisplay(myCard, i);
+				if (cardbookRepository.cardbookDisplayCards[i].length != 0) {
+					for (var j = 0; j < cardbookRepository.cardbookDisplayCards[aDirPrefId].length; j++) {
+						var myCard = cardbookRepository.cardbookDisplayCards[aDirPrefId][j];
+						cardbookRepository.removeCardFromCategories(myCard, i);
+						cardbookRepository.removeCardFromDisplay(myCard, i);
+					}
 				}
 			}
 		}
@@ -630,7 +632,7 @@ var cardbookRepository = {
 		}
 	},
 
-	// only used from the import of Thunderbird standard address books 
+	// only used from the import of Thunderbird standard address books
 	addAccountToCollected: function (aDirPrefId) {
 		var cardbookPrefService = new cardbookPreferenceService();
 		var result = [];
@@ -648,7 +650,7 @@ var cardbookRepository = {
 	},
 
 	removeAccountFromBirthday: function (aDirPrefId) {
-		var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+		var prefs = Services.prefs;
 		var addressBooks = prefs.getComplexValue("extensions.cardbook.addressBooksNameList", Components.interfaces.nsISupportsString).data;
 		var addressBooksList = [];
 		addressBooksList = addressBooks.split(',');
@@ -675,7 +677,7 @@ var cardbookRepository = {
 				cardbookRepository.removeCardFromCache(aCard);
 			}
 			cardbookRepository.removeCardFromList(aCard);
-			delete aCard;
+			aCard = null;
 		}
 		catch (e) {
 			wdw_cardbooklog.updateStatusProgressInformation("cardbookRepository.removeCardFromRepository error : " + e, "Error");
@@ -839,10 +841,10 @@ var cardbookRepository = {
 					function searchCategory(element) {
 						if (element != aCard.categories[j]) {
 							return true;
-						} else if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+aCard.categories[j]].length > 1) {
+						} else if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+element].length > 1) {
 							return true;
-						} else if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+aCard.categories[j]].length == 1) {
-							if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+aCard.categories[j]][0].uid == aCard.uid) {
+						} else if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+element].length == 1) {
+							if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+element][0].dirPrefId+"::"+cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+element][0].uid == aCard.dirPrefId+"::"+aCard.uid) {
 								return false;
 							} else {
 								return true;
@@ -850,15 +852,6 @@ var cardbookRepository = {
 						}
 					}
 					cardbookRepository.cardbookAccountsCategories[aDirPrefId] = cardbookRepository.cardbookAccountsCategories[aDirPrefId].filter(searchCategory);
-				}
-				
-				if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+aCard.categories[j]]) {
-					if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+aCard.categories[j]].length === 1) {
-						cardbookRepository.removeCategoryFromAccounts(aDirPrefId+"::"+aCard.categories[j]);
-						cardbookRepository.removeCategoryFromCategories(aDirPrefId, aCard.categories[j]);
-					} else if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+aCard.categories[j]].length === 0) {
-						cardbookRepository.removeCategoryFromDisplay(aDirPrefId+"::"+aCard.categories[j]);
-					}
 				}
 			}
 		} else {
@@ -870,30 +863,8 @@ var cardbookRepository = {
 				}
 				cardbookRepository.cardbookAccountsCategories[aDirPrefId] = cardbookRepository.cardbookAccountsCategories[aDirPrefId].filter(searchCategory);
 			}
-
-			if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+uncategorizedCards]) {
-				if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+uncategorizedCards].length === 1) {
-					cardbookRepository.removeCategoryFromAccounts(aDirPrefId+"::"+uncategorizedCards);
-				} else if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+uncategorizedCards].length === 0) {
-					cardbookRepository.removeCategoryFromDisplay(aDirPrefId+"::"+uncategorizedCards);
-				}
-			}
 		}
 		cardbookRepository.setEmptyContainer(aDirPrefId);
-	},
-
-	removeCategoryFromAccounts: function(aCategory) {
-		function searchAccount(element) {
-			return (element[4] !== aCategory);
-		}
-		cardbookRepository.cardbookAccounts = cardbookRepository.cardbookAccounts.filter(searchAccount);
-	},
-
-	removeCategoryFromCategories: function(aDirPrefId, aCategoryName) {
-		function searchCategory(element) {
-			return (element !== aCategoryName);
-		}
-		cardbookRepository.cardbookAccountsCategories[aDirPrefId] = cardbookRepository.cardbookAccountsCategories[aDirPrefId].filter(searchCategory);
 	},
 
 	addCategoryToCard: function(aCard, aCategoryName) {
@@ -927,10 +898,6 @@ var cardbookRepository = {
 			}
 		}
 		cardbookRepository.cardbookUncategorizedCards = aNewCategoryName;
-	},
-
-	removeCategoryFromDisplay: function(aCategory) {
-		delete cardbookRepository.cardbookDisplayCards[aCategory];
 	},
 
 	addCardToDisplay: function(aCard, aDirPrefId) {
@@ -967,14 +934,14 @@ var cardbookRepository = {
 	removeCardFromDisplay: function(aCard, aDirPrefId) {
 		if (cardbookRepository.cardbookDisplayCards[aDirPrefId]) {
 			function searchCard(element) {
-				return (element.uid != aCard.uid);
+				return (element.dirPrefId+"::"+element.uid != aCard.dirPrefId+"::"+aCard.uid);
 			}
 			cardbookRepository.cardbookDisplayCards[aDirPrefId] = cardbookRepository.cardbookDisplayCards[aDirPrefId].filter(searchCard);
 			if (aCard.categories.length != 0) {
 				for (let j = 0; j < aCard.categories.length; j++) {
 					if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+aCard.categories[j]]) {
 						function searchCard(element) {
-							return (element.uid != aCard.uid);
+							return (element.dirPrefId+"::"+element.uid != aCard.dirPrefId+"::"+aCard.uid);
 						}
 						cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+aCard.categories[j]] = cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+aCard.categories[j]].filter(searchCard);
 						if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+aCard.categories[j]].length == 0) {
@@ -986,7 +953,7 @@ var cardbookRepository = {
 				var uncategorizedCards = cardbookRepository.cardbookUncategorizedCards;
 				if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+uncategorizedCards]) {
 					function searchCard(element) {
-						return (element.uid != aCard.uid);
+						return (element.dirPrefId+"::"+element.uid != aCard.dirPrefId+"::"+aCard.uid);
 					}
 					cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+uncategorizedCards] = cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+uncategorizedCards].filter(searchCard);
 				}
@@ -1047,7 +1014,6 @@ var cardbookRepository = {
 				aDisplayName = aEmail;
 			}
 		}
-		this.jsInclude(["chrome://cardbook/content/cardbookCardParser.js"]);
 		var cardbookPrefService = new cardbookPreferenceService(aDirPrefId);
 		var myDirPrefIdName = cardbookPrefService.getName();
 		var myDirPrefIdType = cardbookPrefService.getType();
@@ -1360,7 +1326,7 @@ var cardbookRepository = {
 				wdw_cardbooklog.addActivity("cardCreatedOK", [myDirPrefIdName, aNewCard.fn], "addItem");
 				cardbookUtils.notifyObservers(aSource, "cardid:" + aNewCard.dirPrefId + "::" + aNewCard.uid);
 			}
-			delete aOldCard;
+			aOldCard = null;
 			for (var i = 0; i < newCats.length; i++) {
 				cardbookUtils.formatStringForOutput("categoryCreatedOK", [myDirPrefIdName, newCats[i]]);
 				wdw_cardbooklog.addActivity("categoryCreatedOK", [myDirPrefIdName, newCats[i]], "addItem");
@@ -1411,7 +1377,7 @@ var cardbookRepository = {
 	},
 
 	reWriteFiles: function (aListOfFiles) {
-		listOfFilesToRewrite = cardbookRepository.arrayUnique(aListOfFiles);
+		var listOfFilesToRewrite = cardbookRepository.arrayUnique(aListOfFiles);
 		for (var i = 0; i < listOfFilesToRewrite.length; i++) {
 			var cardbookPrefService = new cardbookPreferenceService(listOfFilesToRewrite[i]);
 			if (cardbookPrefService.getType() === "FILE" && !cardbookPrefService.getReadOnly()) {
@@ -1463,7 +1429,7 @@ var cardbookRepository = {
 	},
 
 	createCssCardRules: function (aStyleSheet, aDirPrefId, aColor) {
-		var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+		var prefs = Services.prefs;
 		var useColor = prefs.getComplexValue("extensions.cardbook.useColor", Components.interfaces.nsISupportsString).data;
 		if (useColor == "text") {
 			var ruleString = ".cardbookCardsTreeClass treechildren::-moz-tree-cell-text(SEARCH odd color_" + aDirPrefId + ") {color: " + aColor + ";}";
@@ -1484,7 +1450,7 @@ var cardbookRepository = {
 
 	unregisterCss: function (aChromeUri) {
 		var sss = Components.classes['@mozilla.org/content/style-sheet-service;1'].getService(Components.interfaces.nsIStyleSheetService);
-		var ios = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
+		var ios = Services.io;
 		var uri = ios.newURI(aChromeUri, null, null);
 		if (sss.sheetRegistered(uri, sss.AUTHOR_SHEET)) {
 			sss.unregisterSheet(uri, sss.AUTHOR_SHEET);
@@ -1493,7 +1459,7 @@ var cardbookRepository = {
 
 	reloadCss: function (aChromeUri) {
 		var sss = Components.classes['@mozilla.org/content/style-sheet-service;1'].getService(Components.interfaces.nsIStyleSheetService);
-		var ios = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
+		var ios = Services.io;
 		var uri = ios.newURI(aChromeUri, null, null);
 		if (sss.sheetRegistered(uri, sss.AUTHOR_SHEET)) {
 			sss.unregisterSheet(uri, sss.AUTHOR_SHEET);
@@ -1523,10 +1489,12 @@ var cardbookRepository = {
 
 };
 
-cardbookRepository.jsInclude(["chrome://cardbook/content/preferences/cardbookPreferences.js"]);
-cardbookRepository.jsInclude(["chrome://cardbook/content/wdw_log.js"]);
-cardbookRepository.jsInclude(["chrome://cardbook/content/cardbookUtils.js"]);
-cardbookRepository.jsInclude(["chrome://cardbook/content/cardbookDates.js"]);
-cardbookRepository.jsInclude(["chrome://cardbook/content/cardbookIndexedDB.js"]);
-cardbookRepository.jsInclude(["chrome://cardbook/content/cardbookSynchronization.js"]);
-cardbookRepository.jsInclude(["chrome://cardbook/content/complexSearch/cardbookComplexSearch.js"]);
+var loader = Services.scriptloader;
+loader.loadSubScript("chrome://cardbook/content/cardbookCardParser.js");
+loader.loadSubScript("chrome://cardbook/content/cardbookDates.js");
+loader.loadSubScript("chrome://cardbook/content/cardbookIndexedDB.js");
+loader.loadSubScript("chrome://cardbook/content/cardbookSynchronization.js");
+loader.loadSubScript("chrome://cardbook/content/cardbookUtils.js");
+loader.loadSubScript("chrome://cardbook/content/complexSearch/cardbookComplexSearch.js");
+loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");
+loader.loadSubScript("chrome://cardbook/content/wdw_log.js");

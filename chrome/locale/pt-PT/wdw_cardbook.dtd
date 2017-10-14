@@ -23,14 +23,18 @@
 
 <!ENTITY cardbookToolbarLabel "Barra de ferramentas do Cardbook">
 <!ENTITY cardbookToolbarAccesskey "C">
-<!ENTITY cardbookABPaneToolbarLabel "??CardBook Address Book Pane Toolbar??">
-<!ENTITY cardbookABPaneToolbarAccesskey "??d??">
+<!ENTITY cardbookABPaneToolbarLabel "Barra de ferramentas Cardbook">
+<!ENTITY cardbookABPaneToolbarAccesskey "d">
 <!ENTITY CustomizeCardBookToolbarLabel "Personalizar…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "P">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Novo agenda">
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Adicionar uma agenda local ou remota">
 <!ENTITY cardbookToolbarSyncButtonLabel "Sincronizar">
 <!ENTITY cardbookToolbarSyncButtonTooltip "Sincronizar todas as agendas remotas">
+<!ENTITY cardbookToolbarWriteButtonLabel "Escrever">
+<!ENTITY cardbookToolbarWriteButtonTooltip "Criar nova mensagem">
+<!ENTITY cardbookToolbarChatButtonLabel "Ligar">
+<!ENTITY cardbookToolbarChatButtonTooltip "Enviar mensagem instantânea ou de chat">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Preferências">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Preferências do CardBook">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Novo contacto">
@@ -130,21 +134,21 @@
 <!ENTITY etagLabel "Etag">
 
 <!ENTITY localizeadrTreeLabel "Localizar">
-<!ENTITY toEmailEmailTreeLabel "Entrada de email">
-<!ENTITY ccEmailEmailTreeLabel "Entrada de email (cc)">
-<!ENTITY bccemailemailTreeLabel "Entrada de email (bcc)">
+<!ENTITY toEmailEmailTreeLabel "Escrever nova mensagem">
+<!ENTITY ccEmailEmailTreeLabel "Escrever nova mensagem (cc)">
+<!ENTITY bccemailemailTreeLabel "Escrever nova mensagem (bcc)">
 <!ENTITY findemailemailTreeLabel "Procurar emails com este endereço de email">
 <!ENTITY findeventemailTreeLabel "Procurar eventos no calendário relacionados com este email">
 <!ENTITY openURLTreeLabel "Abrir URL">
 
 <!ENTITY copyCardTreeLabel "Copiar entrada">
 
-<!ENTITY toEmailCardFromAccountsOrCatsLabel "Enviar email">
-<!ENTITY toEmailCardFromCardsLabel "Enviar por email">
-<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Enviar email (cc)">
-<!ENTITY ccEmailCardFromCardsLabel "Enviar email (cc)">
-<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Enviar email (bcc)">
-<!ENTITY bccEmailCardFromCardsLabel "Enviar email (bcc)">
+<!ENTITY toEmailCardFromAccountsOrCatsLabel "Escrever nova mensagem">
+<!ENTITY toEmailCardFromCardsLabel "Escrever nova mensagem">
+<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Escrever nova mensagem (cc)">
+<!ENTITY ccEmailCardFromCardsLabel "Escrever nova mensagem (cc)">
+<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Escrever nova mensagem (bcc)">
+<!ENTITY bccEmailCardFromCardsLabel "Escrever nova mensagem (bcc)">
 <!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Enviar por email">
 <!ENTITY shareCardByEmailFromCardsLabel "Enviar por email">
 <!ENTITY categoryLabel "Categoria">
@@ -163,6 +167,7 @@
 <!ENTITY importCardFromFileLabel "Importar cartões de ficheiro">
 <!ENTITY importCardFromDirLabel "Importar cartões de diretoria">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Renomear categoria">
+<!ENTITY convertCatFromAccountsOrCatsLabel "Converter categoria para lista">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Remover categoria">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Procurar duplicados na agenda actual">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Gerar nomes de apresentação">

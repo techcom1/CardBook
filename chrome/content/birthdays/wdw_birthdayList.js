@@ -1,6 +1,37 @@
-if ("undefined" == typeof(wdw_birthdayList)) {  
+if ("undefined" == typeof(wdw_birthdayList)) {
+	Components.utils.import("resource:///modules/mailServices.js");
+	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("resource://gre/modules/AddonManager.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var wdw_birthdayList = {
 		
+		sortTrees: function (aEvent) {
+			wdw_birthdayList.buttonShowing();
+			if (aEvent.button != 0) {
+				return;
+			}
+		},
+
+		birthdayListTreeContextShowing: function () {
+			if (cardbookUtils.displayColumnsPicker()) {
+				wdw_birthdayList.birthdayListTreeContextShowingNext();
+				return true;
+			} else {
+				return false;
+			}
+		},
+
+		birthdayListTreeContextShowingNext: function () {
+			var menuSend = document.getElementById("sendEmail");
+			var myTree = document.getElementById("birthdayListTree");
+			if (myTree.view.selection.getRangeCount() > 0) {
+				menuSend.disabled = false;
+			} else {
+				menuSend.disabled = true;
+			}
+		},
+
 		enableSyncList: function(addon) {
 			if (addon && addon.isActive) {
 				document.getElementById('syncLightningMenuItemLabel').disabled = false;
@@ -10,7 +41,6 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 		},
 
 		setupWindow: function () {
-			Components.utils.import("resource://gre/modules/AddonManager.jsm");  
 			AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, this.enableSyncList);
 		},
 	
@@ -40,7 +70,6 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 		},
 
 		displayAllBirthdays: function () {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			wdw_birthdayList.setupWindow();
 			
 			var strBundle = document.getElementById("cardbook-strings");
@@ -53,7 +82,7 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 			if (cardbookBirthdaysUtils.lBirthdayList.length == 0) {
 				var today = new Date();
 				today = new Date(today.getTime() + maxDaysUntilNextBirthday *24*60*60*1000);
-				var noBirthdaysFoundMessage = strBundle.getFormattedString("noBirthdaysFoundMessage", new Array(convertDateToString(today)));
+				var noBirthdaysFoundMessage = strBundle.getFormattedString("noBirthdaysFoundMessage", [cardbookDates.convertDateToDateString(today, 'YYYYMMDD')]);
 				var treeView = {
 					rowCount : 1,
 					getCellText : function(row,column){
@@ -70,7 +99,7 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 					},
 					getCellProperties: function(row, column) {
 						return this.getRowProperties(row);
-					}, 
+					},
 					getCellText: function(row, column){
 						if (column.id == "daysleft") return cardbookBirthdaysUtils.lBirthdayList[row][0];
 						else if (column.id == "name") return cardbookBirthdaysUtils.lBirthdayList[row][1];
@@ -84,6 +113,7 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 			}
 			document.getElementById('birthdayListTree').view = treeView;
 			document.title=strBundle.getFormattedString("birthdaysListWindowLabel", [cardbookBirthdaysUtils.lBirthdayList.length.toString()]);
+			wdw_birthdayList.buttonShowing();
 		},
 	
 		configure: function () {
@@ -96,9 +126,19 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 			var MyWindows = window.openDialog("chrome://cardbook/content/birthdays/wdw_birthdaySync.xul", "", "chrome,centerscreen,modal,resizable");
 		},
 
+		buttonShowing: function () {
+			var btnSend = document.getElementById("sendEmailLabel");
+			var myTree = document.getElementById("birthdayListTree");
+			if (myTree.view.selection.getRangeCount() > 0) {
+				btnSend.disabled = false;
+			} else {
+				btnSend.disabled = true;
+			}
+		},
+
 		sendEmail: function () {
 			var strBundle = document.getElementById("cardbook-strings");
-			var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+			var prompts = Services.prompt;
 			var myTree = document.getElementById('birthdayListTree');
 			var numRanges = myTree.view.selection.getRangeCount();
 			var start = new Object();
@@ -116,7 +156,7 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 					} else {
 						var msgComposeType = Components.interfaces.nsIMsgCompType;
 						var msgComposFormat = Components.interfaces.nsIMsgCompFormat;
-						var msgComposeService = Components.classes["@mozilla.org/messengercompose;1"].getService();
+						var msgComposeService = MailServices.compose;
 						var params = Components.classes["@mozilla.org/messengercompose/composeparams;1"].createInstance(Components.interfaces.nsIMsgComposeParams);
 						
 						msgComposeService = msgComposeService.QueryInterface(Components.interfaces.nsIMsgComposeService);
@@ -138,5 +178,5 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 		do_close: function () {
 			close();
 		}
-	}; 
+	};
 };

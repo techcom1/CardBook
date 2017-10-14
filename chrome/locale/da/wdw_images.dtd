@@ -1,0 +1,5 @@
+<!ENTITY addImageCardFromFileLabel "Tilføj billede fra en fil">
+<!ENTITY addImageCardFromClipboardLabel "Tilføj billede fra udklipsholderen">
+<!ENTITY addImageCardFromUrlLabel "Tilføj billede fra en URL i udklipsholderen">
+<!ENTITY saveImageCardLabel "Gem billede">
+<!ENTITY deleteImageCardLabel "Slet billede">

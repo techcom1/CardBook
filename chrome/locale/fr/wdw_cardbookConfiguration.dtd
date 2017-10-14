@@ -85,18 +85,19 @@
 <!ENTITY showNameAsLabel "Afficher le nom comme">
 <!ENTITY showNameAsLFLabel "Nom de famille Prénom">
 <!ENTITY showNameAsLFAccesskey "o">
+<!ENTITY showNameAsLFCommaLabel "Nom de famille, Prénom">
+<!ENTITY showNameAsLFCommaAccesskey "f">
 <!ENTITY showNameAsFLLabel "Prénom Nom de famille">
 <!ENTITY showNameAsFLAccesskey "P">
 <!ENTITY showNameAsDSPLabel "Nom affiché">
 <!ENTITY showNameAsDSPAccesskey "f">
-<!ENTITY fnLabelExplanation "Il est possible de choisir comment CardBook génère ses Noms affichés. Cette formule est une succession de blocs délimités par '()'. Dans ces blocs, il y a deux parties délimitées par '|'. 
+<!ENTITY fnLabelExplanation "Il est possible de choisir comment CardBook génère ses Noms affichés. Cette formule est une succession de blocs délimités par '()'. Dans ces blocs, il y a deux parties délimitées par '|'.
 								La première partie s'applique lorsque le terme impliqué, par exemple {{1}}, n'est pas null, la seconde partie s'applique lorsque le terme impliqué est null.">
 <!ENTITY fnFormulaLabel "Génération du nom affiché">
 <!ENTITY fnFormulaAccesskey "m">
 <!ENTITY resetFnFormulaLabel "Réinitialiser">
 <!ENTITY resetFnFormulaAccesskey "R">
 <!ENTITY miscEdittingGroupboxLabel "Divers">
-<!ENTITY cardCreationVersionLabel "Version des vCard par défaut :">
 <!ENTITY preferEmailEditionLabel "Au lieu d'envoyer un email, double-cliquer sur un contact provoque l'édition">
 <!ENTITY preferEmailEditionAccesskey "A">
 
@@ -127,6 +128,9 @@
 
 <!ENTITY IMPPGroupboxWarn "Ce paramétrage permet d'ouvrir directement l'adresse de messagerie instantanée en suivant le protocole désiré.">
 <!ENTITY IMPPGroupboxLabel "Communications internet">
+<!ENTITY preferIMPPPrefLabel "Préférer les communications internet marqués avec ">
+<!ENTITY preferIMPPPrefAccesskey "P">
+<!ENTITY preferIMPPPrefWarn "Pour cette option, si il n'y a pas de communications internet de type 'pref', toutes les communications internet sont prises en compte.">
 <!ENTITY IMPPCodeLabel "Code">
 <!ENTITY IMPPLabelLabel "Label">
 <!ENTITY IMPPProtocolLabel "Protocole">
@@ -188,7 +192,7 @@
 <!ENTITY decodeReportAccesskey "D">
 
 <!ENTITY miscEmailGroupboxLabel "Envoi d'emails">
-<!ENTITY preferEmailPrefLabel "Préférer les email de type 'pref'">
+<!ENTITY preferEmailPrefLabel "Préférer les emails marqués avec ">
 <!ENTITY preferEmailPrefAccesskey "P">
 <!ENTITY preferEmailPrefWarn "Pour cette option, si il n'y a pas d'email de type 'pref', tous les emails sont pris en compte.">
 <!ENTITY warnEmptyEmailsLabel "M'avertir lorsque je tente d'envoyer un email à un contact qui n'a pas d'adresse email">

@@ -1,4 +1,8 @@
 if ("undefined" == typeof(cardbookTabType)) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("resource://gre/modules/AddonManager.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var cardbookTabMonitor = {
 		monitorName: "cardbook",
 		onTabTitleChanged: function() {},
@@ -67,11 +71,20 @@ if ("undefined" == typeof(cardbookTabType)) {
 				
 				supportsCommand: function supportsCommand(aCommand, aTab) {
 					switch (aCommand) {
+						case "cmd_toggleMessagePane":
 						case "cmd_viewClassicMailLayout":
 						case "cmd_viewVerticalMailLayout":
 						case "cmd_printSetup":
 						case "cmd_print":
 						case "cmd_printpreview":
+						case "cmd_selectAll":
+						case "cmd_copy":
+						case "cmd_cut":
+						case "cmd_paste":
+						case "cmd_delete":
+						case "cmd_find":
+						case "cmd_findAgain":
+						case "cmd_showQuickFilterBar":
 							return true;
 						default:
 							return false;
@@ -80,11 +93,20 @@ if ("undefined" == typeof(cardbookTabType)) {
 				
 				isCommandEnabled: function isCommandEnabled(aCommand, aTab) {
 					switch (aCommand) {
+						case "cmd_toggleMessagePane":
 						case "cmd_viewClassicMailLayout":
 						case "cmd_viewVerticalMailLayout":
 						case "cmd_printSetup":
 						case "cmd_print":
 						case "cmd_printpreview":
+						case "cmd_selectAll":
+						case "cmd_copy":
+						case "cmd_cut":
+						case "cmd_paste":
+						case "cmd_delete":
+						case "cmd_find":
+						case "cmd_findAgain":
+						case "cmd_showQuickFilterBar":
 							return true;
 						default:
 							return false;
@@ -93,6 +115,9 @@ if ("undefined" == typeof(cardbookTabType)) {
 				
 				doCommand: function doCommand(aCommand, aTab) {
 					switch (aCommand) {
+						case "cmd_toggleMessagePane":
+							ovl_cardbookLayout.changeResizePanes('viewABContact');
+							break;
 						case "cmd_viewClassicMailLayout":
 						case "cmd_viewVerticalMailLayout":
 							ovl_cardbookLayout.changeOrientPanes(aCommand);
@@ -103,6 +128,26 @@ if ("undefined" == typeof(cardbookTabType)) {
 						case "cmd_print":
 						case "cmd_printpreview":
 							wdw_cardbook.print();
+							break;
+						case "cmd_selectAll":
+							wdw_cardbook.selectAllKey();
+							break;
+						case "cmd_copy":
+							wdw_cardbook.copyKey();
+							break;
+						case "cmd_cut":
+							wdw_cardbook.cutKey();
+							break;
+						case "cmd_paste":
+							wdw_cardbook.pasteKey();
+							break;
+						case "cmd_delete":
+							wdw_cardbook.deleteKey();
+							break;
+						case "cmd_find":
+						case "cmd_findAgain":
+						case "cmd_showQuickFilterBar":
+							wdw_cardbook.findKey();
 							break;
 					}
 				},
@@ -141,13 +186,13 @@ if ("undefined" == typeof(ovl_cardbook)) {
 			var tabmail = document.getElementById("tabmail");
 			if (!tabmail) {
 				// Try opening new tabs in an existing 3pane window
-				let mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator).getMostRecentWindow("mail:3pane");
+				let mail3PaneWindow = Services.wm.getMostRecentWindow("mail:3pane");
 				if (mail3PaneWindow) {
 					tabmail = mail3PaneWindow.document.getElementById("tabmail");
 					mail3PaneWindow.focus();
 				}
 			}
-			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+			var stringBundleService = Services.strings;
 			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 			tabmail.openTab('cardbook', {title: strBundle.GetStringFromName("cardbookTitle")});
 		}
@@ -161,7 +206,7 @@ window.addEventListener("load", function(e) {
 		tabmail.registerTabMonitor(cardbookTabMonitor);
 	}
 
-	var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+	var prefs = Services.prefs;
 	var firstRun = prefs.getBoolPref("extensions.cardbook.firstRun");
 
 	if (firstRun) {
@@ -195,8 +240,6 @@ window.addEventListener("load", function(e) {
 	}
 
 	// for CardBook toolbar if Lightning is not installed
-	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
-	Components.utils.import("resource://gre/modules/AddonManager.jsm");  
 	AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, ovl_cardbook.overrideToolbarMenu);
 	
 	window.removeEventListener('load', arguments.callee, true);

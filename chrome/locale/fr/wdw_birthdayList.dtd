@@ -1,11 +1,11 @@
-﻿<!ENTITY daysLeftColumnLabel "Jours restants">
+<!ENTITY daysLeftColumnLabel "Jours restants">
 <!ENTITY nameColumnLabel "Nom">
 <!ENTITY ageColumnLabel "Age">
 <!ENTITY dateOfBirthColumnLabel "Date de l'évènement">
 <!ENTITY dateOfBirthFoundColumnLabel "Date trouvée">
 <!ENTITY emailColumnLabel "Email">
-<!ENTITY sendEmailLabel "Envoyer un email">
-<!ENTITY sendEmailAccesskey "E">
+<!ENTITY sendEmailLabel "Écrire un nouveau message">
+<!ENTITY sendEmailAccesskey "e">
 <!ENTITY syncLightningMenuItemLabel "Synchronisation avec Lightning">
 <!ENTITY syncLightningMenuAccesskey "S">
 <!ENTITY configurationButtonLabel "Configuration">

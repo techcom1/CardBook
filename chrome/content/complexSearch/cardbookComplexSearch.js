@@ -37,7 +37,7 @@ if ("undefined" == typeof(cardbookComplexSearch)) {
 			};
 
 			for (var i = 0; i < cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules.length; i++) {
-				buildRegExp(aCard, cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules[i][0], cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules[i][1], 
+				buildRegExp(aCard, cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules[i][0], cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules[i][1],
 									cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules[i][2], cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules[i][3]);
 				function searchArray(element) {
 					return element.search(myRegexp) != -1;
@@ -103,7 +103,7 @@ if ("undefined" == typeof(cardbookComplexSearch)) {
 					var mySearchValue = document.getElementById(aType + '_' + i + '_valueBox').value;
 					myResult.push([mySearchCase, mySearchObj, mySearchTerm, mySearchValue]);
 					i++;
-				} else {                                                                             
+				} else {
 					break;
 				}
 			}
@@ -113,7 +113,7 @@ if ("undefined" == typeof(cardbookComplexSearch)) {
 		disableButtons: function (aType, aIndex, aVersion) {
 			if (aIndex == 0) {
 				if (document.getElementById(aType + '_' + aIndex + '_valueBox').value == "") {
-					if (document.getElementById(aType + '_' + aIndex + '_' + aVersion + '_menulistTerm').selectedItem.value == "IsntEmpty" || 
+					if (document.getElementById(aType + '_' + aIndex + '_' + aVersion + '_menulistTerm').selectedItem.value == "IsntEmpty" ||
 							document.getElementById(aType + '_' + aIndex + '_' + aVersion + '_menulistTerm').selectedItem.value == "IsEmpty") {
 						document.getElementById(aType + '_' + aIndex + '_' + aVersion + '_cardbookaddButton').disabled = false;
 						document.getElementById(aType + '_' + aIndex + '_' + aVersion + '_cardbookremoveButton').disabled = false;
@@ -282,7 +282,7 @@ if ("undefined" == typeof(cardbookComplexSearch)) {
 		},
 		
 		loadComplexSearchAccount: function (aDirPrefId, aReload, aMode) {
-			cardbookSynchronization.initSync(aDirPrefId);
+			cardbookSynchronization.initSyncWithPrefId(aDirPrefId);
 			var myFile = cardbookRepository.getRuleFile(aDirPrefId);
 			cardbookRepository.cardbookComplexSearchRequest[aDirPrefId]++;
 			if (myFile.exists() && myFile.isFile()) {

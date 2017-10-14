@@ -1,14 +1,13 @@
 pref("extensions.cardbook.autocompletion", true);
 pref("extensions.cardbook.autocompleteSortByPopularity", true);
-pref("extensions.cardbook.autocompleteShowAddressbook", false); 
-pref("extensions.cardbook.autocompleteWithColor", true); 
-pref("extensions.cardbook.useColor", "background"); 
+pref("extensions.cardbook.autocompleteShowAddressbook", false);
+pref("extensions.cardbook.autocompleteWithColor", true);
+pref("extensions.cardbook.useColor", "background");
 pref("extensions.cardbook.exclusive", false);
 pref("extensions.cardbook.requestsTimeout", "120");
 pref("extensions.cardbook.statusInformationLineNumber", "250");
 pref("extensions.cardbook.debugMode", false);
 
-pref("extensions.cardbook.cardCreationVersion", "3.0");
 pref("extensions.cardbook.preferEmailEdition", true);
 pref("extensions.cardbook.mailPopularityTabView", false);
 pref("extensions.cardbook.technicalTabView", false);
@@ -16,15 +15,16 @@ pref("extensions.cardbook.vcardTabView", false);
 
 pref("extensions.cardbook.panesView", "modern");
 pref("extensions.cardbook.initialSync", true);
-pref("extensions.cardbook.solveConflicts", "Local");
+pref("extensions.cardbook.solveConflicts", "User");
 pref("extensions.cardbook.autoSync", true);
 pref("extensions.cardbook.autoSyncInterval", "30");
 pref("extensions.cardbook.multiget", "40");
 pref("extensions.cardbook.decodeReport", true);
 
 pref("extensions.cardbook.preferEmailPref", true);
+pref("extensions.cardbook.preferIMPPPref", true);
 pref("extensions.cardbook.warnEmptyEmails", true);
-pref("extensions.cardbook.useOnlyEmail", false); 
+pref("extensions.cardbook.useOnlyEmail", false);
 
 pref("extensions.cardbook.preferenceValueLabel", "");
 
@@ -65,5 +65,4 @@ pref("extensions.cardbook.viewABContact", true);
 
 pref("extensions.cardbook.accountsShown", "all");
 pref("extensions.cardbook.uncategorizedCards", "");
-pref("extensions.cardbook.addonVersion", "21.9");
-
+pref("extensions.cardbook.addonVersion", "23.0");

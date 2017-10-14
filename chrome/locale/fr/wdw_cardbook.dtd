@@ -31,6 +31,10 @@
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Ajouter un carnet d'adresses local ou distant">
 <!ENTITY cardbookToolbarSyncButtonLabel "Synchroniser">
 <!ENTITY cardbookToolbarSyncButtonTooltip "Synchroniser tous les carnets d'adresses distants">
+<!ENTITY cardbookToolbarWriteButtonLabel "Écrire">
+<!ENTITY cardbookToolbarWriteButtonTooltip "Créer un nouveau message">
+<!ENTITY cardbookToolbarChatButtonLabel "Connecter à">
+<!ENTITY cardbookToolbarChatButtonTooltip "Envoyer un message instantané ou amorcer un chat">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Préférences">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Préférences de CardBook">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Nouveau contact">
@@ -130,21 +134,21 @@
 <!ENTITY etagLabel "Etag">
 
 <!ENTITY localizeadrTreeLabel "Localiser">
-<!ENTITY toEmailEmailTreeLabel "Envoyer un email">
-<!ENTITY ccEmailEmailTreeLabel "Envoyer un email (copie / cc)">
-<!ENTITY bccemailemailTreeLabel "Envoyer un email (copie cachée / bcc)">
+<!ENTITY toEmailEmailTreeLabel "Écrire un nouveau message">
+<!ENTITY ccEmailEmailTreeLabel "Écrire un nouveau message (copie / cc)">
+<!ENTITY bccemailemailTreeLabel "Écrire un nouveau message (copie cachée / bcc)">
 <!ENTITY findemailemailTreeLabel "Trouver les emails de cette adresse email">
 <!ENTITY findeventemailTreeLabel "Trouver les rendez-vous de cette adresse email">
 <!ENTITY openURLTreeLabel "Ouvrir l'URL">
 
 <!ENTITY copyCardTreeLabel "Copier cette ligne">
 
-<!ENTITY toEmailCardFromAccountsOrCatsLabel "Envoyer un email">
-<!ENTITY toEmailCardFromCardsLabel "Envoyer un email">
-<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Envoyer un email (copie / cc)">
-<!ENTITY ccEmailCardFromCardsLabel "Envoyer un email (copie / cc)">
-<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Envoyer un email (copie cachée / bcc)">
-<!ENTITY bccEmailCardFromCardsLabel "Envoyer un email (copie cachée / bcc)">
+<!ENTITY toEmailCardFromAccountsOrCatsLabel "Écrire un nouveau message">
+<!ENTITY toEmailCardFromCardsLabel "Écrire un nouveau message">
+<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Écrire un nouveau message (copie / cc)">
+<!ENTITY ccEmailCardFromCardsLabel "Écrire un nouveau message (copie / cc)">
+<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Écrire un nouveau message (copie cachée / bcc)">
+<!ENTITY bccEmailCardFromCardsLabel "Écrire un nouveau message (copie cachée / bcc)">
 <!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Partager par email">
 <!ENTITY shareCardByEmailFromCardsLabel "Partager par email">
 <!ENTITY categoryLabel "Catégorie">
@@ -163,6 +167,7 @@
 <!ENTITY importCardFromFileLabel "Importer des contacts depuis un fichier">
 <!ENTITY importCardFromDirLabel "Importer des contacts depuis un répertoire">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Renommer la catégorie">
+<!ENTITY convertCatFromAccountsOrCatsLabel "Convertir la catégorie en liste">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Supprimer la catégorie">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Recherche des contacts dupliqués dans le carnet d'adresses courant">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Générer les noms affichés">

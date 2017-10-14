@@ -85,6 +85,8 @@
 <!ENTITY showNameAsLabel "Naam tonen als">
 <!ENTITY showNameAsLFLabel "Achternaam Roepnaam">
 <!ENTITY showNameAsLFAccesskey "A">
+<!ENTITY showNameAsLFCommaLabel "Achternaam, Roepnaam">
+<!ENTITY showNameAsLFCommaAccesskey "e">
 <!ENTITY showNameAsFLLabel "Roepnaam Achternaam">
 <!ENTITY showNameAsFLAccesskey "R">
 <!ENTITY showNameAsDSPLabel "Getoonde naam">
@@ -96,7 +98,6 @@
 <!ENTITY resetFnFormulaLabel "Herstellen naar standaardwaarde">
 <!ENTITY resetFnFormulaAccesskey "H">
 <!ENTITY miscEdittingGroupboxLabel "Overig">
-<!ENTITY cardCreationVersionLabel "Default vCard versie:">
 <!ENTITY preferEmailEditionLabel "Dubbelklikken op contactpersoon start wijzigen (i.p.v. bericht verzenden)">
 <!ENTITY preferEmailEditionAccesskey "D">
 
@@ -127,6 +128,9 @@
 
 <!ENTITY IMPPGroupboxWarn "Deze instelling opent een IM-adres met gebruikmaking van het protocol.">
 <!ENTITY IMPPGroupboxLabel "Instant Messenger adressen">
+<!ENTITY preferIMPPPrefLabel "Voorkeur voor internet communicatie gemarkeerd met ">
+<!ENTITY preferIMPPPrefAccesskey "i">
+<!ENTITY preferIMPPPrefWarn "Als er geen adres gemarkeerd is, dan wordt er een verbinding voor alle adressen voorgesteld.">
 <!ENTITY IMPPCodeLabel "Code">
 <!ENTITY IMPPLabelLabel "Naam">
 <!ENTITY IMPPProtocolLabel "Protocol">

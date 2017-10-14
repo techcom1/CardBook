@@ -1,4 +1,7 @@
 if ("undefined" == typeof(wdw_mergeCards)) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var wdw_mergeCards = {
 		arrayField: {},
 		version: "",
@@ -185,7 +188,7 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 			var aLabel = document.createElement('label');
 			aRow.appendChild(aLabel);
 			aLabel.setAttribute('id', aName);
-			var stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+			var stringBundleService = Services.strings;
 			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 			aLabel.setAttribute('value', strBundle.GetStringFromName(aValue));
 		},
@@ -322,7 +325,6 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 		},
 
 		load: function () {
-			Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 			wdw_mergeCards.setHideCreate();
 			
 			listOfCards = window.arguments[0].cardsIn;

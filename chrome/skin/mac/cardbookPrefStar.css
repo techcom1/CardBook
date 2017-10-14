@@ -1,4 +1,4 @@
-﻿.cardbookPrefStarClass {
+.cardbookPrefStarClass {
 	list-style-image: url("chrome://messenger/skin/starIcons.png");
 	-moz-image-region: rect(0, 16px, 16px, 0);
 }

@@ -23,14 +23,18 @@
 
 <!ENTITY cardbookToolbarLabel "Névjegyzék eszköztár">
 <!ENTITY cardbookToolbarAccesskey "N">
-<!ENTITY cardbookABPaneToolbarLabel "??CardBook Address Book Pane Toolbar??">
-<!ENTITY cardbookABPaneToolbarAccesskey "??d??">
+<!ENTITY cardbookABPaneToolbarLabel "Névjegytár mappa ablaktábla eszköztára">
+<!ENTITY cardbookABPaneToolbarAccesskey "a">
 <!ENTITY CustomizeCardBookToolbarLabel "Testreszabás…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "T">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Új névjegytár">
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Új helyi, távoli vagy mentett kérés névjegytár mappa">
 <!ENTITY cardbookToolbarSyncButtonLabel "Összehangolás">
 <!ENTITY cardbookToolbarSyncButtonTooltip "Minden távoli névjegytár összehangolása">
+<!ENTITY cardbookToolbarWriteButtonLabel "Új üzenet">
+<!ENTITY cardbookToolbarWriteButtonTooltip "Új üzenet létrehozása">
+<!ENTITY cardbookToolbarChatButtonLabel "Csatlakozni">
+<!ENTITY cardbookToolbarChatButtonTooltip "Üzenet küldése vagy csevegés">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Beállítások">
 <!ENTITY cardbookToolbarConfigurationButtonTooltip "Névjegyzék beállítások">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Új névjegy">
@@ -130,21 +134,21 @@
 <!ENTITY etagLabel "Elektronikus címke">
 
 <!ENTITY localizeadrTreeLabel "Mutasd a térképen">
-<!ENTITY toEmailEmailTreeLabel "Új üzenet (címzett)">
-<!ENTITY ccEmailEmailTreeLabel "Új üzenet (másolat)">
-<!ENTITY bccemailemailTreeLabel "Új üzenet (rejtett másolat)">
+<!ENTITY toEmailEmailTreeLabel "Új üzenet létrehozása (címzett)">
+<!ENTITY ccEmailEmailTreeLabel "Új üzenet létrehozása (másolat)">
+<!ENTITY bccemailemailTreeLabel "Új üzenet létrehozása (rejtett másolat)">
 <!ENTITY findemailemailTreeLabel "E-mailek keresése (e-mail alapján)">
 <!ENTITY findeventemailTreeLabel "Naptári események keresése (e-mail alapján)">
 <!ENTITY openURLTreeLabel "Webcím hívatkozás megnyitása böngészőben">
 
 <!ENTITY copyCardTreeLabel "Másolás">
 
-<!ENTITY toEmailCardFromAccountsOrCatsLabel "Új üzenetek (címzettek)">
-<!ENTITY toEmailCardFromCardsLabel "Új üzenetek (címzettek)">
-<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Új üzenetek (másolatok)">
-<!ENTITY ccEmailCardFromCardsLabel "Új üzenetek (másolatok)">
-<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Új üzenetek (rejtett másolatok)">
-<!ENTITY bccEmailCardFromCardsLabel "Új üzenetek (rejtett másolatok)">
+<!ENTITY toEmailCardFromAccountsOrCatsLabel "Új üzenet létrehozása (címzettek)">
+<!ENTITY toEmailCardFromCardsLabel "Új üzenet létrehozása (címzettek)">
+<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Új üzenet létrehozása (másolatok)">
+<!ENTITY ccEmailCardFromCardsLabel "Új üzenet létrehozása (másolatok)">
+<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Új üzenet létrehozása (rejtett másolatok)">
+<!ENTITY bccEmailCardFromCardsLabel "Új üzenet létrehozása (rejtett másolatok)">
 <!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Új üzenet (névjegy melléklettel)">
 <!ENTITY shareCardByEmailFromCardsLabel "Új üzenet (névjegy melléklettel)">
 <!ENTITY categoryLabel "Kategória">
@@ -163,6 +167,7 @@
 <!ENTITY importCardFromFileLabel "Megnyitás és mentés fájlból">
 <!ENTITY importCardFromDirLabel "Megnyitás és mentés mappából">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Kategória átnevezése">
+<!ENTITY convertCatFromAccountsOrCatsLabel "A kategória konvertálása a listára">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Kategória eltávolítása">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "A jelenlegi névjegytárban ismétlődő névjegy keresése">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Megjelenítendő nevek létrehozása">

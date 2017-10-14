@@ -1,103 +1,127 @@
-function cardbookListConversion(aEmails) {
-	this.emailResult = [];
-	this.recursiveList = [];
-	this._convert(aEmails);
-}
+if ("undefined" == typeof(cardbookListConversion)) {
+	Components.utils.import("resource:///modules/jsmime.jsm");
+	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 
-cardbookListConversion.prototype = {
-	_verifyRecursivity: function (aList) {
-		for (var i = 0; i < this.recursiveList.length; i++) {
-			if (this.recursiveList[i] == aList) {
-				cardbookUtils.formatStringForOutput("errorInfiniteLoopRecursion", [this.recursiveList.toSource()], "Error");
-				return false;
-			}
-		}
-		this.recursiveList.push(aList);
-		return true;
-	},
+	function cardbookListConversion(aEmails, aIdentity) {
+		this.emailResult = [];
+		this.recursiveList = [];
+		this._convert(aEmails, aIdentity);
+	}
 	
-	_getEmails: function (aCard, aOnlyEmail) {
-		if (aCard.isAList) {
-			var myList = aCard.fn;
-			if (this._verifyRecursivity(myList)) {
-				this._convert(MailServices.headerParser.makeMimeAddress(myList, myList));
+	cardbookListConversion.prototype = {
+		_verifyRecursivity: function (aList) {
+			for (var i = 0; i < this.recursiveList.length; i++) {
+				if (this.recursiveList[i] == aList) {
+					cardbookUtils.formatStringForOutput("errorInfiniteLoopRecursion", [this.recursiveList.toSource()], "Error");
+					return false;
+				}
 			}
-		} else {
-			var listOfEmail = []
-			listOfEmail = cardbookUtils.getMimeEmailsFromCards([aCard], aOnlyEmail).join(", ");
-			if (listOfEmail != "") {
-				this.emailResult.push(listOfEmail);
-			}
-		}
-	},
-	
-	_convert: function (aEmails) {
-		Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
-		var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-		var memberCustom = prefs.getComplexValue("extensions.cardbook.memberCustom", Components.interfaces.nsISupportsString).data;
-		var useOnlyEmail = prefs.getBoolPref("extensions.cardbook.useOnlyEmail");
-		var addresses = {}, names = {}, fullAddresses = {};
-		MailServices.headerParser.parseHeadersWithArray(aEmails, addresses, names, fullAddresses);
-		for (var i = 0; i < addresses.value.length; i++) {
-			if (addresses.value[i].indexOf("@") > 0) {
-				if (useOnlyEmail) {
-					this.emailResult.push(addresses.value[i]);
-				} else {
-					this.emailResult.push(MailServices.headerParser.makeMimeAddress(names.value[i], addresses.value[i]));
+			this.recursiveList.push(aList);
+			return true;
+		},
+		
+		_getEmails: function (aCard, aOnlyEmail) {
+			if (aCard.isAList) {
+				var myList = aCard.fn;
+				if (this._verifyRecursivity(myList)) {
+					this._convert(MailServices.headerParser.makeMimeAddress(myList, myList));
 				}
 			} else {
-				for (j in cardbookRepository.cardbookCards) {
-					var myCard = cardbookRepository.cardbookCards[j];
-					if (myCard.fn == names.value[i]) {
-						this.recursiveList.push(names.value[i]);
-						if (myCard.version == "4.0") {
-							for (var k = 0; k < myCard.member.length; k++) {
-								var uid = myCard.member[k].replace("urn:uuid:", "");
-								if (cardbookRepository.cardbookCards[myCard.dirPrefId+"::"+uid]) {
-									var myTargetCard = cardbookRepository.cardbookCards[myCard.dirPrefId+"::"+uid];
-									this._getEmails(myTargetCard, useOnlyEmail);
+				var listOfEmail = []
+				listOfEmail = cardbookUtils.getMimeEmailsFromCards([aCard], aOnlyEmail).join(", ");
+				if (listOfEmail != "") {
+					this.emailResult.push(listOfEmail);
+				}
+			}
+		},
+		
+		_convert: function (aEmails, aIdentity) {
+			var prefs = Services.prefs;
+			var memberCustom = prefs.getComplexValue("extensions.cardbook.memberCustom", Components.interfaces.nsISupportsString).data;
+			var useOnlyEmail = prefs.getBoolPref("extensions.cardbook.useOnlyEmail");
+			var addresses = {}, names = {}, fullAddresses = {};
+			MailServices.headerParser.parseHeadersWithArray(aEmails, addresses, names, fullAddresses);
+			for (var i = 0; i < addresses.value.length; i++) {
+				if (addresses.value[i].includes("@")) {
+					if (useOnlyEmail) {
+						// we are forced to collect here because after the display name is removed
+						var cardbookPrefService = new cardbookPreferenceService();
+						var resultEmailsCollections = [];
+						var allEmailsCollections = [];
+						allEmailsCollections = cardbookPrefService.getAllEmailsCollections();
+						for (var j = 0; j < allEmailsCollections.length; j++) {
+							var resultArray = allEmailsCollections[j].split("::");
+							resultEmailsCollections.push([resultArray[0], resultArray[1], resultArray[2], resultArray[3], resultArray[4]]);
+						}
+						if (resultEmailsCollections && resultEmailsCollections.length != 0) {
+							ovl_collected.addCollectedContact(aIdentity, resultEmailsCollections, names.value[i], addresses.value[i]);
+						}
+						
+						this.emailResult.push(addresses.value[i]);
+					} else {
+						this.emailResult.push(MailServices.headerParser.makeMimeAddress(names.value[i], addresses.value[i]));
+					}
+				// for Mail Merge compatibility
+				} else if (fullAddresses.value[i].includes("{{") && fullAddresses.value[i].includes("}}")) {
+					this.emailResult.push(fullAddresses.value[i]);
+				} else {
+					var found = false;
+					for (j in cardbookRepository.cardbookCards) {
+						var myCard = cardbookRepository.cardbookCards[j];
+						if (myCard.isAList && myCard.fn == names.value[i]) {
+							found = true;
+							this.recursiveList.push(names.value[i]);
+							if (myCard.version == "4.0") {
+								for (var k = 0; k < myCard.member.length; k++) {
+									var uid = myCard.member[k].replace("urn:uuid:", "");
+									if (cardbookRepository.cardbookCards[myCard.dirPrefId+"::"+uid]) {
+										var myTargetCard = cardbookRepository.cardbookCards[myCard.dirPrefId+"::"+uid];
+										this._getEmails(myTargetCard, useOnlyEmail);
+									}
 								}
-							}
-						} else if (myCard.version == "3.0") {
-							for (var k = 0; k < myCard.others.length; k++) {
-								var localDelim1 = myCard.others[k].indexOf(":",0);
-								if (localDelim1 >= 0) {
-									var header = myCard.others[k].substr(0,localDelim1);
-									var trailer = myCard.others[k].substr(localDelim1+1,myCard.others[k].length);
-									if (header == memberCustom) {
-										if (cardbookRepository.cardbookCards[myCard.dirPrefId+"::"+trailer.replace("urn:uuid:", "")]) {
-											var myTargetCard = cardbookRepository.cardbookCards[myCard.dirPrefId+"::"+trailer.replace("urn:uuid:", "")];
-											this._getEmails(myTargetCard, useOnlyEmail);
+							} else if (myCard.version == "3.0") {
+								for (var k = 0; k < myCard.others.length; k++) {
+									var localDelim1 = myCard.others[k].indexOf(":",0);
+									if (localDelim1 >= 0) {
+										var header = myCard.others[k].substr(0,localDelim1);
+										var trailer = myCard.others[k].substr(localDelim1+1,myCard.others[k].length);
+										if (header == memberCustom) {
+											if (cardbookRepository.cardbookCards[myCard.dirPrefId+"::"+trailer.replace("urn:uuid:", "")]) {
+												var myTargetCard = cardbookRepository.cardbookCards[myCard.dirPrefId+"::"+trailer.replace("urn:uuid:", "")];
+												this._getEmails(myTargetCard, useOnlyEmail);
+											}
 										}
 									}
 								}
 							}
+							break;
 						}
-					break;
+					}
+					if (!found) {
+						this.emailResult.push(fullAddresses.value[i]);
 					}
 				}
 			}
 		}
-	}
+	};
 };
 				
 if ("undefined" == typeof(ovl_list)) {
 	var ovl_list = {
 		expandRecipientsFromCardBook: function () {
-			Components.utils.import("resource:///modules/jsmime.jsm");
 			var myFields = window.gMsgCompose.compFields;
-			var listToCollect = ["replyTo", "to", "cc", "fcc", "bcc", "followupTo"];
+			var listToCollect = ["replyTo", "to", "cc", "bcc", "followupTo"];
 			for (var i = 0; i < listToCollect.length; i++) {
 				if (myFields[listToCollect[i]]) {
 					if (myFields[listToCollect[i]] != null && myFields[listToCollect[i]] !== undefined && myFields[listToCollect[i]] != "") {
-						var myConversion = new cardbookListConversion(myFields[listToCollect[i]]);
+						var myConversion = new cardbookListConversion(myFields[listToCollect[i]], window.gMsgCompose.identity.key);
 						myFields[listToCollect[i]] = cardbookRepository.arrayUnique(myConversion.emailResult).join(", ");
 					}
 				}
 			}
 		}
-		
-	}
+	};
 };
 
 // expandRecipients
@@ -134,7 +158,7 @@ if ("undefined" == typeof(ovl_list)) {
 		// 	let inputValue = awGetInputElement(row).value.trim();
 		// 	ovl_list.mailListNameExistsInCardBook(inputValue.replace(/ *<.*>/, ""));
 		// }
-        // 
+        //
 		// return the original result
 		gSendLocked = false;
 		// return rv;

@@ -1,4 +1,5 @@
 // toggleAddressPicker
+Components.utils.import("resource://gre/modules/Services.jsm");
 (function() {
 	// Keep a reference to the original function.
 	var _original = toggleAddressPicker;
@@ -9,7 +10,7 @@
 		var rv = _original.apply(null, arguments);
 		
 		// Execute some action afterwards.
-		var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+		var prefs = Services.prefs;
 		if (prefs.getBoolPref("extensions.cardbook.autocompletion")) {
 			var sidebar = document.getElementById("sidebar");
 			sidebar.setAttribute("src", "chrome://cardbook/content/contactsSidebar/wdw_cardbookContactsSidebar.xul");

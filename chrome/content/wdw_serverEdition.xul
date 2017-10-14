@@ -76,22 +76,15 @@
 					<separator class="thin"/>
 					<row align="center">
 						<label value="&namePage.vCardVersion.label;" control="serverVCardVersionMenu"/>
-						<hbox align="center">
-							<menulist id="serverVCardVersionMenu">
-								<menupopup id="serverVCardVersionMenupopup">
-									<menuitem label="3.0" value="3.0"/>
-									<menuitem label="4.0" value="4.0"/>
-								</menupopup>
-							</menulist>
-						</hbox>
+						<textbox id="serverVCardVersionTextBox" disabled="true"/>
 					</row>
 					<separator class="thin"/>
 					<row align="center">
 						<label value="&dateFormatLabel;" control="dateFormatMenuList"/>
 						<hbox align="center">
-							<menulist id="dateFormatMenuList">  
+							<menulist id="dateFormatMenuList">
 								<menupopup id="dateFormatMenuPopup"/>
-							</menulist>    
+							</menulist>
 						</hbox>
 					</row>
 				</rows>

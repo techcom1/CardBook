@@ -40,6 +40,7 @@ Community efforts:
 ### Contribution
 
 You are welcomed to contribute to this project by:
+* adding translations at [locale](https://github.com/CardBook/CardBook/tree/master/chrome/locale),
 * creating issues about problems,
 * creating issues about possible improvements,
 * helping people who have problems or questions,
@@ -51,31 +52,38 @@ You are welcomed to contribute to this project by:
 ### Special thanks to
 
 Main contributors:
-* Philippe VIGNEAU (author and maintainer)
-* Alexander BERGMANN
-* R. Kent JAMES
-* Timothe LITT
-* Christoph MAIR
-* Boris PRÜSSMANN
-* Lukáš TYRYCHTR
+* Philippe Vigneau (author and maintainer)
+* [Alexander Bergmann](https://addons.mozilla.org/thunderbird/user/tempuser/)
+*	[Günter Gersdorf](https://addons.mozilla.org/thunderbird/user/guenter-gersdorf/)
+* [R. Kent James](https://github.com/rkent)
+* Timothe Litt
+* Christoph Mair
+* Boris Prüssmann
+* Michael Roland
+* Lukáš Tyrychtr
 
 Translations by:
-* Philippe VIGNEAU (fr)
-* Lukáš TYRYCHTR (cs)
-* Alexander BERGMANN (de)
-* Markus MAUERER (de)
-* Oliver SCHUPPE (de)
-* Timothe LITT (en-US)
-* ÓVÁRI (hu)
-* Agnese MORETTINI (it)
-* Han KNOLS (nl)
-* Adam GORZKIEWICZ (pl)
-* André BAÇÃO (pt-PT) - https://github.com/abacao
-* Alexander YAVORSKY (ru)
+* Lukáš Tyrychtr (cs)
+* Johnny Nielsen (da)
+* Alexander Bergmann (de)
+* Markus Mauerer (de)
+* Oliver Schuppe (de)
+* SusiTux (de)
+* Timothe Litt (en-US)
+* Óvári (en-US)
+* Philippe Vigneau (fr)
+* Óvári (hu)
+* Agnese Morettini (it)
+* Han Knols (nl)
+* Adam Gorzkiewicz (pl)
+* Dominik Wnęk (pl)
+* [André Bação (pt-PT)](https://github.com/abacao)
+* Alexander Yavorsky (ru)
+* Peter Klofutar (sl)
 
 Trailblazer:
 * [Thomas McWork](https://github.com/thomas-mc-work): midwife for the public git repository
 
 ### License
 
-Mozilla Public License version 2.0
+[Mozilla Public License version 2.0](https://github.com/CardBook/CardBook/blob/master/LICENSE.txt)

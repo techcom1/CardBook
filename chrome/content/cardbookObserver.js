@@ -1,5 +1,6 @@
 if ("undefined" == typeof(cardbookObserver)) {
-	
+	Components.utils.import("resource://gre/modules/Services.jsm");
+
 	var cardBookPrefObserverRepository = {
 		registerAll: function(aPrefObserver) {
 			aPrefObserver.branch = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("extensions.cardbook.");
@@ -63,7 +64,7 @@ if ("undefined" == typeof(cardbookObserver)) {
 
 	var cardbookObserverRepository = {
 		registerAll: function(aObserver) {
-			var observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
+			var observerService = Services.obs;
 			observerService.addObserver(aObserver, "cardbook.catModifiedIndirect", false);
 			observerService.addObserver(aObserver, "cardbook.catModifiedDirect", false);
 			observerService.addObserver(aObserver, "cardbook.catRemovedIndirect", false);
@@ -95,7 +96,7 @@ if ("undefined" == typeof(cardbookObserver)) {
 		},
 		
 		unregisterAll: function(aObserver) {
-			var observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
+			var observerService = Services.obs;
 			observerService.removeObserver(aObserver, "cardbook.catModifiedIndirect");
 			observerService.removeObserver(aObserver, "cardbook.catModifiedDirect");
 			observerService.removeObserver(aObserver, "cardbook.catRemovedIndirect");

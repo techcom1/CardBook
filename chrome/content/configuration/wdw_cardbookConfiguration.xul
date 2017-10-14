@@ -58,8 +58,6 @@
 				name="extensions.cardbook.vcardTabView" type="bool"/>
 			<preference id="extensions.cardbook.preferEmailEdition"
 				name="extensions.cardbook.preferEmailEdition" type="bool"/>
-			<preference id="extensions.cardbook.cardCreationVersion"
-				name="extensions.cardbook.cardCreationVersion" type="string"/>
 			<preference id="extensions.cardbook.localizeEngine"
 				name="extensions.cardbook.localizeEngine" type="string"/>
 			<preference id="extensions.cardbook.showNameAs"
@@ -70,6 +68,8 @@
 				name="extensions.cardbook.localizeTarget" type="string"/>
 			<preference id="extensions.cardbook.preferenceValueLabel"
 				name="extensions.cardbook.preferenceValueLabel" type="string"/>
+			<preference id="extensions.cardbook.preferIMPPPref"
+				name="extensions.cardbook.preferIMPPPref" type="bool"/>
 			<preference id="extensions.cardbook.kindCustom"
 				name="extensions.cardbook.kindCustom" type="string"/>
 			<preference id="extensions.cardbook.memberCustom"
@@ -137,8 +137,8 @@
 				<tab id="listsTab" label="&listsTabLabel;"/>
 				<tab id="syncTab" label="&syncTabLabel;"/>
 				<tab id="emailTab" label="&emailTabLabel;"/>
-				<tab id="birthdaylistTab" label="&birthdaylistTabLabel;"/>          
-				<tab id="synclistTab" label="&synclistTabLabel;"/>  
+				<tab id="birthdaylistTab" label="&birthdaylistTabLabel;"/>
+				<tab id="synclistTab" label="&synclistTabLabel;"/>
 			</tabs>
 
 			<tabpanels>
@@ -316,6 +316,7 @@
 						<hbox flex="1" align="center">
 							<radiogroup id="showNameAsRadiogroup" orient="horizontal" preference="extensions.cardbook.showNameAs">
 								<radio value="LF" label="&showNameAsLFLabel;" accesskey="&showNameAsLFAccesskey;"/>
+								<radio value="LFCOMMA" label="&showNameAsLFCommaLabel;" accesskey="&showNameAsLFCommaAccesskey;"/>
 								<radio value="FL" label="&showNameAsFLLabel;" accesskey="&showNameAsFLAccesskey;"/>
 								<radio value="DSP" label="&showNameAsDSPLabel;" accesskey="&showNameAsDSPAccesskey;"/>
 							</radiogroup>
@@ -340,7 +341,7 @@
 										id="fnFormula"/>
 									<textbox id="fnFormulaTextBox"
 										preference="extensions.cardbook.fnFormula"/>
-									<button id="resetFnFormulaButton" label="&resetFnFormulaLabel;" accesskey="&resetFnFormulaAccesskey;" 
+									<button id="resetFnFormulaButton" label="&resetFnFormulaLabel;" accesskey="&resetFnFormulaAccesskey;"
 										oncommand="wdw_cardbookConfiguration.resetFnFormula();"/>
 								</row>
 								<row align="center">
@@ -369,18 +370,6 @@
 
 					<groupbox>
 						<caption label="&miscEdittingGroupboxLabel;"/>
-						<hbox flex="1" align="center">
-							<label value="&cardCreationVersionLabel;"
-								control="cardCreationVersionRadiogroup"
-								id="cardCreationVersion"/>
-						</hbox>
-						<hbox flex="1" align="center">
-							<radiogroup id="cardCreationVersionRadiogroup" orient="horizontal" preference="extensions.cardbook.cardCreationVersion"  class="indent">
-								<radio value="3.0" label="3.0" accesskey="3"/>
-								<radio value="4.0" label="4.0" accesskey="4"/>
-							</radiogroup>
-						</hbox>
-						<separator class="thin"/>
 						<hbox align="center">
 							<checkbox id="preferEmailEditionCheckBox" label="&preferEmailEditionLabel;"
 								accesskey="&preferEmailEditionAccesskey;"
@@ -443,6 +432,17 @@
 					<separator class="thin"/>
 					<groupbox flex="1">
 						<caption label="&IMPPGroupboxLabel;"/>
+						<hbox align="center">
+							<checkbox id="preferIMPPPrefCheckBox" label="&preferIMPPPrefLabel;"
+								accesskey="&preferIMPPPrefAccesskey;"
+								preference="extensions.cardbook.preferIMPPPref"/>
+							<image class="cardbookPrefStarClass" haspref="true"/>
+						</hbox>
+						<separator class="thin"/>
+						<hbox align="center">
+							<caption label="&preferIMPPPrefWarn;" class="indent"/>
+						</hbox>
+						<separator class="thin"/>
 						<hbox align="center">
 							<radiogroup id="imppsCategoryRadiogroup" orient="horizontal" onselect="wdw_cardbookConfiguration.selectIMPPsCategory();">
 								<radio value="impp" label="&typesCategoryImppLabel;" accesskey="&typesCategoryImppAccesskey;" selected="true"/>
@@ -556,7 +556,7 @@
 												id="kindCustom"/>
 											<textbox id="kindCustomTextBox" oninput="wdw_cardbookConfiguration.customFieldCheck(this);wdw_cardbookConfiguration.validateCustomValues();"
 												preference="extensions.cardbook.kindCustom"/>
-											<button id="resetListButton" label="&resetListLabel;" accesskey="&resetListAccesskey;" 
+											<button id="resetListButton" label="&resetListLabel;" accesskey="&resetListAccesskey;"
 												oncommand="wdw_cardbookConfiguration.resetList();"/>
 										</row>
 										<row align="center">
@@ -662,8 +662,7 @@
 						</hbox>
 						<separator class="thin"/>
 						<hbox align="center">
-							<caption label="&preferEmailPrefWarn;"/>
-							<image class="cardbookPrefStarClass"/>
+							<caption label="&preferEmailPrefWarn;" class="indent"/>
 						</hbox>
 						<separator class="thin"/>
 						<checkbox id="warnEmptyEmailsCheckBox" label="&warnEmptyEmailsLabel;"
@@ -735,8 +734,8 @@
 					<groupbox>
 						<caption label="&searchGroupboxLabel;"/>
 						<hbox align="center">
-							<checkbox id="searchInNoteCheckBox" label="&searchInNoteLabel;" 
-								accesskey="&searchInNoteAccesskey;" 
+							<checkbox id="searchInNoteCheckBox" label="&searchInNoteLabel;"
+								accesskey="&searchInNoteAccesskey;"
 								preference="extensions.cardbook.searchInNote"/>
 						</hbox>
 						<separator class="thin"/>
@@ -749,40 +748,40 @@
 					<groupbox>
 						<caption label="&remindViaPopupWindowGroupboxLabel;"/>
 						<hbox align="center">
-							<label value="&numberOfDaysForSearchingLabel;" 
-								accesskey="&numberOfDaysForSearchingAccesskey;" 
+							<label value="&numberOfDaysForSearchingLabel;"
+								accesskey="&numberOfDaysForSearchingAccesskey;"
 								control="numberOfDaysForSearchingTextBox"
 								id="numberOfDaysForSearchingLabel"/>
-							<textbox id="numberOfDaysForSearchingTextBox" 
+							<textbox id="numberOfDaysForSearchingTextBox"
 								preference="extensions.cardbook.numberOfDaysForSearching"/>
 						</hbox>
 						<separator class="thin"/>
 						<hbox align="center">
-							<checkbox id="showPopupOnStartupCheckBox" label="&showPopupOnStartupLabel;" 
-								accesskey="&showPopupOnStartupAccesskey;" 
+							<checkbox id="showPopupOnStartupCheckBox" label="&showPopupOnStartupLabel;"
+								accesskey="&showPopupOnStartupAccesskey;"
 								preference="extensions.cardbook.showPopupOnStartup"
 								oncommand="wdw_cardbookConfiguration.remindViaPopup();"/>
 						</hbox>
 						<separator class="thin"/>
 						<hbox align="center">
-							<checkbox id="showPeriodicPopupCheckBox" label="&showPeriodicPopupLabel;" 
+							<checkbox id="showPeriodicPopupCheckBox" label="&showPeriodicPopupLabel;"
 								accesskey="&showPeriodicPopupAccesskey;"
 								preference="extensions.cardbook.showPeriodicPopup"
 								oncommand="wdw_cardbookConfiguration.remindViaPopup();"/>
 						</hbox>
 						<separator class="thin"/>
 						<hbox align="center">
-							<label value="&periodicPopupTimeLabel;" 
-								accesskey="&periodicPopupTimeAccesskey;" 
+							<label value="&periodicPopupTimeLabel;"
+								accesskey="&periodicPopupTimeAccesskey;"
 								control="periodicPopupTimeTextBox"
 								id="periodicPopupTimeLabel" />
-							<textbox id="periodicPopupTimeTextBox" 
+							<textbox id="periodicPopupTimeTextBox"
 								preference="extensions.cardbook.periodicPopupIime"/>
 						</hbox>
 						<separator class="thin"/>
 						<hbox align="center">
-							<checkbox id="showPopupEvenIfNoBirthdayCheckBox" label="&showPopupEvenIfNoBirthdayLabel;" 
-								accesskey="&showPopupEvenIfNoBirthdayAccesskey;" 
+							<checkbox id="showPopupEvenIfNoBirthdayCheckBox" label="&showPopupEvenIfNoBirthdayLabel;"
+								accesskey="&showPopupEvenIfNoBirthdayAccesskey;"
 								preference="extensions.cardbook.showPopupEvenIfNoBirthday"/>
 						</hbox>
 					</groupbox>
@@ -792,23 +791,23 @@
 					<groupbox>
 						<caption label="&remindViaLightningGroupboxLabel;"/>
 						<hbox align="center">
-							<label value="&numberOfDaysForWritingLabel;" 
-								accesskey="&numberOfDaysForWritingAccesskey;" 
+							<label value="&numberOfDaysForWritingLabel;"
+								accesskey="&numberOfDaysForWritingAccesskey;"
 								control="numberOfDaysForWritingTextBox"
 								id="numberOfDaysForWritingLabel"/>
-							<textbox id="numberOfDaysForWritingTextBox" 
+							<textbox id="numberOfDaysForWritingTextBox"
 								preference="extensions.cardbook.numberOfDaysForWriting"/>
 						</hbox>
 						<separator class="thin"/>
 						<hbox align="center">
-							<checkbox id="syncWithLightningOnStartupCheckBox" label="&syncWithLightningOnStartupLabel;" 
+							<checkbox id="syncWithLightningOnStartupCheckBox" label="&syncWithLightningOnStartupLabel;"
 								accesskey="&syncWithLightningOnStartupAccesskey;"
 								preference="extensions.cardbook.syncWithLightningOnStartup"/>
 						</hbox>
 						<separator class="thin"/>
 						<hbox align="center">
 							<label value="&calendarEntryTitleLabel;"
-								accesskey="&calendarEntryTitleAccesskey;" 
+								accesskey="&calendarEntryTitleAccesskey;"
 								control="calendarEntryTitleTextBox"
 								tooltiptext="&calendarEntryTitleTooltip;"
 								id="calendarEntryTitleLabel"/>
@@ -818,7 +817,7 @@
 						</hbox>
 						<separator class="thin"/>
 						<hbox align="center">
-							<checkbox id="calendarEntryWholeDayCheckBox" label="&calendarEntryWholeDayLabel;" 
+							<checkbox id="calendarEntryWholeDayCheckBox" label="&calendarEntryWholeDayLabel;"
 								accesskey="&calendarEntryWholeDayAccesskey;"
 								preference="extensions.cardbook.eventEntryWholeDay"
 								oncommand="wdw_cardbookConfiguration.wholeDay();"/>
@@ -826,30 +825,30 @@
 						<separator class="thin"/>
 						<hbox align="center">
 							<label value="&calendarEntryTimeLabel;"
-								accesskey="&calendarEntryTimeAccesskey;" 
+								accesskey="&calendarEntryTimeAccesskey;"
 								control="calendarEntryTimeTextBox"
 								id="calendarEntryTimeLabel"/>
-							<textbox id="calendarEntryTimeTextBox" 
+							<textbox id="calendarEntryTimeTextBox"
 								preference="extensions.cardbook.eventEntryTime"/>
 						</hbox>
 						<separator class="thin"/>
 						<hbox align="center">
 							<label value="&calendarEntryAlarmLabel;"
-								accesskey="&calendarEntryAlarmAccesskey;" 
+								accesskey="&calendarEntryAlarmAccesskey;"
 								control="calendarEntryAlarmTextBox"
 								tooltiptext="&calendarEntryAlarmTooltip;"
 								id="calendarEntryAlarmLabel"/>
-							<textbox id="calendarEntryAlarmTextBox" 
+							<textbox id="calendarEntryAlarmTextBox"
 								preference="extensions.cardbook.calendarEntryAlarm"/>
 						</hbox>
 						<separator class="thin"/>
 						<hbox align="center">
 							<label value="&calendarEntryCategoriesLabel;"
-								accesskey="&calendarEntryCategoriesAccesskey;" 
+								accesskey="&calendarEntryCategoriesAccesskey;"
 								control="calendarEntryCategoriesTextBox"
 								tooltiptext="&calendarEntryCategoriesTooltip;"
 								id="calendarEntryCategoriesLabel"/>
-							<textbox id="calendarEntryCategoriesTextBox" 
+							<textbox id="calendarEntryCategoriesTextBox"
 								preference="extensions.cardbook.calendarEntryCategories"/>
 						</hbox>
 					</groupbox>
