@@ -128,7 +128,7 @@
 <!ENTITY IMPPGroupboxWarn "Te nastavitve omogočajo internetno komunikacijo z uporabo namenskega protokola.">
 <!ENTITY IMPPGroupboxLabel "Int. komunikacija">
 <!ENTITY preferIMPPPrefLabel "Daj prednost internetni komunikaciji, ki je označena s/z ">
-<!ENTITY preferIMPPPrefAccesskey "P">
+<!ENTITY preferIMPPPrefAccesskey "p">
 <!ENTITY preferIMPPPrefWarn "Če ni označen noben naslov, bo za vse naslove stika predlagana povezava.">
 <!ENTITY IMPPCodeLabel "Koda">
 <!ENTITY IMPPLabelLabel "Oznaka">

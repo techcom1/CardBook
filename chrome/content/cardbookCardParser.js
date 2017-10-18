@@ -409,6 +409,11 @@ if ("undefined" == typeof(cardbookCardParser)) {
 								}
 								break;
 							default:
+			Components.utils.import("resource://gre/modules/Services.jsm");
+			var consoleService = Services.console;
+			consoleService.logStringMessage("test vCardDataArrayHeaderKey : " + vCardDataArrayHeaderKey);
+			consoleService.logStringMessage("test vCardDataArrayHeader : " + vCardDataArrayHeader);
+			consoleService.logStringMessage("test vCardDataArrayTrailer : " + vCardDataArrayTrailer);
 								if (vCardDataArrayHeaderKey != null && vCardDataArrayHeaderKey !== undefined && vCardDataArrayHeaderKey != "") {
 									this.others.push(vCardDataArrayHeader + ":" + vCardDataArrayTrailer);
 								}
@@ -430,6 +435,7 @@ if ("undefined" == typeof(cardbookCardParser)) {
 										cardbookRepository.loadCustoms();
 									}
 								}
+			consoleService.logStringMessage("test this.others : " + this.others.toSource());
 						}
 					}
 		

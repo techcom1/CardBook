@@ -1609,7 +1609,6 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] != "SEARCH") {
 					var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
 					for (var j in cardbookRepository.cardbookCardSearch[myDirPrefId]) {
-						// test if (cardbookRepository.cardbookSearchValue == "" || j.indexOf(cardbookRepository.cardbookSearchValue) >= 0) {
 						if (cardbookRepository.cardbookSearchValue == "" || j.search(myRegexp) != -1) {
 							for (var k = 0; k < cardbookRepository.cardbookCardSearch[myDirPrefId][j].length; k++) {
 								cardbookRepository.cardbookDisplayCards[cardbookRepository.cardbookSearchValue].push(cardbookRepository.cardbookCardSearch[myDirPrefId][j][k]);

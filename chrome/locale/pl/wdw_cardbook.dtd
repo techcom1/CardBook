@@ -167,7 +167,7 @@
 <!ENTITY importCardFromFileLabel "Importuj wizytówkę z pliku">
 <!ENTITY importCardFromDirLabel "Importuj wizytówkę z katalogu">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Zmień nazwę kategorii">
-<!ENTITY convertCatFromAccountsOrCatsLabel "??Convert category to list??">
+<!ENTITY convertCatFromAccountsOrCatsLabel "Zamień kategorię w listę">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Usuń kategorię">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Znajdź powielone wizytówki w bieżącej książce adresowej">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Stwórz Wyświetlane nazwy">
