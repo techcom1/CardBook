@@ -192,15 +192,6 @@ if ("undefined" == typeof(cardbookUtils)) {
 			myMenulist.setAttribute("label", label);
 		},
 
-		contains: function (aArray, aValue) {
-			for (var i = 0; i < aArray.length; i++) {
-				if (aArray[i] === aValue) {
-					return true;
-				}
-			}
-			return false;
-		},
-		
 		sumElements: function (aObject) {
 			var sum = 0;
 			for (var i in aObject) {
@@ -2726,7 +2717,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 		openEditionWindow: function(aCard, aMode, aSource) {
 			try {
 				var myArgs = {cardIn: aCard, cardOut: {}, editionMode: aMode, editionSource: aSource, cardEditionAction: "", editionCallback: cardbookUtils.openEditionWindowSave};
-				var myWindow = window.openDialog("chrome://cardbook/content/cardEdition/wdw_cardEdition.xul", "", "chrome,resizable,centerscreen", myArgs);
+				var myWindow = window.openDialog("chrome://cardbook/content/cardEdition/wdw_cardEdition.xul", "CardBookEditionWindow", "chrome,resizable,centerscreen", myArgs);
 			}
 			catch (e) {
 				wdw_cardbooklog.updateStatusProgressInformation("cardbookUtils.openEditionWindow error : " + e, "Error");

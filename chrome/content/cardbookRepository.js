@@ -1133,7 +1133,7 @@ var cardbookRepository = {
 									if (catExclRestrictions[myDirPrefId]) {
 										var add = true;
 										for (var l in catExclRestrictions[myDirPrefId]) {
-											if (cardbookUtils.contains(myCard.categories, l)) {
+											if (myCard.categories.includes(l)) {
 												add = false;
 												break;
 											}
@@ -1145,7 +1145,7 @@ var cardbookRepository = {
 									if (catInclRestrictions[myDirPrefId]) {
 										var add = false;
 										for (var l in catInclRestrictions[myDirPrefId]) {
-											if (cardbookUtils.contains(myCard.categories, l)) {
+											if (myCard.categories.includes(l)) {
 												add = true;
 												break;
 											}

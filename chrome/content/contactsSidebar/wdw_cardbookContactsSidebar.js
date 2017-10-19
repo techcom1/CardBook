@@ -158,7 +158,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 												if (wdw_cardbookContactsSidebar.catExclRestrictions[myDirPrefId]) {
 													var add = true;
 													for (var l in wdw_cardbookContactsSidebar.catExclRestrictions[myDirPrefId]) {
-														if (cardbookUtils.contains(myCard.categories, l)) {
+														if (myCard.categories.includes(l)) {
 															add = false;
 															break;
 														}
@@ -170,7 +170,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 												if (wdw_cardbookContactsSidebar.catInclRestrictions[myDirPrefId]) {
 													var add = false;
 													for (var l in wdw_cardbookContactsSidebar.catInclRestrictions[myDirPrefId]) {
-														if (cardbookUtils.contains(myCard.categories, l)) {
+														if (myCard.categories.includes(l)) {
 															add = true;
 															break;
 														}
@@ -231,7 +231,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 												if (wdw_cardbookContactsSidebar.catExclRestrictions[myDirPrefId]) {
 													var add = true;
 													for (var l in wdw_cardbookContactsSidebar.catExclRestrictions[myDirPrefId]) {
-														if (cardbookUtils.contains(myCard.categories, l)) {
+														if (myCard.categories.includes(l)) {
 															add = false;
 															break;
 														}
@@ -261,7 +261,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 										if (wdw_cardbookContactsSidebar.catExclRestrictions[myDirPrefId]) {
 											var add = true;
 											for (var l in wdw_cardbookContactsSidebar.catExclRestrictions[myDirPrefId]) {
-												if (cardbookUtils.contains(myCard.categories, l)) {
+												if (myCard.categories.includes(l)) {
 													add = false;
 													break;
 												}
@@ -298,7 +298,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 											if (wdw_cardbookContactsSidebar.catExclRestrictions[myDirPrefId]) {
 												var add = true;
 												for (var l in wdw_cardbookContactsSidebar.catExclRestrictions[myDirPrefId]) {
-													if (cardbookUtils.contains(myCard.categories, l)) {
+													if (myCard.categories.includes(l)) {
 														add = false;
 														break;
 													}
@@ -310,7 +310,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 											if (wdw_cardbookContactsSidebar.catInclRestrictions[myDirPrefId]) {
 												var add = false;
 												for (var l in wdw_cardbookContactsSidebar.catInclRestrictions[myDirPrefId]) {
-													if (cardbookUtils.contains(myCard.categories, l)) {
+													if (myCard.categories.includes(l)) {
 														add = true;
 														break;
 													}
@@ -344,7 +344,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 											if (wdw_cardbookContactsSidebar.catExclRestrictions[myDirPrefId]) {
 												var add = true;
 												for (var l in wdw_cardbookContactsSidebar.catExclRestrictions[myDirPrefId]) {
-													if (cardbookUtils.contains(myCard.categories, l)) {
+													if (myCard.categories.includes(l)) {
 														add = false;
 														break;
 													}
@@ -356,7 +356,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 											if (wdw_cardbookContactsSidebar.catInclRestrictions[myDirPrefId]) {
 												var add = false;
 												for (var l in wdw_cardbookContactsSidebar.catInclRestrictions[myDirPrefId]) {
-													if (cardbookUtils.contains(myCard.categories, l)) {
+													if (myCard.categories.includes(l)) {
 														add = true;
 														break;
 													}

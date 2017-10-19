@@ -391,7 +391,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			cardbookElementTools.deleteRows(aPopupName);
 			var defaultIndex = 0;
 			var j = 0;
-			if (aDefaultList) {
+			if (aDefaultList && aDefaultList.length && aDefaultList.length > 0) {
 				var versions = aDefaultList;
 			} else {
 				var versions = cardbookRepository.supportedVersion;

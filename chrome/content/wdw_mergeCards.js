@@ -315,15 +315,6 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 			return false;
 		},
 		
-		isValueNew: function (aListOfValue) {
-			var length1 = aListOfValue.length;
-			var length2 = cardbookRepository.arrayUnique(aListOfValue).length;
-			if (length1 != length2) {
-				return false;
-			}
-			return true;
-		},
-
 		load: function () {
 			wdw_mergeCards.setHideCreate();
 			
@@ -403,13 +394,16 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 						for (var k = 0; k < listOfCards.length; k++) {
 							if (listOfCards[k][listOfFields[i]][j]) {
 								arrayOfValues.push(listOfCards[k][listOfFields[i]][j]);
-								var selected = false;
-								if (wdw_mergeCards.isValueNew(arrayOfValues)) {
-									selected = true;
+								var length1 = arrayOfValues.length;
+								arrayOfValues = cardbookRepository.arrayUnique(arrayOfValues);
+								var length2 = arrayOfValues.length;
+								if (length1 != length2) {
+									var selected = false;
+								} else {
+									var selected = true;
 								}
 								wdw_mergeCards.createCheckBox2(aRow, listOfFields[i] + '_' + j + '_' + k + '_Checkbox0', selected);
 								wdw_mergeCards.createTextBox(aRow, listOfFields[i] + '_' + j + '_' + k + '_Textbox0', listOfCards[k][listOfFields[i]][j], selected, true, listOfCards[k][listOfFields[i]][j]);
-								arrayOfValues = cardbookRepository.arrayUnique(arrayOfValues);
 							} else {
 								wdw_mergeCards.createHbox(aRow);
 								wdw_mergeCards.createHbox(aRow);
@@ -427,15 +421,25 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 							length = listOfCards[j][listOfFields[i]].length;
 						}
 					}
+					var arrayOfValues = [];
 					for (var j = 0; j < length; j++) {
 						var aRow = wdw_mergeCards.createRow(aListRows, listOfFields[i] + 'Row' + j);
 						wdw_mergeCards.createLabel(aRow, listOfFields[i] + 'Label' + j, listOfFields[i] + 'Label');
 						for (var k = 0; k < listOfCards.length; k++) {
 							if (listOfCards[k][listOfFields[i]][j]) {
-								wdw_mergeCards.createCheckBox2(aRow, listOfFields[i] + '_' + j + '_' + k + '_Checkbox0', true);
+								arrayOfValues.push(listOfCards[k][listOfFields[i]][j][0].join(","));
+								var length1 = arrayOfValues.length;
+								arrayOfValues = cardbookRepository.arrayUnique(arrayOfValues);
+								var length2 = arrayOfValues.length;
+								if (length1 != length2) {
+									var selected = false;
+								} else {
+									var selected = true;
+								}
+								wdw_mergeCards.createCheckBox2(aRow, listOfFields[i] + '_' + j + '_' + k + '_Checkbox0', selected);
 								var aHbox = wdw_mergeCards.createHbox(aRow);
-								wdw_mergeCards.createTextBox(aHbox, listOfFields[i] + '_' + j + '_' + k + '_Textbox0', listOfCards[k][listOfFields[i]][j][1].join(","), true, true);
-								wdw_mergeCards.createTextBox(aHbox, listOfFields[i] + '_' + j + '_' + k + '_Textbox1', listOfCards[k][listOfFields[i]][j][0].join(","), true, true, listOfCards[k][listOfFields[i]][j]);
+								wdw_mergeCards.createTextBox(aHbox, listOfFields[i] + '_' + j + '_' + k + '_Textbox0', listOfCards[k][listOfFields[i]][j][1].join(","), selected, true);
+								wdw_mergeCards.createTextBox(aHbox, listOfFields[i] + '_' + j + '_' + k + '_Textbox1', listOfCards[k][listOfFields[i]][j][0].join(","), selected, true, listOfCards[k][listOfFields[i]][j]);
 							} else {
 								wdw_mergeCards.createHbox(aRow);
 								wdw_mergeCards.createHbox(aRow);

@@ -335,7 +335,7 @@ cardbookAutocompleteSearch.prototype = {
 								if (this.catExclRestrictions[myDirPrefId]) {
 									var add = true;
 									for (var l in this.catExclRestrictions[myDirPrefId]) {
-										if (cardbookUtils.contains(myCard.categories, l)) {
+										if (myCard.categories.includes(l)) {
 											add = false;
 											break;
 										}
@@ -347,7 +347,7 @@ cardbookAutocompleteSearch.prototype = {
 								if (this.catInclRestrictions[myDirPrefId]) {
 									var add = false;
 									for (var l in this.catInclRestrictions[myDirPrefId]) {
-										if (cardbookUtils.contains(myCard.categories, l)) {
+										if (myCard.categories.includes(l)) {
 											add = true;
 											break;
 										}
@@ -421,7 +421,7 @@ cardbookAutocompleteSearch.prototype = {
 								if (this.catExclRestrictions[myDirPrefId]) {
 									var add = true;
 									for (var l in this.catExclRestrictions[myDirPrefId]) {
-										if (cardbookUtils.contains(myCard.categories, l)) {
+										if (myCard.categories.includes(l)) {
 											add = false;
 											break;
 										}

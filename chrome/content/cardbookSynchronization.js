@@ -1600,7 +1600,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						}
 						cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
 					} else if (responseXML && (status > 199 && status < 400)) {
-						var prefixs = ["x0", "card"];
+						var prefixs = ["x0", "card", "X0", "CARD"];
 						for (var i in prefixs) {
 							if (responseXML.getElementsByTagName(prefixs[i] + ":address-data-type")) {
 								var versions = responseXML.getElementsByTagName(prefixs[i] + ":address-data-type");
@@ -1615,6 +1615,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 								}
 							}
 						}
+						cardbookRepository.cardbookServerValidation[aRootUrl][aConnection.connUrl].version = cardbookRepository.arrayUnique(cardbookRepository.cardbookServerValidation[aRootUrl][aConnection.connUrl].version);
 						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
 					} else {
