@@ -3,7 +3,7 @@
 <?xml-stylesheet href="chrome://cardbook/skin/cardbookPrint.css" type="text/css"?>
 <?xul-overlay href="chrome://cardbook/content/ovl_cardbookStringBundle.xul"?>
 <?xul-overlay href="chrome://communicator/content/utilityOverlay.xul"?>
-<!DOCTYPE dialog [
+<!DOCTYPE window [
 	<!ENTITY % msgPrintEngineDTD SYSTEM "chrome://messenger/locale/msgPrintEngine.dtd"> %msgPrintEngineDTD;
 	<!ENTITY % cardbookPrintDTD SYSTEM "chrome://cardbook/locale/wdw_cardbookPrint.dtd"> %cardbookPrintDTD;
 ]>

@@ -158,6 +158,7 @@
 							<menuitem id="cardbookContactsMenuCutCards" label="&cutCardFromCardsLabel;" oncommand="wdw_cardbook.cutCardsFromCards();"/>
 							<menuitem id="cardbookContactsMenuCopyCards" label="&copyCardFromCardsLabel;" oncommand="wdw_cardbook.copyCardsFromCards();"/>
 							<menuitem id="cardbookContactsMenuPasteCards" label="&pasteCardFromCardsLabel;" oncommand="wdw_cardbook.pasteCards();"/>
+							<menuitem id="cardbookContactsMenuPasteEntry" label="&pasteCardTreeLabel;" oncommand="wdw_cardbook.pasteEntryFromTree();"/>
 							<menuseparator/>
 							<menuitem id="cardbookContactsMenuDuplicateCards" label="&duplicateCardFromCardsLabel;" oncommand="wdw_cardbook.duplicateCards();"/>
 							<menuitem id="cardbookContactsMenuMergeCards" label="&mergeCardsFromCardsLabel;" oncommand="wdw_cardbook.mergeCards();"/>
@@ -220,13 +221,13 @@
 	<menupopup id="adrTreeContextMenu">
 		<menuitem id="localizeadrTree" label="&localizeadrTreeLabel;" oncommand="wdw_cardbook.localizeCardFromTree();"/>
 		<menuseparator/>
-		<menuitem id="copyadrTree" label="&copyCardTreeLabel;" oncommand="wdw_cardbook.copyCardFromTree();"/>
+		<menuitem id="copyadrTree" label="&copyCardTreeLabel;" oncommand="wdw_cardbook.copyEntryFromTree();"/>
 	</menupopup>
 
 	<menupopup id="telTreeContextMenu" onpopupshowing="wdw_cardbook.telTreeContextShowing();">
 		<menuitem id="connecttelTree" label="&IMPPMenuLabel;" oncommand="wdw_cardbook.openTelFromTree();"/>
 		<menuseparator/>
-		<menuitem id="copytelTree" label="&copyCardTreeLabel;" oncommand="wdw_cardbook.copyCardFromTree();"/>
+		<menuitem id="copytelTree" label="&copyCardTreeLabel;" oncommand="wdw_cardbook.copyEntryFromTree();"/>
 	</menupopup>
 
 	<menupopup id="emailTreeContextMenu" onpopupshowing="wdw_cardbook.emailTreeContextShowing();">
@@ -237,19 +238,19 @@
 		<menuitem id="findemailemailTree" label="&findemailemailTreeLabel;" oncommand="wdw_cardbook.findEmailsFromTree();"/>
 		<menuitem id="findeventemailTree" label="&findeventemailTreeLabel;" oncommand="wdw_cardbook.findEventsFromTree();"/>
 		<menuseparator/>
-		<menuitem id="copyemailTree" label="&copyCardTreeLabel;" oncommand="wdw_cardbook.copyCardFromTree();"/>
+		<menuitem id="copyemailTree" label="&copyCardTreeLabel;" oncommand="wdw_cardbook.copyEntryFromTree();"/>
 	</menupopup>
 
 	<menupopup id="imppTreeContextMenu" onpopupshowing="wdw_cardbook.imppTreeContextShowing();">
 		<menuitem id="connectimppTree" label="&IMPPMenuLabel;" oncommand="wdw_cardbook.openIMPPFromTree();"/>
 		<menuseparator/>
-		<menuitem id="copyimppTree" label="&copyCardTreeLabel;" oncommand="wdw_cardbook.copyCardFromTree();"/>
+		<menuitem id="copyimppTree" label="&copyCardTreeLabel;" oncommand="wdw_cardbook.copyEntryFromTree();"/>
 	</menupopup>
 
 	<menupopup id="urlTreeContextMenu">
 		<menuitem id="openURLTree" label="&openURLTreeLabel;" oncommand="wdw_cardbook.openURLFromTree();"/>
 		<menuseparator/>
-		<menuitem id="copyurlTree" label="&copyCardTreeLabel;" oncommand="wdw_cardbook.copyCardFromTree();"/>
+		<menuitem id="copyurlTree" label="&copyCardTreeLabel;" oncommand="wdw_cardbook.copyEntryFromTree();"/>
 	</menupopup>
 
 	<menupopup id="accountsOrCatsTreeContextMenu" onpopupshowing="wdw_cardbook.accountsOrCatsTreeContextShowing();">
@@ -272,6 +273,7 @@
 		<menuitem id="cutCardsFromAccountsOrCats" label="&cutCardFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.cutCardsFromAccountsOrCats();"/>
 		<menuitem id="copyCardsFromAccountsOrCats" label="&copyCardFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.copyCardsFromAccountsOrCats();"/>
 		<menuitem id="pasteCardsFromAccountsOrCats" label="&pasteCardFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.pasteCards();"/>
+		<menuitem id="pasteEntryFromAccountsOrCats" label="&pasteCardTreeLabel;" oncommand="wdw_cardbook.pasteEntryFromTree();"/>
 		<menuseparator/>
 		<menuitem id="renameCatFromAccountsOrCats" label="&renameCatFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.selectCategoryToAction('RENAME');"/>
 		<menuitem id="convertCatFromAccountsOrCats" label="&convertCatFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.selectCategoryToAction('CONVERT');"/>
@@ -323,6 +325,7 @@
 		<menuitem id="cutCardsFromCards" label="&cutCardFromCardsLabel;" oncommand="wdw_cardbook.cutCardsFromCards();"/>
 		<menuitem id="copyCardsFromCards" label="&copyCardFromCardsLabel;" oncommand="wdw_cardbook.copyCardsFromCards();"/>
 		<menuitem id="pasteCardsFromCards" label="&pasteCardFromCardsLabel;" oncommand="wdw_cardbook.pasteCards();"/>
+		<menuitem id="pasteEntryFromCards" label="&pasteCardTreeLabel;" oncommand="wdw_cardbook.pasteEntryFromTree();"/>
 		<menuseparator/>
 		<menuitem id="duplicateCardsFromCards" label="&duplicateCardFromCardsLabel;" oncommand="wdw_cardbook.duplicateCards();"/>
 		<menuitem id="mergeCardsFromCards" label="&mergeCardsFromCardsLabel;" oncommand="wdw_cardbook.mergeCards();"/>

@@ -50,7 +50,7 @@ if ("undefined" == typeof(ovl_birthdays)) {
 		displayBirthdayList: function() {
 			if (cardbookRepository.cardbookBirthdayPopup == 0) {
 				cardbookRepository.cardbookBirthdayPopup++;
-				var MyWindows = window.openDialog("chrome://cardbook/content/birthdays/wdw_birthdayList.xul", "", "chrome,centerscreen,modal,resizable");
+				var MyWindows = window.openDialog("chrome://cardbook/content/birthdays/wdw_birthdayList.xul", "", cardbookRepository.modalWindowParams);
 				cardbookRepository.cardbookBirthdayPopup--;
 			}
 		},
@@ -62,7 +62,7 @@ if ("undefined" == typeof(ovl_birthdays)) {
 		},
 	
 		displaySyncList: function() {
-			var MyWindows = window.openDialog("chrome://cardbook/content/birthdays/wdw_birthdaySync.xul", "", "chrome,centerscreen,modal,resizable");
+			var MyWindows = window.openDialog("chrome://cardbook/content/birthdays/wdw_birthdaySync.xul", "", cardbookRepository.modalWindowParams);
 		},
 	
 		onShowPopup: function() {

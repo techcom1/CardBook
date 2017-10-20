@@ -428,7 +428,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			var myArgs = {message: aMessage, button1: aButton1, button2: aButton2, button3: aButton3, button4: aButton4,
 							confirmMessage: aConfirmMessage, confirmValue: aConfirmValue,
 							result: "cancel", resultConfirm: false};
-			var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookAskUser.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+			var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookAskUser.xul", "", cardbookRepository.modalWindowParams, myArgs);
 			return {result: myArgs.result, resultConfirm: myArgs.resultConfirm};
 		},
 		
@@ -852,7 +852,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						}
 						cardbookUtils.formatStringForOutput("serverCardGetOK", [aConnection.connDescription, myCard.fn]);
 						var myArgs = {cardsIn: [myCard, aCacheCard], cardsOut: [], hideCreate: true, action: ""};
-						var myWindow = window.openDialog("chrome://cardbook/content/wdw_mergeCards.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+						var myWindow = window.openDialog("chrome://cardbook/content/wdw_mergeCards.xul", "", cardbookRepository.modalWindowParams, myArgs);
 						if (myArgs.action == "CREATEANDREPLACE") {
 							myArgs.cardsOut[0].uid = aCacheCard.uid;
 							cardbookUtils.addEtag(myArgs.cardsOut[0], aEtag);
@@ -2544,7 +2544,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					}
 					
 					var myArgs = {template: [], headers: myHeader, lineHeader: true, columnSeparator: myDelimiter, mode: "import", action: ""};
-					var myWindow = window.openDialog("chrome://cardbook/content/csvTranslator/wdw_csvTranslator.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+					var myWindow = window.openDialog("chrome://cardbook/content/csvTranslator/wdw_csvTranslator.xul", "", cardbookRepository.modalWindowParams, myArgs);
 					if (myArgs.action == "SAVE") {
 						var result = cardbookUtils.CSVToArray(aContent, myArgs.columnSeparator);
 						var fileContentArray = result.result;
@@ -2674,7 +2674,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					case "merge":
 						var myTargetCard = cardbookRepository.cardbookCards[myTargetPrefId+"::"+aNewCard.uid];
 						var myArgs = {cardsIn: [myTargetCard, aNewCard], cardsOut: [], hideCreate: false, action: ""};
-						var myWindow = window.openDialog("chrome://cardbook/content/wdw_mergeCards.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+						var myWindow = window.openDialog("chrome://cardbook/content/wdw_mergeCards.xul", "", cardbookRepository.modalWindowParams, myArgs);
 						if (myArgs.action == "CREATE") {
 							var myNullCard = new cardbookCardParser();
 							cardbookRepository.saveCard(myNullCard, myArgs.cardsOut[0], "cardbook.cardAddedDirect");
@@ -2706,7 +2706,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			try {
 				var output = "";
 				var myArgs = {template: [], mode: "export", lineHeader: true, columnSeparator: "", action: ""};
-				var myWindow = window.openDialog("chrome://cardbook/content/csvTranslator/wdw_csvTranslator.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+				var myWindow = window.openDialog("chrome://cardbook/content/csvTranslator/wdw_csvTranslator.xul", "", cardbookRepository.modalWindowParams, myArgs);
 				if (myArgs.action == "SAVE") {
 					var k = 0;
 					for (var i = 0; i < myArgs.template.length; i++) {

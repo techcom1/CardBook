@@ -142,6 +142,7 @@
 <!ENTITY openURLTreeLabel "Otevřít URL">
 
 <!ENTITY copyCardTreeLabel "Kopírovat záznam">
+<!ENTITY pasteCardTreeLabel "??Paste entry??">
 
 <!ENTITY toEmailCardFromAccountsOrCatsLabel "Vytvořit novou zprávu">
 <!ENTITY toEmailCardFromCardsLabel "Vytvořit novou zprávu">

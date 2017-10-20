@@ -25,7 +25,7 @@ if ("undefined" == typeof(cardbookPasswordManager)) {
 			var result = cardbookPasswordManager.getPassword(aUsername, myUrl);
 			if (result == "") {
 				var myArgs = {site: myUrl, username: aUsername, password: "", context: "Missing", action: ""};
-				var myWindow = window.openDialog("chrome://cardbook/content/wdw_password.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+				var myWindow = window.openDialog("chrome://cardbook/content/wdw_password.xul", "", cardbookRepository.modalWindowParams, myArgs);
 				if (myArgs.action == "SAVE") {
 					cardbookPasswordManager.removeAccount(aUsername, myUrl);
 					cardbookPasswordManager.addAccount(aUsername, myUrl, myArgs.password);
@@ -39,7 +39,7 @@ if ("undefined" == typeof(cardbookPasswordManager)) {
 			var cardbookPrefService = new cardbookPreferenceService(aPrefId);
 			var myUrl = cardbookPrefService.getUrl();
 			var myArgs = {site: myUrl, username: aUsername, password: "", context: "Wrong", action: ""};
-			var myWindow = window.openDialog("chrome://cardbook/content/wdw_password.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+			var myWindow = window.openDialog("chrome://cardbook/content/wdw_password.xul", "", cardbookRepository.modalWindowParams, myArgs);
 			if (myArgs.action == "SAVE") {
 				cardbookPasswordManager.removeAccount(aUsername, myUrl);
 				cardbookPasswordManager.addAccount(aUsername, myUrl, myArgs.password);

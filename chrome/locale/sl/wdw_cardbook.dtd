@@ -142,6 +142,7 @@
 <!ENTITY openURLTreeLabel "Odpri URL">
 
 <!ENTITY copyCardTreeLabel "Kopiraj vnos">
+<!ENTITY pasteCardTreeLabel "??Paste entry??">
 
 <!ENTITY toEmailCardFromAccountsOrCatsLabel "Sestavi novo sporočilo">
 <!ENTITY toEmailCardFromCardsLabel "Sestavi novo sporočilo">

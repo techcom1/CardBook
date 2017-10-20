@@ -217,7 +217,7 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 				listOfEmail = JSON.parse(JSON.stringify(aListOfSelectedEmails));
 			}
 			var myArgs = {listOfEmail: listOfEmail, displayName: aDisplayName, attendeeId: aAttendeeId, attendeeName: aAttendeeName};
-			var myWindow = window.openDialog("chrome://cardbook/content/lightning/wdw_cardbookEventContacts.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+			var myWindow = window.openDialog("chrome://cardbook/content/lightning/wdw_cardbookEventContacts.xul", "", cardbookRepository.modalWindowParams, myArgs);
 		},
 
 		hideOldAddressbook: function (aExclusive) {

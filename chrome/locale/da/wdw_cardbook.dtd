@@ -141,7 +141,8 @@
 <!ENTITY findeventemailTreeLabel "Find kalenderbegivenheder relateret til denne e-mailadresse">
 <!ENTITY openURLTreeLabel "Åbn URL">
 
-<!ENTITY copyCardTreeLabel "Kopier e-mailadresse">
+<!ENTITY copyCardTreeLabel "??Copy entry??">
+<!ENTITY pasteCardTreeLabel "??Paste entry??">
 
 <!ENTITY toEmailCardFromAccountsOrCatsLabel "Skriv en ny meddelelse">
 <!ENTITY toEmailCardFromCardsLabel "Skriv en ny meddelelse">

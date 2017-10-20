@@ -118,12 +118,12 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 	
 		configure: function () {
 			var myArgs = {showTab: "birthdaylistTab"};
-			var MyWindows = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfiguration.xul", "", "chrome,centerscreen,modal", myArgs);
+			var MyWindows = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfiguration.xul", "", cardbookRepository.modalWindowParams, myArgs);
 			wdw_birthdayList.displayAllBirthdays();
 		},
 	
 		displaySyncList: function() {
-			var MyWindows = window.openDialog("chrome://cardbook/content/birthdays/wdw_birthdaySync.xul", "", "chrome,centerscreen,modal,resizable");
+			var MyWindows = window.openDialog("chrome://cardbook/content/birthdays/wdw_birthdaySync.xul", "", cardbookRepository.modalWindowParams);
 		},
 
 		buttonShowing: function () {

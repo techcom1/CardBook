@@ -142,6 +142,7 @@
 <!ENTITY openURLTreeLabel "Открыть URL">
 
 <!ENTITY copyCardTreeLabel "Копировать запись">
+<!ENTITY pasteCardTreeLabel "??Paste entry??">
 
 <!ENTITY toEmailCardFromAccountsOrCatsLabel "Создать новое сообщение">
 <!ENTITY toEmailCardFromCardsLabel "Создать новое сообщение">

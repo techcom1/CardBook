@@ -72,11 +72,17 @@
   list-style-image: url("moz-icon://stock/gtk-copy?size=menu&state=disabled");
 }
 
+#cardbookContactsMenuPasteEntry,
+#pasteEntryFromAccountsOrCats,
+#pasteEntryFromCards,
 #cardbookContactsMenuPasteCards,
 #pasteCardsFromAccountsOrCats,
 #pasteCardsFromCards {
   list-style-image: url("moz-icon://stock/gtk-paste?size=menu");
 }
+#cardbookContactsMenuPasteEntry[disabled],
+#pasteEntryFromAccountsOrCats[disabled],
+#pasteEntryFromCards[disabled],
 #cardbookContactsMenuPasteCards[disabled],
 #pasteCardsFromAccountsOrCats[disabled],
 #pasteCardsFromCards[disabled] {

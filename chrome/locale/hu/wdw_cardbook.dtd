@@ -141,7 +141,8 @@
 <!ENTITY findeventemailTreeLabel "Naptári események keresése (e-mail alapján)">
 <!ENTITY openURLTreeLabel "Webcím hívatkozás megnyitása böngészőben">
 
-<!ENTITY copyCardTreeLabel "Másolás">
+<!ENTITY copyCardTreeLabel "??Copy entry??">
+<!ENTITY pasteCardTreeLabel "??Paste entry??">
 
 <!ENTITY toEmailCardFromAccountsOrCatsLabel "Új üzenet létrehozása (címzettek)">
 <!ENTITY toEmailCardFromCardsLabel "Új üzenet létrehozása (címzettek)">

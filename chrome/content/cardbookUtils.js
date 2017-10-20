@@ -2717,7 +2717,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 		openEditionWindow: function(aCard, aMode, aSource) {
 			try {
 				var myArgs = {cardIn: aCard, cardOut: {}, editionMode: aMode, editionSource: aSource, cardEditionAction: "", editionCallback: cardbookUtils.openEditionWindowSave};
-				var myWindow = window.openDialog("chrome://cardbook/content/cardEdition/wdw_cardEdition.xul", "CardBookEditionWindow", "chrome,resizable,centerscreen", myArgs);
+				var myWindow = window.openDialog("chrome://cardbook/content/cardEdition/wdw_cardEdition.xul", "", cardbookRepository.windowParams, myArgs);
 			}
 			catch (e) {
 				wdw_cardbooklog.updateStatusProgressInformation("cardbookUtils.openEditionWindow error : " + e, "Error");

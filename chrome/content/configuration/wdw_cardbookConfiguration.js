@@ -614,7 +614,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		addOrg: function () {
 			var myValidationList = JSON.parse(JSON.stringify(wdw_cardbookConfiguration.allOrg));
 			var myArgs = {type: "", context: "Org", typeAction: "", validationList: myValidationList};
-			var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookRenameField.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+			var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookRenameField.xul", "", cardbookRepository.modalWindowParams, myArgs);
 			if (myArgs.typeAction == "SAVE" && myArgs.type != "") {
 				var myListBox = document.getElementById('orgListbox');
 				wdw_cardbookConfiguration.allOrg = [];
@@ -639,7 +639,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				}
 				myValidationList = myValidationList.filter(filterOriginal);
 				var myArgs = {type: myValue, context: "Org", typeAction: "", validationList: myValidationList};
-				var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookRenameField.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+				var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookRenameField.xul", "", cardbookRepository.modalWindowParams, myArgs);
 				if (myArgs.typeAction == "SAVE" && myArgs.type != "") {
 					wdw_cardbookConfiguration.allOrg = [];
 					for (let i = 0; i < myListBox.itemCount; i++) {
@@ -789,7 +789,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		
 		addVCard: function () {
 			var myArgs = {emailAccountName: "", emailAccountId: "", fn: "", addressBookId: "", contactId: "", fileName: "",  typeAction: ""};
-			var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddVcards.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+			var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddVcards.xul", "", cardbookRepository.modalWindowParams, myArgs);
 			if (myArgs.typeAction == "SAVE") {
 				wdw_cardbookConfiguration.allVCards.push([true, wdw_cardbookConfiguration.allVCards.length.toString(), myArgs.emailAccountName, myArgs.emailAccountId, myArgs.fn, myArgs.addressBookId, myArgs.contactId, myArgs.fileName]);
 				wdw_cardbookConfiguration.allVCards = cardbookUtils.sortArrayByString(wdw_cardbookConfiguration.allVCards,1,1);
@@ -811,7 +811,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				var myContactId = myTree.view.getCellText(myTree.currentIndex, {id: "accountsVCardsContactId"});
 				var myFileName = myTree.view.getCellText(myTree.currentIndex, {id: "accountsVCardsFileName"});
 				var myArgs = {emailAccountName: myMailName, emailAccountId: myMailId, fn: myFn, addressBookId: myABDirPrefId, contactId: myContactId, fileName: myFileName, typeAction: ""};
-				var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddVcards.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+				var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddVcards.xul", "", cardbookRepository.modalWindowParams, myArgs);
 				if (myArgs.typeAction == "SAVE") {
 					var result = [];
 					for (let i = 0; i < wdw_cardbookConfiguration.allVCards.length; i++) {
@@ -928,7 +928,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		
 		addRestriction: function () {
 			var myArgs = {emailAccountId: "", emailAccountName: "", addressBookId: "", addressBookName: "", categoryName: "", includeName: "",  includeCode: "", typeAction: "", context: "Restriction"};
-			var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddEmails.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+			var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddEmails.xul", "", cardbookRepository.modalWindowParams, myArgs);
 			if (myArgs.typeAction == "SAVE") {
 				wdw_cardbookConfiguration.allRestrictions.push([true, wdw_cardbookConfiguration.allRestrictions.length.toString(), myArgs.emailAccountName, myArgs.emailAccountId,
 																myArgs.addressBookName, myArgs.addressBookId, myArgs.categoryName, myArgs.categoryId, myArgs.includeName, myArgs.includeCode]);
@@ -954,7 +954,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				var myIncludeCode = myTree.view.getCellText(myTree.currentIndex, {id: "accountsRestrictionsIncludeCode"});
 				var myArgs = {emailAccountId: myMailId, emailAccountName: myMailName, addressBookId: myABDirPrefId, addressBookName: myABName, categoryId: myCatId, categoryName: myCatName,
 								includeName: myIncludeName, includeCode: myIncludeCode, typeAction: "", context: "Restriction"};
-				var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddEmails.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+				var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddEmails.xul", "", cardbookRepository.modalWindowParams, myArgs);
 				if (myArgs.typeAction == "SAVE") {
 					var result = [];
 					for (let i = 0; i < wdw_cardbookConfiguration.allRestrictions.length; i++) {
@@ -1072,7 +1072,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		
 		addEmailsCollection: function () {
 			var myArgs = {emailAccountId: "", emailAccountName: "", addressBookId: "", addressBookName: "", categoryName: "", includeName: "",  includeCode: "", typeAction: "", context: "Collection"};
-			var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddEmails.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+			var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddEmails.xul", "", cardbookRepository.modalWindowParams, myArgs);
 			if (myArgs.typeAction == "SAVE") {
 				wdw_cardbookConfiguration.allEmailsCollections.push([true, wdw_cardbookConfiguration.allEmailsCollections.length.toString(), myArgs.emailAccountName, myArgs.emailAccountId,
 																myArgs.addressBookName, myArgs.addressBookId, myArgs.categoryName, myArgs.categoryId, myArgs.includeName, myArgs.includeCode]);
@@ -1098,7 +1098,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				var myIncludeCode = myTree.view.getCellText(myTree.currentIndex, {id: "emailsCollectionIncludeCode"});
 				var myArgs = {emailAccountId: myMailId, emailAccountName: myMailName, addressBookId: myABDirPrefId, addressBookName: myABName, categoryId: myCatId, categoryName: myCatName,
 								includeName: myIncludeName, includeCode: myIncludeCode, typeAction: "", context: "Collection"};
-				var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddEmails.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+				var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddEmails.xul", "", cardbookRepository.modalWindowParams, myArgs);
 				if (myArgs.typeAction == "SAVE") {
 					var result = [];
 					for (let i = 0; i < wdw_cardbookConfiguration.allEmailsCollections.length; i++) {
@@ -1184,7 +1184,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		addType: function () {
 			var type = document.getElementById('typesCategoryRadiogroup').selectedItem.value;
 			var myArgs = {code: "", label: "", typeAction: ""};
-			var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddType.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+			var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddType.xul", "", cardbookRepository.modalWindowParams, myArgs);
 			if (myArgs.typeAction == "SAVE") {
 				var result = [];
 				var already = false;
@@ -1215,7 +1215,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				var myLabel = myTree.view.getCellText(myTree.currentIndex, {id: "typesLabel"});
 				var myId = myTree.view.getCellText(myTree.currentIndex, {id: "typesId"});
 				var myArgs = {code: myCode, label: myLabel, typeAction: ""};
-				var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddType.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+				var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddType.xul", "", cardbookRepository.modalWindowParams, myArgs);
 				if (myArgs.typeAction == "SAVE") {
 					var result = [];
 					var already = false;
@@ -1342,7 +1342,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		addIMPP: function () {
 			var type = document.getElementById('imppsCategoryRadiogroup').selectedItem.value;
 			var myArgs = {code: "", label: "", protocol: "", typeAction: ""};
-			var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddIMPP.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+			var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddIMPP.xul", "", cardbookRepository.modalWindowParams, myArgs);
 			if (myArgs.typeAction == "SAVE") {
 				wdw_cardbookConfiguration.allIMPPs[type].push([myArgs.code, myArgs.label, myArgs.protocol, wdw_cardbookConfiguration.allIMPPs[type].length]);
 				wdw_cardbookConfiguration.allIMPPs[type] = cardbookUtils.sortArrayByString(wdw_cardbookConfiguration.allIMPPs[type],1,1);
@@ -1361,7 +1361,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				var myProtocol = myTree.view.getCellText(myTree.currentIndex, {id: "IMPPProtocol"});
 				var myId = myTree.view.getCellText(myTree.currentIndex, {id: "IMPPId"});
 				var myArgs = {code: myCode, label: myLabel, protocol: myProtocol, typeAction: ""};
-				var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddIMPP.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+				var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddIMPP.xul", "", cardbookRepository.modalWindowParams, myArgs);
 				if (myArgs.typeAction == "SAVE") {
 					var result = [];
 					for (let i = 0; i < wdw_cardbookConfiguration.allIMPPs[type].length; i++) {
@@ -1499,7 +1499,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			var type = document.getElementById('customFieldsCategoryRadiogroup').selectedItem.value;
 			var myValidationList = wdw_cardbookConfiguration.getAllCustomsFields();
 			var myArgs = {code: "", label: "", typeAction: "", validationList: myValidationList};
-			var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddCustomField.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+			var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddCustomField.xul", "", cardbookRepository.modalWindowParams, myArgs);
 			if (myArgs.typeAction == "SAVE") {
 				var result = [];
 				var already = false;
@@ -1534,7 +1534,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				}
 				myValidationList = myValidationList.filter(filterOriginal);
 				var myArgs = {code: myCode, label: myLabel, typeAction: "", validationList: myValidationList};
-				var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddCustomField.xul", "", "chrome,modal,resizable,centerscreen", myArgs);
+				var myWindow = window.openDialog("chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddCustomField.xul", "", cardbookRepository.modalWindowParams, myArgs);
 				if (myArgs.typeAction == "SAVE") {
 					var result = [];
 					var already = false;

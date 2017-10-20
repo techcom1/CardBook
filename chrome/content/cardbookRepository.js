@@ -8,6 +8,9 @@ var cardbookRepository = {
 	
 	LIGHTNING_ID : "{e2fda1a4-762b-4020-b5ad-a41df1933103}",
 	
+	windowParams : "chrome,titlebar,resizable,all,dialog=no",
+	modalWindowParams : "modal,chrome,titlebar,resizable,minimizable=no",
+	
 	allColumns : { "display": ["fn"],
 					"personal": ["prefixname", "firstname", "othername", "lastname", "suffixname", "nickname", "bday", "gender"],
 					"org": ["org", "title", "role"],

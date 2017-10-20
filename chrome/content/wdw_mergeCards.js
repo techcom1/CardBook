@@ -57,20 +57,16 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 					var aTextbox = document.getElementById(field + 'Textbox0');
 					if (this.checked) {
 						aTextbox.setAttribute('mergeSelected', 'true');
-						aTextbox.removeAttribute('readonly');
 					} else {
 						aTextbox.setAttribute('mergeSelected', 'false');
-						aTextbox.setAttribute('readonly', 'true');
 					}
 				}
 				if (document.getElementById(field + 'Textbox1')) {
 					var aTextbox = document.getElementById(field + 'Textbox1');
 					if (this.checked) {
 						aTextbox.setAttribute('mergeSelected', 'true');
-						aTextbox.removeAttribute('readonly');
 					} else {
 						aTextbox.setAttribute('mergeSelected', 'false');
-						aTextbox.setAttribute('readonly', 'true');
 					}
 				}
 			}, false);
@@ -563,7 +559,7 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 			} else {
 				var myViewResultArgs = {cardIn: myOutCard, cardOut: {}, editionMode: "ViewResult", cardEditionAction: ""};
 			}
-			var myWindow = window.openDialog("chrome://cardbook/content/cardEdition/wdw_cardEdition.xul", "", "chrome,modal,resizable,centerscreen", myViewResultArgs);
+			var myWindow = window.openDialog("chrome://cardbook/content/cardEdition/wdw_cardEdition.xul", "", cardbookRepository.modalWindowParams, myViewResultArgs);
 			if (myViewResultArgs.cardEditionAction == "CREATE" || myViewResultArgs.cardEditionAction == "CREATEANDREPLACE") {
 				window.arguments[0].action = myViewResultArgs.cardEditionAction;
 				window.arguments[0].cardsOut = [myViewResultArgs.cardOut];
