@@ -170,6 +170,8 @@
 <!ENTITY syncWarn "La sincronizzazione invia le modifiche da Thunderbird a un server remoto e viceversa.">
 <!ENTITY initialSyncLabel "Effettua una sincronizzazione all'avvio di Thunderbird">
 <!ENTITY initialSyncAccesskey "R">
+<!ENTITY initialSyncDelayLabel "??Delay for running first requests (seconds)??">
+<!ENTITY initialSyncDelayAccesskey "??D??">
 <!ENTITY solveConflictsLabel "Se un contatto è stato aggiornato sia sul server remoto che localmente:">
 <!ENTITY solveConflictsLocalLabel "Prediligi le modifiche in locale">
 <!ENTITY solveConflictsLocalAccesskey "L">

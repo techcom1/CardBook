@@ -273,7 +273,6 @@
 		<menuitem id="cutCardsFromAccountsOrCats" label="&cutCardFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.cutCardsFromAccountsOrCats();"/>
 		<menuitem id="copyCardsFromAccountsOrCats" label="&copyCardFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.copyCardsFromAccountsOrCats();"/>
 		<menuitem id="pasteCardsFromAccountsOrCats" label="&pasteCardFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.pasteCards();"/>
-		<menuitem id="pasteEntryFromAccountsOrCats" label="&pasteCardTreeLabel;" oncommand="wdw_cardbook.pasteEntryFromTree();"/>
 		<menuseparator/>
 		<menuitem id="renameCatFromAccountsOrCats" label="&renameCatFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.selectCategoryToAction('RENAME');"/>
 		<menuitem id="convertCatFromAccountsOrCats" label="&convertCatFromAccountsOrCatsLabel;" oncommand="wdw_cardbook.selectCategoryToAction('CONVERT');"/>

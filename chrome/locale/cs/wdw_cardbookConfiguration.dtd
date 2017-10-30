@@ -170,6 +170,8 @@
 <!ENTITY syncWarn "Synchronizace zajistí odeslání vašich úprav na server a úprav na serveru k vám.">
 <!ENTITY initialSyncLabel "Provést prvotní synchronizaci při startu Thunderbirdu">
 <!ENTITY initialSyncAccesskey "S">
+<!ENTITY initialSyncDelayLabel "??Delay for running first requests (seconds)??">
+<!ENTITY initialSyncDelayAccesskey "??D??">
 <!ENTITY solveConflictsLabel "Pokud byl kontakt upraven jak na serveru, tak místně:">
 <!ENTITY solveConflictsLocalLabel "Upřednostnit místní změnu">
 <!ENTITY solveConflictsLocalAccesskey "M">

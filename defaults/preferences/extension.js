@@ -15,6 +15,7 @@ pref("extensions.cardbook.vcardTabView", false);
 
 pref("extensions.cardbook.panesView", "modern");
 pref("extensions.cardbook.initialSync", true);
+pref("extensions.cardbook.initialSyncDelay", "0");
 pref("extensions.cardbook.solveConflicts", "User");
 pref("extensions.cardbook.autoSync", true);
 pref("extensions.cardbook.autoSyncInterval", "30");
@@ -65,4 +66,4 @@ pref("extensions.cardbook.viewABContact", true);
 
 pref("extensions.cardbook.accountsShown", "all");
 pref("extensions.cardbook.uncategorizedCards", "");
-pref("extensions.cardbook.addonVersion", "23.2");
+pref("extensions.cardbook.addonVersion", "23.3");

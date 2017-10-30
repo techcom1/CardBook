@@ -169,6 +169,8 @@
 <!ENTITY syncWarn "Összehangolás terjed a módosítások egy távoli szerver és a kiszolgáló módosításokat az Ön számára.">
 <!ENTITY initialSyncLabel "Thunderbird indításkor összehangolási futtatása">
 <!ENTITY initialSyncAccesskey "f">
+<!ENTITY initialSyncDelayLabel "??Delay for running first requests (seconds)??">
+<!ENTITY initialSyncDelayAccesskey "??D??">
 <!ENTITY solveConflictsLabel "Ha ugyanaz névjegy volt helyi és szerver frissített:">
 <!ENTITY solveConflictsLocalLabel "Inkább a helyi módosítás">
 <!ENTITY solveConflictsLocalAccesskey "h">

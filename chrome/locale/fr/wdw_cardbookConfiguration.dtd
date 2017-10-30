@@ -170,6 +170,8 @@
 <!ENTITY syncWarn "Synchroniser est la seule méthode pour sauver vos modifications sur un serveur distant.">
 <!ENTITY initialSyncLabel "Lancer une synchronisation lors du démarrage de Thunderbird">
 <!ENTITY initialSyncAccesskey "L">
+<!ENTITY initialSyncDelayLabel "Delai avant de lancer les premières requêtes (secondes)">
+<!ENTITY initialSyncDelayAccesskey "v">
 <!ENTITY solveConflictsLabel "Si un contact est modifié sur le serveur et localement :">
 <!ENTITY solveConflictsLocalLabel "Préférer la modification locale">
 <!ENTITY solveConflictsLocalAccesskey "L">

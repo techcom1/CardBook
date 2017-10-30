@@ -1646,6 +1646,15 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			wdw_cardbookConfiguration.validateCustomValues();
 		},
 
+		loadInitialSyncDelay: function () {
+			var prefs = Services.prefs;
+			var initialSync = prefs.getBoolPref("extensions.cardbook.initialSync");
+			if (!(initialSync)) {
+				document.getElementById('initialSyncDelay').disabled = true;
+				document.getElementById('initialSyncDelayTextBox').disabled = true;
+			}
+		},
+
 		loadPeriodicSync: function () {
 			var prefs = Services.prefs;
 			var autoSync = prefs.getBoolPref("extensions.cardbook.autoSync");
@@ -1664,7 +1673,17 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			}
 		},
 
-		showautoSyncInterval: function () {
+		showInitialSyncDelay: function () {
+			if (document.getElementById('initialSyncCheckBox').checked) {
+				document.getElementById('initialSyncDelay').disabled = false;
+				document.getElementById('initialSyncDelayTextBox').disabled = false;
+			} else {
+				document.getElementById('initialSyncDelay').disabled = true;
+				document.getElementById('initialSyncDelayTextBox').disabled = true;
+			}
+		},
+
+		showAutoSyncInterval: function () {
 			if (document.getElementById('autoSyncCheckBox').checked) {
 				document.getElementById('autoSyncInterval').disabled = false;
 				document.getElementById('autoSyncIntervalTextBox').disabled = false;
@@ -1686,6 +1705,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			wdw_cardbookConfiguration.loadPref();
 			wdw_cardbookConfiguration.loadOrg();
 			wdw_cardbookConfiguration.displayOrg();
+			wdw_cardbookConfiguration.loadInitialSyncDelay();
 			wdw_cardbookConfiguration.loadPeriodicSync();
 			wdw_cardbookConfiguration.loadAddressBooks("addressBooksNameList", false);
 			wdw_cardbookConfiguration.loadVCards();

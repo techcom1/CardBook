@@ -73,7 +73,6 @@
 }
 
 #cardbookContactsMenuPasteEntry,
-#pasteEntryFromAccountsOrCats,
 #pasteEntryFromCards,
 #cardbookContactsMenuPasteCards,
 #pasteCardsFromAccountsOrCats,
@@ -81,7 +80,6 @@
   list-style-image: url("moz-icon://stock/gtk-paste?size=menu");
 }
 #cardbookContactsMenuPasteEntry[disabled],
-#pasteEntryFromAccountsOrCats[disabled],
 #pasteEntryFromCards[disabled],
 #cardbookContactsMenuPasteCards[disabled],
 #pasteCardsFromAccountsOrCats[disabled],

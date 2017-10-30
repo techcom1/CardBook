@@ -169,6 +169,8 @@
 <!ENTITY syncWarn "Synchronizing propagates your modifications to a remote server and the server's modifications to you.">
 <!ENTITY initialSyncLabel "Run an initial synchronization at Thunderbird startup">
 <!ENTITY initialSyncAccesskey "R">
+<!ENTITY initialSyncDelayLabel "Delay for running first requests (seconds)">
+<!ENTITY initialSyncDelayAccesskey "y">
 <!ENTITY solveConflictsLabel "If a contact was updated both on server and locally:">
 <!ENTITY solveConflictsLocalLabel "Prefer the local modification">
 <!ENTITY solveConflictsLocalAccesskey "L">

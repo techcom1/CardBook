@@ -78,6 +78,8 @@
 				name="extensions.cardbook.panesView" type="string"/>
 			<preference id="extensions.cardbook.initialSync"
 				name="extensions.cardbook.initialSync" type="bool"/>
+			<preference id="extensions.cardbook.initialSyncDelay"
+				name="extensions.cardbook.initialSyncDelay" type="string"/>
 			<preference id="extensions.cardbook.solveConflicts"
 				name="extensions.cardbook.solveConflicts" type="string"/>
 			<preference id="extensions.cardbook.autoSync"
@@ -584,8 +586,16 @@
 						<caption label="&syncGroupboxLabel;"/>
 						<hbox align="center">
 							<checkbox id="initialSyncCheckBox" label="&initialSyncLabel;"
-								accesskey="&initialSyncAccesskey;"
+								accesskey="&initialSyncAccesskey;" oncommand="wdw_cardbookConfiguration.showInitialSyncDelay();"
 								preference="extensions.cardbook.initialSync"/>
+						</hbox>
+						<hbox align="center" class="indent">
+							<label value="&initialSyncDelayLabel;"
+								accesskey="&initialSyncDelayAccesskey;"
+								control="initialSyncDelayTextBox"
+								id="initialSyncDelay"/>
+							<textbox id="initialSyncDelayTextBox"
+								preference="extensions.cardbook.initialSyncDelay"/>
 						</hbox>
 						<separator class="thin"/>
 						<hbox align="center">
@@ -607,10 +617,9 @@
 						<hbox align="center">
 							<checkbox id="autoSyncCheckBox" label="&autoSyncLabel;"
 								accesskey="&autoSyncAccesskey;"
-								preference="extensions.cardbook.autoSync" oncommand="wdw_cardbookConfiguration.showautoSyncInterval();"/>
+								preference="extensions.cardbook.autoSync" oncommand="wdw_cardbookConfiguration.showAutoSyncInterval();"/>
 						</hbox>
-						<separator class="thin"/>
-						<hbox align="center">
+						<hbox align="center" class="indent">
 							<label value="&autoSyncIntervalLabel;"
 								accesskey="&autoSyncIntervalAccesskey;"
 								control="autoSyncIntervalTextBox"

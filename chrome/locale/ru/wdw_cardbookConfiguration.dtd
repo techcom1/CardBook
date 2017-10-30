@@ -170,6 +170,8 @@
 <!ENTITY syncWarn "Синхронизация переносит локальные изменения на удалённый сервер и изменения с сервера на диск.">
 <!ENTITY initialSyncLabel "Выполнять синхронизацию при запуске Thunderbird">
 <!ENTITY initialSyncAccesskey "з">
+<!ENTITY initialSyncDelayLabel "??Delay for running first requests (seconds)??">
+<!ENTITY initialSyncDelayAccesskey "??D??">
 <!ENTITY solveConflictsLabel "Если контакт был изменён и на сервере и локально:">
 <!ENTITY solveConflictsLocalLabel "Предпочитать локальное изменение">
 <!ENTITY solveConflictsLocalAccesskey "л">

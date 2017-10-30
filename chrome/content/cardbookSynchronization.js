@@ -2058,7 +2058,11 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			var autoSyncInterval = prefs.getComplexValue("extensions.cardbook.autoSyncInterval", Components.interfaces.nsISupportsString).data;
 			if ((cardbookSynchronization.autoSync == "") ||
 				(cardbookSynchronization.autoSync != autoSync || cardbookSynchronization.autoSyncInterval != autoSyncInterval)) {
-				var autoSyncIntervalMs = autoSyncInterval * 60 * 1000;
+				try {
+					var autoSyncIntervalMs = autoSyncInterval * 60 * 1000;
+				} catch(e) {
+					var autoSyncIntervalMs = 30 * 60 * 1000;
+				}
 				if (cardbookSynchronization.autoSyncId != null && cardbookSynchronization.autoSyncId !== undefined && cardbookSynchronization.autoSyncId != "") {
 					cardbookUtils.formatStringForOutput("periodicSyncDeleting", [cardbookSynchronization.autoSyncId]);
 					clearInterval(cardbookSynchronization.autoSyncId);
@@ -2254,10 +2258,17 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 								cardbookRepository.cardbookServerSyncLoadCacheTotal[aPrefId] + cardbookRepository.cardbookDBResponse[aPrefId]))) {
 							var cardbookPrefService = new cardbookPreferenceService(aPrefId);
 							cardbookPrefService.setDBCached(true);
-							// synchro web requests are delayed from 5 s
+							// Web requests are delayed for a preference value
+							var prefs = Services.prefs;
+							var initialSyncDelay = prefs.getComplexValue("extensions.cardbook.initialSyncDelay", Components.interfaces.nsISupportsString).data;
+							try {
+								var initialSyncDelayMs = initialSyncDelay * 1000;
+							} catch(e) {
+								var initialSyncDelayMs = 0;
+							}
 							setTimeout(function() {
 									cardbookSynchronization.syncAccount(aPrefId);
-							}, 5000);
+							}, initialSyncDelayMs);
 							lTimerLoadCache.cancel();
 						}
 					}

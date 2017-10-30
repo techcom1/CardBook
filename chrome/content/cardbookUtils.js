@@ -93,6 +93,29 @@ if ("undefined" == typeof(cardbookUtils)) {
 			return myResult;
 		},
 
+		// Due to this fucking Property Group, this is not easy
+		addTypeToCard: function (aCard, aType, aTypeArray) {
+			var myMaxPg = 0;
+			var typesList = [ 'email', 'tel', 'impp', 'url', 'adr' ];
+			for (var i in typesList) {
+				for (var j = 0; j < aCard[typesList[i]].length; j++) {
+					var myTempString = aCard[typesList[i]][j][2];
+					if (myTempString.startsWith("ITEM")) {
+						var myNumber = parseInt(myTempString.replace("ITEM", ""));
+						if (myNumber > myMaxPg) {
+							myMaxPg = myNumber;
+						}
+					}
+				}
+			}
+			if (myMaxPg == 0) {
+				aCard[aType].push(aTypeArray);
+			} else {
+				myMaxPg++;
+				aCard[aType].push([aTypeArray[0], aTypeArray[1], "ITEM" + myMaxPg, aTypeArray[3]]);
+			}
+		},
+
 		// allow the keyboard navigation for the type and category panel
 		enterPanelMenulist: function (aType, aEvent, aMenulist) {
 			let myPanel = document.getElementById(aMenulist.id.replace("Menulist", "Panel"));
@@ -583,9 +606,8 @@ if ("undefined" == typeof(cardbookUtils)) {
 		},
 
 		getvCardForEmail: function(aCard) {
-			var cardContent = cardbookUtils.cardToVcardData(aCard, true);
-			var re = /[\n\u0085\u2028\u2029]|\r\n?/;
-			var tmpArray = cardContent.split(re);
+			var myTempCard = new cardbookCardParser();
+			cardbookUtils.cloneCard(aCard, myTempCard);
 			function filterArray(element) {
 				return (element.search(/^UID:/) == -1 &&
 							element.search(/^PRODID:/) == -1 &&
@@ -593,21 +615,24 @@ if ("undefined" == typeof(cardbookUtils)) {
 							element.search(/^X-THUNDERBIRD-MODIFICATION:/) == -1 &&
 							element.search(/^X-THUNDERBIRD-ETAG:/) == -1);
 			}
-			tmpArray = tmpArray.filter(filterArray);
-			return tmpArray.join("\r\n");
+			myTempCard.others = myTempCard.others.filter(filterArray);
+			var cardContent = cardbookUtils.cardToVcardData(myTempCard, true);
+			myTempCard = null;
+			return cardContent;
 		},
 
 		// to avoid passing technical fields to server
 		// X-THUNDERBIRD-MODIFICATION is removed before so no need to remove it here
 		getvCardForServer: function(aCard) {
-			var cardContent = cardbookUtils.cardToVcardData(aCard, true);
-			var re = /[\n\u0085\u2028\u2029]|\r\n?/;
-			var tmpArray = cardContent.split(re);
+			var myTempCard = new cardbookCardParser();
+			cardbookUtils.cloneCard(aCard, myTempCard);
 			function filterArray(element) {
 				return (element.search(/^X-THUNDERBIRD-ETAG:/) == -1);
 			}
-			tmpArray = tmpArray.filter(filterArray);
-			return tmpArray.join("\r\n");
+			myTempCard.others = myTempCard.others.filter(filterArray);
+			var cardContent = cardbookUtils.cardToVcardData(myTempCard, true);
+			myTempCard = null;
+			return cardContent;
 		},
 
 		getMediaContentForCard: function(aCard, aType, aMediaConversion) {
