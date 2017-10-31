@@ -170,8 +170,8 @@
 <!ENTITY syncWarn "Synkronisering sender dine ændringer til en fjern server, og sender serverens ændringer til dig.">
 <!ENTITY initialSyncLabel "Kør en initiel synkronisering ved opstart af Thunderbird">
 <!ENTITY initialSyncAccesskey "K">
-<!ENTITY initialSyncDelayLabel "??Delay for running first requests (seconds)??">
-<!ENTITY initialSyncDelayAccesskey "??D??">
+<!ENTITY initialSyncDelayLabel "Forsinkelse før første forespørgsel (sekunder)">
+<!ENTITY initialSyncDelayAccesskey "n">
 <!ENTITY solveConflictsLabel "Hvis en kontakt blev opdateret på både serveren og lokalt:">
 <!ENTITY solveConflictsLocalLabel "Foretræk den lokale ændring">
 <!ENTITY solveConflictsLocalAccesskey "F">
