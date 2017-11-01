@@ -95,9 +95,6 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			var typeName = [ 'all', 'enabled', 'disabled', 'local', 'remote', 'search' ];
 			for (var i = 0; i < typeName.length; i++) {
 				var menuItem = document.getElementById(aMenuName).appendItem(strBundle.GetStringFromName(typeName[i] + "AccountsLabel"), typeName[i]);
-				// var menuItem = document.createElement("menuitem");
-				// menuItem.setAttribute("label", strBundle.GetStringFromName(typeName[i] + "AccountsLabel"));
-				// menuItem.setAttribute("value", typeName[i]);
 				menuItem.setAttribute("type", "radio");
 				menuItem.setAttribute("checked", "false");
 				myPopup.appendChild(menuItem);
@@ -467,12 +464,12 @@ if ("undefined" == typeof(cardbookElementTools)) {
 				var myPrefWeightBox = document.getElementById(myIdArray[0] + '_' + myIdArray[1] + '_prefWeightBox');
 				if (this.getAttribute('haspref')) {
 					this.removeAttribute('haspref');
-					myPrefWeightBoxLabel.disabled = false;
-					myPrefWeightBox.disabled = false;
-				} else {
-					this.setAttribute('haspref', 'true');
 					myPrefWeightBoxLabel.disabled = true;
 					myPrefWeightBox.disabled = true;
+				} else {
+					this.setAttribute('haspref', 'true');
+					myPrefWeightBoxLabel.disabled = false;
+					myPrefWeightBox.disabled = false;
 				}
 				myPrefWeightBox.value = "";
 			};

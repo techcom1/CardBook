@@ -50,23 +50,23 @@ cardbookAutocompleteResult.prototype = {
 		// need to collect popularity for lists
 		// when CardBook collects popularities lists are still splitted into emails
 		if (!this.listUpdated && this.getTypeAt(aIndex) == "CB_LIST") {
-		cardbookMailPopularity.updateMailPopularity(this.getEmailToUse(aIndex));
-		// this function getFinalCompleteValueAt is called many times so to update only once we need this variable
-		this.listUpdated = true;
-			return this.getValueAt(aIndex);
-		} else if (this.getTypeAt(aIndex) == "CB_CAT") {
-		var prefs = Services.prefs;
-		var useOnlyEmail = prefs.getBoolPref("extensions.cardbook.useOnlyEmail");
-		var myCardList = [] ;
-		var myDirPrefId = this.getDirPrefIdAt(aIndex);
-		var myCategory = this.getValueAt(aIndex);
-		for (var i = 0; i < cardbookRepository.cardbookDisplayCards[myDirPrefId+"::"+myCategory].length; i++) {
-			var myCard = cardbookRepository.cardbookDisplayCards[myDirPrefId+"::"+myCategory][i];
-			myCardList.push(myCard);
-		}
-		var result = cardbookUtils.getMimeEmailsFromCardsAndLists(myCardList, useOnlyEmail).notEmptyResults;
-		return cardbookRepository.arrayUnique(result).join(" , ");
-	} else {
+			cardbookMailPopularity.updateMailPopularity(this.getEmailToUse(aIndex));
+			// this function getFinalCompleteValueAt is called many times so to update only once we need this variable
+			this.listUpdated = true;
+				return this.getValueAt(aIndex);
+			} else if (this.getTypeAt(aIndex) == "CB_CAT") {
+			var prefs = Services.prefs;
+			var useOnlyEmail = prefs.getBoolPref("extensions.cardbook.useOnlyEmail");
+			var myCardList = [] ;
+			var myDirPrefId = this.getDirPrefIdAt(aIndex);
+			var myCategory = this.getValueAt(aIndex);
+			for (var i = 0; i < cardbookRepository.cardbookDisplayCards[myDirPrefId+"::"+myCategory].length; i++) {
+				var myCard = cardbookRepository.cardbookDisplayCards[myDirPrefId+"::"+myCategory][i];
+				myCardList.push(myCard);
+			}
+			var result = cardbookUtils.getMimeEmailsFromCardsAndLists(myCardList, useOnlyEmail).notEmptyResults;
+			return cardbookRepository.arrayUnique(result).join(" , ");
+		} else {
 			return this.getValueAt(aIndex);
 		}
 	},
@@ -683,9 +683,9 @@ cardbookAutocompleteSearch.prototype = {
 			myComment = LDAPAbCardFormatter.commentFromCard(aCard, aContext.book, aContext.bookName);
 		}
 		if (this.useOnlyEmail) {
-			this.addResult(this.searchResult, MailServices.headerParser.makeMimeAddress(aCard.displayName, aCard.primaryEmail), myComment, 0, "TH_LDAP", aContext.style, aCard.displayName.toLowerCase(), "");
-		} else {
 			this.addResult(this.searchResult, aCard.primaryEmail, myComment, 0, "TH_LDAP", aContext.style, aCard.displayName.toLowerCase(), "");
+		} else {
+			this.addResult(this.searchResult, MailServices.headerParser.makeMimeAddress(aCard.displayName, aCard.primaryEmail), myComment, 0, "TH_LDAP", aContext.style, aCard.displayName.toLowerCase(), "");
 		}
 	},
 

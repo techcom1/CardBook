@@ -797,8 +797,8 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 			if (prefValueLabel != null && prefValueLabel !== undefined && prefValueLabel != "") {
 				return prefValueLabel;
 			} else {
-		let stringBundleService = Services.strings;
-		let strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+				let stringBundleService = Services.strings;
+				let strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 				return strBundle.GetStringFromName("prefValueLabel");
 			}
 		},

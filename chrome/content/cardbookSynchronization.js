@@ -2099,7 +2099,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			}
 		},
 
-		syncAccount: function (aPrefId) {
+		syncAccount: function (aPrefId, aMode) {
 			try {
 				var cardbookPrefService = new cardbookPreferenceService(aPrefId);
 				var myPrefIdType = cardbookPrefService.getType();
@@ -2107,7 +2107,11 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 				var myPrefIdName = cardbookPrefService.getName();
 				var myPrefIdUser = cardbookPrefService.getUser();
 				var myPrefEnabled = cardbookPrefService.getEnabled();
-				var myMode = "WINDOW";
+				if (aMode != null && aMode !== undefined && aMode != "") {
+					var myMode = aMode;
+				} else {
+					var myMode = "WINDOW";
+				}
 				if (myPrefEnabled) {
 					if (myPrefIdType === "GOOGLE" || myPrefIdType === "CARDDAV" || myPrefIdType === "APPLE") {
 						wdw_cardbooklog.initSyncActivity(aPrefId, myPrefIdName);
@@ -2168,7 +2172,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 									cardbookSynchronization.finishMultipleOperations(aPrefId);
 									cardbookUtils.formatStringForOutput("synchroForcedToResync", [aPrefName]);
 									cardbookSynchronization.initSyncWithPrefId(aPrefId);
-									cardbookSynchronization.syncAccount(aPrefId);
+									cardbookSynchronization.syncAccount(aPrefId, aMode);
 								} else {
 									cardbookSynchronization.finishMultipleOperations(aPrefId);
 									var total = cardbookSynchronization.getRequest() + cardbookSynchronization.getTotal() + cardbookSynchronization.getResponse() + cardbookSynchronization.getDone();
@@ -2192,7 +2196,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 											var myPrefName = cardbookUtils.getPrefNameFromPrefId(myPrefId);
 											cardbookUtils.formatStringForOutput("synchroForcedToResync", [myPrefName]);
 											cardbookSynchronization.initSyncWithPrefId(myPrefId);
-											cardbookSynchronization.syncAccount(myPrefId);
+											cardbookSynchronization.syncAccount(myPrefId, aMode);
 										}
 										for (var j = 0; j < syncFailed.length; j++) {
 											var myPrefId = syncFailed[j];
@@ -2267,7 +2271,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 								var initialSyncDelayMs = 0;
 							}
 							setTimeout(function() {
-									cardbookSynchronization.syncAccount(aPrefId);
+									cardbookSynchronization.syncAccount(aPrefId, aMode);
 							}, initialSyncDelayMs);
 							lTimerLoadCache.cancel();
 						}

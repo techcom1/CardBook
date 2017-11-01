@@ -170,8 +170,8 @@
 <!ENTITY syncWarn "Synchroniseren werkt de wijzigingen in CardBook bij naar de server en de wijzigingen op de server naar CardBook.">
 <!ENTITY initialSyncLabel "Automatische synchronisatie bij iedere start van Thunderbird">
 <!ENTITY initialSyncAccesskey "A">
-<!ENTITY initialSyncDelayLabel "??Delay for running first requests (seconds)??">
-<!ENTITY initialSyncDelayAccesskey "??D??">
+<!ENTITY initialSyncDelayLabel "Wachttijd voor eerste communicatie met server (in seconden)">
+<!ENTITY initialSyncDelayAccesskey "W">
 <!ENTITY solveConflictsLabel "Als een contactpersoon zowel op de server als lokaal gewijzigd is:">
 <!ENTITY solveConflictsLocalLabel "Prevaleer de lokale wijziging">
 <!ENTITY solveConflictsLocalAccesskey "L">

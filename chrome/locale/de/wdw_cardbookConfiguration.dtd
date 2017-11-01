@@ -170,8 +170,8 @@
 <!ENTITY syncWarn "Änderungen können nur durch eine Synchronisation auf den Server übertragen werden.">
 <!ENTITY initialSyncLabel "Initiale Synchronisation beim Start von Thunderbird">
 <!ENTITY initialSyncAccesskey "I">
-<!ENTITY initialSyncDelayLabel "??Delay for running first requests (seconds)??">
-<!ENTITY initialSyncDelayAccesskey "??D??">
+<!ENTITY initialSyncDelayLabel "Verzögerung für erste Server-Anfrage (Sekunden)">
+<!ENTITY initialSyncDelayAccesskey "V">
 <!ENTITY solveConflictsLabel "Falls ein Kontakt sowohl lokal als auch serverseitig geändert worden ist:">
 <!ENTITY solveConflictsLocalLabel "Bevorzuge die lokale Änderung">
 <!ENTITY solveConflictsLocalAccesskey "L">
