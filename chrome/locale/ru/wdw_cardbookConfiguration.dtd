@@ -35,8 +35,8 @@
 <!ENTITY accountsRestrictionsIncludeNameLabel "Тип">
 <!ENTITY addRestrictionLabel "Добавить">
 <!ENTITY addRestrictionAccesskey "Д">
-<!ENTITY renameRestrictionLabel "Правка">
-<!ENTITY renameRestrictionAccesskey "П">
+<!ENTITY renameRestrictionLabel "Редактировать">
+<!ENTITY renameRestrictionAccesskey "Р">
 <!ENTITY deleteRestrictionLabel "Удалить">
 <!ENTITY deleteRestrictionAccesskey "У">
 <!ENTITY emailsCollectionLabel "Сохранять адреса из исходящей почты">
@@ -48,8 +48,8 @@
 <!ENTITY emailsCollectionIncludeNameLabel "Тип">
 <!ENTITY addEmailsCollectionLabel "Добавить">
 <!ENTITY addEmailsCollectionAccesskey "Д">
-<!ENTITY renameEmailsCollectionLabel "Правка">
-<!ENTITY renameEmailsCollectionAccesskey "П">
+<!ENTITY renameEmailsCollectionLabel "Редактировать">
+<!ENTITY renameEmailsCollectionAccesskey "Р">
 <!ENTITY deleteEmailsCollectionLabel "Удалить">
 <!ENTITY deleteEmailsCollectionAccesskey "У">
 <!ENTITY logGroupboxLabel "Журнал">
@@ -91,15 +91,15 @@
 <!ENTITY showNameAsFLAccesskey "И">
 <!ENTITY showNameAsDSPLabel "Отображаемое имя">
 <!ENTITY showNameAsDSPAccesskey "О">
-<!ENTITY fnLabelExplanation "Возможна настройка правила, согласно которому CardBook заполняет поле «Отображаемое имя». Эта формула состоит из блоков, ограниченных «()». В каждом из блоков есть две части, разделяемые «|».
+<!ENTITY fnLabelExplanation "Возможна настройка правила для формирования поля «Отображаемое имя». Эта формула состоит из блоков, ограниченных «()». В каждом из блоков есть две части, разделяемые «|».
 								Первая часть применяется, если указанное поле присутствует, например {{1}} — не пустое значение, вторая часть применяется если указанное значение является пустым.">
 <!ENTITY fnFormulaLabel "Формировать отображаемое имя">
 <!ENTITY fnFormulaAccesskey "Ф">
 <!ENTITY resetFnFormulaLabel "Сбросить до значений по умолчанию">
 <!ENTITY resetFnFormulaAccesskey "у">
-<!ENTITY miscEdittingGroupboxLabel "Различное">
+<!ENTITY miscEdittingGroupboxLabel "Дополнительные настройки">
 <!ENTITY preferEmailEditionLabel "Использовать двойной щелчок для редактирования контакта, а не для отправки письма">
-<!ENTITY preferEmailEditionAccesskey "Д">
+<!ENTITY preferEmailEditionAccesskey "щ">
 
 <!ENTITY typesGroupboxLabel "Типы">
 <!ENTITY typesCategoryAdrLabel "Адрес">
@@ -116,8 +116,8 @@
 <!ENTITY typesLabelLabel "Метка">
 <!ENTITY addTypeLabel "Добавить">
 <!ENTITY addTypeAccesskey "Д">
-<!ENTITY renameTypeLabel "Править">
-<!ENTITY renameTypeAccesskey "П">
+<!ENTITY renameTypeLabel "Редактировать">
+<!ENTITY renameTypeAccesskey "Р">
 <!ENTITY deleteTypeLabel "Удалить">
 <!ENTITY deleteTypeAccesskey "У">
 <!ENTITY resetTypeLabel "Сбросить до значений по умолчанию">
@@ -136,8 +136,8 @@
 <!ENTITY IMPPProtocolLabel "Протокол">
 <!ENTITY addIMPPLabel "Добавить">
 <!ENTITY addIMPPAccesskey "Д">
-<!ENTITY renameIMPPLabel "Править">
-<!ENTITY renameIMPPAccesskey "П">
+<!ENTITY renameIMPPLabel "Редактировать">
+<!ENTITY renameIMPPAccesskey "Р">
 <!ENTITY deleteIMPPLabel "Удалить">
 <!ENTITY deleteIMPPAccesskey "У">
 
@@ -150,8 +150,8 @@
 <!ENTITY customFieldsOrgTitleAccesskey "и">
 <!ENTITY addCustomFieldsLabel "Добавить">
 <!ENTITY addCustomFieldsAccesskey "Д">
-<!ENTITY renameCustomFieldsLabel "Править">
-<!ENTITY renameCustomFieldsAccesskey "П">
+<!ENTITY renameCustomFieldsLabel "Редактировать">
+<!ENTITY renameCustomFieldsAccesskey "Р">
 <!ENTITY deleteCustomFieldsLabel "Удалить">
 <!ENTITY deleteCustomFieldsAccesskey "У">
 
@@ -170,8 +170,8 @@
 <!ENTITY syncWarn "Синхронизация переносит локальные изменения на удалённый сервер и изменения с сервера на диск.">
 <!ENTITY initialSyncLabel "Выполнять синхронизацию при запуске Thunderbird">
 <!ENTITY initialSyncAccesskey "з">
-<!ENTITY initialSyncDelayLabel "??Delay for running first requests (seconds)??">
-<!ENTITY initialSyncDelayAccesskey "??D??">
+<!ENTITY initialSyncDelayLabel "Задержка перед выполнением первого запроса (сек.)">
+<!ENTITY initialSyncDelayAccesskey "З">
 <!ENTITY solveConflictsLabel "Если контакт был изменён и на сервере и локально:">
 <!ENTITY solveConflictsLocalLabel "Предпочитать локальное изменение">
 <!ENTITY solveConflictsLocalAccesskey "л">
@@ -210,8 +210,8 @@
 <!ENTITY accountsVCardsFnLabel "Контакт">
 <!ENTITY addVCardLabel "Добавить">
 <!ENTITY addVCardAccesskey "Д">
-<!ENTITY renameVCardLabel "Правка">
-<!ENTITY renameVCardAccesskey "П">
+<!ENTITY renameVCardLabel "Редактировать">
+<!ENTITY renameVCardAccesskey "Р">
 <!ENTITY deleteVCardLabel "Удалить">
 <!ENTITY deleteVCardAccesskey "У">
 
