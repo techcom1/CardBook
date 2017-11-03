@@ -2,12 +2,12 @@
 
 <!ENTITY enableAccountsTooltip "Включение и отключение поиска и синхронизации адресных книг.">
 <!ENTITY colorAccountsTooltip "Выделять цветом адресные книги в результатах поиска (используется при сквозном поиске в нескольких адресных книгах).">
-<!ENTITY readonlyAccountsTooltip "Установить адресную книгу в режим «только чтение» или «чтение—запись».">
+<!ENTITY readonlyAccountsTooltip "Выбор режим доступа к адресной книги: «только чтение» или «чтение и запись»".>
 
 <!ENTITY cardbookAccountMenuLabel "Адресная книга">
 
 <!ENTITY cardbookAccountMenuAddServerLabel "Добавить адресную книгу">
-<!ENTITY cardbookAccountMenuEditServerLabel "Править адресную книгу">
+<!ENTITY cardbookAccountMenuEditServerLabel "Редактировать адресную книгу">
 <!ENTITY cardbookAccountMenuCloseServerLabel "Удалить адресную книгу">
 <!ENTITY cardbookAccountMenuSyncLabel "Синхронизировать адресную книгу">
 <!ENTITY cardbookAccountMenuSyncsLabel "Синхронизировать все адресные книги">
@@ -25,26 +25,26 @@
 <!ENTITY cardbookToolbarAccesskey "П">
 <!ENTITY cardbookABPaneToolbarLabel "Панель адресных книг CardBook">
 <!ENTITY cardbookABPaneToolbarAccesskey "д">
-<!ENTITY CustomizeCardBookToolbarLabel "Настроить…">
+<!ENTITY CustomizeCardBookToolbarLabel "Настроить...">
 <!ENTITY CustomizeCardBookToolbarAccesskey "Н">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Добавить адресную книгу">
-<!ENTITY cardbookToolbarAddServerButtonTooltip "Добавить удалённую или локальную адресную книгу">
+<!ENTITY cardbookToolbarAddServerButtonTooltip "Добавление адресной книги, расположенной локально или на сервере">
 <!ENTITY cardbookToolbarSyncButtonLabel "Синхронизация">
-<!ENTITY cardbookToolbarSyncButtonTooltip "Синхронизирует все удалённые адресные книги">
+<!ENTITY cardbookToolbarSyncButtonTooltip "Синхронизация всех адресных книг">
 <!ENTITY cardbookToolbarWriteButtonLabel "Создать сообщение">
-<!ENTITY cardbookToolbarWriteButtonTooltip "Создать сообщение">
+<!ENTITY cardbookToolbarWriteButtonTooltip "Создание сообщения">
 <!ENTITY cardbookToolbarChatButtonLabel "Соединиться">
 <!ENTITY cardbookToolbarChatButtonTooltip "Отправить мгновенное сообщение или начать беседу">
 <!ENTITY cardbookToolbarConfigurationButtonLabel "Настройки">
-<!ENTITY cardbookToolbarConfigurationButtonTooltip "Открывает панель настроек CardBook">
+<!ENTITY cardbookToolbarConfigurationButtonTooltip "Открывает окно настройки CardBook">
 <!ENTITY cardbookToolbarAddContactButtonLabel "Создать контакт">
 <!ENTITY cardbookToolbarAddContactButtonTooltip "Создание нового контакта адресной книги">
 <!ENTITY cardbookToolbarAddListButtonLabel "Создать список">
 <!ENTITY cardbookToolbarAddListButtonTooltip "Создание нового списка рассылки">
-<!ENTITY cardbookToolbarEditButtonLabel "Править">
-<!ENTITY cardbookToolbarEditButtonTooltip "Позволяет измененить контакт">
+<!ENTITY cardbookToolbarEditButtonLabel "Редактировать">
+<!ENTITY cardbookToolbarEditButtonTooltip "Редактирование существующего контакта">
 <!ENTITY cardbookToolbarRemoveButtonLabel "Удалить">
-<!ENTITY cardbookToolbarRemoveButtonTooltip "Позволяет удалить контакт">
+<!ENTITY cardbookToolbarRemoveButtonTooltip "Удаление существующего контакта">
 <!ENTITY cardbookToolbarPrintButtonLabel "Предварительный просмор печати">
 <!ENTITY cardbookToolbarPrintButtonTooltip "Разрешить печатать выделение">
 <!ENTITY cardbookToolbarAppMenuButtonLabel "Меню CardBook">
@@ -52,7 +52,7 @@
 <!ENTITY cardbookToolbarSearchBoxLabel "Поиск контактов">
 <!ENTITY cardbookToolbarSearchBoxTooltip "Поиск контактов">
 <!ENTITY cardbookToolbarComplexSearchLabel "Расширеный поиск">
-<!ENTITY cardbookToolbarComplexSearchTooltip "Поиск с учётом нескольких условий">
+<!ENTITY cardbookToolbarComplexSearchTooltip "Поиск с использованием нескольких условий">
 <!ENTITY cardbookToolbarThMenuButtonLabel "Меню приложения">
 <!ENTITY cardbookToolbarThMenuButtonTooltip "Показать меню &brandShortName;">
 
@@ -141,8 +141,8 @@
 <!ENTITY findeventemailTreeLabel "Искать события календаря, связанные с этим адресом">
 <!ENTITY openURLTreeLabel "Открыть URL">
 
-<!ENTITY copyCardTreeLabel "Копировать запись">
-<!ENTITY pasteCardTreeLabel "??Paste entry??">
+<!ENTITY copyCardTreeLabel "Копировать значение">
+<!ENTITY pasteCardTreeLabel "Вставить значение">
 
 <!ENTITY toEmailCardFromAccountsOrCatsLabel "Создать новое сообщение">
 <!ENTITY toEmailCardFromCardsLabel "Создать новое сообщение">
@@ -173,9 +173,9 @@
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Искать повторяющиеся контакты во текущей адресной книге">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Формировать поле «Отображаемое имя»">
 <!ENTITY mergeCardsFromCardsLabel "Объеденить контакты">
-<!ENTITY duplicateCardFromCardsLabel "Клонировать контакт">
+<!ENTITY duplicateCardFromCardsLabel "Скопировать контакт">
 <!ENTITY convertListToCategoryFromCardsLabel "Преобразовать список в категорию">
-<!ENTITY editAccountFromAccountsOrCatsLabel "Править адресную книгу">
+<!ENTITY editAccountFromAccountsOrCatsLabel "Редактировать адресную книгу">
 <!ENTITY syncAccountFromAccountsOrCatsLabel "Синхронизировать адресную книку">
 <!ENTITY removeAccountFromAccountsOrCatsLabel "Удалить адресную книгу">
 
