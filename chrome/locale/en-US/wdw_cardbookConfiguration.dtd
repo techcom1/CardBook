@@ -67,8 +67,10 @@
 <!ENTITY mailPopularityTabAccesskey "M">
 <!ENTITY technicalTabLabel "Technical">
 <!ENTITY technicalTabAccesskey "T">
-<!ENTITY vcardTabLabel "vCard">
-<!ENTITY vcardTabAccesskey "V">
+<!ENTITY vCardTabLabel "vCard">
+<!ENTITY vCardTabAccesskey "V">
+<!ENTITY advancedTabLabel "Advanced">
+<!ENTITY advancedTabAccesskey "A">
 <!ENTITY localizeEdittingGroupboxLabel "Locate with:">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
@@ -111,6 +113,8 @@
 <!ENTITY typesCategoryTelAccesskey "H">
 <!ENTITY typesCategoryUrlLabel "URL">
 <!ENTITY typesCategoryUrlAccesskey "U">
+<!ENTITY typesCategoryGenderLabel "Gender">
+<!ENTITY typesCategoryGenderAccesskey "G">
 <!ENTITY typesCodeLabel "Code">
 <!ENTITY typesLabelLabel "Label">
 <!ENTITY addTypeLabel "Add">
@@ -122,7 +126,9 @@
 <!ENTITY resetTypeLabel "Restore to Default">
 <!ENTITY resetTypeAccesskey "R">
 <!ENTITY preferenceGroupboxLabel "Field PREF">
-<!ENTITY preferenceValueLabel "Label of the PREF value field (only for vCard 4.0)">
+<!ENTITY usePreferenceValueLabel "Use a preference value (only for vCard 4.0)">
+<!ENTITY usePreferenceValueAccesskey "p">
+<!ENTITY preferenceValueLabel "Label of the PREF value field">
 <!ENTITY preferenceValueAccesskey "V">
 
 <!ENTITY IMPPGroupboxWarn "This setup allows Internet communications using the intended protocol.">

@@ -248,16 +248,60 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 
 		display40: function (aCardVersion, aReadOnly) {
 			if (aCardVersion == "4.0") {
-				document.getElementById('genderLabel').removeAttribute('hidden');
-				document.getElementById('genderTextBox').removeAttribute('hidden');
+				document.getElementById('birthplaceLabel').removeAttribute('hidden');
+				document.getElementById('birthplaceTextBox').removeAttribute('hidden');
+				document.getElementById('anniversaryLabel').removeAttribute('hidden');
+				document.getElementById('anniversaryTextBox').removeAttribute('hidden');
+				document.getElementById('deathdateLabel').removeAttribute('hidden');
+				document.getElementById('deathdateTextBox').removeAttribute('hidden');
+				document.getElementById('deathplaceLabel').removeAttribute('hidden');
+				document.getElementById('deathplaceTextBox').removeAttribute('hidden');
+				if (aReadOnly) {
+					if (document.getElementById('genderRow1') && document.getElementById('genderRow2')) {
+						document.getElementById('genderRow1').setAttribute('hidden', 'true');
+						document.getElementById('genderRow2').removeAttribute('hidden');
+					}
+					document.getElementById('genderTextBox').setAttribute('readonly', 'true');
+					document.getElementById('birthplaceTextBox').setAttribute('readonly', 'true');
+					document.getElementById('anniversaryTextBox').setAttribute('readonly', 'true');
+					document.getElementById('deathdateTextBox').setAttribute('readonly', 'true');
+					document.getElementById('deathplaceTextBox').setAttribute('readonly', 'true');
+				} else {
+					if (document.getElementById('genderRow1') && document.getElementById('genderRow2')) {
+						document.getElementById('genderRow1').removeAttribute('hidden');
+						document.getElementById('genderRow2').setAttribute('hidden', 'true');
+					}
+					document.getElementById('genderTextBox').removeAttribute('readonly');
+					document.getElementById('birthplaceTextBox').removeAttribute('readonly');
+					document.getElementById('anniversaryTextBox').removeAttribute('readonly');
+					document.getElementById('deathdateTextBox').removeAttribute('readonly');
+					document.getElementById('deathplaceTextBox').removeAttribute('readonly');
+				}
 			} else {
-				document.getElementById('genderLabel').setAttribute('hidden', 'true');
-				document.getElementById('genderTextBox').setAttribute('hidden', 'true');
-			}
-			if (aReadOnly) {
-				document.getElementById('genderTextBox').setAttribute('readonly', 'true');
-			} else {
-				document.getElementById('genderTextBox').removeAttribute('readonly');
+				if (document.getElementById('genderRow1') && document.getElementById('genderRow2')) {
+					document.getElementById('genderRow1').setAttribute('hidden', 'true');
+					document.getElementById('genderRow2').setAttribute('hidden', 'true');
+				}
+				if (document.getElementById('genderLabel') && document.getElementById('genderTextBox')) {
+					document.getElementById('genderLabel').setAttribute('hidden', 'true');
+					document.getElementById('genderTextBox').setAttribute('hidden', 'true');
+				}
+				document.getElementById('birthplaceLabel').setAttribute('hidden', 'true');
+				document.getElementById('birthplaceTextBox').setAttribute('hidden', 'true');
+				document.getElementById('anniversaryLabel').setAttribute('hidden', 'true');
+				document.getElementById('anniversaryTextBox').setAttribute('hidden', 'true');
+				if (document.getElementById('anniversaryCardbookCalendar')) {
+					document.getElementById('anniversaryRow').setAttribute('hidden', 'true');
+					document.getElementById('anniversaryCardbookCalendar').setAttribute('hidden', 'true');
+				}
+				document.getElementById('deathdateLabel').setAttribute('hidden', 'true');
+				document.getElementById('deathdateTextBox').setAttribute('hidden', 'true');
+				if (document.getElementById('deathdateCardbookCalendar')) {
+					document.getElementById('deathdateRow').setAttribute('hidden', 'true');
+					document.getElementById('deathdateCardbookCalendar').setAttribute('hidden', 'true');
+				}
+				document.getElementById('deathplaceLabel').setAttribute('hidden', 'true');
+				document.getElementById('deathplaceTextBox').setAttribute('hidden', 'true');
 			}
 		},
 
@@ -292,6 +336,8 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('cardbookSwitchButtonDown').setAttribute('hidden', 'true');
 				document.getElementById('cardbookSwitchButtonUp').setAttribute('hidden', 'true');
 				document.getElementById('bdayCardbookCalendar').setAttribute('hidden', 'true');
+				document.getElementById('anniversaryCardbookCalendar').setAttribute('hidden', 'true');
+				document.getElementById('deathdateCardbookCalendar').setAttribute('hidden', 'true');
 				document.getElementById('noteCardbookCalendar').setAttribute('hidden', 'true');
 			} else if (window.arguments[0].editionMode == "ViewContact" || window.arguments[0].editionMode == "ViewList") {
 				document.getElementById('addressbookMenulist').disabled = true;
@@ -310,6 +356,8 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('cardbookSwitchButtonDown').setAttribute('hidden', 'true');
 				document.getElementById('cardbookSwitchButtonUp').setAttribute('hidden', 'true');
 				document.getElementById('bdayCardbookCalendar').setAttribute('hidden', 'true');
+				document.getElementById('anniversaryCardbookCalendar').setAttribute('hidden', 'true');
+				document.getElementById('deathdateCardbookCalendar').setAttribute('hidden', 'true');
 				document.getElementById('noteCardbookCalendar').setAttribute('hidden', 'true');
 			} else if (window.arguments[0].editionMode == "EditContact" || window.arguments[0].editionMode == "EditList") {
 				document.getElementById('addressbookMenulist').disabled = false;
@@ -455,10 +503,10 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		},
 
 		openCalendarPanel: function (aType) {
-			if (aType == "bday") {
-				var myStartField = document.getElementById('bdayTextBox');
-			} else if (aType == "note") {
+			if (aType == "note") {
 				var myStartField = document.getElementById('noteCardbookCalendar');
+			} else {
+				var myStartField = document.getElementById(aType + 'TextBox');
 			}
 			if (wdw_cardEdition.panel === 1) {
 				document.getElementById(aType + 'LightningPanel').openPopup(myStartField, 'after_start', 0, 0, false, false);
@@ -479,9 +527,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById(aType + 'BasePanel').hidePopup();
 			}
 			var myTextbox = document.getElementById(aType + 'TextBox');
-			if (aType == "bday") {
-				myTextbox.value = myValue;
-			} else if (aType == "note") {
+			if (aType == "note") {
 				var strBundle = document.getElementById("cardbook-strings");
 				if (wdw_cardEdition.panel === 1) {
 					var myPrefix = strBundle.getString("eventInNoteEventPrefix") + ":" + document.getElementById('desc1TextBox').value + ":";
@@ -493,6 +539,8 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				} else {
 					myTextbox.value = myPrefix + myValue + "\r\n" + myTextbox.value;
 				}
+			} else {
+				myTextbox.value = myValue;
 			}
 			document.getElementById(aType + 'TextBox').focus();
 		},
@@ -708,11 +756,19 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				}
 			}
 		},
-	
-		load: function () {
-			var prefs = Services.prefs;
-			document.getElementById('mailPopularityTab').setAttribute("collapsed", !prefs.getBoolPref("extensions.cardbook.mailPopularityTabView"));
 
+		showCorrectTabs: function () {
+			var prefs = Services.prefs;
+			Components.utils.import("resource://gre/modules/Services.jsm");
+			Services.console.logStringMessage("test");
+			Services.console.logStringMessage("test advancedTabView : " + prefs.getBoolPref("extensions.cardbook.advancedTabView").toSource());
+			document.getElementById('advancedTab').setAttribute("collapsed", !prefs.getBoolPref("extensions.cardbook.advancedTabView"));
+			document.getElementById('mailPopularityTab').setAttribute("collapsed", !prefs.getBoolPref("extensions.cardbook.mailPopularityTabView"));
+		},
+
+		load: function () {
+			cardBookEditionPrefObserver.register();
+			wdw_cardEdition.showCorrectTabs();
 			cardbookUtils.purgeEditionPhotoTempFile();
 
 			wdw_cardEdition.workingCard = new cardbookCardParser();
@@ -723,6 +779,8 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				wdw_cardEdition.workingCard.dirPrefId = document.getElementById('addressbookMenulist').selectedItem.value;
 			}
 			wdw_cardEdition.loadSourceCategories(wdw_cardEdition.workingCard.dirPrefId);
+			
+			cardbookElementTools.loadGender("genderMenupopup", "genderMenulist", wdw_cardEdition.workingCard.gender);
 
 			wdw_cardEdition.chooseCalendarPanel();
 			wdw_cardEdition.loadDefaultVersion();
@@ -830,7 +888,11 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			aCard.prefixname = document.getElementById('prefixnameTextBox').value.trim();
 			aCard.nickname = document.getElementById('nicknameTextBox').value.trim();
 			aCard.bday = document.getElementById('bdayTextBox').value.trim();
-			aCard.gender = document.getElementById('genderTextBox').value.trim();
+			aCard.gender = document.getElementById('genderMenulist').selectedItem.value.trim();
+			aCard.birthplace = document.getElementById('birthplaceTextBox').value.trim();
+			aCard.anniversary = document.getElementById('anniversaryTextBox').value.trim();
+			aCard.deathdate = document.getElementById('deathdateTextBox').value.trim();
+			aCard.deathplace = document.getElementById('deathplaceTextBox').value.trim();
 			
 			aCard.note = document.getElementById('noteTextBox').value.trim();
 
@@ -886,6 +948,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				if (window.arguments[0].editionCallback) {
 					window.arguments[0].editionCallback(window.arguments[0].cardIn, window.arguments[0].cardOut, window.arguments[0].editionSource);
 				}
+				cardBookEditionPrefObserver.unregister();
 				close();
 			}
 		},
@@ -917,6 +980,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 
 		cancel: function () {
 			window.arguments[0].cardEditionAction = "CANCEL";
+			cardBookEditionPrefObserver.unregister();
 			close();
 		}
 

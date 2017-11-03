@@ -68,8 +68,10 @@
 <!ENTITY mailPopularityTabAccesskey "u">
 <!ENTITY technicalTabLabel "Technique">
 <!ENTITY technicalTabAccesskey "T">
-<!ENTITY vcardTabLabel "vCard">
-<!ENTITY vcardTabAccesskey "V">
+<!ENTITY vCardTabLabel "vCard">
+<!ENTITY vCardTabAccesskey "V">
+<!ENTITY advancedTabLabel "Avancé">
+<!ENTITY advancedTabAccesskey "A">
 <!ENTITY localizeEdittingGroupboxLabel "Localiser avec :">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "S">
@@ -112,6 +114,8 @@
 <!ENTITY typesCategoryTelAccesskey "T">
 <!ENTITY typesCategoryUrlLabel "URL">
 <!ENTITY typesCategoryUrlAccesskey "U">
+<!ENTITY typesCategoryGenderLabel "Genre">
+<!ENTITY typesCategoryGenderAccesskey "G">
 <!ENTITY typesCodeLabel "Code">
 <!ENTITY typesLabelLabel "Label">
 <!ENTITY addTypeLabel "Ajouter">
@@ -123,8 +127,10 @@
 <!ENTITY resetTypeLabel "Réinitialiser">
 <!ENTITY resetTypeAccesskey "R">
 <!ENTITY preferenceGroupboxLabel "Champ PREF">
-<!ENTITY preferenceValueLabel "Label de la valeur du champ PREF (seulement pour vCard 4.0)">
-<!ENTITY preferenceValueAccesskey "V">
+<!ENTITY usePreferenceValueLabel "Utiliser une valeur pour les préférences (seulement pour vCard 4.0)">
+<!ENTITY usePreferenceValueAccesskey "v">
+<!ENTITY preferenceValueLabel "Label de la valeur du champ PREF">
+<!ENTITY preferenceValueAccesskey "L">
 
 <!ENTITY IMPPGroupboxWarn "Ce paramétrage permet d'ouvrir directement l'adresse de messagerie instantanée en suivant le protocole désiré.">
 <!ENTITY IMPPGroupboxLabel "Communications internet">

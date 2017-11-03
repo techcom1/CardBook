@@ -59,7 +59,7 @@
 <!ENTITY generalTabLabel "Általános">
 <!ENTITY mailPopularityTabLabel "Üzenet népszerűség">
 <!ENTITY technicalTabLabel "Műszaki">
-<!ENTITY vcardTabLabel "vCard">
+<!ENTITY vCardTabLabel "vCard">
 
 <!ENTITY cardIconColumnLabel "Ikon">
 <!ENTITY nameColumnLabel "Név">
@@ -102,9 +102,14 @@
 <!ENTITY kindColumnLabel "Fajta">
 <!ENTITY revColumnLabel "Utoljára frissítve">
 <!ENTITY etagColumnLabel "Elektronikus címke">
+<!ENTITY birthplaceColumnLabel "??Birth Place??">
+<!ENTITY anniversaryColumnLabel "??Anniversary??">
+<!ENTITY deathdateColumnLabel "??Deathday??">
+<!ENTITY deathplaceColumnLabel "??Death Place??">
 
 <!ENTITY categoriesGroupboxLabel "Kategória">
 <!ENTITY noteTabLabel "Jegyzetek">
+<!ENTITY advancedTabLabel "Speciális">
 
 <!ENTITY miscGroupboxLabel "Különféle">
 <!ENTITY othersGroupboxLabel "Más">

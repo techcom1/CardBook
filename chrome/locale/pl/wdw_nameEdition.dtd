@@ -7,3 +7,8 @@
 <!ENTITY prefixnameLabel "Przedrostek">
 <!ENTITY nicknameLabel "Pseudonim">
 <!ENTITY genderLabel "Płeć">
+<!ENTITY bdayLabel "Urodziny">
+<!ENTITY birthplaceLabel "??Birth Place??">
+<!ENTITY anniversaryLabel "??Anniversary??">
+<!ENTITY deathdateLabel "??Deathday??">
+<!ENTITY deathplaceLabel "??Death Place??">

@@ -212,7 +212,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					else if (column.id == "suffixname") return aCardList[row].suffixname;
 					else if (column.id == "fn") return aCardList[row].fn;
 					else if (column.id == "nickname") return aCardList[row].nickname;
-					else if (column.id == "gender") return aCardList[row].gender;
+					else if (column.id == "gender") return cardbookRepository.currentTypes.gender[aCardList[row].gender];
 					else if (column.id == "bday") return aCardList[row].bday;
 					else if (column.id == "dispadr") return aCardList[row].dispadr;
 					else if (column.id == "disphomeadr") return aCardList[row].disphomeadr;
@@ -2641,7 +2641,6 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				cardbookRepository.saveCard(myCard, myOutCard, "cardbook.cardAddedDirect");
 				wdw_cardbooklog.updateStatusProgressInformation(strBundle.formatStringFromName("linePastedToCard", [myOutCard.fn], 1));
 			}
-			wdw_cardbook.currentCopiedEntry = [];
 		},
 
 		setCurrentTypeFromEvent: function (aEvent) {

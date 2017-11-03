@@ -67,8 +67,10 @@
 <!ENTITY mailPopularityTabAccesskey "P">
 <!ENTITY technicalTabLabel "Tehnično">
 <!ENTITY technicalTabAccesskey "T">
-<!ENTITY vcardTabLabel "vCard">
-<!ENTITY vcardTabAccesskey "C">
+<!ENTITY vCardTabLabel "vCard">
+<!ENTITY vCardTabAccesskey "C">
+<!ENTITY advancedTabLabel "Napredno">
+<!ENTITY advancedTabAccesskey "N">
 <!ENTITY localizeEdittingGroupboxLabel "Za iskanje uporabi:">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
@@ -111,6 +113,8 @@
 <!ENTITY typesCategoryTelAccesskey "T">
 <!ENTITY typesCategoryUrlLabel "URL">
 <!ENTITY typesCategoryUrlAccesskey "U">
+<!ENTITY typesCategoryGenderLabel "Spol">
+<!ENTITY typesCategoryGenderAccesskey "S">
 <!ENTITY typesCodeLabel "Koda">
 <!ENTITY typesLabelLabel "Oznaka">
 <!ENTITY addTypeLabel "Dodaj">
@@ -122,7 +126,9 @@
 <!ENTITY resetTypeLabel "Obnovi na privzeto">
 <!ENTITY resetTypeAccesskey "O">
 <!ENTITY preferenceGroupboxLabel "Polje PREF">
-<!ENTITY preferenceValueLabel "Oznaka polja vrednosti PREF (samo za vCard 4.0)">
+<!ENTITY usePreferenceValueLabel "??Use a preference value?? (samo za vCard 4.0)">
+<!ENTITY usePreferenceValueAccesskey "??p??">
+<!ENTITY preferenceValueLabel "Oznaka polja vrednosti PREF">
 <!ENTITY preferenceValueAccesskey "z">
 
 <!ENTITY IMPPGroupboxWarn "Te nastavitve omogočajo internetno komunikacijo z uporabo namenskega protokola.">

@@ -336,6 +336,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			var useOnlyEmail = cardbookBirthdaysUtils.getPref("extensions.cardbook.useOnlyEmail");
 			var strBundle = document.getElementById("cardbook-strings");
 			var eventInNoteEventPrefix = strBundle.getString("eventInNoteEventPrefix");
+			var deathSuffix = strBundle.getString("deathSuffix");
 			cardbookBirthdaysUtils.lBirthdayList = [];
 			
 			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
@@ -347,13 +348,21 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 						var myDirPrefName = cardbookUtils.getPrefNameFromPrefId(myDirPrefId);
 						for (var j = 0; j < cardbookRepository.cardbookDisplayCards[myDirPrefId].length; j++) {
 							var myCard = cardbookRepository.cardbookDisplayCards[myDirPrefId][j];
-							if (myCard.bday != "") {
-								var lDateOfBirth = cardbookDates.isDateStringCorrectlyFormatted(myCard.bday, dateFormat);
-								if (lDateOfBirth != "WRONGDATE") {
-									listOfEmail = cardbookUtils.getMimeEmailsFromCards([myCard], useOnlyEmail);
-									cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, lDateOfBirth, myCard.fn, lnumberOfDays, myCard.bday, listOfEmail, myDirPrefId);
-								} else {
-									cardbookUtils.formatStringForOutput("birthdayEntry1Wrong", [myDirPrefName, myCard.fn, myCard.bday, dateFormat], "Warning");
+							var myFieldList = ['bday' , 'anniversary', 'deathdate'];
+							for (var k = 0; k < myFieldList.length; k++) {
+								if (myCard[myFieldList[k]] && myCard[myFieldList[k]] != "") {
+									var myFieldValue = myCard[myFieldList[k]];
+									var lDateOfBirth = cardbookDates.isDateStringCorrectlyFormatted(myFieldValue, dateFormat);
+									if (lDateOfBirth != "WRONGDATE") {
+										listOfEmail = cardbookUtils.getMimeEmailsFromCards([myCard], useOnlyEmail);
+										if (myFieldList[k] == "deathdate") {
+											cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, lDateOfBirth, myCard.fn + ' ' + deathSuffix, lnumberOfDays, myFieldValue, listOfEmail, myDirPrefId);
+										} else {
+											cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, lDateOfBirth, myCard.fn, lnumberOfDays, myFieldValue, listOfEmail, myDirPrefId);
+										}
+									} else {
+										cardbookUtils.formatStringForOutput("birthdayEntry1Wrong", [myDirPrefName, myCard.fn, myFieldValue, dateFormat], "Warning");
+									}
 								}
 							}
 							if (searchInNote == true) {

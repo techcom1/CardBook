@@ -12,7 +12,6 @@
 	<!ENTITY % categoriesDTD SYSTEM "chrome://cardbook/locale/wdw_categoriesEdition.dtd"> %categoriesDTD;
 	<!ENTITY % cardbookDTD SYSTEM "chrome://cardbook/locale/wdw_cardbook.dtd"> %cardbookDTD;
 	<!ENTITY % namesDTD SYSTEM "chrome://cardbook/locale/wdw_nameEdition.dtd"> %namesDTD;
-	<!ENTITY % bdayDTD SYSTEM "chrome://cardbook/locale/wdw_bdayEdition.dtd"> %bdayDTD;
 	<!ENTITY % orgDTD SYSTEM "chrome://cardbook/locale/wdw_orgEdition.dtd"> %orgDTD;
 	<!ENTITY % adrDTD SYSTEM "chrome://cardbook/locale/wdw_adrEdition.dtd"> %adrDTD;
 	<!ENTITY % listsDTD SYSTEM "chrome://cardbook/locale/wdw_lists.dtd"> %listsDTD;

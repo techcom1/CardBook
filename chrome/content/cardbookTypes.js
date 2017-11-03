@@ -331,6 +331,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 		},
 
 		display40: function (aVersion) {
+			var usePreferenceValue = Services.prefs.getBoolPref("extensions.cardbook.usePreferenceValue");
 			var typesList = [ 'email', 'tel', 'impp', 'url', 'adr' ];
 			for (var i in typesList) {
 				if (document.getElementById(typesList[i] + 'Groupbox')) {
@@ -339,7 +340,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 						if (document.getElementById(typesList[i] + '_' + j + '_prefWeightBox')) {
 							var myPrefWeightBoxLabel = document.getElementById(typesList[i] + '_' + j + '_prefWeightBoxLabel');
 							var myPrefWeightBox = document.getElementById(typesList[i] + '_' + j + '_prefWeightBox');
-							if (aVersion === "4.0") {
+							if (aVersion === "4.0" && usePreferenceValue) {
 								myPrefWeightBoxLabel.removeAttribute('hidden');
 								myPrefWeightBox.removeAttribute('hidden');
 							} else {
@@ -507,7 +508,8 @@ if ("undefined" == typeof(cardbookTypes)) {
 				document.getElementById(aType + '_' + aIndex + '_prefWeightBox').disabled = true;
 			}
 
-			if (document.getElementById('versionTextBox').value === "4.0") {
+			var usePreferenceValue = Services.prefs.getBoolPref("extensions.cardbook.usePreferenceValue");
+			if (document.getElementById('versionTextBox').value === "4.0" && usePreferenceValue) {
 				document.getElementById(aType + '_' + aIndex + '_prefWeightBoxLabel').removeAttribute('hidden');
 				document.getElementById(aType + '_' + aIndex + '_prefWeightBox').removeAttribute('hidden');
 			} else {

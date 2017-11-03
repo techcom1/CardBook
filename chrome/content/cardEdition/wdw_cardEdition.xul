@@ -17,7 +17,6 @@
 	<!ENTITY % cardEditionDTD SYSTEM "chrome://cardbook/locale/wdw_cardEdition.dtd"> %cardEditionDTD;
 	<!ENTITY % nameDTD SYSTEM "chrome://cardbook/locale/wdw_nameEdition.dtd"> %nameDTD;
 	<!ENTITY % adrDTD SYSTEM "chrome://cardbook/locale/wdw_adrEdition.dtd"> %adrDTD;
-	<!ENTITY % bdayDTD SYSTEM "chrome://cardbook/locale/wdw_bdayEdition.dtd"> %bdayDTD;
 	<!ENTITY % categoriesDTD SYSTEM "chrome://cardbook/locale/wdw_categoriesEdition.dtd"> %categoriesDTD;
 	<!ENTITY % orgDTD SYSTEM "chrome://cardbook/locale/wdw_orgEdition.dtd"> %orgDTD;
 	<!ENTITY % listsDTD SYSTEM "chrome://cardbook/locale/wdw_lists.dtd"> %listsDTD;
@@ -36,6 +35,7 @@
 	
 	<stringbundleset id="stringbundleset"/>
 
+	<script src="chrome://cardbook/content/cardbookObserver.js"/>
 	<script src="chrome://cardbook/content/preferences/cardbookPreferences.js"/>
 	<script src="chrome://cardbook/content/cardbookUtils.js"/>
 	<script src="chrome://cardbook/content/cardbookDates.js"/>
@@ -77,6 +77,7 @@
 		<tabs>
 			<tab id="generalTab" label="&generalTabLabel;"/>
 			<tab id="noteTab" label="&noteTabLabel;"/>
+			<tab id="advancedTab" label="&advancedTabLabel;"/>
 			<tab id="mailPopularityTab" label="&mailPopularityTabLabel;"/>
 		</tabs>
 		
@@ -187,8 +188,16 @@
 									</hbox>
 									<textbox id="bdayTextBox"/>
 								</row>
-								<row align="center">
-									<label id="genderLabel" value="&genderLabel;" control="genderTextBox" class="header"/>
+								<row id="genderRow1" align="center">
+									<label id="genderLabel1" value="&genderLabel;" control="genderMenulist" class="header"/>
+									<hbox align="center" style="min-height:36px;">
+										<menulist id="genderMenulist">
+											<menupopup id="genderMenupopup"/>
+										</menulist>
+									</hbox>
+								</row>
+								<row id="genderRow2" align="center">
+									<label id="genderLabel2" value="&genderLabel;" control="genderTextBox" class="header"/>
 									<textbox id="genderTextBox"/>
 								</row>
 								<row align="center">
@@ -393,6 +402,57 @@
 						<textbox id="noteTextBox" flex="1" multiline="true" wrap="virtual"/>
 					</hbox>
 				</vbox>
+			</tabpanel>
+
+			<tabpanel orient="vertical" style="overflow:auto">
+				<groupbox flex="1">
+					<grid align="center" flex="1">
+						<columns>
+							<column/>
+							<column flex="1"/>
+						</columns>
+			
+						<rows>
+							<row align="center">
+								<label id="birthplaceLabel" value="&birthplaceLabel;" control="birthplaceTextBox" class="header"/>
+								<textbox id="birthplaceTextBox"/>
+							</row>
+							<row id="anniversaryRow" align="center">
+								<hbox flex="1" align="center">
+									<label id="anniversaryLabel" value="&anniversaryLabel;" control="anniversaryTextBox" class="header"/>
+									<spacer flex="1"/>
+									<button id="anniversaryCardbookCalendar" class="small-button" label="📅" tooltiptext="&cardbookCalendarButtonTooltip;" oncommand="wdw_cardEdition.openCalendarPanel('anniversary');"/>
+									<panel id="anniversaryLightningPanel">
+										<minimonth id="anniversaryMinimonth" flex="1" onchange="wdw_cardEdition.validateCalendarPanel(this.value, 'anniversary');"/>
+									</panel>
+									<panel id="anniversaryBasePanel">
+										<datepicker id="anniversaryDatepicker" type="grid" onchange="wdw_cardEdition.validateCalendarPanel(this.value, 'anniversary');"/>
+									</panel>
+								</hbox>
+								<textbox id="anniversaryTextBox"/>
+							</row>
+							<row id="deathdateRow" align="center">
+								<hbox flex="1" align="center">
+									<label id="deathdateLabel" value="&deathdateLabel;" control="deathdateTextBox" class="header"/>
+									<spacer flex="1"/>
+									<button id="deathdateCardbookCalendar" class="small-button" label="📅" tooltiptext="&cardbookCalendarButtonTooltip;" oncommand="wdw_cardEdition.openCalendarPanel('deathdate');"/>
+									<panel id="deathdateLightningPanel">
+										<minimonth id="deathdateMinimonth" flex="1" onchange="wdw_cardEdition.validateCalendarPanel(this.value, 'deathdate');"/>
+									</panel>
+									<panel id="deathdateBasePanel">
+										<datepicker id="deathdateDatepicker" type="grid" onchange="wdw_cardEdition.validateCalendarPanel(this.value, 'deathdate');"/>
+									</panel>
+								</hbox>
+								<textbox id="deathdateTextBox"/>
+							</row>
+							<row align="center">
+								<label id="deathplaceLabel" value="&deathplaceLabel;" control="deathplaceTextBox" class="header"/>
+								<textbox id="deathplaceTextBox"/>
+							</row>
+						</rows>
+					</grid>
+				</groupbox>
+				<spacer flex="100"/>
 			</tabpanel>
 
 			<tabpanel orient="vertical" style="overflow:auto">

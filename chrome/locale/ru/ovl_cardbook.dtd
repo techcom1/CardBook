@@ -14,11 +14,11 @@
 <!ENTITY newCardBookCardMenuKey "N">
 <!ENTITY newCardBookSearchMenuLabel "Поиск в CardBook…">
 <!ENTITY newCardBookSearchMenuAccesskey "Н">
-<!ENTITY addToCardBookMenuLabel "Создать контакт в CardBook">
+<!ENTITY addToCardBookMenuLabel "Создать в CardBook">
 <!ENTITY addToCardBookMenuAccesskey "С">
-<!ENTITY editInCardBookMenuLabel "Править контакт в CardBook">
+<!ENTITY editInCardBookMenuLabel "Редактировать в CardBook">
 <!ENTITY editInCardBookMenuAccesskey "П">
-<!ENTITY deleteInCardBookMenuLabel "Удалить контакт в CardBook">
+<!ENTITY deleteInCardBookMenuLabel "Удалить в CardBook">
 <!ENTITY deleteInCardBookMenuAccesskey "У">
 <!ENTITY IMPPMenuLabel "Соединиться">
 <!ENTITY IMPPMenuAccesskey "о">
@@ -31,7 +31,7 @@
 <!ENTITY findEventsFromEmailMessengerLabel "Поиск событий календаря, связанных с этим адресом email">
 <!ENTITY findEventsFromEmailMessengerAccesskey "а">
 
-<!ENTITY mailContext-addToCardBookMenuLabel "Создать контакт CardBook…">
+<!ENTITY mailContext-addToCardBookMenuLabel "Создать в CardBook…">
 <!ENTITY mailContext-addToCardBookMenuAccesskey "Н">
 
 <!ENTITY addAllAttachementsToCardBookMenuLabel "Всё в CardBook…">

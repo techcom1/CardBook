@@ -59,7 +59,7 @@
 <!ENTITY generalTabLabel "Splošno">
 <!ENTITY mailPopularityTabLabel "Priljubljenost pošte">
 <!ENTITY technicalTabLabel "Tehnično">
-<!ENTITY vcardTabLabel "vCard">
+<!ENTITY vCardTabLabel "vCard">
 
 <!ENTITY cardIconColumnLabel "Ikona">
 <!ENTITY nameColumnLabel "Ime">
@@ -102,9 +102,14 @@
 <!ENTITY kindColumnLabel "Vrsta">
 <!ENTITY revColumnLabel "Nazadnje posodobljeno">
 <!ENTITY etagColumnLabel "Etag">
+<!ENTITY birthplaceColumnLabel "??Birth Place??">
+<!ENTITY anniversaryColumnLabel "??Anniversary??">
+<!ENTITY deathdateColumnLabel "??Deathday??">
+<!ENTITY deathplaceColumnLabel "??Death Place??">
 
 <!ENTITY categoriesGroupboxLabel "Kategorije">
 <!ENTITY noteTabLabel "Opombe">
+<!ENTITY advancedTabLabel "Napredno">
 
 <!ENTITY miscGroupboxLabel "Razno">
 <!ENTITY othersGroupboxLabel "Drugo">

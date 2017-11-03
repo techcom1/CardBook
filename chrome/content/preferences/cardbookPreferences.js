@@ -192,7 +192,7 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 		getAllTypes: function () {
 			try {
 				var finalResult = {};
-				var typesList = [ 'email', 'tel', 'impp', 'url', 'adr' ];
+				var typesList = [ 'email', 'tel', 'impp', 'url', 'adr', 'gender' ];
 				for (var i in typesList) {
 					var type = typesList[i];
 					finalResult[type] = [];
@@ -209,6 +209,34 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 			}
 		},
 	
+		getAllTypesCurrent: function () {
+			try {
+				var finalResult = {};
+				var typesList = [ 'email', 'tel', 'impp', 'url', 'adr', 'gender' ];
+				for (var i in typesList) {
+					var type = typesList[i];
+					finalResult[type] = [];
+					var result = [];
+					result = this.getAllTypesByType(type);
+					for (let j = 0; j < result.length; j++) {
+						if (!(finalResult[type] != null && finalResult[type] !== undefined && finalResult[type] != "")) {
+							finalResult[type] = {};
+						}
+						var myCode = result[j][0];
+						var myLabel = result[j][1];
+						if (!finalResult[type][myCode]) {
+							finalResult[type][myCode] = "";
+						}
+						finalResult[type][myCode] = myLabel;
+					}
+				}
+				return finalResult;
+			}
+			catch(e) {
+				dump("cardbookPreferenceService.getAllTypesCurrent error : " + e + "\n");
+			}
+		},
+	
 		getTypeLabel: function (aType, aCode) {
 			try {
 				var resultTmp = [];
@@ -222,22 +250,6 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 			}
 			catch(e) {
 				dump("cardbookPreferenceService.getTypeLabel error : " + e + "\n");
-			}
-		},
-	
-		getTypeCode: function (aType, aLabel) {
-			try {
-				var resultTmp = [];
-				resultTmp = this.getAllTypesByType(aType);
-				for (let i = 0; i < resultTmp.length; i++) {
-					if (resultTmp[i][1] == aLabel) {
-						return resultTmp[i][0];
-					}
-				}
-				return aLabel;
-			}
-			catch(e) {
-				dump("cardbookPreferenceService.getTypeCode error : " + e + "\n");
 			}
 		},
 	

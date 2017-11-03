@@ -12,7 +12,8 @@ var cardbookRepository = {
 	modalWindowParams : "modal,chrome,titlebar,resizable,minimizable=no",
 	
 	allColumns : { "display": ["fn"],
-					"personal": ["prefixname", "firstname", "othername", "lastname", "suffixname", "nickname", "bday", "gender"],
+					"personal": ["prefixname", "firstname", "othername", "lastname", "suffixname", "nickname", "gender", "bday",
+									"birthplace", "anniversary", "deathdate", "deathplace"],
 					"org": ["org", "title", "role"],
 					"categories": ["categories"],
 					"arrayColumns": [ ["email", ["email"] ],
@@ -30,7 +31,9 @@ var cardbookRepository = {
 	defaultKindCustom : "X-ADDRESSBOOKSERVER-KIND",
 	defaultMemberCustom : "X-ADDRESSBOOKSERVER-MEMBER",
 
-	typesSeed : {"adr": ["HOME","WORK"], "email": ["HOME","WORK"], "impp": ["HOME","WORK"], "tel": ["CELL", "FAX", "HOME","WORK"], "url": ["HOME","WORK"]},
+	typesSeed : {"adr": ["HOME", "WORK"], "email": ["HOME", "WORK"], "impp": ["HOME", "WORK"], "tel": ["CELL", "FAX", "HOME","WORK"], "url": ["HOME", "WORK"],
+					"gender": ["F", "M", "N", "O", "U"]},
+	currentTypes : {},
 
 	supportedVersion : ["3.0", "4.0"],
 
@@ -256,7 +259,7 @@ var cardbookRepository = {
 		myTypes = cardbookPrefService.getAllTypesCategory();
 		// for file opened with version <= 4.0
 		for (var i = 0; i < myTypes.length; i++) {
-			if (!(myTypes[i].indexOf(".") >= 0)) {
+			if (!myTypes[i].includes(".")) {
 				myOldTypes.push(cardbookPrefService.getTypes(myTypes[i]));
 				cardbookPrefService.delTypes(myTypes[i]);
 				myTypes.splice(i,1);
@@ -274,7 +277,7 @@ var cardbookRepository = {
 		var myPhoneTypes = [];
 		myTypes = cardbookPrefService.getAllTypesCategory();
 		for (var i = 0; i < myTypes.length; i++) {
-			if (myTypes[i].indexOf("phone.") >= 0) {
+			if (myTypes[i].includes("phone.")) {
 				myPhoneTypes.push(cardbookPrefService.getTypes(myTypes[i]));
 				cardbookPrefService.delTypes(myTypes[i]);
 				myTypes.splice(i,1);
@@ -288,7 +291,7 @@ var cardbookRepository = {
 		var notfound = true;
 		myTypes = cardbookPrefService.getAllTypesCategory();
 		for (var i = 0; i < myTypes.length; i++) {
-			if (myTypes[i].indexOf("url.") >= 0) {
+			if (myTypes[i].includes("url.")) {
 				notfound = false;
 				break;
 			}
@@ -302,7 +305,7 @@ var cardbookRepository = {
 		var notfound = true;
 		myTypes = cardbookPrefService.getAllTypesCategory();
 		for (var i = 0; i < myTypes.length; i++) {
-			if (myTypes[i].indexOf("tel.") >= 0) {
+			if (myTypes[i].includes("tel.")) {
 				notfound = false;
 				break;
 			}
@@ -316,7 +319,7 @@ var cardbookRepository = {
 		var notfound = true;
 		myTypes = cardbookPrefService.getAllTypesCategory();
 		for (var i = 0; i < myTypes.length; i++) {
-			if (myTypes[i].indexOf("impp.") >= 0) {
+			if (myTypes[i].includes("impp.")) {
 				notfound = false;
 				break;
 			}
@@ -330,7 +333,7 @@ var cardbookRepository = {
 		var notfound = true;
 		myTypes = cardbookPrefService.getAllTypesCategory();
 		for (var i = 0; i < myTypes.length; i++) {
-			if (myTypes[i].indexOf("email.") >= 0) {
+			if (myTypes[i].includes("email.")) {
 				notfound = false;
 				break;
 			}
@@ -344,7 +347,7 @@ var cardbookRepository = {
 		var notfound = true;
 		myTypes = cardbookPrefService.getAllTypesCategory();
 		for (var i = 0; i < myTypes.length; i++) {
-			if (myTypes[i].indexOf("adr.") >= 0) {
+			if (myTypes[i].includes("adr.")) {
 				notfound = false;
 				break;
 			}
@@ -359,6 +362,20 @@ var cardbookRepository = {
 		myIMPPs = cardbookPrefService.getAllIMPPs();
 		if (myIMPPs.length == 0) {
 			cardbookPrefService.insertIMPPsSeed();
+		}
+		// for file opened with version <= 23.4
+		var notfound = true;
+		myTypes = cardbookPrefService.getAllTypesCategory();
+		for (var i = 0; i < myTypes.length; i++) {
+			if (myTypes[i].includes("gender.")) {
+				notfound = false;
+				break;
+			}
+		}
+		if (notfound) {
+			for (var i = 0; i < cardbookRepository.typesSeed.gender.length; i++) {
+				cardbookPrefService.setTypes("gender", i, cardbookRepository.typesSeed.gender[i]);
+			}
 		}
 	},
 

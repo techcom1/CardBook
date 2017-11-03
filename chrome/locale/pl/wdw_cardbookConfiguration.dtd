@@ -68,8 +68,10 @@
 <!ENTITY mailPopularityTabAccesskey "P">
 <!ENTITY technicalTabLabel "Techniczne">
 <!ENTITY technicalTabAccesskey "T">
-<!ENTITY vcardTabLabel "vCard">
-<!ENTITY vcardTabAccesskey "V">
+<!ENTITY vCardTabLabel "vCard">
+<!ENTITY vCardTabAccesskey "V">
+<!ENTITY advancedTabLabel "Zaawansowane">
+<!ENTITY advancedTabAccesskey "Z">
 <!ENTITY localizeEdittingGroupboxLabel "Lokalizuj przy pomocy:">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
@@ -111,6 +113,8 @@
 <!ENTITY typesCategoryTelAccesskey "T">
 <!ENTITY typesCategoryUrlLabel "URL">
 <!ENTITY typesCategoryUrlAccesskey "U">
+<!ENTITY typesCategoryGenderLabel "Płeć">
+<!ENTITY typesCategoryGenderAccesskey "P">
 <!ENTITY typesCodeLabel "Kod">
 <!ENTITY typesLabelLabel "Etykieta">
 <!ENTITY addTypeLabel "Dodaj">
@@ -122,7 +126,9 @@
 <!ENTITY resetTypeLabel "Przywróć domyślne">
 <!ENTITY resetTypeAccesskey "P">
 <!ENTITY preferenceGroupboxLabel "Oznaczenie Podstawowy">
-<!ENTITY preferenceValueLabel "Etykieta oznaczenia Podstawowy (tylko vCard 4.0)">
+<!ENTITY usePreferenceValueLabel "??Use a preference value?? (tylko vCard 4.0)">
+<!ENTITY usePreferenceValueAccesskey "??p??">
+<!ENTITY preferenceValueLabel "Etykieta oznaczenia Podstawowy">
 <!ENTITY preferenceValueAccesskey "o">
 
 <!ENTITY IMPPGroupboxWarn "Te ustawienia pozwalają na korzystanie z komunikatorów internetowych przy pomocy odpowiedniego protokołu.">

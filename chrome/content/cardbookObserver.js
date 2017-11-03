@@ -41,6 +41,26 @@ if ("undefined" == typeof(cardbookObserver)) {
 			}
 		}
 	};
+
+	var cardBookEditionPrefObserver = {
+		register: function() {
+			cardBookPrefObserverRepository.registerAll(this);
+		},
+		
+		unregister: function() {
+			cardBookPrefObserverRepository.unregisterAll(this);
+		},
+		
+		observe: function(aSubject, aTopic, aData) {
+			switch (aData) {
+				case "mailPopularityTabView":
+				case "advancedTabView":
+					wdw_cardEdition.showCorrectTabs();
+					break;
+			}
+		}
+	};
+
 	var myCardBookSideBarPrefObserver = {
 		register: function() {
 			cardBookPrefObserverRepository.registerAll(this);

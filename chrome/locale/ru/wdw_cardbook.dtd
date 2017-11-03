@@ -25,7 +25,7 @@
 <!ENTITY cardbookToolbarAccesskey "П">
 <!ENTITY cardbookABPaneToolbarLabel "Панель адресных книг CardBook">
 <!ENTITY cardbookABPaneToolbarAccesskey "д">
-<!ENTITY CustomizeCardBookToolbarLabel "Настроить...">
+<!ENTITY CustomizeCardBookToolbarLabel "Настроить…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "Н">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Добавить адресную книгу">
 <!ENTITY cardbookToolbarAddServerButtonTooltip "Добавление адресной книги, расположенной локально или на сервере">
@@ -59,7 +59,7 @@
 <!ENTITY generalTabLabel "Основные">
 <!ENTITY mailPopularityTabLabel "Почта">
 <!ENTITY technicalTabLabel "Технические данные">
-<!ENTITY vcardTabLabel "vCard">
+<!ENTITY vCardTabLabel "vCard">
 
 <!ENTITY cardIconColumnLabel "Значок">
 <!ENTITY nameColumnLabel "Название">
@@ -102,9 +102,14 @@
 <!ENTITY kindColumnLabel "Вид">
 <!ENTITY revColumnLabel "Последнее обновление">
 <!ENTITY etagColumnLabel "Etag">
+<!ENTITY birthplaceColumnLabel "??Birth Place??">
+<!ENTITY anniversaryColumnLabel "??Anniversary??">
+<!ENTITY deathdateColumnLabel "??Deathday??">
+<!ENTITY deathplaceColumnLabel "??Death Place??">
 
 <!ENTITY categoriesGroupboxLabel "Категории">
 <!ENTITY noteTabLabel "Заметка">
+<!ENTITY advancedTabLabel "Дополнительно">
 
 <!ENTITY miscGroupboxLabel "Разное">
 <!ENTITY othersGroupboxLabel "Другое">

@@ -68,8 +68,10 @@
 <!ENTITY mailPopularityTabAccesskey "M">
 <!ENTITY technicalTabLabel "Teknisk">
 <!ENTITY technicalTabAccesskey "T">
-<!ENTITY vcardTabLabel "vCard">
-<!ENTITY vcardTabAccesskey "V">
+<!ENTITY vCardTabLabel "vCard">
+<!ENTITY vCardTabAccesskey "V">
+<!ENTITY advancedTabLabel "Avanceret">
+<!ENTITY advancedTabAccesskey "A">
 <!ENTITY localizeEdittingGroupboxLabel "Lokaliser med:">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
@@ -112,6 +114,8 @@
 <!ENTITY typesCategoryTelAccesskey "l">
 <!ENTITY typesCategoryUrlLabel "URL">
 <!ENTITY typesCategoryUrlAccesskey "U">
+<!ENTITY typesCategoryGenderLabel "Køn">
+<!ENTITY typesCategoryGenderAccesskey "K">
 <!ENTITY typesCodeLabel "Kode">
 <!ENTITY typesLabelLabel "Etiket">
 <!ENTITY addTypeLabel "Tilføj">
@@ -123,7 +127,9 @@
 <!ENTITY resetTypeLabel "Gendan standardvalg">
 <!ENTITY resetTypeAccesskey "d">
 <!ENTITY preferenceGroupboxLabel "PREF-felt">
-<!ENTITY preferenceValueLabel "PREF-værdifeltets etiket (kun for vCard 4.0)">
+<!ENTITY usePreferenceValueLabel "??Use a preference value?? (kun for vCard 4.0)">
+<!ENTITY usePreferenceValueAccesskey "??p??">
+<!ENTITY preferenceValueLabel "PREF-værdifeltets etiket">
 <!ENTITY preferenceValueAccesskey "P">
 
 <!ENTITY IMPPGroupboxWarn "Denne instilling tillader internetkommunikation ved brug af den korrekte protokol.">

@@ -7,3 +7,8 @@
 <!ENTITY prefixnameLabel "Predpona">
 <!ENTITY nicknameLabel "Vzdevek">
 <!ENTITY genderLabel "Spol">
+<!ENTITY bdayLabel "Rojstni dan">
+<!ENTITY birthplaceLabel "??Birth Place??">
+<!ENTITY anniversaryLabel "??Anniversary??">
+<!ENTITY deathdateLabel "??Deathday??">
+<!ENTITY deathplaceLabel "??Death Place??">

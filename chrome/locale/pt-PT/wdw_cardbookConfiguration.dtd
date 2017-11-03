@@ -68,8 +68,10 @@
 <!ENTITY mailPopularityTabAccesskey "M">
 <!ENTITY technicalTabLabel "Tecnico">
 <!ENTITY technicalTabAccesskey "T">
-<!ENTITY vcardTabLabel "vCard">
-<!ENTITY vcardTabAccesskey "V">
+<!ENTITY vCardTabLabel "vCard">
+<!ENTITY vCardTabAccesskey "V">
+<!ENTITY advancedTabLabel "Avançado">
+<!ENTITY advancedTabAccesskey "A">
 <!ENTITY localizeEdittingGroupboxLabel "Localizar:">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
@@ -112,6 +114,8 @@
 <!ENTITY typesCategoryTelAccesskey "T">
 <!ENTITY typesCategoryUrlLabel "URL">
 <!ENTITY typesCategoryUrlAccesskey "U">
+<!ENTITY typesCategoryGenderLabel "Género">
+<!ENTITY typesCategoryGenderAccesskey "G">
 <!ENTITY typesCodeLabel "Codigo">
 <!ENTITY typesLabelLabel "Etiqueta">
 <!ENTITY addTypeLabel "Adicionar">
@@ -123,7 +127,9 @@
 <!ENTITY resetTypeLabel "Restaurar para origem">
 <!ENTITY resetTypeAccesskey "R">
 <!ENTITY preferenceGroupboxLabel "Campo PREFerido">
-<!ENTITY preferenceValueLabel "Etiqueta do campo PREFerido (só para vCard 4.0)">
+<!ENTITY usePreferenceValueLabel "??Use a preference value?? (só para vCard 4.0)">
+<!ENTITY usePreferenceValueAccesskey "??p??">
+<!ENTITY preferenceValueLabel "Etiqueta do campo PREFerido">
 <!ENTITY preferenceValueAccesskey "Q">
 
 <!ENTITY IMPPGroupboxWarn "Esta configuração permite abrir uma mensagem instantanea usando o protocolo seleccionado.">

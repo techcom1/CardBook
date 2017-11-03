@@ -68,8 +68,10 @@
 <!ENTITY mailPopularityTabAccesskey "P">
 <!ENTITY technicalTabLabel "Technische Details">
 <!ENTITY technicalTabAccesskey "T">
-<!ENTITY vcardTabLabel "vCard">
-<!ENTITY vcardTabAccesskey "V">
+<!ENTITY vCardTabLabel "vCard">
+<!ENTITY vCardTabAccesskey "V">
+<!ENTITY advancedTabLabel "Erweitert">
+<!ENTITY advancedTabAccesskey "E">
 <!ENTITY localizeEdittingGroupboxLabel "Lokalisieren:">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
@@ -112,6 +114,8 @@
 <!ENTITY typesCategoryTelAccesskey "T">
 <!ENTITY typesCategoryUrlLabel "URL">
 <!ENTITY typesCategoryUrlAccesskey "R">
+<!ENTITY typesCategoryGenderLabel "Geschlecht">
+<!ENTITY typesCategoryGenderAccesskey "G">
 <!ENTITY typesCodeLabel "Code">
 <!ENTITY typesLabelLabel "Label">
 <!ENTITY addTypeLabel "Hinzufügen">
@@ -123,7 +127,9 @@
 <!ENTITY resetTypeLabel "Zurücksetzen auf Standard">
 <!ENTITY resetTypeAccesskey "Z">
 <!ENTITY preferenceGroupboxLabel "Feld PREF">
-<!ENTITY preferenceValueLabel "Label des Werts des Felds PREF (vCard 4.0)">
+<!ENTITY usePreferenceValueLabel "??Use a preference value?? (vCard 4.0)">
+<!ENTITY usePreferenceValueAccesskey "??p??">
+<!ENTITY preferenceValueLabel "Label des Werts des Felds PREF">
 <!ENTITY preferenceValueAccesskey "W">
 
 <!ENTITY IMPPGroupboxWarn "Diese Einstellungen ermöglichen das direkte Öffnen einer IM Adresse mit dem angegebenen Protokoll.">

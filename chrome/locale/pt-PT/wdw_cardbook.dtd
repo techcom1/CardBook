@@ -59,7 +59,7 @@
 <!ENTITY generalTabLabel "Geral">
 <!ENTITY mailPopularityTabLabel "Email popular">
 <!ENTITY technicalTabLabel "Tecnico">
-<!ENTITY vcardTabLabel "vCard">
+<!ENTITY vCardTabLabel "vCard">
 
 <!ENTITY cardIconColumnLabel "Ícone">
 <!ENTITY nameColumnLabel "Nome">
@@ -102,9 +102,14 @@
 <!ENTITY kindColumnLabel "Tipo">
 <!ENTITY revColumnLabel "Última atualização">
 <!ENTITY etagColumnLabel "Etag">
+<!ENTITY birthplaceColumnLabel "??Birth Place??">
+<!ENTITY anniversaryColumnLabel "??Anniversary??">
+<!ENTITY deathdateColumnLabel "??Deathday??">
+<!ENTITY deathplaceColumnLabel "??Death Place??">
 
 <!ENTITY categoriesGroupboxLabel "Categorias">
 <!ENTITY noteTabLabel "Notas">
+<!ENTITY advancedTabLabel "Avançado">
 
 <!ENTITY miscGroupboxLabel "Diversos">
 <!ENTITY othersGroupboxLabel "Otutros">

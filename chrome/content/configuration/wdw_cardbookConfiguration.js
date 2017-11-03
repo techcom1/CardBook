@@ -1283,6 +1283,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 					cardbookPrefService.setTypes(i, j, wdw_cardbookConfiguration.allTypes[i][j][0] + ":" + wdw_cardbookConfiguration.allTypes[i][j][1]);
 				}
 			}
+			cardbookRepository.currentTypes = cardbookPrefService.getAllTypesCurrent();
 		},
 
 		selectIMPPsCategory: function () {
@@ -1646,6 +1647,15 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			wdw_cardbookConfiguration.validateCustomValues();
 		},
 
+		loadPreferenceValue: function () {
+			var prefs = Services.prefs;
+			var initialSync = prefs.getBoolPref("extensions.cardbook.usePreferenceValue");
+			if (!(initialSync)) {
+				document.getElementById('preferenceValueLabel').disabled = true;
+				document.getElementById('preferenceValueTextbox').disabled = true;
+			}
+		},
+
 		loadInitialSyncDelay: function () {
 			var prefs = Services.prefs;
 			var initialSync = prefs.getBoolPref("extensions.cardbook.initialSync");
@@ -1670,6 +1680,16 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			}
 			while (cardbookRepository.statusInformation.length > document.getElementById('statusInformationLineNumberTextBox').value) {
 				cardbookRepository.statusInformation.splice(0,1);
+			}
+		},
+
+		showPreferenceValue: function () {
+			if (document.getElementById('usePreferenceValueCheckBox').checked) {
+				document.getElementById('preferenceValueLabel').disabled = false;
+				document.getElementById('preferenceValueTextbox').disabled = false;
+			} else {
+				document.getElementById('preferenceValueLabel').disabled = true;
+				document.getElementById('preferenceValueTextbox').disabled = true;
 			}
 		},
 
@@ -1705,6 +1725,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			wdw_cardbookConfiguration.loadPref();
 			wdw_cardbookConfiguration.loadOrg();
 			wdw_cardbookConfiguration.displayOrg();
+			wdw_cardbookConfiguration.loadPreferenceValue();
 			wdw_cardbookConfiguration.loadInitialSyncDelay();
 			wdw_cardbookConfiguration.loadPeriodicSync();
 			wdw_cardbookConfiguration.loadAddressBooks("addressBooksNameList", false);

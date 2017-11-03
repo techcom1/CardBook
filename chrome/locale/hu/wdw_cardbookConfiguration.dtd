@@ -68,8 +68,10 @@
 <!ENTITY mailPopularityTabAccesskey "Ü">
 <!ENTITY technicalTabLabel "Műszaki">
 <!ENTITY technicalTabAccesskey "M">
-<!ENTITY vcardTabLabel "vCard">
-<!ENTITY vcardTabAccesskey "v">
+<!ENTITY vCardTabLabel "vCard">
+<!ENTITY vCardTabAccesskey "v">
+<!ENTITY advancedTabLabel "Speciális">
+<!ENTITY advancedTabAccesskey "S">
 <!ENTITY localizeEdittingGroupboxLabel "Térkép:">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
@@ -111,6 +113,8 @@
 <!ENTITY typesCategoryTelAccesskey "f">
 <!ENTITY typesCategoryUrlLabel "Webcím">
 <!ENTITY typesCategoryUrlAccesskey "W">
+<!ENTITY typesCategoryGenderLabel "Nem">
+<!ENTITY typesCategoryGenderAccesskey "N">
 <!ENTITY typesCodeLabel "Kód">
 <!ENTITY typesLabelLabel "Címke">
 <!ENTITY addTypeLabel "Új…">
@@ -122,7 +126,9 @@
 <!ENTITY resetTypeLabel "Alapértelmezés">
 <!ENTITY resetTypeAccesskey "A">
 <!ENTITY preferenceGroupboxLabel "PREF mező">
-<!ENTITY preferenceValueLabel "PREF mező érték címke (csak vCard 4.0)">
+<!ENTITY usePreferenceValueLabel "??Use a preference value?? (csak vCard 4.0)">
+<!ENTITY usePreferenceValueAccesskey "??p??">
+<!ENTITY preferenceValueLabel "PREF mező érték címke">
 <!ENTITY preferenceValueAccesskey "é">
 
 <!ENTITY IMPPGroupboxWarn "Internet kommunikációs Jegyzőkönyv beállítási.">

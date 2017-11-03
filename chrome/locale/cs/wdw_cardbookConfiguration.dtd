@@ -68,8 +68,10 @@
 <!ENTITY mailPopularityTabAccesskey "E">
 <!ENTITY technicalTabLabel "Technické">
 <!ENTITY technicalTabAccesskey "T">
-<!ENTITY vcardTabLabel "vCard">
-<!ENTITY vcardTabAccesskey "C">
+<!ENTITY vCardTabLabel "vCard">
+<!ENTITY vCardTabAccesskey "C">
+<!ENTITY advancedTabLabel "Rozšířené">
+<!ENTITY advancedTabAccesskey "R">
 <!ENTITY localizeEdittingGroupboxLabel "Vyhledat:">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
@@ -112,6 +114,8 @@
 <!ENTITY typesCategoryTelAccesskey "T">
 <!ENTITY typesCategoryUrlLabel "URL">
 <!ENTITY typesCategoryUrlAccesskey "L">
+<!ENTITY typesCategoryGenderLabel "Pohlaví">
+<!ENTITY typesCategoryGenderAccesskey "P">
 <!ENTITY typesCodeLabel "Kód">
 <!ENTITY typesLabelLabel "Popisek">
 <!ENTITY addTypeLabel "Přidat">
@@ -123,7 +127,9 @@
 <!ENTITY resetTypeLabel "Obnovit na výchozí hodnotu">
 <!ENTITY resetTypeAccesskey "O">
 <!ENTITY preferenceGroupboxLabel "Pole PREF">
-<!ENTITY preferenceValueLabel "Popisek hodnotového pole PREF (pouze pro vCard 4.0)">
+<!ENTITY usePreferenceValueLabel "??Use a preference value?? (pouze pro vCard 4.0)">
+<!ENTITY usePreferenceValueAccesskey "??p??">
+<!ENTITY preferenceValueLabel "Popisek hodnotového pole PREF">
 <!ENTITY preferenceValueAccesskey "k">
 
 <!ENTITY IMPPGroupboxWarn "Toto nastavení umožňuje přímé otevření adresy IM s použitím správného protokolu.">

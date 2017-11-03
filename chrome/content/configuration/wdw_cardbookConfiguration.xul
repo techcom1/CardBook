@@ -50,6 +50,8 @@
 				name="extensions.cardbook.debugMode" type="bool"/>
 			<preference id="extensions.cardbook.statusInformationLineNumber"
 				name="extensions.cardbook.statusInformationLineNumber" type="string"/>
+			<preference id="extensions.cardbook.advancedTabView"
+				name="extensions.cardbook.advancedTabView" type="bool"/>
 			<preference id="extensions.cardbook.mailPopularityTabView"
 				name="extensions.cardbook.mailPopularityTabView" type="bool"/>
 			<preference id="extensions.cardbook.technicalTabView"
@@ -66,6 +68,8 @@
 				name="extensions.cardbook.fnFormula" type="string"/>
 			<preference id="extensions.cardbook.localizeTarget"
 				name="extensions.cardbook.localizeTarget" type="string"/>
+			<preference id="extensions.cardbook.usePreferenceValue"
+				name="extensions.cardbook.usePreferenceValue" type="bool"/>
 			<preference id="extensions.cardbook.preferenceValueLabel"
 				name="extensions.cardbook.preferenceValueLabel" type="string"/>
 			<preference id="extensions.cardbook.preferIMPPPref"
@@ -296,9 +300,12 @@
 							<checkbox id="technicalTabCheckBox" label="&technicalTabLabel;"
 								accesskey="&technicalTabAccesskey;"
 								preference="extensions.cardbook.technicalTabView"/>
-							<checkbox id="vcardTabCheckBox" label="&vcardTabLabel;"
-								accesskey="&vcardTabAccesskey;"
+							<checkbox id="vcardTabCheckBox" label="&vCardTabLabel;"
+								accesskey="&vCardTabAccesskey;"
 								preference="extensions.cardbook.vcardTabView"/>
+							<checkbox id="advancedTabCheckBox" label="&advancedTabLabel;"
+								accesskey="&advancedTabAccesskey;"
+								preference="extensions.cardbook.advancedTabView"/>
 						</hbox>
 					</groupbox>
 
@@ -390,6 +397,7 @@
 								<radio value="impp" label="&typesCategoryImppLabel;" accesskey="&typesCategoryImppAccesskey;"/>
 								<radio value="tel" label="&typesCategoryTelLabel;" accesskey="&typesCategoryTelAccesskey;"/>
 								<radio value="url" label="&typesCategoryUrlLabel;" accesskey="&typesCategoryUrlAccesskey;"/>
+								<radio value="gender" label="&typesCategoryGenderLabel;" accesskey="&typesCategoryGenderAccesskey;"/>
 							</radiogroup>
 						</hbox>
 						
@@ -418,7 +426,12 @@
 					</groupbox>
 					<groupbox>
 						<caption label="&preferenceGroupboxLabel;"/>
-						<hbox flex="1" align="center">
+						<hbox align="center">
+							<checkbox id="usePreferenceValueCheckBox" label="&usePreferenceValueLabel;"
+								accesskey="&usePreferenceValueAccesskey;" oncommand="wdw_cardbookConfiguration.showPreferenceValue();"
+								preference="extensions.cardbook.usePreferenceValue"/>
+						</hbox>
+						<hbox flex="1" align="center" class="indent">
 							<label value="&preferenceValueLabel;"
 								accesskey="&preferenceValueAccesskey;"
 								control="preferenceValueTextbox"

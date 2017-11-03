@@ -12,6 +12,7 @@ pref("extensions.cardbook.preferEmailEdition", true);
 pref("extensions.cardbook.mailPopularityTabView", false);
 pref("extensions.cardbook.technicalTabView", false);
 pref("extensions.cardbook.vcardTabView", false);
+pref("extensions.cardbook.advancedTabView", false);
 
 pref("extensions.cardbook.panesView", "modern");
 pref("extensions.cardbook.initialSync", true);
@@ -27,6 +28,7 @@ pref("extensions.cardbook.preferIMPPPref", true);
 pref("extensions.cardbook.warnEmptyEmails", true);
 pref("extensions.cardbook.useOnlyEmail", false);
 
+pref("extensions.cardbook.usePreferenceValue", false);
 pref("extensions.cardbook.preferenceValueLabel", "");
 
 pref("extensions.cardbook.firstRun", true);
@@ -66,4 +68,4 @@ pref("extensions.cardbook.viewABContact", true);
 
 pref("extensions.cardbook.accountsShown", "all");
 pref("extensions.cardbook.uncategorizedCards", "");
-pref("extensions.cardbook.addonVersion", "23.4");
+pref("extensions.cardbook.addonVersion", "23.5");

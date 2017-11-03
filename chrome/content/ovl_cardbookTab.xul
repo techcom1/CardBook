@@ -16,7 +16,6 @@
 	<!ENTITY % categoriesDTD SYSTEM "chrome://cardbook/locale/wdw_categoriesEdition.dtd"> %categoriesDTD;
 	<!ENTITY % cardbookDTD SYSTEM "chrome://cardbook/locale/wdw_cardbook.dtd"> %cardbookDTD;
 	<!ENTITY % namesDTD SYSTEM "chrome://cardbook/locale/wdw_nameEdition.dtd"> %namesDTD;
-	<!ENTITY % bdayDTD SYSTEM "chrome://cardbook/locale/wdw_bdayEdition.dtd"> %bdayDTD;
 	<!ENTITY % orgDTD SYSTEM "chrome://cardbook/locale/wdw_orgEdition.dtd"> %orgDTD;
 	<!ENTITY % adrDTD SYSTEM "chrome://cardbook/locale/wdw_adrEdition.dtd"> %adrDTD;
 	<!ENTITY % listsDTD SYSTEM "chrome://cardbook/locale/wdw_lists.dtd"> %listsDTD;
@@ -184,6 +183,14 @@
 								<treecol id="cardurl" label="&cardurlColumnLabel;" flex="1" persist="width ordinal hidden" style="text-align:left" hidden="true" class="sortDirectionIndicator" sortDirection="ascending"/>
 								<splitter class="tree-splitter"/>
 								<treecol id="etag" label="&etagColumnLabel;" flex="1" persist="width ordinal hidden" style="text-align:left" hidden="true" class="sortDirectionIndicator" sortDirection="ascending"/>
+								<splitter class="tree-splitter"/>
+								<treecol id="birthplace" label="&birthplaceColumnLabel;" flex="1" persist="width ordinal hidden" style="text-align:left" hidden="true" class="sortDirectionIndicator" sortDirection="ascending"/>
+								<splitter class="tree-splitter"/>
+								<treecol id="anniversary" label="&anniversaryColumnLabel;" flex="1" persist="width ordinal hidden" style="text-align:left" hidden="true" class="sortDirectionIndicator" sortDirection="ascending"/>
+								<splitter class="tree-splitter"/>
+								<treecol id="deathdate" label="&deathdateColumnLabel;" flex="1" persist="width ordinal hidden" style="text-align:left" hidden="true" class="sortDirectionIndicator" sortDirection="ascending"/>
+								<splitter class="tree-splitter"/>
+								<treecol id="deathplace" label="&deathplaceColumnLabel;" flex="1" persist="width ordinal hidden" style="text-align:left" hidden="true" class="sortDirectionIndicator" sortDirection="ascending"/>
 							</treecols>
 							<treechildren id="cardsTreeChildren" ondragstart="wdw_cardbook.startDrag(event, this);" ondblclick="wdw_cardbook.doubleClickCardsTree(event);"/>
 						</tree>
@@ -201,7 +208,7 @@
 									<tab id="generalTab" label="&generalTabLabel;"/>
 									<tab id="mailPopularityTab" label="&mailPopularityTabLabel;"/>
 									<tab id="technicalTab" label="&technicalTabLabel;"/>
-									<tab id="vcardTab" label="&vcardTabLabel;"/>
+									<tab id="vcardTab" label="&vCardTabLabel;"/>
 								</tabs>
 								
 								<tabpanels flex="1">
@@ -260,8 +267,24 @@
 																		<textbox id="genderTextBox"/>
 																	</row>
 																	<row id="bdayRow" align="center">
-																		<label value="&bdayLabel;" control="bdayTextBox" class="header"/>
+																		<label id="bdayLabel" value="&bdayLabel;" control="bdayTextBox" class="header"/>
 																		<textbox id="bdayTextBox"/>
+																	</row>
+																	<row id="birthplaceRow" align="center">
+																		<label id="birthplaceLabel" value="&birthplaceLabel;" control="birthplaceTextBox" class="header"/>
+																		<textbox id="birthplaceTextBox"/>
+																	</row>
+																	<row id="deathdateRow" align="center">
+																		<label id="deathdateLabel" value="&deathdateLabel;" control="deathdateTextBox" class="header"/>
+																		<textbox id="deathdateTextBox"/>
+																	</row>
+																	<row id="deathplaceRow" align="center">
+																		<label id="deathplaceLabel" value="&deathplaceLabel;" control="deathplaceTextBox" class="header"/>
+																		<textbox id="deathplaceTextBox"/>
+																	</row>
+																	<row id="anniversaryRow" align="center">
+																		<label id="anniversaryLabel" value="&anniversaryLabel;" control="anniversaryTextBox" class="header"/>
+																		<textbox id="anniversaryTextBox"/>
 																	</row>
 																</rows>
 															</grid>

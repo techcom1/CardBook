@@ -7,3 +7,8 @@
 <!ENTITY prefixnameLabel "Előtag neve">
 <!ENTITY nicknameLabel "Becenév">
 <!ENTITY genderLabel "Nem">
+<!ENTITY bdayLabel "Születésnap">
+<!ENTITY birthplaceLabel "??Birth Place??">
+<!ENTITY anniversaryLabel "??Anniversary??">
+<!ENTITY deathdateLabel "??Deathday??">
+<!ENTITY deathplaceLabel "??Death Place??">

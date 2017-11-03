@@ -59,7 +59,7 @@
 <!ENTITY generalTabLabel "Generelt">
 <!ENTITY mailPopularityTabLabel "Mailpopularitet">
 <!ENTITY technicalTabLabel "Teknisk">
-<!ENTITY vcardTabLabel "vCard">
+<!ENTITY vCardTabLabel "vCard">
 
 <!ENTITY cardIconColumnLabel "Ikon">
 <!ENTITY nameColumnLabel "Navn">
@@ -102,9 +102,14 @@
 <!ENTITY kindColumnLabel "Type">
 <!ENTITY revColumnLabel "Senest opdateret">
 <!ENTITY etagColumnLabel "Etag">
+<!ENTITY birthplaceColumnLabel "??Birth Place??">
+<!ENTITY anniversaryColumnLabel "??Anniversary??">
+<!ENTITY deathdateColumnLabel "??Deathday??">
+<!ENTITY deathplaceColumnLabel "??Death Place??">
 
 <!ENTITY categoriesGroupboxLabel "Kategorier">
 <!ENTITY noteTabLabel "Noter">
+<!ENTITY advancedTabLabel "Avanceret">
 
 <!ENTITY miscGroupboxLabel "Diverse">
 <!ENTITY othersGroupboxLabel "Andet">

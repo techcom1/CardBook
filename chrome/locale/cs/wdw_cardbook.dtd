@@ -59,7 +59,7 @@
 <!ENTITY generalTabLabel "Obecné">
 <!ENTITY mailPopularityTabLabel "Oblíbenost e-mailů">
 <!ENTITY technicalTabLabel "Technické">
-<!ENTITY vcardTabLabel "vCard">
+<!ENTITY vCardTabLabel "vCard">
 
 <!ENTITY cardIconColumnLabel "Ikona">
 <!ENTITY nameColumnLabel "Název">
@@ -102,9 +102,14 @@
 <!ENTITY kindColumnLabel "Druh">
 <!ENTITY revColumnLabel "Poslední aktualizace">
 <!ENTITY etagColumnLabel "Etag">
+<!ENTITY birthplaceColumnLabel "??Birth Place??">
+<!ENTITY anniversaryColumnLabel "??Anniversary??">
+<!ENTITY deathdateColumnLabel "??Deathday??">
+<!ENTITY deathplaceColumnLabel "??Death Place??">
 
 <!ENTITY categoriesGroupboxLabel "Kategorie">
 <!ENTITY noteTabLabel "Poznámky">
+<!ENTITY advancedTabLabel "Rozšířené">
 
 <!ENTITY miscGroupboxLabel "Další">
 <!ENTITY othersGroupboxLabel "Ostatní">

@@ -68,8 +68,10 @@
 <!ENTITY mailPopularityTabAccesskey "P">
 <!ENTITY technicalTabLabel "Technisch">
 <!ENTITY technicalTabAccesskey "T">
-<!ENTITY vcardTabLabel "vCard">
-<!ENTITY vcardTabAccesskey "V">
+<!ENTITY vCardTabLabel "vCard">
+<!ENTITY vCardTabAccesskey "V">
+<!ENTITY advancedTabLabel "Geavanceerd">
+<!ENTITY advancedTabAccesskey "G">
 <!ENTITY localizeEdittingGroupboxLabel "Locatie bepalen:">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
@@ -112,6 +114,8 @@
 <!ENTITY typesCategoryTelAccesskey "F">
 <!ENTITY typesCategoryUrlLabel "URL">
 <!ENTITY typesCategoryUrlAccesskey "U">
+<!ENTITY typesCategoryGenderLabel "Geslacht">
+<!ENTITY typesCategoryGenderAccesskey "G">
 <!ENTITY typesCodeLabel "Code">
 <!ENTITY typesLabelLabel "Naam">
 <!ENTITY addTypeLabel "Toevoegen">
@@ -123,7 +127,9 @@
 <!ENTITY resetTypeLabel "Herstellen naar standaardwaarde">
 <!ENTITY resetTypeAccesskey "H">
 <!ENTITY preferenceGroupboxLabel "Rubriek 'Voorkeur'">
-<!ENTITY preferenceValueLabel "Naam van de rubriek 'Voorkeur' (uitsluitend voor vCard 4.0)">
+<!ENTITY usePreferenceValueLabel "??Use a preference value?? (uitsluitend voor vCard 4.0)">
+<!ENTITY usePreferenceValueAccesskey "??p??">
+<!ENTITY preferenceValueLabel "Naam van de rubriek 'Voorkeur'">
 <!ENTITY preferenceValueAccesskey "R">
 
 <!ENTITY IMPPGroupboxWarn "Deze instelling opent een IM-adres met gebruikmaking van het protocol.">

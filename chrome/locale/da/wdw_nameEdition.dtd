@@ -7,3 +7,8 @@
 <!ENTITY prefixnameLabel "Præfix">
 <!ENTITY nicknameLabel "Kaldenavn">
 <!ENTITY genderLabel "Køn">
+<!ENTITY bdayLabel "Fødselsdag">
+<!ENTITY birthplaceLabel "??Birth Place??">
+<!ENTITY anniversaryLabel "??Anniversary??">
+<!ENTITY deathdateLabel "??Deathday??">
+<!ENTITY deathplaceLabel "??Death Place??">

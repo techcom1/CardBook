@@ -253,11 +253,14 @@ if ("undefined" == typeof(cardbookUtils)) {
 			function compare3(a, b) { return collator.compareString(0, cardbookUtils.getName(a), cardbookUtils.getName(b))*aInvert; };
 			function compare4(a, b) { return ((a.isAList === b.isAList)? 0 : a.isAList? -1 : 1)*aInvert; };
 			function compare5(a, b) { return collator.compareString(0, cardbookUtils.getCardValueByField(a, aIndex), cardbookUtils.getCardValueByField(b, aIndex))*aInvert; };
+			function compare6(a, b) { return collator.compareString(0, cardbookRepository.currentTypes.gender[a.gender], cardbookRepository.currentTypes.gender[b.gender])*aInvert; };
 			if (aIndex != -1) {
 				if (aIndex == "name") {
 					return aArray.sort(compare3);
 				} else if (aIndex == "cardIcon") {
 					return aArray.sort(compare4);
+				} else if (aIndex == "gender") {
+					return aArray.sort(compare6);
 				} else if (aIndex.startsWith("X-")) {
 					return aArray.sort(compare5);
 				} else {
@@ -563,8 +566,12 @@ if ("undefined" == typeof(cardbookUtils)) {
 			vCardData = this.appendToVcardData2(vCardData,"FN",false,this.escapeStrings(vCard.fn));
 			vCardData = this.appendToVcardData2(vCardData,"NICKNAME",false,this.escapeStrings(vCard.nickname));
 			vCardData = this.appendToVcardData2(vCardData,"SORT-STRING",false,vCard.sortstring);
-			vCardData = this.appendToVcardData2(vCardData,"GENDER",false,vCard.gender);
 			vCardData = this.appendToVcardData2(vCardData,"BDAY",false,vCard.bday);
+			vCardData = this.appendToVcardData2(vCardData,"GENDER",false,vCard.gender);
+			vCardData = this.appendToVcardData2(vCardData,"BIRTHPLACE",false,vCard.birthplace);
+			vCardData = this.appendToVcardData2(vCardData,"ANNIVERSARY",false,vCard.anniversary);
+			vCardData = this.appendToVcardData2(vCardData,"DEATHDATE",false,vCard.deathdate);
+			vCardData = this.appendToVcardData2(vCardData,"DEATHPLACE",false,vCard.deathplace);
 			vCardData = this.appendToVcardData2(vCardData,"TITLE",false,this.escapeStrings(vCard.title));
 			vCardData = this.appendToVcardData2(vCardData,"ROLE",false,this.escapeStrings(vCard.role));
 			vCardData = this.appendToVcardData2(vCardData,"ORG",false,vCard.org.replace(/,/g,"\\,"));
@@ -970,8 +977,8 @@ if ("undefined" == typeof(cardbookUtils)) {
 		},
 
 		clearCard: function () {
-			var fieldArray = [ "fn", "lastname", "firstname", "othername", "prefixname", "suffixname", "nickname", "bday",
-								"gender", "note", "mailer", "geo", "sortstring", "class1", "tz",
+			var fieldArray = [ "fn", "lastname", "firstname", "othername", "prefixname", "suffixname", "nickname", "gender",
+								"bday", "birthplace", "anniversary", "deathdate", "deathplace", "note", "mailer", "geo", "sortstring", "class1", "tz",
 								"agent", "key", "prodid", "uid", "version", "dirPrefId", "cardurl", "rev", "etag", "others", "vcard",
 								"photolocalURI", "logolocalURI", "soundlocalURI", "photoURI", "logoURI", "soundURI" ];
 			for (var i = 0; i < fieldArray.length; i++) {
@@ -1004,10 +1011,10 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		displayCard: function (aCard, aReadOnly, aFollowLink) {
 			var fieldArray = [ "fn", "lastname", "firstname", "othername", "prefixname", "suffixname", "nickname", "bday",
-								"gender", "note", "mailer", "geo", "sortstring", "class1", "tz", "agent", "key", "prodid",
-								"uid", "version", "dirPrefId", "cardurl", "rev", "etag" ];
+								"birthplace", "anniversary", "deathdate", "deathplace", "note", "mailer", "geo", "sortstring",
+								"class1", "tz", "agent", "key", "prodid", "uid", "version", "dirPrefId", "cardurl", "rev", "etag" ];
 			for (var i = 0; i < fieldArray.length; i++) {
-				if (document.getElementById(fieldArray[i] + 'TextBox')) {
+				if (document.getElementById(fieldArray[i] + 'TextBox') && aCard[fieldArray[i]]) {
 					document.getElementById(fieldArray[i] + 'TextBox').value = aCard[fieldArray[i]];
 					if (aReadOnly) {
 						document.getElementById(fieldArray[i] + 'TextBox').setAttribute('readonly', 'true');
@@ -1020,6 +1027,9 @@ if ("undefined" == typeof(cardbookUtils)) {
 						document.getElementById(fieldArray[i] + 'TextBox').removeAttribute('readonly');
 					}
 				}
+			}
+			if (aCard.gender != "") {
+				document.getElementById('genderTextBox').value = cardbookRepository.currentTypes.gender[aCard.gender];
 			}
 
 			var myRemainingOthers = [];
@@ -1078,7 +1088,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		adjustFields: function () {
 			var nullableFields = {fn: [ 'fn' ],
-									pers: [ 'lastname', 'firstname', 'othername', 'prefixname', 'suffixname', 'nickname', 'gender', 'bday' ],
+									pers: [ 'lastname', 'firstname', 'othername', 'prefixname', 'suffixname', 'nickname', 'bday', 'gender', 'birthplace', 'anniversary', 'deathdate', 'deathplace' ],
 									categories: [ 'categories' ],
 									note: [ 'note' ],
 									misc: [ 'mailer', 'geo', 'sortstring', 'class1', 'tz', 'agent', 'key', 'photolocalURI', 'photoURI', 'logolocalURI', 'logoURI', 'soundlocalURI', 'soundURI' ],
@@ -1196,8 +1206,12 @@ if ("undefined" == typeof(cardbookUtils)) {
 			targetCard.suffixname = sourceCard.suffixname;
 			targetCard.fn = sourceCard.fn;
 			targetCard.nickname = sourceCard.nickname;
-			targetCard.gender = sourceCard.gender;
 			targetCard.bday = sourceCard.bday;
+			targetCard.gender = sourceCard.gender;
+			targetCard.birthplace = sourceCard.birthplace;
+			targetCard.anniversary = sourceCard.anniversary;
+			targetCard.deathdate = sourceCard.deathdate;
+			targetCard.deathplace = sourceCard.deathplace;
 
 			targetCard.adr = JSON.parse(JSON.stringify(sourceCard.adr));
 			targetCard.tel = JSON.parse(JSON.stringify(sourceCard.tel));

@@ -68,8 +68,10 @@
 <!ENTITY mailPopularityTabAccesskey "M">
 <!ENTITY technicalTabLabel "Tecnico">
 <!ENTITY technicalTabAccesskey "T">
-<!ENTITY vcardTabLabel "vCard">
-<!ENTITY vcardTabAccesskey "V">
+<!ENTITY vCardTabLabel "vCard">
+<!ENTITY vCardTabAccesskey "V">
+<!ENTITY advancedTabLabel "Avanzate">
+<!ENTITY advancedTabAccesskey "A">
 <!ENTITY localizeEdittingGroupboxLabel "Localizza:">
 <!ENTITY localizeEngineOpenStreetMapLabel "Aprire Street Map">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
@@ -112,6 +114,8 @@
 <!ENTITY typesCategoryTelAccesskey "H">
 <!ENTITY typesCategoryUrlLabel "URL">
 <!ENTITY typesCategoryUrlAccesskey "U">
+<!ENTITY typesCategoryGenderLabel "Genere">
+<!ENTITY typesCategoryGenderAccesskey "G">
 <!ENTITY typesCodeLabel "Codice">
 <!ENTITY typesLabelLabel "Etichetta">
 <!ENTITY addTypeLabel "Aggiungi">
@@ -123,7 +127,9 @@
 <!ENTITY resetTypeLabel "??Restore to Default??">
 <!ENTITY resetTypeAccesskey "R">
 <!ENTITY preferenceGroupboxLabel "Campo PREF">
-<!ENTITY preferenceValueLabel "Etichetta del valore campo PREF (solo per vCard 4.0)">
+<!ENTITY usePreferenceValueLabel "??Use a preference value?? (solo per vCard 4.0)">
+<!ENTITY usePreferenceValueAccesskey "??p??">
+<!ENTITY preferenceValueLabel "Etichetta del valore campo PREF">
 <!ENTITY preferenceValueAccesskey "V">
 
 <!ENTITY IMPPGroupboxWarn "Questa impostazione permette di aprire direttamente un profilo di messaggistica istantanea (IM) utilizzando il protocollo selezionato.">

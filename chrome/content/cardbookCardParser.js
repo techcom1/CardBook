@@ -29,6 +29,10 @@ if ("undefined" == typeof(cardbookCardParser)) {
 			this.nickname = "";
 			this.bday = "";
 			this.gender = "";
+			this.birthplace= "";
+			this.anniversary= "";
+			this.deathdate= "";
+			this.deathplace= "";
 			this.adr = [];
 			this.tel = [];
 			this.email = [];
@@ -359,6 +363,18 @@ if ("undefined" == typeof(cardbookCardParser)) {
 								break;
 							case "GENDER":
 								this.gender = vCardDataArrayTrailer;
+								break;
+							case "BIRTHPLACE":
+								this.birthplace = vCardDataArrayTrailer;
+								break;
+							case "ANNIVERSARY":
+								this.anniversary = vCardDataArrayTrailer;
+								break;
+							case "DEATHDATE":
+								this.deathdate = vCardDataArrayTrailer;
+								break;
+							case "DEATHPLACE":
+								this.deathplace = vCardDataArrayTrailer;
 								break;
 							case "MAILER":
 								this.mailer = vCardDataArrayTrailer;

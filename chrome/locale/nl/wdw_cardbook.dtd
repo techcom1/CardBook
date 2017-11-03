@@ -59,7 +59,7 @@
 <!ENTITY generalTabLabel "Algemeen">
 <!ENTITY mailPopularityTabLabel "Populariteit">
 <!ENTITY technicalTabLabel "Technisch">
-<!ENTITY vcardTabLabel "vCard">
+<!ENTITY vCardTabLabel "vCard">
 
 <!ENTITY cardIconColumnLabel "Pictogram">
 <!ENTITY nameColumnLabel "Naam">
@@ -102,9 +102,14 @@
 <!ENTITY kindColumnLabel "Soort">
 <!ENTITY revColumnLabel "Laatst bijgewerkt">
 <!ENTITY etagColumnLabel "Etag">
+<!ENTITY birthplaceColumnLabel "??Birth Place??">
+<!ENTITY anniversaryColumnLabel "??Anniversary??">
+<!ENTITY deathdateColumnLabel "??Deathday??">
+<!ENTITY deathplaceColumnLabel "??Death Place??">
 
 <!ENTITY categoriesGroupboxLabel "Categorieën">
 <!ENTITY noteTabLabel "Notities">
+<!ENTITY advancedTabLabel "Geavanceerd">
 
 <!ENTITY miscGroupboxLabel "Overig">
 <!ENTITY othersGroupboxLabel "Overig">

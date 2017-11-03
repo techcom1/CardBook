@@ -68,8 +68,10 @@
 <!ENTITY mailPopularityTabAccesskey "Р">
 <!ENTITY technicalTabLabel "Тех.данные">
 <!ENTITY technicalTabAccesskey "Т">
-<!ENTITY vcardTabLabel "vCard">
-<!ENTITY vcardTabAccesskey "V">
+<!ENTITY vCardTabLabel "vCard">
+<!ENTITY vCardTabAccesskey "V">
+<!ENTITY advancedTabLabel "Дополнительно">
+<!ENTITY advancedTabAccesskey "Д">
 <!ENTITY localizeEdittingGroupboxLabel "Использовать для показа местополжения:">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
@@ -112,6 +114,8 @@
 <!ENTITY typesCategoryTelAccesskey "Т">
 <!ENTITY typesCategoryUrlLabel "URL">
 <!ENTITY typesCategoryUrlAccesskey "U">
+<!ENTITY typesCategoryGenderLabel "Пол">
+<!ENTITY typesCategoryGenderAccesskey "П">
 <!ENTITY typesCodeLabel "Код">
 <!ENTITY typesLabelLabel "Метка">
 <!ENTITY addTypeLabel "Добавить">
@@ -123,7 +127,9 @@
 <!ENTITY resetTypeLabel "Сбросить до значений по умолчанию">
 <!ENTITY resetTypeAccesskey "C">
 <!ENTITY preferenceGroupboxLabel "Поле ПРИОРитет">
-<!ENTITY preferenceValueLabel "Метка для значения поля ПРИОРитет (только для vCard 4.0)">
+<!ENTITY usePreferenceValueLabel "??Use a preference value?? (только для vCard 4.0)">
+<!ENTITY usePreferenceValueAccesskey "??p??">
+<!ENTITY preferenceValueLabel "Метка для значения поля ПРИОРитет">
 <!ENTITY preferenceValueAccesskey "з">
 
 <!ENTITY IMPPGroupboxWarn "Эти настройки позволяют осуществлять связь через Интернет, используя указанный протокол.">

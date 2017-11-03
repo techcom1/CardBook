@@ -128,6 +128,27 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			document.getElementById(aMenuName).selectedIndex = defaultIndex;
 		},
 
+		loadGender: function (aPopupName, aMenuName, aDefaultId) {
+			var myPopup = document.getElementById(aPopupName);
+			cardbookElementTools.deleteRows(aPopupName);
+			var defaultIndex = 0;
+			var j = 0;
+			var myResult = [["", ""]];
+			var cardbookPrefService = new cardbookPreferenceService();
+			myResult = myResult.concat(cardbookPrefService.getAllTypesByType("gender"));
+			for (var i = 0; i < myResult.length; i++) {
+				var menuItem = document.createElement("menuitem");
+				menuItem.setAttribute("label", myResult[i][1]);
+				menuItem.setAttribute("value", myResult[i][0]);
+				myPopup.appendChild(menuItem);
+				if (myResult[i][0] == aDefaultId) {
+					defaultIndex=j;
+				}
+				j++;
+			}
+			document.getElementById(aMenuName).selectedIndex = defaultIndex;
+		},
+
 		loadMailAccounts: function (aPopupName, aMenuName, aDefaultId, aAddAllMailAccounts) {
 			var myPopup = document.getElementById(aPopupName);
 			cardbookElementTools.deleteRows(aPopupName);
