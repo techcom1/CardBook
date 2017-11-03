@@ -127,8 +127,8 @@
 <!ENTITY resetTypeLabel "Gendan standardvalg">
 <!ENTITY resetTypeAccesskey "d">
 <!ENTITY preferenceGroupboxLabel "PREF-felt">
-<!ENTITY usePreferenceValueLabel "??Use a preference value?? (kun for vCard 4.0)">
-<!ENTITY usePreferenceValueAccesskey "??p??">
+<!ENTITY usePreferenceValueLabel "Brug en foretrukken værdi (kun for vCard 4.0)">
+<!ENTITY usePreferenceValueAccesskey "f">
 <!ENTITY preferenceValueLabel "PREF-værdifeltets etiket">
 <!ENTITY preferenceValueAccesskey "P">
 
