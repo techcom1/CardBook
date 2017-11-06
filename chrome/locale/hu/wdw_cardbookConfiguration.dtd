@@ -125,10 +125,10 @@
 <!ENTITY deleteTypeAccesskey "T">
 <!ENTITY resetTypeLabel "Alapértelmezés">
 <!ENTITY resetTypeAccesskey "A">
-<!ENTITY preferenceGroupboxLabel "PREF mező">
-<!ENTITY usePreferenceValueLabel "??Use a preference value?? (csak vCard 4.0)">
-<!ENTITY usePreferenceValueAccesskey "??p??">
-<!ENTITY preferenceValueLabel "PREF mező érték címke">
+<!ENTITY preferenceGroupboxLabel "Preferenciális mező">
+<!ENTITY usePreferenceValueLabel "Használjon preferenciális értéket (csak vCard 4.0)">
+<!ENTITY usePreferenceValueAccesskey "p">
+<!ENTITY preferenceValueLabel "Preferenciális mező érték címke">
 <!ENTITY preferenceValueAccesskey "é">
 
 <!ENTITY IMPPGroupboxWarn "Internet kommunikációs Jegyzőkönyv beállítási.">
@@ -175,8 +175,8 @@
 <!ENTITY syncWarn "Összehangolás terjed a módosítások egy távoli szerver és a kiszolgáló módosításokat az Ön számára.">
 <!ENTITY initialSyncLabel "Thunderbird indításkor összehangolási futtatása">
 <!ENTITY initialSyncAccesskey "f">
-<!ENTITY initialSyncDelayLabel "??Delay for running first requests (seconds)??">
-<!ENTITY initialSyncDelayAccesskey "??D??">
+<!ENTITY initialSyncDelayLabel "Késlelteti a kezdeti kérelmeket (másodperc)">
+<!ENTITY initialSyncDelayAccesskey "K">
 <!ENTITY solveConflictsLabel "Ha ugyanaz névjegy volt helyi és szerver frissített:">
 <!ENTITY solveConflictsLocalLabel "Inkább a helyi módosítás">
 <!ENTITY solveConflictsLocalAccesskey "h">
