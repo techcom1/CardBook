@@ -104,7 +104,7 @@
 <!ENTITY etagColumnLabel "Etag">
 <!ENTITY birthplaceColumnLabel "Birth Place">
 <!ENTITY anniversaryColumnLabel "Anniversary">
-<!ENTITY deathdateColumnLabel "Death Date">
+<!ENTITY deathdateColumnLabel "Deathday">
 <!ENTITY deathplaceColumnLabel "Death Place">
 
 <!ENTITY categoriesGroupboxLabel "Categories">

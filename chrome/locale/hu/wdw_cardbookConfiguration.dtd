@@ -125,6 +125,7 @@
 <!ENTITY deleteTypeAccesskey "T">
 <!ENTITY resetTypeLabel "Alapértelmezés">
 <!ENTITY resetTypeAccesskey "A">
+<!ENTITY preferenceGroupboxLabel "PREF mező">
 <!ENTITY preferenceGroupboxLabel "Preferenciális mező">
 <!ENTITY usePreferenceValueLabel "Használjon preferenciális értéket (csak vCard 4.0)">
 <!ENTITY usePreferenceValueAccesskey "p">

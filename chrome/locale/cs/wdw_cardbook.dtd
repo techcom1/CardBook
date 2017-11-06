@@ -102,10 +102,10 @@
 <!ENTITY kindColumnLabel "Druh">
 <!ENTITY revColumnLabel "Poslední aktualizace">
 <!ENTITY etagColumnLabel "Etag">
-<!ENTITY birthplaceColumnLabel "??Birth Place??">
-<!ENTITY anniversaryColumnLabel "??Anniversary??">
-<!ENTITY deathdateColumnLabel "??Deathday??">
-<!ENTITY deathplaceColumnLabel "??Death Place??">
+<!ENTITY birthplaceColumnLabel "Místo narození">
+<!ENTITY anniversaryColumnLabel "Výroèí">
+<!ENTITY deathdateColumnLabel "Den úmrtí">
+<!ENTITY deathplaceColumnLabel "Místo úmrtí">
 
 <!ENTITY categoriesGroupboxLabel "Kategorie">
 <!ENTITY noteTabLabel "Poznámky">

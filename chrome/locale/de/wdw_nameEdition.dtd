@@ -8,7 +8,7 @@
 <!ENTITY nicknameLabel "Spitzname">
 <!ENTITY genderLabel "Geschlecht">
 <!ENTITY bdayLabel "Geburtstag">
-<!ENTITY birthplaceLabel "??Birth Place??">
-<!ENTITY anniversaryLabel "??Anniversary??">
-<!ENTITY deathdateLabel "??Deathday??">
-<!ENTITY deathplaceLabel "??Death Place??">
+<!ENTITY birthplaceLabel "Geburtsort">
+<!ENTITY anniversaryLabel "Jahrestag">
+<!ENTITY deathdateLabel "Todestag">
+<!ENTITY deathplaceLabel "Sterbeort">

@@ -127,8 +127,8 @@
 <!ENTITY resetTypeLabel "Zurücksetzen auf Standard">
 <!ENTITY resetTypeAccesskey "Z">
 <!ENTITY preferenceGroupboxLabel "Feld PREF">
-<!ENTITY usePreferenceValueLabel "??Use a preference value?? (vCard 4.0)">
-<!ENTITY usePreferenceValueAccesskey "??p??">
+<!ENTITY usePreferenceValueLabel "Benutze einen Präferenzwert (vCard 4.0)">
+<!ENTITY usePreferenceValueAccesskey "P">
 <!ENTITY preferenceValueLabel "Label des Werts des Felds PREF">
 <!ENTITY preferenceValueAccesskey "W">
 

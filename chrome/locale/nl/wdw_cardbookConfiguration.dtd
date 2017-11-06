@@ -127,8 +127,8 @@
 <!ENTITY resetTypeLabel "Herstellen naar standaardwaarde">
 <!ENTITY resetTypeAccesskey "H">
 <!ENTITY preferenceGroupboxLabel "Rubriek 'Voorkeur'">
-<!ENTITY usePreferenceValueLabel "??Use a preference value?? (uitsluitend voor vCard 4.0)">
-<!ENTITY usePreferenceValueAccesskey "??p??">
+<!ENTITY usePreferenceValueLabel "Gebruik voorkeurswaarde (uitsluitend voor vCard 4.0)">
+<!ENTITY usePreferenceValueAccesskey "k">
 <!ENTITY preferenceValueLabel "Naam van de rubriek 'Voorkeur'">
 <!ENTITY preferenceValueAccesskey "R">
 

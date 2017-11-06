@@ -8,7 +8,7 @@
 <!ENTITY nicknameLabel "Přezdívka">
 <!ENTITY genderLabel "Pohlaví">
 <!ENTITY bdayLabel "Narozeniny">
-<!ENTITY birthplaceLabel "??Birth Place??">
-<!ENTITY anniversaryLabel "??Anniversary??">
-<!ENTITY deathdateLabel "??Deathday??">
-<!ENTITY deathplaceLabel "??Death Place??">
+<!ENTITY birthplaceLabel "Místo narození">
+<!ENTITY anniversaryLabel "Výroèí">
+<!ENTITY deathdateLabel "Den úmrtí">
+<!ENTITY deathplaceLabel "Místo úmrtí">

@@ -127,8 +127,8 @@
 <!ENTITY resetTypeLabel "Obnovit na výchozí hodnotu">
 <!ENTITY resetTypeAccesskey "O">
 <!ENTITY preferenceGroupboxLabel "Pole PREF">
-<!ENTITY usePreferenceValueLabel "??Use a preference value?? (pouze pro vCard 4.0)">
-<!ENTITY usePreferenceValueAccesskey "??p??">
+<!ENTITY usePreferenceValueLabel "Použít hodnotu pøedvolby (pouze pro vCard 4.0)">
+<!ENTITY usePreferenceValueAccesskey "h">
 <!ENTITY preferenceValueLabel "Popisek hodnotového pole PREF">
 <!ENTITY preferenceValueAccesskey "k">
 

@@ -102,10 +102,10 @@
 <!ENTITY kindColumnLabel "Soort">
 <!ENTITY revColumnLabel "Laatst bijgewerkt">
 <!ENTITY etagColumnLabel "Etag">
-<!ENTITY birthplaceColumnLabel "??Birth Place??">
-<!ENTITY anniversaryColumnLabel "??Anniversary??">
-<!ENTITY deathdateColumnLabel "??Deathday??">
-<!ENTITY deathplaceColumnLabel "??Death Place??">
+<!ENTITY birthplaceColumnLabel "Geboorteplaats">
+<!ENTITY anniversaryColumnLabel "Verjaardag">
+<!ENTITY deathdateColumnLabel "Overlijdensdatum">
+<!ENTITY deathplaceColumnLabel "Overlijdensplaats">
 
 <!ENTITY categoriesGroupboxLabel "Categorieën">
 <!ENTITY noteTabLabel "Notities">

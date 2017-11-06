@@ -102,10 +102,10 @@
 <!ENTITY kindColumnLabel "Typ">
 <!ENTITY revColumnLabel "Zuletzt aktualisiert">
 <!ENTITY etagColumnLabel "Etag">
-<!ENTITY birthplaceColumnLabel "??Birth Place??">
-<!ENTITY anniversaryColumnLabel "??Anniversary??">
-<!ENTITY deathdateColumnLabel "??Deathday??">
-<!ENTITY deathplaceColumnLabel "??Death Place??">
+<!ENTITY birthplaceColumnLabel "Geburtsort">
+<!ENTITY anniversaryColumnLabel "Jahrestag">
+<!ENTITY deathdateColumnLabel "Todestag">
+<!ENTITY deathplaceColumnLabel "Sterbeort">
 
 <!ENTITY categoriesGroupboxLabel "Kategorien">
 <!ENTITY noteTabLabel "Notizen">
