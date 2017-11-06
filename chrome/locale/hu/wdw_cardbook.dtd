@@ -102,10 +102,10 @@
 <!ENTITY kindColumnLabel "Fajta">
 <!ENTITY revColumnLabel "Utoljára frissítve">
 <!ENTITY etagColumnLabel "Elektronikus címke">
-<!ENTITY birthplaceColumnLabel "??Birth Place??">
-<!ENTITY anniversaryColumnLabel "??Anniversary??">
-<!ENTITY deathdateColumnLabel "??Deathday??">
-<!ENTITY deathplaceColumnLabel "??Death Place??">
+<!ENTITY birthplaceColumnLabel "Születési hely">
+<!ENTITY anniversaryColumnLabel "Évforduló">
+<!ENTITY deathdateColumnLabel "Haláleset ideje">
+<!ENTITY deathplaceColumnLabel "Haláleset helye">
 
 <!ENTITY categoriesGroupboxLabel "Kategória">
 <!ENTITY noteTabLabel "Jegyzetek">
@@ -146,8 +146,8 @@
 <!ENTITY findeventemailTreeLabel "Naptári események keresése (e-mail alapján)">
 <!ENTITY openURLTreeLabel "Webcím hívatkozás megnyitása böngészőben">
 
-<!ENTITY copyCardTreeLabel "??Copy entry??">
-<!ENTITY pasteCardTreeLabel "??Paste entry??">
+<!ENTITY copyCardTreeLabel "Mező másolása">
+<!ENTITY pasteCardTreeLabel "Mező beillesztése">
 
 <!ENTITY toEmailCardFromAccountsOrCatsLabel "Új üzenet létrehozása (címzettek)">
 <!ENTITY toEmailCardFromCardsLabel "Új üzenet létrehozása (címzettek)">
