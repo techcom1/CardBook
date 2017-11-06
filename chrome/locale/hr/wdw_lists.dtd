@@ -1,0 +1,8 @@
+<!ENTITY listTabLabel "Popis">
+<!ENTITY kindLabel "Vrsta">
+<!ENTITY kindAccesskey "V">
+<!ENTITY availableCardsGroupboxLabel "Dostupni kontakti">
+<!ENTITY addedCardsGroupboxLabel "??Contacts list??">
+<!ENTITY appendlistTreeLabel "??Add to list??">
+<!ENTITY deletelistTreeLabel "??Remove from list??">
+<!ENTITY editCardFromListLabel "??Edit this contact??">
