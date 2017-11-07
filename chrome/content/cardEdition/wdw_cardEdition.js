@@ -759,9 +759,6 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 
 		showCorrectTabs: function () {
 			var prefs = Services.prefs;
-			Components.utils.import("resource://gre/modules/Services.jsm");
-			Services.console.logStringMessage("test");
-			Services.console.logStringMessage("test advancedTabView : " + prefs.getBoolPref("extensions.cardbook.advancedTabView").toSource());
 			document.getElementById('advancedTab').setAttribute("collapsed", !prefs.getBoolPref("extensions.cardbook.advancedTabView"));
 			document.getElementById('mailPopularityTab').setAttribute("collapsed", !prefs.getBoolPref("extensions.cardbook.mailPopularityTabView"));
 		},
