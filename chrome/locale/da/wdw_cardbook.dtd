@@ -104,8 +104,8 @@
 <!ENTITY etagColumnLabel "Etag">
 <!ENTITY birthplaceColumnLabel "Fødselssted">
 <!ENTITY anniversaryColumnLabel "Mærkedag">
-<!ENTITY deathdateColumnLabel "Dødsdag">
-<!ENTITY deathplaceColumnLabel "Dødssted">
+<!ENTITY deathdateColumnLabel "Død dato">
+<!ENTITY deathplaceColumnLabel "Død sted">
 
 <!ENTITY categoriesGroupboxLabel "Kategorier">
 <!ENTITY noteTabLabel "Noter">
