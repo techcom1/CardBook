@@ -10,5 +10,5 @@
 <!ENTITY bdayLabel "Fødselsdag">
 <!ENTITY birthplaceLabel "Fødselssted">
 <!ENTITY anniversaryLabel "Mærkedag">
-<!ENTITY deathdateLabel "Dødsdag">
-<!ENTITY deathplaceLabel "Dødssted">
+<!ENTITY deathdateLabel "Død dato">
+<!ENTITY deathplaceLabel "Død sted">

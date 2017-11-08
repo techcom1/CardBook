@@ -174,9 +174,9 @@
 
 <!ENTITY syncGroupboxLabel "Synkronisering">
 <!ENTITY syncWarn "Synkronisering sender dine ændringer til en fjern server, og sender serverens ændringer til dig.">
-<!ENTITY initialSyncLabel "Kør en initiel synkronisering ved opstart af Thunderbird">
+<!ENTITY initialSyncLabel "Kør synkronisering når Thunderbird starter">
 <!ENTITY initialSyncAccesskey "K">
-<!ENTITY initialSyncDelayLabel "Forsinkelse før første forespørgsel (sekunder)">
+<!ENTITY initialSyncDelayLabel "Forsinkelse før første synkronisering (sekunder)">
 <!ENTITY initialSyncDelayAccesskey "n">
 <!ENTITY solveConflictsLabel "Hvis en kontakt blev opdateret på både serveren og lokalt:">
 <!ENTITY solveConflictsLocalLabel "Foretræk den lokale ændring">
