@@ -12,7 +12,7 @@
 <!ENTITY newCardBookCardMenuLabel "Contatto di CardBook…">
 <!ENTITY newCardBookCardMenuAccesskey "C">
 <!ENTITY newCardBookCardMenuKey "N">
-<!ENTITY newCardBookSearchMenuLabel "??Search CardBook…??">
+<!ENTITY newCardBookSearchMenuLabel "Cerca CardBook…">
 <!ENTITY newCardBookSearchMenuAccesskey "C">
 <!ENTITY addToCardBookMenuLabel "Aggiungi a CardBook">
 <!ENTITY addToCardBookMenuAccesskey "g">
