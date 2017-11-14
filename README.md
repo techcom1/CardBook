@@ -74,6 +74,7 @@ Translations by:
 * Philippe Vigneau (fr)
 * Meri (hr)
 * Óvári (hu)
+* Stefano Bloisi (it)
 * Agnese Morettini (it)
 * Han Knols (nl)
 * Adam Gorzkiewicz (pl)
