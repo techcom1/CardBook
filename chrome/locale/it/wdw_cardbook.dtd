@@ -102,10 +102,10 @@
 <!ENTITY kindColumnLabel "Tipologia">
 <!ENTITY revColumnLabel "Ultimo aggiornamento">
 <!ENTITY etagColumnLabel "Etag">
-<!ENTITY birthplaceColumnLabel "??Birth Place??">
-<!ENTITY anniversaryColumnLabel "??Anniversary??">
-<!ENTITY deathdateColumnLabel "??Deathday??">
-<!ENTITY deathplaceColumnLabel "??Death Place??">
+<!ENTITY birthplaceColumnLabel "Luogo di nascita">
+<!ENTITY anniversaryColumnLabel "Anniversario">
+<!ENTITY deathdateColumnLabel "Giorno di morte">
+<!ENTITY deathplaceColumnLabel "Luogo di morte">
 
 <!ENTITY categoriesGroupboxLabel "Categorie">
 <!ENTITY noteTabLabel "Note">
@@ -147,7 +147,7 @@
 <!ENTITY openURLTreeLabel "Apri URL">
 
 <!ENTITY copyCardTreeLabel "Usa in copia">
-<!ENTITY pasteCardTreeLabel "??Paste entry??">
+<!ENTITY pasteCardTreeLabel "Incolla voce">
 
 <!ENTITY toEmailCardFromAccountsOrCatsLabel "Scrivi un nuovo messaggio">
 <!ENTITY toEmailCardFromCardsLabel "Scrivi un nuovo messaggio">
@@ -155,8 +155,8 @@
 <!ENTITY ccEmailCardFromCardsLabel "Scrivi un nuovo messaggio (in copia/CC)">
 <!ENTITY bccEmailCardFromAccountsOrCatsLabel "Scrivi un nuovo messaggio (in copia nascosta/BCC)">
 <!ENTITY bccEmailCardFromCardsLabel "Scrivi un nuovo messaggio (in copia nascosta/BCC)">
-<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "??Share by email??">
-<!ENTITY shareCardByEmailFromCardsLabel "??Share by email??">
+<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Condividi con email">
+<!ENTITY shareCardByEmailFromCardsLabel "Condividi con email">
 <!ENTITY categoryLabel "Categoria">
 <!ENTITY findEmailsFromCardsLabel "Trova email collegate a questo contatto">
 <!ENTITY findEventsFromCardsLabel "Trova eventi del calendario collegati a questo contatto">
@@ -173,10 +173,10 @@
 <!ENTITY importCardFromFileLabel "Importa contatti da file">
 <!ENTITY importCardFromDirLabel "Importa contatti da cartella">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Rinomina categoria">
-<!ENTITY convertCatFromAccountsOrCatsLabel "??Convert category to list??">
+<!ENTITY convertCatFromAccountsOrCatsLabel "Convertire categoria da elencare">
 <!ENTITY removeCatFromAccountsOrCatsLabel "Elimina categoria">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Trova i contatti duplicati nella rubrica corrente">
-<!ENTITY generateFnFromAccountsOrCatsLabel "??Generate Display Names??">
+<!ENTITY generateFnFromAccountsOrCatsLabel "Generare nome del display">
 <!ENTITY mergeCardsFromCardsLabel "Unisci contatti">
 <!ENTITY duplicateCardFromCardsLabel "Duplica contatto">
 <!ENTITY convertListToCategoryFromCardsLabel "Trasforma lista in categoria">
