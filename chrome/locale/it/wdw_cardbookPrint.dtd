@@ -3,9 +3,9 @@
 <!ENTITY titleAccesskey "T">
 <!ENTITY displayHeadersLabel "Mostra le intestazioni di paragrafo">
 <!ENTITY displayHeadersAccesskey "i">
-<!ENTITY displayFieldNamesLabel "??Field names??">
-<!ENTITY displayFieldNamesAccesskey "F">
-<!ENTITY displayTypesLabel "??Types and Preferences??">
+<!ENTITY displayFieldNamesLabel "Nomi di campo">
+<!ENTITY displayFieldNamesAccesskey "c">
+<!ENTITY displayTypesLabel "Modalità e preferenze">
 <!ENTITY displayTypesAccesskey "y">
 <!ENTITY whatToPrintGroupboxLabel "Cosa stampare">
 <!ENTITY displayLabel "Mostra nome">
