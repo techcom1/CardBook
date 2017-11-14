@@ -2,17 +2,17 @@
 <!ENTITY viewResultEditionAccesskey "V">
 <!ENTITY createEditionLabel "Kreiraj">
 <!ENTITY createEditionAccesskey "T">
-<!ENTITY createAndReplaceEditionLabel "??Create and replace??">
-<!ENTITY createAndReplaceEditionAccesskey "??R??">
-<!ENTITY saveEditionLabel "??Save??">
-<!ENTITY saveEditionAccesskey "??S??">
-<!ENTITY validateEditionLabel "??Validate??">
-<!ENTITY validateEditionAccesskey "??V??">
-<!ENTITY cancelEditionLabel "??Cancel??">
-<!ENTITY cancelEditionAccesskey "??C??">
-<!ENTITY closeEditionLabel "??Close??">
-<!ENTITY closeEditionAccesskey "??C??">
-<!ENTITY buttonAppendToListLabel "??Add??">
-<!ENTITY buttonAppendToListAccesskey "??A??">
-<!ENTITY buttonRemoveFromListLabel "??Remove??">
-<!ENTITY buttonRemoveFromListAccesskey "??O??">
+<!ENTITY createAndReplaceEditionLabel "kreiraj i zamijeni">
+<!ENTITY createAndReplaceEditionAccesskey "R">
+<!ENTITY saveEditionLabel "Sačuvaj">
+<!ENTITY saveEditionAccesskey "S">
+<!ENTITY validateEditionLabel "Potvrdi">
+<!ENTITY validateEditionAccesskey "V">
+<!ENTITY cancelEditionLabel "Poništi">
+<!ENTITY cancelEditionAccesskey "C">
+<!ENTITY closeEditionLabel "Zatvori">
+<!ENTITY closeEditionAccesskey "C">
+<!ENTITY buttonAppendToListLabel "Dodaj">
+<!ENTITY buttonAppendToListAccesskey "A">
+<!ENTITY buttonRemoveFromListLabel "Ukloni">
+<!ENTITY buttonRemoveFromListAccesskey "O">

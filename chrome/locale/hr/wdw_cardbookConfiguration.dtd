@@ -1,0 +1,263 @@
+<!ENTITY generalTabLabel "Općenito">
+<!ENTITY CardBookTabLabel "Kontakti karticu">
+<!ENTITY typesTabLabel "Vrste">
+<!ENTITY IMPPsTabLabel "Internet komunikacija">
+<!ENTITY customFieldsTabLabel "Prilagodi polja">
+<!ENTITY listsTabLabel "Popisi">
+<!ENTITY syncTabLabel "Sync.">
+<!ENTITY emailTabLabel "E-pošta">
+<!ENTITY birthdaylistTabLabel "Godišnjica">
+<!ENTITY synclistTabLabel "Podsjetnik o godišnjicama">
+
+<!ENTITY integrationGroupboxLabel "Uključenje Thunderbird-a">
+<!ENTITY autocompletionLabel "Automatsko okončanje e-pošta adresa">
+<!ENTITY autocompletionAccesskey "o">
+<!ENTITY autocompletionTooltip "Produžava standardno automatsko okončanje kontakata iz adresara iz Thunderbird-a s automatskim okončanjem kontakata iz adresara u Kontakti-u.">
+<!ENTITY autocompleteSortByPopularityLabel "Sortiraj e-pošta adrese prema popularnosti">
+<!ENTITY autocompleteSortByPopularityAccesskey "p">
+<!ENTITY autocompleteShowAddressbookLabel "Pokaži naziv adresara">
+<!ENTITY autocompleteShowAddressbookAccesskey "S">
+<!ENTITY autocompleteWithColorLabel "Upotrijebi boju adresara">
+<!ENTITY autocompleteWithColorAccesskey "c">
+<!ENTITY useColorLabel "Upotrijebi boju adresara za:">
+<!ENTITY useColorBackgroundLabel "Boja pozadine">
+<!ENTITY useColorBackgroundAccesskey "B">
+<!ENTITY useColorTextLabel "Boja teksta">
+<!ENTITY useColorTextAccesskey "T">
+<!ENTITY exclusiveLabel "Jedinstven izvor za kontakte">
+<!ENTITY exclusiveAccesskey "U">
+<!ENTITY exclusiveTooltip "Ako onemogućena ova opcija omogućava povrat kontakata u Thunderbird standardni adresar za žute zvjezdice, za prikaz naziva e-pošta i automatsko okončanje e-pošta.">
+<!ENTITY accountsRestrictionsLabel "Ograničenja poštanskog računa">
+<!ENTITY accountsRestrictionsEnabledLabel "Omogućen">
+<!ENTITY accountsRestrictionsMailNameLabel "Poštanksi račun">
+<!ENTITY accountsRestrictionsABNameLabel "Adresar">
+<!ENTITY accountsRestrictionsCatNameLabel "Kategorija">
+<!ENTITY accountsRestrictionsIncludeNameLabel "Vrsta">
+<!ENTITY addRestrictionLabel "Dodaj">
+<!ENTITY addRestrictionAccesskey "A">
+<!ENTITY renameRestrictionLabel "Uredi">
+<!ENTITY renameRestrictionAccesskey "E">
+<!ENTITY deleteRestrictionLabel "Izbriši">
+<!ENTITY deleteRestrictionAccesskey "D">
+<!ENTITY emailsCollectionLabel "Pokupi izlaznu e-pošta">
+<!ENTITY emailsCollectionTooltip "Produžava prikupljanje standardnih izlaznih e-pošta adresa u Thunderbird-u. Ako omogućen, e-pošta adrese nisu prisutne ni u jednom adresaru Kontakti-a adresar će biti dodat odabranom adresaru il adresarima.">
+<!ENTITY emailsCollectionEnabledLabel "Omogućen">
+<!ENTITY emailsCollectionMailNameLabel "Poštanski račun">
+<!ENTITY emailsCollectionABNameLabel "Adresar">
+<!ENTITY emailsCollectionCatNameLabel "Kategorija">
+<!ENTITY addEmailsCollectionLabel "Dodaj">
+<!ENTITY addEmailsCollectionAccesskey "A">
+<!ENTITY renameEmailsCollectionLabel "Uredi">
+<!ENTITY renameEmailsCollectionAccesskey "E">
+<!ENTITY deleteEmailsCollectionLabel "Izbriši">
+<!ENTITY deleteEmailsCollectionAccesskey "D">
+<!ENTITY logGroupboxLabel "Log - unesi">
+<!ENTITY debugModeLabel "Način Uklanjanja">
+<!ENTITY debugModeAccesskey "m">
+<!ENTITY debugModeTooltip "Omogući način uklanjanja za duži unos.">
+<!ENTITY statusInformationLineNumberLabel "Broj linija čuvanih u dosjeu sa zapisima.">
+<!ENTITY statusInformationLineNumberAccesskey "k">
+
+<!ENTITY tabsEdittingGroupboxLabel "Pokaži Tabs trake">
+<!ENTITY noteTabLabel "Bilješke">
+<!ENTITY noteTabAccesskey "N">
+<!ENTITY listTabLabel "Popis">
+<!ENTITY listTabAccesskey "L">
+<!ENTITY mailPopularityTabLabel "Popularnost pošte">
+<!ENTITY mailPopularityTabAccesskey "M">
+<!ENTITY technicalTabLabel "Tehnički">
+<!ENTITY technicalTabAccesskey "T">
+<!ENTITY vCardTabLabel "vCard">
+<!ENTITY vCardTabAccesskey "V">
+<!ENTITY advancedTabLabel "Napredan">
+<!ENTITY advancedTabAccesskey "N">
+<!ENTITY localizeEdittingGroupboxLabel "Lociraj s:">
+<!ENTITY localizeEngineOpenStreetMapLabel "Otvori StreetMap">
+<!ENTITY localizeEngineOpenStreetMapAccesskey "O">
+<!ENTITY localizeEngineGoogleMapsLabel "Google mape">
+<!ENTITY localizeEngineGoogleMapsAccesskey "G">
+<!ENTITY localizeEngineBingMapsLabel "Bing mape">
+<!ENTITY localizeEngineBingMapsAccesskey "B">
+<!ENTITY localizeTargetLabel "Otvori vanjske veze:">
+<!ENTITY localizeTargetInLabel "Unutar Thunderbird-a">
+<!ENTITY localizeTargetInAccesskey "I">
+<!ENTITY localizeTargetOutLabel "Izvan Thunderbird-a">
+<!ENTITY localizeTargetOutAccesskey "U">
+<!ENTITY showNameAsLabel "Pokaži imena kao">
+<!ENTITY showNameAsLFLabel "Prezime i ime">
+<!ENTITY showNameAsLFAccesskey "F">
+<!ENTITY showNameAsLFCommaLabel "Prezime, ime">
+<!ENTITY showNameAsLFCommaAccesskey "i">
+<!ENTITY showNameAsFLLabel "Ime i prezime">
+<!ENTITY showNameAsFLAccesskey "e">
+<!ENTITY showNameAsDSPLabel "Pokaži ime">
+<!ENTITY showNameAsDSPAccesskey "D">
+<!ENTITY fnLabelExplanation "Moguće je prilagoditi način na koji Kontakti stvara svoj prikaz imena. Formula se satoji od blokova unutar znaka'()'. U ovim blokovima su dva dijela ograničena znakom '|'.
+								Prvi dio se odnosi na uključen naziv, npr. {{1}}, nije poništen, drugi dio se odnosi kad je uključen naziv poništen.">
+<!ENTITY fnFormulaLabel "Stvori pokaži naziv">
+<!ENTITY fnFormulaAccesskey "y">
+<!ENTITY resetFnFormulaLabel "Vrati na izostavi">
+<!ENTITY resetFnFormulaAccesskey "R">
+<!ENTITY miscEdittingGroupboxLabel "Sve i svašta">
+<!ENTITY preferEmailEditionLabel "Dvaput kliknite uredi kontakte umjesto pošalji">
+<!ENTITY preferEmailEditionAccesskey "k">
+
+<!ENTITY typesGroupboxLabel "Vrste">
+<!ENTITY typesCategoryAdrLabel "Adresa">
+<!ENTITY typesCategoryAdrAccesskey "S">
+<!ENTITY typesCategoryEmailLabel "E-pošta">
+<!ENTITY typesCategoryEmailAccesskey "m">
+<!ENTITY typesCategoryImppLabel "IMPP">
+<!ENTITY typesCategoryImppAccesskey "I">
+<!ENTITY typesCategoryTelLabel "Telefon">
+<!ENTITY typesCategoryTelAccesskey "H">
+<!ENTITY typesCategoryUrlLabel "URL">
+<!ENTITY typesCategoryUrlAccesskey "U">
+<!ENTITY typesCategoryGenderLabel "Rod">
+<!ENTITY typesCategoryGenderAccesskey "R">
+<!ENTITY typesCodeLabel "Kod">
+<!ENTITY typesLabelLabel "Oznaka">
+<!ENTITY addTypeLabel "Add">
+<!ENTITY addTypeAccesskey "A">
+<!ENTITY renameTypeLabel "Uredi">
+<!ENTITY renameTypeAccesskey "E">
+<!ENTITY deleteTypeLabel "Izbriši">
+<!ENTITY deleteTypeAccesskey "D">
+<!ENTITY resetTypeLabel "Vrati na izostavi">
+<!ENTITY resetTypeAccesskey "R">
+<!ENTITY preferenceGroupboxLabel "Polje PREF">
+<!ENTITY usePreferenceValueLabel "Koristite željenu vrijednost (samo za vCard 4.0)">
+<!ENTITY usePreferenceValueAccesskey "ž">
+<!ENTITY preferenceValueLabel "Naziv vrijednosti polja PREF (samo za vCard 4.0)">
+<!ENTITY preferenceValueAccesskey "V">
+
+<!ENTITY IMPPGroupboxWarn "Ovako programirano omogućava komunikaciju putem Interneta koristeći željeni protokol.">
+<!ENTITY IMPPGroupboxLabel "Internet komunikacije">
+<!ENTITY preferIMPPPrefLabel "Više volim Internet komunikacije označene s">
+<!ENTITY preferIMPPPrefAccesskey "P">
+<!ENTITY preferIMPPPrefWarn "Ako nije označena adresa, veza je ponuđena za sve adrese tog kontakta.">
+<!ENTITY IMPPCodeLabel "Kod">
+<!ENTITY IMPPLabelLabel "Naziv">
+<!ENTITY IMPPProtocolLabel "Protokol">
+<!ENTITY addIMPPLabel "Dodaj">
+<!ENTITY addIMPPAccesskey "A">
+<!ENTITY renameIMPPLabel "Uredi">
+<!ENTITY renameIMPPAccesskey "E">
+<!ENTITY deleteIMPPLabel "Izbriši">
+<!ENTITY deleteIMPPAccesskey "D">
+
+<!ENTITY customFieldRankLabel "Rangiranje">
+<!ENTITY customFieldCodeLabel "Ime polja">
+<!ENTITY customFieldLabelLabel "Naziv polja">
+<!ENTITY customFieldsPersTitleLabel "Osobne informacije">
+<!ENTITY customFieldsPersTitleAccesskey "P">
+<!ENTITY customFieldsOrgTitleLabel "Professional Information">
+<!ENTITY customFieldsOrgTitleAccesskey "r">
+<!ENTITY addCustomFieldsLabel "Dodaj">
+<!ENTITY addCustomFieldsAccesskey "A">
+<!ENTITY renameCustomFieldsLabel "Uredi">
+<!ENTITY renameCustomFieldsAccesskey "E">
+<!ENTITY deleteCustomFieldsLabel "Delete">
+<!ENTITY deleteCustomFieldsAccesskey "D">
+
+<!ENTITY orgWarn "Polje ORG može imati vrijednost organiziranog teksta sastavljenog od dijelova odvojenih znakom TOČKA SA ZAREZOM(npr. : vaša kompanija;vaša usluga;vaš odjel). Polja niže opisuju dijelove naziva ove strukture.">
+
+<!ENTITY listPanelLabel "Ako vaš poslužitelj ne podržava kategorije  (kao Google, Apple, Zimbra, itd…), dobar način za slanje e-pošta skupinama jest putem liste. vCard 3.0 normalno ne podržava liste, no to se može postići pomoću prilagođenih polja, pa ako se želite koristiti popisima u vCard 3.0, morate definirati ta polja.">
+<!ENTITY listGroupboxLabel "Prilagođena polja za popise">
+<!ENTITY kindCustomLabel "Vrsta">
+<!ENTITY kindCustomAccesskey "K">
+<!ENTITY memberCustomLabel "Član">
+<!ENTITY memberCustomAccesskey "M">
+<!ENTITY resetListLabel "Vrati na izostavi">
+<!ENTITY resetListAccesskey "R">
+
+<!ENTITY syncGroupboxLabel "Sync.">
+<!ENTITY syncWarn "Sinhroniziranje raznosi vaše preinake udaljenom poslužitelju i poslužiteljeve preinake vama.">
+<!ENTITY initialSyncLabel "Pokreni početnu sinhronizaciju kad počne Thunderbird">
+<!ENTITY initialSyncAccesskey "R">
+<!ENTITY initialSyncDelayLabel "Početno kašnjenje sinkronizacije (sekundi)">
+<!ENTITY initialSyncDelayAccesskey "P">
+<!ENTITY solveConflictsLabel "If a contact was updated both on server and locally:">
+<!ENTITY solveConflictsLocalLabel "Draža mi je lokalna preinaka">
+<!ENTITY solveConflictsLocalAccesskey "L">
+<!ENTITY solveConflictsRemoteLabel "Prefer the server modification">
+<!ENTITY solveConflictsRemoteAccesskey "S">
+<!ENTITY solveConflictsUserLabel "Ask user">
+<!ENTITY solveConflictsUserAccesskey "A">
+<!ENTITY autoSyncGroupboxLabel "Periodic Syncing">
+<!ENTITY autoSyncLabel "Omogući povremeno usklađivanje">
+<!ENTITY autoSyncAccesskey "E">
+<!ENTITY autoSyncIntervalLabel "Interval za povremeno usklađivanje (minuta)">
+<!ENTITY autoSyncIntervalAccesskey "I">
+<!ENTITY requestsGroupboxLabel "Zahtjevi">
+<!ENTITY requestsTimeoutLabel "Pauza (sekundi)">
+<!ENTITY requestsTimeoutAccesskey "T">
+<!ENTITY multigetLabel "Za zahtjeve GET, skupni kontakti preko">
+<!ENTITY multigetAccesskey "G">
+<!ENTITY advancedSyncGroupboxLabel "Napredna svojstva">
+<!ENTITY decodeReportLabel "Dekodiraj URLs za REPORT zahtjeve">
+<!ENTITY decodeReportAccesskey "D">
+
+<!ENTITY miscEmailGroupboxLabel "Šalje e-poštae">
+<!ENTITY preferEmailPrefLabel "Najdraže e-pošta adrese označene s ">
+<!ENTITY preferEmailPrefAccesskey "P">
+<!ENTITY preferEmailPrefWarn "Ako nijedna adresa nije označena, poruka se šalje na sve adrese tog kontakta.">
+<!ENTITY warnEmptyEmailsLabel "Upozori me ako pokušavam poslati e-pošta kontaktima bez e-pošta adrese.">
+<!ENTITY warnEmptyEmailsAccesskey "W">
+<!ENTITY useOnlyEmailLabel "Koristite samo adrese e-pošte, bez njihovih naziva zaslona">
+<!ENTITY useOnlyEmailAccesskey "O">
+<!ENTITY attachvCardWarn "Da automatski dodate vCard uz svoje e-poštae, odaberite za svaki e-pošta račun.Ako je aktivirana, Kontakti će dodati tu vCard svakoj izlaznoj pošti s ovog računa.">
+<!ENTITY attachvCardGroupboxLabel "Priključi se u vCard">
+<!ENTITY accountsVCardsEnabledLabel "Omogućen">
+<!ENTITY accountsVCardsMailLabel "Naziv računa">
+<!ENTITY accountsVCardsABNameLabel "Adresar">
+<!ENTITY accountsVCardsFileNameLabel "Priložite datoteku">
+<!ENTITY accountsVCardsFnLabel "Kontakt">
+<!ENTITY addVCardLabel "Dodaj">
+<!ENTITY addVCardAccesskey "A">
+<!ENTITY renameVCardLabel "Uredi">
+<!ENTITY renameVCardAccesskey "E">
+<!ENTITY deleteVCardLabel "Izbriši">
+<!ENTITY deleteVCardAccesskey "D">
+
+<!ENTITY birthdayListWarn "Traži samo godišnjice unutar Kontakti adresara. Format datuma za godišnjice je unijet u vrijednostima u adresaru.">
+<!ENTITY addressBooksGroupboxLabel "Adresar">
+<!ENTITY calendarsGroupboxLabel "Kalendari">
+<!ENTITY searchGroupboxLabel "Traži">
+<!ENTITY searchInNoteLabel "Polje napomena za pretraživanje za obljetnice događaja">
+<!ENTITY searchInNoteTooltip1 "Dodaj takve linije u polje bilježaka (treba biti odvojeno: a način pisanja datuma treba biti definiran isto kao u adresaru.) :">
+<!ENTITY searchInNoteTooltip2 "Događaj:Opis:02.12.2006">
+<!ENTITY searchInNoteAccesskey "S">
+<!ENTITY dateFormatLabel "Format očekivanog datuma">
+<!ENTITY dateFormatAccesskey "E">
+
+<!ENTITY remindersTabLabel "Podsjetnici">
+<!ENTITY remindViaPopupWindowGroupboxLabel "Remind via Popup Window">
+<!ENTITY numberOfDaysForSearchingLabel "Broj dana do provjere godišnjice za">
+<!ENTITY numberOfDaysForSearchingAccesskey "N">
+<!ENTITY showPopupOnStartupLabel "Pokaži okno popup pri uključenju">
+<!ENTITY showPopupOnStartupAccesskey "S">
+<!ENTITY showPeriodicPopupLabel "Pokaži dnevne popup poruke">
+<!ENTITY showPeriodicPopupAccesskey "d">
+<!ENTITY periodicPopupTimeLabel "Pokaži vrijeme (hh:mm)">
+<!ENTITY periodicPopupTimeAccesskey "i">
+<!ENTITY showPopupEvenIfNoBirthdayLabel "Pokaži okno popup kad je popis godišnjica prazan">
+<!ENTITY showPopupEvenIfNoBirthdayAccesskey "h">
+<!ENTITY remindViaLightningGroupboxLabel "Podsjeti preko Thunderbird Lightning Calendar Extension">
+<!ENTITY numberOfDaysForWritingLabel "Broj dana do pisanja godišnjica">
+<!ENTITY numberOfDaysForWritingAccesskey "w">
+<!ENTITY syncWithLightningOnStartupLabel "Sinhroniziraj s Lightning kod uključenja">
+<!ENTITY syncWithLightningOnStartupAccesskey "L">
+<!ENTITY calendarEntryTitleLabel "Title for calendar event">
+<!ENTITY calendarEntryTitleTooltip "Template title for the calendar event. It should contain two placeholders &#37;S, respectively replaced by name and age. If the field is empty, a standard message is used.">
+<!ENTITY calendarEntryTitleAccesskey "T">
+<!ENTITY calendarEntryTimeLabel "Time for calendar event (hh:mm)">
+<!ENTITY calendarEntryTimeAccesskey "m">
+<!ENTITY calendarEntryWholeDayLabel "Cijeli dan događaj iz kalendara">
+<!ENTITY calendarEntryWholeDayAccesskey "y">
+<!ENTITY calendarEntryAlarmLabel "Upozori do x broja dana prije događaja iz kalendara.">
+<!ENTITY calendarEntryAlarmTooltip "Unesi koliko dana ranije da te Lightning upozori na godišnjicu na koju te treba podsjetiti.  Lightning's alarm should remind you. Without date. If the field is empty, there would be no alarm.">
+<!ENTITY calendarEntryAlarmAccesskey "n">
+<!ENTITY calendarEntryCategoriesLabel "Kategorija(-e) za događaj u kalendaru">
+<!ENTITY calendarEntryCategoriesTooltip "One or more categories, comma separated. If the field is empty, there would be no category.">
+<!ENTITY calendarEntryCategoriesAccesskey "g">

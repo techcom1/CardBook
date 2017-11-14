@@ -2,8 +2,13 @@
 <!ENTITY fnLabel "Prikaži ime">
 <!ENTITY lastnameLabel "Prezime">
 <!ENTITY firstnameLabel "Ime">
-<!ENTITY othernameLabel "??Other Name??">
-<!ENTITY suffixnameLabel "??Suffix??">
-<!ENTITY prefixnameLabel "??Prefix??">
-<!ENTITY nicknameLabel "??Nickname??">
-<!ENTITY genderLabel "??Gender??">
+<!ENTITY othernameLabel "Ostala imena">
+<!ENTITY suffixnameLabel "Nastavak">
+<!ENTITY prefixnameLabel "Titula">
+<!ENTITY nicknameLabel "Nadimak">
+<!ENTITY genderLabel "Spol">
+<!ENTITY bdayLabel "Rođendan">
+<!ENTITY birthplaceLabel "Rodno mjesto">
+<!ENTITY anniversaryLabel "Godišnjica">
+<!ENTITY deathdateLabel "Datum smrti">
+<!ENTITY deathplaceLabel "Mjesto smrti">

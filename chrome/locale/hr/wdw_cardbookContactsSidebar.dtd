@@ -2,10 +2,10 @@
 <!ENTITY categoriesPicker.accesskey "t">
 <!ENTITY editAddrBookCard.label "Uredi">
 <!ENTITY editAddrBookCard.accesskey "E">
-<!ENTITY searchContacts.label "Search For:">
+<!ENTITY searchContacts.label "Pretraži kontakte:">
 <!ENTITY searchContacts.accesskey "o">
-<!ENTITY name.label "Name">
-<!ENTITY addtoReplytoFieldMenu.label "Add to Reply-To field">
+<!ENTITY name.label "Ime">
+<!ENTITY addtoReplytoFieldMenu.label "Dodaj u polje Odgovor na:">
 <!ENTITY addtoReplytoFieldMenu.accesskey "l">
-<!ENTITY replytoButton.label "Add to Reply-To:">
+<!ENTITY replytoButton.label "Dodaj u Odgovor na:">
 <!ENTITY replytoButton.accesskey "l">
