@@ -1,5 +1,5 @@
 <!ENTITY generalTabLabel "Generale">
-<!ENTITY CardBookTabLabel "??CardBook Tab??">
+<!ENTITY CardBookTabLabel "CardBook scheda">
 <!ENTITY typesTabLabel "Tipi">
 <!ENTITY IMPPsTabLabel "Indirizzi di messaggistica istantanea">
 <!ENTITY customFieldsTabLabel "Campi personalizzati">
@@ -13,21 +13,21 @@
 <!ENTITY autocompletionLabel "Autocompletamento degli indirizzi email">
 <!ENTITY autocompletionAccesskey "e">
 <!ENTITY autocompletionTooltip "Sostituisce la funzionalità standard di autocompletamento degli indirizzi nelle rubriche di Thunderbird con l'autocompletamento dei contatti nelle rubriche in CardBook.">
-<!ENTITY autocompleteSortByPopularityLabel "??Sort email addresses by popularity??">
+<!ENTITY autocompleteSortByPopularityLabel "Ordinare indirizzi email addresses secondo popolarità">
 <!ENTITY autocompleteSortByPopularityAccesskey "p">
-<!ENTITY autocompleteShowAddressbookLabel "??Show address book name??">
-<!ENTITY autocompleteShowAddressbookAccesskey "S">
-<!ENTITY autocompleteWithColorLabel "??Use address book color??">
+<!ENTITY autocompleteShowAddressbookLabel "Mostra nome rubrica">
+<!ENTITY autocompleteShowAddressbookAccesskey "M">
+<!ENTITY autocompleteWithColorLabel "Usa colore rubrica">
 <!ENTITY autocompleteWithColorAccesskey "U">
-<!ENTITY useColorLabel "??Use address book color for:??">
-<!ENTITY useColorBackgroundLabel "??Background color??">
-<!ENTITY useColorBackgroundAccesskey "B">
-<!ENTITY useColorTextLabel "??Text color??">
-<!ENTITY useColorTextAccesskey "T">
+<!ENTITY useColorLabel "Usa colore rubrica per:">
+<!ENTITY useColorBackgroundLabel "Colore sfondo">
+<!ENTITY useColorBackgroundAccesskey "s">
+<!ENTITY useColorTextLabel "Colore testo">
+<!ENTITY useColorTextAccesskey "t">
 <!ENTITY exclusiveLabel "CardBook come fonte unica dei contatti">
 <!ENTITY exclusiveAccesskey "U">
 <!ENTITY exclusiveTooltip "Se disabilitata, questa opzione permette di recuperare i contatti nelle rubriche standard di Thunderbird per le stelline gialle, il nome mostrato nell'email e l'autocompletamento dell'email.">
-<!ENTITY accountsRestrictionsLabel "??Mail Account Restrictions??">
+<!ENTITY accountsRestrictionsLabel "Restrizioni indirizzo postale">
 <!ENTITY accountsRestrictionsEnabledLabel "Abilitato">
 <!ENTITY accountsRestrictionsMailNameLabel "Account email">
 <!ENTITY accountsRestrictionsABNameLabel "Rubrica">
@@ -93,11 +93,11 @@
 <!ENTITY showNameAsFLAccesskey "N">
 <!ENTITY showNameAsDSPLabel "Mostra nome">
 <!ENTITY showNameAsDSPAccesskey "M">
-<!ENTITY fnLabelExplanation "??It is possible to customize the way CardBook generates its Display Name. This formula consists in blocks enclosed by '()'. In these blocks, there are two parts delimited by '|'.
-								The first part applies when the term involved, for example {{1}}, is not null, the second part applies when the term involved is null.??">
-<!ENTITY fnFormulaLabel "??Generate Display Name??">
-<!ENTITY fnFormulaAccesskey "P">
-<!ENTITY resetFnFormulaLabel "??Restore to Default??">
+<!ENTITY fnLabelExplanation "E’ possibile modificare le modalita’ in cui CardBook genera il nome in mostra. Questa formula consiste in blocchi racchiusi da '()'. In questi blocchi, ci sono due parti delimitate da '|'.
+								La prima parte è applicata quando la parola usata, per esempio {{1}}, non è nulla, la seconda parte è applicata quando la parola usata è nulla.">
+<!ENTITY fnFormulaLabel "Genera Nome Display">
+<!ENTITY fnFormulaAccesskey "p">
+<!ENTITY resetFnFormulaLabel "Ripristina al Default">
 <!ENTITY resetFnFormulaAccesskey "R">
 <!ENTITY miscEdittingGroupboxLabel "Varie">
 <!ENTITY preferEmailEditionLabel "Doppio click su un contatto apre la modifica anziché inviare una email.">
@@ -124,19 +124,19 @@
 <!ENTITY renameTypeAccesskey "R">
 <!ENTITY deleteTypeLabel "Elimina">
 <!ENTITY deleteTypeAccesskey "E">
-<!ENTITY resetTypeLabel "??Restore to Default??">
+<!ENTITY resetTypeLabel "Ripristina al Default">
 <!ENTITY resetTypeAccesskey "R">
 <!ENTITY preferenceGroupboxLabel "Campo PREF">
-<!ENTITY usePreferenceValueLabel "??Use a preference value?? (solo per vCard 4.0)">
-<!ENTITY usePreferenceValueAccesskey "??p??">
+<!ENTITY usePreferenceValueLabel "Usa un valore preferito (solo per vCard 4.0)">
+<!ENTITY usePreferenceValueAccesskey "p">
 <!ENTITY preferenceValueLabel "Etichetta del valore campo PREF">
 <!ENTITY preferenceValueAccesskey "V">
 
 <!ENTITY IMPPGroupboxWarn "Questa impostazione permette di aprire direttamente un profilo di messaggistica istantanea (IM) utilizzando il protocollo selezionato.">
 <!ENTITY IMPPGroupboxLabel "Indirizzi di messaggistica istantanea">
-<!ENTITY preferIMPPPrefLabel "??Prefer Internet Communications marked with ??">
+<!ENTITY preferIMPPPrefLabel "Preferisci comunicazioni Internet marcate da ">
 <!ENTITY preferIMPPPrefAccesskey "P">
-<!ENTITY preferIMPPPrefWarn "??If no address is marked, a connection is proposed for all of the contact's addresses.??">
+<!ENTITY preferIMPPPrefWarn "Se non è marcato alcun indirizzo, una connessione è proposta per tutti gli indirizzi dei contatti.">
 <!ENTITY IMPPCodeLabel "Codice">
 <!ENTITY IMPPLabelLabel "Etichetta">
 <!ENTITY IMPPProtocolLabel "Protocollo">
@@ -147,7 +147,7 @@
 <!ENTITY deleteIMPPLabel "Elimina">
 <!ENTITY deleteIMPPAccesskey "E">
 
-<!ENTITY customFieldRankLabel "??Rank??">
+<!ENTITY customFieldRankLabel "Classificazione">
 <!ENTITY customFieldCodeLabel "Nome del campo">
 <!ENTITY customFieldLabelLabel "Etichetta del campo">
 <!ENTITY customFieldsPersTitleLabel "Informazioni personali">
@@ -169,15 +169,15 @@
 <!ENTITY kindCustomAccesskey "K">
 <!ENTITY memberCustomLabel "Membro">
 <!ENTITY memberCustomAccesskey "M">
-<!ENTITY resetListLabel "??Restore to Default??">
+<!ENTITY resetListLabel "Ripristina al Default">
 <!ENTITY resetListAccesskey "R">
 
 <!ENTITY syncGroupboxLabel "Sincronizzazione">
 <!ENTITY syncWarn "La sincronizzazione invia le modifiche da Thunderbird a un server remoto e viceversa.">
 <!ENTITY initialSyncLabel "Effettua una sincronizzazione all'avvio di Thunderbird">
 <!ENTITY initialSyncAccesskey "R">
-<!ENTITY initialSyncDelayLabel "??Delay for running first requests (seconds)??">
-<!ENTITY initialSyncDelayAccesskey "??D??">
+<!ENTITY initialSyncDelayLabel "Ritardo per richiesta (secondi)">
+<!ENTITY initialSyncDelayAccesskey "R">
 <!ENTITY solveConflictsLabel "Se un contatto è stato aggiornato sia sul server remoto che localmente:">
 <!ENTITY solveConflictsLocalLabel "Prediligi le modifiche in locale">
 <!ENTITY solveConflictsLocalAccesskey "L">
@@ -203,9 +203,9 @@
 <!ENTITY preferEmailPrefLabel "Prediligi gli indirizzi email contrassegnati come PREFeriti">
 <!ENTITY preferEmailPrefAccesskey "P">
 <!ENTITY preferEmailPrefWarn "Se nessun indirizzo è contrassegnato come 'PREFerito', il messaggio viene inviato a tutti gli indirizzi email del contatto.">
-<!ENTITY warnEmptyEmailsLabel "??Warn me when I attempt to email contacts without an email address??">
+<!ENTITY warnEmptyEmailsLabel "Avvisami quando provo a spedire una email senza indirizzo">
 <!ENTITY warnEmptyEmailsAccesskey "W">
-<!ENTITY useOnlyEmailLabel "??Only use email addresses, without their Display Names??">
+<!ENTITY useOnlyEmailLabel "Usa solo indirizzi, senza il loro Nome di Display">
 <!ENTITY useOnlyEmailAccesskey "O">
 <!ENTITY attachvCardWarn "Per aggiungere automaticamente una vCard alle tue email, seleziona una vCard per ogni account email. Se questa funzione è abilitata, CardBook allegherà questa vCard a ogni email in uscita da questo account.">
 <!ENTITY attachvCardGroupboxLabel "Unisci una vCard">
@@ -221,7 +221,7 @@
 <!ENTITY deleteVCardLabel "Elimina">
 <!ENTITY deleteVCardAccesskey "E">
 
-<!ENTITY birthdayListWarn "È possibile effettuare una ricerca per compleanno solo nelle rubriche di CardBook.?? Birthdays date formats are set up in the address book properties.??">
+<!ENTITY birthdayListWarn "È possibile effettuare una ricerca per compleanno solo nelle rubriche di CardBook. I formati delle date di compleanno sono organizzati nelle proprietà delle rubriche.">
 <!ENTITY addressBooksGroupboxLabel "Rubriche">
 <!ENTITY calendarsGroupboxLabel "Calendari">
 <!ENTITY searchGroupboxLabel "Cerca">
