@@ -1,0 +1,9 @@
+<!ENTITY persTitleLabel "Osobni podaci">
+<!ENTITY fnLabel "Prikaži ime">
+<!ENTITY lastnameLabel "Prezime">
+<!ENTITY firstnameLabel "Ime">
+<!ENTITY othernameLabel "??Other Name??">
+<!ENTITY suffixnameLabel "??Suffix??">
+<!ENTITY prefixnameLabel "??Prefix??">
+<!ENTITY nicknameLabel "??Nickname??">
+<!ENTITY genderLabel "??Gender??">
