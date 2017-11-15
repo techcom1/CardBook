@@ -23,7 +23,7 @@
 
 <!ENTITY cardbookToolbarLabel "Barra degli strumenti di CardBook">
 <!ENTITY cardbookToolbarAccesskey "a">
-<!ENTITY cardbookABPaneToolbarLabel "??CardBook Address Book Pane Toolbar??">
+<!ENTITY cardbookABPaneToolbarLabel "Barra degli strumenti del pannello delle rubrica">
 <!ENTITY cardbookABPaneToolbarAccesskey "??d??">
 <!ENTITY CustomizeCardBookToolbarLabel "Personalizza">
 <!ENTITY CustomizeCardBookToolbarAccesskey "C">
