@@ -216,8 +216,8 @@
 <!ENTITY warnEmptyEmailsAccesskey "W">
 <!ENTITY useOnlyEmailLabel "Usa solo indirizzi, senza il loro Nome di Display">
 <!ENTITY useOnlyEmailAccesskey "O">
-<!ENTITY attachvCardWarn "Per aggiungere automaticamente una vCard alle tue email, seleziona una vCard per ogni account email. Se questa funzione è abilitata, CardBook allegherà questa vCard a ogni email in uscita da questo account.">
-<!ENTITY attachvCardGroupboxLabel "Unisci una vCard">
+<!ENTITY attachVCardWarn "Per aggiungere automaticamente una vCard alle tue email, seleziona una vCard per ogni account email. Se questa funzione è abilitata, CardBook allegherà questa vCard a ogni email in uscita da questo account.">
+<!ENTITY attachVCardGroupboxLabel "Unisci una vCard">
 <!ENTITY accountsVCardsEnabledLabel "Abilitato">
 <!ENTITY accountsVCardsMailLabel "Account email">
 <!ENTITY accountsVCardsABNameLabel "Rubrica">
