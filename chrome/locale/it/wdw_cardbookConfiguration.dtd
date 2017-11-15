@@ -226,7 +226,7 @@
 <!ENTITY calendarsGroupboxLabel "Calendari">
 <!ENTITY searchGroupboxLabel "Cerca">
 <!ENTITY searchInNoteLabel "Cerca i compleanni nel campo Note">
-<!ENTITY searchInNoteTooltip1 "??Add such lines in the Note field  (separator should be : and the date format should be the one defined for the address book) :??">
+<!ENTITY searchInNoteTooltip1 "Aggiungi questa riga nel campo Note (separatori dovrebbero essere: e il formato della data dovrebbe essere lo stesso identificato nella rubrica) :">
 <!ENTITY searchInNoteTooltip2 "Evento:Descrizione:02.12.2006">
 <!ENTITY searchInNoteTooltipOld "Aggiungere questa tipologia di riche nel campo Note (come separatore, utilizzare il carattere DUE PUNTI ':' e utilizzare il seguente formato per la data): Compleanno:Io e Te, primo bacio:02.12.2006">
 <!ENTITY searchInNoteAccesskey "S">
