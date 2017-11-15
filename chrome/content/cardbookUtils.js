@@ -2793,6 +2793,20 @@ if ("undefined" == typeof(cardbookUtils)) {
 			return uuidGen.generateUUID().toString().replace(/[{}]/g, '');
 		},
 
+		decodeURL: function (aURL) {
+			var relative = aURL.match("(https?)(://[^/]*)/([^#?]*)");
+			if (relative && relative[3]) {
+				var relativeHrefArray = [];
+				relativeHrefArray = relative[3].split("/");
+				for (var i = 0; i < relativeHrefArray.length; i++) {
+					relativeHrefArray[i] = decodeURIComponent(relativeHrefArray[i]);
+				}
+				return relative[1] + relative[2] + "/" + relativeHrefArray.join("/");
+			} else {
+				return aURL;
+			}
+		},
+
 		notifyObservers: function (aTopic, aParam) {
 			if (aTopic != null && aTopic !== undefined && aTopic != "") {
 				Services.obs.notifyObservers(null, aTopic, aParam);

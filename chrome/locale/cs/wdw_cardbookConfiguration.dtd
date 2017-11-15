@@ -195,6 +195,15 @@
 <!ENTITY requestsTimeoutAccesskey "L">
 <!ENTITY multigetLabel "Velikost skupiny při GET požadavcích">
 <!ENTITY multigetAccesskey "V">
+<!ENTITY discoveryGroupboxLabel "??Address books discovery??">
+<!ENTITY discoveryWarn "??At every synchronization, a check on the URLs below will be run to search for any new or deleted address books.??">
+<!ENTITY discoveryURLLabel "URL">
+<!ENTITY addURLLabel "Přidat">
+<!ENTITY addURLAccesskey "P">
+<!ENTITY renameURLLabel "Upravit">
+<!ENTITY renameURLAccesskey "U">
+<!ENTITY deleteURLLabel "Smazat">
+<!ENTITY deleteURLAccesskey "S">
 <!ENTITY advancedSyncGroupboxLabel "Pokročilé vlastnosti">
 <!ENTITY decodeReportLabel "Dekódovat URL pro REPORT požadavky">
 <!ENTITY decodeReportAccesskey "D">
@@ -207,8 +216,8 @@
 <!ENTITY warnEmptyEmailsAccesskey "U">
 <!ENTITY useOnlyEmailLabel "Použít pouze e-mailové adresy">
 <!ENTITY useOnlyEmailAccesskey "P">
-<!ENTITY attachvCardWarn "Pokud chcete ke každé zprávě automaticky přiložit svou vizitku, zvolte pro každý e-mailový účet, která se má použít. Pokud je aktivní, CardBook automaticky přiloží vybranou vizitku ke každé odchozí zprávě.">
-<!ENTITY attachvCardGroupboxLabel "Připojit vCard">
+<!ENTITY attachVCardWarn "Pokud chcete ke každé zprávě automaticky přiložit svou vizitku, zvolte pro každý e-mailový účet, která se má použít. Pokud je aktivní, CardBook automaticky přiloží vybranou vizitku ke každé odchozí zprávě.">
+<!ENTITY attachVCardGroupboxLabel "Připojit vCard">
 <!ENTITY accountsVCardsEnabledLabel "Povolen">
 <!ENTITY accountsVCardsMailLabel "E-mailový účet">
 <!ENTITY accountsVCardsABNameLabel "Adresář">

@@ -194,6 +194,15 @@
 <!ENTITY requestsTimeoutAccesskey "I">
 <!ENTITY multigetLabel "GET kéréseket, csoport névjegyek">
 <!ENTITY multigetAccesskey "G">
+<!ENTITY discoveryGroupboxLabel "??Address books discovery??">
+<!ENTITY discoveryWarn "??At every synchronization, a check on the URLs below will be run to search for any new or deleted address books.??">
+<!ENTITY discoveryURLLabel "URL">
+<!ENTITY addURLLabel "Új…">
+<!ENTITY addURLAccesskey "j">
+<!ENTITY renameURLLabel "Szerkesztés…">
+<!ENTITY renameURLAccesskey "z">
+<!ENTITY deleteURLLabel "Törlés…">
+<!ENTITY deleteURLAccesskey "T">
 <!ENTITY advancedSyncGroupboxLabel "Fejlett tulajdonságok">
 <!ENTITY decodeReportLabel "Megfejt webcímek REPORT kérdésekért">
 <!ENTITY decodeReportAccesskey "M">
@@ -206,8 +215,8 @@
 <!ENTITY warnEmptyEmailsAccesskey "F">
 <!ENTITY useOnlyEmailLabel "Csak az e-mail címek használata">
 <!ENTITY useOnlyEmailAccesskey "C">
-<!ENTITY attachvCardWarn "Ahhoz, hogy automatikusan hozzáadni egy vCard e-mailjeit, válasszon ki egy vCard az egyes postafiókhoz. Ha be van kapcsolva, névjegyzéek csatolja ezt vCard minden kimenő postafiókból.">
-<!ENTITY attachvCardGroupboxLabel "vCard-csatlakozásra">
+<!ENTITY attachVCardWarn "Ahhoz, hogy automatikusan hozzáadni egy vCard e-mailjeit, válasszon ki egy vCard az egyes postafiókhoz. Ha be van kapcsolva, névjegyzéek csatolja ezt vCard minden kimenő postafiókból.">
+<!ENTITY attachVCardGroupboxLabel "vCard-csatlakozásra">
 <!ENTITY accountsVCardsEnabledLabel "Engedélyezve">
 <!ENTITY accountsVCardsMailLabel "Postafiók">
 <!ENTITY accountsVCardsABNameLabel "Névjegytár">

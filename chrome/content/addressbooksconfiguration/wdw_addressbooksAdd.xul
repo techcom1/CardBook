@@ -39,6 +39,7 @@
 	<script src="chrome://cardbook/content/cardbookElementTools.js"/>
 	<script src="chrome://cardbook/content/cardbookTypes.js"/>
 	<script src="chrome://cardbook/content/complexSearch/cardbookComplexSearch.js"/>
+	<script src="chrome://cardbook/content/wdw_cardbook.js"/>
 	<script src="wdw_addressbooksAdd.js"/>
 
 	<wizardpage pageid="welcomePage"
@@ -227,7 +228,7 @@
 			label="&wizard.label;"
 			description="&namePage.wizard.description;"
 			onpageshow="wdw_addressbooksAdd.loadName();"
-			onpageadvanced="wdw_addressbooksAdd.createAddressbook();">
+			onpageadvanced="wdw_addressbooksAdd.prepareAddressbook();">
 		<grid flex="1">
 			<columns>
 				<column/>

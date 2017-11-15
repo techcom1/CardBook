@@ -195,6 +195,15 @@
 <!ENTITY requestsTimeoutAccesskey "T">
 <!ENTITY multigetLabel "For GET-forespørgsler, grupper kontakter i">
 <!ENTITY multigetAccesskey "r">
+<!ENTITY discoveryGroupboxLabel "??Address books discovery??">
+<!ENTITY discoveryWarn "??At every synchronization, a check on the URLs below will be run to search for any new or deleted address books.??">
+<!ENTITY discoveryURLLabel "URL">
+<!ENTITY addURLLabel "Tilføj">
+<!ENTITY addURLAccesskey "T">
+<!ENTITY renameURLLabel "Rediger">
+<!ENTITY renameURLAccesskey "R">
+<!ENTITY deleteURLLabel "Slet">
+<!ENTITY deleteURLAccesskey "S">
 <!ENTITY advancedSyncGroupboxLabel "Avancerede egenskaber">
 <!ENTITY decodeReportLabel "Afkod URL'er for REPORT-forespørgsler">
 <!ENTITY decodeReportAccesskey "d">
@@ -207,8 +216,8 @@
 <!ENTITY warnEmptyEmailsAccesskey "A">
 <!ENTITY useOnlyEmailLabel "Brug kun e-mailadresser, uden deres viste navne">
 <!ENTITY useOnlyEmailAccesskey "B">
-<!ENTITY attachvCardWarn "For automatisk af tilføje et vCard til dine e-mails, vælg et vCard for hver e-mailkonto. Hvis aktiveret, vil CardBook vedlægge dette vCard til hver udgående e-mail fra denne konto.">
-<!ENTITY attachvCardGroupboxLabel "Vedlæg et vCard">
+<!ENTITY attachVCardWarn "For automatisk af tilføje et vCard til dine e-mails, vælg et vCard for hver e-mailkonto. Hvis aktiveret, vil CardBook vedlægge dette vCard til hver udgående e-mail fra denne konto.">
+<!ENTITY attachVCardGroupboxLabel "Vedlæg et vCard">
 <!ENTITY accountsVCardsEnabledLabel "Aktiveret">
 <!ENTITY accountsVCardsMailLabel "Mailkonto">
 <!ENTITY accountsVCardsABNameLabel "Adressebog">

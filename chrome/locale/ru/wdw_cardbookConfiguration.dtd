@@ -195,6 +195,15 @@
 <!ENTITY requestsTimeoutAccesskey "Т">
 <!ENTITY multigetLabel "Для запросов типа GET, группировать контакты по">
 <!ENTITY multigetAccesskey "G">
+<!ENTITY discoveryGroupboxLabel "??Address books discovery??">
+<!ENTITY discoveryWarn "??At every synchronization, a check on the URLs below will be run to search for any new or deleted address books.??">
+<!ENTITY discoveryURLLabel "URL">
+<!ENTITY addURLLabel "Добавить">
+<!ENTITY addURLAccesskey "Д">
+<!ENTITY renameURLLabel "Редактировать">
+<!ENTITY renameURLAccesskey "Р">
+<!ENTITY deleteURLLabel "Удалить">
+<!ENTITY deleteURLAccesskey "У">
 <!ENTITY advancedSyncGroupboxLabel "Расширенные настройки">
 <!ENTITY decodeReportLabel "Декодировать URL для запросов REPORT">
 <!ENTITY decodeReportAccesskey "Д">
@@ -207,8 +216,8 @@
 <!ENTITY warnEmptyEmailsAccesskey "W">
 <!ENTITY useOnlyEmailLabel "Не использовать отображаемое имя, а только адрес эл. почты">
 <!ENTITY useOnlyEmailAccesskey "O">
-<!ENTITY attachvCardWarn "Добавлять визитку vCard к отправляемым писмам. Выберите карточку для каждого из аккаунтов. Если эта настройка включена, CardBook будет вкладывать указанную визитку vCard к каждому исходящему email аккаунта.">
-<!ENTITY attachvCardGroupboxLabel "Добавлять визитку vCard">
+<!ENTITY attachVCardWarn "Добавлять визитку vCard к отправляемым писмам. Выберите карточку для каждого из аккаунтов. Если эта настройка включена, CardBook будет вкладывать указанную визитку vCard к каждому исходящему email аккаунта.">
+<!ENTITY attachVCardGroupboxLabel "Добавлять визитку vCard">
 <!ENTITY accountsVCardsEnabledLabel "Включено">
 <!ENTITY accountsVCardsMailLabel "Почтовый аккаунт">
 <!ENTITY accountsVCardsABNameLabel "Адресная книга">

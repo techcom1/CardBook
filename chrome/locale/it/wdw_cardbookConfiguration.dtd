@@ -195,6 +195,15 @@
 <!ENTITY requestsTimeoutAccesskey "T">
 <!ENTITY multigetLabel "Per le richieste di tipo GET, raggruppa i contatti per">
 <!ENTITY multigetAccesskey "G">
+<!ENTITY discoveryGroupboxLabel "??Address books discovery??">
+<!ENTITY discoveryWarn "??At every synchronization, a check on the URLs below will be run to search for any new or deleted address books.??">
+<!ENTITY discoveryURLLabel "URL">
+<!ENTITY addURLLabel "Aggiungi">
+<!ENTITY addURLAccesskey "A">
+<!ENTITY renameURLLabel "Rinomina">
+<!ENTITY renameURLAccesskey "R">
+<!ENTITY deleteURLLabel "Elimina">
+<!ENTITY deleteURLAccesskey "E">
 <!ENTITY advancedSyncGroupboxLabel "Proprietà avanzate">
 <!ENTITY decodeReportLabel "Decodifica gli URL per richieste di tipo REPORT">
 <!ENTITY decodeReportAccesskey "D">

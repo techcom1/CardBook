@@ -8,6 +8,7 @@
 	<!ENTITY % configurationDTD SYSTEM "chrome://cardbook/locale/wdw_cardbookConfiguration.dtd"> %configurationDTD;
 	<!ENTITY % namesDTD SYSTEM "chrome://cardbook/locale/wdw_nameEdition.dtd"> %namesDTD;
 	<!ENTITY % orgDTD SYSTEM "chrome://cardbook/locale/wdw_orgEdition.dtd"> %orgDTD;
+	<!ENTITY % passwordDTD SYSTEM "chrome://cardbook/locale/wdw_password.dtd"> %passwordDTD;
 ]>
 
 <prefwindow xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
@@ -26,6 +27,7 @@
 	<script src="chrome://cardbook/content/wdw_log.js"/>
 	<script src="chrome://cardbook/content/preferences/cardbookPreferences.js"/>
 	<script src="chrome://cardbook/content/cardbookSynchronization.js"/>
+	<script src="chrome://cardbook/content/cardbookPasswordManager.js"/>
 	<script src="chrome://cardbook/content/birthdays/cardbookBirthdaysUtils.js"/>
 	<script src="chrome://cardbook/content/cardbookElementTools.js"/>
 
@@ -663,6 +665,34 @@
 						</hbox>
 					</groupbox>
 
+					<groupbox flex="1">
+						<caption label="&discoveryGroupboxLabel;"/>
+						<separator class="thin"/>
+						<description>&discoveryWarn;</description>
+						<separator class="thin"/>
+						<hbox flex="1">
+							<vbox flex="1">
+								<hbox flex="1">
+									<tree id="discoveryTree" class="cardbookTreeChildrenConfigClass" hidecolumnpicker="true" flex="1" seltype="single" enableColumnDrag="false" editable="true" onselect="wdw_cardbookConfiguration.selectURL();" sortDirection="ascending" sortResource="discoveryURL">
+										<treecols id="discoveryTreeCols">
+											<treecol id="discoveryURL" label="&discoveryURLLabel;" flex="1" persist="width ordinal hidden" onclick="wdw_cardbookConfiguration.sortTreesFromCol(event, this, 'discoveryTree');" style="text-align:left" editable="false"/>
+											<splitter class="tree-splitter"/>
+											<treecol id="discoveryUsername" label="&usernameLabel;" flex="1" persist="width ordinal hidden" onclick="wdw_cardbookConfiguration.sortTreesFromCol(event, this, 'discoveryTree');" style="text-align:left" editable="false"/>
+										</treecols>
+										<treechildren id="discoveryTreeChildren" ondblclick="wdw_cardbookConfiguration.doubleClickTree(event, 'discoveryTree');"/>
+									</tree>
+								</hbox>
+							</vbox>
+							<hbox align="top">
+								<vbox flex="1">
+									<button id="addURLLabel" label="&addURLLabel;" accesskey="&addURLAccesskey;" oncommand="wdw_cardbookConfiguration.addURL();"/>
+									<button id="renameURLLabel" label="&renameURLLabel;" accesskey="&renameURLAccesskey;" oncommand="wdw_cardbookConfiguration.renameURL();" disabled="true"/>
+									<button id="deleteURLLabel" label="&deleteURLLabel;" accesskey="&deleteURLAccesskey;" oncommand="wdw_cardbookConfiguration.deleteURL();" disabled="true"/>
+								</vbox>
+							</hbox>
+						</hbox>
+					</groupbox>
+
 					<groupbox>
 						<caption label="&advancedSyncGroupboxLabel;"/>
 						<hbox align="center">
@@ -697,9 +727,9 @@
 					</groupbox>
 					<separator class="thin"/>
 					<groupbox flex="1">
-						<caption label="&attachvCardGroupboxLabel;"/>
+						<caption label="&attachVCardGroupboxLabel;"/>
 						<separator class="thin"/>
-						<description>&attachvCardWarn;</description>
+						<description>&attachVCardWarn;</description>
 						<separator class="thin"/>
 						<hbox flex="1">
 							<vbox flex="1">
@@ -791,8 +821,7 @@
 								preference="extensions.cardbook.showPeriodicPopup"
 								oncommand="wdw_cardbookConfiguration.remindViaPopup();"/>
 						</hbox>
-						<separator class="thin"/>
-						<hbox align="center">
+						<hbox align="center" class="indent">
 							<label value="&periodicPopupTimeLabel;"
 								accesskey="&periodicPopupTimeAccesskey;"
 								control="periodicPopupTimeTextBox"

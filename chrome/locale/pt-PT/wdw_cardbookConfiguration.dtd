@@ -195,6 +195,15 @@
 <!ENTITY requestsTimeoutAccesskey "T">
 <!ENTITY multigetLabel "Para pedidos GET, agrupar cartões por">
 <!ENTITY multigetAccesskey "G">
+<!ENTITY discoveryGroupboxLabel "??Address books discovery??">
+<!ENTITY discoveryWarn "??At every synchronization, a check on the URLs below will be run to search for any new or deleted address books.??">
+<!ENTITY discoveryURLLabel "URL">
+<!ENTITY addURLLabel "Adicionar">
+<!ENTITY addURLAccesskey "A">
+<!ENTITY renameURLLabel "Editar">
+<!ENTITY renameURLAccesskey "E">
+<!ENTITY deleteURLLabel "Apagar">
+<!ENTITY deleteURLAccesskey "g">
 <!ENTITY advancedSyncGroupboxLabel "Propriedades avançadas">
 <!ENTITY decodeReportLabel "Descodificar URLs para pedidos de relatório">
 <!ENTITY decodeReportAccesskey "D">
@@ -207,8 +216,8 @@
 <!ENTITY warnEmptyEmailsAccesskey "W">
 <!ENTITY useOnlyEmailLabel "Usar apenas endereço de email">
 <!ENTITY useOnlyEmailAccesskey "U">
-<!ENTITY attachvCardWarn "Para adicionar automaticamente um vCard, seleccione um vCard para cada conta de email. Se activo, o CardBook vai anexar esse vCard para todos os emails de saída da conta seleccionada.">
-<!ENTITY attachvCardGroupboxLabel "Unir vCard">
+<!ENTITY attachVCardWarn "Para adicionar automaticamente um vCard, seleccione um vCard para cada conta de email. Se activo, o CardBook vai anexar esse vCard para todos os emails de saída da conta seleccionada.">
+<!ENTITY attachVCardGroupboxLabel "Unir vCard">
 <!ENTITY accountsVCardsEnabledLabel "Activo">
 <!ENTITY accountsVCardsMailLabel "Conta de email">
 <!ENTITY accountsVCardsABNameLabel "Agenda">

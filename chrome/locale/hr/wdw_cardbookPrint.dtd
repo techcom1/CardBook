@@ -20,7 +20,7 @@
 <!ENTITY adrAccesskey "A">
 <!ENTITY telLabel "Telefonski brojevi">
 <!ENTITY telAccesskey "T">
-<!ENTITY emailLabel "Email adrese">
+<!ENTITY emailLabel "E-pošta adrese">
 <!ENTITY emailAccesskey "E">
 <!ENTITY imppLabel "Internet komunikacija">
 <!ENTITY imppAccesskey "I">

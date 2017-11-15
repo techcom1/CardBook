@@ -96,8 +96,8 @@
 								Prvi dio se odnosi na uključen naziv, npr. {{1}}, nije poništen, drugi dio se odnosi kad je uključen naziv poništen.">
 <!ENTITY fnFormulaLabel "Stvori pokaži naziv">
 <!ENTITY fnFormulaAccesskey "y">
-<!ENTITY resetFnFormulaLabel "Vrati na izostavi">
-<!ENTITY resetFnFormulaAccesskey "R">
+<!ENTITY resetFnFormulaLabel "Vrati na uobičajeno">
+<!ENTITY resetFnFormulaAccesskey "j">
 <!ENTITY miscEdittingGroupboxLabel "Sve i svašta">
 <!ENTITY preferEmailEditionLabel "Dvaput kliknite uredi kontakte umjesto pošalji">
 <!ENTITY preferEmailEditionAccesskey "k">
@@ -123,8 +123,8 @@
 <!ENTITY renameTypeAccesskey "E">
 <!ENTITY deleteTypeLabel "Izbriši">
 <!ENTITY deleteTypeAccesskey "D">
-<!ENTITY resetTypeLabel "Vrati na izostavi">
-<!ENTITY resetTypeAccesskey "R">
+<!ENTITY resetTypeLabel "Vrati na uobičajeno">
+<!ENTITY resetTypeAccesskey "j">
 <!ENTITY preferenceGroupboxLabel "Polje PREF">
 <!ENTITY usePreferenceValueLabel "Koristite željenu vrijednost (samo za vCard 4.0)">
 <!ENTITY usePreferenceValueAccesskey "ž">
@@ -168,8 +168,8 @@
 <!ENTITY kindCustomAccesskey "K">
 <!ENTITY memberCustomLabel "Član">
 <!ENTITY memberCustomAccesskey "M">
-<!ENTITY resetListLabel "Vrati na izostavi">
-<!ENTITY resetListAccesskey "R">
+<!ENTITY resetListLabel "Vrati na uobičajeno">
+<!ENTITY resetListAccesskey "j">
 
 <!ENTITY syncGroupboxLabel "Sync.">
 <!ENTITY syncWarn "Sinhroniziranje raznosi vaše preinake udaljenom poslužitelju i poslužiteljeve preinake vama.">
@@ -194,6 +194,15 @@
 <!ENTITY requestsTimeoutAccesskey "T">
 <!ENTITY multigetLabel "Za zahtjeve GET, skupni kontakti preko">
 <!ENTITY multigetAccesskey "G">
+<!ENTITY discoveryGroupboxLabel "??Address books discovery??">
+<!ENTITY discoveryWarn "??At every synchronization, a check on the URLs below will be run to search for any new or deleted address books.??">
+<!ENTITY discoveryURLLabel "URL">
+<!ENTITY addURLLabel "Dodaj">
+<!ENTITY addURLAccesskey "A">
+<!ENTITY renameURLLabel "Uredi">
+<!ENTITY renameURLAccesskey "E">
+<!ENTITY deleteURLLabel "Izbriši">
+<!ENTITY deleteURLAccesskey "D">
 <!ENTITY advancedSyncGroupboxLabel "Napredna svojstva">
 <!ENTITY decodeReportLabel "Dekodiraj URLs za REPORT zahtjeve">
 <!ENTITY decodeReportAccesskey "D">
@@ -206,8 +215,8 @@
 <!ENTITY warnEmptyEmailsAccesskey "W">
 <!ENTITY useOnlyEmailLabel "Koristite samo adrese e-pošte, bez njihovih naziva zaslona">
 <!ENTITY useOnlyEmailAccesskey "O">
-<!ENTITY attachvCardWarn "Da automatski dodate vCard uz svoje e-poštae, odaberite za svaki e-pošta račun.Ako je aktivirana, Kontakti će dodati tu vCard svakoj izlaznoj pošti s ovog računa.">
-<!ENTITY attachvCardGroupboxLabel "Priključi se u vCard">
+<!ENTITY attachVCardWarn "Da automatski dodate vCard uz svoje e-poštae, odaberite za svaki e-pošta račun.Ako je aktivirana, Kontakti će dodati tu vCard svakoj izlaznoj pošti s ovog računa.">
+<!ENTITY attachVCardGroupboxLabel "Priključi se u vCard">
 <!ENTITY accountsVCardsEnabledLabel "Omogućen">
 <!ENTITY accountsVCardsMailLabel "Naziv računa">
 <!ENTITY accountsVCardsABNameLabel "Adresar">

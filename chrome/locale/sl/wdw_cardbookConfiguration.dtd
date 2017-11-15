@@ -194,6 +194,15 @@
 <!ENTITY requestsTimeoutAccesskey "Č">
 <!ENTITY multigetLabel "Za zahteve GET združi stike po">
 <!ENTITY multigetAccesskey "G">
+<!ENTITY discoveryGroupboxLabel "??Address books discovery??">
+<!ENTITY discoveryWarn "??At every synchronization, a check on the URLs below will be run to search for any new or deleted address books.??">
+<!ENTITY discoveryURLLabel "URL">
+<!ENTITY addURLLabel "Dodaj">
+<!ENTITY addURLAccesskey "D">
+<!ENTITY renameURLLabel "Uredi">
+<!ENTITY renameURLAccesskey "U">
+<!ENTITY deleteURLLabel "Izbriši">
+<!ENTITY deleteURLAccesskey "b">
 <!ENTITY advancedSyncGroupboxLabel "Napredne lastnosti">
 <!ENTITY decodeReportLabel "Odkodiraj URL-je za zahteve REPORT">
 <!ENTITY decodeReportAccesskey "d">
@@ -206,8 +215,8 @@
 <!ENTITY warnEmptyEmailsAccesskey "O">
 <!ENTITY useOnlyEmailLabel "Uporabi samo e-poštne naslove">
 <!ENTITY useOnlyEmailAccesskey "U">
-<!ENTITY attachvCardWarn "Za samodejno dodajanje kartice vCard k vaši e-pošti izberite kartico vCard za vsak e-poštni račun. Če je omogočeno, jo bo CardBook pripel k vsaki odhodni e-pošti za ta račun.">
-<!ENTITY attachvCardGroupboxLabel "Dodaj kartico vCard">
+<!ENTITY attachVCardWarn "Za samodejno dodajanje kartice vCard k vaši e-pošti izberite kartico vCard za vsak e-poštni račun. Če je omogočeno, jo bo CardBook pripel k vsaki odhodni e-pošti za ta račun.">
+<!ENTITY attachVCardGroupboxLabel "Dodaj kartico vCard">
 <!ENTITY accountsVCardsEnabledLabel "Omogočeno">
 <!ENTITY accountsVCardsMailLabel "Poštni račun">
 <!ENTITY accountsVCardsABNameLabel "Imenik">

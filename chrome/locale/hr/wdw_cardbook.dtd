@@ -28,7 +28,7 @@
 <!ENTITY CustomizeCardBookToolbarLabel "Prilagodi…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "C">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Novi adresar">
-<!ENTITY cardbookToolbarAddServerButtonTooltip "Dodaj ili ukloni udaljeni ili mjesni adresar">
+<!ENTITY cardbookToolbarAddServerButtonTooltip "Dodaj ili obriši udaljeni ili mjesni adresar">
 <!ENTITY cardbookToolbarSyncButtonLabel "Sihroniziraj">
 <!ENTITY cardbookToolbarSyncButtonTooltip "Sihroniziraj sve udaljene adresare">
 <!ENTITY cardbookToolbarWriteButtonLabel "Piši">
@@ -43,15 +43,15 @@
 <!ENTITY cardbookToolbarAddListButtonTooltip "Novi popis za poštu">
 <!ENTITY cardbookToolbarEditButtonLabel "Uredi">
 <!ENTITY cardbookToolbarEditButtonTooltip "Uredi odabrane kontakte">
-<!ENTITY cardbookToolbarRemoveButtonLabel "Ukloni">
-<!ENTITY cardbookToolbarRemoveButtonTooltip "Ukloni odabrane kontakte">
-<!ENTITY cardbookToolbarPrintButtonLabel "Tiskaj prvu kopiju">
-<!ENTITY cardbookToolbarPrintButtonTooltip "Tiskaj prvu kopiju odabranog teksta">
+<!ENTITY cardbookToolbarRemoveButtonLabel "Obriši">
+<!ENTITY cardbookToolbarRemoveButtonTooltip "Obriši odabrane kontakte">
+<!ENTITY cardbookToolbarPrintButtonLabel "Pregled ispisa">
+<!ENTITY cardbookToolbarPrintButtonTooltip "Pregled ispisa odabranog teksta">
 <!ENTITY cardbookToolbarAppMenuButtonLabel "Kontakti meni">
 <!ENTITY cardbookToolbarAppMenuButtonTooltip "Kontakti meni">
 <!ENTITY cardbookToolbarSearchBoxLabel "Potraga kontakata">
 <!ENTITY cardbookToolbarSearchBoxTooltip "Potraga kontakata">
-<!ENTITY cardbookToolbarComplexSearchLabel "Sačuvana potraga">
+<!ENTITY cardbookToolbarComplexSearchLabel "Spremljene pretrage">
 <!ENTITY cardbookToolbarComplexSearchTooltip "Kreiraj novu dosje sačuvane potrage">
 <!ENTITY cardbookToolbarThMenuButtonLabel "AppMenu">
 <!ENTITY cardbookToolbarThMenuButtonTooltip "Pokaži &brandShortName; meni">
@@ -174,7 +174,7 @@
 <!ENTITY importCardFromDirLabel "Unesi kontakte iz imenika">
 <!ENTITY renameCatFromAccountsOrCatsLabel "Promijeni naziv">
 <!ENTITY convertCatFromAccountsOrCatsLabel "Promijeni kategoriju u popis">
-<!ENTITY removeCatFromAccountsOrCatsLabel "Ukloni kategoriju">
+<!ENTITY removeCatFromAccountsOrCatsLabel "Obriši kategoriju">
 <!ENTITY findDuplicatesFromAccountsOrCatsLabel "Pronađi duplikate kontakata u postojećem adresaru">
 <!ENTITY generateFnFromAccountsOrCatsLabel "Stvori nazive za pokaz">
 <!ENTITY mergeCardsFromCardsLabel "Poveži kontakte">
@@ -182,6 +182,6 @@
 <!ENTITY convertListToCategoryFromCardsLabel "Pretvori popis u kategoriju">
 <!ENTITY editAccountFromAccountsOrCatsLabel "Uredi adresar">
 <!ENTITY syncAccountFromAccountsOrCatsLabel "Sihroniziraj adresar">
-<!ENTITY removeAccountFromAccountsOrCatsLabel "Ukloni adresar">
+<!ENTITY removeAccountFromAccountsOrCatsLabel "Obriši adresar">
 
 <!ENTITY IMPPMenuLabel "Poveži s">

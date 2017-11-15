@@ -24,7 +24,7 @@
 <!ENTITY cardbookToolbarLabel "Barra degli strumenti di CardBook">
 <!ENTITY cardbookToolbarAccesskey "a">
 <!ENTITY cardbookABPaneToolbarLabel "Barra degli strumenti del pannello delle rubrica">
-<!ENTITY cardbookABPaneToolbarAccesskey "??d??">
+<!ENTITY cardbookABPaneToolbarAccesskey "d">
 <!ENTITY CustomizeCardBookToolbarLabel "Personalizza">
 <!ENTITY CustomizeCardBookToolbarAccesskey "C">
 <!ENTITY cardbookToolbarAddServerButtonLabel "Nuova rubrica">

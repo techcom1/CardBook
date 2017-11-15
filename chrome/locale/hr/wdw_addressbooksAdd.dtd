@@ -32,7 +32,7 @@
 <!ENTITY remotePage.connection.label "Veza">
 <!ENTITY remotePage.uri.description "Za vrstu CardDAV, unesite URL za svoj udaljeni adresar. Možete pokušati djelomični URL (na primjer : http(s)://carddav.example.org). za  Googleov adresar, nemojte odrediti ovo polje.">
 <!ENTITY remotePage.uri.label "URL">
-<!ENTITY remotePage.credentials.description "Unesite vjerodajnicu kako biste otvorili svoj adresar. Za Googleov adresar, pod ime korisnika treba biti Vaša email adresa za Google.">
+<!ENTITY remotePage.credentials.description "Unesite vjerodajnicu kako biste otvorili svoj adresar. Za Googleov adresar, pod ime korisnika treba biti Vaša e-pošta adresa za Google.">
 <!ENTITY remotePage.validatebutton.label "Potvrdi">
 
 <!ENTITY locationSearchPage.wizard.description "Definicija: sačuvano traži.">

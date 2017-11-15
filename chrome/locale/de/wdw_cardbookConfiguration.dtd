@@ -195,6 +195,15 @@
 <!ENTITY requestsTimeoutAccesskey "T">
 <!ENTITY multigetLabel "Bei GET-Anfragen Karten gruppieren nach">
 <!ENTITY multigetAccesskey "G">
+<!ENTITY discoveryGroupboxLabel "??Address books discovery??">
+<!ENTITY discoveryWarn "??At every synchronization, a check on the URLs below will be run to search for any new or deleted address books.??">
+<!ENTITY discoveryURLLabel "URL">
+<!ENTITY addURLLabel "Hinzufügen">
+<!ENTITY addURLAccesskey "H">
+<!ENTITY renameURLLabel "Bearbeiten">
+<!ENTITY renameURLAccesskey "B">
+<!ENTITY deleteURLLabel "Löschen">
+<!ENTITY deleteURLAccesskey "L">
 <!ENTITY advancedSyncGroupboxLabel "Erweiterte Eigenschaften">
 <!ENTITY decodeReportLabel "Dekodiere URLs für REPORT Anfragen">
 <!ENTITY decodeReportAccesskey "D">
@@ -207,8 +216,8 @@
 <!ENTITY warnEmptyEmailsAccesskey "W">
 <!ENTITY useOnlyEmailLabel "Nur die E-Mail-Adressen verwenden">
 <!ENTITY useOnlyEmailAccesskey "U">
-<!ENTITY attachvCardWarn "Automatisch vCard an Emails anhängen: Eine vCard pro E-Mail-Konto auswählen. Falls aktiviert wird diese vCard an jede ausgehende E-Mail angehängt.">
-<!ENTITY attachvCardGroupboxLabel "Fürs an Email anhängen">
+<!ENTITY attachVCardWarn "Automatisch vCard an Emails anhängen: Eine vCard pro E-Mail-Konto auswählen. Falls aktiviert wird diese vCard an jede ausgehende E-Mail angehängt.">
+<!ENTITY attachVCardGroupboxLabel "Fürs an Email anhängen">
 <!ENTITY accountsVCardsEnabledLabel "Aktiviert">
 <!ENTITY accountsVCardsMailLabel "Email-Konto">
 <!ENTITY accountsVCardsABNameLabel "Adressbuch">

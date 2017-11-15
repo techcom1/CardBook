@@ -195,6 +195,15 @@
 <!ENTITY requestsTimeoutAccesskey "T">
 <!ENTITY multigetLabel "Bij het ophalen van gegevens, groeperen op">
 <!ENTITY multigetAccesskey "G">
+<!ENTITY discoveryGroupboxLabel "??Address books discovery??">
+<!ENTITY discoveryWarn "??At every synchronization, a check on the URLs below will be run to search for any new or deleted address books.??">
+<!ENTITY discoveryURLLabel "URL">
+<!ENTITY addURLLabel "Toevoegen">
+<!ENTITY addURLAccesskey "T">
+<!ENTITY renameURLLabel "Bewerken">
+<!ENTITY renameURLAccesskey "B">
+<!ENTITY deleteURLLabel "Verwijderen">
+<!ENTITY deleteURLAccesskey "V">
 <!ENTITY advancedSyncGroupboxLabel "Geavanceerde instellingen">
 <!ENTITY decodeReportLabel "URL's ontcijferen voor rapportage-verzoeken">
 <!ENTITY decodeReportAccesskey "O">
@@ -207,8 +216,8 @@
 <!ENTITY warnEmptyEmailsAccesskey "W">
 <!ENTITY useOnlyEmailLabel "Gebruik alleen technische e-mail adressen">
 <!ENTITY useOnlyEmailAccesskey "G">
-<!ENTITY attachvCardWarn "Selecteer voor elke email-account een vCard om aan alle uitgaande berichten van die account(s) de betreffende vCard toe te voegen. Dit gebeurt automatisch als deze voorziening ingeschakeld is in de instellingen.">
-<!ENTITY attachvCardGroupboxLabel "vCard aan uitgaande emails toevoegen ">
+<!ENTITY attachVCardWarn "Selecteer voor elke email-account een vCard om aan alle uitgaande berichten van die account(s) de betreffende vCard toe te voegen. Dit gebeurt automatisch als deze voorziening ingeschakeld is in de instellingen.">
+<!ENTITY attachVCardGroupboxLabel "vCard aan uitgaande emails toevoegen ">
 <!ENTITY accountsVCardsEnabledLabel "Ingeschakeld">
 <!ENTITY accountsVCardsMailLabel "Mail account">
 <!ENTITY accountsVCardsABNameLabel "Adresboek">

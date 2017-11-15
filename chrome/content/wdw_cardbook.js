@@ -1699,11 +1699,11 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			}
 		},
 
-		addAddressbook: function (aAction, aSearchId) {
-			if ((aSearchId != null && aSearchId !== undefined && aSearchId != "") || (cardbookRepository.cardbookSyncMode === "NOSYNC")) {
+		addAddressbook: function (aAction, aDirPrefId) {
+			if ((aDirPrefId != null && aDirPrefId !== undefined && aDirPrefId != "") || (cardbookRepository.cardbookSyncMode === "NOSYNC")) {
 				cardbookRepository.cardbookSyncMode = "SYNC";
 				var xulRuntime = Services.appinfo;
-				var myArgs = {action: aAction, searchId: aSearchId, rootWindow: window, serverCallback: wdw_cardbook.createAddressbook};
+				var myArgs = {action: aAction, dirPrefId: aDirPrefId, rootWindow: window};
 				var myWindow = window.openDialog("chrome://cardbook/content/addressbooksconfiguration/wdw_addressbooksAdd.xul", "",
 												   // Workaround for Bug 1151440 - the HTML color picker won't work
 												   // in linux when opened from modal dialog
@@ -1712,165 +1712,6 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			}
 		},
 		
-		createAddressbook: function (aFinishAction, aFinishParams) {
-			for (var i = 0; i < aFinishParams.length; i++) {
-				let cardbookPrefService = new cardbookPreferenceService(aFinishParams[i].dirPrefId);
-				if (cardbookPrefService.getType() === "SEARCH" && aFinishAction === "SEARCH") {
-					wdw_cardbook.modifySearchAddressbook(aFinishParams[i].dirPrefId, aFinishParams[i].name, aFinishParams[i].color, aFinishParams[i].vcard, aFinishParams[i].readonly,
-													aFinishParams[i].dateFormat, aFinishParams[i].urnuuid, aFinishParams[i].searchDef);
-					return;
-				}
-			}
-			cardbookSynchronization.nullifyMultipleOperations();
-			if (aFinishAction === "GOOGLE" || aFinishAction === "CARDDAV" || aFinishAction === "APPLE") {
-				wdw_cardbook.setNoComplexSearchMode();
-				wdw_cardbook.setNoSearchMode();
-				for (var i = 0; i < aFinishParams.length; i++) {
-					cardbookRepository.addAccountToRepository(aFinishParams[i].dirPrefId, aFinishParams[i].name, aFinishAction, aFinishParams[i].url, aFinishParams[i].username, aFinishParams[i].color,
-																true, true, aFinishParams[i].vcard, aFinishParams[i].readonly, aFinishParams[i].dateFormat, aFinishParams[i].urnuuid, aFinishParams[i].DBcached, true);
-					cardbookUtils.formatStringForOutput("addressbookCreated", [aFinishParams[i].name]);
-					wdw_cardbooklog.addActivity("addressbookCreated", [aFinishParams[i].name], "addItem");
-					cardbookUtils.notifyObservers("cardbook.ABAddedDirect", "accountid:" + aFinishParams[i].dirPrefId);
-					wdw_cardbook.loadCssRules();
-					cardbookSynchronization.initSync();
-					cardbookSynchronization.initSyncWithPrefId(aFinishParams[i].dirPrefId);
-					cardbookSynchronization.syncAccount(aFinishParams[i].dirPrefId);
-				}
-			} else if (aFinishAction === "SEARCH") {
-				wdw_cardbook.setComplexSearchMode(aFinishParams[0].dirPrefId);
-				wdw_cardbook.setNoSearchMode();
-				for (var i = 0; i < aFinishParams.length; i++) {
-					var myFile = cardbookRepository.getRuleFile(aFinishParams[i].dirPrefId);
-					if (myFile.exists()) {
-						myFile.remove(true);
-					}
-					myFile.create( Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420 );
-					cardbookSynchronization.writeContentToFile(myFile.path, aFinishParams[i].searchDef, "UTF8");
-					cardbookRepository.addAccountToRepository(aFinishParams[i].dirPrefId, aFinishParams[i].name, aFinishAction, myFile.path, aFinishParams[i].username, aFinishParams[i].color,
-																aFinishParams[i].enabled, true, aFinishParams[i].vcard, false, null, null, aFinishParams[i].DBcached, true);
-					wdw_cardbook.loadCssRules();
-					cardbookComplexSearch.loadComplexSearchAccount(aFinishParams[i].dirPrefId, true, "WINDOW");
-					cardbookUtils.formatStringForOutput("addressbookCreated", [aFinishParams[i].name]);
-					wdw_cardbooklog.addActivity("addressbookCreated", [aFinishParams[i].name], "addItem");
-					cardbookUtils.notifyObservers("cardbook.ABAddedDirect", "accountid:" + aFinishParams[i].dirPrefId);
-				}
-			} else if (aFinishAction === "STANDARD") {
-				wdw_cardbook.setNoComplexSearchMode();
-				wdw_cardbook.setNoSearchMode();
-				for (var i = 0; i < aFinishParams.length; i++) {
-					if (aFinishParams[i].collected) {
-						cardbookRepository.addAccountToCollected(aFinishParams[i].dirPrefId);
-					}
-					cardbookRepository.addAccountToRepository(aFinishParams[i].dirPrefId, aFinishParams[i].name, "LOCALDB", "", aFinishParams[i].username, aFinishParams[i].color,
-																true, true, aFinishParams[i].vcard, aFinishParams[i].readonly, aFinishParams[i].dateFormat, aFinishParams[i].urnuuid, aFinishParams[i].DBcached, true);
-					cardbookUtils.formatStringForOutput("addressbookCreated", [aFinishParams[i].name]);
-					wdw_cardbooklog.addActivity("addressbookCreated", [aFinishParams[i].name], "addItem");
-					cardbookUtils.notifyObservers("cardbook.ABAddedDirect", "accountid:" + aFinishParams[i].dirPrefId);
-					wdw_cardbook.loadCssRules();
-					cardbookSynchronization.initSyncWithPrefId(aFinishParams[i].dirPrefId);
-					cardbookRepository.cardbookDirRequest[aFinishParams[i].dirPrefId]++;
-					var myMode = "WINDOW";
-					wdw_migrate.importCards(aFinishParams[i].sourceDirPrefId, aFinishParams[i].dirPrefId, aFinishParams[i].name, aFinishParams[i].vcard, aFinishParams[i].dateFormat, myMode);
-					cardbookSynchronization.waitForDirFinished(aFinishParams[i].dirPrefId, aFinishParams[i].name, myMode);
-					// if the first proposed import of standard address books is finished OK
-					// then set CardBook as exclusive
-					if (aFinishParams[i].firstAction) {
-						var prefs = Services.prefs;
-						prefs.setBoolPref("extensions.cardbook.exclusive", true);
-					}
-				}
-			} else if (aFinishAction === "LOCALDB") {
-				cardbookRepository.cardbookSyncMode = "NOSYNC";
-				wdw_cardbook.setNoComplexSearchMode();
-				wdw_cardbook.setNoSearchMode();
-				for (var i = 0; i < aFinishParams.length; i++) {
-					cardbookRepository.addAccountToRepository(aFinishParams[i].dirPrefId, aFinishParams[i].name, aFinishAction, "", aFinishParams[i].username, aFinishParams[i].color,
-																true, true, aFinishParams[i].vcard, aFinishParams[i].readonly, aFinishParams[i].dateFormat, aFinishParams[i].urnuuid, aFinishParams[i].DBcached, true);
-					cardbookUtils.formatStringForOutput("addressbookCreated", [aFinishParams[i].name]);
-					wdw_cardbooklog.addActivity("addressbookCreated", [aFinishParams[i].name], "addItem");
-					cardbookUtils.notifyObservers("cardbook.ABAddedDirect", "accountid:" + aFinishParams[i].dirPrefId);
-					wdw_cardbook.loadCssRules();
-				}
-			} else if (aFinishAction === "FILE") {
-				wdw_cardbook.setNoComplexSearchMode();
-				wdw_cardbook.setNoSearchMode();
-				for (var i = 0; i < aFinishParams.length; i++) {
-					cardbookRepository.addAccountToRepository(aFinishParams[i].dirPrefId, aFinishParams[i].name, aFinishAction, aFinishParams[i].dirname, aFinishParams[i].username, aFinishParams[i].color,
-																true, true, aFinishParams[i].vcard, aFinishParams[i].readonly, aFinishParams[i].dateFormat, aFinishParams[i].urnuuid, aFinishParams[i].DBcached, true);
-					cardbookUtils.formatStringForOutput("addressbookCreated", [aFinishParams[i].name]);
-					wdw_cardbooklog.addActivity("addressbookCreated", [aFinishParams[i].name], "addItem");
-					cardbookUtils.notifyObservers("cardbook.ABAddedDirect", "accountid:" + aFinishParams[i].dirPrefId);
-					wdw_cardbook.loadCssRules();
-					cardbookSynchronization.initSyncWithPrefId(aFinishParams[i].dirPrefId);
-					cardbookRepository.cardbookFileRequest[aFinishParams[i].dirPrefId]++;
-					var myFile = aFinishParams[i].file;
-					if (aFinishParams[i].actionType === "CREATEFILE") {
-						if (myFile.exists()) {
-							myFile.remove(true);
-						}
-						myFile.create( Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420 );
-					}
-					var myMode = "WINDOW";
-					cardbookSynchronization.loadFile(myFile, "", aFinishParams[i].dirPrefId, myMode, "");
-					cardbookSynchronization.waitForDirFinished(aFinishParams[i].dirPrefId, aFinishParams[i].name, myMode);
-				}
-			} else if (aFinishAction === "DIRECTORY") {
-				wdw_cardbook.setNoComplexSearchMode();
-				wdw_cardbook.setNoSearchMode();
-				for (var i = 0; i < aFinishParams.length; i++) {
-					var myDir = aFinishParams[i].file;
-					if (aFinishParams[i].actionType === "CREATEDIRECTORY") {
-						if (myDir.exists()) {
-							var aListOfFileName = [];
-							aListOfFileName = cardbookSynchronization.getFilesFromDir(myDir.path);
-							if (aListOfFileName.length > 0) {
-								var prompts = Services.prompt;
-								var strBundle = document.getElementById("cardbook-strings");
-								var confirmTitle = strBundle.getString("confirmTitle");
-								var confirmMsg = strBundle.getFormattedString("directoryDeletionConfirmMessage", [myDir.leafName]);
-								if (prompts.confirm(window, confirmTitle, confirmMsg)) {
-									myDir.remove(true);
-									try {
-										myDir.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0o774);
-									}
-									catch (e) {
-										wdw_cardbooklog.updateStatusProgressInformation("cannot create directory : " + myDir.path + " : error : " + e, "Error");
-										cardbookRepository.cardbookSyncMode = "NOSYNC";
-										return;
-									}
-								} else {
-									cardbookRepository.cardbookSyncMode = "NOSYNC";
-									return;
-								}
-							}
-						} else {
-							try {
-								myDir.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0o774);
-							}
-							catch (e) {
-								wdw_cardbooklog.updateStatusProgressInformation("cannot create directory : " + myDir.path + " : error : " + e, "Error");
-								cardbookRepository.cardbookSyncMode = "NOSYNC";
-								return;
-							}
-						}
-					}
-					cardbookRepository.addAccountToRepository(aFinishParams[i].dirPrefId, aFinishParams[i].name, aFinishAction, aFinishParams[i].dirname, aFinishParams[i].username, aFinishParams[i].color,
-																true, true, aFinishParams[i].vcard, aFinishParams[i].readonly, aFinishParams[i].dateFormat, aFinishParams[i].urnuuid, aFinishParams[i].DBcached, true);
-					cardbookUtils.formatStringForOutput("addressbookCreated", [aFinishParams[i].name]);
-					wdw_cardbooklog.addActivity("addressbookCreated", [aFinishParams[i].name], "addItem");
-					cardbookUtils.notifyObservers("cardbook.ABAddedDirect", "accountid:" + aFinishParams[i].dirPrefId);
-					wdw_cardbook.loadCssRules();
-					cardbookSynchronization.initSyncWithPrefId(aFinishParams[i].dirPrefId);
-					cardbookRepository.cardbookDirRequest[aFinishParams[i].dirPrefId]++;
-					var myMode = "WINDOW";
-					cardbookSynchronization.loadDir(myDir, "", aFinishParams[i].dirPrefId, myMode, "");
-					cardbookSynchronization.waitForDirFinished(aFinishParams[i].dirPrefId, aFinishParams[i].name, myMode);
-				}
-			} else {
-				cardbookRepository.cardbookSyncMode = "NOSYNC";
-			}
-		},
-
 		editAddressbook: function () {
 			if (cardbookRepository.cardbookSyncMode === "NOSYNC") {
 				var myTree = document.getElementById('accountsOrCatsTree');
@@ -2609,7 +2450,6 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		},
 
 		copyEntryFromTree: function () {
-			Components.utils.import("resource://gre/modules/Services.jsm");
 			var myCard = cardbookRepository.cardbookCards[document.getElementById('dirPrefIdTextBox').value+"::"+document.getElementById('uidTextBox').value];
 			var myResult = cardbookUtils.formatAddress(myCard[wdw_cardbook.currentType][wdw_cardbook.currentIndex][0]);
 			if (wdw_cardbook.currentType == "adr") {
@@ -2624,7 +2464,6 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		},
 
 		pasteEntryFromTree: function () {
-			Components.utils.import("resource://gre/modules/Services.jsm");
 			var stringBundleService = Services.strings;
 			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
 			var listOfSelectedCard = [];

@@ -194,6 +194,15 @@
 <!ENTITY requestsTimeoutAccesskey "T">
 <!ENTITY multigetLabel "For GET requests, group contacts by">
 <!ENTITY multigetAccesskey "G">
+<!ENTITY discoveryGroupboxLabel "Address books discovery">
+<!ENTITY discoveryWarn "At every synchronization, a check on the URLs below will be run to search for any new or deleted address books.">
+<!ENTITY discoveryURLLabel "URL">
+<!ENTITY addURLLabel "Add">
+<!ENTITY addURLAccesskey "A">
+<!ENTITY renameURLLabel "Edit">
+<!ENTITY renameURLAccesskey "E">
+<!ENTITY deleteURLLabel "Delete">
+<!ENTITY deleteURLAccesskey "D">
 <!ENTITY advancedSyncGroupboxLabel "Advanced Properties">
 <!ENTITY decodeReportLabel "Decode URLs for REPORT requests">
 <!ENTITY decodeReportAccesskey "D">
@@ -206,8 +215,8 @@
 <!ENTITY warnEmptyEmailsAccesskey "W">
 <!ENTITY useOnlyEmailLabel "Only use email addresses, without their Display Names">
 <!ENTITY useOnlyEmailAccesskey "O">
-<!ENTITY attachvCardWarn "To automatically add a vCard to your emails, select a vCard for each email account. If activated, CardBook will attach this vCard to every outgoing email from this account.">
-<!ENTITY attachvCardGroupboxLabel "Join a vCard">
+<!ENTITY attachVCardWarn "To automatically add a vCard to your emails, select a vCard for each email account. If activated, CardBook will attach this vCard to every outgoing email from this account.">
+<!ENTITY attachVCardGroupboxLabel "Join a vCard">
 <!ENTITY accountsVCardsEnabledLabel "Enabled">
 <!ENTITY accountsVCardsMailLabel "Mail Account">
 <!ENTITY accountsVCardsABNameLabel "Address Book">

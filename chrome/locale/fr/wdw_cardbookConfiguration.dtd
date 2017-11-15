@@ -195,6 +195,15 @@
 <!ENTITY requestsTimeoutAccesskey "D">
 <!ENTITY multigetLabel "Pour les requêtes GET, grouper les contacts par">
 <!ENTITY multigetAccesskey "G">
+<!ENTITY discoveryGroupboxLabel "Découverte de carnets d'adresses">
+<!ENTITY discoveryWarn "À chaque synchronisation, un contrôle sur les URLs ci-dessous va être fait pour rechercher les nouveaux carnets d'adresses ou ceux qui ont été supprimés.">
+<!ENTITY discoveryURLLabel "URL">
+<!ENTITY addURLLabel "Ajouter">
+<!ENTITY addURLAccesskey "A">
+<!ENTITY renameURLLabel "Modifier">
+<!ENTITY renameURLAccesskey "M">
+<!ENTITY deleteURLLabel "Supprimer">
+<!ENTITY deleteURLAccesskey "S">
 <!ENTITY advancedSyncGroupboxLabel "Propriétés avancées">
 <!ENTITY decodeReportLabel "Décoder les URLs pour les requêtes REPORT">
 <!ENTITY decodeReportAccesskey "D">
@@ -207,8 +216,8 @@
 <!ENTITY warnEmptyEmailsAccesskey "M">
 <!ENTITY useOnlyEmailLabel "Utiliser uniquement les adresses email, sans les noms">
 <!ENTITY useOnlyEmailAccesskey "U">
-<!ENTITY attachvCardWarn "Pour ajouter de manière automatique une vCard à tous vos emails, selectionner une vCard pour chaque compte email. Si activé, CardBook attachera cette vCard à chaque email sortant de ce compte.">
-<!ENTITY attachvCardGroupboxLabel "Joindre une vCard">
+<!ENTITY attachVCardWarn "Pour ajouter de manière automatique une vCard à tous vos emails, selectionner une vCard pour chaque compte email. Si activé, CardBook attachera cette vCard à chaque email sortant de ce compte.">
+<!ENTITY attachVCardGroupboxLabel "Joindre une vCard">
 <!ENTITY accountsVCardsEnabledLabel "Actif">
 <!ENTITY accountsVCardsMailLabel "Compte courrier">
 <!ENTITY accountsVCardsABNameLabel "Carnet d'adresses">

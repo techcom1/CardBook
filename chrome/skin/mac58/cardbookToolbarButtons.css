@@ -1,0 +1,33 @@
+#cardbookToolbarAddServerButton {
+	list-style-image: url("chrome://messenger/skin/icons/address.svg");
+}
+#cardbookToolbarSyncButton {
+	list-style-image: url("chrome://cardbook-os/skin/synchronize.svg");
+}
+#cardbookToolbarWriteButton {
+	list-style-image: url("chrome://messenger/skin/icons/newmsg.svg");
+}
+#cardbookToolbarChatButton {
+	list-style-image: url("chrome://messenger/skin/icons/chat.svg");
+}
+#cardbookToolbarConfigurationButton {
+	list-style-image: url("chrome://messenger/skin/icons/compact.svg");
+}
+#cardbookToolbarPrintButton {
+	list-style-image: url("chrome://messenger/skin/icons/print.svg");
+}
+#cardbookToolbarComplexSearch {
+	list-style-image: url("chrome://messenger/skin/icons/newmsg.svg");
+}
+#cardbookToolbarAddContactButton {
+	list-style-image: url("chrome://messenger/skin/icons/addcontact.svg");
+}
+#cardbookToolbarAddListButton {
+	list-style-image: url("chrome://messenger/skin/icons/addlist.svg");
+}
+#cardbookToolbarEditButton {
+	list-style-image: url("chrome://cardbook-os/skin/edit.svg");
+}
+#cardbookToolbarRemoveButton {
+	list-style-image: url("chrome://messenger/skin/icons/delete.svg");
+}

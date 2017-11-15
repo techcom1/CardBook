@@ -3,7 +3,7 @@
 <!ENTITY ageColumnLabel "Starost">
 <!ENTITY dateOfBirthColumnLabel "Datum događaja">
 <!ENTITY dateOfBirthFoundColumnLabel "Pronađen datum">
-<!ENTITY emailColumnLabel "E-mail">
+<!ENTITY emailColumnLabel "E-pošta">
 <!ENTITY sendEmailLabel "Napiši novu poruku">
 <!ENTITY sendEmailAccesskey "E">
 <!ENTITY syncLightningMenuItemLabel "Sinhroniziraj s Lightning-om">

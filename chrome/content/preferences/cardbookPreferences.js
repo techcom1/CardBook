@@ -9,6 +9,7 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 		this.prefCardBookTels = this.prefCardBookRoot + "tels.";
 		this.prefCardBookIMPPs = this.prefCardBookRoot + "impps.";
 		this.prefCardBookCustomFields = this.prefCardBookRoot + "customFields.";
+		this.prefCardBookAccountURLs = this.prefCardBookRoot + "URLs";
 		this.prefCardBookAccountVCards = this.prefCardBookRoot + "vcards.";
 		this.prefCardBookAccountRestrictions = this.prefCardBookRoot + "accountsRestrictions.";
 		this.prefCardBookEmailsCollection = this.prefCardBookRoot + "emailsCollection.";
@@ -419,6 +420,38 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 			}
 			catch(e) {
 				dump("cardbookPreferenceService.setRestriction : failed to set" + this.prefCardBookAccountRestrictions + aRestrictionId + "\n" + e + "\n");
+			}
+		},
+	
+		getURLs: function () {
+			try {
+				let result = [];
+				let finalResult = [];
+				result = this.mPreferencesService.getComplexValue(this.prefCardBookAccountURLs, Components.interfaces.nsISupportsString).data.split(',');
+				for (let i = 0; i < result.length; i++) {
+					if (result[i] != "") {
+						finalResult.push(result[i].split('::'));
+					}
+				}
+				return finalResult;
+			}
+			catch(e) {
+				return [];
+			}
+		},
+	
+		setURLs: function (aURLArray) {
+			try {
+				var tmpArray = [];
+				for (let i = 0; i < aURLArray.length; i++) {
+					tmpArray.push(aURLArray[i].join('::'));
+				}
+				var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
+				str.data = tmpArray.join(',');
+				this.mPreferencesService.setComplexValue(this.prefCardBookAccountURLs, Components.interfaces.nsISupportsString, str);
+			}
+			catch(e) {
+				dump("cardbookPreferenceService.setURLs : failed to set" + this.prefCardBookAccountURLs + "\n" + e + "\n");
 			}
 		},
 	
