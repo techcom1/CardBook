@@ -868,7 +868,6 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 					cardbookUtils.formatStringForOutput("addressbookCreated", [wdw_addressbooksAdd.gFinishParams[i].name]);
 					wdw_cardbooklog.addActivity("addressbookCreated", [wdw_addressbooksAdd.gFinishParams[i].name], "addItem");
 					cardbookUtils.notifyObservers("cardbook.ABAddedDirect", "accountid:" + wdw_addressbooksAdd.gFinishParams[i].dirPrefId);
-					wdw_cardbook.loadCssRules();
 					cardbookSynchronization.initSync();
 					cardbookSynchronization.initSyncWithPrefId(wdw_addressbooksAdd.gFinishParams[i].dirPrefId);
 					cardbookSynchronization.syncAccount(wdw_addressbooksAdd.gFinishParams[i].dirPrefId);
@@ -883,7 +882,6 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 					cardbookSynchronization.writeContentToFile(myFile.path, wdw_addressbooksAdd.gFinishParams[i].searchDef, "UTF8");
 					cardbookRepository.addAccountToRepository(wdw_addressbooksAdd.gFinishParams[i].dirPrefId, wdw_addressbooksAdd.gFinishParams[i].name, wdw_addressbooksAdd.gType, myFile.path, wdw_addressbooksAdd.gFinishParams[i].username, wdw_addressbooksAdd.gFinishParams[i].color,
 																wdw_addressbooksAdd.gFinishParams[i].enabled, true, wdw_addressbooksAdd.gFinishParams[i].vcard, false, null, null, wdw_addressbooksAdd.gFinishParams[i].DBcached, true);
-					wdw_cardbook.loadCssRules();
 					cardbookComplexSearch.loadComplexSearchAccount(wdw_addressbooksAdd.gFinishParams[i].dirPrefId, true, "WINDOW");
 					cardbookUtils.formatStringForOutput("addressbookCreated", [wdw_addressbooksAdd.gFinishParams[i].name]);
 					wdw_cardbooklog.addActivity("addressbookCreated", [wdw_addressbooksAdd.gFinishParams[i].name], "addItem");
@@ -899,7 +897,6 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 					cardbookUtils.formatStringForOutput("addressbookCreated", [wdw_addressbooksAdd.gFinishParams[i].name]);
 					wdw_cardbooklog.addActivity("addressbookCreated", [wdw_addressbooksAdd.gFinishParams[i].name], "addItem");
 					cardbookUtils.notifyObservers("cardbook.ABAddedDirect", "accountid:" + wdw_addressbooksAdd.gFinishParams[i].dirPrefId);
-					wdw_cardbook.loadCssRules();
 					cardbookSynchronization.initSyncWithPrefId(wdw_addressbooksAdd.gFinishParams[i].dirPrefId);
 					cardbookRepository.cardbookDirRequest[wdw_addressbooksAdd.gFinishParams[i].dirPrefId]++;
 					var myMode = "WINDOW";
@@ -920,7 +917,6 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 					cardbookUtils.formatStringForOutput("addressbookCreated", [wdw_addressbooksAdd.gFinishParams[i].name]);
 					wdw_cardbooklog.addActivity("addressbookCreated", [wdw_addressbooksAdd.gFinishParams[i].name], "addItem");
 					cardbookUtils.notifyObservers("cardbook.ABAddedDirect", "accountid:" + wdw_addressbooksAdd.gFinishParams[i].dirPrefId);
-					wdw_cardbook.loadCssRules();
 				}
 			} else if (wdw_addressbooksAdd.gType === "FILE") {
 				for (var i = 0; i < wdw_addressbooksAdd.gFinishParams.length; i++) {
@@ -929,7 +925,6 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 					cardbookUtils.formatStringForOutput("addressbookCreated", [wdw_addressbooksAdd.gFinishParams[i].name]);
 					wdw_cardbooklog.addActivity("addressbookCreated", [wdw_addressbooksAdd.gFinishParams[i].name], "addItem");
 					cardbookUtils.notifyObservers("cardbook.ABAddedDirect", "accountid:" + wdw_addressbooksAdd.gFinishParams[i].dirPrefId);
-					wdw_cardbook.loadCssRules();
 					cardbookSynchronization.initSyncWithPrefId(wdw_addressbooksAdd.gFinishParams[i].dirPrefId);
 					cardbookRepository.cardbookFileRequest[wdw_addressbooksAdd.gFinishParams[i].dirPrefId]++;
 					var myFile = wdw_addressbooksAdd.gFinishParams[i].file;
@@ -986,7 +981,6 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 					cardbookUtils.formatStringForOutput("addressbookCreated", [wdw_addressbooksAdd.gFinishParams[i].name]);
 					wdw_cardbooklog.addActivity("addressbookCreated", [wdw_addressbooksAdd.gFinishParams[i].name], "addItem");
 					cardbookUtils.notifyObservers("cardbook.ABAddedDirect", "accountid:" + wdw_addressbooksAdd.gFinishParams[i].dirPrefId);
-					wdw_cardbook.loadCssRules();
 					cardbookSynchronization.initSyncWithPrefId(wdw_addressbooksAdd.gFinishParams[i].dirPrefId);
 					cardbookRepository.cardbookDirRequest[wdw_addressbooksAdd.gFinishParams[i].dirPrefId]++;
 					var myMode = "WINDOW";

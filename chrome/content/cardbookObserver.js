@@ -274,6 +274,7 @@ if ("undefined" == typeof(cardbookObserver)) {
 				case "cardbook.cardAddedDirect":
 				case "cardbook.cardModifiedDirect":
 				case "cardbook.complexSearchLoaded":
+					wdw_cardbook.loadCssRules();
 					wdw_cardbook.refreshWindow(aData);
 					break;
 				case "cardbook.DBOpen":
