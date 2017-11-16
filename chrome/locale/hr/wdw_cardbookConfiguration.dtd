@@ -194,8 +194,8 @@
 <!ENTITY requestsTimeoutAccesskey "T">
 <!ENTITY multigetLabel "Za zahtjeve GET, skupni kontakti preko">
 <!ENTITY multigetAccesskey "G">
-<!ENTITY discoveryGroupboxLabel "??Address books discovery??">
-<!ENTITY discoveryWarn "??At every synchronization, a check on the URLs below will be run to search for any new or deleted address books.??">
+<!ENTITY discoveryGroupboxLabel "Otkriće adresara">
+<!ENTITY discoveryWarn "Na svakoj sinkronizaciji, potraga za URL-ovima u nastavku bit će pokrenuta da biste tražili nove ili obrisane adresare.">
 <!ENTITY discoveryURLLabel "URL">
 <!ENTITY addURLLabel "Dodaj">
 <!ENTITY addURLAccesskey "A">
