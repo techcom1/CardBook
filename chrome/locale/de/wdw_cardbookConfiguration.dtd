@@ -195,8 +195,8 @@
 <!ENTITY requestsTimeoutAccesskey "T">
 <!ENTITY multigetLabel "Bei GET-Anfragen Karten gruppieren nach">
 <!ENTITY multigetAccesskey "G">
-<!ENTITY discoveryGroupboxLabel "??Address books discovery??">
-<!ENTITY discoveryWarn "??At every synchronization, a check on the URLs below will be run to search for any new or deleted address books.??">
+<!ENTITY discoveryGroupboxLabel "Adressbücher Erkennung">
+<!ENTITY discoveryWarn "Bei jeder Synchronisierung wird eine Überprüfung der unten aufgeführten URLs durchgeführt, um nach neuen oder gelöschten Adressbüchern zu suchen.">
 <!ENTITY discoveryURLLabel "URL">
 <!ENTITY addURLLabel "Hinzufügen">
 <!ENTITY addURLAccesskey "H">

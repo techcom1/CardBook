@@ -195,8 +195,8 @@
 <!ENTITY requestsTimeoutAccesskey "L">
 <!ENTITY multigetLabel "Velikost skupiny při GET požadavcích">
 <!ENTITY multigetAccesskey "V">
-<!ENTITY discoveryGroupboxLabel "??Address books discovery??">
-<!ENTITY discoveryWarn "??At every synchronization, a check on the URLs below will be run to search for any new or deleted address books.??">
+<!ENTITY discoveryGroupboxLabel "Zjišování adresáøù">
+<!ENTITY discoveryWarn "Pøi každé synchronizaci bude na níže uvedených URL provedeno hledání nových nebo odstranìných adresáøù.">
 <!ENTITY discoveryURLLabel "URL">
 <!ENTITY addURLLabel "Přidat">
 <!ENTITY addURLAccesskey "P">

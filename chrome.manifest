@@ -25,9 +25,9 @@ skin   cardbook-osversion   classic/1.0   chrome/skin/osversion/windows/     os=
 skin   cardbook-osversion   classic/1.0   chrome/skin/osversion/windows58/   os=WINNT      appversion>=57.*
 skin   cardbook-osversion   classic/1.0   chrome/skin/osversion/mac/         os=Darwin
 skin   cardbook-osversion   classic/1.0   chrome/skin/osversion/mac58/       os=Darwin     appversion>=57.*
-skin   cardbook-os          classic/1.0   chrome/skin/os/unix/        os=Linux
-skin   cardbook-os          classic/1.0   chrome/skin/os/windows/     os=WINNT
-skin   cardbook-os          classic/1.0   chrome/skin/os/mac/         os=Darwin
+skin   cardbook-os          classic/1.0   chrome/skin/os/unix/               os=Linux
+skin   cardbook-os          classic/1.0   chrome/skin/os/windows/            os=WINNT
+skin   cardbook-os          classic/1.0   chrome/skin/os/mac/                os=Darwin
 
 # support for customizing toolbars
 style    chrome://global/content/customizeToolbar.xul chrome://cardbook/skin/toolbarButton.css

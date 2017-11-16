@@ -195,8 +195,8 @@
 <!ENTITY requestsTimeoutAccesskey "T">
 <!ENTITY multigetLabel "Bij het ophalen van gegevens, groeperen op">
 <!ENTITY multigetAccesskey "G">
-<!ENTITY discoveryGroupboxLabel "??Address books discovery??">
-<!ENTITY discoveryWarn "??At every synchronization, a check on the URLs below will be run to search for any new or deleted address books.??">
+<!ENTITY discoveryGroupboxLabel "Automatische adresboeken-controle op server">
+<!ENTITY discoveryWarn "Bij elke synchronisatie wordt op onderstaande URL's gecontroleerd op nieuwe of verwijderde adresboeken.">
 <!ENTITY discoveryURLLabel "URL">
 <!ENTITY addURLLabel "Toevoegen">
 <!ENTITY addURLAccesskey "T">

@@ -533,7 +533,9 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				document.getElementById('dateFormatRow').removeAttribute('hidden');
 				document.getElementById('readonlyRow').removeAttribute('hidden');
 				document.getElementById('urnuuidRow').removeAttribute('hidden');
-				if (wdw_addressbooksAdd.gType == 'FILE' || wdw_addressbooksAdd.gType == 'DIRECTORY') {
+				if (wdw_addressbooksAdd.gType == 'LOCALDB') {
+					cardbookElementTools.loadVCardVersions("vCardVersionPageNameMenupopup", "vCardVersionPageName");
+				} else if (wdw_addressbooksAdd.gType == 'FILE' || wdw_addressbooksAdd.gType == 'DIRECTORY') {
 					aTextbox.value = wdw_addressbooksAdd.gFile.leafName;
 					cardbookElementTools.loadVCardVersions("vCardVersionPageNameMenupopup", "vCardVersionPageName");
 				} else if (wdw_addressbooksAdd.gType == 'GOOGLE') {

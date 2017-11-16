@@ -380,14 +380,14 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 		var rv = _original.apply(null, arguments);
 
 		// Execute some action afterwards.
-		var prefs = Services.prefs;
-		var exclusive = prefs.getBoolPref("extensions.cardbook.exclusive");
-		var event = arguments[0];
-		var gContextMenu = new nsContextMenu(event.target, event.shiftKey);
-		if (exclusive) {
-			gContextMenu.showItem("mailContext-addemail", false);
+		if (gContextMenu.onMailtoLink) {
+			var prefs = Services.prefs;
+			var exclusive = prefs.getBoolPref("extensions.cardbook.exclusive");
+			if (exclusive) {
+				gContextMenu.showItem("mailContext-addemail", false);
+			}
+			gContextMenu.showItem("mailContext-addToCardBookMenu", gContextMenu.onMailtoLink && !gContextMenu.inThreadPane);
 		}
-		gContextMenu.showItem("mailContext-addToCardBookMenu", gContextMenu.onMailtoLink && !gContextMenu.inThreadPane);
 		
 		return rv;
 	};
