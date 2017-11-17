@@ -80,6 +80,7 @@ Translations by:
 * Adam Gorzkiewicz (pl)
 * Dominik Wnęk (pl)
 * [André Bação](https://github.com/abacao) (pt-PT)
+* Lucian Burca (ro)
 * Alexander Yavorsky (ru)
 * Peter Klofutar (sl)
 
