@@ -127,8 +127,8 @@
 <!ENTITY resetTypeLabel "Сбросить до значений по умолчанию">
 <!ENTITY resetTypeAccesskey "C">
 <!ENTITY preferenceGroupboxLabel "Поле ПРИОРитет">
-<!ENTITY usePreferenceValueLabel "??Use a preference value?? (только для vCard 4.0)">
-<!ENTITY usePreferenceValueAccesskey "??p??">
+<!ENTITY usePreferenceValueLabel "Использовать предпочитаемое значение (только для vCard 4.0)">
+<!ENTITY usePreferenceValueAccesskey "п">
 <!ENTITY preferenceValueLabel "Метка для значения поля ПРИОРитет">
 <!ENTITY preferenceValueAccesskey "з">
 
@@ -195,8 +195,8 @@
 <!ENTITY requestsTimeoutAccesskey "Т">
 <!ENTITY multigetLabel "Для запросов типа GET, группировать контакты по">
 <!ENTITY multigetAccesskey "G">
-<!ENTITY discoveryGroupboxLabel "??Address books discovery??">
-<!ENTITY discoveryWarn "??At every synchronization, a check on the URLs below will be run to search for any new or deleted address books.??">
+<!ENTITY discoveryGroupboxLabel "Проверять изменение набора адресных книг">
+<!ENTITY discoveryWarn "Для URL, отмеченных ниже, при каждом запуске будет производится проверка появления новых или удаления существующих адресных книг.">
 <!ENTITY discoveryURLLabel "URL">
 <!ENTITY addURLLabel "Добавить">
 <!ENTITY addURLAccesskey "Д">

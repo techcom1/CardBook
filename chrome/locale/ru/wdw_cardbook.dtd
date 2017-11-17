@@ -102,10 +102,10 @@
 <!ENTITY kindColumnLabel "Вид">
 <!ENTITY revColumnLabel "Последнее обновление">
 <!ENTITY etagColumnLabel "Etag">
-<!ENTITY birthplaceColumnLabel "??Birth Place??">
-<!ENTITY anniversaryColumnLabel "??Anniversary??">
-<!ENTITY deathdateColumnLabel "??Deathday??">
-<!ENTITY deathplaceColumnLabel "??Death Place??">
+<!ENTITY birthplaceColumnLabel "Место рождения">
+<!ENTITY anniversaryColumnLabel "Годовщина">
+<!ENTITY deathdateColumnLabel "Дата смерти">
+<!ENTITY deathplaceColumnLabel "Место смерти">
 
 <!ENTITY categoriesGroupboxLabel "Категории">
 <!ENTITY noteTabLabel "Заметка">
