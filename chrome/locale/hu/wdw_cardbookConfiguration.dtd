@@ -194,8 +194,8 @@
 <!ENTITY requestsTimeoutAccesskey "I">
 <!ENTITY multigetLabel "GET kéréseket, csoport névjegyek">
 <!ENTITY multigetAccesskey "G">
-<!ENTITY discoveryGroupboxLabel "??Address books discovery??">
-<!ENTITY discoveryWarn "??At every synchronization, a check on the URLs below will be run to search for any new or deleted address books.??">
+<!ENTITY discoveryGroupboxLabel "Névjegytár mappa felfedezése">
+<!ENTITY discoveryWarn "Minden összehangolására az alábbi webcímeket ellenőrzi, hogy megkeresse az új vagy törölt névjegytár mappák.">
 <!ENTITY discoveryURLLabel "URL">
 <!ENTITY addURLLabel "Új…">
 <!ENTITY addURLAccesskey "j">
