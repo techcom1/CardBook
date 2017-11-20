@@ -423,7 +423,11 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 						wdw_mergeCards.createLabel(aRow, listOfFields[i] + 'Label' + j, listOfFields[i] + 'Label');
 						for (var k = 0; k < listOfCards.length; k++) {
 							if (listOfCards[k][listOfFields[i]][j]) {
-								arrayOfValues.push(listOfCards[k][listOfFields[i]][j][0].join(","));
+								if (listOfFields[i] == "tel") {
+									arrayOfValues.push(cardbookUtils.formatTelForSearching(listOfCards[k][listOfFields[i]][j][0][0]));
+								} else {
+									arrayOfValues.push(listOfCards[k][listOfFields[i]][j][0].join(","));
+								}
 								var length1 = arrayOfValues.length;
 								arrayOfValues = cardbookRepository.arrayUnique(arrayOfValues);
 								var length2 = arrayOfValues.length;

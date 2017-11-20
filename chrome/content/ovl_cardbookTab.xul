@@ -37,7 +37,6 @@
 	<script src="cardbookCardParser.js"/>
 	<script src="cardbookDirTree.js"/>
 	<script src="cardbookMailPopularity.js"/>
-	<script src="chrome://cardbook/content/migrate/wdw_migrate.js"/>
 	<script src="chrome://cardbook/content/birthdays/cardbookBirthdaysUtils.js"/>
 	<script src="chrome://cardbook/content/cardbookElementTools.js"/>
 	<script src="chrome://cardbook/content/cardbookTypes.js"/>

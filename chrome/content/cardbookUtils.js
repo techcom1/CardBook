@@ -4,6 +4,11 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 	var cardbookUtils = {
 		
+		formatTelForSearching: function (aString) {
+			// +33 6 45 44 42 25 should be equal to 06 45 44 42 25 should be equal to 00 33 6 45 44 42 25 should be equal to 0645444225
+			return aString.replace(/^\+\d+\s+/g, "").replace(/^00\s+\d+\s+/g, "").replace(/\D/g, "").replace(/^0/g, "");
+		},
+
 		formatTelForOpenning: function (aString) {
 			return aString.replace(/\s*/g, "");
 		},
