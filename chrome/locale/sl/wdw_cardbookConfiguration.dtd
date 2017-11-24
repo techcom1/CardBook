@@ -101,6 +101,8 @@
 <!ENTITY miscEdittingGroupboxLabel "Razno">
 <!ENTITY preferEmailEditionLabel "Dvoklik na stik ga uredi namesto pošlje">
 <!ENTITY preferEmailEditionAccesskey "D">
+<!ENTITY dateDisplayedFormatLabel "Oblika zapisa datuma:">
+<!ENTITY dateDisplayedFormatAccesskey "z">
 
 <!ENTITY typesGroupboxLabel "Vrste">
 <!ENTITY typesCategoryAdrLabel "Naslov">

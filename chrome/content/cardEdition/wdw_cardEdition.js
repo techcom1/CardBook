@@ -462,6 +462,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			cardbookUtils.cloneCard(window.arguments[0].cardIn, wdw_cardEdition.workingCard);
 			wdw_cardEdition.workingCard.dirPrefId = document.getElementById('addressbookMenulist').selectedItem.value;
 			wdw_cardEdition.loadDefaultVersion();
+			wdw_cardEdition.loadDateFormatLabels();
 			wdw_cardEdition.displayCard(wdw_cardEdition.workingCard);
 		},
 
@@ -757,6 +758,21 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			}
 		},
 
+		loadDateFormatLabels: function () {
+			var cardbookPrefService = new cardbookPreferenceService(wdw_cardEdition.workingCard.dirPrefId);
+			var dateFormat = cardbookPrefService.getDateFormat();
+			var strBundle = document.getElementById("cardbook-strings");
+			myD = strBundle.getString("dateFormatsDLabel");
+			myM = strBundle.getString("dateFormatsMLabel");
+			myY = strBundle.getString("dateFormatsYLabel");
+			var fieldArray = [ "bday", "anniversary", "deathdate" ];
+			for (var i = 0; i < fieldArray.length; i++) {
+				if (document.getElementById(fieldArray[i] + 'Label')) {
+					document.getElementById(fieldArray[i] + 'Label').value = strBundle.getString(fieldArray[i] + "Label") + " (" + dateFormat.replace(/D/g, myD).replace(/M/g, myM).replace(/Y/g, myY) + ")";
+				}
+			}
+		},
+
 		showCorrectTabs: function () {
 			var prefs = Services.prefs;
 			document.getElementById('advancedTab').setAttribute("collapsed", !prefs.getBoolPref("extensions.cardbook.advancedTabView"));
@@ -782,6 +798,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			wdw_cardEdition.chooseCalendarPanel();
 			wdw_cardEdition.loadDefaultVersion();
 			wdw_cardEdition.displayCard(wdw_cardEdition.workingCard);
+			wdw_cardEdition.loadDateFormatLabels();
 			wdw_cardEdition.loadEditionMode();
 			
 			// address panel behaviour

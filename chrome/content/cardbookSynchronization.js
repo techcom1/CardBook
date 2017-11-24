@@ -1696,8 +1696,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					} else if (response && response["multistatus"] && (status > 199 && status < 400)) {
 						try {
 							let jsonResponses = response["multistatus"][0]["response"];
-							// first : try to determine if there are multiples addressbooks
-							var allAddressbooks = [];
 							for (var prop in jsonResponses) {
 								var jsonResponse = jsonResponses[prop];
 								let href = decodeURIComponent(jsonResponse["href"][0]);
@@ -1712,67 +1710,30 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 											let prop = propstat["prop"][0];
 											if (prop["resourcetype"] != null && prop["resourcetype"] !== undefined && prop["resourcetype"] != "") {
 												let rsrcType = prop["resourcetype"][0];
+												wdw_cardbooklog.updateStatusProgressInformationWithDebug2(aConnection.connDescription + " : rsrcType found : " + rsrcType.toSource());
 												if (rsrcType["vcard-collection"] || rsrcType["addressbook"]) {
-													if (href.indexOf(aRootUrl) >= 0 ) {
+													var displayName = "";
+													if (prop["displayname"] != null && prop["displayname"] !== undefined && prop["displayname"] != "") {
+														displayName = prop["displayname"][0];
+													}
+													wdw_cardbooklog.updateStatusProgressInformationWithDebug2(aConnection.connDescription + " : href found : " + href);
+													wdw_cardbooklog.updateStatusProgressInformationWithDebug2(aConnection.connDescription + " : displayName found : " + displayName);
+													if (href.indexOf("http") == 0 ) {
 														aConnection.connUrl = href;
 													} else {
 														aConnection.connUrl = aRootUrl + href;
 													}
-													allAddressbooks.push(aConnection.connUrl);
-												}
-											}
-										}
-									}
-								}
-							}
-							if (allAddressbooks.length > 1 && aOperationType !== "GETDISPLAYNAME") {
-								var strBundle = document.getElementById("cardbook-strings");
-								var prompts = Services.prompt;
-								var multipleAddressBooksTitle = strBundle.getString("multipleAddressBooksTitle");
-								var multipleAddressBooksMsg = strBundle.getFormattedString("multipleAddressBooksMsg", [aRootUrl]) + "\r\n\r\n" + allAddressbooks.join("\r\n");
-								prompts.alert(null, multipleAddressBooksTitle, multipleAddressBooksMsg);
-								cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
-								cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
-							} else {
-								for (var prop in jsonResponses) {
-									var jsonResponse = jsonResponses[prop];
-									let href = decodeURIComponent(jsonResponse["href"][0]);
-									if (href[href.length - 1] != '/') {
-										href += '/';
-									}
-									let propstats = jsonResponse["propstat"];
-									for (var prop1 in propstats) {
-										var propstat = propstats[prop1];
-										if (propstat["status"][0].indexOf("HTTP/1.1 200") == 0) {
-											if (propstat["prop"] != null && propstat["prop"] !== undefined && propstat["prop"] != "") {
-												let prop = propstat["prop"][0];
-												if (prop["resourcetype"] != null && prop["resourcetype"] !== undefined && prop["resourcetype"] != "") {
-													let rsrcType = prop["resourcetype"][0];
-													wdw_cardbooklog.updateStatusProgressInformationWithDebug2(aConnection.connDescription + " : rsrcType found : " + rsrcType.toSource());
-													if (rsrcType["vcard-collection"] || rsrcType["addressbook"]) {
-														var displayName = "";
-														if (prop["displayname"] != null && prop["displayname"] !== undefined && prop["displayname"] != "") {
-															displayName = prop["displayname"][0];
-														}
-														wdw_cardbooklog.updateStatusProgressInformationWithDebug2(aConnection.connDescription + " : href found : " + href);
-														wdw_cardbooklog.updateStatusProgressInformationWithDebug2(aConnection.connDescription + " : displayName found : " + displayName);
-														if (href.indexOf("http") == 0 ) {
-															aConnection.connUrl = href;
-														} else {
-															aConnection.connUrl = aRootUrl + href;
-														}
-														if (aOperationType == "GETDISPLAYNAME") {
-															cardbookRepository.cardbookServerValidation[aConnection.connPrefId]['length']++;
-															cardbookRepository.cardbookServerValidation[aConnection.connPrefId][aConnection.connUrl] = {}
-															cardbookRepository.cardbookServerValidation[aConnection.connPrefId][aConnection.connUrl].displayName = displayName;
-															cardbookRepository.cardbookServerValidation[aConnection.connPrefId][aConnection.connUrl].forget = false;
-															var aABConnection = {connPrefId: aConnection.connPrefId, connUser: aConnection.connUser, connUrl: aConnection.connUrl, connDescription: aConnection.connDescription};
-															cardbookSynchronization.discoverPhase4(aABConnection, aRootUrl, aOperationType, aParams);
-														} else if (aOperationType == "SYNCGOOGLE") {
-															cardbookSynchronization.googleSyncCards(aConnection, aParams.aMode, aParams.aPrefIdType);
-														} else if (aOperationType == "SYNCSERVER") {
-															cardbookSynchronization.serverSyncCards(aConnection, aParams.aMode, aParams.aPrefIdType);
-														}
+													if (aOperationType == "GETDISPLAYNAME") {
+														cardbookRepository.cardbookServerValidation[aConnection.connPrefId]['length']++;
+														cardbookRepository.cardbookServerValidation[aConnection.connPrefId][aConnection.connUrl] = {}
+														cardbookRepository.cardbookServerValidation[aConnection.connPrefId][aConnection.connUrl].displayName = displayName;
+														cardbookRepository.cardbookServerValidation[aConnection.connPrefId][aConnection.connUrl].forget = false;
+														var aABConnection = {connPrefId: aConnection.connPrefId, connUser: aConnection.connUser, connUrl: aConnection.connUrl, connDescription: aConnection.connDescription};
+														cardbookSynchronization.discoverPhase4(aABConnection, aRootUrl, aOperationType, aParams);
+													} else if (aOperationType == "SYNCGOOGLE") {
+														cardbookSynchronization.googleSyncCards(aConnection, aParams.aMode, aParams.aPrefIdType);
+													} else if (aOperationType == "SYNCSERVER") {
+														cardbookSynchronization.serverSyncCards(aConnection, aParams.aMode, aParams.aPrefIdType);
 													}
 												}
 											}

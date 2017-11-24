@@ -102,6 +102,8 @@
 <!ENTITY miscEdittingGroupboxLabel "Overig">
 <!ENTITY preferEmailEditionLabel "Dubbelklikken op contactpersoon start wijzigen (i.p.v. bericht verzenden)">
 <!ENTITY preferEmailEditionAccesskey "D">
+<!ENTITY dateDisplayedFormatLabel "Datumtekstnotatie:">
+<!ENTITY dateDisplayedFormatAccesskey "k">
 
 <!ENTITY typesGroupboxLabel "Verschillende types gegevens">
 <!ENTITY typesCategoryAdrLabel "Adressen">

@@ -56,6 +56,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 			prefs.setCharPref("localizeTarget", "out");
 			prefs.setCharPref("showNameAs", "LF");
 			prefs.setCharPref("fnFormula", "({{1}} |)({{2}} |)({{3}} |)({{4}} |)({{5}} |)({{6}} |)");
+			prefs.setCharPref("dateDisplayedFormat", "0");
 			
 			prefs.setCharPref("addressBooksNameList", "allAddressBooks");
 			prefs.setCharPref("calendarsNameList", "");
@@ -78,7 +79,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 			
 			prefs.setCharPref("accountsShown", "all");
 			prefs.setCharPref("uncategorizedCards", "");
-			prefs.setCharPref("addonVersion", "24.1");
+			prefs.setCharPref("addonVersion", "24.2");
 		},
 
 		lEventTimerSync : { notify: function(lTimerSync) {

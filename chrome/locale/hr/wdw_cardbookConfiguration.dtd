@@ -101,6 +101,8 @@
 <!ENTITY miscEdittingGroupboxLabel "Sve i svašta">
 <!ENTITY preferEmailEditionLabel "Dvaput kliknite uredi kontakte umjesto pošalji">
 <!ENTITY preferEmailEditionAccesskey "k">
+<!ENTITY dateDisplayedFormatLabel "Tekstualni oblik datuma:">
+<!ENTITY dateDisplayedFormatAccesskey "d">
 
 <!ENTITY typesGroupboxLabel "Vrste">
 <!ENTITY typesCategoryAdrLabel "Adresa">

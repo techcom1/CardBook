@@ -17,6 +17,10 @@ if ("undefined" == typeof(wdw_serverEdition)) {
 		},
 
 		save: function () {
+			if (document.getElementById('dateFormatMenuList').value != window.arguments[0].serverEditionDateFormat) {
+				cardbookDates.convertAddressBookDate(window.arguments[0].serverEditionId, document.getElementById('serverNameTextBox').value,
+													window.arguments[0].serverEditionDateFormat, document.getElementById('dateFormatMenuList').value);
+			}
 			window.arguments[0].serverCallback("SAVE", window.arguments[0].serverEditionId, document.getElementById('serverNameTextBox').value,
 												document.getElementById('serverColorInput').value, document.getElementById('serverVCardVersionTextBox').value,
 												document.getElementById('serverReadOnlyCheckBox').checked, document.getElementById('dateFormatMenuList').value,

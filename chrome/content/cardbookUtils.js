@@ -259,6 +259,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			function compare4(a, b) { return ((a.isAList === b.isAList)? 0 : a.isAList? -1 : 1)*aInvert; };
 			function compare5(a, b) { return collator.compareString(0, cardbookUtils.getCardValueByField(a, aIndex), cardbookUtils.getCardValueByField(b, aIndex))*aInvert; };
 			function compare6(a, b) { return collator.compareString(0, cardbookRepository.currentTypes.gender[a.gender], cardbookRepository.currentTypes.gender[b.gender])*aInvert; };
+			function compare7(a, b) { return (cardbookDates.getDateForCompare(a, aIndex)*aInvert > cardbookDates.getDateForCompare(b, aIndex)*aInvert); };
 			if (aIndex != -1) {
 				if (aIndex == "name") {
 					return aArray.sort(compare3);
@@ -266,6 +267,8 @@ if ("undefined" == typeof(cardbookUtils)) {
 					return aArray.sort(compare4);
 				} else if (aIndex == "gender") {
 					return aArray.sort(compare6);
+				} else if (aIndex == "bday" || aIndex == "anniversary" || aIndex == "deathdate") {
+					return aArray.sort(compare7);
 				} else if (aIndex.startsWith("X-")) {
 					return aArray.sort(compare5);
 				} else {
@@ -1015,8 +1018,8 @@ if ("undefined" == typeof(cardbookUtils)) {
 		},
 
 		displayCard: function (aCard, aReadOnly, aFollowLink) {
-			var fieldArray = [ "fn", "lastname", "firstname", "othername", "prefixname", "suffixname", "nickname", "bday",
-								"birthplace", "anniversary", "deathdate", "deathplace", "note", "mailer", "geo", "sortstring",
+			var fieldArray = [ "fn", "lastname", "firstname", "othername", "prefixname", "suffixname", "nickname",
+								"birthplace", "deathplace", "note", "mailer", "geo", "sortstring",
 								"class1", "tz", "agent", "key", "prodid", "uid", "version", "dirPrefId", "cardurl", "rev", "etag" ];
 			for (var i = 0; i < fieldArray.length; i++) {
 				if (document.getElementById(fieldArray[i] + 'TextBox') && aCard[fieldArray[i]]) {
@@ -1029,6 +1032,18 @@ if ("undefined" == typeof(cardbookUtils)) {
 							document.getElementById(fieldArray[i] + 'TextBox').setAttribute('rows', noteArray.length);
 						}
 					} else {
+						document.getElementById(fieldArray[i] + 'TextBox').removeAttribute('readonly');
+					}
+				}
+			}
+			var fieldArray = [ "bday", "anniversary", "deathdate" ];
+			for (var i = 0; i < fieldArray.length; i++) {
+				if (document.getElementById(fieldArray[i] + 'TextBox') && aCard[fieldArray[i]]) {
+					if (aReadOnly) {
+						document.getElementById(fieldArray[i] + 'TextBox').value = cardbookDates.getFormattedDateForCard(aCard, fieldArray[i]);
+						document.getElementById(fieldArray[i] + 'TextBox').setAttribute('readonly', 'true');
+					} else {
+						document.getElementById(fieldArray[i] + 'TextBox').value = aCard[fieldArray[i]];
 						document.getElementById(fieldArray[i] + 'TextBox').removeAttribute('readonly');
 					}
 				}
@@ -2839,6 +2854,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 	};
 
 	var loader = Services.scriptloader;
+	loader.loadSubScript("chrome://cardbook/content/cardbookDates.js");
 	loader.loadSubScript("chrome://cardbook/content/cardbookMailPopularity.js");
 	loader.loadSubScript("chrome://cardbook/content/cardbookSynchronization.js");
 	loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");

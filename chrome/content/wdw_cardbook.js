@@ -213,7 +213,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					else if (column.id == "fn") return aCardList[row].fn;
 					else if (column.id == "nickname") return aCardList[row].nickname;
 					else if (column.id == "gender") return cardbookRepository.currentTypes.gender[aCardList[row].gender];
-					else if (column.id == "bday") return aCardList[row].bday;
+					else if (column.id == "bday") return cardbookDates.getFormattedDateForCard(aCardList[row], column.id);
 					else if (column.id == "dispadr") return aCardList[row].dispadr;
 					else if (column.id == "disphomeadr") return aCardList[row].disphomeadr;
 					else if (column.id == "dispworkadr") return aCardList[row].dispworkadr;
@@ -244,12 +244,17 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					else if (column.id == "rev") return aCardList[row].rev;
 					else if (column.id == "cardurl") return aCardList[row].cardurl;
 					else if (column.id == "etag") return aCardList[row].etag;
+					else if (column.id == "birthplace") return aCardList[row].birthplace;
+					else if (column.id == "anniversary") return cardbookDates.getFormattedDateForCard(aCardList[row], column.id);
+					else if (column.id == "deathdate") return cardbookDates.getFormattedDateForCard(aCardList[row], column.id);
+					else if (column.id == "deathplace") return aCardList[row].deathplace;
 					else return cardbookUtils.getCardValueByField(aCardList[row], column.id);
 				}
 			}
 			wdw_cardbook.addCustomColumns();
 			var prefs = Services.prefs;
 			cardbookRepository.showNameAs = prefs.getComplexValue("extensions.cardbook.showNameAs", Components.interfaces.nsISupportsString).data;
+			cardbookRepository.dateDisplayedFormat = prefs.getComplexValue("extensions.cardbook.dateDisplayedFormat", Components.interfaces.nsISupportsString).data;
 			document.getElementById('cardsTree').view = accountsOrCatsTreeView;
 		},
 
@@ -268,9 +273,9 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		},
 		
 		selectAccountOrCatInNoSearch: function () {
+			wdw_cardbook.clearAccountOrCat();
 			wdw_cardbook.setNoSearchMode();
 			if (cardbookRepository.cardbookAccounts.length == 0) {
-				wdw_cardbook.clearAccountOrCat();
 				return;
 			}
 			var myTree = document.getElementById('accountsOrCatsTree');
@@ -1702,12 +1707,11 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		addAddressbook: function (aAction, aDirPrefId) {
 			if ((aDirPrefId != null && aDirPrefId !== undefined && aDirPrefId != "") || (cardbookRepository.cardbookSyncMode === "NOSYNC")) {
 				cardbookRepository.cardbookSyncMode = "SYNC";
-				var xulRuntime = Services.appinfo;
 				var myArgs = {action: aAction, dirPrefId: aDirPrefId, rootWindow: window};
 				var myWindow = window.openDialog("chrome://cardbook/content/addressbooksconfiguration/wdw_addressbooksAdd.xul", "",
 												   // Workaround for Bug 1151440 - the HTML color picker won't work
 												   // in linux when opened from modal dialog
-												   (xulRuntime.OS == 'Linux') ? "chrome,resizable,centerscreen" : "modal,chrome,resizable,centerscreen"
+												   (Services.appinfo.OS == 'Linux') ? "chrome,resizable,centerscreen" : "modal,chrome,resizable,centerscreen"
 												   , myArgs);
 			}
 		},
@@ -1731,7 +1735,6 @@ if ("undefined" == typeof(wdw_cardbook)) {
 						var myPrefIdReadOnly = cardbookPrefService.getReadOnly();
 						var myPrefIdDateFormat = cardbookPrefService.getDateFormat();
 						var myPrefIdUrnuuid = cardbookPrefService.getUrnuuid();
-						var xulRuntime = Services.appinfo;
 						var myArgs = {serverEditionName: myPrefIdName, serverEditionType: myPrefIdType, serverEditionUrl: myPrefIdUrl, serverEditionUser: myPrefIdUser,
 										serverEditionReadOnly: myPrefIdReadOnly, serverEditionColor: myPrefIdColor, serverEditionVCard: myPrefIdVCard,
 										serverEditionId: myPrefId, serverEditionDateFormat: myPrefIdDateFormat,
@@ -1739,7 +1742,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 						var myWindow = window.openDialog("chrome://cardbook/content/wdw_serverEdition.xul", "",
 														   // Workaround for Bug 1151440 - the HTML color picker won't work
 														   // in linux when opened from modal dialog
-														   (xulRuntime.OS == 'Linux') ? "chrome,resizable,centerscreen" : "modal,chrome,resizable,centerscreen"
+														   (Services.appinfo.OS == 'Linux') ? "chrome,resizable,centerscreen" : "modal,chrome,resizable,centerscreen"
 														   , myArgs);
 					}
 				}

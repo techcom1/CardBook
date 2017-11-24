@@ -318,9 +318,9 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 				ldaysUntilNextBirthday = this.daysBetween(lnextBirthday, date_of_today);
 				if (parseInt(ldaysUntilNextBirthday) <= parseInt(lNumberOfDays2)) {
 					if (ldaysUntilNextBirthday === parseInt(ldaysUntilNextBirthday)) {
-						cardbookBirthdaysUtils.lBirthdayList.push([ldaysUntilNextBirthday, lName, lAge, lDateOfBirthOld, lDateOfBirthFound, lEmail, aDirPrefId]);
+						cardbookBirthdaysUtils.lBirthdayList.push([ldaysUntilNextBirthday, lName, lAge, lDateOfBirthOld, lDateOfBirthFound, lEmail, aDirPrefId, aDateFormat]);
 					} else {
-						cardbookBirthdaysUtils.lBirthdayList.push(["0", lName + " : Error", "0", "0", lDateOfBirthFound, lEmail, aDirPrefId]);
+						cardbookBirthdaysUtils.lBirthdayList.push(["0", lName + " : Error", "0", "0", lDateOfBirthFound, lEmail, aDirPrefId, aDateFormat]);
 					}
 					if (!(cardbookBirthdaysUtils.lBirthdayAccountList[aDirPrefId])) {
 						cardbookBirthdaysUtils.lBirthdayAccountList[aDirPrefId] = "";
@@ -339,64 +339,60 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			var deathSuffix = strBundle.getString("deathSuffix");
 			cardbookBirthdaysUtils.lBirthdayList = [];
 			
-			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
-				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && (cardbookRepository.cardbookAccounts[i][6] != "SEARCH")) {
-					var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
+			for (i in cardbookRepository.cardbookCards) {
+				var myCard = cardbookRepository.cardbookCards[i];
+				var myDirPrefId = myCard.dirPrefId;
+				if (myContact.includes(myDirPrefId) || myContact === "allAddressBooks") {
 					var cardbookPrefService = new cardbookPreferenceService(myDirPrefId);
 					var dateFormat = cardbookPrefService.getDateFormat();
-					if (myContact.includes(myDirPrefId) || myContact === "allAddressBooks") {
-						var myDirPrefName = cardbookUtils.getPrefNameFromPrefId(myDirPrefId);
-						for (var j = 0; j < cardbookRepository.cardbookDisplayCards[myDirPrefId].length; j++) {
-							var myCard = cardbookRepository.cardbookDisplayCards[myDirPrefId][j];
-							var myFieldList = ['bday' , 'anniversary', 'deathdate'];
-							for (var k = 0; k < myFieldList.length; k++) {
-								if (myCard[myFieldList[k]] && myCard[myFieldList[k]] != "") {
-									var myFieldValue = myCard[myFieldList[k]];
-									var lDateOfBirth = cardbookDates.isDateStringCorrectlyFormatted(myFieldValue, dateFormat);
-									if (lDateOfBirth != "WRONGDATE") {
+					var myDirPrefName = cardbookUtils.getPrefNameFromPrefId(myDirPrefId);
+					var myFieldList = ['bday' , 'anniversary', 'deathdate'];
+					for (var k = 0; k < myFieldList.length; k++) {
+						if (myCard[myFieldList[k]] && myCard[myFieldList[k]] != "") {
+							var myFieldValue = myCard[myFieldList[k]];
+							var isDate = cardbookDates.convertDateStringToDate(myFieldValue, dateFormat);
+							if (isDate != "WRONGDATE") {
+								listOfEmail = cardbookUtils.getMimeEmailsFromCards([myCard], useOnlyEmail);
+								if (myFieldList[k] == "deathdate") {
+									cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, myFieldValue, myCard.fn + ' ' + deathSuffix, lnumberOfDays, myFieldValue, listOfEmail, myDirPrefId);
+								} else {
+									cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, myFieldValue, myCard.fn, lnumberOfDays, myFieldValue, listOfEmail, myDirPrefId);
+								}
+							} else {
+								cardbookUtils.formatStringForOutput("birthdayEntry1Wrong", [myDirPrefName, myCard.fn, myFieldValue, dateFormat], "Warning");
+							}
+						}
+					}
+					if (searchInNote == true) {
+						var lNotesLine = myCard.note.split("\n");
+						for (var a = 0; a < lNotesLine.length; a++) {
+							// compatibility when not localized
+							var EmptyParamRegExp1 = new RegExp("^Birthday:([^:]*):([^:]*)([:]*)(.*)", "ig");
+							if (lNotesLine[a].replace(EmptyParamRegExp1, "$1")!=lNotesLine[a]) {
+								var lNotesName = lNotesLine[a].replace(EmptyParamRegExp1, "$1").replace(/^\s+|\s+$/g,"");
+								if (lNotesLine[a].replace(EmptyParamRegExp1, "$2")!=lNotesLine[a]) {
+									var lNotesDateFound = lNotesLine[a].replace(EmptyParamRegExp1, "$2").replace(/^\s+|\s+$/g,"");
+									var isDate = cardbookDates.convertDateStringToDate(lNotesDateFound, dateFormat);
+									if (isDate != "WRONGDATE") {
 										listOfEmail = cardbookUtils.getMimeEmailsFromCards([myCard], useOnlyEmail);
-										if (myFieldList[k] == "deathdate") {
-											cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, lDateOfBirth, myCard.fn + ' ' + deathSuffix, lnumberOfDays, myFieldValue, listOfEmail, myDirPrefId);
-										} else {
-											cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, lDateOfBirth, myCard.fn, lnumberOfDays, myFieldValue, listOfEmail, myDirPrefId);
-										}
+										cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, lNotesDateFound, lNotesName, lnumberOfDays, lNotesDateFound, listOfEmail, myDirPrefId);
 									} else {
-										cardbookUtils.formatStringForOutput("birthdayEntry1Wrong", [myDirPrefName, myCard.fn, myFieldValue, dateFormat], "Warning");
+										cardbookUtils.formatStringForOutput("birthdayEntry2Wrong", [myDirPrefName, myCard.fn, lNotesDateFound, dateFormat], "Warning");
 									}
 								}
 							}
-							if (searchInNote == true) {
-								var lNotesLine = myCard.note.split("\n");
-								for (var a = 0; a < lNotesLine.length; a++) {
-									// compatibility when not localized
-									var EmptyParamRegExp1 = new RegExp("^Birthday:([^:]*):([^:]*)([:]*)(.*)", "ig");
-									if (lNotesLine[a].replace(EmptyParamRegExp1, "$1")!=lNotesLine[a]) {
-										var lNotesName = lNotesLine[a].replace(EmptyParamRegExp1, "$1").replace(/^\s+|\s+$/g,"");
-										if (lNotesLine[a].replace(EmptyParamRegExp1, "$2")!=lNotesLine[a]) {
-											var lNotesDateFound = lNotesLine[a].replace(EmptyParamRegExp1, "$2").replace(/^\s+|\s+$/g,"");
-											var lNotesDate = cardbookDates.isDateStringCorrectlyFormatted(lNotesDateFound, dateFormat);
-											if (lNotesDate != "WRONGDATE") {
-												listOfEmail = cardbookUtils.getMimeEmailsFromCards([myCard], useOnlyEmail);
-												cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, lNotesDate, lNotesName, lnumberOfDays, lNotesDateFound, listOfEmail, myDirPrefId);
-											} else {
-												cardbookUtils.formatStringForOutput("birthdayEntry2Wrong", [myDirPrefName, myCard.fn, lNotesDateFound, dateFormat], "Warning");
-											}
-										}
-									}
-									// now localized
-									var EmptyParamRegExp1 = new RegExp("^" + eventInNoteEventPrefix + ":([^:]*):([^:]*)([:]*)(.*)", "ig");
-									if (lNotesLine[a].replace(EmptyParamRegExp1, "$1")!=lNotesLine[a]) {
-										var lNotesName = lNotesLine[a].replace(EmptyParamRegExp1, "$1").replace(/^\s+|\s+$/g,"");
-										if (lNotesLine[a].replace(EmptyParamRegExp1, "$2")!=lNotesLine[a]) {
-											var lNotesDateFound = lNotesLine[a].replace(EmptyParamRegExp1, "$2").replace(/^\s+|\s+$/g,"");
-											var lNotesDate = cardbookDates.isDateStringCorrectlyFormatted(lNotesDateFound, dateFormat);
-											if (lNotesDate != "WRONGDATE") {
-												listOfEmail = cardbookUtils.getMimeEmailsFromCards([myCard], useOnlyEmail);
-												cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, lNotesDate, lNotesName, lnumberOfDays, lNotesDateFound, listOfEmail, myDirPrefId);
-											} else {
-												cardbookUtils.formatStringForOutput("birthdayEntry2Wrong", [myDirPrefName, myCard.fn, lNotesDateFound, dateFormat], "Warning");
-											}
-										}
+							// now localized
+							var EmptyParamRegExp1 = new RegExp("^" + eventInNoteEventPrefix + ":([^:]*):([^:]*)([:]*)(.*)", "ig");
+							if (lNotesLine[a].replace(EmptyParamRegExp1, "$1")!=lNotesLine[a]) {
+								var lNotesName = lNotesLine[a].replace(EmptyParamRegExp1, "$1").replace(/^\s+|\s+$/g,"");
+								if (lNotesLine[a].replace(EmptyParamRegExp1, "$2")!=lNotesLine[a]) {
+									var lNotesDateFound = lNotesLine[a].replace(EmptyParamRegExp1, "$2").replace(/^\s+|\s+$/g,"");
+									var isDate = cardbookDates.convertDateStringToDate(lNotesDateFound, dateFormat);
+									if (isDate != "WRONGDATE") {
+										listOfEmail = cardbookUtils.getMimeEmailsFromCards([myCard], useOnlyEmail);
+										cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, lNotesDateFound, lNotesName, lnumberOfDays, lNotesDateFound, listOfEmail, myDirPrefId);
+									} else {
+										cardbookUtils.formatStringForOutput("birthdayEntry2Wrong", [myDirPrefName, myCard.fn, lNotesDateFound, dateFormat], "Warning");
 									}
 								}
 							}

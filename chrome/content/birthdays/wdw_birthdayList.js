@@ -104,7 +104,7 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 						if (column.id == "daysleft") return cardbookBirthdaysUtils.lBirthdayList[row][0];
 						else if (column.id == "name") return cardbookBirthdaysUtils.lBirthdayList[row][1];
 						else if (column.id == "age") return cardbookBirthdaysUtils.lBirthdayList[row][2];
-						else if (column.id == "dateofbirth") return cardbookBirthdaysUtils.lBirthdayList[row][3];
+						else if (column.id == "dateofbirth") return cardbookDates.getFormattedDateForDateString(cardbookBirthdaysUtils.lBirthdayList[row][3], cardbookBirthdaysUtils.lBirthdayList[row][7]);
 						else if (column.id == "dateofbirthfound") return cardbookBirthdaysUtils.lBirthdayList[row][4];
 						else if (column.id == "email") return cardbookBirthdaysUtils.lBirthdayList[row][5];
 						else return cardbookBirthdaysUtils.lBirthdayList[row][5];

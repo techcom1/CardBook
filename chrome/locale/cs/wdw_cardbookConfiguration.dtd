@@ -102,6 +102,8 @@
 <!ENTITY miscEdittingGroupboxLabel "Ost.">
 <!ENTITY preferEmailEditionLabel "Dvojklik na kontakt ho upraví namísto odeslání e-mailu">
 <!ENTITY preferEmailEditionAccesskey "D">
+<!ENTITY dateDisplayedFormatLabel "Formát data:">
+<!ENTITY dateDisplayedFormatAccesskey "F">
 
 <!ENTITY typesGroupboxLabel "Typy">
 <!ENTITY typesCategoryAdrLabel "Adresa">

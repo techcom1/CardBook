@@ -152,8 +152,9 @@ var cardbookRepository = {
 	// used to store the msgIdentityKey by window
 	composeMsgIdentity : {},
 	
-	// used to remember the choice of name format
+	// used to remember the choice of name and dates format
 	showNameAs : "",
+	dateDisplayedFormat : "0",
 
 	cardbookDynamicCssRules : {},
 

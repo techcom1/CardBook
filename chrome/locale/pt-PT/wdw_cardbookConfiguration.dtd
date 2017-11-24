@@ -102,6 +102,8 @@
 <!ENTITY miscEdittingGroupboxLabel "Diversos">
 <!ENTITY preferEmailEditionLabel "Duplo clique no contacto para edita-lo em vez de enviar email">
 <!ENTITY preferEmailEditionAccesskey "E">
+<!ENTITY dateDisplayedFormatLabel "Formato de texto da data:">
+<!ENTITY dateDisplayedFormatAccesskey "x">
 
 <!ENTITY typesGroupboxLabel "Tipos">
 <!ENTITY typesCategoryAdrLabel "Moradas">

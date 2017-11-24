@@ -12,8 +12,87 @@
 // "DDMMYYYY"
 // "MMDDYYYY"
 if ("undefined" == typeof(cardbookDates)) {
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+
 	var cardbookDates = {
 		
+		getDateForCompare: function (aCard, aField) {
+			try {
+				if (aCard[aField] == "") {
+					return new Date(Date.UTC('666', '6', '6'));
+				} else {
+					var cardbookPrefService = new cardbookPreferenceService(aCard.dirPrefId);
+					var dateFormat = cardbookPrefService.getDateFormat();
+					var myDate = cardbookDates.convertDateStringToDate(aCard[aField], dateFormat);
+					if (myDate == "WRONGDATE") {
+						return new Date(Date.UTC('666', '6', '6'));
+					} else {
+						return myDate;
+					}
+				}
+			}
+			catch (e) {
+				return new Date(Date.UTC('666', '6', '6'));
+			}
+		},
+
+		getFormattedDateForCard: function (aCard, aField) {
+			try {
+				if (aCard[aField] == "") {
+					return "";
+				} else {
+					var cardbookPrefService = new cardbookPreferenceService(aCard.dirPrefId);
+					var dateFormat = cardbookPrefService.getDateFormat();
+					return cardbookDates.getFormattedDateForDateString(aCard[aField], dateFormat);
+				}
+			}
+			catch (e) {
+				return aCard[aField];
+			}
+		},
+
+		getFormattedDateForDateString: function (aDateString, aDateFormat) {
+			try {
+				var myDate = cardbookDates.convertDateStringToDate(aDateString, aDateFormat);
+				if (myDate == "WRONGDATE") {
+					return aDateString;
+				} else if (myDate.getFullYear() == "666") {
+					if (Services.appinfo.version >= "57") {
+						if (cardbookRepository.dateDisplayedFormat == "0") {
+							var formatter = Services.intl.createDateTimeFormat(undefined, { month: "long", day: "numeric", timeZone: "UTC"});
+						} else {
+							var formatter = Services.intl.createDateTimeFormat(undefined, { month: "short", day: "numeric", timeZone: "UTC"});
+						}
+						return formatter.format(myDate);
+					} else {
+						if (aDateString.startsWith("--") && aDateFormat == "YYYYMMDD") {
+							aDateString = aDateString.replace(/^--/, "");
+						}
+						return aDateString;
+					}
+				} else {
+					if (Services.appinfo.version >= "57") {
+						if (cardbookRepository.dateDisplayedFormat == "0") {
+							var formatter = Services.intl.createDateTimeFormat(undefined, { dateStyle: "long", timeZone: "UTC"});
+						} else {
+							var formatter = Services.intl.createDateTimeFormat(undefined, { dateStyle: "short", timeZone: "UTC"});
+						}
+						return formatter.format(myDate);
+					} else {
+						var myDateService = Components.classes["@mozilla.org/intl/scriptabledateformat;1"].getService(Components.interfaces.nsIScriptableDateFormat);
+						if (cardbookRepository.dateDisplayedFormat == "0") {
+							return myDateService.FormatDate("", Components.interfaces.nsIScriptableDateFormat.dateFormatLong, myDate.getFullYear(), myDate.getMonth() + 1, myDate.getDate());
+						} else {
+							return myDateService.FormatDate("", Components.interfaces.nsIScriptableDateFormat.dateFormatShort, myDate.getFullYear(), myDate.getMonth() + 1, myDate.getDate());
+						}
+					}
+				}
+			}
+			catch (e) {
+				return aDateString;
+			}
+		},
+
 		getAge: function (aCard) {
 			try {
 				if (aCard.bday == "") {
@@ -23,9 +102,9 @@ if ("undefined" == typeof(cardbookDates)) {
 					var dateFormat = cardbookPrefService.getDateFormat();
 					var lDateOfBirth = cardbookDates.convertDateStringToDate(aCard.bday, dateFormat);
 					if (lDateOfBirth == "WRONGDATE") {
-						return "";
+						return "?";
 					} else if (lDateOfBirth.getFullYear() == "666") {
-						return "";
+						return "?";
 					} else {
 						var today = new Date();
 						var age = today.getFullYear() - lDateOfBirth.getFullYear();
@@ -38,7 +117,7 @@ if ("undefined" == typeof(cardbookDates)) {
 				}
 			}
 			catch (e) {
-				return "";
+				return "?";
 			}
 		},
 
@@ -65,331 +144,174 @@ if ("undefined" == typeof(cardbookDates)) {
 			return lSeparator;
 		},
 
-		verifyDateFields: function (aDateString, aDay, aMonth, aYear) {
-			var lReturn;
-			if (aDay == "" && aMonth == "") {
-				lReturn = "WRONGDATE";
-			} else {
-				if (aDay <= 0 || aDay > 31) {
+		convertDateStringToDate: function (aDateString, aDateFormat) {
+			try {
+				// cleanup for partial dates and dates with timestamps
+				if (aDateString.startsWith("--") && aDateFormat == "YYYYMMDD") {
+					aDateString = aDateString.replace(/^--/, "");
+				}
+				aDateString = aDateString.replace(/^([\d\-\.\/]*)([^\d\-\.\/])(.*)/, "$1");
+				var lSeparator = cardbookDates.getSeparator(aDateFormat);
+				var lReturn;
+				var lFirstField;
+				var lSecondField;
+				var lThirdField;
+				if (aDateString.length < 3) {
 					lReturn = "WRONGDATE";
-				} else if (aMonth <= 0 || aMonth > 12) {
+				} else if (lSeparator != "" && !aDateString.includes(lSeparator)) {
 					lReturn = "WRONGDATE";
-				} else if (aYear <= 0 || aYear > 3000) {
+				} else if (lSeparator == "" && (aDateString.includes("-") || aDateString.includes(".") || aDateString.includes("/"))) {
 					lReturn = "WRONGDATE";
 				} else {
-					try {
-						lReturn = aDateString;
-					}
-					catch (e) {
-						lReturn = "WRONGDATE";
+					switch(aDateFormat) {
+						case "YYYY-MM-DD":
+						case "YYYY.MM.DD":
+						case "YYYY/MM/DD":
+							if (aDateString.split(lSeparator).length == 3) {
+								var EmptyParamRegExp2 = new RegExp("^([^\-]*)\\" + lSeparator + "([^\-]*)\\" + lSeparator + "([^\-]*)", "ig");
+								if (aDateString.replace(EmptyParamRegExp2, "$1")!=aDateString) {
+									lFirstField = aDateString.replace(EmptyParamRegExp2, "$1");
+									lFirstField = (lFirstField.length<2?'0':'') + lFirstField;
+									lSecondField = aDateString.replace(EmptyParamRegExp2, "$2");
+									lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
+									lThirdField = aDateString.replace(EmptyParamRegExp2, "$3");
+									lThirdField = (lThirdField.length<2?'0':'') + lThirdField;
+								}
+								lReturn = new Date(Date.UTC(lFirstField, lSecondField-1, lThirdField));
+							} else {
+								var EmptyParamRegExp2 = new RegExp("^([^\-]*)\\" + lSeparator + "([^\-]*)", "ig");
+								if (aDateString.replace(EmptyParamRegExp2, "$1")!=aDateString) {
+									lFirstField = aDateString.replace(EmptyParamRegExp2, "$1");
+									lFirstField = (lFirstField.length<2?'0':'') + lFirstField;
+									lSecondField = aDateString.replace(EmptyParamRegExp2, "$2");
+									lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
+								}
+								lReturn = new Date(Date.UTC('666', lFirstField-1, lSecondField));
+							}
+							break;
+						case "DD-MM-YYYY":
+						case "DD.MM.YYYY":
+						case "DD/MM/YYYY":
+							if (aDateString.split(lSeparator).length == 3) {
+								var EmptyParamRegExp2 = new RegExp("^([^\.]*)\\" + lSeparator + "([^\.]*)\\" + lSeparator + "([^\.]*)", "ig");
+								if (aDateString.replace(EmptyParamRegExp2, "$1")!=aDateString) {
+									lFirstField = aDateString.replace(EmptyParamRegExp2, "$1");
+									lFirstField = (lFirstField.length<2?'0':'') + lFirstField;
+									lSecondField = aDateString.replace(EmptyParamRegExp2, "$2");
+									lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
+									lThirdField = aDateString.replace(EmptyParamRegExp2, "$3");
+									lThirdField = (lThirdField.length<2?'0':'') + lThirdField;
+								}
+								lReturn = new Date(Date.UTC(lThirdField, lSecondField-1, lFirstField));
+							} else {
+								var EmptyParamRegExp2 = new RegExp("^([^\.]*)\\" + lSeparator + "([^\.]*)", "ig");
+								if (aDateString.replace(EmptyParamRegExp2, "$1")!=aDateString) {
+									lFirstField = aDateString.replace(EmptyParamRegExp2, "$1");
+									lFirstField = (lFirstField.length<2?'0':'') + lFirstField;
+									lSecondField = aDateString.replace(EmptyParamRegExp2, "$2");
+									lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
+								}
+								lReturn = new Date(Date.UTC('666', lSecondField-1, lFirstField));
+							}
+							break;
+						case "MM-DD-YYYY":
+						case "MM.DD.YYYY":
+						case "MM/DD/YYYY":
+							if (aDateString.split(lSeparator).length == 3) {
+								var EmptyParamRegExp2 = new RegExp("^([^\/]*)\\" + lSeparator + "([^\/]*)\\" + lSeparator + "([^\/]*)", "ig");
+								if (aDateString.replace(EmptyParamRegExp2, "$1")!=aDateString) {
+									lFirstField = aDateString.replace(EmptyParamRegExp2, "$1");
+									lFirstField = (lFirstField.length<2?'0':'') + lFirstField;
+									lSecondField = aDateString.replace(EmptyParamRegExp2, "$2");
+									lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
+									lThirdField = aDateString.replace(EmptyParamRegExp2, "$3");
+									lThirdField = (lThirdField.length<2?'0':'') + lThirdField;
+								}
+								lReturn = new Date(Date.UTC(lThirdField, lFirstField-1, lSecondField));
+							} else {
+								var EmptyParamRegExp2 = new RegExp("^([^\/]*)\\" + lSeparator + "([^\/]*)", "ig");
+								if (aDateString.replace(EmptyParamRegExp2, "$1")!=aDateString) {
+									lFirstField = aDateString.replace(EmptyParamRegExp2, "$1");
+									lFirstField = (lFirstField.length<2?'0':'') + lFirstField;
+									lSecondField = aDateString.replace(EmptyParamRegExp2, "$2");
+									lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
+								}
+								lReturn = new Date(Date.UTC('666', lFirstField-1, lSecondField));
+							}
+							break;
+						case "YYYYMMDD":
+							if (aDateString.startsWith("--")) {
+								aDateString = aDateString.replace(/^--/, "");
+							}
+							if (aDateString.length == 8) {
+								lFirstField = aDateString.substr(0, 4);
+								lSecondField = aDateString.substr(4, 2);
+								lThirdField = aDateString.substr(6, 2);
+								lReturn = new Date(Date.UTC(lFirstField, lSecondField-1, lThirdField));
+							} else if (aDateString.length == 4 || aDateString.length == 3) {
+								lFirstField = aDateString.substr(0, 2);
+								lSecondField = aDateString.substr(2, 2);
+								lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
+								lReturn = new Date(Date.UTC('666', lFirstField-1, lSecondField));
+							} else {
+								lReturn = "WRONGDATE";
+							}
+							break;
+						case "DDMMYYYY":
+							if (aDateString.length == 8) {
+								lFirstField = aDateString.substr(0, 2);
+								lSecondField = aDateString.substr(2, 2);
+								lThirdField = aDateString.substr(4, 4);
+								lReturn = new Date(Date.UTC(lThirdField, lSecondField-1, lFirstField));
+							} else if (aDateString.length == 4 || aDateString.length == 3) {
+								lFirstField = aDateString.substr(0, 2);
+								lSecondField = aDateString.substr(2, 2);
+								lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
+								lReturn = new Date(Date.UTC('666', lSecondField-1, lFirstField));
+							} else {
+								lReturn = "WRONGDATE";
+							}
+							break;
+						case "MMDDYYYY":
+							if (aDateString.length == 8) {
+								lFirstField = aDateString.substr(0, 2);
+								lSecondField = aDateString.substr(2, 2);
+								lThirdField = aDateString.substr(4, 4);
+								lReturn = new Date(Date.UTC(lThirdField, lFirstField-1, lSecondField));
+							} else if (aDateString.length == 4 || aDateString.length == 3) {
+								lFirstField = aDateString.substr(0, 2);
+								lSecondField = aDateString.substr(2, 2);
+								lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
+								lReturn = new Date(Date.UTC('666', lFirstField-1, lSecondField));
+							} else {
+								lReturn = "WRONGDATE";
+							}
+							break;
+						default:
+							lReturn = "WRONGDATE";
 					}
 				}
+				return lReturn;
 			}
-			return lReturn;
-		},
-
-		isDateStringCorrectlyFormatted: function (aDateString, aDateFormat) {
-			var lSeparator = cardbookDates.getSeparator(aDateFormat);
-			var lReturn;
-			var lFirstField;
-			var lSecondField;
-			var lThirdField;
-			if (aDateString.length < 3) {
-				lReturn = "WRONGDATE";
-			} else if (lSeparator != "" && !aDateString.includes(lSeparator)) {
-				lReturn = "WRONGDATE";
-			} else if (lSeparator == "" && (aDateString.includes("-") || aDateString.includes(".") || aDateString.includes("/"))) {
-				lReturn = "WRONGDATE";
-			} else {
-				switch(aDateFormat) {
-					case "YYYY-MM-DD":
-					case "YYYY.MM.DD":
-					case "YYYY/MM/DD":
-						if (aDateString.split(lSeparator).length == 3) {
-							var EmptyParamRegExp2 = new RegExp("^([^\-]*)\\" + lSeparator + "([^\-]*)\\" + lSeparator + "([^\-]*)", "ig");
-							if (aDateString.replace(EmptyParamRegExp2, "$1")!=aDateString) {
-								lFirstField = aDateString.replace(EmptyParamRegExp2, "$1");
-								lFirstField = (lFirstField.length<2?'0':'') + lFirstField;
-								lSecondField = aDateString.replace(EmptyParamRegExp2, "$2");
-								lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-								lThirdField = aDateString.replace(EmptyParamRegExp2, "$3");
-								lThirdField = (lThirdField.length<2?'0':'') + lThirdField;
-							}
-							lReturn = cardbookDates.verifyDateFields(aDateString, lThirdField, lSecondField, lFirstField);
-						} else {
-							var EmptyParamRegExp2 = new RegExp("^([^\-]*)\\" + lSeparator + "([^\-]*)", "ig");
-							if (aDateString.replace(EmptyParamRegExp2, "$1")!=aDateString) {
-								lFirstField = aDateString.replace(EmptyParamRegExp2, "$1");
-								lFirstField = (lFirstField.length<2?'0':'') + lFirstField;
-								lSecondField = aDateString.replace(EmptyParamRegExp2, "$2");
-								lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-							}
-							lReturn = cardbookDates.verifyDateFields(aDateString, lSecondField, lFirstField, '666');
-						}
-						break;
-					case "DD-MM-YYYY":
-					case "DD.MM.YYYY":
-					case "DD/MM/YYYY":
-						if (aDateString.split(lSeparator).length == 3) {
-							var EmptyParamRegExp2 = new RegExp("^([^\.]*)\\" + lSeparator + "([^\.]*)\\" + lSeparator + "([^\.]*)", "ig");
-							if (aDateString.replace(EmptyParamRegExp2, "$1")!=aDateString) {
-								lFirstField = aDateString.replace(EmptyParamRegExp2, "$1");
-								lFirstField = (lFirstField.length<2?'0':'') + lFirstField;
-								lSecondField = aDateString.replace(EmptyParamRegExp2, "$2");
-								lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-								lThirdField = aDateString.replace(EmptyParamRegExp2, "$3");
-								lThirdField = (lThirdField.length<2?'0':'') + lThirdField;
-							}
-							lReturn = cardbookDates.verifyDateFields(aDateString, lFirstField, lSecondField, lThirdField);
-						} else {
-							var EmptyParamRegExp2 = new RegExp("^([^\.]*)\\" + lSeparator + "([^\.]*)", "ig");
-							if (aDateString.replace(EmptyParamRegExp2, "$1")!=aDateString) {
-								lFirstField = aDateString.replace(EmptyParamRegExp2, "$1");
-								lFirstField = (lFirstField.length<2?'0':'') + lFirstField;
-								lSecondField = aDateString.replace(EmptyParamRegExp2, "$2");
-								lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-							}
-							lReturn = cardbookDates.verifyDateFields(aDateString, lFirstField, lSecondField, '666');
-						}
-						break;
-					case "MM-DD-YYYY":
-					case "MM.DD.YYYY":
-					case "MM/DD/YYYY":
-						if (aDateString.split(lSeparator).length == 3) {
-							var EmptyParamRegExp2 = new RegExp("^([^\/]*)\\" + lSeparator + "([^\/]*)\\" + lSeparator + "([^\/]*)", "ig");
-							if (aDateString.replace(EmptyParamRegExp2, "$1")!=aDateString) {
-								lFirstField = aDateString.replace(EmptyParamRegExp2, "$1");
-								lFirstField = (lFirstField.length<2?'0':'') + lFirstField;
-								lSecondField = aDateString.replace(EmptyParamRegExp2, "$2");
-								lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-								lThirdField = aDateString.replace(EmptyParamRegExp2, "$3");
-								lThirdField = (lThirdField.length<2?'0':'') + lThirdField;
-							}
-							lReturn = cardbookDates.verifyDateFields(aDateString, lSecondField, lFirstField, lThirdField);
-						} else {
-							var EmptyParamRegExp2 = new RegExp("^([^\/]*)\\" + lSeparator + "([^\/]*)", "ig");
-							if (aDateString.replace(EmptyParamRegExp2, "$1")!=aDateString) {
-								lFirstField = aDateString.replace(EmptyParamRegExp2, "$1");
-								lFirstField = (lFirstField.length<2?'0':'') + lFirstField;
-								lSecondField = aDateString.replace(EmptyParamRegExp2, "$2");
-								lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-							}
-							lReturn = cardbookDates.verifyDateFields(aDateString, lSecondField, lFirstField, '666');
-						}
-						break;
-					case "YYYYMMDD":
-						if (aDateString.length == 8) {
-							lFirstField = aDateString.substr(0, 4);
-							lSecondField = aDateString.substr(4, 2);
-							lThirdField = aDateString.substr(6, 2);
-							lReturn = cardbookDates.verifyDateFields(aDateString, lThirdField, lSecondField, lFirstField);
-						} else if (aDateString.length == 4 || aDateString.length == 3) {
-							lFirstField = aDateString.substr(0, 2);
-							lSecondField = aDateString.substr(2, 2);
-							lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-							lReturn = cardbookDates.verifyDateFields(aDateString, lSecondField, lFirstField, '666');
-						}
-						break;
-					case "DDMMYYYY":
-						if (aDateString.length == 8) {
-							lFirstField = aDateString.substr(0, 2);
-							lSecondField = aDateString.substr(2, 2);
-							lThirdField = aDateString.substr(4, 4);
-							lReturn = cardbookDates.verifyDateFields(aDateString, lFirstField, lSecondField, lThirdField);
-						} else if (aDateString.length == 4 || aDateString.length == 3) {
-							lFirstField = aDateString.substr(0, 2);
-							lSecondField = aDateString.substr(2, 2);
-							lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-							lReturn = cardbookDates.verifyDateFields(aDateString, lFirstField, lSecondField, '666');
-						}
-						break;
-					case "MMDDYYYY":
-						if (aDateString.length == 8) {
-							lFirstField = aDateString.substr(0, 2);
-							lSecondField = aDateString.substr(2, 2);
-							lThirdField = aDateString.substr(4, 4);
-							lReturn = cardbookDates.verifyDateFields(aDateString, lSecondField, lFirstField, lThirdField);
-						} else if (aDateString.length == 4 || aDateString.length == 3) {
-							lFirstField = aDateString.substr(0, 2);
-							lSecondField = aDateString.substr(2, 2);
-							lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-							lReturn = cardbookDates.verifyDateFields(aDateString, lSecondField, lFirstField, '666');
-						}
-						break;
-					default:
-						lReturn = "WRONGDATE";
-				}
+			catch (e) {
+				return "WRONGDATE";
 			}
-			return lReturn;
-		},
-
-		convertDateStringToDate: function (aDateString, aDateFormat) {
-			var lSeparator = cardbookDates.getSeparator(aDateFormat);
-			var lReturn;
-			var lFirstField;
-			var lSecondField;
-			var lThirdField;
-			switch(aDateFormat) {
-				case "YYYY-MM-DD":
-				case "YYYY.MM.DD":
-				case "YYYY/MM/DD":
-					if (aDateString.split(lSeparator).length == 3) {
-						var EmptyParamRegExp2 = new RegExp("^([^\-]*)\\" + lSeparator + "([^\-]*)\\" + lSeparator + "([^\-]*)", "ig");
-						if (aDateString.replace(EmptyParamRegExp2, "$1")!=aDateString) {
-							lFirstField = aDateString.replace(EmptyParamRegExp2, "$1");
-							lFirstField = (lFirstField.length<2?'0':'') + lFirstField;
-							lSecondField = aDateString.replace(EmptyParamRegExp2, "$2");
-							lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-							lThirdField = aDateString.replace(EmptyParamRegExp2, "$3");
-							lThirdField = (lThirdField.length<2?'0':'') + lThirdField;
-						}
-						lReturn = new Date(lFirstField, lSecondField-1, lThirdField);
-					} else {
-						var EmptyParamRegExp2 = new RegExp("^([^\-]*)\\" + lSeparator + "([^\-]*)", "ig");
-						if (aDateString.replace(EmptyParamRegExp2, "$1")!=aDateString) {
-							lFirstField = aDateString.replace(EmptyParamRegExp2, "$1");
-							lFirstField = (lFirstField.length<2?'0':'') + lFirstField;
-							lSecondField = aDateString.replace(EmptyParamRegExp2, "$2");
-							lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-						}
-						lReturn = new Date('666', lFirstField-1, lSecondField);
-					}
-					break;
-				case "DD-MM-YYYY":
-				case "DD.MM.YYYY":
-				case "DD/MM/YYYY":
-					if (aDateString.split(lSeparator).length == 3) {
-						var EmptyParamRegExp2 = new RegExp("^([^\.]*)\\" + lSeparator + "([^\.]*)\\" + lSeparator + "([^\.]*)", "ig");
-						if (aDateString.replace(EmptyParamRegExp2, "$1")!=aDateString) {
-							lFirstField = aDateString.replace(EmptyParamRegExp2, "$1");
-							lFirstField = (lFirstField.length<2?'0':'') + lFirstField;
-							lSecondField = aDateString.replace(EmptyParamRegExp2, "$2");
-							lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-							lThirdField = aDateString.replace(EmptyParamRegExp2, "$3");
-							lThirdField = (lThirdField.length<2?'0':'') + lThirdField;
-						}
-						lReturn = new Date(lThirdField, lSecondField-1, lFirstField);
-					} else {
-						var EmptyParamRegExp2 = new RegExp("^([^\.]*)\\" + lSeparator + "([^\.]*)", "ig");
-						if (aDateString.replace(EmptyParamRegExp2, "$1")!=aDateString) {
-							lFirstField = aDateString.replace(EmptyParamRegExp2, "$1");
-							lFirstField = (lFirstField.length<2?'0':'') + lFirstField;
-							lSecondField = aDateString.replace(EmptyParamRegExp2, "$2");
-							lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-						}
-						lReturn = new Date('666', lSecondField-1, lFirstField);
-					}
-					break;
-				case "MM-DD-YYYY":
-				case "MM.DD.YYYY":
-				case "MM/DD/YYYY":
-					if (aDateString.split(lSeparator).length == 3) {
-						var EmptyParamRegExp2 = new RegExp("^([^\/]*)\\" + lSeparator + "([^\/]*)\\" + lSeparator + "([^\/]*)", "ig");
-						if (aDateString.replace(EmptyParamRegExp2, "$1")!=aDateString) {
-							lFirstField = aDateString.replace(EmptyParamRegExp2, "$1");
-							lFirstField = (lFirstField.length<2?'0':'') + lFirstField;
-							lSecondField = aDateString.replace(EmptyParamRegExp2, "$2");
-							lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-							lThirdField = aDateString.replace(EmptyParamRegExp2, "$3");
-							lThirdField = (lThirdField.length<2?'0':'') + lThirdField;
-						}
-						lReturn = new Date(lThirdField, lFirstField-1, lSecondField);
-					} else {
-						var EmptyParamRegExp2 = new RegExp("^([^\/]*)\\" + lSeparator + "([^\/]*)", "ig");
-						if (aDateString.replace(EmptyParamRegExp2, "$1")!=aDateString) {
-							lFirstField = aDateString.replace(EmptyParamRegExp2, "$1");
-							lFirstField = (lFirstField.length<2?'0':'') + lFirstField;
-							lSecondField = aDateString.replace(EmptyParamRegExp2, "$2");
-							lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-						}
-						lReturn = new Date('666', lFirstField-1, lSecondField);
-					}
-					break;
-				case "YYYYMMDD":
-					if (aDateString.length == 8) {
-						lFirstField = aDateString.substr(0, 4);
-						lSecondField = aDateString.substr(4, 2);
-						lThirdField = aDateString.substr(6, 2);
-						lReturn = new Date(lFirstField, lSecondField-1, lThirdField);
-					} else if (aDateString.length == 4 || aDateString.length == 3) {
-						lFirstField = aDateString.substr(0, 2);
-						lSecondField = aDateString.substr(2, 2);
-						lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-						lReturn = new Date('666', lFirstField-1, lSecondField);
-					}
-					break;
-				case "DDMMYYYY":
-					if (aDateString.length == 8) {
-						lFirstField = aDateString.substr(0, 2);
-						lSecondField = aDateString.substr(2, 2);
-						lThirdField = aDateString.substr(4, 4);
-						lReturn = new Date(lThirdField, lSecondField-1, lFirstField);
-					} else if (aDateString.length == 4 || aDateString.length == 3) {
-						lFirstField = aDateString.substr(0, 2);
-						lSecondField = aDateString.substr(2, 2);
-						lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-						lReturn = new Date('666', lSecondField-1, lFirstField);
-					}
-					break;
-				case "MMDDYYYY":
-					if (aDateString.length == 8) {
-						lFirstField = aDateString.substr(0, 2);
-						lSecondField = aDateString.substr(2, 2);
-						lThirdField = aDateString.substr(4, 4);
-						lReturn = new Date(lThirdField, lFirstField-1, lSecondField);
-					} else if (aDateString.length == 4 || aDateString.length == 3) {
-						lFirstField = aDateString.substr(0, 2);
-						lSecondField = aDateString.substr(2, 2);
-						lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-						lReturn = new Date('666', lFirstField-1, lSecondField);
-					}
-					break;
-				default:
-					lReturn = "WRONGDATE";
-			}
-			return lReturn;
 		},
 
 		convertDateStringToDateString: function (aDay, aMonth, aYear, aDateFormat) {
-			var lSeparator = cardbookDates.getSeparator(aDateFormat);
 			if (! isNaN(aMonth) && aMonth.length == 1) {
 				aMonth = "0" + aMonth;
 			}
 			if (! isNaN(aDay) && aDay.length == 1) {
 				aDay = "0" + aDay;
 			}
-			switch(aDateFormat) {
-				case "YYYY-MM-DD":
-				case "YYYY.MM.DD":
-				case "YYYY/MM/DD":
-					lReturn = aYear + lSeparator + aMonth + lSeparator + aDay;
-					break;
-				case "DD-MM-YYYY":
-				case "DD.MM.YYYY":
-				case "DD/MM/YYYY":
-					lReturn = aDay + lSeparator + aMonth + lSeparator + aYear;
-					break;
-				break;
-				case "MM-DD-YYYY":
-				case "MM.DD.YYYY":
-				case "MM/DD/YYYY":
-					lReturn = aMonth + lSeparator + aDay + lSeparator + aYear;
-					break;
-				case "YYYYMMDD":
-					lReturn = aYear + aMonth + aDay;
-					break;
-				case "DDMMYYYY":
-					lReturn = aDay + aMonth + aYear;
-					break;
-				case "MMDDYYYY":
-					lReturn = aMonth + aDay + aYear;
-					break;
+			if (aYear == "") {
+				aYear = "666";
 			}
-			return lReturn;
+			return cardbookDates.getFinalDateString(aDay, aMonth, aYear, aDateFormat);
 		},
 
 		convertDateToDateString: function (aDate, aDateFormat) {
-			var lSeparator = cardbookDates.getSeparator(aDateFormat);
 			var lYear = aDate.getFullYear();
 			var lMonth = aDate.getMonth() + 1;
 			lMonth += "";
@@ -401,35 +323,149 @@ if ("undefined" == typeof(cardbookDates)) {
 			if (lDay.length == 1) {
 				lDay = "0" + lDay;
 			}
+			return cardbookDates.getFinalDateString(lDay, lMonth, lYear, aDateFormat);
+		},
+
+		getFinalDateString: function (aDay, aMonth, aYear, aDateFormat) {
+			var lSeparator = cardbookDates.getSeparator(aDateFormat);
 			switch(aDateFormat) {
 				case "YYYY-MM-DD":
 				case "YYYY.MM.DD":
 				case "YYYY/MM/DD":
-					lReturn = lYear + lSeparator + lMonth + lSeparator + lDay;
+					if (aYear == "666") {
+						return aMonth + lSeparator + aDay;
+					} else {
+						return aYear + lSeparator + aMonth + lSeparator + aDay;
+					}
 					break;
 				case "DD-MM-YYYY":
 				case "DD.MM.YYYY":
 				case "DD/MM/YYYY":
-					lReturn = lDay + lSeparator + lMonth + lSeparator + lYear;
+					if (aYear == "666") {
+						return aDay + lSeparator + aMonth;
+					} else {
+						return aDay + lSeparator + aMonth + lSeparator + aYear;
+					}
 					break;
 				break;
 				case "MM-DD-YYYY":
 				case "MM.DD.YYYY":
 				case "MM/DD/YYYY":
-					lReturn = lMonth + lSeparator + lDay + lSeparator + lYear;
+					if (aYear == "666") {
+						return aMonth + lSeparator + aDay;
+					} else {
+						return aMonth + lSeparator + aDay + lSeparator + aYear;
+					}
 					break;
 				case "YYYYMMDD":
-					lReturn = lYear + lMonth + lDay;
+					if (aYear == "666") {
+						return "--" + aMonth + aDay;
+					} else {
+						return aYear + aMonth + aDay;
+					}
 					break;
 				case "DDMMYYYY":
-					lReturn = lDay + lMonth + lYear;
+					if (aYear == "666") {
+						return aDay + aMonth;
+					} else {
+						return aDay + aMonth + aYear;
+					}
 					break;
 				case "MMDDYYYY":
-					lReturn = lMonth + lDay + lYear;
+					if (aYear == "666") {
+						return aMonth + aDay;
+					} else {
+						return aMonth + aDay + aYear;
+					}
 					break;
 			}
-			return lReturn;
+		},
+
+		convertAddressBookDate: function (aDirPrefId, aDirPrefName, aSourceDateFormat, aTargetDateFormat) {
+			var stringBundleService = Services.strings;
+			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+			var eventInNoteEventPrefix = strBundle.GetStringFromName("eventInNoteEventPrefix");
+			for (i in cardbookRepository.cardbookCards) {
+				var myCard = cardbookRepository.cardbookCards[i];
+				if (myCard.dirPrefId != aDirPrefId) {
+					continue;
+				}
+				var myTempCard = new cardbookCardParser();
+				cardbookUtils.cloneCard(myCard, myTempCard);
+				var cardChanged = false;
+				var myFieldList = ['bday' , 'anniversary', 'deathdate'];
+				for (var j = 0; j < myFieldList.length; j++) {
+					if (myCard[myFieldList[j]] && myCard[myFieldList[j]] != "") {
+						var myFieldValue = myCard[myFieldList[j]];
+						var isDate = cardbookDates.convertDateStringToDate(myFieldValue, aSourceDateFormat);
+						if (isDate != "WRONGDATE") {
+							var myFieldValueDate = cardbookDates.convertDateStringToDate(myFieldValue, aSourceDateFormat);
+							myTempCard[myFieldList[j]] = cardbookDates.convertDateToDateString(myFieldValueDate, aTargetDateFormat);
+							var cardChanged = true;
+						} else {
+							cardbookUtils.formatStringForOutput("birthdayEntry1Wrong", [aDirPrefName, myCard.fn, myFieldValue, aSourceDateFormat], "Warning");
+						}
+					}
+				}
+				var notesChanged = false;
+				if (myCard.note != "") {
+					var lNotesLine = myCard.note.split("\n");
+					var newNotes = [];
+					for (var a = 0; a < lNotesLine.length; a++) {
+						// compatibility when not localized
+						var EmptyParamRegExp1 = new RegExp("^Birthday:([^:]*):([^:]*)([:]*)(.*)", "ig");
+						if (lNotesLine[a].replace(EmptyParamRegExp1, "$1")!=lNotesLine[a]) {
+							var lNotesName = lNotesLine[a].replace(EmptyParamRegExp1, "$1").replace(/^\s+|\s+$/g,"");
+							if (lNotesLine[a].replace(EmptyParamRegExp1, "$2")!=lNotesLine[a]) {
+								var lNotesDateFound = lNotesLine[a].replace(EmptyParamRegExp1, "$2").replace(/^\s+|\s+$/g,"");
+								var isDate = cardbookDates.convertDateStringToDate(lNotesDateFound, aSourceDateFormat);
+								if (isDate != "WRONGDATE") {
+									newNotes.push(eventInNoteEventPrefix + ":" + lNotesName + ":" + cardbookDates.convertDateToDateString(isDate, aTargetDateFormat));
+									var notesChanged = true;
+								} else {
+									cardbookUtils.formatStringForOutput("birthdayEntry2Wrong", [aDirPrefName, myCard.fn, lNotesDateFound, aSourceDateFormat], "Warning");
+									newNotes.push(lNotesLine[a]);
+								}
+							} else {
+								newNotes.push(lNotesLine[a]);
+							}
+						} else {
+							// now localized
+							var EmptyParamRegExp1 = new RegExp("^" + eventInNoteEventPrefix + ":([^:]*):([^:]*)([:]*)(.*)", "ig");
+							if (lNotesLine[a].replace(EmptyParamRegExp1, "$1")!=lNotesLine[a]) {
+								var lNotesName = lNotesLine[a].replace(EmptyParamRegExp1, "$1").replace(/^\s+|\s+$/g,"");
+								if (lNotesLine[a].replace(EmptyParamRegExp1, "$2")!=lNotesLine[a]) {
+									var lNotesDateFound = lNotesLine[a].replace(EmptyParamRegExp1, "$2").replace(/^\s+|\s+$/g,"");
+									var isDate = cardbookDates.convertDateStringToDate(lNotesDateFound, aSourceDateFormat);
+									if (isDate != "WRONGDATE") {
+										newNotes.push(eventInNoteEventPrefix + ":" + lNotesName + ":" + cardbookDates.convertDateToDateString(isDate, aTargetDateFormat));
+										var notesChanged = true;
+									} else {
+										cardbookUtils.formatStringForOutput("birthdayEntry2Wrong", [aDirPrefName, myCard.fn, lNotesDateFound, aSourceDateFormat], "Warning");
+										newNotes.push(lNotesLine[a]);
+									}
+								} else {
+									newNotes.push(lNotesLine[a]);
+								}
+							} else {
+								newNotes.push(lNotesLine[a]);
+							}
+						}
+						if (notesChanged) {
+							myTempCard.note = newNotes.join("\n");
+						}
+					}
+				}
+				if (cardChanged || notesChanged) {
+					cardbookRepository.saveCard(myCard, myTempCard, "cardbook.cardAddedDirect");
+				} else {
+					myTempCard = null;
+				}
+			}
 		}
 
 	};
+
+	var loader = Services.scriptloader;
+	loader.loadSubScript("chrome://cardbook/content/cardbookCardParser.js");
 };

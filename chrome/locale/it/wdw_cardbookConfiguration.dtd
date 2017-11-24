@@ -102,6 +102,8 @@
 <!ENTITY miscEdittingGroupboxLabel "Varie">
 <!ENTITY preferEmailEditionLabel "Doppio click su un contatto apre la modifica anziché inviare una email.">
 <!ENTITY preferEmailEditionAccesskey "D">
+<!ENTITY dateDisplayedFormatLabel "Formato testo data:">
+<!ENTITY dateDisplayedFormatAccesskey "F">
 
 <!ENTITY typesGroupboxLabel "Tipi">
 <!ENTITY typesCategoryAdrLabel "Indirizzo">

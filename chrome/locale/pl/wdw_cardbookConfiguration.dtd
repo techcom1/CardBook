@@ -101,6 +101,8 @@
 <!ENTITY miscEdittingGroupboxLabel "Różne">
 <!ENTITY preferEmailEditionLabel "Podwójne kliknięcie na wizytówce edytuje zamiast wysyłać e-mail">
 <!ENTITY preferEmailEditionAccesskey "o">
+<!ENTITY dateDisplayedFormatLabel "Format daty:">
+<!ENTITY dateDisplayedFormatAccesskey "y">
 
 <!ENTITY typesGroupboxLabel "Typy">
 <!ENTITY typesCategoryAdrLabel "Adres">

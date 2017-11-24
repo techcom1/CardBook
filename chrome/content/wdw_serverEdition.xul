@@ -19,6 +19,7 @@
 	<stringbundleset id="stringbundleset"/>
 
 	<script src="chrome://cardbook/content/cardbookElementTools.js"/>
+	<script src="chrome://cardbook/content/cardbookDates.js"/>
 	<script src="chrome://cardbook/content/wdw_serverEdition.js"/>
 
 	<keyset id="wdw_serverEdition-keys">

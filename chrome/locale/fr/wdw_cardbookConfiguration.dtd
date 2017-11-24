@@ -102,6 +102,8 @@
 <!ENTITY miscEdittingGroupboxLabel "Divers">
 <!ENTITY preferEmailEditionLabel "Au lieu d'envoyer un email, double-cliquer sur un contact provoque l'édition">
 <!ENTITY preferEmailEditionAccesskey "A">
+<!ENTITY dateDisplayedFormatLabel "Format de la date :">
+<!ENTITY dateDisplayedFormatAccesskey "d">
 
 <!ENTITY typesGroupboxLabel "Types">
 <!ENTITY typesCategoryAdrLabel "Adresse">

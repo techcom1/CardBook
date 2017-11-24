@@ -101,6 +101,8 @@
 <!ENTITY miscEdittingGroupboxLabel "Különféle">
 <!ENTITY preferEmailEditionLabel "Dupla kattintás a névjegyre a névjegy szerkesztés helyett üzenet írás">
 <!ENTITY preferEmailEditionAccesskey "D">
+<!ENTITY dateDisplayedFormatLabel "Dátumszöveg formátuma:">
+<!ENTITY dateDisplayedFormatAccesskey "z">
 
 <!ENTITY typesGroupboxLabel "Típusok">
 <!ENTITY typesCategoryAdrLabel "Cím">

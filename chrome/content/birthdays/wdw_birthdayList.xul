@@ -45,7 +45,7 @@
 			<splitter class="tree-splitter" />
 			<treecol id="dateofbirth" label="&dateOfBirthColumnLabel;" flex="1" persist="width ordinal hidden" style="text-align:left"/>
 			<splitter class="tree-splitter" />
-			<treecol id="dateofbirthfound" label="&dateOfBirthFoundColumnLabel;" flex="1" persist="width ordinal hidden" style="text-align:left"/>
+			<treecol id="dateofbirthfound" label="&dateOfBirthFoundColumnLabel;" flex="1" persist="width ordinal hidden" style="text-align:left" hidden="true"/>
 			<splitter class="tree-splitter" />
 			<treecol id="email" label="&emailColumnLabel;" flex="1" persist="width ordinal hidden" style="text-align:left" hidden="true"/>
 		</treecols>

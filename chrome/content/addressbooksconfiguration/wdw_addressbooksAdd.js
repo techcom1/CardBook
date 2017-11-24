@@ -657,6 +657,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			var aMenuList = document.createElement('menulist');
 			aRow.appendChild(aMenuList);
 			aMenuList.setAttribute('id', 'dateFormatMenuList' + aId);
+			aMenuList.setAttribute('hidden', 'true');
 			var aMenuPopup = document.createElement('menupopup');
 			aMenuList.appendChild(aMenuPopup);
 			aMenuPopup.setAttribute('id', 'dateFormatMenuPopup' + aId);

@@ -102,6 +102,8 @@
 <!ENTITY miscEdittingGroupboxLabel "Diverse">
 <!ENTITY preferEmailEditionLabel "Dobbeltklik på en kontakt redigerer den i stedet for at e-maile den">
 <!ENTITY preferEmailEditionAccesskey "l">
+<!ENTITY dateDisplayedFormatLabel "Datoformat:">
+<!ENTITY dateDisplayedFormatAccesskey "o">
 
 <!ENTITY typesGroupboxLabel "Typer">
 <!ENTITY typesCategoryAdrLabel "Adresse">

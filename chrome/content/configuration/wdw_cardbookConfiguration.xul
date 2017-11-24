@@ -62,6 +62,8 @@
 				name="extensions.cardbook.vcardTabView" type="bool"/>
 			<preference id="extensions.cardbook.preferEmailEdition"
 				name="extensions.cardbook.preferEmailEdition" type="bool"/>
+			<preference id="extensions.cardbook.dateDisplayedFormat"
+				name="extensions.cardbook.dateDisplayedFormat" type="string"/>
 			<preference id="extensions.cardbook.localizeEngine"
 				name="extensions.cardbook.localizeEngine" type="string"/>
 			<preference id="extensions.cardbook.showNameAs"
@@ -385,6 +387,16 @@
 							<checkbox id="preferEmailEditionCheckBox" label="&preferEmailEditionLabel;"
 								accesskey="&preferEmailEditionAccesskey;"
 								preference="extensions.cardbook.preferEmailEdition"/>
+						</hbox>
+						<separator class="thin"/>
+						<hbox align="center">
+							<label value="&dateDisplayedFormatLabel;" accesskey="&dateDisplayedFormatAccesskey;" control="dateDisplayedFormatMenulist"/>
+							<menulist id="dateDisplayedFormatMenulist" crop="none" preference="extensions.cardbook.dateDisplayedFormat">
+								<menupopup id="dateDisplayedFormatMenupopup">
+									<menuitem id="dateDisplayedFormatLong" value="0"/>
+									<menuitem id="dateDisplayedFormatShort" value="1"/>
+								</menupopup>
+							</menulist>
 						</hbox>
 					</groupbox>
 				</tabpanel>

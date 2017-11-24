@@ -99,12 +99,11 @@ if ("undefined" == typeof(cardbookDiscovery)) {
 		addAddressbook: function (aAction, aDirPrefId) {
 			if ((aDirPrefId != null && aDirPrefId !== undefined && aDirPrefId != "") || (cardbookRepository.cardbookSyncMode === "NOSYNC")) {
 				cardbookRepository.cardbookSyncMode = "SYNC";
-				var xulRuntime = Services.appinfo;
 				var myArgs = {action: aAction, dirPrefId: aDirPrefId};
 				var myWindow = window.openDialog("chrome://cardbook/content/addressbooksconfiguration/wdw_addressbooksAdd.xul", "",
 												   // Workaround for Bug 1151440 - the HTML color picker won't work
 												   // in linux when opened from modal dialog
-												   (xulRuntime.OS == 'Linux') ? "chrome,resizable,centerscreen" : "modal,chrome,resizable,centerscreen"
+												   (Services.appinfo.OS == 'Linux') ? "chrome,resizable,centerscreen" : "modal,chrome,resizable,centerscreen"
 												   , myArgs);
 			}
 		},

@@ -101,6 +101,8 @@
 <!ENTITY miscEdittingGroupboxLabel "Miscellaneous">
 <!ENTITY preferEmailEditionLabel "Double-click on a contact edits it instead of emails it">
 <!ENTITY preferEmailEditionAccesskey "k">
+<!ENTITY dateDisplayedFormatLabel "Date Text Format:">
+<!ENTITY dateDisplayedFormatAccesskey "x">
 
 <!ENTITY typesGroupboxLabel "Types">
 <!ENTITY typesCategoryAdrLabel "Address">

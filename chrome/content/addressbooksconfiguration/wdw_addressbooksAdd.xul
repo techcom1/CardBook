@@ -260,10 +260,10 @@
 						</menulist>
 					</hbox>
 				</row>
-				<separator class="groove-thin"/>
-				<row id="dateFormatRow" align="center">
-					<label value="&dateFormatLabel;" control="dateFormatMenuList"/>
-					<menulist id="dateFormatMenuList">
+				<separator class="groove-thin" hidden="true"/>
+				<row id="dateFormatRow" align="center" hidden="true">
+					<label value="&dateFormatLabel;" control="dateFormatMenuList" hidden="true"/>
+					<menulist id="dateFormatMenuList" hidden="true">
 						<menupopup id="dateFormatMenuPopup"/>
 					</menulist>
 				</row>
@@ -297,7 +297,7 @@
 				<column align="center" flex="1"/>
 				<column align="center"/>
 				<column align="center"/>
-				<column align="center"/>
+				<column align="center" hidden="true"/>
 				<column align="center"/>
 				<column align="center"/>
 			</columns>
@@ -307,7 +307,7 @@
 					<label flex="1" value="&namePage.name.label;"/>
 					<label value="&namePage.color.label;"/>
 					<label value="&namePage.vCardVersion.label;"/>
-					<label value="&dateFormatLabel;"/>
+					<label value="&dateFormatLabel;" hidden="true"/>
 					<label value="&namePage.readonly.label;"/>
 					<label value="&namePage.urnuuid.label;"/>
 				</row>

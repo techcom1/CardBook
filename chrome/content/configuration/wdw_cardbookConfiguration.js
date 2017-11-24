@@ -1765,6 +1765,25 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			}
 		},
 
+		loadDateDisplayedFormat: function () {
+			var strBundle = document.getElementById("cardbook-strings");
+			var labelLong = strBundle.getString("dateDisplayedFormatLong");
+			var labelShort = strBundle.getString("dateDisplayedFormatShort");
+			var myDate = new Date();
+			if (Services.appinfo.version >= "57") {
+				var formatterLong = Services.intl.createDateTimeFormat(undefined, { dateStyle: "long"});
+				document.getElementById('dateDisplayedFormatLong').setAttribute("label", labelLong.replace("%1", formatterLong.format(myDate)));
+				var formatterShort = Services.intl.createDateTimeFormat(undefined, { dateStyle: "short"});
+				document.getElementById('dateDisplayedFormatShort').setAttribute("label", labelShort.replace("%1", formatterShort.format(myDate)));
+			} else {
+				var myDateService = Components.classes["@mozilla.org/intl/scriptabledateformat;1"].getService(Components.interfaces.nsIScriptableDateFormat);
+				document.getElementById('dateDisplayedFormatLong').setAttribute("label", labelLong.replace("%1",
+					myDateService.FormatDate("", Components.interfaces.nsIScriptableDateFormat.dateFormatLong, myDate.getFullYear(), myDate.getMonth() + 1, myDate.getDate())));
+				document.getElementById('dateDisplayedFormatShort').setAttribute("label", labelShort.replace("%1",
+					myDateService.FormatDate("", Components.interfaces.nsIScriptableDateFormat.dateFormatShort, myDate.getFullYear(), myDate.getMonth() + 1, myDate.getDate())));
+			}
+		},
+
 		loadInitialSyncDelay: function () {
 			var prefs = Services.prefs;
 			var initialSync = prefs.getBoolPref("extensions.cardbook.initialSync");
@@ -1835,6 +1854,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			wdw_cardbookConfiguration.loadOrg();
 			wdw_cardbookConfiguration.displayOrg();
 			wdw_cardbookConfiguration.loadPreferenceValue();
+			wdw_cardbookConfiguration.loadDateDisplayedFormat();
 			wdw_cardbookConfiguration.loadInitialSyncDelay();
 			wdw_cardbookConfiguration.loadPeriodicSync();
 			wdw_cardbookConfiguration.loadAddressBooks("addressBooksNameList", false);
