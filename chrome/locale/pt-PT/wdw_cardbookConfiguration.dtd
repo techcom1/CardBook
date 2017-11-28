@@ -129,8 +129,8 @@
 <!ENTITY resetTypeLabel "Restaurar para origem">
 <!ENTITY resetTypeAccesskey "R">
 <!ENTITY preferenceGroupboxLabel "Campo PREFerido">
-<!ENTITY usePreferenceValueLabel "??Use a preference value?? (só para vCard 4.0)">
-<!ENTITY usePreferenceValueAccesskey "??p??">
+<!ENTITY usePreferenceValueLabel "Usar valor predefinido (só para vCard 4.0)">
+<!ENTITY usePreferenceValueAccesskey "p">
 <!ENTITY preferenceValueLabel "Etiqueta do campo PREFerido">
 <!ENTITY preferenceValueAccesskey "Q">
 
@@ -178,8 +178,8 @@
 <!ENTITY syncWarn "A Sincronização vai propagar as modificações para o servidor remoto e as modificações do servidor remoto para local.">
 <!ENTITY initialSyncLabel "Correr a sincronização inicial no arranque do Thunderbird">
 <!ENTITY initialSyncAccesskey "C">
-<!ENTITY initialSyncDelayLabel "??Delay for running first requests (seconds)??">
-<!ENTITY initialSyncDelayAccesskey "??D??">
+<!ENTITY initialSyncDelayLabel "Atraso ao pedir o primeiro acesso? (segundos)">
+<!ENTITY initialSyncDelayAccesskey "D">
 <!ENTITY solveConflictsLabel "Se um contacto foi actualizado localmente e no servidor:">
 <!ENTITY solveConflictsLocalLabel "Preferir a alteração local">
 <!ENTITY solveConflictsLocalAccesskey "L">
@@ -197,8 +197,8 @@
 <!ENTITY requestsTimeoutAccesskey "T">
 <!ENTITY multigetLabel "Para pedidos GET, agrupar cartões por">
 <!ENTITY multigetAccesskey "G">
-<!ENTITY discoveryGroupboxLabel "??Address books discovery??">
-<!ENTITY discoveryWarn "??At every synchronization, a check on the URLs below will be run to search for any new or deleted address books.??">
+<!ENTITY discoveryGroupboxLabel "Descoberta de agendas">
+<!ENTITY discoveryWarn "A todas as sincronizações, uma pesquisa vai verificar se existem novas moradas ou apagadas.">
 <!ENTITY discoveryURLLabel "URL">
 <!ENTITY addURLLabel "Adicionar">
 <!ENTITY addURLAccesskey "A">
@@ -267,8 +267,8 @@
 <!ENTITY calendarEntryTimeAccesskey "c">
 <!ENTITY calendarEntryWholeDayLabel "Evento de calendário do dia inteiro">
 <!ENTITY calendarEntryWholeDayAccesskey "i">
-<!ENTITY calendarEntryAlarmLabel "Alarme para N dias antes do evento (??Alarm(s) to n hours before calendar event??)">
-<!ENTITY calendarEntryAlarmTooltip "Coloque quantos dias antes o lembrete do Lightning deve acontecer. Sem data, não haverá alarme.?? If you want multiple alarms, enter the alarms in a comma separated list.??">
+<!ENTITY calendarEntryAlarmLabel "Alarme para N horas antes do evento">
+<!ENTITY calendarEntryAlarmTooltip "Coloque quantos dias antes o lembrete do Lightning deve acontecer. Sem data, não haverá alarme. Para vários alarmes, colocar virgula para os separar.">
 <!ENTITY calendarEntryAlarmAccesskey "l">
 <!ENTITY calendarEntryCategoriesLabel "Categorias para eventos de calendários">
 <!ENTITY calendarEntryCategoriesTooltip "Uma ou mais categorias, separados por virgula. Campo em branco, não tem categoria.">

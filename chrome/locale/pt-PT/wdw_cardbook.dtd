@@ -102,10 +102,10 @@
 <!ENTITY kindColumnLabel "Tipo">
 <!ENTITY revColumnLabel "Última atualização">
 <!ENTITY etagColumnLabel "Etag">
-<!ENTITY birthplaceColumnLabel "??Birth Place??">
-<!ENTITY anniversaryColumnLabel "??Anniversary??">
-<!ENTITY deathdateColumnLabel "??Deathday??">
-<!ENTITY deathplaceColumnLabel "??Death Place??">
+<!ENTITY birthplaceColumnLabel "Sitio de nascimento">
+<!ENTITY anniversaryColumnLabel "Aniversário">
+<!ENTITY deathdateColumnLabel "Dia de falecimento">
+<!ENTITY deathplaceColumnLabel "Local de falecimento">
 
 <!ENTITY categoriesGroupboxLabel "Categorias">
 <!ENTITY noteTabLabel "Notas">
@@ -147,7 +147,7 @@
 <!ENTITY openURLTreeLabel "Abrir URL">
 
 <!ENTITY copyCardTreeLabel "Copiar entrada">
-<!ENTITY pasteCardTreeLabel "??Paste entry??">
+<!ENTITY pasteCardTreeLabel "Colar entrada">
 
 <!ENTITY toEmailCardFromAccountsOrCatsLabel "Escrever nova mensagem">
 <!ENTITY toEmailCardFromCardsLabel "Escrever nova mensagem">
