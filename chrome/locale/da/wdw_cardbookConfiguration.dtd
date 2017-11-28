@@ -267,8 +267,8 @@
 <!ENTITY calendarEntryTimeAccesskey "d">
 <!ENTITY calendarEntryWholeDayLabel "Kalenderbegivenhed på hele dagen">
 <!ENTITY calendarEntryWholeDayAccesskey "l">
-<!ENTITY calendarEntryAlarmLabel "Påmind n dage før kalenderbegivenhed (??Alarm(s) to n hours before calendar event??)">
-<!ENTITY calendarEntryAlarmTooltip "Indtast hvor mange dage før mærkedagen at Lightning bør påminde dig. Uden dato. Hvis feltet er tomt, bliver der ikke påmindet.?? If you want multiple alarms, enter the alarms in a comma separated list.??">
+<!ENTITY calendarEntryAlarmLabel "Påmind n dage før kalenderbegivenhed (Alarm(er) til n timer før kalenderbegivenhed)">
+<!ENTITY calendarEntryAlarmTooltip "Indtast hvor mange dage før mærkedagen at Lightning bør påminde dig. Uden dato. Hvis feltet er tomt, bliver der ikke påmindet. Hvis du vil have flere alarmer; indtast alarmerne i en kommasepareret liste.">
 <!ENTITY calendarEntryAlarmAccesskey "P">
 <!ENTITY calendarEntryCategoriesLabel "Kategori(er) for kalenderbegivenhed">
 <!ENTITY calendarEntryCategoriesTooltip "En eller flere kategorier, adskilt af komma. Hvis feltet er tomt, er der ingen kategori.">
