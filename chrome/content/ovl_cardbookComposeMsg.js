@@ -16,9 +16,8 @@ if ("undefined" == typeof(ovl_cardbookComposeMsg)) {
 				cardbookUtils.openEditionWindow(myNewCard, "CreateContact", "cardbook.cardAddedIndirect");
 			}
 			catch (e) {
-				var prompts = Services.prompt;
 				var errorTitle = "newInCardBook";
-				prompts.alert(null, errorTitle, e);
+				Services.prompt.alert(null, errorTitle, e);
 			}
 		},
 

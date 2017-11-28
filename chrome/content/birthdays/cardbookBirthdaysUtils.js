@@ -57,7 +57,6 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 
 		syncCalendar: function (aCalendar) {
 			var strBundle = document.getElementById("cardbook-strings");
-			var prompts = Services.prompt;
 			var errorTitle;
 			var errorMsg;
 
@@ -65,7 +64,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			if (aCalendar == 0) {
 				errorTitle = strBundle.getString("calendarNotFoundTitle");
 				errorMsg = strBundle.getFormattedString("calendarNotFoundMessage",[aCalendar.name]);
-				prompts.alert(null, errorTitle, errorMsg);
+				Services.prompt.alert(null, errorTitle, errorMsg);
 				return;
 			}
 
@@ -73,7 +72,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			if (!(cardbookBirthdaysUtils.isCalendarWritable(aCalendar))) {
 				errorTitle = strBundle.getString("calendarNotWritableTitle");
 				errorMsg = strBundle.getFormattedString("calendarNotWritableMessage",[aCalendar.name]);
-				prompts.alert(null, errorTitle, errorMsg);
+				Services.prompt.alert(null, errorTitle, errorMsg);
 				return;
 			}
 

@@ -2,7 +2,7 @@
 
 <!ENTITY enableAccountsTooltip "Įgalinti arba išjungti adresų knygų paiešką ir sinchronizavimą.">
 <!ENTITY colorAccountsTooltip "Pasirinkti adresų knygų paieškos rezultatų spalvas (kai paieška apima kelias adresų knygas).">
-<!ENTITY readonlyAccountsTooltip "Nustatykite adresų knygų režimą tik skaityti“ arba skaityti ir rašyti“">
+<!ENTITY readonlyAccountsTooltip "Nustatykite adresų knygų režimą „tik skaityti“ arba „skaityti ir rašyti“">
 
 <!ENTITY cardbookAccountMenuLabel "Adresų knyga">
 

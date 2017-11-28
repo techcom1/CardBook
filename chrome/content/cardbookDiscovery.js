@@ -113,11 +113,10 @@ if ("undefined" == typeof(cardbookDiscovery)) {
 				var myDirPrefIdType = cardbookPreferences.getType(aDirPrefId);
 				
 				var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
-				var prompts = Services.prompt;
 				var confirmTitle = strBundle.GetStringFromName("confirmTitle");
 				var confirmMsg = strBundle.formatStringFromName("accountDeletionDiscoveryConfirmMessage", [myDirPrefIdName], 1);
 				var returnFlag = false;
-				returnFlag = prompts.confirm(window, confirmTitle, confirmMsg);
+				returnFlag = Services.prompt.confirm(window, confirmTitle, confirmMsg);
 				if (returnFlag) {
 					cardbookRepository.removeAccountFromComplexSearch(aDirPrefId);
 					cardbookRepository.removeAccountFromRepository(aDirPrefId);

@@ -20,12 +20,10 @@ if ("undefined" == typeof(ovl_filters)) {
 
 		_addEmails: function(aMsgHdrs, aActionValue, aField) {
 			if (!cardbookPreferences.getEnabled(aActionValue)) {
-				loader.loadSubScript("chrome://cardbook/content/wdw_log.js");
 				cardbookUtils.formatStringForOutput("errorFiltersAddEmailsABNotEnabled", [aField, aActionValue], "Error");
 				return;
 			}
 			
-			loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");
 			let count = aMsgHdrs.length;
 			for (var i = 0; i < count; i++) {
 				let hdr = aMsgHdrs.queryElementAt(i, Components.interfaces.nsIMsgDBHdr);
@@ -39,7 +37,6 @@ if ("undefined" == typeof(ovl_filters)) {
 
 		_matchEmails: function(aMsgHdrEmails, aSearchValue, aSearchOp) {
 			if (!cardbookPreferences.getEnabled(aSearchValue)) {
-				loader.loadSubScript("chrome://cardbook/content/wdw_log.js");
 				cardbookUtils.formatStringForOutput("errorFiltersMatchEmailsABNotEnabled", [aSearchValue], "Error");
 				return false;
 			}
@@ -99,8 +96,7 @@ if ("undefined" == typeof(ovl_filters)) {
 					return ovl_filters._matchEmails(aMsgHdr.author, aSearchValue, aSearchOp);
 				}
 			};
-			var filterService = MailServices.filters;
-			filterService.addCustomTerm(searchFrom);
+			MailServices.filters.addCustomTerm(searchFrom);
 
 			var searchTo = {
 				id: "cardbook#searchTo",
@@ -124,8 +120,7 @@ if ("undefined" == typeof(ovl_filters)) {
 					return ovl_filters._matchEmails(aMsgHdr.recipients, aSearchValue, aSearchOp);
 				}
 			};
-			var filterService = MailServices.filters;
-			filterService.addCustomTerm(searchTo);
+			MailServices.filters.addCustomTerm(searchTo);
 
 			var searchCc = {
 				id: "cardbook#searchCc",
@@ -149,8 +144,7 @@ if ("undefined" == typeof(ovl_filters)) {
 					return ovl_filters._matchEmails(aMsgHdr.ccList, aSearchValue, aSearchOp);
 				}
 			};
-			var filterService = MailServices.filters;
-			filterService.addCustomTerm(searchCc);
+			MailServices.filters.addCustomTerm(searchCc);
 
 			var searchBcc = {
 				id: "cardbook#searchBcc",
@@ -174,8 +168,7 @@ if ("undefined" == typeof(ovl_filters)) {
 					return ovl_filters._matchEmails(aMsgHdr.bccList, aSearchValue, aSearchOp);
 				}
 			};
-			var filterService = MailServices.filters;
-			filterService.addCustomTerm(searchBcc);
+			MailServices.filters.addCustomTerm(searchBcc);
 
 			var searchAll = {
 				id: "cardbook#searchAll",
@@ -204,8 +197,7 @@ if ("undefined" == typeof(ovl_filters)) {
 							ovl_filters._matchEmails(aMsgHdr.bccList, aSearchValue, aSearchOp));
 				}
 			};
-			var filterService = MailServices.filters;
-			filterService.addCustomTerm(searchAll);
+			MailServices.filters.addCustomTerm(searchAll);
 
 			var addFrom = {
 				id: "cardbook#addFrom",
@@ -218,8 +210,7 @@ if ("undefined" == typeof(ovl_filters)) {
 					ovl_filters._addEmails(aMsgHdrs, aActionValue, "author");
 				}
 			};
-			var filterService = MailServices.filters;
-			filterService.addCustomAction(addFrom);
+			MailServices.filters.addCustomAction(addFrom);
 
 			var addTo = {
 				id: "cardbook#addTo",
@@ -232,8 +223,7 @@ if ("undefined" == typeof(ovl_filters)) {
 					ovl_filters._addEmails(aMsgHdrs, aActionValue, "recipients");
 				}
 			};
-			var filterService = MailServices.filters;
-			filterService.addCustomAction(addTo);
+			MailServices.filters.addCustomAction(addTo);
 
 			var addCc = {
 				id: "cardbook#addCc",
@@ -246,8 +236,7 @@ if ("undefined" == typeof(ovl_filters)) {
 					ovl_filters._addEmails(aMsgHdrs, aActionValue, "ccList");
 				}
 			};
-			var filterService = MailServices.filters;
-			filterService.addCustomAction(addCc);
+			MailServices.filters.addCustomAction(addCc);
 
 			var addBcc = {
 				id: "cardbook#addBcc",
@@ -260,8 +249,7 @@ if ("undefined" == typeof(ovl_filters)) {
 					ovl_filters._addEmails(aMsgHdrs, aActionValue, "bccList");
 				}
 			};
-			var filterService = MailServices.filters;
-			filterService.addCustomAction(addBcc);
+			MailServices.filters.addCustomAction(addBcc);
 
 			var addAll = {
 				id: "cardbook#addAll",
@@ -277,15 +265,16 @@ if ("undefined" == typeof(ovl_filters)) {
 					ovl_filters._addEmails(aMsgHdrs, aActionValue, "bccList");
 				}
 			};
-			var filterService = MailServices.filters;
-			filterService.addCustomAction(addAll);
+			MailServices.filters.addCustomAction(addAll);
 
 			window.removeEventListener('load', arguments.callee, true);
 		}
 	};
 	
 	var loader = Services.scriptloader;
+	loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");
 	loader.loadSubScript("chrome://cardbook/content/cardbookUtils.js");
+	loader.loadSubScript("chrome://cardbook/content/wdw_log.js");
 };
 
 window.addEventListener("load", function(e) { ovl_filters.onLoad(e); }, false);

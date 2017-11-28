@@ -4,13 +4,11 @@ if ("undefined" == typeof(wdw_cardbookAskUser)) {
 
 	var myAskUserObserver = {
 		register: function() {
-			var observerService = Services.obs;
-			observerService.addObserver(this, "cardbook.importConflictChoicePersist", false);
+			Services.obs.addObserver(this, "cardbook.importConflictChoicePersist", false);
 		},
 		
 		unregister: function() {
-			var observerService = Services.obs;
-			observerService.removeObserver(this, "cardbook.importConflictChoicePersist");
+			Services.obs.removeObserver(this, "cardbook.importConflictChoicePersist");
 		},
 		
 		observe: function(aSubject, aTopic, aData) {

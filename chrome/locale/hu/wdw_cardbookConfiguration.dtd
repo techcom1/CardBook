@@ -93,7 +93,7 @@
 <!ENTITY showNameAsFLAccesskey "K">
 <!ENTITY showNameAsDSPLabel "Megjelenítendő név">
 <!ENTITY showNameAsDSPAccesskey "M">
-<!ENTITY fnLabelExplanation "Lehetőség van a megszokott módon névjegyzék állítja elő az megjelenített neve. Ez a képlet áll blokkok által közrezárt (). Két része van ezekben a blokkokban által határolt |. Az első rész alkalmazandó, ha a kifejezés részt, például a {{1}}, nem nulla, a második része alkalmazandó, ha a kifejezés részt null.">
+<!ENTITY fnLabelExplanation "Lehetőség van a megszokott módon névjegyzék állítja elő az megjelenített neve. Ez a képlet áll blokkok által közrezárt „()”. Két része van ezekben a blokkokban által határolt „|”. Az első rész alkalmazandó, ha a kifejezés részt, például a {{1}}, nem nulla, a második része alkalmazandó, ha a kifejezés részt null.">
 <!ENTITY fnFormulaLabel "Képlet">
 <!ENTITY fnFormulaAccesskey "P">
 <!ENTITY resetFnFormulaLabel "Alapértelmezés">

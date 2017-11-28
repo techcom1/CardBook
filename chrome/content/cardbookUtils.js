@@ -2602,9 +2602,8 @@ if ("undefined" == typeof(cardbookUtils)) {
 				}
 			}
 			catch (e) {
-				var prompts = Services.prompt;
 				var errorTitle = "addToCardBookMenuSubMenu";
-				prompts.alert(null, errorTitle, e);
+				Services.prompt.alert(null, errorTitle, e);
 			}
 		},
 
@@ -2622,9 +2621,8 @@ if ("undefined" == typeof(cardbookUtils)) {
 				}
 			}
 			catch (e) {
-				var prompts = Services.prompt;
 				var errorTitle = "connectCardsFromChatButton";
-				prompts.alert(null, errorTitle, e);
+				Services.prompt.alert(null, errorTitle, e);
 			}
 		},
 
@@ -2694,9 +2692,8 @@ if ("undefined" == typeof(cardbookUtils)) {
 				}
 			}
 			catch (e) {
-				var prompts = Services.prompt;
 				var errorTitle = "addCardToIMPPMenuSubMenu";
-				prompts.alert(null, errorTitle, e);
+				Services.prompt.alert(null, errorTitle, e);
 			}
 		},
 
@@ -2742,9 +2739,8 @@ if ("undefined" == typeof(cardbookUtils)) {
 				}
 			}
 			catch (e) {
-				var prompts = Services.prompt;
 				var errorTitle = "addCardToCategoryMenuSubMenu";
-				prompts.alert(null, errorTitle, e);
+				Services.prompt.alert(null, errorTitle, e);
 			}
 		},
 

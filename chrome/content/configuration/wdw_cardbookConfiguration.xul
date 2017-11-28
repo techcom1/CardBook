@@ -21,6 +21,7 @@
 	<stringbundleset id="stringbundleset"/>
 
 	<script src="chrome://cardbook/content/configuration/wdw_cardbookConfiguration.js"/>
+	<script src="chrome://cardbook/content/cardbookDates.js"/>
 	<script src="chrome://cardbook/content/cardbookUtils.js"/>
 	<script src="chrome://cardbook/content/cardbookNotifications.js"/>
 	<script src="chrome://cardbook/content/cardbookRepository.js"/>

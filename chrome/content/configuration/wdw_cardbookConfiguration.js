@@ -516,10 +516,9 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			var checkTest = document.getElementById('calendarEntryTitleTextBox').value.split("%S").length - 1;
 			if (checkTest != 2) {
 				var strBundle = document.getElementById("cardbook-strings");
-				var prompts = Services.prompt;
 				var errorTitle = strBundle.getString("eventEntryTitleProblemTitle");
 				var errorMsg = strBundle.getString("eventEntryTitleProblemMessage") + ' (' + strBundle.getString("eventEntryTitleMessage") + ').';
-				prompts.alert(null, errorTitle, errorMsg);
+				Services.prompt.alert(null, errorTitle, errorMsg);
 				cardbookPreferences.setStringPref("extensions.cardbook.eventEntryTitle", strBundle.getString("eventEntryTitleMessage"));
 			}
 		},
@@ -1741,18 +1740,11 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			var labelLong = strBundle.getString("dateDisplayedFormatLong");
 			var labelShort = strBundle.getString("dateDisplayedFormatShort");
 			var myDate = new Date();
-			if (Services.appinfo.version >= "57") {
-				var formatterLong = Services.intl.createDateTimeFormat(undefined, { dateStyle: "long"});
-				document.getElementById('dateDisplayedFormatLong').setAttribute("label", labelLong.replace("%1", formatterLong.format(myDate)));
-				var formatterShort = Services.intl.createDateTimeFormat(undefined, { dateStyle: "short"});
-				document.getElementById('dateDisplayedFormatShort').setAttribute("label", labelShort.replace("%1", formatterShort.format(myDate)));
-			} else {
-				var myDateService = Components.classes["@mozilla.org/intl/scriptabledateformat;1"].getService(Components.interfaces.nsIScriptableDateFormat);
-				document.getElementById('dateDisplayedFormatLong').setAttribute("label", labelLong.replace("%1",
-					myDateService.FormatDate("", Components.interfaces.nsIScriptableDateFormat.dateFormatLong, myDate.getFullYear(), myDate.getMonth() + 1, myDate.getDate())));
-				document.getElementById('dateDisplayedFormatShort').setAttribute("label", labelShort.replace("%1",
-					myDateService.FormatDate("", Components.interfaces.nsIScriptableDateFormat.dateFormatShort, myDate.getFullYear(), myDate.getMonth() + 1, myDate.getDate())));
-			}
+			var myDateString = cardbookDates.convertDateToDateString(myDate, "YYYYMMDD");
+			var myDateFormattedLong = cardbookDates.getFormattedDateForDateString(myDateString, "YYYYMMDD", "0");
+			var myDateFormattedShort = cardbookDates.getFormattedDateForDateString(myDateString, "YYYYMMDD", "1");
+			document.getElementById('dateDisplayedFormatLong').setAttribute("label", labelLong.replace("%1", myDateFormattedLong));
+			document.getElementById('dateDisplayedFormatShort').setAttribute("label", labelShort.replace("%1", myDateFormattedShort));
 		},
 
 		loadInitialSyncDelay: function () {

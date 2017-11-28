@@ -38,7 +38,7 @@
 <!ENTITY locationSearchPage.wizard.description "Išsaugotas paieškos apibrėžimas">
 <!ENTITY locationSearchPage.label "Įrašyti Paieškos radinius">
 
-<!ENTITY googleOauthPage.wizard.description "Google“ autentifikavimas">
+<!ENTITY googleOauthPage.wizard.description "„Google“ autentifikavimas">
 
 <!ENTITY namePage.wizard.description "Adreso knygos savybės">
 <!ENTITY namePage.selected.label "Pasirinkta">

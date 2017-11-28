@@ -103,7 +103,7 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 						if (column.id == "daysleft") return cardbookBirthdaysUtils.lBirthdayList[row][0];
 						else if (column.id == "name") return cardbookBirthdaysUtils.lBirthdayList[row][1];
 						else if (column.id == "age") return cardbookBirthdaysUtils.lBirthdayList[row][2];
-						else if (column.id == "dateofbirth") return cardbookDates.getFormattedDateForDateString(cardbookBirthdaysUtils.lBirthdayList[row][3], cardbookBirthdaysUtils.lBirthdayList[row][7]);
+						else if (column.id == "dateofbirth") return cardbookDates.getFormattedDateForDateString(cardbookBirthdaysUtils.lBirthdayList[row][3], cardbookBirthdaysUtils.lBirthdayList[row][7], cardbookRepository.dateDisplayedFormat);
 						else if (column.id == "dateofbirthfound") return cardbookBirthdaysUtils.lBirthdayList[row][4];
 						else if (column.id == "email") return cardbookBirthdaysUtils.lBirthdayList[row][5];
 						else return cardbookBirthdaysUtils.lBirthdayList[row][5];
@@ -137,7 +137,6 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 
 		sendEmail: function () {
 			var strBundle = document.getElementById("cardbook-strings");
-			var prompts = Services.prompt;
 			var myTree = document.getElementById('birthdayListTree');
 			var numRanges = myTree.view.selection.getRangeCount();
 			var start = new Object();
@@ -151,7 +150,7 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 					if (myEmail == "") {
 						var errorTitle = strBundle.getString("warningTitle");
 						var errorMsg = strBundle.getFormattedString("noEmailFoundMessage", new Array(myName));
-						prompts.alert(null, errorTitle, errorMsg);
+						Services.prompt.alert(null, errorTitle, errorMsg);
 					} else {
 						var msgComposeType = Components.interfaces.nsIMsgCompType;
 						var msgComposFormat = Components.interfaces.nsIMsgCompFormat;
