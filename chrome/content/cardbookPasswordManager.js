@@ -20,8 +20,7 @@ if ("undefined" == typeof(cardbookPasswordManager)) {
 		},
 		
 		getNotNullPassword: function (aUsername, aPrefId) {
-			var cardbookPrefService = new cardbookPreferenceService(aPrefId);
-			var myUrl = cardbookPrefService.getUrl();
+			var myUrl = cardbookPreferences.getUrl(aPrefId);
 			var result = cardbookPasswordManager.getPassword(aUsername, myUrl);
 			if (result == "") {
 				var myArgs = {site: myUrl, username: aUsername, password: "", context: "Missing", action: ""};
@@ -36,8 +35,7 @@ if ("undefined" == typeof(cardbookPasswordManager)) {
 		},
 		
 		getChangedPassword: function (aUsername, aPrefId) {
-			var cardbookPrefService = new cardbookPreferenceService(aPrefId);
-			var myUrl = cardbookPrefService.getUrl();
+			var myUrl = cardbookPreferences.getUrl(aPrefId);
 			var myArgs = {site: myUrl, username: aUsername, password: "", context: "Wrong", action: ""};
 			var myWindow = window.openDialog("chrome://cardbook/content/wdw_password.xul", "", cardbookRepository.modalWindowParams, myArgs);
 			if (myArgs.action == "SAVE") {

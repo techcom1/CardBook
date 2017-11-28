@@ -22,7 +22,7 @@ if ("undefined" == typeof(wdw_birthdaySync)) {
 
 		do_refresh: function () {
 			var strBundle = document.getElementById("cardbook-strings");
-			var maxDaysUntilNextBirthday = cardbookBirthdaysUtils.getPref("extensions.cardbook.numberOfDaysForWriting");
+			var maxDaysUntilNextBirthday = cardbookPreferences.getStringPref("extensions.cardbook.numberOfDaysForWriting");
 
 			// if there are no birthdays in the configured timespan
 			if (cardbookBirthdaysUtils.lBirthdayList.length == 0) {

@@ -267,8 +267,8 @@
 <!ENTITY calendarEntryTimeAccesskey "z">
 <!ENTITY calendarEntryWholeDayLabel "Wydarzenie całodniowe">
 <!ENTITY calendarEntryWholeDayAccesskey "w">
-<!ENTITY calendarEntryAlarmLabel "Ustaw alarm na n dni przed wydarzeniem">
-<!ENTITY calendarEntryAlarmTooltip "Wpisz, ile dni przed wydarzeniem Lightning ma pokazać przypomnienie. Przypomnienie się nie pojawi jeśli pole pozostawisz puste.">
+<!ENTITY calendarEntryAlarmLabel "Ustaw alarm na n dni przed wydarzeniem (??Alarm(s) to n hours before calendar event??)">
+<!ENTITY calendarEntryAlarmTooltip "Wpisz, ile dni przed wydarzeniem Lightning ma pokazać przypomnienie. Przypomnienie się nie pojawi jeśli pole pozostawisz puste.?? If you want multiple alarms, enter the alarms in a comma separated list.??">
 <!ENTITY calendarEntryAlarmAccesskey "p">
 <!ENTITY calendarEntryCategoriesLabel "Kategoria(e) wydarzenia">
 <!ENTITY calendarEntryCategoriesTooltip "Jedna lub więcej kategorii, rozdzielonych przecinkami. Jeśli pole jest puste, nie będzie kategorii.">

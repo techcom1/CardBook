@@ -192,8 +192,7 @@ if ("undefined" == typeof(ovl_cardbook)) {
 					mail3PaneWindow.focus();
 				}
 			}
-			var stringBundleService = Services.strings;
-			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+			var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 			tabmail.openTab('cardbook', {title: strBundle.GetStringFromName("cardbookTitle")});
 		}
 	};
@@ -206,9 +205,7 @@ window.addEventListener("load", function(e) {
 		tabmail.registerTabMonitor(cardbookTabMonitor);
 	}
 
-	var prefs = Services.prefs;
-	var firstRun = prefs.getBoolPref("extensions.cardbook.firstRun");
-
+	var firstRun = cardbookPreferences.getBoolPref("extensions.cardbook.firstRun");
 	if (firstRun) {
 		var toolbar = document.getElementById("mail-bar3");
 		if (toolbar) {
@@ -226,7 +223,7 @@ window.addEventListener("load", function(e) {
 				document.persist(toolbar.id, "currentset");
 			}
 		}
-		prefs.setBoolPref("extensions.cardbook.firstRun", false);
+		cardbookPreferences.setBoolPref("extensions.cardbook.firstRun", false);
 	}
 
 	if (document.getElementById("addressBook")) {

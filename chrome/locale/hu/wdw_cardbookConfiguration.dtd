@@ -93,7 +93,7 @@
 <!ENTITY showNameAsFLAccesskey "K">
 <!ENTITY showNameAsDSPLabel "Megjelenítendő név">
 <!ENTITY showNameAsDSPAccesskey "M">
-<!ENTITY fnLabelExplanation "Lehetőség van a megszokott módon névjegyzék állítja elő az megjelenített neve. Ez a képlet áll blokkok által közrezárt „()”. Két része van ezekben a blokkokban által határolt „|”. Az első rész alkalmazandó, ha a kifejezés részt, például a {{1}}, nem nulla, a második része alkalmazandó, ha a kifejezés részt null.">
+<!ENTITY fnLabelExplanation "Lehetőség van a megszokott módon névjegyzék állítja elő az megjelenített neve. Ez a képlet áll blokkok által közrezárt (). Két része van ezekben a blokkokban által határolt |. Az első rész alkalmazandó, ha a kifejezés részt, például a {{1}}, nem nulla, a második része alkalmazandó, ha a kifejezés részt null.">
 <!ENTITY fnFormulaLabel "Képlet">
 <!ENTITY fnFormulaAccesskey "P">
 <!ENTITY resetFnFormulaLabel "Alapértelmezés">
@@ -266,8 +266,8 @@
 <!ENTITY calendarEntryTimeAccesskey "i">
 <!ENTITY calendarEntryWholeDayLabel "Naptár esemény egész nap">
 <!ENTITY calendarEntryWholeDayAccesskey "e">
-<!ENTITY calendarEntryAlarmLabel "Napok száma előtt naptár esemény értesítése">
-<!ENTITY calendarEntryAlarmTooltip "Adja meg, hogy hány nappal az évforduló előtt emlékeztesse Önt a Lightning kiegészítő program. Dátum nélkül. Ha a mező üres, akkor nem lesz emlékeztető.">
+<!ENTITY calendarEntryAlarmLabel "Napok száma előtt naptár esemény értesítése (??Alarm(s) to n hours before calendar event??)">
+<!ENTITY calendarEntryAlarmTooltip "Adja meg, hogy hány nappal az évforduló előtt emlékeztesse Önt a Lightning kiegészítő program. Dátum nélkül. Ha a mező üres, akkor nem lesz emlékeztető.?? If you want multiple alarms, enter the alarms in a comma separated list.??">
 <!ENTITY calendarEntryAlarmAccesskey "n">
 <!ENTITY calendarEntryCategoriesLabel "Naptári események kategória">
 <!ENTITY calendarEntryCategoriesTooltip "Egy vagy több kategóriát, vesszővel elválasztva. Ha a mező üres, akkor nincs kategória.">

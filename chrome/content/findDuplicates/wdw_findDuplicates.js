@@ -34,10 +34,8 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 					wdw_findDuplicates.deleteCssAllRules(styleSheet);
 					for (var i = 0; i < wdw_findDuplicates.gResultsDirPrefId.length; i++) {
 						var dirPrefId = wdw_findDuplicates.gResultsDirPrefId[i];
-						var cardbookPrefService = new cardbookPreferenceService(dirPrefId);
-						var color = cardbookPrefService.getColor()
-						var prefs = Services.prefs;
-						var useColor = prefs.getComplexValue("extensions.cardbook.useColor", Components.interfaces.nsISupportsString).data;
+						var color = cardbookPreferences.getColor(dirPrefId)
+						var useColor = cardbookPreferences.getStringPref("extensions.cardbook.useColor");
 						if (useColor == "text") {
 							var colorProperty = "color";
 						} else {

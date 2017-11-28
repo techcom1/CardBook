@@ -8,8 +8,7 @@ if ("undefined" == typeof(cardbookDiscovery)) {
 
 		startDiscovery: function () {
 			var allURLs = [];
-			var cardbookPrefService = new cardbookPreferenceService();
-			allURLs = cardbookPrefService.getURLs();
+			allURLs = cardbookPreferences.getURLs();
 			
 			if (allURLs.length == 0) {
 				cardbookRepository.cardbookSyncMode = "NOSYNC";
@@ -55,9 +54,8 @@ if ("undefined" == typeof(cardbookDiscovery)) {
 									continue;
 								}
 								for (var i = 0; i < myCurrentAccounts.length; i++) {
-									var cardbookPrefService = new cardbookPreferenceService(myCurrentAccounts[i][4]);
-									var myCurrentUrl = cardbookPrefService.getUrl();
-									var myCurrentUser = cardbookPrefService.getUser();
+									var myCurrentUrl = cardbookPreferences.getUrl(myCurrentAccounts[i][4]);
+									var myCurrentUser = cardbookPreferences.getUser(myCurrentAccounts[i][4]);
 									if ((myCurrentUser == cardbookRepository.cardbookServerValidation[dirPrefId].user) && (myCurrentUrl == cardbookUtils.decodeURL(url))) {
 										cardbookRepository.cardbookServerValidation[dirPrefId].length--;
 										cardbookRepository.cardbookServerValidation[dirPrefId][url].forget = true;
@@ -76,9 +74,8 @@ if ("undefined" == typeof(cardbookDiscovery)) {
 					var myCurrentAccountsNotFound = [];
 					myCurrentAccountsNotFound = myCurrentAccounts.filter(onlyCardDAV);
 					for (var i = 0; i < myCurrentAccountsNotFound.length; i++) {
-						var cardbookPrefService = new cardbookPreferenceService(myCurrentAccountsNotFound[i][4]);
-						var myCurrentUrl = cardbookPrefService.getUrl();
-						var myCurrentUser = cardbookPrefService.getUser();
+						var myCurrentUrl = cardbookPreferences.getUrl(myCurrentAccountsNotFound[i][4]);
+						var myCurrentUser = cardbookPreferences.getUser(myCurrentAccountsNotFound[i][4]);
 						var myCurrentShortUrl = cardbookSynchronization.getShortUrl(myCurrentUrl);
 						for (var dirPrefId in cardbookRepository.cardbookServerValidation) {
 							for (var url in cardbookRepository.cardbookServerValidation[dirPrefId]) {
@@ -111,13 +108,11 @@ if ("undefined" == typeof(cardbookDiscovery)) {
 		// no need to set the sync mode for removing deleted CARDDAV account
 		removeAddressbook: function (aDirPrefId, aSource) {
 			try {
-				var cardbookPrefService = new cardbookPreferenceService(aDirPrefId);
-				var myDirPrefIdName = cardbookPrefService.getName();
-				var myDirPrefUrl = cardbookPrefService.getUrl();
-				var myDirPrefIdType = cardbookPrefService.getType();
+				var myDirPrefIdName = cardbookPreferences.getName(aDirPrefId);
+				var myDirPrefUrl = cardbookPreferences.getUrl(aDirPrefId);
+				var myDirPrefIdType = cardbookPreferences.getType(aDirPrefId);
 				
-				var stringBundleService = Services.strings;
-				var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+				var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 				var prompts = Services.prompt;
 				var confirmTitle = strBundle.GetStringFromName("confirmTitle");
 				var confirmMsg = strBundle.formatStringFromName("accountDeletionDiscoveryConfirmMessage", [myDirPrefIdName], 1);
@@ -128,8 +123,7 @@ if ("undefined" == typeof(cardbookDiscovery)) {
 					cardbookRepository.removeAccountFromRepository(aDirPrefId);
 					// cannot be launched from cardbookRepository
 					cardbookIndexedDB.removeAccount(aDirPrefId, myDirPrefIdName);
-					let cardbookPrefService = new cardbookPreferenceService(aDirPrefId);
-					cardbookPrefService.delBranch();
+					cardbookPreferences.delBranch(aDirPrefId);
 					wdw_cardbook.loadCssRules();
 					cardbookUtils.formatStringForOutput("addressbookClosed", [myDirPrefIdName]);
 					wdw_cardbooklog.addActivity("addressbookClosed", [myDirPrefIdName], "deleteMail");

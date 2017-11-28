@@ -6,8 +6,8 @@ if ("undefined" == typeof(ovl_birthdays)) {
 		lTimerPopup : null,
 		lPopupShowed : 0,
 		lEventTimerPopup : { notify: function(lTimerPopup) {
-			if (cardbookBirthdaysUtils.getPref("extensions.cardbook.showPeriodicPopup")) {
-				var popupTime = cardbookBirthdaysUtils.getPref("extensions.cardbook.periodicPopupIime");
+			if (cardbookPreferences.getBoolPref("extensions.cardbook.showPeriodicPopup")) {
+				var popupTime = cardbookPreferences.getStringPref("extensions.cardbook.periodicPopupIime");
 				var dateOfToday = new Date();
 				var dateOfTodayHour = (dateOfToday.getHours()<10?'0':'') + dateOfToday.getHours();
 				var dateOfTodayMin = (dateOfToday.getMinutes()<10?'0':'') + dateOfToday.getMinutes();
@@ -38,11 +38,11 @@ if ("undefined" == typeof(ovl_birthdays)) {
 		} },
 	
 		onLoad: function() {
-			if (cardbookBirthdaysUtils.getPref("extensions.cardbook.showPopupOnStartup")) {
+			if (cardbookPreferences.getBoolPref("extensions.cardbook.showPopupOnStartup")) {
 				ovl_birthdays.onShowPopup();
 			}
 			
-			if (cardbookBirthdaysUtils.getPref("extensions.cardbook.syncWithLightningOnStartup")) {
+			if (cardbookPreferences.getBoolPref("extensions.cardbook.syncWithLightningOnStartup")) {
 				AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, ovl_birthdays.displaySyncListAddon);
 			}
 		},
@@ -66,9 +66,9 @@ if ("undefined" == typeof(ovl_birthdays)) {
 		},
 	
 		onShowPopup: function() {
-			var maxDaysUntilNextBirthday = cardbookBirthdaysUtils.getPref("extensions.cardbook.numberOfDaysForSearching");
+			var maxDaysUntilNextBirthday = cardbookPreferences.getStringPref("extensions.cardbook.numberOfDaysForSearching");
 			cardbookBirthdaysUtils.loadBirthdays(maxDaysUntilNextBirthday);
-			var lshowPopupEvenIfNoBirthday = cardbookBirthdaysUtils.getPref("extensions.cardbook.showPopupEvenIfNoBirthday");
+			var lshowPopupEvenIfNoBirthday = cardbookPreferences.getBoolPref("extensions.cardbook.showPopupEvenIfNoBirthday");
 			if ((cardbookBirthdaysUtils.lBirthdayList.length>0) || lshowPopupEvenIfNoBirthday) {
 				ovl_birthdays.displayBirthdayList();
 			}

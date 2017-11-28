@@ -35,9 +35,8 @@ if ("undefined" == typeof(ovl_formatEmailCorrespondents)) {
 		},
 
 		getDisplayNameColumn: function(aEmails, aContext) {
-			var prefs = Services.prefs;
-			var showCondensedAddresses = prefs.getBoolPref("mail.showCondensedAddresses");
-			var exclusive = prefs.getBoolPref("extensions.cardbook.exclusive");
+			var showCondensedAddresses = cardbookPreferences.getBoolPref("mail.showCondensedAddresses");
+			var exclusive = cardbookPreferences.getBoolPref("extensions.cardbook.exclusive");
 			var results = [];
 			var addresses = {}, names = {}, fullAddresses = {};
 			MailServices.headerParser.parseHeadersWithArray(aEmails, addresses, names, fullAddresses);
@@ -60,6 +59,9 @@ if ("undefined" == typeof(ovl_formatEmailCorrespondents)) {
 			return results.join(", ");
 		}
 	};
+
+	var loader = Services.scriptloader;
+	loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");
 };
 
 function cardbookSenderHandler() {
@@ -195,9 +197,8 @@ window.addEventListener("load", ovl_formatEmailCorrespondents.addObserver, false
 	FormatDisplayName = function() {
 		
 		// Execute some action afterwards.
-		var prefs = Services.prefs;
-		var exclusive = prefs.getBoolPref("extensions.cardbook.exclusive");
-		var showCondensedAddresses = prefs.getBoolPref("mail.showCondensedAddresses");
+		var exclusive = cardbookPreferences.getBoolPref("extensions.cardbook.exclusive");
+		var showCondensedAddresses = cardbookPreferences.getBoolPref("mail.showCondensedAddresses");
 		var rv = "";
 		if (exclusive) {
 			if (showCondensedAddresses) {

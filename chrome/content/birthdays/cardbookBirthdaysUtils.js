@@ -24,7 +24,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 		},
 
 		getCalendars: function () {
-			var myCalendar = cardbookBirthdaysUtils.getPref("extensions.cardbook.calendarsNameList");
+			var myCalendar = cardbookPreferences.getStringPref("extensions.cardbook.calendarsNameList");
 			var calendarManager = Components.classes["@mozilla.org/calendar/manager;1"].getService(Components.interfaces.calICalendarManager);
 			var lCalendars = calendarManager.getCalendars({});
 
@@ -36,7 +36,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 		},
 
 		syncWithLightning: function () {
-			var maxDaysUntilNextBirthday = cardbookBirthdaysUtils.getPref("extensions.cardbook.numberOfDaysForWriting");
+			var maxDaysUntilNextBirthday = cardbookPreferences.getStringPref("extensions.cardbook.numberOfDaysForWriting");
 			cardbookBirthdaysUtils.loadBirthdays(maxDaysUntilNextBirthday);
 
 			cardbookBirthdaysUtils.getCalendars();
@@ -123,7 +123,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 
 				var lBirthdayId = cardbookUtils.getUUID();
 
-				var leventEntryTitle = cardbookBirthdaysUtils.getPref("extensions.cardbook.eventEntryTitle");
+				var leventEntryTitle = cardbookPreferences.getStringPref("extensions.cardbook.eventEntryTitle");
 				var checkTest = leventEntryTitle.split("%S").length - 1;
 				if (checkTest != 2) {
 					var lBirthdayTitle = strBundle.getFormattedString("eventEntryTitleMessage", [lBirthdayName, lBirthdayAge]);
@@ -182,17 +182,17 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			var iCalString = "BEGIN:VCALENDAR\n";
 			iCalString += "BEGIN:VEVENT\n";
 
-			var calendarEntryCategories = cardbookBirthdaysUtils.getPref("extensions.cardbook.calendarEntryCategories");
+			var calendarEntryCategories = cardbookPreferences.getStringPref("extensions.cardbook.calendarEntryCategories");
 			if (calendarEntryCategories !== "") {
 				iCalString += "CATEGORIES:" + calendarEntryCategories + "\n";
 			}
 			
-			var eventEntryWholeDay = cardbookBirthdaysUtils.getPref("extensions.cardbook.eventEntryWholeDay");
+			var eventEntryWholeDay = cardbookPreferences.getBoolPref("extensions.cardbook.eventEntryWholeDay");
 			if (eventEntryWholeDay) {
 				iCalString += "DTSTART:" + aDate + "\n";
 				iCalString += "DTEND:" + aNextDate + "\n";
 			} else {
-				var eventEntryTime = cardbookBirthdaysUtils.getPref("extensions.cardbook.eventEntryTime");
+				var eventEntryTime = cardbookPreferences.getStringPref("extensions.cardbook.eventEntryTime");
 				var EmptyParamRegExp1 = new RegExp("(.*)([^0-9])(.*)", "ig");
 				if (eventEntryTime.replace(EmptyParamRegExp1, "$1")!=eventEntryTime) {
 					var eventEntryTimeHour = eventEntryTime.replace(EmptyParamRegExp1, "$1");
@@ -211,10 +211,13 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 				iCalString += "DTEND:" + aDate + "T" + lBirthdayTimeString + "\n";
 			}
 
-			// set Alarm
-			var lcalendarEntryAlarm = parseInt(cardbookBirthdaysUtils.getPref("extensions.cardbook.calendarEntryAlarm"));
-			if (!isNaN(lcalendarEntryAlarm)) {
-				iCalString += "BEGIN:VALARM\nACTION:DISPLAY\nTRIGGER:-P" + lcalendarEntryAlarm + "D\nEND:VALARM\n";
+			// set Alarms
+			var lcalendarEntryAlarm = cardbookPreferences.getStringPref("extensions.cardbook.calendarEntryAlarm");
+			var lcalendarEntryAlarmArray = lcalendarEntryAlarm.split(',');
+			for (var i = 0; i < lcalendarEntryAlarmArray.length; i++) {
+				if (!isNaN(parseInt(lcalendarEntryAlarmArray[i]))) {
+					iCalString += "BEGIN:VALARM\nACTION:DISPLAY\nTRIGGER:-PT" + parseInt(lcalendarEntryAlarmArray[i]) + "H\nEND:VALARM\n";
+				}
 			}
 
 			// finalize iCalString
@@ -250,16 +253,6 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			aCalendar2.addItem(event, addListener);
 		},
 
-		getPref: function (Name) {
-			var prefs = Services.prefs;
-			if (prefs.getPrefType(Name) == prefs.PREF_STRING){
-				var a = prefs.getComplexValue(Name, Components.interfaces.nsISupportsString).data;
-				return a;
-			} else if (prefs.getPrefType(Name) == prefs.PREF_BOOL){
-				return prefs.getBoolPref(Name);
-			}
-		},
-	
 		daysBetween: function (date1, date2) {
 			// The number of milliseconds in one day
 			var oneDay = 1000 * 60 * 60 * 24
@@ -331,9 +324,9 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 		},
 	
 		loadBirthdays: function (lnumberOfDays) {
-			var myContact = cardbookBirthdaysUtils.getPref("extensions.cardbook.addressBooksNameList");
-			var searchInNote = cardbookBirthdaysUtils.getPref("extensions.cardbook.searchInNote");
-			var useOnlyEmail = cardbookBirthdaysUtils.getPref("extensions.cardbook.useOnlyEmail");
+			var myContact = cardbookPreferences.getStringPref("extensions.cardbook.addressBooksNameList");
+			var searchInNote = cardbookPreferences.getBoolPref("extensions.cardbook.searchInNote");
+			var useOnlyEmail = cardbookPreferences.getBoolPref("extensions.cardbook.useOnlyEmail");
 			var strBundle = document.getElementById("cardbook-strings");
 			var eventInNoteEventPrefix = strBundle.getString("eventInNoteEventPrefix");
 			var deathSuffix = strBundle.getString("deathSuffix");
@@ -343,8 +336,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 				var myCard = cardbookRepository.cardbookCards[i];
 				var myDirPrefId = myCard.dirPrefId;
 				if (myContact.includes(myDirPrefId) || myContact === "allAddressBooks") {
-					var cardbookPrefService = new cardbookPreferenceService(myDirPrefId);
-					var dateFormat = cardbookPrefService.getDateFormat();
+					var dateFormat = cardbookPreferences.getDateFormat(myDirPrefId);
 					var myDirPrefName = cardbookUtils.getPrefNameFromPrefId(myDirPrefId);
 					var myFieldList = ['bday' , 'anniversary', 'deathdate'];
 					for (var k = 0; k < myFieldList.length; k++) {

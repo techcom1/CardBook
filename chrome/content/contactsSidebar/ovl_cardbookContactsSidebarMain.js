@@ -10,8 +10,9 @@ Components.utils.import("resource://gre/modules/Services.jsm");
 		var rv = _original.apply(null, arguments);
 		
 		// Execute some action afterwards.
-		var prefs = Services.prefs;
-		if (prefs.getBoolPref("extensions.cardbook.autocompletion")) {
+		var loader = Services.scriptloader;
+		loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");
+		if (cardbookPreferences.getBoolPref("extensions.cardbook.autocompletion")) {
 			var sidebar = document.getElementById("sidebar");
 			sidebar.setAttribute("src", "chrome://cardbook/content/contactsSidebar/wdw_cardbookContactsSidebar.xul");
 		}

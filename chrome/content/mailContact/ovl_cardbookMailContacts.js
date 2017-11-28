@@ -99,13 +99,12 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 				var myCard = ovl_cardbookMailContacts.getCardFromEmail(myEmail);
 				var myOutCard = new cardbookCardParser();
 				cardbookUtils.cloneCard(myCard, myOutCard);
-				var cardbookPrefService = new cardbookPreferenceService(myCard.dirPrefId);
 				if (myOutCard.isAList) {
 					var myType = "List";
 				} else {
 					var myType = "Contact";
 				}
-				if (cardbookPrefService.getReadOnly()) {
+				if (cardbookPreferences.getReadOnly(myCard.dirPrefId)) {
 					cardbookUtils.openEditionWindow(myOutCard, "View" + myType);
 				} else {
 					cardbookUtils.openEditionWindow(myOutCard, "Edit" + myType, "cardbook.cardModifiedIndirect");
@@ -283,8 +282,9 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 		var rv = _original.apply(null, arguments);
 		
 		// Execute some action afterwards.
-		var prefs = Services.prefs;
-		var exclusive = prefs.getBoolPref("extensions.cardbook.exclusive");
+		var loader = Services.scriptloader;
+		loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");
+		var exclusive = cardbookPreferences.getBoolPref("extensions.cardbook.exclusive");
 		ovl_cardbookMailContacts.hideOldAddressbook(exclusive);
 
 		var myEmail = arguments[0].getAttribute('emailAddress');
@@ -293,11 +293,9 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 
 		if (isEmailRegistered) {
 			var myCard = ovl_cardbookMailContacts.getCardFromEmail(myEmail);
-			var cardbookPrefService = new cardbookPreferenceService(myCard.dirPrefId);
-			var stringBundleService = Services.strings;
-			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+			var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 			document.getElementById("editInCardBookMenu").setAttribute("cardbookId", myCard.dirPrefId+"::"+myCard.uid);
-			if (cardbookPrefService.getReadOnly()) {
+			if (cardbookPreferences.getReadOnly(myCard.dirPrefId)) {
 				document.getElementById('editInCardBookMenu').label=strBundle.GetStringFromName("viewInCardBookMenuLabel");
 			} else {
 				document.getElementById('editInCardBookMenu').label=strBundle.GetStringFromName("editInCardBookMenuLabel");
@@ -328,9 +326,10 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 		var rv = _original.apply(null, arguments);
 
 		// Execute some action afterwards.
-		var prefs = Services.prefs;
-		var exclusive = prefs.getBoolPref("extensions.cardbook.exclusive");
-		var showCondensedAddresses = prefs.getBoolPref("mail.showCondensedAddresses");
+		var loader = Services.scriptloader;
+		loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");
+		var exclusive = cardbookPreferences.getBoolPref("extensions.cardbook.exclusive");
+		var showCondensedAddresses = cardbookPreferences.getBoolPref("mail.showCondensedAddresses");
 		var myDisplayname = arguments[1].getAttribute("displayName");
 		var myEmailAddress = arguments[1].getAttribute("emailAddress");
 		var myCardBookResult = {};
@@ -382,8 +381,9 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 		// Execute some action afterwards.
 		gContextMenu.showItem("mailContext-addToCardBookMenu", gContextMenu.onMailtoLink && !gContextMenu.inThreadPane);
 		if (gContextMenu.onMailtoLink && !gContextMenu.inThreadPane) {
-			var prefs = Services.prefs;
-			var exclusive = prefs.getBoolPref("extensions.cardbook.exclusive");
+			var loader = Services.scriptloader;
+			loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");
+			var exclusive = cardbookPreferences.getBoolPref("extensions.cardbook.exclusive");
 			if (exclusive) {
 				gContextMenu.showItem("mailContext-addemail", false);
 			}

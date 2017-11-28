@@ -1,0 +1,274 @@
+<!ENTITY generalTabLabel "Bendrasis">
+<!ENTITY CardBookTabLabel "Kontaktų kortelė">
+<!ENTITY typesTabLabel "Tipai">
+<!ENTITY IMPPsTabLabel "Interneto pokalbiai">
+<!ENTITY customFieldsTabLabel "Pasirinktiniai laukai">
+<!ENTITY listsTabLabel "Sąrašai">
+<!ENTITY syncTabLabel "Sinchronizuoti">
+<!ENTITY emailTabLabel "Elektroninio pašto">
+<!ENTITY birthdaylistTabLabel "Jubiliejus">
+<!ENTITY synclistTabLabel "Jubiliejaus priminimai">
+
+<!ENTITY integrationGroupboxLabel "Integracija į Thunderbird“">
+<!ENTITY autocompletionLabel "Elektroninio pašto adresų automatinis prirašymas">
+<!ENTITY autocompletionAccesskey "">
+<!ENTITY autocompletionTooltip "Išplečia standartinį adresų knygos Thunderbird“ automatinį užpildymą, kai Kontaktų“ adresų knygos adresai automatiškai užbaigiami.">
+<!ENTITY autocompleteSortByPopularityLabel "Rūšiuoti el. pašto adresus pagal populiarumą">
+<!ENTITY autocompleteSortByPopularityAccesskey "p">
+<!ENTITY autocompleteShowAddressbookLabel "Rodyti adresų knygos pavadinimą">
+<!ENTITY autocompleteShowAddressbookAccesskey "R">
+<!ENTITY autocompleteWithColorLabel "Naudokite adresų knygos spalvą">
+<!ENTITY autocompleteWithColorAccesskey "N">
+<!ENTITY useColorLabel "Adresų knygos spalvos naudojimas:">
+<!ENTITY useColorBackgroundLabel "Fono spalva">
+<!ENTITY useColorBackgroundAccesskey "F">
+<!ENTITY useColorTextLabel "Teksto spalva">
+<!ENTITY useColorTextAccesskey "T">
+<!ENTITY exclusiveLabel "Unikalus kontaktų šaltinis">
+<!ENTITY exclusiveAccesskey "U">
+<!ENTITY exclusiveTooltip "Jei ši funkcija išjungta, ši parinktis leidžia iš Thunderbird“ standartinių adresų knygų gauti kontaktų geltonosioms žvaigždutėms, el. Pašto pavadinimui ir elektroninio pašto automatinio užbaigimo funkcijoms.">
+<!ENTITY accountsRestrictionsLabel "Pranešimų paskyros apribojimai">
+<!ENTITY accountsRestrictionsEnabledLabel "Įjungtas">
+<!ENTITY accountsRestrictionsMailNameLabel "Pranešimų paskyros">
+<!ENTITY accountsRestrictionsABNameLabel "Adresų knyga">
+<!ENTITY accountsRestrictionsCatNameLabel "Kategorija">
+<!ENTITY accountsRestrictionsIncludeNameLabel "Tipo">
+<!ENTITY addRestrictionLabel "Nauja">
+<!ENTITY addRestrictionAccesskey "N">
+<!ENTITY renameRestrictionLabel "Keisti">
+<!ENTITY renameRestrictionAccesskey "K">
+<!ENTITY deleteRestrictionLabel "Pašalinti">
+<!ENTITY deleteRestrictionAccesskey "š">
+<!ENTITY emailsCollectionLabel "Surinkti siunčiamas el. pašto žinutes">
+<!ENTITY emailsCollectionTooltip "Išplečia Thunderbird“ standartinį siunčiamų el. pašto adresų rinkimą. Jei įjungta, el. pašto adresai, kurių nėra Kontaktų adresų knygose, bus įtraukti į pasirinktą adresų knygą(-as).">
+<!ENTITY emailsCollectionEnabledLabel "Įjungtas">
+<!ENTITY emailsCollectionMailNameLabel "Pranešimų paskyros">
+<!ENTITY emailsCollectionABNameLabel "Adresų knyga">
+<!ENTITY emailsCollectionCatNameLabel "Kategorija">
+<!ENTITY addEmailsCollectionLabel "Nauja">
+<!ENTITY addEmailsCollectionAccesskey "N">
+<!ENTITY renameEmailsCollectionLabel "Keisti">
+<!ENTITY renameEmailsCollectionAccesskey "K">
+<!ENTITY deleteEmailsCollectionLabel "Pašalinti">
+<!ENTITY deleteEmailsCollectionAccesskey "š">
+<!ENTITY logGroupboxLabel "Ataskaita">
+<!ENTITY debugModeLabel "Derinimo režimas">
+<!ENTITY debugModeAccesskey "D">
+<!ENTITY debugModeTooltip "Įgalinti derinimo režimą, jei norima pratęsti registravimą.">
+<!ENTITY statusInformationLineNumberLabel "Žurnalo faile laikomų eilučių skaičius">
+<!ENTITY statusInformationLineNumberAccesskey "Ž">
+
+<!ENTITY tabsEdittingGroupboxLabel "Rodyti korteles">
+<!ENTITY noteTabLabel "Pastabos">
+<!ENTITY noteTabAccesskey "a">
+<!ENTITY listTabLabel "Sąrašas">
+<!ENTITY listTabAccesskey "S">
+<!ENTITY mailPopularityTabLabel "Pašto populiarumas">
+<!ENTITY mailPopularityTabAccesskey "P">
+<!ENTITY technicalTabLabel "Techninis">
+<!ENTITY technicalTabAccesskey "T">
+<!ENTITY vCardTabLabel "vCard">
+<!ENTITY vCardTabAccesskey "v">
+<!ENTITY advancedTabLabel "Išplėstinė">
+<!ENTITY advancedTabAccesskey "š">
+<!ENTITY localizeEdittingGroupboxLabel "Rasti naudojant:">
+<!ENTITY localizeEngineOpenStreetMapLabel "Atvirasis kelių žemėlapis">
+<!ENTITY localizeEngineOpenStreetMapAccesskey "A">
+<!ENTITY localizeEngineGoogleMapsLabel "Google“ žemėlapiai">
+<!ENTITY localizeEngineGoogleMapsAccesskey "G">
+<!ENTITY localizeEngineBingMapsLabel "Bing“ žemėlapiai">
+<!ENTITY localizeEngineBingMapsAccesskey "B">
+<!ENTITY localizeTargetLabel "Atidaryti išorines sąsajas:">
+<!ENTITY localizeTargetInLabel " Thunderbird“ programoje">
+<!ENTITY localizeTargetInAccesskey "T">
+<!ENTITY localizeTargetOutLabel "Naudojant kitą programą">
+<!ENTITY localizeTargetOutAccesskey "k">
+<!ENTITY showNameAsLabel "Vardo ir pavardės rodymo būdas">
+<!ENTITY showNameAsLFLabel "Pavardė Vardas">
+<!ENTITY showNameAsLFAccesskey "P">
+<!ENTITY showNameAsLFCommaLabel "Pavardė, Vardas">
+<!ENTITY showNameAsLFCommaAccesskey "a">
+<!ENTITY showNameAsFLLabel "Vardas Pavardė">
+<!ENTITY showNameAsFLAccesskey "V">
+<!ENTITY showNameAsDSPLabel "Rodomas vardas">
+<!ENTITY showNameAsDSPAccesskey "R">
+<!ENTITY fnLabelExplanation "Galima pritaikyti Kontaktų rodomo vardo būdą. Ši formulė susideda iš blokų, kuriuos apima skliausteliai (). Šiuose blokuose yra dvi dalys, kurias apibrėžia vertikalus brūkšnys |.
+								Pirmoji dalis taikoma tada, kai susijusi sąlyga, pvz., {{1}}, nėra nulinė, antra dalis taikoma tada, kai susijęs terminas yra nulis.">			
+<!ENTITY fnFormulaLabel "Sukurti rodomo pavadinimą">
+<!ENTITY fnFormulaAccesskey "ą">
+<!ENTITY resetFnFormulaLabel "Atstatyti numatytąjį">
+<!ENTITY resetFnFormulaAccesskey "A">
+<!ENTITY miscEdittingGroupboxLabel "Įvairūs">
+<!ENTITY preferEmailEditionLabel "Spustelėjant kontaktą dukart, tai leidžia redaguoti kontaktą, o ne el. pašto žinutes">
+<!ENTITY preferEmailEditionAccesskey "S">
+<!ENTITY dateDisplayedFormatLabel "Datos formatas:">
+<!ENTITY dateDisplayedFormatAccesskey "D">
+
+<!ENTITY typesGroupboxLabel "Tipai">
+<!ENTITY typesCategoryAdrLabel "Adresas">
+<!ENTITY typesCategoryAdrAccesskey "A">
+<!ENTITY typesCategoryEmailLabel "Elektroninis paštas">
+<!ENTITY typesCategoryEmailAccesskey "p">
+<!ENTITY typesCategoryImppLabel "Momentinių pranešimų ir dalyvavimo protokolas">
+<!ENTITY typesCategoryImppAccesskey "M">
+<!ENTITY typesCategoryTelLabel "Telefonas">
+<!ENTITY typesCategoryTelAccesskey "f">
+<!ENTITY typesCategoryUrlLabel "Tinklalapis">
+<!ENTITY typesCategoryUrlAccesskey "T">
+<!ENTITY typesCategoryGenderLabel "Lytis">
+<!ENTITY typesCategoryGenderAccesskey "L">
+<!ENTITY typesCodeLabel "Kodas">
+<!ENTITY typesLabelLabel "Etiketė">
+<!ENTITY addTypeLabel "Pridėti">
+<!ENTITY addTypeAccesskey "P">
+<!ENTITY renameTypeLabel "Keisti">
+<!ENTITY renameTypeAccesskey "K">
+<!ENTITY deleteTypeLabel "Pašalinti">
+<!ENTITY deleteTypeAccesskey "š">
+<!ENTITY resetTypeLabel "Atstatyti numatytąjį">
+<!ENTITY resetTypeAccesskey "A">
+<!ENTITY preferenceGroupboxLabel "Laukas PREF“">
+<!ENTITY usePreferenceValueLabel "Naudoti parinkties reikšmę (tik vCard 4.0“)">
+<!ENTITY usePreferenceValueAccesskey "r">
+<!ENTITY preferenceValueLabel "PREF“ vertės lauko etiketė">
+<!ENTITY preferenceValueAccesskey "e">
+
+<!ENTITY IMPPGroupboxWarn "Ši sąranka leidžia vykti internetiniams pokalbiams naudojant numatytą protokolą.">
+<!ENTITY IMPPGroupboxLabel "Internetiniai pokalbiai">
+<!ENTITY preferIMPPPrefLabel "Nustatyti pirmenybę internetiniams pokalbiams, pažymėtiems P raide">
+<!ENTITY preferIMPPPrefAccesskey "P">
+<!ENTITY preferIMPPPrefWarn "Jei nė vienas adresas nėra pažymėtas, siūlyti prisijungti prie visų kontakto adresų.">
+<!ENTITY IMPPCodeLabel "Kodas">
+<!ENTITY IMPPLabelLabel "Etiketė">
+<!ENTITY IMPPProtocolLabel "Protokolas">
+<!ENTITY addIMPPLabel "Pridėti">
+<!ENTITY addIMPPAccesskey "P">
+<!ENTITY renameIMPPLabel "Keisti">
+<!ENTITY renameIMPPAccesskey "K">
+<!ENTITY deleteIMPPLabel "Pašalinti">
+<!ENTITY deleteIMPPAccesskey "š">
+
+<!ENTITY customFieldRankLabel "Reitingas">
+<!ENTITY customFieldCodeLabel "Lauko pavadinimas">
+<!ENTITY customFieldLabelLabel "Lauko etiketė">
+<!ENTITY customFieldsPersTitleLabel "Asmeniniai duomenys">
+<!ENTITY customFieldsPersTitleAccesskey "P">
+<!ENTITY customFieldsOrgTitleLabel "Profesijos duomenys">
+<!ENTITY customFieldsOrgTitleAccesskey "r">
+<!ENTITY addCustomFieldsLabel "Pridėti">
+<!ENTITY addCustomFieldsAccesskey "A">
+<!ENTITY renameCustomFieldsLabel "Keisti">
+<!ENTITY renameCustomFieldsAccesskey "E">
+<!ENTITY deleteCustomFieldsLabel "Pašalinti">
+<!ENTITY deleteCustomFieldsAccesskey "D">
+
+<!ENTITY orgWarn "ORG lauke gali būti struktūruota teksto vertė, susidedanti iš komponentų, atskirtų simboliu KABLIATAŠKIS (pvz., Jūsų įmonė, jūsų paslauga; jūsų skyrius). Toliau pateikti laukai apibūdina šios struktūros komponentų etiketes.">
+
+<!ENTITY listPanelLabel "Jei jūsų serveryje nepalaikomos kategorijos (pvz., Google“, Apple“, Zimbra“ ir kt.), Sąrašai yra geras būdas siųsti el. laiškus grupėms. vCard 3.0“ iš esmės nepalaiko sąrašų, tačiau tai gali būti padaryta naudojant tinkintus laukus, taigi, jei norite naudoti sąrašus vCard 3.0“, turite apibrėžti šiuos laukus.">
+<!ENTITY listGroupboxLabel "Tinkinti laukai sąrašams">
+<!ENTITY kindCustomLabel "Rūšis">
+<!ENTITY kindCustomAccesskey "R">
+<!ENTITY memberCustomLabel "Narys">
+<!ENTITY memberCustomAccesskey "N">
+<!ENTITY resetListLabel "Atstatyti numatytąjį">
+<!ENTITY resetListAccesskey "A">
+
+<!ENTITY syncGroupboxLabel "Sinchronizuoti">
+<!ENTITY syncWarn "Sinchronizavimas skleidžia jūsų pakeitimus nuotoliniame serveryje ir serverio pakeitimus jums.">
+<!ENTITY initialSyncLabel "Paleisti Thunderbird“ sinchronizavimą kai programa pradeda.">
+<!ENTITY initialSyncAccesskey "P">
+<!ENTITY initialSyncDelayLabel "Pradinio sinchronizavimo delsimas (sekundės)">
+<!ENTITY initialSyncDelayAccesskey "z">
+<!ENTITY solveConflictsLabel "Jei kontaktas buvo atnaujintas tiek serveryje, tiek lokaliai:">
+<!ENTITY solveConflictsLocalLabel "Naudoti vietines modifikacijos">
+<!ENTITY solveConflictsLocalAccesskey "v">
+<!ENTITY solveConflictsRemoteLabel "Suteikti pirmenybę serverio modifikacijai">
+<!ENTITY solveConflictsRemoteAccesskey "s">
+<!ENTITY solveConflictsUserLabel "Paklausti naudotojo">
+<!ENTITY solveConflictsUserAccesskey "P">
+<!ENTITY autoSyncGroupboxLabel "Periodiškas sinchronizavimas">
+<!ENTITY autoSyncLabel "Įgalinti periodinę sinchronizaciją">
+<!ENTITY autoSyncAccesskey "g">
+<!ENTITY autoSyncIntervalLabel "Periodinio sinchronizavimo intervalas (minutės)">
+<!ENTITY autoSyncIntervalAccesskey "į">
+<!ENTITY requestsGroupboxLabel "Prašymai">
+<!ENTITY requestsTimeoutLabel "Intervalas (sekundės)">
+<!ENTITY requestsTimeoutAccesskey "t">
+<!ENTITY multigetLabel "GET“ užklausoms, grupuoti kontaktus pagal">
+<!ENTITY multigetAccesskey "G">
+<!ENTITY discoveryGroupboxLabel "Adresų knygų atradimas">
+<!ENTITY discoveryWarn "Kiekvieną kartą sinchronizuojant, bus atliekamas toliau nurodytų URL patikrinimas, kad būtų galima ieškoti bet kokių naujų ar ištrintų adresų knygų.">
+<!ENTITY discoveryURLLabel "Tinklalapis">
+<!ENTITY addURLLabel "Pridėti">
+<!ENTITY addURLAccesskey "P">
+<!ENTITY renameURLLabel "Keisti">
+<!ENTITY renameURLAccesskey "K">
+<!ENTITY deleteURLLabel "Pašalinti">
+<!ENTITY deleteURLAccesskey "š">
+<!ENTITY advancedSyncGroupboxLabel "Išplėstinės savybės">
+<!ENTITY decodeReportLabel "Dekoduoti URL dėl ataskaitų užklausų">
+<!ENTITY decodeReportAccesskey "D">
+
+<!ENTITY miscEmailGroupboxLabel "Elektroninių pašto žinučių siuntimas">
+<!ENTITY preferEmailPrefLabel "Naudoti el. pašto adresus, pažymėtus:">
+<!ENTITY preferEmailPrefAccesskey "p">
+<!ENTITY preferEmailPrefWarn "Jei nė vienas adresas nėra pažymėtas, pranešimas siunčiamas visiems adresato adresams.">
+<!ENTITY warnEmptyEmailsLabel "Įspėti mane, kai bandau išsiųsti el. pašto žinutę be el. pašto adreso">
+<!ENTITY warnEmptyEmailsAccesskey "s">
+<!ENTITY useOnlyEmailLabel "Naudokite tik el. pašto adresus, be jų rodomų vardų">
+<!ENTITY useOnlyEmailAccesskey "N">
+<!ENTITY attachVCardWarn "Norėdami automatiškai pridėti vCard“ prie savo el. pašto žinučių, pasirinkite kiekvienos el. pašto paskyros vCard. Jei programa Kontaktai“ įjungta, ji pridės šią vCard“ prie kiekvieno siunčiamo el. pašto iš šios paskyros.">
+<!ENTITY attachVCardGroupboxLabel "Prijunkt vCard“">
+<!ENTITY accountsVCardsEnabledLabel "Įjungtas">
+<!ENTITY accountsVCardsMailLabel "Pranešimų paskyros">
+<!ENTITY accountsVCardsABNameLabel "Adresų knyga">
+<!ENTITY accountsVCardsFileNameLabel "Pridedamas failas">
+<!ENTITY accountsVCardsFnLabel "Kontaktas">
+<!ENTITY addVCardLabel "Pridėti">
+<!ENTITY addVCardAccesskey "P">
+<!ENTITY renameVCardLabel "Keisti">
+<!ENTITY renameVCardAccesskey "K">
+<!ENTITY deleteVCardLabel "Pašalinti">
+<!ENTITY deleteVCardAccesskey "š">
+
+<!ENTITY birthdayListWarn "Jubiliejai ieškom tik Kontaktų“ adresų knygose. Jubiliejaus datos formos yra nustatytos adresų knygos parinktyse.">
+<!ENTITY addressBooksGroupboxLabel "Adresų knygos">
+<!ENTITY calendarsGroupboxLabel "Kalendoriai">
+<!ENTITY searchGroupboxLabel "Ieškoti">
+<!ENTITY searchInNoteLabel "Padaryti paiešką Užrašų lauke dėl įvykių sukakčių">
+<!ENTITY searchInNoteTooltip1 "Pridėti šias eilutes Pastabų lauke (skirtukas turėtų būti : ir datos formatas turėtų būti tas, kuris nurodytas adresų knygelėje) :">
+<!ENTITY searchInNoteTooltip2 "Įvykis:Apibūdinimas:02.12.2006">
+<!ENTITY searchInNoteAccesskey "A">
+<!ENTITY dateFormatLabel "Numatomas datos formatas">
+<!ENTITY dateFormatAccesskey "N">
+
+<!ENTITY remindersTabLabel "Priminimai">
+<!ENTITY remindViaPopupWindowGroupboxLabel "Priminti per iššokantį langelį">
+<!ENTITY numberOfDaysForSearchingLabel "Dienų, skirtų tikrinti jubiliejus, skaičius">
+<!ENTITY numberOfDaysForSearchingAccesskey "s">
+<!ENTITY showPopupOnStartupLabel "Rodyti iššokantį langelį kai programa prasideda">
+<!ENTITY showPopupOnStartupAccesskey "R">
+<!ENTITY showPeriodicPopupLabel "Rodyti iššokantį langelį kasdien">
+<!ENTITY showPeriodicPopupAccesskey "d">
+<!ENTITY periodicPopupTimeLabel "Ekrane rodomas laikas (vv:mm)">
+<!ENTITY periodicPopupTimeAccesskey "i">
+<!ENTITY showPopupEvenIfNoBirthdayLabel "Rodyti iššokantį langelį, kai jubiliejų sąrašas tuščias">
+<!ENTITY showPopupEvenIfNoBirthdayAccesskey "š">
+<!ENTITY remindViaLightningGroupboxLabel "Priminti per Thunderbird Lightning Calendar Extension“ ">
+<!ENTITY numberOfDaysForWritingLabel "Dienų, kuriose reikia rašyti metines, skaičius">
+<!ENTITY numberOfDaysForWritingAccesskey "r">
+<!ENTITY syncWithLightningOnStartupLabel "Programai pradedant, paleisti sinchronizavimas su Lightning“">
+<!ENTITY syncWithLightningOnStartupAccesskey "L">
+<!ENTITY calendarEntryTitleLabel "Kalendorinio įvykio pavadinimas">
+<!ENTITY calendarEntryTitleTooltip "Kalendoriaus įvykio šablono pavadinimas. Jame turėtų būti du užpildai &#37;S, atitinkamai pakeisti pavadinimu ir amžiumi. Jei laukas tuščias, naudojama standartinė žinutė.">
+<!ENTITY calendarEntryTitleAccesskey "p">
+<!ENTITY calendarEntryTimeLabel "Kalendoriaus įvykio laikas (vv:mm)">
+<!ENTITY calendarEntryTimeAccesskey "l">
+<!ENTITY calendarEntryWholeDayLabel "Kalendoriaus įvykis visą dieną">
+<!ENTITY calendarEntryWholeDayAccesskey "v">
+<!ENTITY calendarEntryAlarmLabel "Nustatyti signalą veikti n dienas prieš kalendorinį įvykį (??Alarm(s) to n hours before calendar event??)">
+<!ENTITY calendarEntryAlarmTooltip "Įveskite, kiek dienų prieš jubiliejų Lightning“ signalas turėtų jums priminti. Be datos, jei laukas yra tuščias, signal0 nebus.?? If you want multiple alarms, enter the alarms in a comma separated list.??">
+<!ENTITY calendarEntryAlarmAccesskey "n">
+<!ENTITY calendarEntryCategoriesLabel "Kalendoriaus įvykio kategorija">
+<!ENTITY calendarEntryCategoriesTooltip "Viena ar daugiau kategorijų, atskirtos kableliais. Jei laukas tuščias, kategorijos nebus.">
+<!ENTITY calendarEntryCategoriesAccesskey "g">

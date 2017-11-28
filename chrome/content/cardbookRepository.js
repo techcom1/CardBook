@@ -203,49 +203,41 @@ var cardbookRepository = {
 			for (var j in numberList) {
 				try {
 					var mySourceField = "extensions.cardbook.customs.customField" + numberList[j] + typeList[i];
-					var prefs = Services.prefs;
-					var mySourceValue = prefs.getComplexValue(mySourceField, Components.interfaces.nsISupportsString).data;
-					var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
+					var mySourceValue = cardbookPreferences.getStringPref(mySourceField);
 					if (typeList[i] === "Name") {
 						var myTargetType = "pers";
 					} else {
 						var myTargetType = "org";
 					}
 					if (mySourceValue != "") {
-						var cardbookPrefService = new cardbookPreferenceService();
-						cardbookPrefService.setCustomFields(myTargetType, myTargetNumber, mySourceValue);
+						cardbookPreferences.setCustomFields(myTargetType, myTargetNumber, mySourceValue);
 						myTargetNumber++;
 					}
-					prefs.deleteBranch(mySourceField);
+					Services.prefs.deleteBranch(mySourceField);
 				}
 				catch (e) {}
 			}
 		}
-		var cardbookPrefService = new cardbookPreferenceService();
 		cardbookRepository.customFields = {};
-		cardbookRepository.customFields = cardbookPrefService.getAllCustomFields();
+		cardbookRepository.customFields = cardbookPreferences.getAllCustomFields();
 	},
 		
     setCollected: function () {
 		try {
 			// for file opened with version <= 18.7
-			var prefs = Services.prefs;
-			var emailsCollection = prefs.getComplexValue("extensions.cardbook.emailsCollection", Components.interfaces.nsISupportsString).data;
+			var emailsCollection = cardbookPreferences.getStringPref("extensions.cardbook.emailsCollection");
 			var emailsCollectionCat = "";
 			try {
-				emailsCollectionCat = prefs.getComplexValue("extensions.cardbook.emailsCollectionCat", Components.interfaces.nsISupportsString).data;
+				emailsCollectionCat = cardbookPreferences.getStringPref("extensions.cardbook.emailsCollectionCat");
 			}
 			catch (e) {}
 			if (emailsCollection != "") {
-				var cardbookPrefService = new cardbookPreferenceService();
 				emailsCollectionList = emailsCollection.split(',');
 				for (var i = 0; i < emailsCollectionList.length; i++) {
-					cardbookPrefService.setEmailsCollection(i.toString(), "true::include::allMailAccounts::" + emailsCollectionList[i] + "::" + emailsCollectionCat);
+					cardbookPreferences.setEmailsCollection(i.toString(), "true::include::allMailAccounts::" + emailsCollectionList[i] + "::" + emailsCollectionCat);
 				}
-				var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-				str.data = "";
-				prefs.setComplexValue("extensions.cardbook.emailsCollection", Components.interfaces.nsISupportsString, str);
-				prefs.setComplexValue("extensions.cardbook.emailsCollectionCat", Components.interfaces.nsISupportsString, str);
+				cardbookPreferences.setStringPref("extensions.cardbook.emailsCollection", "");
+				cardbookPreferences.setStringPref("extensions.cardbook.emailsCollectionCat", "");
 			}
 		}
 		catch (e) {
@@ -254,43 +246,42 @@ var cardbookRepository = {
 	},
 		
     setTypes: function () {
-		var cardbookPrefService = new cardbookPreferenceService();
 		var myTypes = [];
 		var myOldTypes = [];
-		myTypes = cardbookPrefService.getAllTypesCategory();
+		myTypes = cardbookPreferences.getAllTypesCategory();
 		// for file opened with version <= 4.0
 		for (var i = 0; i < myTypes.length; i++) {
 			if (!myTypes[i].includes(".")) {
-				myOldTypes.push(cardbookPrefService.getTypes(myTypes[i]));
-				cardbookPrefService.delTypes(myTypes[i]);
+				myOldTypes.push(cardbookPreferences.getTypes(myTypes[i]));
+				cardbookPreferences.delTypes(myTypes[i]);
 				myTypes.splice(i,1);
 				i--;
 			}
 		}
 		for (var i = 0; i < myOldTypes.length; i++) {
-				cardbookPrefService.setTypes("adr", i, myOldTypes[i]);
-				cardbookPrefService.setTypes("email", i, myOldTypes[i]);
-				cardbookPrefService.setTypes("tel", i, myOldTypes[i]);
-				cardbookPrefService.setTypes("impp", i, myOldTypes[i]);
-				cardbookPrefService.setTypes("url", i, myOldTypes[i]);
+				cardbookPreferences.setTypes("adr", i, myOldTypes[i]);
+				cardbookPreferences.setTypes("email", i, myOldTypes[i]);
+				cardbookPreferences.setTypes("tel", i, myOldTypes[i]);
+				cardbookPreferences.setTypes("impp", i, myOldTypes[i]);
+				cardbookPreferences.setTypes("url", i, myOldTypes[i]);
 		}
 		// for file opened with version <= 4.8
 		var myPhoneTypes = [];
-		myTypes = cardbookPrefService.getAllTypesCategory();
+		myTypes = cardbookPreferences.getAllTypesCategory();
 		for (var i = 0; i < myTypes.length; i++) {
 			if (myTypes[i].includes("phone.")) {
-				myPhoneTypes.push(cardbookPrefService.getTypes(myTypes[i]));
-				cardbookPrefService.delTypes(myTypes[i]);
+				myPhoneTypes.push(cardbookPreferences.getTypes(myTypes[i]));
+				cardbookPreferences.delTypes(myTypes[i]);
 				myTypes.splice(i,1);
 				i--;
 			}
 		}
 		for (var i = 0; i < myPhoneTypes.length; i++) {
-			cardbookPrefService.setTypes("tel", i, myPhoneTypes[i]);
+			cardbookPreferences.setTypes("tel", i, myPhoneTypes[i]);
 		}
 		// for file opened with version <= 4.8
 		var notfound = true;
-		myTypes = cardbookPrefService.getAllTypesCategory();
+		myTypes = cardbookPreferences.getAllTypesCategory();
 		for (var i = 0; i < myTypes.length; i++) {
 			if (myTypes[i].includes("url.")) {
 				notfound = false;
@@ -299,12 +290,12 @@ var cardbookRepository = {
 		}
 		if (notfound) {
 			for (var i = 0; i < cardbookRepository.typesSeed.url.length; i++) {
-				cardbookPrefService.setTypes("url", i, cardbookRepository.typesSeed.url[i]);
+				cardbookPreferences.setTypes("url", i, cardbookRepository.typesSeed.url[i]);
 			}
 		}
 		// for file opened with version <= 4.8
 		var notfound = true;
-		myTypes = cardbookPrefService.getAllTypesCategory();
+		myTypes = cardbookPreferences.getAllTypesCategory();
 		for (var i = 0; i < myTypes.length; i++) {
 			if (myTypes[i].includes("tel.")) {
 				notfound = false;
@@ -313,12 +304,12 @@ var cardbookRepository = {
 		}
 		if (notfound) {
 			for (var i = 0; i < cardbookRepository.typesSeed.tel.length; i++) {
-				cardbookPrefService.setTypes("tel", i, cardbookRepository.typesSeed.tel[i]);
+				cardbookPreferences.setTypes("tel", i, cardbookRepository.typesSeed.tel[i]);
 			}
 		}
 		// for file opened with version <= 4.8
 		var notfound = true;
-		myTypes = cardbookPrefService.getAllTypesCategory();
+		myTypes = cardbookPreferences.getAllTypesCategory();
 		for (var i = 0; i < myTypes.length; i++) {
 			if (myTypes[i].includes("impp.")) {
 				notfound = false;
@@ -327,12 +318,12 @@ var cardbookRepository = {
 		}
 		if (notfound) {
 			for (var i = 0; i < cardbookRepository.typesSeed.impp.length; i++) {
-				cardbookPrefService.setTypes("impp", i, cardbookRepository.typesSeed.impp[i]);
+				cardbookPreferences.setTypes("impp", i, cardbookRepository.typesSeed.impp[i]);
 			}
 		}
 		// for file opened with version <= 4.8
 		var notfound = true;
-		myTypes = cardbookPrefService.getAllTypesCategory();
+		myTypes = cardbookPreferences.getAllTypesCategory();
 		for (var i = 0; i < myTypes.length; i++) {
 			if (myTypes[i].includes("email.")) {
 				notfound = false;
@@ -341,12 +332,12 @@ var cardbookRepository = {
 		}
 		if (notfound) {
 			for (var i = 0; i < cardbookRepository.typesSeed.email.length; i++) {
-				cardbookPrefService.setTypes("email", i, cardbookRepository.typesSeed.email[i]);
+				cardbookPreferences.setTypes("email", i, cardbookRepository.typesSeed.email[i]);
 			}
 		}
 		// for file opened with version <= 11.6
 		var notfound = true;
-		myTypes = cardbookPrefService.getAllTypesCategory();
+		myTypes = cardbookPreferences.getAllTypesCategory();
 		for (var i = 0; i < myTypes.length; i++) {
 			if (myTypes[i].includes("adr.")) {
 				notfound = false;
@@ -355,18 +346,18 @@ var cardbookRepository = {
 		}
 		if (notfound) {
 			for (var i = 0; i < cardbookRepository.typesSeed.adr.length; i++) {
-				cardbookPrefService.setTypes("adr", i, cardbookRepository.typesSeed.adr[i]);
+				cardbookPreferences.setTypes("adr", i, cardbookRepository.typesSeed.adr[i]);
 			}
 		}
 		// for file opened with version <= 15.3
 		var myIMPPs = [];
-		myIMPPs = cardbookPrefService.getAllIMPPs();
+		myIMPPs = cardbookPreferences.getAllIMPPs();
 		if (myIMPPs.length == 0) {
-			cardbookPrefService.insertIMPPsSeed();
+			cardbookPreferences.insertIMPPsSeed();
 		}
 		// for file opened with version <= 23.4
 		var notfound = true;
-		myTypes = cardbookPrefService.getAllTypesCategory();
+		myTypes = cardbookPreferences.getAllTypesCategory();
 		for (var i = 0; i < myTypes.length; i++) {
 			if (myTypes[i].includes("gender.")) {
 				notfound = false;
@@ -375,24 +366,39 @@ var cardbookRepository = {
 		}
 		if (notfound) {
 			for (var i = 0; i < cardbookRepository.typesSeed.gender.length; i++) {
-				cardbookPrefService.setTypes("gender", i, cardbookRepository.typesSeed.gender[i]);
+				cardbookPreferences.setTypes("gender", i, cardbookRepository.typesSeed.gender[i]);
 			}
+		}
+	},
+
+	setCalendarEntryAlarm: function() {
+		try {
+			// for file opened with version <= 24.2
+			var calendarEntryAlarmMigrated = cardbookPreferences.getBoolPref("extensions.cardbook.calendarEntryAlarmMigrated");
+			if (!calendarEntryAlarmMigrated) {
+				var calendarEntryAlarm = cardbookPreferences.getStringPref("extensions.cardbook.calendarEntryAlarm");
+				if (calendarEntryAlarm != "168") {
+					cardbookPreferences.setStringPref("extensions.cardbook.calendarEntryAlarm", parseInt(calendarEntryAlarm) * 24);
+				}
+				cardbookPreferences.setBoolPref("extensions.cardbook.calendarEntryAlarmMigrated", true);
+			}
+		}
+		catch (e) {
+			return "";
 		}
 	},
 
 	setSolveConflicts: function() {
 		try {
 			// for file opened with version <= 14.0
-			var prefs = Services.prefs;
-			var preferDisk = prefs.getBoolPref("extensions.cardbook.preferDisk");
-			var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
+			var preferDisk = cardbookPreferences.getBoolPref("extensions.cardbook.preferDisk");
 			if (preferDisk) {
-				str.data = "Local";
+				var strData = "Local";
 			} else {
-				str.data = "Remote";
+				var strData = "Remote";
 			}
-			prefs.setComplexValue("extensions.cardbook.solveConflicts", Components.interfaces.nsISupportsString, str);
-			prefs.deleteBranch("extensions.cardbook.preferDisk");
+			cardbookPreferences.setStringPref("extensions.cardbook.solveConflicts", strData);
+			Services.prefs.deleteBranch("extensions.cardbook.preferDisk");
 		}
 		catch (e) {
 			return "";
@@ -488,20 +494,19 @@ var cardbookRepository = {
 			cacheDir.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0o774);
 		}
 		if (aPrefInsertion) {
-			let cardbookPrefService = new cardbookPreferenceService(aAccountId);
-			cardbookPrefService.setId(aAccountId);
-			cardbookPrefService.setName(aAccountName);
-			cardbookPrefService.setType(aAccountType);
-			cardbookPrefService.setUrl(aAccountUrl);
-			cardbookPrefService.setUser(aAccountUser);
-			cardbookPrefService.setColor(aColor);
-			cardbookPrefService.setEnabled(aEnabled);
-			cardbookPrefService.setExpanded(aExpanded);
-			cardbookPrefService.setVCardVersion(aVCard);
-			cardbookPrefService.setReadOnly(aReadOnly);
-			cardbookPrefService.setDateFormat(aDateFormat);
-			cardbookPrefService.setUrnuuid(aUrnuuid);
-			cardbookPrefService.setDBCached(aDBcached);
+			cardbookPreferences.setId(aAccountId, aAccountId);
+			cardbookPreferences.setName(aAccountId, aAccountName);
+			cardbookPreferences.setType(aAccountId, aAccountType);
+			cardbookPreferences.setUrl(aAccountId, aAccountUrl);
+			cardbookPreferences.setUser(aAccountId, aAccountUser);
+			cardbookPreferences.setColor(aAccountId, aColor);
+			cardbookPreferences.setEnabled(aAccountId, aEnabled);
+			cardbookPreferences.setExpanded(aAccountId, aExpanded);
+			cardbookPreferences.setVCardVersion(aAccountId, aVCard);
+			cardbookPreferences.setReadOnly(aAccountId, aReadOnly);
+			cardbookPreferences.setDateFormat(aAccountId, aDateFormat);
+			cardbookPreferences.setUrnuuid(aAccountId, aUrnuuid);
+			cardbookPreferences.setDBCached(aAccountId, aDBcached);
 		}
 		
 		cardbookRepository.cardbookAccounts.push([aAccountName, true, aExpanded, true, aAccountId, aEnabled, aAccountType, aReadOnly]);
@@ -638,10 +643,9 @@ var cardbookRepository = {
 	},
 
 	removeAccountFromCollected: function (aDirPrefId) {
-		var cardbookPrefService = new cardbookPreferenceService();
 		var result = [];
 		var allEmailsCollections = [];
-		allEmailsCollections = cardbookPrefService.getAllEmailsCollections();
+		allEmailsCollections = cardbookPreferences.getAllEmailsCollections();
 		for (var i = 0; i < allEmailsCollections.length; i++) {
 			var resultArray = allEmailsCollections[i].split("::");
 			if (aDirPrefId !== resultArray[3]) {
@@ -649,16 +653,15 @@ var cardbookRepository = {
 			}
 		}
 		for (var i = 0; i < result.length; i++) {
-			cardbookPrefService.setEmailsCollection(i.toString(), result[i][0] + "::" + result[i][1] + "::" + result[i][2] + "::" + result[i][3] + "::" + result[i][4]);
+			cardbookPreferences.setEmailsCollection(i.toString(), result[i][0] + "::" + result[i][1] + "::" + result[i][2] + "::" + result[i][3] + "::" + result[i][4]);
 		}
 	},
 
 	// only used from the import of Thunderbird standard address books
 	addAccountToCollected: function (aDirPrefId) {
-		var cardbookPrefService = new cardbookPreferenceService();
 		var result = [];
 		var allEmailsCollections = [];
-		allEmailsCollections = cardbookPrefService.getAllEmailsCollections();
+		allEmailsCollections = cardbookPreferences.getAllEmailsCollections();
 		for (var i = 0; i < allEmailsCollections.length; i++) {
 			var resultArray = allEmailsCollections[i].split("::");
 			result.push([resultArray[0], resultArray[1], resultArray[2], resultArray[3], resultArray[4]]);
@@ -666,22 +669,19 @@ var cardbookRepository = {
 		result.push(["true", "include", "allMailAccounts", aDirPrefId, ""]);
 
 		for (var i = 0; i < result.length; i++) {
-			cardbookPrefService.setEmailsCollection(i.toString(), result[i][0] + "::" + result[i][1] + "::" + result[i][2] + "::" + result[i][3] + "::" + result[i][4]);
+			cardbookPreferences.cardbookPreferences(i.toString(), result[i][0] + "::" + result[i][1] + "::" + result[i][2] + "::" + result[i][3] + "::" + result[i][4]);
 		}
 	},
 
 	removeAccountFromBirthday: function (aDirPrefId) {
-		var prefs = Services.prefs;
-		var addressBooks = prefs.getComplexValue("extensions.cardbook.addressBooksNameList", Components.interfaces.nsISupportsString).data;
+		var addressBooks = cardbookPreferences.getStringPref("extensions.cardbook.addressBooksNameList");
 		var addressBooksList = [];
 		addressBooksList = addressBooks.split(',');
 		function filterAccount(element) {
 			return (element != aDirPrefId);
 		}
 		addressBooksList = addressBooksList.filter(filterAccount);
-		var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-		str.data = addressBooksList.join(',');
-		prefs.setComplexValue("extensions.cardbook.addressBooksNameList", Components.interfaces.nsISupportsString, str);
+		cardbookPreferences.setStringPref("extensions.cardbook.addressBooksNameList", addressBooksList.join(','));
 	},
 
 	removeCardFromRepository: function (aCard, aCacheDeletion) {
@@ -735,10 +735,9 @@ var cardbookRepository = {
 		
 	addCardToCache: function(aCard, aMode, aFileName) {
 		try {
-			var cardbookPrefService = new cardbookPreferenceService(aCard.dirPrefId);
-			var myDirPrefIdName = cardbookPrefService.getName();
-			var myDirPrefIdType = cardbookPrefService.getType();
-			var myDirPrefIdUrl = cardbookPrefService.getUrl();
+			var myDirPrefIdName = cardbookPreferences.getName(aCard.dirPrefId);
+			var myDirPrefIdType = cardbookPreferences.getType(aCard.dirPrefId);
+			var myDirPrefIdUrl = cardbookPreferences.getUrl(aCard.dirPrefId);
 
 			cardbookSynchronization.cachePutMediaCard(aCard, "photo", myDirPrefIdType);
 			cardbookSynchronization.cachePutMediaCard(aCard, "logo", myDirPrefIdType);
@@ -807,10 +806,9 @@ var cardbookRepository = {
 		try {
 			cardbookSynchronization.cacheDeleteMediaCard(aCard);
 			
-			var cardbookPrefService = new cardbookPreferenceService(aCard.dirPrefId);
-			var myDirPrefIdName = cardbookPrefService.getName();
-			var myDirPrefIdType = cardbookPrefService.getType();
-			var myDirPrefIdUrl = cardbookPrefService.getUrl();
+			var myDirPrefIdName = cardbookPreferences.getName(aCard.dirPrefId);
+			var myDirPrefIdType = cardbookPreferences.getType(aCard.dirPrefId);
+			var myDirPrefIdUrl = cardbookPreferences.getUrl(aCard.dirPrefId);
 			if (myDirPrefIdType === "DIRECTORY") {
 				var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 				myFile.initWithPath(myDirPrefIdUrl);
@@ -1035,12 +1033,11 @@ var cardbookRepository = {
 				aDisplayName = aEmail;
 			}
 		}
-		var cardbookPrefService = new cardbookPreferenceService(aDirPrefId);
-		var myDirPrefIdName = cardbookPrefService.getName();
-		var myDirPrefIdType = cardbookPrefService.getType();
-		var myDirPrefIdUrl = cardbookPrefService.getUrl();
-		var myDirPrefIdVCard = cardbookPrefService.getVCardVersion();
-		var myDirPrefIdReadOnly = cardbookPrefService.getReadOnly();
+		var myDirPrefIdName = cardbookPreferences.getName(aDirPrefId);
+		var myDirPrefIdType = cardbookPreferences.getType(aDirPrefId);
+		var myDirPrefIdUrl = cardbookPreferences.getUrl(aDirPrefId);
+		var myDirPrefIdVCard = cardbookPreferences.getVCardVersion(aDirPrefId);
+		var myDirPrefIdReadOnly = cardbookPreferences.getReadOnly(aDirPrefId);
 		if (!myDirPrefIdReadOnly) {
 			var myNewCard = new cardbookCardParser();
 			myNewCard.dirPrefId = aDirPrefId;
@@ -1102,9 +1099,8 @@ var cardbookRepository = {
 		var catExclRestrictions = {};
 
 		function _loadRestrictions(aIdentityKey) {
-			var cardbookPrefService = new cardbookPreferenceService();
 			var result = [];
-			result = cardbookPrefService.getAllRestrictions();
+			result = cardbookPreferences.getAllRestrictions();
 			ABInclRestrictions = {};
 			ABExclRestrictions = {};
 			catInclRestrictions = {};
@@ -1231,11 +1227,10 @@ var cardbookRepository = {
 
 	saveCard: function(aOldCard, aNewCard, aSource) {
 		try {
-			var cardbookPrefService = new cardbookPreferenceService(aNewCard.dirPrefId);
-			var myDirPrefIdType = cardbookPrefService.getType();
-			var myDirPrefIdName = cardbookPrefService.getName();
-			var myDirPrefIdUrl = cardbookPrefService.getUrl();
-			if (cardbookPrefService.getReadOnly()) {
+			var myDirPrefIdType = cardbookPreferences.getType(aNewCard.dirPrefId);
+			var myDirPrefIdName = cardbookPreferences.getName(aNewCard.dirPrefId);
+			var myDirPrefIdUrl = cardbookPreferences.getUrl(aNewCard.dirPrefId);
+			if (cardbookPreferences.getReadOnly(aNewCard.dirPrefId)) {
 				return;
 			}
 
@@ -1284,9 +1279,8 @@ var cardbookRepository = {
 			// Moved card
 			} else if (aOldCard.dirPrefId != "" && cardbookRepository.cardbookCards[aOldCard.dirPrefId+"::"+aNewCard.uid] && aOldCard.dirPrefId != aNewCard.dirPrefId) {
 				var myCard = cardbookRepository.cardbookCards[aOldCard.dirPrefId+"::"+aNewCard.uid];
-				var cardbookPrefService = new cardbookPreferenceService(myCard.dirPrefId);
-				var myDirPrefIdName = cardbookPrefService.getName();
-				var myDirPrefIdType = cardbookPrefService.getType();
+				var myDirPrefIdName = cardbookPreferences.getName(myCard.dirPrefId);
+				var myDirPrefIdType = cardbookPreferences.getType(myCard.dirPrefId);
 				if (myDirPrefIdType === "FILE") {
 					cardbookRepository.removeCardFromRepository(myCard, false);
 				} else if (myDirPrefIdType === "CACHE" || myDirPrefIdType === "DIRECTORY" || myDirPrefIdType === "LOCALDB") {
@@ -1304,9 +1298,8 @@ var cardbookRepository = {
 				wdw_cardbooklog.addActivity("cardDeletedOK", [myDirPrefIdName, myCard.fn], "deleteMail");
 				cardbookUtils.notifyObservers("cardbook.cardRemovedIndirect");
 				
-				var cardbookPrefService = new cardbookPreferenceService(aNewCard.dirPrefId);
-				var myDirPrefIdName = cardbookPrefService.getName();
-				var myDirPrefIdType = cardbookPrefService.getType();
+				var myDirPrefIdName = cardbookPreferences.getName(aNewCard.dirPrefId);
+				var myDirPrefIdType = cardbookPreferences.getType(aNewCard.dirPrefId);
 				aNewCard.cardurl = "";
 				cardbookUtils.setCardUUID(aNewCard);
 				if (myDirPrefIdType === "CACHE" || myDirPrefIdType === "DIRECTORY" || myDirPrefIdType === "LOCALDB") {
@@ -1363,10 +1356,9 @@ var cardbookRepository = {
 		try {
 			var listOfFileToRewrite = [];
 			for (var i = 0; i < aListOfCards.length; i++) {
-				if (!cardbookUtils.isMyAccountReadOnly(aListOfCards[i].dirPrefId)) {
-					var cardbookPrefService = new cardbookPreferenceService(aListOfCards[i].dirPrefId);
-					var myDirPrefIdName = cardbookPrefService.getName();
-					var myDirPrefIdType = cardbookPrefService.getType();
+				if (!cardbookPreferences.getReadOnly(aListOfCards[i].dirPrefId)) {
+					var myDirPrefIdName = cardbookPreferences.getName(aListOfCards[i].dirPrefId);
+					var myDirPrefIdType = cardbookPreferences.getType(aListOfCards[i].dirPrefId);
 					if (myDirPrefIdType === "FILE") {
 						listOfFileToRewrite.push(aListOfCards[i].dirPrefId);
 						cardbookRepository.removeCardFromRepository(aListOfCards[i], false);
@@ -1400,9 +1392,8 @@ var cardbookRepository = {
 	reWriteFiles: function (aListOfFiles) {
 		var listOfFilesToRewrite = cardbookRepository.arrayUnique(aListOfFiles);
 		for (var i = 0; i < listOfFilesToRewrite.length; i++) {
-			var cardbookPrefService = new cardbookPreferenceService(listOfFilesToRewrite[i]);
-			if (cardbookPrefService.getType() === "FILE" && !cardbookPrefService.getReadOnly()) {
-				cardbookSynchronization.writeCardsToFile(cardbookPrefService.getUrl(), cardbookRepository.cardbookDisplayCards[listOfFilesToRewrite[i]], true);
+			if (cardbookPreferences.getType(listOfFilesToRewrite[i]) === "FILE" && !cardbookPreferences.getReadOnly(listOfFilesToRewrite[i])) {
+				cardbookSynchronization.writeCardsToFile(cardbookPreferences.getUrl(listOfFilesToRewrite[i]), cardbookRepository.cardbookDisplayCards[listOfFilesToRewrite[i]], true);
 			}
 		}
 	},
@@ -1450,8 +1441,7 @@ var cardbookRepository = {
 	},
 
 	createCssCardRules: function (aStyleSheet, aDirPrefId, aColor) {
-		var prefs = Services.prefs;
-		var useColor = prefs.getComplexValue("extensions.cardbook.useColor", Components.interfaces.nsISupportsString).data;
+		var useColor = cardbookPreferences.getStringPref("extensions.cardbook.useColor");
 		if (useColor == "text") {
 			var ruleString = ".cardbookCardsTreeClass treechildren::-moz-tree-cell-text(SEARCH odd color_" + aDirPrefId + ") {color: " + aColor + ";}";
 			var ruleIndex = aStyleSheet.insertRule(ruleString, aStyleSheet.cssRules.length);

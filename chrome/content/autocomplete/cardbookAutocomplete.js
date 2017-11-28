@@ -118,9 +118,8 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 					var OSName="LINUX";
 				}
 				cardbookAutocomplete.defineMsgIconsRules();
-				var prefs = Services.prefs;
-				var autocompleteWithColor = prefs.getBoolPref("extensions.cardbook.autocompleteWithColor");
-				var useColor = prefs.getComplexValue("extensions.cardbook.useColor", Components.interfaces.nsISupportsString).data;
+				var autocompleteWithColor = cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteWithColor");
+				var useColor = cardbookPreferences.getStringPref("extensions.cardbook.useColor");
 				if (useColor == "text") {
 					var colorProperty = "color";
 					var treeCellProperty="-moz-tree-cell-text";
@@ -138,8 +137,7 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 						for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
 							if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] != "SEARCH") {
 								var dirPrefId = cardbookRepository.cardbookAccounts[i][4];
-								var cardbookPrefService = new cardbookPreferenceService(dirPrefId);
-								var myColor = cardbookPrefService.getColor()
+								var myColor = cardbookPreferences.getColor(dirPrefId)
 								var myStyle = cardbookRepository.getIconType(cardbookRepository.cardbookAccounts[i][6]) + " color_" + dirPrefId;
 								cardbookAutocomplete.createCssMsgAccountRules(styleSheet, myStyle, myColor, OSName, autocompleteWithColor, treeCellProperty, colorProperty);
 							}
@@ -154,13 +152,12 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 
 		setCompletion: function(aTextBox) {
 			try {
-				var prefs = Services.prefs;
-				if (prefs.getBoolPref("extensions.cardbook.autocompletion")) {
+				if (cardbookPreferences.getBoolPref("extensions.cardbook.autocompletion")) {
 					aTextBox.setAttribute('autocompletesearch', 'addrbook-cardbook');
 				} else {
 					aTextBox.setAttribute('autocompletesearch', 'addrbook ldap');
 				}
-				if (prefs.getBoolPref("extensions.cardbook.debugMode") || prefs.getBoolPref("extensions.cardbook.autocompleteShowAddressbook")) {
+				if (cardbookPreferences.getBoolPref("extensions.cardbook.debugMode") || cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteShowAddressbook")) {
 					aTextBox.showCommentColumn = true;
 				} else {
 					aTextBox.showCommentColumn = false;

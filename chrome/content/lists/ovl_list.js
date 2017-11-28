@@ -37,19 +37,17 @@ if ("undefined" == typeof(cardbookListConversion)) {
 		},
 		
 		_convert: function (aEmails, aIdentity) {
-			var prefs = Services.prefs;
-			var memberCustom = prefs.getComplexValue("extensions.cardbook.memberCustom", Components.interfaces.nsISupportsString).data;
-			var useOnlyEmail = prefs.getBoolPref("extensions.cardbook.useOnlyEmail");
+			var memberCustom = cardbookPreferences.getStringPref("extensions.cardbook.memberCustom");
+			var useOnlyEmail = cardbookPreferences.getBoolPref("extensions.cardbook.useOnlyEmail");
 			var addresses = {}, names = {}, fullAddresses = {};
 			MailServices.headerParser.parseHeadersWithArray(aEmails, addresses, names, fullAddresses);
 			for (var i = 0; i < addresses.value.length; i++) {
 				if (addresses.value[i].includes("@")) {
 					if (useOnlyEmail) {
 						// we are forced to collect here because after the display name is removed
-						var cardbookPrefService = new cardbookPreferenceService();
 						var resultEmailsCollections = [];
 						var allEmailsCollections = [];
-						allEmailsCollections = cardbookPrefService.getAllEmailsCollections();
+						allEmailsCollections = cardbookPreferences.getAllEmailsCollections();
 						for (var j = 0; j < allEmailsCollections.length; j++) {
 							var resultArray = allEmailsCollections[j].split("::");
 							resultEmailsCollections.push([resultArray[0], resultArray[1], resultArray[2], resultArray[3], resultArray[4]]);
@@ -105,6 +103,9 @@ if ("undefined" == typeof(cardbookListConversion)) {
 			}
 		}
 	};
+
+	var loader = Services.scriptloader;
+	loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");
 };
 				
 if ("undefined" == typeof(ovl_list)) {

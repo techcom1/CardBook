@@ -10,11 +10,10 @@ if ("undefined" == typeof(ovl_collected)) {
 			if (!cardbookRepository.isEmailRegistered(aEmail, aIdentity)) {
 				for (var i = 0; i < aEmailsCollections.length; i++) {
 					var dirPrefId = aEmailsCollections[i][3];
-					var cardbookPrefService = new cardbookPreferenceService(dirPrefId);
-					if (!cardbookPrefService.getReadOnly()) {
+					if (!cardbookPreferences.getReadOnly(dirPrefId)) {
 						if (aEmailsCollections[i][0] == "true") {
 							if ((aIdentity == aEmailsCollections[i][2]) || ("allMailAccounts" == aEmailsCollections[i][2])) {
-								var dirPrefIdName = cardbookPrefService.getName();
+								var dirPrefIdName = cardbookPreferences.getName(dirPrefId);
 								wdw_cardbooklog.updateStatusProgressInformationWithDebug2(dirPrefIdName + " : debug mode : trying to collect contact " + aDisplayName + " (" + aEmail + ")");
 								cardbookRepository.addCardFromDisplayAndEmail(dirPrefId, aDisplayName, aEmail, aEmailsCollections[i][4]);
 							}
@@ -25,10 +24,9 @@ if ("undefined" == typeof(ovl_collected)) {
 		},
 	
 		collectToCardBook: function () {
-			var cardbookPrefService = new cardbookPreferenceService();
 			var resultEmailsCollections = [];
 			var allEmailsCollections = [];
-			allEmailsCollections = cardbookPrefService.getAllEmailsCollections();
+			allEmailsCollections = cardbookPreferences.getAllEmailsCollections();
 			for (var i = 0; i < allEmailsCollections.length; i++) {
 				var resultArray = allEmailsCollections[i].split("::");
 				resultEmailsCollections.push([resultArray[0], resultArray[1], resultArray[2], resultArray[3], resultArray[4]]);
@@ -66,6 +64,9 @@ if ("undefined" == typeof(ovl_collected)) {
 			}
 		}
 	};
+
+	var loader = Services.scriptloader;
+	loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");
 };
 // collect emails
 window.addEventListener("compose-send-message", function(e) { ovl_collected.collectToCardBook(e); }, true);

@@ -56,9 +56,8 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				}
 			} else if (aCard.version == "3.0") {
 				document.getElementById('kindTextBox').value = "";
-				var prefs = Services.prefs;
-				var kindCustom = prefs.getComplexValue("extensions.cardbook.kindCustom", Components.interfaces.nsISupportsString).data;
-				var memberCustom = prefs.getComplexValue("extensions.cardbook.memberCustom", Components.interfaces.nsISupportsString).data;
+				var kindCustom = cardbookPreferences.getStringPref("extensions.cardbook.kindCustom");
+				var memberCustom = cardbookPreferences.getStringPref("extensions.cardbook.memberCustom");
 				for (var i = 0; i < aCard.others.length; i++) {
 					var localDelim1 = aCard.others[i].indexOf(":",0);
 					if (localDelim1 >= 0) {
@@ -412,8 +411,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		loadDefaultVersion: function () {
 			if (wdw_cardEdition.workingCard.version == "") {
 				var myDirPrefId = document.getElementById('addressbookMenulist').selectedItem.value;
-				var cardbookPrefService = new cardbookPreferenceService(myDirPrefId);
-				document.getElementById("versionTextBox").value = cardbookPrefService.getVCardVersion();
+				document.getElementById("versionTextBox").value = cardbookPreferences.getVCardVersion(myDirPrefId);
 				wdw_cardEdition.workingCard.version = document.getElementById("versionTextBox").value;
 			} else {
 				document.getElementById("versionTextBox").value = wdw_cardEdition.workingCard.version;
@@ -517,8 +515,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		},
 
 		validateCalendarPanel: function (aValue, aType) {
-			var cardbookPrefService = new cardbookPreferenceService(document.getElementById('dirPrefIdTextBox').value);
-			var dateFormat = cardbookPrefService.getDateFormat();
+			var dateFormat = cardbookPreferences.getDateFormat(document.getElementById('dirPrefIdTextBox').value);
 			if (wdw_cardEdition.panel === 1) {
 				var myValue = cardbookDates.convertDateToDateString(aValue, dateFormat);
 				document.getElementById(aType + 'LightningPanel').hidePopup();
@@ -599,8 +596,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 
 		displayCard: function (aCard) {
 			wdw_cardEdition.clearCard();
-			var cardbookPrefService = new cardbookPreferenceService(aCard.dirPrefId);
-			var aReadOnly = cardbookPrefService.getReadOnly();
+			var aReadOnly = cardbookPreferences.getReadOnly(aCard.dirPrefId);
 			var aFollowLink = false;
 			cardbookUtils.displayCard(aCard, aReadOnly, aFollowLink);
 			
@@ -759,8 +755,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		},
 
 		loadDateFormatLabels: function () {
-			var cardbookPrefService = new cardbookPreferenceService(wdw_cardEdition.workingCard.dirPrefId);
-			var dateFormat = cardbookPrefService.getDateFormat();
+			var dateFormat = cardbookPreferences.getDateFormat(wdw_cardEdition.workingCard.dirPrefId);
 			var strBundle = document.getElementById("cardbook-strings");
 			myD = strBundle.getString("dateFormatsDLabel");
 			myM = strBundle.getString("dateFormatsMLabel");
@@ -774,9 +769,8 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		},
 
 		showCorrectTabs: function () {
-			var prefs = Services.prefs;
-			document.getElementById('advancedTab').setAttribute("collapsed", !prefs.getBoolPref("extensions.cardbook.advancedTabView"));
-			document.getElementById('mailPopularityTab').setAttribute("collapsed", !prefs.getBoolPref("extensions.cardbook.mailPopularityTabView"));
+			document.getElementById('advancedTab').setAttribute("collapsed", !cardbookPreferences.getBoolPref("extensions.cardbook.advancedTabView"));
+			document.getElementById('mailPopularityTab').setAttribute("collapsed", !cardbookPreferences.getBoolPref("extensions.cardbook.mailPopularityTabView"));
 		},
 
 		load: function () {

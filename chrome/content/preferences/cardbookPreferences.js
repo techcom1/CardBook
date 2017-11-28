@@ -1,25 +1,19 @@
-if ("undefined" == typeof(cardbookPreferenceService)) {
+if ("undefined" == typeof(cardbookPreferences)) {
 	Components.utils.import("resource://gre/modules/Services.jsm");
 
-	function cardbookPreferenceService(uniqueId) {
-		this.mPreferencesService = Services.prefs;
-		this.prefCardBookRoot = "extensions.cardbook.";
-		this.prefCardBookData = this.prefCardBookRoot + "data.";
-		this.prefCardBookTypes = this.prefCardBookRoot + "types.";
-		this.prefCardBookTels = this.prefCardBookRoot + "tels.";
-		this.prefCardBookIMPPs = this.prefCardBookRoot + "impps.";
-		this.prefCardBookCustomFields = this.prefCardBookRoot + "customFields.";
-		this.prefCardBookAccountURLs = this.prefCardBookRoot + "URLs";
-		this.prefCardBookAccountVCards = this.prefCardBookRoot + "vcards.";
-		this.prefCardBookAccountRestrictions = this.prefCardBookRoot + "accountsRestrictions.";
-		this.prefCardBookEmailsCollection = this.prefCardBookRoot + "emailsCollection.";
-		this.prefPath = this.prefCardBookData + uniqueId + ".";
-	}
-	
-	cardbookPreferenceService.prototype = {
-		mPreferencesService: null,
-		prefPath: null,
-	
+	var cardbookPreferences = {
+		
+		prefCardBookRoot: "extensions.cardbook.",
+		prefCardBookData: "extensions.cardbook.data.",
+		prefCardBookTypes: "extensions.cardbook.types.",
+		prefCardBookTels: "extensions.cardbook.tels.",
+		prefCardBookIMPPs: "extensions.cardbook.impps.",
+		prefCardBookCustomFields: "extensions.cardbook.customFields.",
+		prefCardBookAccountURLs: "extensions.cardbook.URLs",
+		prefCardBookAccountVCards: "extensions.cardbook.vcards.",
+		prefCardBookAccountRestrictions: "extensions.cardbook.accountsRestrictions.",
+		prefCardBookEmailsCollection: "extensions.cardbook.emailsCollection.",
+		
 		_arrayUnique: function (array) {
 			var a = array.concat();
 			for(var i=0; i<a.length; ++i) {
@@ -31,89 +25,54 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 			return a;
 		},
 		
-		_getBoolRootPref: function (prefName) {
+		getBoolPref: function (prefName) {
 			try {
-				let value = this.mPreferencesService.getBoolPref(prefName);
-				return value;
+				return Services.prefs.getBoolPref(prefName);
 			}
 			catch(e) {
 				return false;
 			}
 		},
 	
-		_getBoolPref: function (prefName, aDefault) {
+		setBoolPref: function (prefName, value) {
 			try {
-				let value = this.mPreferencesService.getBoolPref(this.prefPath + prefName);
-				return value;
+				Services.prefs.setBoolPref(prefName, value);
 			}
 			catch(e) {
-				return aDefault;
+				dump("cardbookPreferences.setBoolPref : failed to set" + prefName + "\n" + e + "\n");
 			}
 		},
 	
-		_setBoolRootPref: function (prefName, value) {
+		getStringPref: function (prefName) {
 			try {
-				this.mPreferencesService.setBoolPref(prefName, value);
-			}
-			catch(e) {
-				dump("cardbookPreferenceService._setBoolRootPref : failed to set" + prefName + "\n" + e + "\n");
-			}
-		},
-	
-		_setBoolPref: function (prefName, value) {
-			try {
-				this.mPreferencesService.setBoolPref(this.prefPath + prefName, value);
-			}
-			catch(e) {
-				dump("cardbookPreferenceService._setBoolPref : failed to set" + this.prefPath + prefName + "\n" + e + "\n");
-			}
-		},
-	
-		_getRootPref: function (prefName) {
-			try {
-				let value = this.mPreferencesService.getComplexValue(prefName, Components.interfaces.nsISupportsString).data;
-				return value;
+				if (Services.appinfo.version >= "58") {
+					return Services.prefs.getStringPref(prefName);
+				} else {
+					return Services.prefs.getComplexValue(prefName, Components.interfaces.nsISupportsString).data;
+				}
 			}
 			catch(e) {
 				return "";
 			}
 		},
 	
-		_getPref: function (prefName) {
+		setStringPref: function (prefName, value) {
 			try {
-				let value = this.mPreferencesService.getComplexValue(this.prefPath + prefName, Components.interfaces.nsISupportsString).data;
-				return value;
+				if (Services.appinfo.version >= "58") {
+					Services.prefs.setStringPref(prefName, value);
+				} else {
+					var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
+					str.data = value;
+					Services.prefs.setComplexValue(prefName, Components.interfaces.nsISupportsString, str);
+				}
 			}
 			catch(e) {
-				return "";
-			}
-		},
-	
-		_setPref: function (prefName, value) {
-			try {
-				var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-				str.data = value;
-				this.mPreferencesService.setComplexValue(this.prefPath + prefName, Components.interfaces.nsISupportsString, str);
-			}
-			catch(e) {
-				dump("cardbookPreferenceService._setPref : failed to set" + this.prefPath + prefName + "\n" + e + "\n");
-			}
-		},
-	
-		_setRootPref: function (prefName, value) {
-			try {
-				var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-				str.data = value;
-				this.mPreferencesService.setComplexValue(prefName, Components.interfaces.nsISupportsString, str);
-			}
-			catch(e) {
-				dump("cardbookPreferenceService._setRootPref : failed to set" + prefName + "\n" + e + "\n");
+				dump("cardbookPreferences.setStringPref : failed to set" + prefName + "\n" + e + "\n");
 			}
 		},
 	
 		insertIMPPsSeed: function () {
-			var stringBundleService = Services.strings;
-			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+			var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 			this.setIMPPs(0,"skype:" + strBundle.GetStringFromName("impp.skype") + ":skype");
 			this.setIMPPs(1,"jabber:" + strBundle.GetStringFromName("impp.jabber") + ":xmpp");
 			this.setIMPPs(2,"googletalk:" + strBundle.GetStringFromName("impp.googletalk") + ":gtalk");
@@ -125,7 +84,7 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 			try {
 				var count = {};
 				var finalResult = [];
-				var result = this.mPreferencesService.getChildList(this.prefCardBookTypes, count);
+				var result = Services.prefs.getChildList(this.prefCardBookTypes, count);
 				
 				for (let i = 0; i < result.length; i++) {
 					finalResult.push(result[i].replace(this.prefCardBookTypes,""));
@@ -135,7 +94,39 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 				return finalResult;
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.getAllTypesCategory error : " + e + "\n");
+				dump("cardbookPreferences.getAllTypesCategory error : " + e + "\n");
+			}
+		},
+	
+		getTypes: function (prefName) {
+			try {
+				let value = this.getStringPref(this.prefCardBookTypes + prefName);
+				return value;
+			}
+			catch(e) {
+				dump("cardbookPreferences.getTypes : failed to get" + this.prefCardBookTypes + prefName + "\n" + e + "\n");
+			}
+		},
+	
+		setTypes: function (aType, prefName, value) {
+			try {
+				this.setStringPref(this.prefCardBookTypes + aType + "." + prefName, value);
+			}
+			catch(e) {
+				dump("cardbookPreferences.setTypes : failed to set" + this.prefCardBookTypes + aType + "." + prefName + "\n" + e + "\n");
+			}
+		},
+	
+		delTypes: function (aType) {
+			try {
+				if (aType != null && aType !== undefined && aType != "") {
+					Services.prefs.deleteBranch(this.prefCardBookTypes + aType);
+				} else {
+					Services.prefs.deleteBranch(this.prefCardBookTypes);
+				}
+			}
+			catch(e) {
+				dump("cardbookPreferences.delTypes : failed to delete" + this.prefCardBookTypes + aType + "\n" + e + "\n");
 			}
 		},
 	
@@ -145,12 +136,12 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 				var finalResult = [];
 				var finalResult1 = [];
 				if (aType === "adr" || aType === "address") {
-					var result = this.mPreferencesService.getChildList(this.prefCardBookTypes + "adr" + ".", count);
+					var result = Services.prefs.getChildList(this.prefCardBookTypes + "adr" + ".", count);
 					if (result.length == 0) {
-						var result = this.mPreferencesService.getChildList(this.prefCardBookTypes + "address" + ".", count);
+						var result = Services.prefs.getChildList(this.prefCardBookTypes + "address" + ".", count);
 					}
 				} else {
-					var result = this.mPreferencesService.getChildList(this.prefCardBookTypes + aType + ".", count);
+					var result = Services.prefs.getChildList(this.prefCardBookTypes + aType + ".", count);
 				}
 				
 				for (let i = 0; i < result.length; i++) {
@@ -168,8 +159,7 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 						}
 					} else {
 						try {
-							var stringBundleService = Services.strings;
-							var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+							var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 							var translated = strBundle.GetStringFromName("types." + aType.toLowerCase() + "." + finalResult[i].toLowerCase());
 							if (translated != null && translated !== undefined && translated != "") {
 								finalResult1.push([finalResult[i], translated]);
@@ -186,7 +176,7 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 				return finalResult1;
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.getAllTypesByType error : " + e + "\n");
+				dump("cardbookPreferences.getAllTypesByType error : " + e + "\n");
 			}
 		},
 	
@@ -206,7 +196,7 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 				return finalResult;
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.getAllTypes error : " + e + "\n");
+				dump("cardbookPreferences.getAllTypes error : " + e + "\n");
 			}
 		},
 	
@@ -234,7 +224,7 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 				return finalResult;
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.getAllTypesCurrent error : " + e + "\n");
+				dump("cardbookPreferences.getAllTypesCurrent error : " + e + "\n");
 			}
 		},
 	
@@ -250,31 +240,7 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 				return aCode;
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.getTypeLabel error : " + e + "\n");
-			}
-		},
-	
-		getAllIMPPs: function () {
-			try {
-				var count = {};
-				var finalResult = [];
-				var finalResult1 = [];
-				var result = this.mPreferencesService.getChildList(this.prefCardBookIMPPs, count);
-				
-				for (let i = 0; i < result.length; i++) {
-					var prefName = result[i].replace(this.prefCardBookIMPPs, "");
-					finalResult.push(this.getIMPPs(prefName));
-				}
-				finalResult = this._arrayUnique(finalResult);
-				for (let i = 0; i < finalResult.length; i++) {
-					var tmpArray = finalResult[i].split(":");
-					finalResult1.push([tmpArray[0], tmpArray[1], tmpArray[2], i]);
-				}
-				finalResult1 = cardbookUtils.sortArrayByString(finalResult1,1,1);
-				return finalResult1;
-			}
-			catch(e) {
-				dump("cardbookPreferenceService.getAllIMPPs error : " + e + "\n");
+				dump("cardbookPreferences.getTypeLabel error : " + e + "\n");
 			}
 		},
 	
@@ -282,7 +248,7 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 			try {
 				var count = {};
 				var finalResult = [];
-				var result = this.mPreferencesService.getChildList(this.prefCardBookCustomFields + aType + ".", count);
+				var result = Services.prefs.getChildList(this.prefCardBookCustomFields + aType + ".", count);
 				
 				for (let i = 0; i < result.length; i++) {
 					var prefName = result[i].replace(this.prefCardBookCustomFields, "");
@@ -295,7 +261,7 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 				return finalResult;
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.getAllCustomFieldsByType error : " + e + "\n");
+				dump("cardbookPreferences.getAllCustomFieldsByType error : " + e + "\n");
 			}
 		},
 	
@@ -315,7 +281,7 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 				return finalResult;
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.getAllCustomFields error : " + e + "\n");
+				dump("cardbookPreferences.getAllCustomFields error : " + e + "\n");
 			}
 		},
 	
@@ -324,7 +290,7 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 				var count = {};
 				var finalResult = [];
 				var finalResult1 = [];
-				var result = this.mPreferencesService.getChildList(this.prefCardBookTels, count);
+				var result = Services.prefs.getChildList(this.prefCardBookTels, count);
 				
 				for (let i = 0; i < result.length; i++) {
 					var prefName = result[i].replace(this.prefCardBookTels, "");
@@ -339,7 +305,7 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 				return finalResult1;
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.getAllTels error : " + e + "\n");
+				dump("cardbookPreferences.getAllTels error : " + e + "\n");
 			}
 		},
 	
@@ -347,12 +313,12 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 			try {
 				let count = {};
 				let finalResult = [];
-				let result = this.mPreferencesService.getChildList(this.prefCardBookData, count);
+				let result = Services.prefs.getChildList(this.prefCardBookData, count);
 				for (let i = 0; i < result.length; i++) {
 					result[i] = result[i].replace(this.prefCardBookData,"");
 					var myTmpArray = result[i].split('.');
 					if (myTmpArray[1] == 'type') {
-						var value = this.mPreferencesService.getComplexValue(this.prefCardBookData + myTmpArray[0] + '.' + myTmpArray[1], Components.interfaces.nsISupportsString).data;
+						var value = this.getStringPref(this.prefCardBookData + myTmpArray[0] + '.' + myTmpArray[1]);
 						if (value == 'SEARCH') {
 							finalResult.push(myTmpArray[0]);
 						}
@@ -361,7 +327,7 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 				return finalResult;
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.getAllPrefIds error : " + e + "\n");
+				dump("cardbookPreferences.getAllPrefIds error : " + e + "\n");
 			}
 		},
 	
@@ -369,7 +335,7 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 			try {
 				let count = {};
 				let finalResult = [];
-				let result = this.mPreferencesService.getChildList(this.prefCardBookData, count);
+				let result = Services.prefs.getChildList(this.prefCardBookData, count);
 				for (let i = 0; i < result.length; i++) {
 					result[i] = result[i].replace(this.prefCardBookData,"");
 					var myTmpArray = result[i].split('.');
@@ -380,7 +346,7 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 				return finalResult;
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.getAllPrefIds error : " + e + "\n");
+				dump("cardbookPreferences.getAllPrefIds error : " + e + "\n");
 			}
 		},
 	
@@ -388,9 +354,9 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 			try {
 				let count = {};
 				let finalResult = [];
-				let result = this.mPreferencesService.getChildList(this.prefCardBookAccountRestrictions, count);
+				let result = Services.prefs.getChildList(this.prefCardBookAccountRestrictions, count);
 				for (let i = 0; i < result.length; i++) {
-					finalResult.push(this.mPreferencesService.getComplexValue(result[i], Components.interfaces.nsISupportsString).data);
+					finalResult.push(this.getStringPref(result[i]));
 				}
 				return finalResult;
 			}
@@ -402,24 +368,22 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 		delRestrictions: function (aRestrictionId) {
 			try {
 				if (aRestrictionId != null && aRestrictionId !== undefined && aRestrictionId != "") {
-					this.mPreferencesService.deleteBranch(this.prefCardBookAccountRestrictions + aRestrictionId);
+					Services.prefs.deleteBranch(this.prefCardBookAccountRestrictions + aRestrictionId);
 				} else {
-					this.mPreferencesService.deleteBranch(this.prefCardBookAccountRestrictions);
+					Services.prefs.deleteBranch(this.prefCardBookAccountRestrictions);
 				}
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.delRestrictions : failed to delete" + this.prefCardBookAccountRestrictions + "\n" + e + "\n");
+				dump("cardbookPreferences.delRestrictions : failed to delete" + this.prefCardBookAccountRestrictions + "\n" + e + "\n");
 			}
 		},
 	
 		setRestriction: function (aRestrictionId, aRestrictionValue) {
 			try {
-				var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-				str.data = aRestrictionValue;
-				this.mPreferencesService.setComplexValue(this.prefCardBookAccountRestrictions + aRestrictionId, Components.interfaces.nsISupportsString, str);
+				this.setStringPref(this.prefCardBookAccountRestrictions + aRestrictionId, aRestrictionValue);
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.setRestriction : failed to set" + this.prefCardBookAccountRestrictions + aRestrictionId + "\n" + e + "\n");
+				dump("cardbookPreferences.setRestriction : failed to set" + this.prefCardBookAccountRestrictions + aRestrictionId + "\n" + e + "\n");
 			}
 		},
 	
@@ -427,7 +391,7 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 			try {
 				let result = [];
 				let finalResult = [];
-				result = this.mPreferencesService.getComplexValue(this.prefCardBookAccountURLs, Components.interfaces.nsISupportsString).data.split(',');
+				result = this.getStringPref(this.prefCardBookAccountURLs).split(',');
 				for (let i = 0; i < result.length; i++) {
 					if (result[i] != "") {
 						finalResult.push(result[i].split('::'));
@@ -446,12 +410,10 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 				for (let i = 0; i < aURLArray.length; i++) {
 					tmpArray.push(aURLArray[i].join('::'));
 				}
-				var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-				str.data = tmpArray.join(',');
-				this.mPreferencesService.setComplexValue(this.prefCardBookAccountURLs, Components.interfaces.nsISupportsString, str);
+				this.setStringPref(this.prefCardBookAccountURLs, tmpArray.join(','));
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.setURLs : failed to set" + this.prefCardBookAccountURLs + "\n" + e + "\n");
+				dump("cardbookPreferences.setURLs : failed to set" + this.prefCardBookAccountURLs + "\n" + e + "\n");
 			}
 		},
 	
@@ -459,9 +421,9 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 			try {
 				let count = {};
 				let finalResult = [];
-				let result = this.mPreferencesService.getChildList(this.prefCardBookAccountVCards, count);
+				let result = Services.prefs.getChildList(this.prefCardBookAccountVCards, count);
 				for (let i = 0; i < result.length; i++) {
-					finalResult.push(this.mPreferencesService.getComplexValue(result[i], Components.interfaces.nsISupportsString).data);
+					finalResult.push(this.getStringPref(result[i]));
 				}
 				return finalResult;
 			}
@@ -473,24 +435,22 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 		delVCards: function (aVCardId) {
 			try {
 				if (aVCardId != null && aVCardId !== undefined && aVCardId != "") {
-					this.mPreferencesService.deleteBranch(this.prefCardBookAccountVCards + aVCardId);
+					Services.prefs.deleteBranch(this.prefCardBookAccountVCards + aVCardId);
 				} else {
-					this.mPreferencesService.deleteBranch(this.prefCardBookAccountVCards);
+					Services.prefs.deleteBranch(this.prefCardBookAccountVCards);
 				}
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.delVCards : failed to delete" + this.prefCardBookAccountVCards + "\n" + e + "\n");
+				dump("cardbookPreferences.delVCards : failed to delete" + this.prefCardBookAccountVCards + "\n" + e + "\n");
 			}
 		},
 	
 		setVCard: function (aVCardId, aVCardValue) {
 			try {
-				var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-				str.data = aVCardValue;
-				this.mPreferencesService.setComplexValue(this.prefCardBookAccountVCards + aVCardId, Components.interfaces.nsISupportsString, str);
+				this.setStringPref(this.prefCardBookAccountVCards + aVCardId, aVCardValue);
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.setVCard : failed to set" + this.prefCardBookAccountVCards + aVCardId + "\n" + e + "\n");
+				dump("cardbookPreferences.setVCard : failed to set" + this.prefCardBookAccountVCards + aVCardId + "\n" + e + "\n");
 			}
 		},
 	
@@ -498,9 +458,9 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 			try {
 				let count = {};
 				let finalResult = [];
-				let result = this.mPreferencesService.getChildList(this.prefCardBookEmailsCollection, count);
+				let result = Services.prefs.getChildList(this.prefCardBookEmailsCollection, count);
 				for (let i = 0; i < result.length; i++) {
-					finalResult.push(this.mPreferencesService.getComplexValue(result[i], Components.interfaces.nsISupportsString).data);
+					finalResult.push(this.getStringPref(result[i]));
 				}
 				return finalResult;
 			}
@@ -512,204 +472,166 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 		delEmailsCollection: function (aRestrictionId) {
 			try {
 				if (aRestrictionId != null && aRestrictionId !== undefined && aRestrictionId != "") {
-					this.mPreferencesService.deleteBranch(this.prefCardBookEmailsCollection + aRestrictionId);
+					Services.prefs.deleteBranch(this.prefCardBookEmailsCollection + aRestrictionId);
 				} else {
-					this.mPreferencesService.deleteBranch(this.prefCardBookEmailsCollection);
+					Services.prefs.deleteBranch(this.prefCardBookEmailsCollection);
 				}
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.delEmailsCollection : failed to delete" + this.prefCardBookEmailsCollection + "\n" + e + "\n");
+				dump("cardbookPreferences.delEmailsCollection : failed to delete" + this.prefCardBookEmailsCollection + "\n" + e + "\n");
 			}
 		},
 	
 		setEmailsCollection: function (aRestrictionId, aRestrictionValue) {
 			try {
-				var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-				str.data = aRestrictionValue;
-				this.mPreferencesService.setComplexValue(this.prefCardBookEmailsCollection + aRestrictionId, Components.interfaces.nsISupportsString, str);
+				this.setStringPref(this.prefCardBookEmailsCollection + aRestrictionId, aRestrictionValue);
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.setEmailsCollection : failed to set" + this.prefCardBookEmailsCollection + aRestrictionId + "\n" + e + "\n");
+				dump("cardbookPreferences.setEmailsCollection : failed to set" + this.prefCardBookEmailsCollection + aRestrictionId + "\n" + e + "\n");
 			}
 		},
 	
-		getTypes: function (prefName) {
+		getAllIMPPs: function () {
 			try {
-				let value = this.mPreferencesService.getComplexValue(this.prefCardBookTypes + prefName, Components.interfaces.nsISupportsString).data;
-				return value;
-			}
-			catch(e) {
-				dump("cardbookPreferenceService.getTypes : failed to get" + this.prefCardBookTypes + prefName + "\n" + e + "\n");
-			}
-		},
-	
-		setTypes: function (aType, prefName, value) {
-			try {
-				var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-				str.data = value;
-				this.mPreferencesService.setComplexValue(this.prefCardBookTypes + aType + "." + prefName, Components.interfaces.nsISupportsString, str);
-			}
-			catch(e) {
-				dump("cardbookPreferenceService.setTypes : failed to set" + this.prefCardBookTypes + aType + "." + prefName + "\n" + e + "\n");
-			}
-		},
-	
-		delTypes: function (aType) {
-			try {
-				if (aType != null && aType !== undefined && aType != "") {
-					this.mPreferencesService.deleteBranch(this.prefCardBookTypes + aType);
-				} else {
-					this.mPreferencesService.deleteBranch(this.prefCardBookTypes);
+				var count = {};
+				var finalResult = [];
+				var finalResult1 = [];
+				var result = Services.prefs.getChildList(this.prefCardBookIMPPs, count);
+				
+				for (let i = 0; i < result.length; i++) {
+					var prefName = result[i].replace(this.prefCardBookIMPPs, "");
+					finalResult.push(this.getIMPPs(prefName));
 				}
+				finalResult = this._arrayUnique(finalResult);
+				for (let i = 0; i < finalResult.length; i++) {
+					var tmpArray = finalResult[i].split(":");
+					finalResult1.push([tmpArray[0], tmpArray[1], tmpArray[2], i]);
+				}
+				finalResult1 = cardbookUtils.sortArrayByString(finalResult1,1,1);
+				return finalResult1;
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.delTypes : failed to delete" + this.prefCardBookTypes + aType + "\n" + e + "\n");
+				dump("cardbookPreferences.getAllIMPPs error : " + e + "\n");
 			}
 		},
 	
 		getIMPPs: function (prefName) {
 			try {
-				let value = this.mPreferencesService.getComplexValue(this.prefCardBookIMPPs + prefName, Components.interfaces.nsISupportsString).data;
+				let value = this.getStringPref(this.prefCardBookIMPPs + prefName);
 				return value;
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.getIMPPs : failed to get" + this.prefCardBookIMPPs + prefName + "\n" + e + "\n");
+				dump("cardbookPreferences.getIMPPs : failed to get" + this.prefCardBookIMPPs + prefName + "\n" + e + "\n");
 			}
 		},
 	
 		setIMPPs: function (prefName, value) {
 			try {
-				var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-				str.data = value;
-				this.mPreferencesService.setComplexValue(this.prefCardBookIMPPs + prefName, Components.interfaces.nsISupportsString, str);
+				this.setStringPref(this.prefCardBookIMPPs + prefName, value);
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.setIMPPs : failed to set" + this.prefCardBookIMPPs + prefName + "\n" + e + "\n");
+				dump("cardbookPreferences.setIMPPs : failed to set" + this.prefCardBookIMPPs + prefName + "\n" + e + "\n");
 			}
 		},
 	
 		delIMPPs: function () {
 			try {
-				this.mPreferencesService.deleteBranch(this.prefCardBookIMPPs);
+				Services.prefs.deleteBranch(this.prefCardBookIMPPs);
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.delIMPPs : failed to delete" + this.prefCardBookIMPPs + "\n" + e + "\n");
+				dump("cardbookPreferences.delIMPPs : failed to delete" + this.prefCardBookIMPPs + "\n" + e + "\n");
 			}
 		},
 	
 		getCustomFields: function (prefName) {
 			try {
-				let value = this.mPreferencesService.getComplexValue(this.prefCardBookCustomFields + prefName, Components.interfaces.nsISupportsString).data;
+				let value = this.getStringPref(this.prefCardBookCustomFields + prefName);
 				return value;
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.getCustomFields : failed to get" + this.prefCardBookCustomFields + prefName + "\n" + e + "\n");
+				dump("cardbookPreferences.getCustomFields : failed to get" + this.prefCardBookCustomFields + prefName + "\n" + e + "\n");
 			}
 		},
 	
 		setCustomFields: function (aType, prefName, value) {
 			try {
-				var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-				str.data = value;
-				this.mPreferencesService.setComplexValue(this.prefCardBookCustomFields + aType + "." + prefName, Components.interfaces.nsISupportsString, str);
+				this.setStringPref(this.prefCardBookCustomFields + aType + "." + prefName, value);
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.setCustomFields : failed to set" + this.prefCardBookCustomFields + aType + "." + prefName + "\n" + e + "\n");
+				dump("cardbookPreferences.setCustomFields : failed to set" + this.prefCardBookCustomFields + aType + "." + prefName + "\n" + e + "\n");
 			}
 		},
 	
 		delCustomFields: function (aType) {
 			try {
 				if (aType != null && aType !== undefined && aType != "") {
-					this.mPreferencesService.deleteBranch(this.prefCardBookCustomFields + aType);
+					Services.prefs.deleteBranch(this.prefCardBookCustomFields + aType);
 				} else {
-					this.mPreferencesService.deleteBranch(this.prefCardBookCustomFields);
+					Services.prefs.deleteBranch(this.prefCardBookCustomFields);
 				}
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.delCustomFields : failed to delete" + this.prefCardBookCustomFields + aType + "\n" + e + "\n");
+				dump("cardbookPreferences.delCustomFields : failed to delete" + this.prefCardBookCustomFields + aType + "\n" + e + "\n");
 			}
 		},
 	
 		getTels: function (prefName) {
 			try {
-				let value = this.mPreferencesService.getComplexValue(this.prefCardBookTels + prefName, Components.interfaces.nsISupportsString).data;
+				let value = this.getStringPref(this.prefCardBookTels + prefName);
 				return value;
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.getTels : failed to get" + this.prefCardBookTels + prefName + "\n" + e + "\n");
+				dump("cardbookPreferences.getTels : failed to get" + this.prefCardBookTels + prefName + "\n" + e + "\n");
 			}
 		},
 	
 		setTels: function (prefName, value) {
 			try {
-				var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-				str.data = value;
-				this.mPreferencesService.setComplexValue(this.prefCardBookTels + prefName, Components.interfaces.nsISupportsString, str);
+				this.setStringPref(this.prefCardBookTels + prefName, value);
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.setTels : failed to set" + this.prefCardBookTels + prefName + "\n" + e + "\n");
+				dump("cardbookPreferences.setTels : failed to set" + this.prefCardBookTels + prefName + "\n" + e + "\n");
 			}
 		},
 	
 		delTels: function () {
 			try {
-				this.mPreferencesService.deleteBranch(this.prefCardBookTels);
+				Services.prefs.deleteBranch(this.prefCardBookTels);
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.delTels : failed to delete" + this.prefCardBookTels + "\n" + e + "\n");
+				dump("cardbookPreferences.delTels : failed to delete" + this.prefCardBookTels + "\n" + e + "\n");
+			}
+		},
+
+		getPrefValueLabel: function () {
+			let prefValueLabel = this.getStringPref(this.prefCardBookRoot + "preferenceValueLabel");
+			if (prefValueLabel != null && prefValueLabel !== undefined && prefValueLabel != "") {
+				return prefValueLabel;
+			} else {
+				let strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
+				return strBundle.GetStringFromName("prefValueLabel");
 			}
 		},
 	
-		getCustoms: function (prefName) {
-			try {
-				let value = this.mPreferencesService.getComplexValue(prefName, Components.interfaces.nsISupportsString).data;
-				return value;
-			}
-			catch(e) {
-				dump("cardbookPreferenceService.getCustoms : failed to get" + prefName + "\n" + e + "\n");
-			}
+		getId: function (aDirPrefId) {
+			return this.getStringPref(this.prefCardBookData + aDirPrefId + "." + "id");
 		},
 	
-		setCustoms: function (prefName, value) {
-			try {
-				var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-				str.data = value;
-				this.mPreferencesService.setComplexValue(this.prefCardBookCustomFields + prefName, Components.interfaces.nsISupportsString, str);
-			}
-			catch(e) {
-				dump("cardbookPreferenceService.setCustoms : failed to set" + this.prefCardBookCustomFields + prefName + "\n" + e + "\n");
-			}
+		setId: function (aDirPrefId, id) {
+			this.setStringPref(this.prefCardBookData + aDirPrefId + "." + "id", id);
 		},
 	
-		delCustoms: function () {
-			try {
-				this.mPreferencesService.deleteBranch(this.prefCardBookCustomFields);
-			}
-			catch(e) {
-				dump("cardbookPreferenceService.delCustoms : failed to delete" + this.prefCardBookCustomFields + "\n" + e + "\n");
-			}
+		getName: function (aDirPrefId) {
+			return this.getStringPref(this.prefCardBookData + aDirPrefId + "." + "name");
 		},
 	
-		getId: function () {
-			return this._getPref("id");
+		setName: function (aDirPrefId, name) {
+			this.setStringPref(this.prefCardBookData + aDirPrefId + "." + "name", name);
 		},
 	
-		setId: function (id) {
-			this._setPref("id", id);
-		},
-	
-		getName: function () {
-			return this._getPref("name");
-		},
-	
-		setName: function (name) {
-			this._setPref("name", name);
-		},
-	
-		getUrl: function () {
-			let url = this._getPref("url");
-			let type = this._getPref("type");
+		getUrl: function (aDirPrefId) {
+			let url = this.getStringPref(this.prefCardBookData + aDirPrefId + "." + "url");
+			let type = this.getStringPref(this.prefCardBookData + aDirPrefId + "." + "type");
 			if (type !== "FILE" && type !== "CACHE" && type !== "DIRECTORY" && type !== "SEARCH" && type !== "LOCALDB") {
 				if (url) {
 					if (url[url.length - 1] != '/') {
@@ -722,59 +644,59 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 				if (url !== "0") {
 					return url;
 				} else {
-					let newUrl = this._getPref("name");
+					let newUrl = this.getStringPref(this.prefCardBookData + aDirPrefId + "." + "name");
 					this.setUrl(newUrl);
 					return newUrl;
 				}
 			}
 		},
 	
-		setUrl: function (url) {
-			this._setPref("url", url);
+		setUrl: function (aDirPrefId, url) {
+			this.setStringPref(this.prefCardBookData + aDirPrefId + "." + "url", url);
 		},
 	
-		getUser: function () {
-			return this._getPref("user");
+		getUser: function (aDirPrefId) {
+			return this.getStringPref(this.prefCardBookData + aDirPrefId + "." + "user");
 		},
 	
-		setUser: function (user) {
-			this._setPref("user", user);
+		setUser: function (aDirPrefId, user) {
+			this.setStringPref(this.prefCardBookData + aDirPrefId + "." + "user", user);
 		},
 	
-		getType: function () {
-			return this._getPref("type");
+		getType: function (aDirPrefId) {
+			return this.getStringPref(this.prefCardBookData + aDirPrefId + "." + "type");
 		},
 	
-		setType: function (type) {
-			this._setPref("type", type);
+		setType: function (aDirPrefId, type) {
+			this.setStringPref(this.prefCardBookData + aDirPrefId + "." + "type", type);
 		},
 	
-		getEnabled: function () {
-			return this._getBoolPref("enabled", true);
+		getEnabled: function (aDirPrefId) {
+			return this.getBoolPref(this.prefCardBookData + aDirPrefId + "." + "enabled", true);
 		},
 	
-		setEnabled: function (enabled) {
-			this._setBoolPref("enabled", enabled);
+		setEnabled: function (aDirPrefId, enabled) {
+			this.setBoolPref(this.prefCardBookData + aDirPrefId + "." + "enabled", enabled);
 		},
 	
-		getReadOnly: function () {
-			return this._getBoolPref("readonly", false);
+		getReadOnly: function (aDirPrefId) {
+			return this.getBoolPref(this.prefCardBookData + aDirPrefId + "." + "readonly", false);
 		},
 	
-		setReadOnly: function (readonly) {
-			this._setBoolPref("readonly", readonly);
+		setReadOnly: function (aDirPrefId, readonly) {
+			this.setBoolPref(this.prefCardBookData + aDirPrefId + "." + "readonly", readonly);
 		},
 	
-		getExpanded: function () {
-			return this._getBoolPref("expanded", true);
+		getExpanded: function (aDirPrefId) {
+			return this.getBoolPref(this.prefCardBookData + aDirPrefId + "." + "expanded", true);
 		},
 	
-		setExpanded: function (expanded) {
-			this._setBoolPref("expanded", expanded);
+		setExpanded: function (aDirPrefId, expanded) {
+			this.setBoolPref(this.prefCardBookData + aDirPrefId + "." + "expanded", expanded);
 		},
 	
-	   getColor: function () {
-			let color = this._getPref("color");
+	   getColor: function (aDirPrefId) {
+			let color = this.getStringPref(this.prefCardBookData + aDirPrefId + "." + "color");
 			if (color != null && color !== undefined && color != "") {
 				return color;
 			} else {
@@ -782,20 +704,20 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 			}
 		},
 	
-		setColor: function (color) {
-			this._setPref("color", color);
+		setColor: function (aDirPrefId, color) {
+			this.setStringPref(this.prefCardBookData + aDirPrefId + "." + "color", color);
 		},
 	
-		getDBCached: function () {
-			return this._getBoolPref("DBcached", false);
+		getDBCached: function (aDirPrefId) {
+			return this.getBoolPref(this.prefCardBookData + aDirPrefId + "." + "DBcached", false);
 		},
 	
-		setDBCached: function (DBcached) {
-			this._setBoolPref("DBcached", DBcached);
+		setDBCached: function (aDirPrefId, DBcached) {
+			this.setBoolPref(this.prefCardBookData + aDirPrefId + "." + "DBcached", DBcached);
 		},
 	
-		getVCardVersion: function () {
-			let vCard = this._getPref("vCard");
+		getVCardVersion: function (aDirPrefId) {
+			let vCard = this.getStringPref(this.prefCardBookData + aDirPrefId + "." + "vCard");
 			if (vCard != null && vCard !== undefined && vCard != "") {
 				return vCard;
 			} else {
@@ -803,14 +725,14 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 			}
 		},
 	
-		setVCardVersion: function (aVCard) {
+		setVCardVersion: function (aDirPrefId, aVCard) {
 			if (aVCard != null && aVCard !== undefined && aVCard != "") {
-				this._setPref("vCard", aVCard);
+				this.setStringPref(this.prefCardBookData + aDirPrefId + "." + "vCard", aVCard);
 			}
 		},
 	
-	   getDateFormat: function () {
-			let dateFormat = this._getPref("dateFormat");
+	   getDateFormat: function (aDirPrefId) {
+			let dateFormat = this.getStringPref(this.prefCardBookData + aDirPrefId + "." + "dateFormat");
 			if (dateFormat != null && dateFormat !== undefined && dateFormat != "") {
 				return dateFormat;
 			} else {
@@ -818,14 +740,14 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 			}
 		},
 	
-		setDateFormat: function (aDateFormat) {
+		setDateFormat: function (aDirPrefId, aDateFormat) {
 			if (aDateFormat != null && aDateFormat !== undefined && aDateFormat != "") {
-				this._setPref("dateFormat", aDateFormat);
+				this.setStringPref(this.prefCardBookData + aDirPrefId + "." + "dateFormat", aDateFormat);
 			}
 		},
 	
-	   getUrnuuid: function () {
-			let urnuuid = this._getBoolPref("urnuuid");
+	   getUrnuuid: function (aDirPrefId) {
+			let urnuuid = this.getBoolPref(this.prefCardBookData + aDirPrefId + "." + "urnuuid");
 			if (urnuuid != null && urnuuid !== undefined && urnuuid != "") {
 				return urnuuid;
 			} else {
@@ -833,27 +755,16 @@ if ("undefined" == typeof(cardbookPreferenceService)) {
 			}
 		},
 	
-		setUrnuuid: function (aUrnuuid) {
-			this._setBoolPref("urnuuid", aUrnuuid);
+		setUrnuuid: function (aDirPrefId, aUrnuuid) {
+			this.setBoolPref(this.prefCardBookData + aDirPrefId + "." + "urnuuid", aUrnuuid);
 		},
 	
-	   getPrefValueLabel: function () {
-			let prefValueLabel = this.mPreferencesService.getComplexValue(this.prefCardBookRoot + "preferenceValueLabel", Components.interfaces.nsISupportsString).data;
-			if (prefValueLabel != null && prefValueLabel !== undefined && prefValueLabel != "") {
-				return prefValueLabel;
-			} else {
-				let stringBundleService = Services.strings;
-				let strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
-				return strBundle.GetStringFromName("prefValueLabel");
-			}
-		},
-	
-		delBranch: function () {
+		delBranch: function (aDirPrefId) {
 			try {
-				this.mPreferencesService.deleteBranch(this.prefPath);
+				Services.prefs.deleteBranch(this.prefCardBookData + aDirPrefId);
 			}
 			catch(e) {
-				dump("cardbookPreferenceService.delBranch : failed to delete" + this.prefPath + "\n" + e + "\n");
+				dump("cardbookPreferences.delBranch : failed to delete" + this.prefCardBookData + aDirPrefId + "\n" + e + "\n");
 			}
 		}
 	};

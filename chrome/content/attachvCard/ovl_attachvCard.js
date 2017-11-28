@@ -5,11 +5,10 @@ if ("undefined" == typeof(ovl_attachvCard)) {
 	var ovl_attachvCard = {
 		
 		attachvCard: function () {
-			var cardbookPrefService = new cardbookPreferenceService();
 			var selected = document.getElementById("msgIdentity").selectedItem;
 			var key = selected.getAttribute("identitykey");
 			var result = [];
-			result = cardbookPrefService.getAllVCards();
+			result = cardbookPreferences.getAllVCards();
 			for (var i = 0; i < result.length; i++) {
 				var resultArray = result[i].split("::");
 				if (resultArray[0] == "true") {

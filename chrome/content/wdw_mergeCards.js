@@ -184,8 +184,7 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 			var aLabel = document.createElement('label');
 			aRow.appendChild(aLabel);
 			aLabel.setAttribute('id', aName);
-			var stringBundleService = Services.strings;
-			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+			var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 			aLabel.setAttribute('value', strBundle.GetStringFromName(aValue));
 		},
 
@@ -256,8 +255,7 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 		},
 
 		setReadOnlyMode: function (aDirPrefId) {
-			var cardbookPrefService = new cardbookPreferenceService(aDirPrefId);
-			if (cardbookPrefService.getReadOnly()) {
+			if (cardbookPreferences.getReadOnly(aDirPrefId)) {
 				document.getElementById('viewResultEditionLabel').disabled=true;
 				document.getElementById('createEditionLabel').disabled=true;
 				document.getElementById('createAndReplaceEditionLabel').disabled=true;
@@ -277,8 +275,7 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 		},
 
 		setVersion: function (aDirPrefId) {
-			var cardbookPrefService = new cardbookPreferenceService(aDirPrefId);
-			wdw_mergeCards.version = cardbookPrefService.getVCardVersion();
+			wdw_mergeCards.version = cardbookPreferences.getVCardVersion(aDirPrefId);
 		},
 
 		addRowFromArray: function (aListOfCards, aField) {

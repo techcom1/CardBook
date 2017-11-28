@@ -19,8 +19,7 @@ if ("undefined" == typeof(wdw_cardbooklog)) {
 		},
 
 		updateStatusProgressInformation: function(aLogLine, aErrorType) {
-			var prefs = Services.prefs;
-			var statusInformationLength = prefs.getComplexValue("extensions.cardbook.statusInformationLineNumber", Components.interfaces.nsISupportsString).data;
+			var statusInformationLength = cardbookPreferences.getStringPref("extensions.cardbook.statusInformationLineNumber");
 			
 			if (cardbookRepository.statusInformation.length >= statusInformationLength) {
 				cardbookRepository.statusInformation.shift();
@@ -36,8 +35,7 @@ if ("undefined" == typeof(wdw_cardbooklog)) {
 
 		updateStatusProgressInformationWithDebug1: function(aLogLine, aResponse) {
 			if (aResponse) {
-				var prefs = Services.prefs;
-				var debugMode = prefs.getBoolPref("extensions.cardbook.debugMode");
+				var debugMode = cardbookPreferences.getBoolPref("extensions.cardbook.debugMode");
 				if (debugMode) {
 					wdw_cardbooklog.updateStatusProgressInformation(aLogLine + aResponse.toSource());
 				}
@@ -45,8 +43,7 @@ if ("undefined" == typeof(wdw_cardbooklog)) {
 		},
 
 		updateStatusProgressInformationWithDebug2: function(aLogLine) {
-			var prefs = Services.prefs;
-			var debugMode = prefs.getBoolPref("extensions.cardbook.debugMode");
+			var debugMode = cardbookPreferences.getBoolPref("extensions.cardbook.debugMode");
 			if (debugMode) {
 				wdw_cardbooklog.updateStatusProgressInformation(aLogLine);
 			}
@@ -56,8 +53,7 @@ if ("undefined" == typeof(wdw_cardbooklog)) {
 			var gActivityManager = Components.classes["@mozilla.org/activity-manager;1"].getService(Components.interfaces.nsIActivityManager);
 			var process = Components.classes["@mozilla.org/activity-process;1"].createInstance(Components.interfaces.nsIActivityProcess);
 			
-			var stringBundleService = Services.strings;
-			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+			var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 			var processName = strBundle.formatStringFromName("synchroRunning", [aDirPrefName], 1);
 
 			process.init(processName, "CardBook");
@@ -76,8 +72,7 @@ if ("undefined" == typeof(wdw_cardbooklog)) {
 		
 		fetchSyncActivity: function(aDirPrefId, aCountDone, aCountTotal) {
 			if (wdw_cardbooklog.syncActivity[aDirPrefId] && wdw_cardbooklog.syncActivity[aDirPrefId].syncProcess) {
-				var stringBundleService = Services.strings;
-				var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+				var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 				var processMessage = strBundle.formatStringFromName("synchroProcessed", [aCountDone, aCountTotal], 2);
 				wdw_cardbooklog.syncActivity[aDirPrefId].syncProcess.setProgress(processMessage, aCountDone, aCountTotal);
 			}
@@ -99,8 +94,7 @@ if ("undefined" == typeof(wdw_cardbooklog)) {
 					gActivityManager.removeActivity(wdw_cardbooklog.syncActivity[aDirPrefId].syncEvent.id);
 				}
 			}
-			var stringBundleService = Services.strings;
-			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+			var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 			var eventName = strBundle.formatStringFromName("synchroFinished", [aDirPrefName], 1);
 			var event = Components.classes["@mozilla.org/activity-event;1"].createInstance(Components.interfaces.nsIActivityEvent);
 			event.init(eventName, null, "", null, Date.now());
@@ -111,13 +105,15 @@ if ("undefined" == typeof(wdw_cardbooklog)) {
 			
 		addActivity: function(aMessageCode, aArray, aIcon) {
 			var gActivityManager = Components.classes["@mozilla.org/activity-manager;1"].getService(Components.interfaces.nsIActivityManager);
-			var stringBundleService = Services.strings;
-			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+			var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 			var eventName = strBundle.formatStringFromName(aMessageCode, aArray, aArray.length);
 			var event = Components.classes["@mozilla.org/activity-event;1"].createInstance(Components.interfaces.nsIActivityEvent);
 			event.init(eventName, null, "", null, Date.now());
 			event.iconClass = aIcon;// deleteMail addItem
 			gActivityManager.addActivity(event);
 		}
-	}
+	};
+
+	var loader = Services.scriptloader;
+	loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");
 };

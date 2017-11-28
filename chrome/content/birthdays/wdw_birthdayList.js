@@ -58,8 +58,7 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 					}
 					for (var i in cardbookBirthdaysUtils.lBirthdayAccountList) {
 						var dirPrefId = i;
-						var cardbookPrefService = new cardbookPreferenceService(dirPrefId);
-						var color = cardbookPrefService.getColor()
+						var color = cardbookPreferences.getColor(dirPrefId)
 						if (createSearchRules > 1) {
 							cardbookRepository.createCssCardRules(styleSheet, dirPrefId, color);
 						}
@@ -73,7 +72,7 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 			wdw_birthdayList.setupWindow();
 			
 			var strBundle = document.getElementById("cardbook-strings");
-			var maxDaysUntilNextBirthday = cardbookBirthdaysUtils.getPref("extensions.cardbook.numberOfDaysForSearching");
+			var maxDaysUntilNextBirthday = cardbookPreferences.getStringPref("extensions.cardbook.numberOfDaysForSearching");
 			cardbookBirthdaysUtils.loadBirthdays(maxDaysUntilNextBirthday);
 			cardbookBirthdaysUtils.lBirthdayList = cardbookUtils.sortArrayByNumber(cardbookBirthdaysUtils.lBirthdayList,0,1);
 			wdw_birthdayList.loadCssRules();

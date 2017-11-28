@@ -4,23 +4,21 @@ if ("undefined" == typeof(ovl_cardbookLayout)) {
 	var ovl_cardbookLayout = {
 
 		changeResizePanes: function(aPref, aValue) {
-			var prefs = Services.prefs;
 			if (aValue) {
-				prefs.setBoolPref("extensions.cardbook." + aPref, aValue);
+				cardbookPreferences.setBoolPref("extensions.cardbook." + aPref, aValue);
 			} else {
-				prefs.setBoolPref("extensions.cardbook." + aPref, !prefs.getBoolPref("extensions.cardbook." + aPref));
+				cardbookPreferences.setBoolPref("extensions.cardbook." + aPref, !prefs.getBoolPref("extensions.cardbook." + aPref));
 			}
 		},
 
 		resizePanes: function() {
 			if (document.getElementById("cardsBox") && document.getElementById("dirTreeSplitter")) {
-				var prefs = Services.prefs;
-				if (prefs.getBoolPref("extensions.cardbook.viewABPane")) {
+				if (cardbookPreferences.getBoolPref("extensions.cardbook.viewABPane")) {
 					document.getElementById("dirTreeSplitter").setAttribute("state", "open");
 				} else {
 					document.getElementById("dirTreeSplitter").setAttribute("state", "collapsed");
 				}
-				if (prefs.getBoolPref("extensions.cardbook.viewABContact")) {
+				if (cardbookPreferences.getBoolPref("extensions.cardbook.viewABContact")) {
 					document.getElementById("resultsSplitterModern").setAttribute("state", "open");
 					document.getElementById("resultsSplitterClassical").setAttribute("state", "open");
 					document.getElementById("resultsSplitterClassical").setAttribute("class", "cardbookVerticalSplitterClass");
@@ -39,9 +37,8 @@ if ("undefined" == typeof(ovl_cardbookLayout)) {
 				document.getElementById("menu_showFolderPane").hidden=true;
 				document.getElementById("menu_showFolderPaneCols").hidden=true;
 				document.getElementById("menu_showMessage").hidden=true;
-				var prefs = Services.prefs;
-				document.getElementById("cardbookABPaneItem").setAttribute('checked', prefs.getBoolPref("extensions.cardbook.viewABPane"));
-				document.getElementById("cardbookContactPaneItem").setAttribute('checked', prefs.getBoolPref("extensions.cardbook.viewABContact"));
+				document.getElementById("cardbookABPaneItem").setAttribute('checked', cardbookPreferences.getBoolPref("extensions.cardbook.viewABPane"));
+				document.getElementById("cardbookContactPaneItem").setAttribute('checked', cardbookPreferences.getBoolPref("extensions.cardbook.viewABContact"));
 			} else {
 				document.getElementById("cardbookABPaneItem").hidden=true;
 				document.getElementById("cardbookContactPaneItem").hidden=true;
@@ -54,8 +51,7 @@ if ("undefined" == typeof(ovl_cardbookLayout)) {
 		setBoxes: function(aEvent) {
 			aEvent.stopImmediatePropagation();
 			var paneConfig = 0;
-			var prefs = Services.prefs;
-			var panesView = prefs.getComplexValue("extensions.cardbook.panesView", Components.interfaces.nsISupportsString).data;
+			var panesView = cardbookPreferences.getStringPref("extensions.cardbook.panesView");
 			if (panesView == "modern") {
 				var paneConfig = 2;
 			} else if (panesView == "classical") {
@@ -68,20 +64,17 @@ if ("undefined" == typeof(ovl_cardbookLayout)) {
 		},
 
 		changeOrientPanes: function(aValue) {
-			var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
 			if (aValue == "cmd_viewClassicMailLayout") {
-				str.data = "classical";
+				var strData = "classical";
 			} else if (aValue == "cmd_viewVerticalMailLayout") {
-				str.data = "modern";
+				var strData = "modern";
 			}
-			var prefs = Services.prefs;
-			prefs.setComplexValue("extensions.cardbook.panesView", Components.interfaces.nsISupportsString, str);
+			cardbookPreferences.setStringPref("extensions.cardbook.panesView", strData);
 		},
 
 		orientPanes: function() {
 			if (document.getElementById("cardsBox") && document.getElementById("resultsSplitterModern") && document.getElementById("resultsSplitterClassical")) {
-				var prefs = Services.prefs;
-				var panesView = prefs.getComplexValue("extensions.cardbook.panesView", Components.interfaces.nsISupportsString).data;
+				var panesView = cardbookPreferences.getStringPref("extensions.cardbook.panesView");
 				if (panesView == "modern") {
 					document.getElementById("cardsBox").setAttribute("orient", "horizontal");
 					document.getElementById("resultsSplitterModern").hidden=true;
@@ -95,6 +88,9 @@ if ("undefined" == typeof(ovl_cardbookLayout)) {
 		}
 
 	};
+
+	var loader = Services.scriptloader;
+	loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");
 };
 
 // for the displayed name of emails

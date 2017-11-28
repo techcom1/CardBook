@@ -72,8 +72,7 @@ if ("undefined" == typeof(cardbookComplexSearch)) {
 		},
 
 		isMyCardFound: function (aCard, aComplexSearchDirPrefId) {
-			var cardbookPrefService = new cardbookPreferenceService(aComplexSearchDirPrefId);
-			if (!cardbookPrefService.getEnabled()) {
+			if (!cardbookPreferences.getEnabled(aComplexSearchDirPrefId)) {
 				return false;
 			}
 			if (cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId]) {
@@ -297,8 +296,7 @@ if ("undefined" == typeof(cardbookComplexSearch)) {
 			} else {
 				cardbookRepository.cardbookComplexSearchResponse[aDirPrefId]++;
 			}
-			var cardbookPrefService1 = new cardbookPreferenceService(aDirPrefId);
-			var myPrefName = cardbookPrefService1.getName();
+			var myPrefName = cardbookPreferences.getName(aDirPrefId);
 			cardbookSynchronization.waitForComplexSearchFinished(aDirPrefId, myPrefName, aMode);
 		},
 		

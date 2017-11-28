@@ -8,10 +8,9 @@ if ("undefined" == typeof(cardbookPrint)) {
 		getTypes: function (aType, aInputTypes, aPgType, aCardValue) {
 			var myInputTypes = [];
 			myInputTypes = cardbookUtils.getOnlyTypesFromTypes(aInputTypes);
-			var cardbookPrefService = new cardbookPreferenceService();
 			var myDisplayedTypes = [];
 			for (let i = 0; i < myInputTypes.length; i++) {
-				myDisplayedTypes.push(cardbookPrefService.getTypeLabel(aType, myInputTypes[i]));
+				myDisplayedTypes.push(cardbookPreferences.getTypeLabel(aType, myInputTypes[i]));
 			}
 			if (aPgType[0]) {
 				myDisplayedTypes.push(aPgType[0]);

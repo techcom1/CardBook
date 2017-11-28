@@ -86,8 +86,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 		},
 
 		loadAccountsOrCatsTreeMenu: function (aPopupName, aMenuName, aDefaultId) {
-			var stringBundleService = Services.strings;
-			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+			var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 			var myPopup = document.getElementById(aPopupName);
 			cardbookElementTools.deleteRows(aPopupName);
 			var defaultIndex = 0;
@@ -108,8 +107,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 		},
 
 		loadInclExcl: function (aPopupName, aMenuName, aDefaultId) {
-			var stringBundleService = Services.strings;
-			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+			var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 			var myPopup = document.getElementById(aPopupName);
 			cardbookElementTools.deleteRows(aPopupName);
 			var defaultIndex = 0;
@@ -134,8 +132,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			var defaultIndex = 0;
 			var j = 0;
 			var myResult = [["", ""]];
-			var cardbookPrefService = new cardbookPreferenceService();
-			myResult = myResult.concat(cardbookPrefService.getAllTypesByType("gender"));
+			myResult = myResult.concat(cardbookPreferences.getAllTypesByType("gender"));
 			for (var i = 0; i < myResult.length; i++) {
 				var menuItem = document.createElement("menuitem");
 				menuItem.setAttribute("label", myResult[i][1]);
@@ -155,8 +152,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			var defaultIndex = 0;
 			var j = 0;
 			if (aAddAllMailAccounts) {
-				var stringBundleService = Services.strings;
-				var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+				var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 				var menuItem = document.createElement("menuitem");
 				menuItem.setAttribute("label", strBundle.GetStringFromName("allMailAccounts"));
 				menuItem.setAttribute("value", "allMailAccounts");
@@ -203,8 +199,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			var defaultIndex = 0;
 			var j = 0;
 			if (aAddAllABs) {
-				var stringBundleService = Services.strings;
-				var strBundle = stringBundleService.createBundle("chrome://messenger/locale/addressbook/addressBook.properties");
+				var strBundle = Services.strings.createBundle("chrome://messenger/locale/addressbook/addressBook.properties");
 				var menuItem = document.createElement("menuitem");
 				menuItem.setAttribute("label", strBundle.GetStringFromName("allAddressBooks"));
 				menuItem.setAttribute("value", "allAddressBooks");
@@ -278,8 +273,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			}
 			if (!(aInclRestrictionList && aInclRestrictionList[aDefaultPrefId])) {
 				if (aAddAllCats) {
-					var stringBundleService = Services.strings;
-					var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+					var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 					var menuItem = document.createElement("menuitem");
 					menuItem.setAttribute("label", strBundle.GetStringFromName("allCategories"));
 					menuItem.setAttribute("value", "allCategories");
@@ -290,8 +284,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 					j++;
 				}
 				if (aAddOnlyCats) {
-					var stringBundleService = Services.strings;
-					var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+					var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 					var menuItem = document.createElement("menuitem");
 					menuItem.setAttribute("label", strBundle.GetStringFromName("onlyCategories"));
 					menuItem.setAttribute("value", "onlyCategories");
@@ -302,8 +295,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 					j++;
 				}
 				if (aAddNoCats) {
-					var stringBundleService = Services.strings;
-					var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+					var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 					var menuItem = document.createElement("menuitem");
 					menuItem.setAttribute("label", strBundle.GetStringFromName("noCategory"));
 					menuItem.setAttribute("value", "noCategory");
@@ -368,8 +360,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 		},
 
 		loadDateFormats: function (aPopupName, aMenuName, aDefaultValue) {
-			var stringBundleService = Services.strings;
-			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+			var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 			var myPopup = document.getElementById(aPopupName);
 			cardbookElementTools.deleteRows(aPopupName);
 			var defaultIndex = 0;
@@ -595,8 +586,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			aMenulist.appendChild(aMenupopup);
 			aMenupopup.setAttribute('id', aType + '_' + aIndex + '_menupopupTerm');
 			cardbookElementTools.deleteRows(aMenupopup.id);
-			var stringBundleService = Services.strings;
-			var strBundle = stringBundleService.createBundle("chrome://messenger/locale/search-operators.properties");
+			var strBundle = Services.strings.createBundle("chrome://messenger/locale/search-operators.properties");
 			var found = false;
 			var operators = ['Contains', 'DoesntContain', 'Is', 'Isnt', 'BeginsWith', 'EndsWith', 'IsEmpty', 'IsntEmpty']
 			for (var i = 0; i < operators.length; i++) {

@@ -19,7 +19,7 @@ if ("undefined" == typeof(ovl_filters)) {
 		},
 
 		_addEmails: function(aMsgHdrs, aActionValue, aField) {
-			if (!cardbookUtils.isMyAccountEnabled(aActionValue)) {
+			if (!cardbookPreferences.getEnabled(aActionValue)) {
 				loader.loadSubScript("chrome://cardbook/content/wdw_log.js");
 				cardbookUtils.formatStringForOutput("errorFiltersAddEmailsABNotEnabled", [aField, aActionValue], "Error");
 				return;
@@ -38,7 +38,7 @@ if ("undefined" == typeof(ovl_filters)) {
 		},
 
 		_matchEmails: function(aMsgHdrEmails, aSearchValue, aSearchOp) {
-			if (!cardbookUtils.isMyAccountEnabled(aSearchValue)) {
+			if (!cardbookPreferences.getEnabled(aSearchValue)) {
 				loader.loadSubScript("chrome://cardbook/content/wdw_log.js");
 				cardbookUtils.formatStringForOutput("errorFiltersMatchEmailsABNotEnabled", [aSearchValue], "Error");
 				return false;
@@ -75,8 +75,7 @@ if ("undefined" == typeof(ovl_filters)) {
 		},
 
 		onLoad: function () {
-			var stringBundleService = Services.strings;
-			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+			var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 
 			var searchFrom = {
 				id: "cardbook#searchFrom",

@@ -21,8 +21,7 @@ if ("undefined" == typeof(cardbookDates)) {
 				if (aCard[aField] == "") {
 					return new Date(Date.UTC('666', '6', '6'));
 				} else {
-					var cardbookPrefService = new cardbookPreferenceService(aCard.dirPrefId);
-					var dateFormat = cardbookPrefService.getDateFormat();
+					var dateFormat = cardbookPreferences.getDateFormat(aCard.dirPrefId);
 					var myDate = cardbookDates.convertDateStringToDate(aCard[aField], dateFormat);
 					if (myDate == "WRONGDATE") {
 						return new Date(Date.UTC('666', '6', '6'));
@@ -41,8 +40,7 @@ if ("undefined" == typeof(cardbookDates)) {
 				if (aCard[aField] == "") {
 					return "";
 				} else {
-					var cardbookPrefService = new cardbookPreferenceService(aCard.dirPrefId);
-					var dateFormat = cardbookPrefService.getDateFormat();
+					var dateFormat = cardbookPreferences.getDateFormat(aCard.dirPrefId);
 					return cardbookDates.getFormattedDateForDateString(aCard[aField], dateFormat);
 				}
 			}
@@ -98,8 +96,7 @@ if ("undefined" == typeof(cardbookDates)) {
 				if (aCard.bday == "") {
 					return "";
 				} else {
-					var cardbookPrefService = new cardbookPreferenceService(aCard.dirPrefId);
-					var dateFormat = cardbookPrefService.getDateFormat();
+					var dateFormat = cardbookPreferences.getDateFormat(aCard.dirPrefId);
 					var lDateOfBirth = cardbookDates.convertDateStringToDate(aCard.bday, dateFormat);
 					if (lDateOfBirth == "WRONGDATE") {
 						return "?";
@@ -382,8 +379,7 @@ if ("undefined" == typeof(cardbookDates)) {
 		},
 
 		convertAddressBookDate: function (aDirPrefId, aDirPrefName, aSourceDateFormat, aTargetDateFormat) {
-			var stringBundleService = Services.strings;
-			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+			var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 			var eventInNoteEventPrefix = strBundle.GetStringFromName("eventInNoteEventPrefix");
 			for (i in cardbookRepository.cardbookCards) {
 				var myCard = cardbookRepository.cardbookCards[i];

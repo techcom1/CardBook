@@ -207,14 +207,12 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		},
 
 		loadTitle: function () {
-			var prefs = Services.prefs;
 			var strBundle = document.getElementById("cardbook-strings");
 			document.title = strBundle.getString("cardbookPrefTitle") + " (" + cardbookRepository.addonVersion + ")";
 		},
 
 		loadPrefEmailPref: function () {
-			var prefs = Services.prefs;
-			wdw_cardbookConfiguration.preferEmailPrefOld = prefs.getBoolPref("extensions.cardbook.preferEmailPref");
+			wdw_cardbookConfiguration.preferEmailPrefOld = cardbookPreferences.getBoolPref("extensions.cardbook.preferEmailPref");
 		},
 
 		validatePrefEmailPref: function () {
@@ -265,15 +263,11 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				wdw_cardbookConfiguration.resetFnFormula();
 			}
 			// to be sure the pref is saved (resetting its value does not save the preference)
-			var prefs = Services.prefs;
-			var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-			str.data = document.getElementById('fnFormulaTextBox').value;
-			prefs.setComplexValue("extensions.cardbook.fnFormula", Components.interfaces.nsISupportsString, str);
+			cardbookPreferences.setStringPref("extensions.cardbook.fnFormula", document.getElementById('fnFormulaTextBox').value);
 		},
 
 		loadEventEntryTitle: function () {
-			var prefs = Services.prefs;
-			var eventEntryTitle = prefs.getComplexValue("extensions.cardbook.eventEntryTitle", Components.interfaces.nsISupportsString).data;
+			var eventEntryTitle = cardbookPreferences.getStringPref("extensions.cardbook.eventEntryTitle");
 			if (eventEntryTitle == "") {
 				var strBundle = document.getElementById("cardbook-strings");
 				document.getElementById('calendarEntryTitleTextBox').value=strBundle.getString("eventEntryTitleMessage");
@@ -526,10 +520,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				var errorTitle = strBundle.getString("eventEntryTitleProblemTitle");
 				var errorMsg = strBundle.getString("eventEntryTitleProblemMessage") + ' (' + strBundle.getString("eventEntryTitleMessage") + ').';
 				prompts.alert(null, errorTitle, errorMsg);
-				var prefs = Services.prefs;
-				var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-				str.data = strBundle.getString("eventEntryTitleMessage");
-				prefs.setComplexValue("extensions.cardbook.eventEntryTitle", Components.interfaces.nsISupportsString, str);
+				cardbookPreferences.setStringPref("extensions.cardbook.eventEntryTitle", strBundle.getString("eventEntryTitleMessage"));
 			}
 		},
 
@@ -585,8 +576,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		},
 
 		loadOrg: function () {
-			var prefs = Services.prefs;
-			var orgStructure = prefs.getComplexValue("extensions.cardbook.orgStructure", Components.interfaces.nsISupportsString).data;
+			var orgStructure = cardbookPreferences.getStringPref("extensions.cardbook.orgStructure");
 			if (orgStructure != "") {
 				wdw_cardbookConfiguration.allOrg = cardbookUtils.unescapeArray(cardbookUtils.escapeString(orgStructure).split(";"));
 			} else {
@@ -685,16 +675,13 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		},
 		
 		validateOrg: function () {
-			var prefs = Services.prefs;
-			var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-			str.data = cardbookUtils.unescapeStringSemiColon(cardbookUtils.escapeArraySemiColon(wdw_cardbookConfiguration.allOrg).join(";"));
-			prefs.setComplexValue("extensions.cardbook.orgStructure", Components.interfaces.nsISupportsString, str);
+			var strData = cardbookUtils.unescapeStringSemiColon(cardbookUtils.escapeArraySemiColon(wdw_cardbookConfiguration.allOrg).join(";"));
+			cardbookPreferences.setStringPref("extensions.cardbook.orgStructure", strData);
 		},
 
 		loadPref: function () {
 			if (document.getElementById('preferenceValueTextbox').value == "") {
-				var cardbookPrefService = new cardbookPreferenceService();
-				document.getElementById('preferenceValueTextbox').value = cardbookPrefService.getPrefValueLabel();
+				document.getElementById('preferenceValueTextbox').value = cardbookPreferences.getPrefValueLabel();
 			}
 		},
 
@@ -725,8 +712,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		},
 
 		getABName: function(dirPrefId) {
-			var prefs = Services.prefs;
-			if (!prefs.getBoolPref("extensions.cardbook.exclusive")) {
+			if (!cardbookPreferences.getBoolPref("extensions.cardbook.exclusive")) {
 				var contactManager = MailServices.ab;
 				var contacts = contactManager.directories;
 				while ( contacts.hasMoreElements() ) {
@@ -751,8 +737,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		},
 
 		loadURLs: function () {
-			var cardbookPrefService = new cardbookPreferenceService();
-			wdw_cardbookConfiguration.allURLs = cardbookPrefService.getURLs();
+			wdw_cardbookConfiguration.allURLs = cardbookPreferences.getURLs();
 		},
 		
 		displayURLs: function () {
@@ -830,8 +815,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		},
 		
 		validateURLs: function () {
-			var cardbookPrefService = new cardbookPreferenceService();
-			cardbookPrefService.setURLs(wdw_cardbookConfiguration.allURLs);
+			cardbookPreferences.setURLs(wdw_cardbookConfiguration.allURLs);
 		},
 		
 		
@@ -847,9 +831,8 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		},
 
 		loadVCards: function () {
-			var cardbookPrefService = new cardbookPreferenceService();
 			var result = [];
-			result = cardbookPrefService.getAllVCards();
+			result = cardbookPreferences.getAllVCards();
 			var count = 0;
 			for (var i = 0; i < result.length; i++) {
 				var resultArray = result[i].split("::");
@@ -955,10 +938,9 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		},
 		
 		validateVCards: function () {
-			var cardbookPrefService = new cardbookPreferenceService();
-			cardbookPrefService.delVCards();
+			cardbookPreferences.delVCards();
 			for (var i = 0; i < wdw_cardbookConfiguration.allVCards.length; i++) {
-				cardbookPrefService.setVCard(i.toString(), wdw_cardbookConfiguration.allVCards[i][0].toString() + "::" + wdw_cardbookConfiguration.allVCards[i][3]
+				cardbookPreferences.setVCard(i.toString(), wdw_cardbookConfiguration.allVCards[i][0].toString() + "::" + wdw_cardbookConfiguration.allVCards[i][3]
 													+ "::" + wdw_cardbookConfiguration.allVCards[i][5] + "::" + wdw_cardbookConfiguration.allVCards[i][6] + "::" + wdw_cardbookConfiguration.allVCards[i][7]);
 			}
 		},
@@ -976,9 +958,8 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 
 		loadRestrictions: function () {
 			var strBundle = document.getElementById("cardbook-strings");
-			var cardbookPrefService = new cardbookPreferenceService();
 			var result = [];
-			result = cardbookPrefService.getAllRestrictions();
+			result = cardbookPreferences.getAllRestrictions();
 			var count = 0;
 			for (var i = 0; i < result.length; i++) {
 				var resultArray = result[i].split("::");
@@ -1099,10 +1080,9 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		},
 		
 		validateRestrictions: function () {
-			var cardbookPrefService = new cardbookPreferenceService();
-			cardbookPrefService.delRestrictions();
+			cardbookPreferences.delRestrictions();
 			for (var i = 0; i < wdw_cardbookConfiguration.allRestrictions.length; i++) {
-				cardbookPrefService.setRestriction(i.toString(), wdw_cardbookConfiguration.allRestrictions[i][0].toString() + "::" + wdw_cardbookConfiguration.allRestrictions[i][9]
+				cardbookPreferences.setRestriction(i.toString(), wdw_cardbookConfiguration.allRestrictions[i][0].toString() + "::" + wdw_cardbookConfiguration.allRestrictions[i][9]
 													+ "::" + wdw_cardbookConfiguration.allRestrictions[i][3] + "::" + wdw_cardbookConfiguration.allRestrictions[i][5] + "::" + wdw_cardbookConfiguration.allRestrictions[i][6]);
 			}
 		},
@@ -1120,9 +1100,8 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 
 		loadEmailsCollection: function () {
 			var strBundle = document.getElementById("cardbook-strings");
-			var cardbookPrefService = new cardbookPreferenceService();
 			var result = [];
-			result = cardbookPrefService.getAllEmailsCollections();
+			result = cardbookPreferences.getAllEmailsCollections();
 			var count = 0;
 			for (var i = 0; i < result.length; i++) {
 				var resultArray = result[i].split("::");
@@ -1243,10 +1222,9 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		},
 		
 		validateEmailsCollection: function () {
-			var cardbookPrefService = new cardbookPreferenceService();
-			cardbookPrefService.delEmailsCollection();
+			cardbookPreferences.delEmailsCollection();
 			for (var i = 0; i < wdw_cardbookConfiguration.allEmailsCollections.length; i++) {
-				cardbookPrefService.setEmailsCollection(i.toString(), wdw_cardbookConfiguration.allEmailsCollections[i][0].toString() + "::" + wdw_cardbookConfiguration.allEmailsCollections[i][9]
+				cardbookPreferences.setEmailsCollection(i.toString(), wdw_cardbookConfiguration.allEmailsCollections[i][0].toString() + "::" + wdw_cardbookConfiguration.allEmailsCollections[i][9]
 													+ "::" + wdw_cardbookConfiguration.allEmailsCollections[i][3] + "::" + wdw_cardbookConfiguration.allEmailsCollections[i][5] + "::" + wdw_cardbookConfiguration.allEmailsCollections[i][6]);
 			}
 		},
@@ -1263,8 +1241,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		},
 
 		loadTypes: function () {
-			var cardbookPrefService = new cardbookPreferenceService();
-			wdw_cardbookConfiguration.allTypes = cardbookPrefService.getAllTypes();
+			wdw_cardbookConfiguration.allTypes = cardbookPreferences.getAllTypes();
 		},
 		
 		displayTypes: function () {
@@ -1385,14 +1362,13 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		},
 		
 		validateTypes: function () {
-			var cardbookPrefService = new cardbookPreferenceService();
-			cardbookPrefService.delTypes();
+			cardbookPreferences.delTypes();
 			for (var i in wdw_cardbookConfiguration.allTypes) {
 				for (var j = 0; j < wdw_cardbookConfiguration.allTypes[i].length; j++) {
-					cardbookPrefService.setTypes(i, j, wdw_cardbookConfiguration.allTypes[i][j][0] + ":" + wdw_cardbookConfiguration.allTypes[i][j][1]);
+					cardbookPreferences.setTypes(i, j, wdw_cardbookConfiguration.allTypes[i][j][0] + ":" + wdw_cardbookConfiguration.allTypes[i][j][1]);
 				}
 			}
-			cardbookRepository.currentTypes = cardbookPrefService.getAllTypesCurrent();
+			cardbookRepository.currentTypes = cardbookPreferences.getAllTypesCurrent();
 		},
 
 		selectIMPPsCategory: function () {
@@ -1418,11 +1394,10 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		},
 
 		loadIMPPs: function () {
-			var cardbookPrefService = new cardbookPreferenceService();
 			wdw_cardbookConfiguration.allIMPPs['impp'] = [];
-			wdw_cardbookConfiguration.allIMPPs['impp'] = cardbookPrefService.getAllIMPPs();
+			wdw_cardbookConfiguration.allIMPPs['impp'] = cardbookPreferences.getAllIMPPs();
 			wdw_cardbookConfiguration.allIMPPs['tel'] = [];
-			wdw_cardbookConfiguration.allIMPPs['tel'] = cardbookPrefService.getAllTels();
+			wdw_cardbookConfiguration.allIMPPs['tel'] = cardbookPreferences.getAllTels();
 		},
 		
 		displayIMPPs: function () {
@@ -1507,14 +1482,13 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		},
 		
 		validateIMPPs: function () {
-			var cardbookPrefService = new cardbookPreferenceService();
-			cardbookPrefService.delIMPPs();
+			cardbookPreferences.delIMPPs();
 			for (var i in wdw_cardbookConfiguration.allIMPPs['impp']) {
-				cardbookPrefService.setIMPPs(i, wdw_cardbookConfiguration.allIMPPs['impp'][i][0] + ":" + wdw_cardbookConfiguration.allIMPPs['impp'][i][1] + ":" + wdw_cardbookConfiguration.allIMPPs['impp'][i][2]);
+				cardbookPreferences.setIMPPs(i, wdw_cardbookConfiguration.allIMPPs['impp'][i][0] + ":" + wdw_cardbookConfiguration.allIMPPs['impp'][i][1] + ":" + wdw_cardbookConfiguration.allIMPPs['impp'][i][2]);
 			}
-			cardbookPrefService.delTels();
+			cardbookPreferences.delTels();
 			for (var i in wdw_cardbookConfiguration.allIMPPs['tel']) {
-				cardbookPrefService.setTels(i, wdw_cardbookConfiguration.allIMPPs['tel'][i][0] + ":" + wdw_cardbookConfiguration.allIMPPs['tel'][i][1] + ":" + wdw_cardbookConfiguration.allIMPPs['tel'][i][2]);
+				cardbookPreferences.setTels(i, wdw_cardbookConfiguration.allIMPPs['tel'][i][0] + ":" + wdw_cardbookConfiguration.allIMPPs['tel'][i][1] + ":" + wdw_cardbookConfiguration.allIMPPs['tel'][i][2]);
 			}
 		},
 
@@ -1550,8 +1524,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		},
 
 		loadCustomFields: function () {
-			var cardbookPrefService = new cardbookPreferenceService();
-			wdw_cardbookConfiguration.allCustomFields = cardbookPrefService.getAllCustomFields();
+			wdw_cardbookConfiguration.allCustomFields = cardbookPreferences.getAllCustomFields();
 		},
 		
 		displayCustomFields: function () {
@@ -1693,11 +1666,10 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		},
 		
 		validateCustomFields: function () {
-			var cardbookPrefService = new cardbookPreferenceService();
-			cardbookPrefService.delCustomFields();
+			cardbookPreferences.delCustomFields();
 			for (var i in wdw_cardbookConfiguration.allCustomFields) {
 				for (var j = 0; j < wdw_cardbookConfiguration.allCustomFields[i].length; j++) {
-					cardbookPrefService.setCustomFields(i, wdw_cardbookConfiguration.allCustomFields[i][j][2], wdw_cardbookConfiguration.allCustomFields[i][j][0] + ":" + wdw_cardbookConfiguration.allCustomFields[i][j][1]);
+					cardbookPreferences.setCustomFields(i, wdw_cardbookConfiguration.allCustomFields[i][j][2], wdw_cardbookConfiguration.allCustomFields[i][j][0] + ":" + wdw_cardbookConfiguration.allCustomFields[i][j][1]);
 				}
 			}
 		},
@@ -1757,8 +1729,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		},
 
 		loadPreferenceValue: function () {
-			var prefs = Services.prefs;
-			var initialSync = prefs.getBoolPref("extensions.cardbook.usePreferenceValue");
+			var initialSync = cardbookPreferences.getBoolPref("extensions.cardbook.usePreferenceValue");
 			if (!(initialSync)) {
 				document.getElementById('preferenceValueLabel').disabled = true;
 				document.getElementById('preferenceValueTextbox').disabled = true;
@@ -1785,8 +1756,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		},
 
 		loadInitialSyncDelay: function () {
-			var prefs = Services.prefs;
-			var initialSync = prefs.getBoolPref("extensions.cardbook.initialSync");
+			var initialSync = cardbookPreferences.getBoolPref("extensions.cardbook.initialSync");
 			if (!(initialSync)) {
 				document.getElementById('initialSyncDelay').disabled = true;
 				document.getElementById('initialSyncDelayTextBox').disabled = true;
@@ -1794,8 +1764,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		},
 
 		loadPeriodicSync: function () {
-			var prefs = Services.prefs;
-			var autoSync = prefs.getBoolPref("extensions.cardbook.autoSync");
+			var autoSync = cardbookPreferences.getBoolPref("extensions.cardbook.autoSync");
 			if (!(autoSync)) {
 				document.getElementById('autoSyncInterval').disabled = true;
 				document.getElementById('autoSyncIntervalTextBox').disabled = true;

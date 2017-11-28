@@ -25,8 +25,7 @@ if ("undefined" == typeof(ovl_cardbookComposeMsg)) {
 		setAB: function() {
 			document.getElementById("tasksMenuAddressBook").removeAttribute("key");
 			document.getElementById("key_addressbook").setAttribute("key", "");
-			var prefs = Services.prefs;
-			var exclusive = prefs.getBoolPref("extensions.cardbook.exclusive");
+			var exclusive = cardbookPreferences.getBoolPref("extensions.cardbook.exclusive");
 			var myPopup = document.getElementById("menu_NewPopup");
 			if (exclusive) {
 				document.getElementById('tasksMenuAddressBook').setAttribute('hidden', 'true');
@@ -36,8 +35,7 @@ if ("undefined" == typeof(ovl_cardbookComposeMsg)) {
 				document.getElementById('tasksMenuAddressBook').removeAttribute('hidden');
 			}
 
-			var stringBundleService = Services.strings;
-			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+			var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 			var myMenuItem = document.createElement("menuitem");
 			myMenuItem.setAttribute("id", "newCardBookCardFromMsgMenu");
 			myMenuItem.addEventListener("command", function(aEvent) {
@@ -59,6 +57,8 @@ if ("undefined" == typeof(ovl_cardbookComposeMsg)) {
 
 	};
 	
+	var loader = Services.scriptloader;
+	loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");
 	// css should be loaded at the end
 	window.addEventListener("load", function(e) { ovl_cardbookComposeMsg.loadMsg(); }, false);
 	

@@ -226,9 +226,8 @@ if ("undefined" == typeof(cardbookCardParser)) {
 							case "END":
 								break;
 							case "UID":
-								var cardbookPrefService = new cardbookPreferenceService(this.dirPrefId);
 								this.uid = vCardDataArrayTrailer.replace(/^urn:uuid:/i, "");
-								if (cardbookPrefService.getUrnuuid()) {
+								if (cardbookPreferences.getUrnuuid(this.dirPrefId)) {
 									this.uid = "urn:uuid:" + this.uid;
 								}
 								break;
@@ -430,10 +429,8 @@ if ("undefined" == typeof(cardbookCardParser)) {
 								}
 								// for users that shares Thunderbird contacts between profiles, it's good to automatically record Thunderbird custom fields
 								if (vCardDataArrayHeader == "X-CUSTOM1" || vCardDataArrayHeader == "X-CUSTOM2" || vCardDataArrayHeader == "X-CUSTOM3" || vCardDataArrayHeader == "X-CUSTOM4") {
-									var stringBundleService = Services.strings;
-									var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+									var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 									var customLabel = strBundle.GetStringFromName("customLabel");
-									var cardbookPrefService = new cardbookPreferenceService(this.dirPrefId);
 									var found = false
 									for (var i = 0; i < cardbookRepository.customFields['pers'].length; i++) {
 										if (cardbookRepository.customFields['pers'][i][0] == vCardDataArrayHeader) {
@@ -442,7 +439,7 @@ if ("undefined" == typeof(cardbookCardParser)) {
 										}
 									}
 									if (!found) {
-										cardbookPrefService.setCustomFields('pers', cardbookRepository.customFields['pers'].length, vCardDataArrayHeader + ":" + customLabel + vCardDataArrayHeader.replace("X-CUSTOM", ""));
+										cardbookPreferences.setCustomFields('pers', cardbookRepository.customFields['pers'].length, vCardDataArrayHeader + ":" + customLabel + vCardDataArrayHeader.replace("X-CUSTOM", ""));
 										cardbookRepository.loadCustoms();
 									}
 								}

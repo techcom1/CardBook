@@ -55,8 +55,7 @@ cardbookAutocompleteResult.prototype = {
 			this.listUpdated = true;
 				return this.getValueAt(aIndex);
 			} else if (this.getTypeAt(aIndex) == "CB_CAT") {
-			var prefs = Services.prefs;
-			var useOnlyEmail = prefs.getBoolPref("extensions.cardbook.useOnlyEmail");
+			var useOnlyEmail = cardbookPreferences.getBoolPref("extensions.cardbook.useOnlyEmail");
 			var myCardList = [] ;
 			var myDirPrefId = this.getDirPrefIdAt(aIndex);
 			var myCategory = this.getValueAt(aIndex);
@@ -241,9 +240,8 @@ cardbookAutocompleteSearch.prototype = {
 	},
 
 	loadRestrictions: function (aMsgIdentity) {
-		var cardbookPrefService = new cardbookPreferenceService();
 		var result = [];
-		result = cardbookPrefService.getAllRestrictions();
+		result = cardbookPreferences.getAllRestrictions();
 		this.ABInclRestrictions = {};
 		this.ABExclRestrictions = {};
 		this.catInclRestrictions = {};
@@ -308,11 +306,10 @@ cardbookAutocompleteSearch.prototype = {
 		
 		aSearchString = aSearchString.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase();
 
-		var prefs = Services.prefs;
-		this.debugMode = prefs.getBoolPref("extensions.cardbook.debugMode");
-		this.sortUsePopularity = prefs.getBoolPref("extensions.cardbook.autocompleteSortByPopularity");
-		this.showAddressbookComments = prefs.getBoolPref("extensions.cardbook.autocompleteShowAddressbook");
-		this.useOnlyEmail = prefs.getBoolPref("extensions.cardbook.useOnlyEmail");
+		this.debugMode = cardbookPreferences.getBoolPref("extensions.cardbook.debugMode");
+		this.sortUsePopularity = cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteSortByPopularity");
+		this.showAddressbookComments = cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteShowAddressbook");
+		this.useOnlyEmail = cardbookPreferences.getBoolPref("extensions.cardbook.useOnlyEmail");
 
 		var mySearchParamObj = JSON.parse(aSearchParam);
 		this.loadRestrictions(mySearchParamObj.idKey);
@@ -405,13 +402,11 @@ cardbookAutocompleteSearch.prototype = {
 			if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] != "SEARCH") {
 				var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
 				if (cardbookRepository.verifyABRestrictions(myDirPrefId, "allAddressBooks", this.ABExclRestrictions, this.ABInclRestrictions)) {
-					var cardbookPrefService = new cardbookPreferenceService(myDirPrefId);
-					var myStyle = cardbookRepository.getIconType(cardbookPrefService.getType()) + " color_" + myDirPrefId;
+					var myStyle = cardbookRepository.getIconType(cardbookPreferences.getType(myDirPrefId)) + " color_" + myDirPrefId;
 					var myComment = null;
 					if (this.showAddressbookComments) {
 						// display addressbook name in the comments column
-						var cardbookPrefService = new cardbookPreferenceService(myDirPrefId);
-						myComment = cardbookPrefService.getName();
+						myComment = cardbookPreferences.getName(myDirPrefId);
 					}
 					for (var j = 0; j < cardbookRepository.cardbookAccountsCategories[myDirPrefId].length; j++) {
 						var myCategory = cardbookRepository.cardbookAccountsCategories[myDirPrefId][j];
@@ -442,7 +437,7 @@ cardbookAutocompleteSearch.prototype = {
 		var ldapSearchURIs = [];
 		
 		// add Thunderbird standard emails
-		if (!prefs.getBoolPref("extensions.cardbook.exclusive")) {
+		if (!cardbookPreferences.getBoolPref("extensions.cardbook.exclusive")) {
 			var contactManager = MailServices.ab;
 			var contacts = contactManager.directories;
 			var myStyle = "standard-abook";
@@ -545,10 +540,8 @@ cardbookAutocompleteSearch.prototype = {
 			} else {
 				context = {};
 				
-				var prefs = Services.prefs;
-
 				context.style = aStyle;
-				context.showAddressbookComments = prefs.getBoolPref("extensions.cardbook.autocompleteShowAddressbook");
+				context.showAddressbookComments = cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteShowAddressbook");
 				
 				context.bookName = aDirEntry.name;
 				context.book = MailServices.ab.getDirectory(uri).QueryInterface(Components.interfaces.nsIAbLDAPDirectory);

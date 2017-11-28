@@ -140,8 +140,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 			var searchAB = document.getElementById('CardBookABMenulist').value;
 			var searchCategory = document.getElementById('categoriesMenulist').value;
 			var searchInput = document.getElementById("peopleSearchInput").value.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase();
-			var prefs = Services.prefs;
-			var useOnlyEmail = prefs.getBoolPref("extensions.cardbook.useOnlyEmail");
+			var useOnlyEmail = cardbookPreferences.getBoolPref("extensions.cardbook.useOnlyEmail");
 			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
 				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5]) {
 					var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
@@ -412,8 +411,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 					}
 				}
 			}
-			var prefs = Services.prefs;
-			if (!prefs.getBoolPref("extensions.cardbook.exclusive")) {
+			if (!cardbookPreferences.getBoolPref("extensions.cardbook.exclusive")) {
 				var contactManager = MailServices.ab;
 				var contacts = contactManager.directories;
 				while ( contacts.hasMoreElements() ) {
@@ -564,13 +562,12 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 				var myCard = listOfUid[0][1];
 				var myOutCard = new cardbookCardParser();
 				cardbookUtils.cloneCard(myCard, myOutCard);
-				var cardbookPrefService = new cardbookPreferenceService(myCard.dirPrefId);
 				if (myOutCard.isAList) {
 					var myType = "List";
 				} else {
 					var myType = "Contact";
 				}
-				if (cardbookPrefService.getReadOnly()) {
+				if (cardbookPreferences.getReadOnly(myCard.dirPrefId)) {
 					cardbookUtils.openEditionWindow(myOutCard, "View" + myType);
 				} else {
 					cardbookUtils.openEditionWindow(myOutCard, "Edit" + myType, "cardbook.cardModifiedIndirect");
@@ -615,16 +612,14 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 					if (listOfUid[0][0] == "CATCARDBOOK") {
 						var myAccountArray = listOfUid[0][1].split("::");
 						var myDirPrefId = myAccountArray[0];
-						var cardbookPrefService = new cardbookPreferenceService(myDirPrefId);
-						if (cardbookPrefService.getReadOnly()) {
+						if (cardbookPreferences.getReadOnly(myDirPrefId)) {
 							wdw_cardbookContactsSidebar.disableCardModification();
 						} else {
 							wdw_cardbookContactsSidebar.enableCardModification();
 						}
 					} else if (listOfUid[0][0] == "CARDCARDBOOK" || listOfUid[0][0] == "LISTCARDBOOK") {
 						var myDirPrefId = listOfUid[0][1].dirPrefId;
-						var cardbookPrefService = new cardbookPreferenceService(myDirPrefId);
-						if (cardbookPrefService.getReadOnly()) {
+						if (cardbookPreferences.getReadOnly(myDirPrefId)) {
 							wdw_cardbookContactsSidebar.disableCardModification();
 						} else {
 							wdw_cardbookContactsSidebar.enableCardModification();
@@ -671,9 +666,8 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 		loadRestrictions: function () {
 			var outerID = content.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsIDOMWindowUtils).outerWindowID;
 			var msgIdentity = cardbookRepository.composeMsgIdentity[outerID];
-			var cardbookPrefService = new cardbookPreferenceService();
 			var result = [];
-			result = cardbookPrefService.getAllRestrictions();
+			result = cardbookPreferences.getAllRestrictions();
 			wdw_cardbookContactsSidebar.ABInclRestrictions = {};
 			wdw_cardbookContactsSidebar.ABExclRestrictions = {};
 			wdw_cardbookContactsSidebar.catInclRestrictions = {};
@@ -716,8 +710,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 			} else {
 				var ABDefaultValue = 0;
 			}
-			var prefs = Services.prefs;
-			cardbookElementTools.loadAddressBooks("CardBookABMenupopup", "CardBookABMenulist", ABDefaultValue, prefs.getBoolPref("extensions.cardbook.exclusive"), true, true, true,
+			cardbookElementTools.loadAddressBooks("CardBookABMenupopup", "CardBookABMenulist", ABDefaultValue, cardbookPreferences.getBoolPref("extensions.cardbook.exclusive"), true, true, true,
 													wdw_cardbookContactsSidebar.ABInclRestrictions, wdw_cardbookContactsSidebar.ABExclRestrictions);
 			wdw_cardbookContactsSidebar.onABChange();
 			

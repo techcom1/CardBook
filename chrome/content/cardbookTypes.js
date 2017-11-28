@@ -7,8 +7,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 		
 		getIMPPLineForCode: function (aCode) {
 			var serviceLine = [];
-			var cardbookPrefService = new cardbookPreferenceService();
-			myPrefResults = cardbookPrefService.getAllIMPPs();
+			myPrefResults = cardbookPreferences.getAllIMPPs();
 			for (var i = 0; i < myPrefResults.length; i++) {
 				if (aCode.toLowerCase() == myPrefResults[i][0].toLowerCase()) {
 					serviceLine = [myPrefResults[i][0], myPrefResults[i][1], myPrefResults[i][2]];
@@ -20,8 +19,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 
 		getIMPPLineForProtocol: function (aProtocol) {
 			var serviceLine = [];
-			var cardbookPrefService = new cardbookPreferenceService();
-			myPrefResults = cardbookPrefService.getAllIMPPs();
+			myPrefResults = cardbookPreferences.getAllIMPPs();
 			for (var i = 0; i < myPrefResults.length; i++) {
 				if (aProtocol.toLowerCase() == myPrefResults[i][2].toLowerCase()) {
 					serviceLine = [myPrefResults[i][0], myPrefResults[i][1], myPrefResults[i][2]];
@@ -54,8 +52,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 
 		loadIMPPs: function (aArray) {
 			var myPrefResults = [];
-			var cardbookPrefService = new cardbookPreferenceService();
-			myPrefResults = cardbookPrefService.getAllIMPPs();
+			myPrefResults = cardbookPreferences.getAllIMPPs();
 			var serviceCode = "";
 			var serviceProtocol = "";
 			for (var i = 0; i < aArray.length; i++) {
@@ -331,7 +328,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 		},
 
 		display40: function (aVersion) {
-			var usePreferenceValue = Services.prefs.getBoolPref("extensions.cardbook.usePreferenceValue");
+			var usePreferenceValue = cardbookPreferences.getBoolPref("extensions.cardbook.usePreferenceValue");
 			var typesList = [ 'email', 'tel', 'impp', 'url', 'adr' ];
 			for (var i in typesList) {
 				if (document.getElementById(typesList[i] + 'Groupbox')) {
@@ -364,8 +361,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 		constructOrg: function (aReadOnly, aOrgValue, aTitleValue, aRoleValue) {
 			var strBundle = document.getElementById("cardbook-strings");
 			var aOrigBox = document.getElementById('orgRows');
-			var prefs = Services.prefs;
-			var orgStructure = prefs.getComplexValue("extensions.cardbook.orgStructure", Components.interfaces.nsISupportsString).data;
+			var orgStructure = cardbookPreferences.getStringPref("extensions.cardbook.orgStructure");
 			var currentRow;
 			if (orgStructure != "") {
 				var myOrgStructure = cardbookUtils.unescapeArray(cardbookUtils.escapeString(orgStructure).split(";"));
@@ -489,16 +485,15 @@ if ("undefined" == typeof(cardbookTypes)) {
 			
 			var aHBox = cardbookElementTools.addHBox(aType, aIndex, aOrigBox);
 
-			var cardbookPrefService = new cardbookPreferenceService();
 			var myPrefTypes = [];
-			myPrefTypes = cardbookPrefService.getAllTypesByType(aType);
+			myPrefTypes = cardbookPreferences.getAllTypesByType(aType);
 			var myInputTypes = [];
 			myInputTypes = cardbookUtils.getOnlyTypesFromTypes(aInputTypes);
 			var myOthersTypes = cardbookUtils.getNotTypesFromTypes(aInputTypes);
 			
 			var aPrefButton = cardbookElementTools.addPrefStar(aHBox, aType, aIndex, cardbookUtils.getPrefBooleanFromTypes(aInputTypes))
 			
-			cardbookTypes.addLabel(aHBox, aType + '_' + aIndex + '_prefWeightBoxLabel', cardbookPrefService.getPrefValueLabel(), aType + '_' + aIndex + '_prefWeightBox', {tooltip: strBundle.getString("prefWeightTooltip")});
+			cardbookTypes.addLabel(aHBox, aType + '_' + aIndex + '_prefWeightBoxLabel', cardbookPreferences.getPrefValueLabel(), aType + '_' + aIndex + '_prefWeightBox', {tooltip: strBundle.getString("prefWeightTooltip")});
 			cardbookElementTools.addTextbox(aHBox, aType + '_' + aIndex + '_prefWeightBox', cardbookUtils.getPrefValueFromTypes(aInputTypes, document.getElementById('versionTextBox').value), {size: "5"});
 			if (aPrefButton.getAttribute('haspref')) {
 				document.getElementById(aType + '_' + aIndex + '_prefWeightBoxLabel').disabled = false;
@@ -508,7 +503,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 				document.getElementById(aType + '_' + aIndex + '_prefWeightBox').disabled = true;
 			}
 
-			var usePreferenceValue = Services.prefs.getBoolPref("extensions.cardbook.usePreferenceValue");
+			var usePreferenceValue = cardbookPreferences.getBoolPref("extensions.cardbook.usePreferenceValue");
 			if (document.getElementById('versionTextBox').value === "4.0" && usePreferenceValue) {
 				document.getElementById(aType + '_' + aIndex + '_prefWeightBoxLabel').removeAttribute('hidden');
 				document.getElementById(aType + '_' + aIndex + '_prefWeightBox').removeAttribute('hidden');
@@ -690,10 +685,9 @@ if ("undefined" == typeof(cardbookTypes)) {
 			aRow.setAttribute('align', 'center');
 			var myInputTypes = [];
 			myInputTypes = cardbookUtils.getOnlyTypesFromTypes(aInputTypes);
-			var cardbookPrefService = new cardbookPreferenceService();
 			var myDisplayedTypes = [];
 			for (let i = 0; i < myInputTypes.length; i++) {
-				myDisplayedTypes.push(cardbookPrefService.getTypeLabel(aType, myInputTypes[i]));
+				myDisplayedTypes.push(cardbookPreferences.getTypeLabel(aType, myInputTypes[i]));
 			}
 			if (aPgType[0]) {
 				myDisplayedTypes.push(aPgType[0]);
@@ -781,10 +775,9 @@ if ("undefined" == typeof(cardbookTypes)) {
 				if (aType == "url" || aType == "email" || aType == "adr") {
 					myValueTextbox.setAttribute('link', 'true');
 				} else if (aType == "tel") {
-					var prefs = Services.prefs;
 					var telProtocol = "";
 					try {
-						var telProtocol = prefs.getComplexValue("extensions.cardbook.tels.0", Components.interfaces.nsISupportsString).data;
+						var telProtocol = cardbookPreferences.getStringPref("extensions.cardbook.tels.0");
 						myValueTextbox.setAttribute('link', 'true');
 					}
 					catch(e) {
@@ -862,9 +855,8 @@ if ("undefined" == typeof(cardbookTypes)) {
 					}
 				}
 			} else if (aCard.version == "3.0") {
-				var prefs = Services.prefs;
-				var kindCustom = prefs.getComplexValue("extensions.cardbook.kindCustom", Components.interfaces.nsISupportsString).data;
-				var memberCustom = prefs.getComplexValue("extensions.cardbook.memberCustom", Components.interfaces.nsISupportsString).data;
+				var kindCustom = cardbookPreferences.getStringPref("extensions.cardbook.kindCustom");
+				var memberCustom = cardbookPreferences.getStringPref("extensions.cardbook.memberCustom");
 				for (var i = 0; i < aCard.others.length; i++) {
 					var localDelim1 = aCard.others[i].indexOf(":",0);
 					if (localDelim1 >= 0) {

@@ -1,0 +1,11 @@
+<!ENTITY categoriesPicker.label "Kategorijos filtras:">
+<!ENTITY categoriesPicker.accesskey "t">
+<!ENTITY editAddrBookCard.label "Keisti">
+<!ENTITY editAddrBookCard.accesskey "K">
+<!ENTITY searchContacts.label "Ieškoti:">
+<!ENTITY searchContacts.accesskey "l">
+<!ENTITY name.label "Vardas">
+<!ENTITY addtoReplytoFieldMenu.label "Pridėti į Atgalinio adreso“ lauką">
+<!ENTITY addtoReplytoFieldMenu.accesskey "t">
+<!ENTITY replytoButton.label "Pridėti prie Atgalinio adreso">
+<!ENTITY replytoButton.accesskey "l">

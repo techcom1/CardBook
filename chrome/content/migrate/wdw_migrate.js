@@ -8,10 +8,8 @@ if ("undefined" == typeof(wdw_migrate)) {
 
 		writeCustomToPreference: function () {
 			var myType = 'pers';
-			var stringBundleService = Services.strings;
-			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+			var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 			var customLabel = strBundle.GetStringFromName("customLabel");
-			var cardbookPrefService = new cardbookPreferenceService();
 			result = cardbookRepository.customFields[myType];
 			var myCount = result.length;
 			for (var i = 0; i < wdw_migrate.customMap.length; i++) {
@@ -25,7 +23,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 						}
 					}
 					if (!found) {
-						cardbookPrefService.setCustomFields(myType, myCount, myCode + ":" + customLabel + wdw_migrate.customMap[i][0]);
+						cardbookPreferences.setCustomFields(myType, myCount, myCode + ":" + customLabel + wdw_migrate.customMap[i][0]);
 						myCount++;
 					}
 				}

@@ -5,7 +5,7 @@ if ("undefined" == typeof(cardbookObserver)) {
 		registerAll: function(aPrefObserver) {
 			aPrefObserver.branch = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("extensions.cardbook.");
 			if (!("addObserver" in aPrefObserver.branch)) {
-				aPrefObserver.branch.QueryInterface(Components.interfaces.nsIPrefBranch2);
+				aPrefObserver.branch.QueryInterface(Components.interfaces.nsIPrefBranch);
 			}
 			aPrefObserver.branch.addObserver("", aPrefObserver, false);
 		},

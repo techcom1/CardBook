@@ -71,7 +71,8 @@ if ("undefined" == typeof(ovl_synchro)) {
 			prefs.setCharPref("eventEntryTitle", "");
 			prefs.setCharPref("eventEntryTime", "00:00");
 			prefs.setBoolPref("eventEntryWholeDay", false);
-			prefs.setCharPref("calendarEntryAlarm", "7");
+			prefs.setCharPref("calendarEntryAlarm", "168");
+			prefs.setBoolPref("calendarEntryAlarmMigrated", false);
 			prefs.setCharPref("calendarEntryCategories", "");
 			
 			prefs.setBoolPref("viewABPane", true);
@@ -79,45 +80,41 @@ if ("undefined" == typeof(ovl_synchro)) {
 			
 			prefs.setCharPref("accountsShown", "all");
 			prefs.setCharPref("uncategorizedCards", "");
-			prefs.setCharPref("addonVersion", "24.2");
+			prefs.setCharPref("addonVersion", "24.3");
 		},
 
 		lEventTimerSync : { notify: function(lTimerSync) {
 			if (!cardbookRepository.firstLoad) {
 				// setting uncategorizedCards
-				var prefs = Services.prefs;
 				try {
-					cardbookRepository.cardbookUncategorizedCards = prefs.getComplexValue("extensions.cardbook.uncategorizedCards", Components.interfaces.nsISupportsString).data;
+					cardbookRepository.cardbookUncategorizedCards = cardbookPreferences.getStringPref("extensions.cardbook.uncategorizedCards");
 					if (cardbookRepository.cardbookUncategorizedCards == "") {
 						throw "CardBook no uncategorizedCards";
 					}
 				}
 				catch (e) {
-					let stringBundleService = Services.strings;
-					let strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+					let strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 					cardbookRepository.cardbookUncategorizedCards = strBundle.GetStringFromName("uncategorizedCards");
-					var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-					str.data = cardbookRepository.cardbookUncategorizedCards;
-					prefs.setComplexValue("extensions.cardbook.uncategorizedCards", Components.interfaces.nsISupportsString, str);
+					cardbookPreferences.setStringPref("extensions.cardbook.uncategorizedCards", cardbookRepository.cardbookUncategorizedCards);
 				}
 				// setting preferEmailPref and preferIMPPPref for getting usefull emails and impps
-				cardbookRepository.preferEmailPref = prefs.getBoolPref("extensions.cardbook.preferEmailPref");
-				cardbookRepository.preferIMPPPref = prefs.getBoolPref("extensions.cardbook.preferIMPPPref");
+				cardbookRepository.preferEmailPref = cardbookPreferences.getBoolPref("extensions.cardbook.preferEmailPref");
+				cardbookRepository.preferIMPPPref = cardbookPreferences.getBoolPref("extensions.cardbook.preferIMPPPref");
 
 				// setting addonVersion, userAgent and prodid
-				cardbookRepository.addonVersion = prefs.getComplexValue("extensions.cardbook.addonVersion", Components.interfaces.nsISupportsString).data;
+				cardbookRepository.addonVersion = cardbookPreferences.getStringPref("extensions.cardbook.addonVersion");
 				cardbookRepository.userAgent = "Thunderbird CardBook/" + cardbookRepository.addonVersion;
 				cardbookRepository.prodid = "-//Thunderbird.org/NONSGML Thunderbird CardBook V"+ cardbookRepository.addonVersion + "//EN";
 
 				// setting currentTypes for having lookups
-				var cardbookPrefService = new cardbookPreferenceService();
-				cardbookRepository.currentTypes = cardbookPrefService.getAllTypesCurrent();
+				cardbookRepository.currentTypes = cardbookPreferences.getAllTypesCurrent();
 
 				// migration functions (should be removed)
 				// removed : cardbookRepository.setSolveConflicts();
 				cardbookRepository.setCollected();
 				cardbookRepository.setTypes();
 				cardbookRepository.loadCustoms();
+				cardbookRepository.setCalendarEntryAlarm();
 				
 				// observers are needed not only UI but also for synchro
 				// there is no unregister launched
@@ -138,6 +135,9 @@ if ("undefined" == typeof(ovl_synchro)) {
 		}
 
 	};
+
+	var loader = Services.scriptloader;
+	loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");
 
 	// need to launch it a bit later
 	if (!cardbookRepository.firstLoad) {

@@ -753,12 +753,11 @@ if ("undefined" == typeof(cardbookUtils)) {
 		getDisplayedName: function(aNewN, aNewOrg) {
 			var fnFormula = "";
 			var result =  "";
-			var prefs = Services.prefs;
-			fnFormula = prefs.getComplexValue("extensions.cardbook.fnFormula", Components.interfaces.nsISupportsString).data;
+			fnFormula = cardbookPreferences.getStringPref("extensions.cardbook.fnFormula");
 			if (fnFormula == "") {
 				fnFormula = cardbookRepository.defaultFnFormula;
 			}
-			var orgStructure = prefs.getComplexValue("extensions.cardbook.orgStructure", Components.interfaces.nsISupportsString).data;
+			var orgStructure = cardbookPreferences.getStringPref("extensions.cardbook.orgStructure");
 
 			// personal informations part
 			var fnFormulaArray = cardbookUtils.escapeString1(fnFormula).split(')');
@@ -849,9 +848,8 @@ if ("undefined" == typeof(cardbookUtils)) {
 					aCard.member.push(aMemberLines[i][0]);
 				}
 			} else if (aCard.version == "3.0") {
-				var prefs = Services.prefs;
-				var kindCustom = prefs.getComplexValue("extensions.cardbook.kindCustom", Components.interfaces.nsISupportsString).data;
-				var memberCustom = prefs.getComplexValue("extensions.cardbook.memberCustom", Components.interfaces.nsISupportsString).data;
+				var kindCustom = cardbookPreferences.getStringPref("extensions.cardbook.kindCustom");
+				var memberCustom = cardbookPreferences.getStringPref("extensions.cardbook.memberCustom");
 				for (var i = 0; i < aCard.others.length; i++) {
 					localDelim1 = aCard.others[i].indexOf(":",0);
 					if (localDelim1 >= 0) {
@@ -1708,8 +1706,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 		isFileAlreadyOpen: function(aAccountPath) {
 			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
 				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] == "FILE") {
-					var cardbookPrefService = new cardbookPreferenceService(cardbookRepository.cardbookAccounts[i][4]);
-					if (cardbookPrefService.getUrl() == aAccountPath) {
+					if (cardbookPreferences.getUrl(cardbookRepository.cardbookAccounts[i][4]) == aAccountPath) {
 						return true;
 					}
 				}
@@ -1720,8 +1717,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 		isDirectoryAlreadyOpen: function(aAccountPath) {
 			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
 				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] == "DIRECTORY") {
-					var cardbookPrefService = new cardbookPreferenceService(cardbookRepository.cardbookAccounts[i][4]);
-					if (cardbookPrefService.getUrl() == aAccountPath) {
+					if (cardbookPreferences.getUrl(cardbookRepository.cardbookAccounts[i][4]) == aAccountPath) {
 						return true;
 					}
 				}
@@ -1792,8 +1788,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		addEtag: function(aCard, aEtag) {
 			if (aEtag != null && aEtag !== undefined && aEtag != "") {
-				var cardbookPrefService = new cardbookPreferenceService(aCard.dirPrefId);
-				var myPrefType = cardbookPrefService.getType();
+				var myPrefType = cardbookPreferences.getType(aCard.dirPrefId);
 				if (myPrefType != "FILE" || myPrefType != "CACHE" || myPrefType != "DIRECTORY" || myPrefType != "LOCALDB") {
 					cardbookUtils.nullifyEtag(aCard);
 					aCard.others.push("X-THUNDERBIRD-ETAG:" + aEtag);
@@ -2053,8 +2048,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 		},
 
 		getPrefNameFromPrefId: function(aPrefId) {
-			let cardbookPrefService = new cardbookPreferenceService(aPrefId);
-			return cardbookPrefService.getName();
+			return cardbookPreferences.getName(aPrefId);
 		},
 
 		getFreeFileName: function(aDirName, aName, aId, aExtension) {
@@ -2092,8 +2086,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			if (aCard.cacheuri != "") {
 				return aCard.cacheuri;
 			} else if (aPrefIdType === "DIRECTORY") {
-				var cardbookPrefService = new cardbookPreferenceService(aCard.dirPrefId);
-				var myDirPrefIdUrl = cardbookPrefService.getUrl();
+				var myDirPrefIdUrl = cardbookPreferences.getUrl(aCard.dirPrefId);
 				aCard.cacheuri = cardbookUtils.getFileNameForCard(myDirPrefIdUrl, aCard.fn, aCard.uid);
 			} else {
 				if (aCard.cardurl != null && aCard.cardurl !== undefined && aCard.cardurl != "") {
@@ -2118,16 +2111,6 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		randomColor: function(brightness) {
 			return '#' + cardbookUtils.randomChannel(brightness) + cardbookUtils.randomChannel(brightness) + cardbookUtils.randomChannel(brightness);
-		},
-
-		isMyAccountEnabled: function(aDirPrefId) {
-			var cardbookPrefService = new cardbookPreferenceService(aDirPrefId);
-			return cardbookPrefService.getEnabled();
-		},
-
-		isMyAccountReadOnly: function(aDirPrefId) {
-			var cardbookPrefService = new cardbookPreferenceService(aDirPrefId);
-			return cardbookPrefService.getReadOnly();
 		},
 
 		getPrefAddressFromCard: function (aCard, aType, aAddressPref) {
@@ -2260,8 +2243,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 						}
 					}
 				} else if (aList.version == "3.0") {
-					var prefs = Services.prefs;
-					var memberCustom = prefs.getComplexValue("extensions.cardbook.memberCustom", Components.interfaces.nsISupportsString).data;
+					var memberCustom = cardbookPreferences.getStringPref("extensions.cardbook.memberCustom");
 					for (var k = 0; k < aList.others.length; k++) {
 						var localDelim1 = aList.others[k].indexOf(":",0);
 						if (localDelim1 >= 0) {
@@ -2286,8 +2268,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			if (aOnlyEmail) {
 				var useOnlyEmail = aOnlyEmail;
 			} else {
-				var prefs = Services.prefs;
-				var useOnlyEmail = prefs.getBoolPref("extensions.cardbook.useOnlyEmail");
+				var useOnlyEmail = cardbookPreferences.getBoolPref("extensions.cardbook.useOnlyEmail");
 			}
 			var result = [];
 			for (var i = 0; i < aListOfCards.length; i++) {
@@ -2306,8 +2287,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			if (aOnlyEmail) {
 				var useOnlyEmail = aOnlyEmail;
 			} else {
-				var prefs = Services.prefs;
-				var useOnlyEmail = prefs.getBoolPref("extensions.cardbook.useOnlyEmail");
+				var useOnlyEmail = cardbookPreferences.getBoolPref("extensions.cardbook.useOnlyEmail");
 			}
 			var result = {};
 			result.emptyResults = [];
@@ -2381,8 +2361,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 				cardbookUtils.formatStringForOutput("invalidURL", [aUrl], "Error");
 				return;
 			}
-			var prefs = Services.prefs;
-			var localizeTarget = prefs.getComplexValue("extensions.cardbook.localizeTarget", Components.interfaces.nsISupportsString).data;
+			var localizeTarget = cardbookPreferences.getStringPref("extensions.cardbook.localizeTarget");
 			if (localizeTarget === "in") {
 				let tabmail = document.getElementById("tabmail");
 				if (!tabmail) {
@@ -2438,8 +2417,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			if (aCard.version == "4.0") {
 				return (aCard.kind.toLowerCase() == 'group');
 			} else if (aCard.version == "3.0") {
-				var prefs = Services.prefs;
-				var kindCustom = prefs.getComplexValue("extensions.cardbook.kindCustom", Components.interfaces.nsISupportsString).data;
+				var kindCustom = cardbookPreferences.getStringPref("extensions.cardbook.kindCustom");
 				for (var i = 0; i < aCard.others.length; i++) {
 					var localDelim1 = aCard.others[i].indexOf(":",0);
 					if (localDelim1 >= 0) {
@@ -2491,9 +2469,8 @@ if ("undefined" == typeof(cardbookUtils)) {
 					}
 				}
 			}
-			var cardbookPrefService = new cardbookPreferenceService();
 			for (var i = 0; i < cardbookRepository.allColumns.arrayColumns.length; i++) {
-				var myPrefTypes = cardbookPrefService.getAllTypesByType(cardbookRepository.allColumns.arrayColumns[i][0]);
+				var myPrefTypes = cardbookPreferences.getAllTypesByType(cardbookRepository.allColumns.arrayColumns[i][0]);
 				for (var j = 0; j < myPrefTypes.length; j++) {
 					for (var k = 0; k < cardbookRepository.allColumns.arrayColumns[i][1].length; k++) {
 						result.push([cardbookRepository.allColumns.arrayColumns[i][0] + "." + k + "." + myPrefTypes[j][0],
@@ -2566,9 +2543,8 @@ if ("undefined" == typeof(cardbookUtils)) {
 				var catExclRestrictions = {};
 
 				function _loadRestrictions(aIdentityKey) {
-					var cardbookPrefService = new cardbookPreferenceService();
 					var result = [];
-					result = cardbookPrefService.getAllRestrictions();
+					result = cardbookPreferences.getAllRestrictions();
 					ABInclRestrictions = {};
 					ABExclRestrictions = {};
 					catInclRestrictions = {};
@@ -2666,10 +2642,9 @@ if ("undefined" == typeof(cardbookUtils)) {
 					
 					myMenu.disabled = true;
 					if (aCard != null && aCard !== undefined && aCard != "") {
-						var prefs = Services.prefs;
 						var telProtocolLine = "";
 						try {
-							var telProtocolLine = prefs.getComplexValue("extensions.cardbook.tels.0", Components.interfaces.nsISupportsString).data;
+							var telProtocolLine = cardbookPreferences.getStringPref("extensions.cardbook.tels.0");
 						}
 						catch(e) {
 						}
@@ -2796,8 +2771,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 		setCardUUID: function (aCard) {
 			var result = cardbookUtils.getUUID();
 			if (aCard.dirPrefId != null && aCard.dirPrefId !== undefined && aCard.dirPrefId != "") {
-				var cardbookPrefService = new cardbookPreferenceService(aCard.dirPrefId);
-				if (cardbookPrefService.getUrnuuid()) {
+				if (cardbookPreferences.getUrnuuid(aCard.dirPrefId)) {
 					aCard.uid = "urn:uuid:" + result;
 				} else {
 					aCard.uid = result;
@@ -2834,8 +2808,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 		},
 
 		formatStringForOutput: function(aStringCode, aValuesArray, aErrorCode) {
-			var stringBundleService = Services.strings;
-			var strBundle = stringBundleService.createBundle("chrome://cardbook/locale/cardbook.properties");
+			var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 			if (aValuesArray) {
 				if (aErrorCode) {
 					wdw_cardbooklog.updateStatusProgressInformation(strBundle.formatStringFromName(aStringCode, aValuesArray, aValuesArray.length), aErrorCode);
