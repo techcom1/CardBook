@@ -267,7 +267,7 @@
 <!ENTITY calendarEntryTimeAccesskey "В">
 <!ENTITY calendarEntryWholeDayLabel "Событие на весь день">
 <!ENTITY calendarEntryWholeDayAccesskey "д">
-<!ENTITY calendarEntryAlarmLabel "Количество дней до события для начала вывода оповещений (??Alarm(s) to n hours before calendar event??)">
+<!ENTITY calendarEntryAlarmLabel "??Alarm(s) to n hours for calendar events (Example: 4,+1)??">
 <!ENTITY calendarEntryAlarmTooltip "Укажите, за сколько дней до дня рождения Lightning должен показать оповещение. Без даты. Если поле пустое, то оповещения не будет.?? If you want multiple alarms, enter the alarms in a comma separated list.??">
 <!ENTITY calendarEntryAlarmAccesskey "д">
 <!ENTITY calendarEntryCategoriesLabel "Категория (категории) для событий календаря">

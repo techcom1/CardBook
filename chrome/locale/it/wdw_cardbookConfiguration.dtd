@@ -268,7 +268,7 @@
 <!ENTITY calendarEntryTimeAccesskey "m">
 <!ENTITY calendarEntryWholeDayLabel "Evento del calendario per tutto il giorno">
 <!ENTITY calendarEntryWholeDayAccesskey "y">
-<!ENTITY calendarEntryAlarmLabel "Avviso n giorni prima dell'evento del calendario (??Alarm(s) to n hours before calendar event??)">
+<!ENTITY calendarEntryAlarmLabel "??Alarm(s) to n hours for calendar events (Example: 4,+1)??">
 <!ENTITY calendarEntryAlarmTooltip "Indica il numero di giorni precedenti al compleanno che Lightning utilizzerà per inviare l'avviso. Senza data. Se il campo è vuoto, non viene inviato nessun avviso.?? If you want multiple alarms, enter the alarms in a comma separated list.??">
 <!ENTITY calendarEntryAlarmAccesskey "n">
 <!ENTITY calendarEntryCategoriesLabel "Categoria/e per evento del calendario">

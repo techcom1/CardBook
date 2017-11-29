@@ -267,7 +267,7 @@
 <!ENTITY calendarEntryTimeAccesskey "s">
 <!ENTITY calendarEntryWholeDayLabel "Událost v kalendáři na  celý den">
 <!ENTITY calendarEntryWholeDayAccesskey "e">
-<!ENTITY calendarEntryAlarmLabel "Alarm(y) n hodin před událostí v kalendáři">
+<!ENTITY calendarEntryAlarmLabel "Alarm(y) n hodin pro událostí v kalendáři (Příklad: 4,+1)">
 <!ENTITY calendarEntryAlarmTooltip "Zadejte, kolik dnů před událostí vám má upozornění Lightningu události připomenout. Bez data. Pokud je pole prázdné, nebude žádné upozornění. Pokud chcete vícero alarmů, zadejte je oddělené čárkami.">
 <!ENTITY calendarEntryAlarmAccesskey "p">
 <!ENTITY calendarEntryCategoriesLabel "Kategorie pro událost v kalendáři">

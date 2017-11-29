@@ -214,8 +214,15 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			var lcalendarEntryAlarm = cardbookPreferences.getStringPref("extensions.cardbook.calendarEntryAlarm");
 			var lcalendarEntryAlarmArray = lcalendarEntryAlarm.split(',');
 			for (var i = 0; i < lcalendarEntryAlarmArray.length; i++) {
+				// default before alarm before event
+				var sign = "-";
+				lcalendarEntryAlarmArray[i] = lcalendarEntryAlarmArray[i].replace(/\-/g, "");
+				if (lcalendarEntryAlarmArray[i].includes("+")) {
+					sign = "";
+					lcalendarEntryAlarmArray[i] = lcalendarEntryAlarmArray[i].replace(/\+/g, "");
+				}
 				if (!isNaN(parseInt(lcalendarEntryAlarmArray[i]))) {
-					iCalString += "BEGIN:VALARM\nACTION:DISPLAY\nTRIGGER:-PT" + parseInt(lcalendarEntryAlarmArray[i]) + "H\nEND:VALARM\n";
+					iCalString += "BEGIN:VALARM\nACTION:DISPLAY\nTRIGGER:" + sign + "PT" + parseInt(lcalendarEntryAlarmArray[i]) + "H\nEND:VALARM\n";
 				}
 			}
 

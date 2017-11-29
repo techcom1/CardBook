@@ -267,7 +267,7 @@
 <!ENTITY calendarEntryTimeAccesskey "e">
 <!ENTITY calendarEntryWholeDayLabel "Entrées du calendrier sur toute la journée">
 <!ENTITY calendarEntryWholeDayAccesskey "j">
-<!ENTITY calendarEntryAlarmLabel "Alarme(s) à n heures avant l'anniversaire">
+<!ENTITY calendarEntryAlarmLabel "Alarme(s) à n heures pour les entrées du calendrier (Exemple : 4,+1)">
 <!ENTITY calendarEntryAlarmTooltip "Entrez combien de jours avant l'anniversaire vous voulez être alerté par une alarme. Si le champ est vide alors aucune alarme ne sera mise. Si vous voulez plusieurs alarmes, entrez une liste séparée par des virgules.">
 <!ENTITY calendarEntryAlarmAccesskey "n">
 <!ENTITY calendarEntryCategoriesLabel "Catégorie(s) pour les entrées du calendrier">

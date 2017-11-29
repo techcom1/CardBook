@@ -267,8 +267,8 @@
 <!ENTITY calendarEntryTimeAccesskey "i">
 <!ENTITY calendarEntryWholeDayLabel "Herinnering voor de hele dag">
 <!ENTITY calendarEntryWholeDayAccesskey "h">
-<!ENTITY calendarEntryAlarmLabel "Herinnering x dagen voor gebeurtenis (??Alarm(s) to n hours before calendar event??)">
-<!ENTITY calendarEntryAlarmTooltip "Stel het aantal dagen in vóór de verjaardag waarop Lightning een herinnering moet geven. Indien leeg, dan wordt er geen herinnering gegeven.?? If you want multiple alarms, enter the alarms in a comma separated list.??">
+<!ENTITY calendarEntryAlarmLabel "Herinnering(en) x uren voor gebeurtenis (Voorbeeld: 4,+1)">
+<!ENTITY calendarEntryAlarmTooltip "Stel het aantal uren in vóór de verjaardag waarop Lightning een herinnering moet geven. Indien leeg, dan wordt er geen herinnering gegeven. Als er meerdere alarmeringen gewenst zijn, dan kunnen ze worden gescheiden door komma's.">
 <!ENTITY calendarEntryAlarmAccesskey "H">
 <!ENTITY calendarEntryCategoriesLabel "Categorie(ën) voor herinnering">
 <!ENTITY calendarEntryCategoriesTooltip "Eén of meer categorieën, gescheiden door komma's. Indien leeg, dan is er geen categorie.">

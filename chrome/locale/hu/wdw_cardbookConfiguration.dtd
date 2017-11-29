@@ -266,7 +266,7 @@
 <!ENTITY calendarEntryTimeAccesskey "i">
 <!ENTITY calendarEntryWholeDayLabel "Naptár esemény egész nap">
 <!ENTITY calendarEntryWholeDayAccesskey "e">
-<!ENTITY calendarEntryAlarmLabel "Napok száma előtt naptár esemény értesítése (??Alarm(s) to n hours before calendar event??)">
+<!ENTITY calendarEntryAlarmLabel "??Alarm(s) to n hours for calendar events (Example: 4,+1)??">
 <!ENTITY calendarEntryAlarmTooltip "Adja meg, hogy hány nappal az évforduló előtt emlékeztesse Önt a Lightning kiegészítő program. Dátum nélkül. Ha a mező üres, akkor nem lesz emlékeztető.?? If you want multiple alarms, enter the alarms in a comma separated list.??">
 <!ENTITY calendarEntryAlarmAccesskey "n">
 <!ENTITY calendarEntryCategoriesLabel "Naptári események kategória">
