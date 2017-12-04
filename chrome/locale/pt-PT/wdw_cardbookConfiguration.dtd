@@ -199,8 +199,8 @@
 <!ENTITY requestsTimeoutAccesskey "T">
 <!ENTITY multigetLabel "Para pedidos GET, agrupar cartões por">
 <!ENTITY multigetAccesskey "G">
-<!ENTITY discoveryGroupboxLabel "??Address books discovery??">
-<!ENTITY discoveryWarn "??At every synchronization, a check on the URLs below will be run to search for any new or deleted address books.??">
+<!ENTITY discoveryGroupboxLabel "Descoberta de agendas">
+<!ENTITY discoveryWarn "A todas as sincronizações, uma pesquisa vai verificar se existem novas moradas ou apagadas.">
 <!ENTITY discoveryAccountsGroupboxLabel "Contas">
 <!ENTITY advancedSyncGroupboxLabel "Propriedades avançadas">
 <!ENTITY decodeReportLabel "Descodificar URLs para pedidos de relatório">
@@ -263,8 +263,8 @@
 <!ENTITY calendarEntryTimeAccesskey "c">
 <!ENTITY calendarEntryWholeDayLabel "Evento de calendário do dia inteiro">
 <!ENTITY calendarEntryWholeDayAccesskey "i">
-<!ENTITY calendarEntryAlarmLabel "Alarme para N horas antes do evento">
-<!ENTITY calendarEntryAlarmTooltip "Coloque quantos dias antes o lembrete do Lightning deve acontecer. Sem data, não haverá alarme. Para vários alarmes, colocar virgula para os separar.">
+<!ENTITY calendarEntryAlarmLabel "Alarme para N horas do evento (Exemplo: 4,+1)">
+<!ENTITY calendarEntryAlarmTooltip "Coloque quantos horas o lembrete do Lightning deve acontecer. Sem data, não haverá alarme. Para vários alarmes, colocar virgula para os separar.">
 <!ENTITY calendarEntryAlarmAccesskey "l">
 <!ENTITY calendarEntryCategoriesLabel "Categorias para eventos de calendários">
 <!ENTITY calendarEntryCategoriesTooltip "Uma ou mais categorias, separados por virgula. Campo em branco, não tem categoria.">
