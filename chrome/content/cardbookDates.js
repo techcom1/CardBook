@@ -55,7 +55,7 @@ if ("undefined" == typeof(cardbookDates)) {
 				if (myDate == "WRONGDATE") {
 					return aDateString;
 				} else if (myDate.getFullYear() == "666") {
-					if (Services.appinfo.version >= "57") {
+					if (Services.vc.compare(Services.appinfo.version, "57") > 0) {
 						if (aTargetDateFormat == "0") {
 							var formatter = Services.intl.createDateTimeFormat(undefined, { month: "long", day: "numeric", timeZone: "UTC"});
 						} else {
@@ -69,7 +69,7 @@ if ("undefined" == typeof(cardbookDates)) {
 						return aDateString;
 					}
 				} else {
-					if (Services.appinfo.version >= "57") {
+					if (Services.vc.compare(Services.appinfo.version, "57") > 0) {
 						if (aTargetDateFormat == "0") {
 							var formatter = Services.intl.createDateTimeFormat(undefined, { dateStyle: "long", timeZone: "UTC"});
 						} else {

@@ -15,6 +15,8 @@
 <!ENTITY autocompletionTooltip "Sostituisce la funzionalità standard di autocompletamento degli indirizzi nelle rubriche di Thunderbird con l'autocompletamento dei contatti nelle rubriche in CardBook.">
 <!ENTITY autocompleteSortByPopularityLabel "Ordinare indirizzi email addresses secondo popolarità">
 <!ENTITY autocompleteSortByPopularityAccesskey "p">
+<!ENTITY autocompleteProposeConcatEmailsLabel "??Propose concatenated emails per contact??">
+<!ENTITY autocompleteProposeConcatEmailsAccesskey "c">
 <!ENTITY autocompleteShowAddressbookLabel "Mostra nome rubrica">
 <!ENTITY autocompleteShowAddressbookAccesskey "M">
 <!ENTITY autocompleteWithColorLabel "Usa colore rubrica">
@@ -199,13 +201,7 @@
 <!ENTITY multigetAccesskey "G">
 <!ENTITY discoveryGroupboxLabel "??Address books discovery??">
 <!ENTITY discoveryWarn "??At every synchronization, a check on the URLs below will be run to search for any new or deleted address books.??">
-<!ENTITY discoveryURLLabel "URL">
-<!ENTITY addURLLabel "Aggiungi">
-<!ENTITY addURLAccesskey "A">
-<!ENTITY renameURLLabel "Rinomina">
-<!ENTITY renameURLAccesskey "R">
-<!ENTITY deleteURLLabel "Elimina">
-<!ENTITY deleteURLAccesskey "E">
+<!ENTITY discoveryAccountsGroupboxLabel "Account">
 <!ENTITY advancedSyncGroupboxLabel "Proprietà avanzate">
 <!ENTITY decodeReportLabel "Decodifica gli URL per richieste di tipo REPORT">
 <!ENTITY decodeReportAccesskey "D">
@@ -238,8 +234,7 @@
 <!ENTITY searchGroupboxLabel "Cerca">
 <!ENTITY searchInNoteLabel "Cerca i compleanni nel campo Note">
 <!ENTITY searchInNoteTooltip1 "Aggiungi questa riga nel campo Note (separatori dovrebbero essere: e il formato della data dovrebbe essere lo stesso identificato nella rubrica) :">
-<!ENTITY searchInNoteTooltip2 "Evento:Descrizione:02.12.2006">
-<!ENTITY searchInNoteTooltipOld "Aggiungere questa tipologia di riche nel campo Note (come separatore, utilizzare il carattere DUE PUNTI ':' e utilizzare il seguente formato per la data): Compleanno:Io e Te, primo bacio:02.12.2006">
+<!ENTITY searchInNoteTooltip2 "Evento:Descrizione:2006-12-24">
 <!ENTITY searchInNoteAccesskey "S">
 <!ENTITY dateFormatLabel "Formato per la data previsto">
 <!ENTITY dateFormatAccesskey "E">

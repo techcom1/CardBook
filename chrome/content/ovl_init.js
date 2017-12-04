@@ -10,6 +10,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 			
 			prefs.setBoolPref("autocompletion", true);
 			prefs.setBoolPref("autocompleteSortByPopularity", true);
+			prefs.setBoolPref("proposeConcatEmails", false);
 			prefs.setBoolPref("autocompleteShowAddressbook", false);
 			prefs.setBoolPref("autocompleteWithColor", true);
 			prefs.setCharPref("useColor", "background");
@@ -30,6 +31,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 			prefs.setCharPref("solveConflicts", "User");
 			prefs.setBoolPref("autoSync", true);
 			prefs.setCharPref("autoSyncInterval", "30");
+			prefs.setCharPref("discoveryAccountsNameList", "");
 			prefs.setCharPref("multiget", "40");
 			prefs.setBoolPref("decodeReport", true);
 			
@@ -80,7 +82,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 			
 			prefs.setCharPref("accountsShown", "all");
 			prefs.setCharPref("uncategorizedCards", "");
-			prefs.setCharPref("addonVersion", "24.3");
+			prefs.setCharPref("addonVersion", "24.4");
 		},
 
 		lEventTimerSync : { notify: function(lTimerSync) {

@@ -118,21 +118,21 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			cardbookElementTools.loadAccountsOrCatsTreeMenu("accountsOrCatsTreeMenupopup", "accountsOrCatsTreeMenulist", accountsShown);
 		},
 
-   	loadFirstWindow: function () {
-		// for versions <= 20.4
-		wdw_cardbook.migrateIcons();
-		wdw_cardbook.setSyncControl();
-		wdw_cardbook.setToolbarCustom();
-		wdw_cardbook.setNoSearchMode();
-		wdw_cardbook.setNoComplexSearchMode();
-		wdw_cardbook.setAccountsTreeMenulist();
-		wdw_cardbook.clearCard();
-		wdw_cardbook.clearAccountOrCat();
-		wdw_cardbook.firstOpen();
-		// in case of opening a new window without having a reload
-		wdw_cardbook.loadCssRules();
-		wdw_cardbook.refreshAccountsInDirTree();
-	},
+		loadFirstWindow: function () {
+			// for versions <= 20.4
+			wdw_cardbook.migrateIcons();
+			wdw_cardbook.setSyncControl();
+			wdw_cardbook.setToolbarCustom();
+			wdw_cardbook.setNoSearchMode();
+			wdw_cardbook.setNoComplexSearchMode();
+			wdw_cardbook.setAccountsTreeMenulist();
+			wdw_cardbook.clearCard();
+			wdw_cardbook.clearAccountOrCat();
+			wdw_cardbook.firstOpen();
+			// in case of opening a new window without having a reload
+			wdw_cardbook.loadCssRules();
+			wdw_cardbook.refreshAccountsInDirTree();
+		},
 
 		syncAccounts: function () {
 			if (cardbookRepository.cardbookSyncMode === "NOSYNC") {
@@ -1853,6 +1853,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			if (!aValue) {
 				cardbookRepository.removeAccountFromCollected(aDirPrefId);
 				cardbookRepository.removeAccountFromBirthday(aDirPrefId);
+				cardbookRepository.removeAccountFromDiscovery(aDirPrefId);
 			}
 			var myDirPrefIdName = cardbookPreferences.getName(aDirPrefId);
 			var myDirPrefIdType = cardbookPreferences.getType(aDirPrefId);

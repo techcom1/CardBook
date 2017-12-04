@@ -15,6 +15,8 @@
 <!ENTITY autocompletionTooltip "Kiterjeszti az alapértelmezett automatikus kiegészítéséhez névjegyzéket a Thunderbird egy automatikus kiegészítéséhez kapcsolatok címjegyzékei CardBook.">
 <!ENTITY autocompleteSortByPopularityLabel "Rendezze az e-mail címeket népszerűsége szerint">
 <!ENTITY autocompleteSortByPopularityAccesskey "R">
+<!ENTITY autocompleteProposeConcatEmailsLabel "??Propose concatenated emails per contact??">
+<!ENTITY autocompleteProposeConcatEmailsAccesskey "c">
 <!ENTITY autocompleteShowAddressbookLabel "A névjegytár nevének megjelenítése">
 <!ENTITY autocompleteShowAddressbookAccesskey "m">
 <!ENTITY autocompleteWithColorLabel "Használja a névjegytár színét">
@@ -198,13 +200,7 @@
 <!ENTITY multigetAccesskey "G">
 <!ENTITY discoveryGroupboxLabel "Névjegytár mappa felfedezése">
 <!ENTITY discoveryWarn "Minden összehangolására az alábbi webcímeket ellenőrzi, hogy megkeresse az új vagy törölt névjegytár mappák.">
-<!ENTITY discoveryURLLabel "URL">
-<!ENTITY addURLLabel "Új…">
-<!ENTITY addURLAccesskey "j">
-<!ENTITY renameURLLabel "Szerkesztés…">
-<!ENTITY renameURLAccesskey "z">
-<!ENTITY deleteURLLabel "Törlés…">
-<!ENTITY deleteURLAccesskey "T">
+<!ENTITY discoveryAccountsGroupboxLabel "Postafiókok">
 <!ENTITY advancedSyncGroupboxLabel "Fejlett tulajdonságok">
 <!ENTITY decodeReportLabel "Megfejt webcímek REPORT kérdésekért">
 <!ENTITY decodeReportAccesskey "M">
@@ -237,7 +233,7 @@
 <!ENTITY searchGroupboxLabel "Keresés">
 <!ENTITY searchInNoteLabel "Keresés az eseményekévfordulóhoz a jegyzetek mezőiben">
 <!ENTITY searchInNoteTooltip1 "Sor hozzáadása a jegyzetek mezőibe (kettőspont az elválasztóvonal az esemény a leírás és a dátum között és a dátumformátum a névjegytárban megadott formában legyen):">
-<!ENTITY searchInNoteTooltip2 "Esemény:Leírás:02.12.2006">
+<!ENTITY searchInNoteTooltip2 "Esemény:Leírás:2006-12-24">
 <!ENTITY searchInNoteAccesskey "S">
 <!ENTITY dateFormatLabel "Várható dátum formátum">
 <!ENTITY dateFormatAccesskey "V">

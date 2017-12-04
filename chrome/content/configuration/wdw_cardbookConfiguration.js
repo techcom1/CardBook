@@ -12,7 +12,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		allOrg: [],
 		allRestrictions: [],
 		allEmailsCollections: [],
-		allURLs: [],
 		allVCards: [],
 		preferEmailPrefOld: false,
 		
@@ -83,12 +82,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				case "emailsCollectionIncludeName":
 					columnArray=8;
 					break;
-				case "discoveryURL":
-					columnArray=0;
-					break;
-				case "discoveryUsername":
-					columnArray=1;
-					break;
 				case "accountsVCardsMailName":
 					columnArray=2;
 					break;
@@ -117,9 +110,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 					columnArray=2;
 					break;
 			}
-			if (aTreeName == "discoveryTree") {
-				var myData = wdw_cardbookConfiguration.allURLs;
-			} else if (aTreeName == "accountsVCardsTree") {
+			if (aTreeName == "accountsVCardsTree") {
 				var myData = wdw_cardbookConfiguration.allVCards;
 			} else if (aTreeName == "accountsRestrictionsTree") {
 				var myData = wdw_cardbookConfiguration.allRestrictions;
@@ -145,9 +136,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			myTree.setAttribute("sortDirection", order == 1 ? "ascending" : "descending");
 			myTree.setAttribute("sortResource", columnName);
 			
-			if (aTreeName == "discoveryTree") {
-				wdw_cardbookConfiguration.displayURLs();
-			} else if (aTreeName == "accountsVCardsTree") {
+			if (aTreeName == "accountsVCardsTree") {
 				wdw_cardbookConfiguration.displayVCards();
 			} else if (aTreeName == "accountsRestrictionsTree") {
 				wdw_cardbookConfiguration.displayRestrictions();
@@ -187,9 +176,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				var row = { }, col = { }, child = { };
 				myTree.treeBoxObject.getCellAt(aEvent.clientX, aEvent.clientY, row, col, child);
 				if (row.value != -1) {
-					if (aTreeName == "discoveryTree") {
-						wdw_cardbookConfiguration.renameURL();
-					} else if (aTreeName == "accountsVCardsTree") {
+					if (aTreeName == "accountsVCardsTree") {
 						wdw_cardbookConfiguration.renameVCard();
 					} else if (aTreeName == "accountsRestrictionsTree") {
 						wdw_cardbookConfiguration.renameRestriction();
@@ -285,10 +272,12 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		cardbookAutoComplete: function () {
 			if (document.getElementById('autocompletionCheckBox').checked) {
 				document.getElementById('autocompleteSortByPopularityCheckBox').disabled=false;
+				document.getElementById('autocompleteProposeConcatEmailsCheckBox').disabled=false;
 				document.getElementById('autocompleteShowAddressbookCheckBox').disabled=false;
 				document.getElementById('autocompleteWithColorCheckBox').disabled=false;
 			} else {
 				document.getElementById('autocompleteSortByPopularityCheckBox').disabled=true;
+				document.getElementById('autocompleteProposeConcatEmailsCheckBox').disabled=true;
 				document.getElementById('autocompleteShowAddressbookCheckBox').disabled=true;
 				document.getElementById('autocompleteWithColorCheckBox').disabled=true;
 			}
@@ -347,6 +336,159 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			document.getElementById('calendarEntryCategoriesTextBox').disabled = aValue;
 		},
 
+		changeDiscoveryAccountsPref: function (aCheckboxName) {
+			var aCheckBox = document.getElementById(aCheckboxName);
+			var aListBox = document.getElementById(aCheckboxName.replace('Checkbox', 'Listbox'));
+			var discoveryAccountsNameList = [];
+
+			for (var i=0; i<aListBox.itemCount; i++) {
+				var aItem = aListBox.getItemAtIndex(i);
+				aItem.setAttribute('checked', aCheckBox.checked);
+				if (aCheckBox.checked) {
+					discoveryAccountsNameList.push(aItem.getAttribute('value'));
+				}
+			}
+
+			var aPref = document.getElementById('extensions.cardbook.' + aCheckboxName.replace('Checkbox', ''));
+			aPref.value = discoveryAccountsNameList.join(',');
+		},
+
+		changeDiscoveryAccountPref: function (aCheckboxName) {
+			var aCheckBox = document.getElementById(aCheckboxName);
+			var aListBox = document.getElementById(aCheckboxName.replace('Checkbox', 'Listbox'));
+			var discoveryAccountsNameList = [];
+			var totalChecked = 0;
+
+			for (var i=0; i<aListBox.itemCount; i++) {
+				var aItem = aListBox.getItemAtIndex(i);
+				var aItemChecked = aItem.getAttribute('checked');
+				aItemChecked = typeof aItemChecked == "boolean" ? aItemChecked : (aItemChecked == 'true' ? true : false);
+				if (aItemChecked) {
+					totalChecked++;
+					discoveryAccountsNameList.push(aItem.getAttribute('value'));
+				}
+			}
+			
+			if (totalChecked === aListBox.itemCount && totalChecked != 0) {
+				aCheckBox.checked = true;
+			} else {
+				aCheckBox.checked = false;
+			}
+
+			var aPref = document.getElementById('extensions.cardbook.' + aCheckboxName.replace('Checkbox', ''));
+			aPref.value = discoveryAccountsNameList.join(',');
+		},
+		
+		loadDiscoveryAccounts: function (aType) {
+			var aCheckBox = document.getElementById(aType + 'Checkbox');
+			var aListBox = document.getElementById(aType + 'Listbox');
+			var aPref = document.getElementById('extensions.cardbook.' + aType);
+
+			var sortedDiscoveryAccounts = [];
+			sortedDiscoveryAccounts = cardbookDiscovery.getAllURLsToDiscover();
+
+			var totalChecked = 0;
+			for (var i = 0; i < sortedDiscoveryAccounts.length; i++) {
+				var aItem = aListBox.appendItem(sortedDiscoveryAccounts[i][0], sortedDiscoveryAccounts[i][1]);
+				aItem.setAttribute('id', aCheckBox.id + '_' + i);
+				aItem.setAttribute('type', 'checkbox');
+				if ( (aPref.value.includes(sortedDiscoveryAccounts[i][1])) || (aPref.value === "allAddressBooks") ) {
+					totalChecked++;
+					aItem.setAttribute('checked', true);
+				} else {
+					aItem.setAttribute('checked', false);
+				}
+				aItem.addEventListener("command", function(event) {
+						var myCheckBoxIdArray = this.id.split('_');
+						wdw_cardbookConfiguration.changeDiscoveryAccountPref(myCheckBoxIdArray[0]);
+					}, false);
+			}
+			if (totalChecked === aListBox.itemCount && totalChecked != 0) {
+				aCheckBox.checked = true;
+			} else {
+				aCheckBox.checked = false;
+			}
+		},
+
+		changeAddressBooksPref: function (aCheckboxName) {
+			var aCheckBox = document.getElementById(aCheckboxName);
+			var aListBox = document.getElementById(aCheckboxName.replace('Checkbox', 'Listbox'));
+			var addressBooksNameList = [];
+
+			for (var i=0; i<aListBox.itemCount; i++) {
+				var aItem = aListBox.getItemAtIndex(i);
+				aItem.setAttribute('checked', aCheckBox.checked);
+				if (aCheckBox.checked) {
+					addressBooksNameList.push(aItem.getAttribute('value'));
+				}
+			}
+
+			var aPref = document.getElementById('extensions.cardbook.' + aCheckboxName.replace('Checkbox', ''));
+			aPref.value = addressBooksNameList.join(',');
+		},
+
+		changeAddressBookPref: function (aCheckboxName) {
+			var aCheckBox = document.getElementById(aCheckboxName);
+			var aListBox = document.getElementById(aCheckboxName.replace('Checkbox', 'Listbox'));
+			var addressBooksNameList = [];
+			var totalChecked = 0;
+
+			for (var i=0; i<aListBox.itemCount; i++) {
+				var aItem = aListBox.getItemAtIndex(i);
+				var aItemChecked = aItem.getAttribute('checked');
+				aItemChecked = typeof aItemChecked == "boolean" ? aItemChecked : (aItemChecked == 'true' ? true : false);
+				if (aItemChecked) {
+					totalChecked++;
+					addressBooksNameList.push(aItem.getAttribute('value'));
+				}
+			}
+			
+			if (totalChecked === aListBox.itemCount && totalChecked != 0) {
+				aCheckBox.checked = true;
+			} else {
+				aCheckBox.checked = false;
+			}
+
+			var aPref = document.getElementById('extensions.cardbook.' + aCheckboxName.replace('Checkbox', ''));
+			aPref.value = addressBooksNameList.join(',');
+		},
+		
+		loadAddressBooks: function (aType) {
+			var aCheckBox = document.getElementById(aType + 'Checkbox');
+			var aListBox = document.getElementById(aType + 'Listbox');
+			var aPref = document.getElementById('extensions.cardbook.' + aType);
+
+			var sortedAddressBooks = [];
+			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
+				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] !== "SEARCH") {
+					sortedAddressBooks.push([cardbookRepository.cardbookAccounts[i][0], cardbookRepository.cardbookAccounts[i][4]]);
+				}
+			}
+			sortedAddressBooks = cardbookUtils.sortArrayByString(sortedAddressBooks,0,1);
+
+			var totalChecked = 0;
+			for (var i = 0; i < sortedAddressBooks.length; i++) {
+				var aItem = aListBox.appendItem(sortedAddressBooks[i][0], sortedAddressBooks[i][1]);
+				aItem.setAttribute('id', aCheckBox.id + '_' + i);
+				aItem.setAttribute('type', 'checkbox');
+				if ( (aPref.value.includes(sortedAddressBooks[i][1])) || (aPref.value === "allAddressBooks") ) {
+					totalChecked++;
+					aItem.setAttribute('checked', true);
+				} else {
+					aItem.setAttribute('checked', false);
+				}
+				aItem.addEventListener("command", function(event) {
+						var myCheckBoxIdArray = this.id.split('_');
+						wdw_cardbookConfiguration.changeAddressBookPref(myCheckBoxIdArray[0]);
+					}, false);
+			}
+			if (totalChecked === aListBox.itemCount && totalChecked != 0) {
+				aCheckBox.checked = true;
+			} else {
+				aCheckBox.checked = false;
+			}
+		},
+
 		changeCalendarsPref: function () {
 			var aCheckBox = document.getElementById('calendarsCheckbox');
 			var aListBox = document.getElementById('calendarsListbox');
@@ -376,7 +518,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 					calendarsNameList.push(aItem.getAttribute('value'));
 				}
 			}
-			if (totalChecked === aListBox.itemCount) {
+			if (totalChecked === aListBox.itemCount && totalChecked != 0) {
 				aCheckBox.checked = true;
 			} else {
 				aCheckBox.checked = false;
@@ -414,7 +556,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 							wdw_cardbookConfiguration.changeCalendarPref();
 						}, false);
 					}
-				if (totalChecked === aListBox.itemCount) {
+				if (totalChecked === aListBox.itemCount && totalChecked != 0) {
 					aCheckBox.checked = true;
 				} else {
 					aCheckBox.checked = false;
@@ -425,93 +567,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			}
 		},
 	
-		changeAddressBooksPref: function (aCheckboxName) {
-			var aCheckBox = document.getElementById(aCheckboxName);
-			var aListBox = document.getElementById(aCheckboxName.replace('Checkbox', 'Listbox'));
-			var addressBooksNameList = [];
-
-			for (var i=0; i<aListBox.itemCount; i++) {
-				var aItem = aListBox.getItemAtIndex(i);
-				aItem.setAttribute('checked', aCheckBox.checked);
-				if (aCheckBox.checked) {
-					addressBooksNameList.push(aItem.getAttribute('value'));
-				}
-			}
-
-			var aPref = document.getElementById('extensions.cardbook.' + aCheckboxName.replace('Checkbox', ''));
-			aPref.value = addressBooksNameList.join(',');
-		},
-
-		changeAddressBookPref: function (aCheckboxName) {
-			var aCheckBox = document.getElementById(aCheckboxName);
-			var aListBox = document.getElementById(aCheckboxName.replace('Checkbox', 'Listbox'));
-			var addressBooksNameList = [];
-			var totalChecked = 0;
-
-			for (var i=0; i<aListBox.itemCount; i++) {
-				var aItem = aListBox.getItemAtIndex(i);
-				var aItemChecked = aItem.getAttribute('checked');
-				aItemChecked = typeof aItemChecked == "boolean" ? aItemChecked : (aItemChecked == 'true' ? true : false);
-				if (aItemChecked) {
-					totalChecked++;
-					addressBooksNameList.push(aItem.getAttribute('value'));
-				}
-			}
-			
-			if (totalChecked === aListBox.itemCount) {
-				aCheckBox.checked = true;
-			} else {
-				aCheckBox.checked = false;
-			}
-
-			var aPref = document.getElementById('extensions.cardbook.' + aCheckboxName.replace('Checkbox', ''));
-			aPref.value = addressBooksNameList.join(',');
-		},
-		
-		loadAddressBooks: function (aType, aNotReadOnly) {
-			var aCheckBox = document.getElementById(aType + 'Checkbox');
-			var aListBox = document.getElementById(aType + 'Listbox');
-			var aPref = document.getElementById('extensions.cardbook.' + aType);
-
-			var sortedAddressBooks = [];
-			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
-				if (aNotReadOnly) {
-					if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && !cardbookRepository.cardbookAccounts[i][7] && (cardbookRepository.cardbookAccounts[i][6] !== "SEARCH")) {
-						sortedAddressBooks.push([cardbookRepository.cardbookAccounts[i][0], cardbookRepository.cardbookAccounts[i][4]]);
-					}
-				} else {
-					if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && (cardbookRepository.cardbookAccounts[i][6] !== "SEARCH")) {
-						sortedAddressBooks.push([cardbookRepository.cardbookAccounts[i][0], cardbookRepository.cardbookAccounts[i][4]]);
-					}
-				}
-			}
-			sortedAddressBooks = cardbookUtils.sortArrayByString(sortedAddressBooks,0,1);
-
-			var totalChecked = 0;
-			for (var i = 0; i < sortedAddressBooks.length; i++) {
-				var aItem = aListBox.appendItem(sortedAddressBooks[i][0], sortedAddressBooks[i][1]);
-				aItem.setAttribute('id', aCheckBox.id + '_' + i);
-				aItem.setAttribute('type', 'checkbox');
-				if ( (aPref.value.includes(sortedAddressBooks[i][1])) || (aPref.value === "allAddressBooks") ) {
-					totalChecked++;
-					aItem.setAttribute('checked', true);
-				} else {
-					aItem.setAttribute('checked', false);
-				}
-				aItem.addEventListener("command", function(event) {
-						var myCheckBoxIdArray = this.id.split('_');
-						wdw_cardbookConfiguration.changeAddressBookPref(myCheckBoxIdArray[0]);
-					}, false);
-			}
-			if (totalChecked === aListBox.itemCount) {
-				aCheckBox.checked = true;
-			} else {
-				aCheckBox.checked = false;
-			}
-			if (aNotReadOnly) {
-			}
-		},
-
 		validateEventEntryTitle: function () {
 			var checkTest = document.getElementById('calendarEntryTitleTextBox').value.split("%S").length - 1;
 			if (checkTest != 2) {
@@ -724,100 +779,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			return cardbookUtils.getPrefNameFromPrefId(dirPrefId);
 		},
 
-		selectURL: function() {
-			var btnEdit = document.getElementById("renameURLLabel");
-			var myTree = document.getElementById("discoveryTree");
-			if (myTree.view.selection.getRangeCount() > 0) {
-				btnEdit.disabled = false;
-			} else {
-				btnEdit.disabled = true;
-			}
-			document.getElementById("deleteURLLabel").disabled = btnEdit.disabled;
-		},
-
-		loadURLs: function () {
-			wdw_cardbookConfiguration.allURLs = cardbookPreferences.getURLs();
-		},
-		
-		displayURLs: function () {
-			var URLsTreeView = {
-				get rowCount() { return wdw_cardbookConfiguration.allURLs.length; },
-				isContainer: function(idx) { return false },
-				cycleHeader: function(idx) { return false },
-				isEditable: function(idx, column) { return false },
-				getCellText: function(idx, column) {
-					if (column.id == "discoveryURL") return wdw_cardbookConfiguration.allURLs[idx][0];
-					else if (column.id == "discoveryUsername") return wdw_cardbookConfiguration.allURLs[idx][1];
-				}
-			}
-			document.getElementById('discoveryTree').view = URLsTreeView;
-			wdw_cardbookConfiguration.selectURL();
-		},
-		
-		addURL: function () {
-			var myArgs = {site: "", username: "", password: "", context: "New", action: ""};
-			var myWindow = window.openDialog("chrome://cardbook/content/wdw_password.xul", "", cardbookRepository.modalWindowParams, myArgs);
-			if (myArgs.action == "SAVE") {
-				var myUrl = cardbookSynchronization.getRootUrl(myArgs.site);
-				cardbookPasswordManager.removeAccount(myArgs.username, myUrl);
-				cardbookPasswordManager.addAccount(myArgs.username, myUrl, myArgs.password);
-				wdw_cardbookConfiguration.allURLs.push([myArgs.site, myArgs.username]);
-				wdw_cardbookConfiguration.allURLs = cardbookUtils.sortArrayByString(wdw_cardbookConfiguration.allURLs,1,1);
-				wdw_cardbookConfiguration.sortTrees(null, "discoveryTree");
-			}
-		},
-		
-		renameURL: function () {
-			var myTree = document.getElementById('discoveryTree');
-			if (myTree.currentIndex == -1) {
-				return;
-			} else {
-				var myURL = myTree.view.getCellText(myTree.currentIndex, {id: "discoveryURL"});
-				var myUsername = myTree.view.getCellText(myTree.currentIndex, {id: "discoveryUsername"});
-				var myPassword = cardbookPasswordManager.getPassword(myUsername, cardbookSynchronization.getRootUrl(myURL));
-				var myArgs = {site: myURL, username: myUsername, password: myPassword, context: "New", action: ""};
-				var myWindow = window.openDialog("chrome://cardbook/content/wdw_password.xul", "", cardbookRepository.modalWindowParams, myArgs);
-				if (myArgs.action == "SAVE") {
-					var myUrl = cardbookSynchronization.getRootUrl(myArgs.site);
-					cardbookPasswordManager.removeAccount(myArgs.username, myUrl);
-					cardbookPasswordManager.addAccount(myArgs.username, myUrl, myArgs.password);
-					var result = [];
-					for (let i = 0; i < wdw_cardbookConfiguration.allURLs.length; i++) {
-						if (i === myTree.currentIndex) {
-							result.push([myArgs.site, myArgs.username]);
-						} else {
-							result.push(wdw_cardbookConfiguration.allURLs[i]);
-						}
-					}
-					wdw_cardbookConfiguration.allURLs = JSON.parse(JSON.stringify(result));
-					wdw_cardbookConfiguration.allURLs = cardbookUtils.sortArrayByString(wdw_cardbookConfiguration.allURLs,1,1);
-					wdw_cardbookConfiguration.sortTrees(null, "discoveryTree");
-				}
-			}
-		},
-		
-		deleteURL: function () {
-			var myTree = document.getElementById('discoveryTree');
-			if (myTree.currentIndex == -1) {
-				return;
-			} else {
-				var myId = myTree.view.getCellText(myTree.currentIndex, {id: "discoveryURL"});
-				var result = [];
-				for (let i = 0; i < wdw_cardbookConfiguration.allURLs.length; i++) {
-					if (i != myTree.currentIndex) {
-						result.push(wdw_cardbookConfiguration.allURLs[i]);
-					}
-				}
-				wdw_cardbookConfiguration.allURLs = JSON.parse(JSON.stringify(result));
-				wdw_cardbookConfiguration.sortTrees(null, "discoveryTree");
-			}
-		},
-		
-		validateURLs: function () {
-			cardbookPreferences.setURLs(wdw_cardbookConfiguration.allURLs);
-		},
-		
-		
 		selectVCard: function() {
 			var btnEdit = document.getElementById("renameVCardLabel");
 			var myTree = document.getElementById("accountsVCardsTree");
@@ -1816,11 +1777,10 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			wdw_cardbookConfiguration.displayOrg();
 			wdw_cardbookConfiguration.loadPreferenceValue();
 			wdw_cardbookConfiguration.loadDateDisplayedFormat();
+			wdw_cardbookConfiguration.loadDiscoveryAccounts("discoveryAccountsNameList");
 			wdw_cardbookConfiguration.loadInitialSyncDelay();
 			wdw_cardbookConfiguration.loadPeriodicSync();
-			wdw_cardbookConfiguration.loadAddressBooks("addressBooksNameList", false);
-			wdw_cardbookConfiguration.loadURLs();
-			wdw_cardbookConfiguration.sortTrees(null, "discoveryTree");
+			wdw_cardbookConfiguration.loadAddressBooks("addressBooksNameList");
 			wdw_cardbookConfiguration.loadVCards();
 			wdw_cardbookConfiguration.sortTrees(null, "accountsVCardsTree");
 			wdw_cardbookConfiguration.loadRestrictions();
@@ -1842,7 +1802,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			wdw_cardbookConfiguration.validateTypes();
 			wdw_cardbookConfiguration.validateIMPPs();
 			wdw_cardbookConfiguration.validateOrg();
-			wdw_cardbookConfiguration.validateURLs();
 			wdw_cardbookConfiguration.validateVCards();
 			wdw_cardbookConfiguration.validateRestrictions();
 			wdw_cardbookConfiguration.validateEmailsCollection();

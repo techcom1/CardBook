@@ -15,6 +15,8 @@
 <!ENTITY autocompletionTooltip "Razširi običajno samodokončevanje stikov iz Thunderbirdovih imenikov s samodokončevanjem stikov iz Cardbookovih imenikov.">
 <!ENTITY autocompleteSortByPopularityLabel "Razvrsti e-poštne naslove po priljubljenosti">
 <!ENTITY autocompleteSortByPopularityAccesskey "R">
+<!ENTITY autocompleteProposeConcatEmailsLabel "??Propose concatenated emails per contact??">
+<!ENTITY autocompleteProposeConcatEmailsAccesskey "c">
 <!ENTITY autocompleteShowAddressbookLabel "Prikaži ime imenika">
 <!ENTITY autocompleteShowAddressbookAccesskey "P">
 <!ENTITY autocompleteWithColorLabel "Uporabi barvo imenika">
@@ -198,13 +200,7 @@
 <!ENTITY multigetAccesskey "G">
 <!ENTITY discoveryGroupboxLabel "??Address books discovery??">
 <!ENTITY discoveryWarn "??At every synchronization, a check on the URLs below will be run to search for any new or deleted address books.??">
-<!ENTITY discoveryURLLabel "URL">
-<!ENTITY addURLLabel "Dodaj">
-<!ENTITY addURLAccesskey "D">
-<!ENTITY renameURLLabel "Uredi">
-<!ENTITY renameURLAccesskey "U">
-<!ENTITY deleteURLLabel "Izbriši">
-<!ENTITY deleteURLAccesskey "b">
+<!ENTITY discoveryAccountsGroupboxLabel "Računi">
 <!ENTITY advancedSyncGroupboxLabel "Napredne lastnosti">
 <!ENTITY decodeReportLabel "Odkodiraj URL-je za zahteve REPORT">
 <!ENTITY decodeReportAccesskey "d">
@@ -237,7 +233,7 @@
 <!ENTITY searchGroupboxLabel "Išči">
 <!ENTITY searchInNoteLabel "Išči obletnice v polju Opombe">
 <!ENTITY searchInNoteTooltip1 "V polje za opombe dodajte vrstice v naslednji obliki (ločilo mora biti : in oblika datuma taka, kot je določena v imeniku):">
-<!ENTITY searchInNoteTooltip2 "Dogodek:Opis:02.12.2006">
+<!ENTITY searchInNoteTooltip2 "Dogodek:Opis:2006-12-24">
 <!ENTITY searchInNoteAccesskey "D">
 <!ENTITY dateFormatLabel "Pričakuj obliko datuma">
 <!ENTITY dateFormatAccesskey "P">

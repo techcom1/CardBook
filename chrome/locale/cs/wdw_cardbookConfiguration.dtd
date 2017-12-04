@@ -15,6 +15,8 @@
 <!ENTITY autocompletionTooltip "Rozšíří dokončování adres kontaktů Thunderbirdu o adresáře CardBooku">
 <!ENTITY autocompleteSortByPopularityLabel "Řadit e-mailové adresy podle oblíbenosti">
 <!ENTITY autocompleteSortByPopularityAccesskey "d">
+<!ENTITY autocompleteProposeConcatEmailsLabel "??Propose concatenated emails per contact??">
+<!ENTITY autocompleteProposeConcatEmailsAccesskey "c">
 <!ENTITY autocompleteShowAddressbookLabel "Zobrazit jméno adresáře">
 <!ENTITY autocompleteShowAddressbookAccesskey "Z">
 <!ENTITY autocompleteWithColorLabel "Použít barvu adresáře">
@@ -199,13 +201,7 @@
 <!ENTITY multigetAccesskey "V">
 <!ENTITY discoveryGroupboxLabel "Zjišování adresáøù">
 <!ENTITY discoveryWarn "Pøi každé synchronizaci bude na níže uvedených URL provedeno hledání nových nebo odstranìných adresáøù.">
-<!ENTITY discoveryURLLabel "URL">
-<!ENTITY addURLLabel "Přidat">
-<!ENTITY addURLAccesskey "P">
-<!ENTITY renameURLLabel "Upravit">
-<!ENTITY renameURLAccesskey "U">
-<!ENTITY deleteURLLabel "Smazat">
-<!ENTITY deleteURLAccesskey "S">
+<!ENTITY discoveryAccountsGroupboxLabel "Účty">
 <!ENTITY advancedSyncGroupboxLabel "Pokročilé vlastnosti">
 <!ENTITY decodeReportLabel "Dekódovat URL pro REPORT požadavky">
 <!ENTITY decodeReportAccesskey "D">
@@ -238,7 +234,7 @@
 <!ENTITY searchGroupboxLabel "Hledat">
 <!ENTITY searchInNoteLabel "Hledat narozeniny v poli s poznámkami">
 <!ENTITY searchInNoteTooltip1 "Přidejte řádky do poznámek podobné následujícímu oddělovač by měl být : a formát data by měl odpovídat nastavenému ve vlastnostech adresáře :">
-<!ENTITY searchInNoteTooltip2 "Událost:Popis:02.12.2006">
+<!ENTITY searchInNoteTooltip2 "Událost:Popis:2006-12-24">
 <!ENTITY searchInNoteAccesskey "H">
 <!ENTITY dateFormatLabel "Očekávaný formát data">
 <!ENTITY dateFormatAccesskey "O">
