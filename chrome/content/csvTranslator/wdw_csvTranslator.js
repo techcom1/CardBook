@@ -145,10 +145,9 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 		validateImportColumns: function () {
 			if (wdw_csvTranslator.cardbookeditlists.foundColumns.length != wdw_csvTranslator.cardbookeditlists.addedColumns.length) {
 				var strBundle = document.getElementById("cardbook-strings");
-				var prompts = Services.prompt;
 				var confirmTitle = strBundle.getString("confirmTitle");
 				var confirmMsg = strBundle.getString("missingColumnsConfirmMessage");
-				if (!prompts.confirm(window, confirmTitle, confirmMsg)) {
+				if (!Services.prompt.confirm(window, confirmTitle, confirmMsg)) {
 					return false;
 				}
 				var missing = wdw_csvTranslator.cardbookeditlists.foundColumns.length - wdw_csvTranslator.cardbookeditlists.addedColumns.length;

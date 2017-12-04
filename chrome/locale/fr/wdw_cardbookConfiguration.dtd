@@ -15,6 +15,8 @@
 <!ENTITY autocompletionTooltip "Remplace la suggestion d'emails standard par celle fournie par CardBook. Si active, les emails vont être récupérés dans les carnets d'adresses CardBook et dans les emails collectés.">
 <!ENTITY autocompleteSortByPopularityLabel "Trier les courriels par popularité">
 <!ENTITY autocompleteSortByPopularityAccesskey "T">
+<!ENTITY autocompleteProposeConcatEmailsLabel "Proposer les courriels concaténés par contact">
+<!ENTITY autocompleteProposeConcatEmailsAccesskey "c">
 <!ENTITY autocompleteShowAddressbookLabel "Voir le nom du carnet d'adresses">
 <!ENTITY autocompleteShowAddressbookAccesskey "V">
 <!ENTITY autocompleteWithColorLabel "Utiliser la couleur du carnet d'adresses">
@@ -199,13 +201,7 @@
 <!ENTITY multigetAccesskey "G">
 <!ENTITY discoveryGroupboxLabel "Découverte de carnets d'adresses">
 <!ENTITY discoveryWarn "À chaque synchronisation, un contrôle sur les URLs ci-dessous va être fait pour rechercher les nouveaux carnets d'adresses ou ceux qui ont été supprimés.">
-<!ENTITY discoveryURLLabel "URL">
-<!ENTITY addURLLabel "Ajouter">
-<!ENTITY addURLAccesskey "A">
-<!ENTITY renameURLLabel "Modifier">
-<!ENTITY renameURLAccesskey "M">
-<!ENTITY deleteURLLabel "Supprimer">
-<!ENTITY deleteURLAccesskey "S">
+<!ENTITY discoveryAccountsGroupboxLabel "Comptes">
 <!ENTITY advancedSyncGroupboxLabel "Propriétés avancées">
 <!ENTITY decodeReportLabel "Décoder les URLs pour les requêtes REPORT">
 <!ENTITY decodeReportAccesskey "D">
@@ -238,7 +234,7 @@
 <!ENTITY searchGroupboxLabel "Recherche">
 <!ENTITY searchInNoteLabel "Recherche d'anniversaire dans le champ Note">
 <!ENTITY searchInNoteTooltip1 "Ajoutez ce genre de ligne dans le champ Note (le separateur doit être : et le format de date doit être celui défini pour le carnet d'adresses) :">
-<!ENTITY searchInNoteTooltip2 "Évènement:Description:02.12.2006">
+<!ENTITY searchInNoteTooltip2 "Évènement:Description:2006-12-24">
 <!ENTITY searchInNoteAccesskey "R">
 <!ENTITY dateFormatLabel "Format de date attendu">
 <!ENTITY dateFormatAccesskey "F">
@@ -267,7 +263,7 @@
 <!ENTITY calendarEntryTimeAccesskey "e">
 <!ENTITY calendarEntryWholeDayLabel "Entrées du calendrier sur toute la journée">
 <!ENTITY calendarEntryWholeDayAccesskey "j">
-<!ENTITY calendarEntryAlarmLabel "Alarme(s) à n heures avant l'anniversaire">
+<!ENTITY calendarEntryAlarmLabel "Alarme(s) à n heures pour les entrées du calendrier (Exemple : 4,+1)">
 <!ENTITY calendarEntryAlarmTooltip "Entrez combien de jours avant l'anniversaire vous voulez être alerté par une alarme. Si le champ est vide alors aucune alarme ne sera mise. Si vous voulez plusieurs alarmes, entrez une liste séparée par des virgules.">
 <!ENTITY calendarEntryAlarmAccesskey "n">
 <!ENTITY calendarEntryCategoriesLabel "Catégorie(s) pour les entrées du calendrier">

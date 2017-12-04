@@ -178,8 +178,7 @@ ovl_formatEmailCorrespondents.createObserver = {
 };
 
 ovl_formatEmailCorrespondents.addObserver = function() {
-	var ObserverService = Services.obs;
-	ObserverService.addObserver(ovl_formatEmailCorrespondents.createObserver, "MsgCreateDBView", false);
+	Services.obs.addObserver(ovl_formatEmailCorrespondents.createObserver, "MsgCreateDBView", false);
 };
 
 // for the displayed name of emails columns

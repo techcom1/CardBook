@@ -57,7 +57,6 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 
 		syncCalendar: function (aCalendar) {
 			var strBundle = document.getElementById("cardbook-strings");
-			var prompts = Services.prompt;
 			var errorTitle;
 			var errorMsg;
 
@@ -65,7 +64,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			if (aCalendar == 0) {
 				errorTitle = strBundle.getString("calendarNotFoundTitle");
 				errorMsg = strBundle.getFormattedString("calendarNotFoundMessage",[aCalendar.name]);
-				prompts.alert(null, errorTitle, errorMsg);
+				Services.prompt.alert(null, errorTitle, errorMsg);
 				return;
 			}
 
@@ -73,7 +72,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			if (!(cardbookBirthdaysUtils.isCalendarWritable(aCalendar))) {
 				errorTitle = strBundle.getString("calendarNotWritableTitle");
 				errorMsg = strBundle.getFormattedString("calendarNotWritableMessage",[aCalendar.name]);
-				prompts.alert(null, errorTitle, errorMsg);
+				Services.prompt.alert(null, errorTitle, errorMsg);
 				return;
 			}
 
@@ -215,8 +214,15 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			var lcalendarEntryAlarm = cardbookPreferences.getStringPref("extensions.cardbook.calendarEntryAlarm");
 			var lcalendarEntryAlarmArray = lcalendarEntryAlarm.split(',');
 			for (var i = 0; i < lcalendarEntryAlarmArray.length; i++) {
+				// default before alarm before event
+				var sign = "-";
+				lcalendarEntryAlarmArray[i] = lcalendarEntryAlarmArray[i].replace(/\-/g, "");
+				if (lcalendarEntryAlarmArray[i].includes("+")) {
+					sign = "";
+					lcalendarEntryAlarmArray[i] = lcalendarEntryAlarmArray[i].replace(/\+/g, "");
+				}
 				if (!isNaN(parseInt(lcalendarEntryAlarmArray[i]))) {
-					iCalString += "BEGIN:VALARM\nACTION:DISPLAY\nTRIGGER:-PT" + parseInt(lcalendarEntryAlarmArray[i]) + "H\nEND:VALARM\n";
+					iCalString += "BEGIN:VALARM\nACTION:DISPLAY\nTRIGGER:" + sign + "PT" + parseInt(lcalendarEntryAlarmArray[i]) + "H\nEND:VALARM\n";
 				}
 			}
 

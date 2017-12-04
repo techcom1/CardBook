@@ -67,9 +67,8 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 				UpdateEmailNodeDetails(myEmail, myEmailNode);
 			}
 			catch (e) {
-				var prompts = Services.prompt;
 				var errorTitle = "addToCardBook";
-				prompts.alert(null, errorTitle, e);
+				Services.prompt.alert(null, errorTitle, e);
 			}
 		},
 
@@ -83,9 +82,8 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 				cardbookUtils.openEditionWindow(myNewCard, "AddEmail", "cardbook.cardAddedIndirect");
 			}
 			catch (e) {
-				var prompts = Services.prompt;
 				var errorTitle = "mailContextAddToCardBook";
-				prompts.alert(null, errorTitle, e);
+				Services.prompt.alert(null, errorTitle, e);
 			}
 		},
 

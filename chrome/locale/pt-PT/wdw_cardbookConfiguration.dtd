@@ -15,6 +15,8 @@
 <!ENTITY autocompletionTooltip "Trocar o normal autocomplete pelo do carbook. Quando activado, os email serão provenientes do repositorio do cardbook ou os emails recolhidos.">
 <!ENTITY autocompleteSortByPopularityLabel "Organizar email por popularidade">
 <!ENTITY autocompleteSortByPopularityAccesskey "p">
+<!ENTITY autocompleteProposeConcatEmailsLabel "??Propose concatenated emails per contact??">
+<!ENTITY autocompleteProposeConcatEmailsAccesskey "c">
 <!ENTITY autocompleteShowAddressbookLabel "Mostrar nome da agenda">
 <!ENTITY autocompleteShowAddressbookAccesskey "M">
 <!ENTITY autocompleteWithColorLabel "Usar cor da agenda">
@@ -197,15 +199,9 @@
 <!ENTITY requestsTimeoutAccesskey "T">
 <!ENTITY multigetLabel "Para pedidos GET, agrupar cartões por">
 <!ENTITY multigetAccesskey "G">
-<!ENTITY discoveryGroupboxLabel "Descoberta de agendas">
-<!ENTITY discoveryWarn "A todas as sincronizações, uma pesquisa vai verificar se existem novas moradas ou apagadas.">
-<!ENTITY discoveryURLLabel "URL">
-<!ENTITY addURLLabel "Adicionar">
-<!ENTITY addURLAccesskey "A">
-<!ENTITY renameURLLabel "Editar">
-<!ENTITY renameURLAccesskey "E">
-<!ENTITY deleteURLLabel "Apagar">
-<!ENTITY deleteURLAccesskey "g">
+<!ENTITY discoveryGroupboxLabel "??Address books discovery??">
+<!ENTITY discoveryWarn "??At every synchronization, a check on the URLs below will be run to search for any new or deleted address books.??">
+<!ENTITY discoveryAccountsGroupboxLabel "Contas">
 <!ENTITY advancedSyncGroupboxLabel "Propriedades avançadas">
 <!ENTITY decodeReportLabel "Descodificar URLs para pedidos de relatório">
 <!ENTITY decodeReportAccesskey "D">
@@ -238,7 +234,7 @@
 <!ENTITY searchGroupboxLabel "Procura">
 <!ENTITY searchInNoteLabel "Procurar aniversários no campo Notas">
 <!ENTITY searchInNoteTooltip1 "Adicionar tantas linhas no campo das Notas (o separador deve ser : e o formato da data deve ser definido na agenda) :">
-<!ENTITY searchInNoteTooltip2 "Evento:Descrição:02.12.2006">
+<!ENTITY searchInNoteTooltip2 "Evento:Descrição:2006-12-24">
 <!ENTITY searchInNoteAccesskey "A">
 <!ENTITY dateFormatLabel "Formato de data esperado">
 <!ENTITY dateFormatAccesskey "F">

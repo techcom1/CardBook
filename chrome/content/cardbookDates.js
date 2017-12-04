@@ -41,7 +41,7 @@ if ("undefined" == typeof(cardbookDates)) {
 					return "";
 				} else {
 					var dateFormat = cardbookPreferences.getDateFormat(aCard.dirPrefId);
-					return cardbookDates.getFormattedDateForDateString(aCard[aField], dateFormat);
+					return cardbookDates.getFormattedDateForDateString(aCard[aField], dateFormat, cardbookRepository.dateDisplayedFormat);
 				}
 			}
 			catch (e) {
@@ -49,28 +49,28 @@ if ("undefined" == typeof(cardbookDates)) {
 			}
 		},
 
-		getFormattedDateForDateString: function (aDateString, aDateFormat) {
+		getFormattedDateForDateString: function (aDateString, aSourceDateFormat, aTargetDateFormat) {
 			try {
-				var myDate = cardbookDates.convertDateStringToDate(aDateString, aDateFormat);
+				var myDate = cardbookDates.convertDateStringToDate(aDateString, aSourceDateFormat);
 				if (myDate == "WRONGDATE") {
 					return aDateString;
 				} else if (myDate.getFullYear() == "666") {
-					if (Services.appinfo.version >= "57") {
-						if (cardbookRepository.dateDisplayedFormat == "0") {
+					if (Services.vc.compare(Services.appinfo.version, "57") > 0) {
+						if (aTargetDateFormat == "0") {
 							var formatter = Services.intl.createDateTimeFormat(undefined, { month: "long", day: "numeric", timeZone: "UTC"});
 						} else {
 							var formatter = Services.intl.createDateTimeFormat(undefined, { month: "short", day: "numeric", timeZone: "UTC"});
 						}
 						return formatter.format(myDate);
 					} else {
-						if (aDateString.startsWith("--") && aDateFormat == "YYYYMMDD") {
+						if (aDateString.startsWith("--") && aSourceDateFormat == "YYYYMMDD") {
 							aDateString = aDateString.replace(/^--/, "");
 						}
 						return aDateString;
 					}
 				} else {
-					if (Services.appinfo.version >= "57") {
-						if (cardbookRepository.dateDisplayedFormat == "0") {
+					if (Services.vc.compare(Services.appinfo.version, "57") > 0) {
+						if (aTargetDateFormat == "0") {
 							var formatter = Services.intl.createDateTimeFormat(undefined, { dateStyle: "long", timeZone: "UTC"});
 						} else {
 							var formatter = Services.intl.createDateTimeFormat(undefined, { dateStyle: "short", timeZone: "UTC"});
@@ -78,7 +78,7 @@ if ("undefined" == typeof(cardbookDates)) {
 						return formatter.format(myDate);
 					} else {
 						var myDateService = Components.classes["@mozilla.org/intl/scriptabledateformat;1"].getService(Components.interfaces.nsIScriptableDateFormat);
-						if (cardbookRepository.dateDisplayedFormat == "0") {
+						if (aTargetDateFormat == "0") {
 							return myDateService.FormatDate("", Components.interfaces.nsIScriptableDateFormat.dateFormatLong, myDate.getFullYear(), myDate.getMonth() + 1, myDate.getDate());
 						} else {
 							return myDateService.FormatDate("", Components.interfaces.nsIScriptableDateFormat.dateFormatShort, myDate.getFullYear(), myDate.getMonth() + 1, myDate.getDate());

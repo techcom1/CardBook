@@ -49,9 +49,8 @@ if ("undefined" == typeof(wdw_logEdition)) {
 				cardbookUtils.clipboardSet(myLogArray.join("\n"));
 			}
 			catch (e) {
-				var prompts = Services.prompt;
 				var errorTitle = "clipboard error";
-				prompts.alert(null, errorTitle, e);
+				Services.prompt.alert(null, errorTitle, e);
 			}
 		},
 

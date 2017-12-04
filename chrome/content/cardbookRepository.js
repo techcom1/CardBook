@@ -518,6 +518,7 @@ var cardbookRepository = {
 	removeAccountFromRepository: function(aAccountId) {
 		cardbookRepository.removeAccountFromCollected(aAccountId);
 		cardbookRepository.removeAccountFromBirthday(aAccountId);
+		cardbookRepository.removeAccountFromDiscovery(aAccountId);
 
 		var cacheDir = cardbookRepository.getLocalDirectory();
 		cacheDir.append(aAccountId);
@@ -682,6 +683,25 @@ var cardbookRepository = {
 		}
 		addressBooksList = addressBooksList.filter(filterAccount);
 		cardbookPreferences.setStringPref("extensions.cardbook.addressBooksNameList", addressBooksList.join(','));
+	},
+
+	removeAccountFromDiscovery: function (aDirPrefId) {
+		var allDiscoveryAccounts = [];
+		allDiscoveryAccounts = cardbookDiscovery.getAllURLsToDiscover();
+		var withoutDiscoveryAccounts = [];
+		withoutDiscoveryAccounts = cardbookDiscovery.getAllURLsToDiscover(aDirPrefId);
+		if (allDiscoveryAccounts.length != withoutDiscoveryAccounts.length) {
+			var addressBooks = cardbookPreferences.getStringPref("extensions.cardbook.discoveryAccountsNameList");
+			var addressBooksList = [];
+			addressBooksList = addressBooks.split(',');
+			var myUser = cardbookPreferences.getUser(aDirPrefId);
+			var myURL = cardbookSynchronization.getShortUrl(cardbookPreferences.getUrl(aDirPrefId));
+			function filterAccount(element) {
+				return (element != myUser + "::" + myURL);
+			}
+			addressBooksList = addressBooksList.filter(filterAccount);
+			cardbookPreferences.setStringPref("extensions.cardbook.discoveryAccountsNameList", addressBooksList.join(','));
+		}
 	},
 
 	removeCardFromRepository: function (aCard, aCacheDeletion) {

@@ -115,6 +115,7 @@ cardbookAutocompleteSearch.prototype = {
 
 	debugMode: false,
 	showAddressbookComments: false,
+	proposeConcatEmails: false,
 	sortUsePopularity: true,
 	ABInclRestrictions: {},
 	ABExclRestrictions: {},
@@ -310,6 +311,7 @@ cardbookAutocompleteSearch.prototype = {
 		this.sortUsePopularity = cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteSortByPopularity");
 		this.showAddressbookComments = cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteShowAddressbook");
 		this.useOnlyEmail = cardbookPreferences.getBoolPref("extensions.cardbook.useOnlyEmail");
+		this.proposeConcatEmails = cardbookPreferences.getBoolPref("extensions.cardbook.proposeConcatEmails");
 
 		var mySearchParamObj = JSON.parse(aSearchParam);
 		this.loadRestrictions(mySearchParamObj.idKey);
@@ -382,7 +384,7 @@ cardbookAutocompleteSearch.prototype = {
 									this.addResult(result, myCard.fn + " <" + myCard.fn + ">", myComment, myCurrentPopularity, "CB_LIST", myStyle, myCard.fn.toLowerCase(), myDirPrefId);
 								} else {
 									// otherwise it is already fetched above
-									if (myCard.emails.length > 1) {
+									if (this.proposeConcatEmails && myCard.emails.length > 1) {
 										if (this.useOnlyEmail) {
 											this.addResult(result, myCard.emails.join(" , "), myComment, myMinPopularity, "CB_ALL", myStyle, myCard.fn.toLowerCase(), myDirPrefId);
 										} else {

@@ -118,21 +118,21 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			cardbookElementTools.loadAccountsOrCatsTreeMenu("accountsOrCatsTreeMenupopup", "accountsOrCatsTreeMenulist", accountsShown);
 		},
 
-   	loadFirstWindow: function () {
-		// for versions <= 20.4
-		wdw_cardbook.migrateIcons();
-		wdw_cardbook.setSyncControl();
-		wdw_cardbook.setToolbarCustom();
-		wdw_cardbook.setNoSearchMode();
-		wdw_cardbook.setNoComplexSearchMode();
-		wdw_cardbook.setAccountsTreeMenulist();
-		wdw_cardbook.clearCard();
-		wdw_cardbook.clearAccountOrCat();
-		wdw_cardbook.firstOpen();
-		// in case of opening a new window without having a reload
-		wdw_cardbook.loadCssRules();
-		wdw_cardbook.refreshAccountsInDirTree();
-	},
+		loadFirstWindow: function () {
+			// for versions <= 20.4
+			wdw_cardbook.migrateIcons();
+			wdw_cardbook.setSyncControl();
+			wdw_cardbook.setToolbarCustom();
+			wdw_cardbook.setNoSearchMode();
+			wdw_cardbook.setNoComplexSearchMode();
+			wdw_cardbook.setAccountsTreeMenulist();
+			wdw_cardbook.clearCard();
+			wdw_cardbook.clearAccountOrCat();
+			wdw_cardbook.firstOpen();
+			// in case of opening a new window without having a reload
+			wdw_cardbook.loadCssRules();
+			wdw_cardbook.refreshAccountsInDirTree();
+		},
 
 		syncAccounts: function () {
 			if (cardbookRepository.cardbookSyncMode === "NOSYNC") {
@@ -594,7 +594,6 @@ if ("undefined" == typeof(wdw_cardbook)) {
 
 		deleteCardsAndValidate: function (aSource, aCardList, aMessage) {
 			try {
-				var prompts = Services.prompt;
 				var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 				var confirmTitle = strBundle.GetStringFromName("confirmTitle");
 				if (aCardList && aCardList.constructor === Array) {
@@ -609,7 +608,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					var confirmMsg = PluralForm.get(cardsCount, strBundle.GetStringFromName("selectedCardsDeletionConfirmMessagePF"));
 					confirmMsg = confirmMsg.replace("%1", cardsCount);
 				}
-				if (prompts.confirm(window, confirmTitle, confirmMsg)) {
+				if (Services.prompt.confirm(window, confirmTitle, confirmMsg)) {
 					cardbookRepository.deleteCards(listOfSelectedCard, aSource);
 				}
 			}
@@ -1178,7 +1177,6 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		warnEmptyEmailContacts: function(aListOfEmptyFn, aListOfNotEmptyEmails) {
 			var result = true;
 			if (cardbookPreferences.getBoolPref("extensions.cardbook.warnEmptyEmails")) {
-				var prompts = Services.prompt;
 				var strBundle = document.getElementById("cardbook-strings");
 				var warningTitle = strBundle.getString("warningTitle");
 				if (aListOfEmptyFn.length > 1) {
@@ -1190,12 +1188,12 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				var rememberMsg = strBundle.getString("doNotShowAnymore");
 				var result = false;
 				if (aListOfNotEmptyEmails.length == 0) {
-					var flags = prompts.BUTTON_POS_0 * prompts.BUTTON_TITLE_CANCEL;
-					var returnButton = prompts.confirmEx(window, warningTitle, warningMsg, flags, "", "", "", rememberMsg, rememberFlag);
+					var flags = Services.prompt.BUTTON_POS_0 * Services.prompt.BUTTON_TITLE_CANCEL;
+					var returnButton = Services.prompt.confirmEx(window, warningTitle, warningMsg, flags, "", "", "", rememberMsg, rememberFlag);
 				} else {
-					var flags = prompts.BUTTON_POS_0 * prompts.BUTTON_TITLE_IS_STRING + prompts.BUTTON_POS_1 * prompts.BUTTON_TITLE_CANCEL;
+					var flags = Services.prompt.BUTTON_POS_0 * Services.prompt.BUTTON_TITLE_IS_STRING + Services.prompt.BUTTON_POS_1 * Services.prompt.BUTTON_TITLE_CANCEL;
 					var sendButtonLabel = strBundle.getString("sendButtonLabel");
-					var returnButton = prompts.confirmEx(window, warningTitle, warningMsg, flags, sendButtonLabel, "", "", rememberMsg, rememberFlag);
+					var returnButton = Services.prompt.confirmEx(window, warningTitle, warningMsg, flags, sendButtonLabel, "", "", rememberMsg, rememberFlag);
 					if (returnButton == 0) {
 						var result = true;
 					}
@@ -1791,7 +1789,6 @@ if ("undefined" == typeof(wdw_cardbook)) {
 							var myPrefUrl = cardbookPreferences.getUrl(myParentAccountId);
 							
 							var strBundle = document.getElementById("cardbook-strings");
-							var prompts = Services.prompt;
 							var confirmTitle = strBundle.getString("confirmTitle");
 							var confirmMsg = strBundle.getFormattedString("accountDeletionConfirmMessage", [myParentAccountName]);
 							var returnFlag = false;
@@ -1801,14 +1798,14 @@ if ("undefined" == typeof(wdw_cardbook)) {
 								var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 								myFile.initWithPath(myPrefUrl);
 								var deleteContentMsg = strBundle.getFormattedString("accountDeletiondeleteContentFileMessage", [myFile.leafName]);
-								returnFlag = prompts.confirmCheck(window, confirmTitle, confirmMsg, deleteContentMsg, deleteContentFlag);
+								returnFlag = Services.prompt.confirmCheck(window, confirmTitle, confirmMsg, deleteContentMsg, deleteContentFlag);
 							} else if (myParentAccountType === "DIRECTORY") {
 								var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 								myFile.initWithPath(myPrefUrl);
 								var deleteContentMsg = strBundle.getFormattedString("accountDeletiondeleteContentDirMessage", [myFile.leafName]);
-								returnFlag = prompts.confirmCheck(window, confirmTitle, confirmMsg, deleteContentMsg, deleteContentFlag);
+								returnFlag = Services.prompt.confirmCheck(window, confirmTitle, confirmMsg, deleteContentMsg, deleteContentFlag);
 							} else {
-								returnFlag = prompts.confirm(window, confirmTitle, confirmMsg);
+								returnFlag = Services.prompt.confirm(window, confirmTitle, confirmMsg);
 							}
 							if (returnFlag) {
 								wdw_cardbook.setNoComplexSearchMode();
@@ -1856,6 +1853,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			if (!aValue) {
 				cardbookRepository.removeAccountFromCollected(aDirPrefId);
 				cardbookRepository.removeAccountFromBirthday(aDirPrefId);
+				cardbookRepository.removeAccountFromDiscovery(aDirPrefId);
 			}
 			var myDirPrefIdName = cardbookPreferences.getName(aDirPrefId);
 			var myDirPrefIdType = cardbookPreferences.getType(aDirPrefId);
@@ -2218,13 +2216,12 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					return;
 				}
 				var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
-				var prompts = Services.prompt;
 				var confirmTitle = strBundle.GetStringFromName("confirmTitle");
 				var cardsCount = cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+aCategoryName].length;
 				var confirmMsg = PluralForm.get(cardsCount, strBundle.GetStringFromName("catDeletionsConfirmMessagePF"));
 				confirmMsg = confirmMsg.replace("%1", cardsCount).replace("%2", aCategoryName);
 
-				if (prompts.confirm(window, confirmTitle, confirmMsg)) {
+				if (Services.prompt.confirm(window, confirmTitle, confirmMsg)) {
 					var myDirPrefIdName = cardbookPreferences.getName(aDirPrefId);
 					
 					var myCards = cardbookRepository.cardbookDisplayCards[aDirPrefId+"::"+aCategoryName];

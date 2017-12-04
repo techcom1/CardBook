@@ -110,10 +110,9 @@ if ("undefined" == typeof(cardbookTypes)) {
 								}
 							}
 							var strBundle = document.getElementById("cardbook-strings");
-							var prompts = Services.prompt;
 							var errorTitle = strBundle.getString("errorTitle");
 							var validateIntegerMsg = strBundle.getFormattedString("validateIntegerMsg", [field, limit, data]);
-							prompts.alert(null, errorTitle, validateIntegerMsg);
+							Services.prompt.alert(null, errorTitle, validateIntegerMsg);
 							return false;
 						} else {
 							break;
@@ -142,10 +141,9 @@ if ("undefined" == typeof(cardbookTypes)) {
 						}
 					}
 					var strBundle = document.getElementById("cardbook-strings");
-					var prompts = Services.prompt;
 					var errorTitle = strBundle.getString("errorTitle");
 					var validateIntegerMsg = strBundle.getFormattedString("validateIntegerMsg", [field, limit, data]);
-					prompts.alert(null, errorTitle, validateIntegerMsg);
+					Services.prompt.alert(null, errorTitle, validateIntegerMsg);
 					return false;
 				} else {
 					break;

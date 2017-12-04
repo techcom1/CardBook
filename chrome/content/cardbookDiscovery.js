@@ -6,23 +6,52 @@ if ("undefined" == typeof(cardbookDiscovery)) {
 
 		gDiscoveryDescription : "Discovery module",
 
+		getAllURLsToDiscover: function (aDirPrefIdToExclude) {
+			var sortedDiscoveryAccounts = [];
+			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
+				if (aDirPrefIdToExclude != null && aDirPrefIdToExclude !== undefined && aDirPrefIdToExclude != "") {
+					if (cardbookRepository.cardbookAccounts[i][4] == aDirPrefIdToExclude) {
+						continue;
+					}
+				}
+				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] == "CARDDAV") {
+					var myUrl = cardbookPreferences.getUrl(cardbookRepository.cardbookAccounts[i][4]);
+					var myRootUrl = cardbookSynchronization.getRootUrl(myUrl);
+					var myShortUrl = cardbookSynchronization.getShortUrl(myUrl);
+					var myUser = cardbookPreferences.getUser(cardbookRepository.cardbookAccounts[i][4]);
+					var found = false;
+					for (var j = 0; j < sortedDiscoveryAccounts.length; j++) {
+						if (sortedDiscoveryAccounts[j][1] == myUser + "::" + myShortUrl) {
+							found = true;
+							break;
+						}
+					}
+					if (!found) {
+						sortedDiscoveryAccounts.push([myUser + " - " + myRootUrl, myUser + "::" + myShortUrl]);
+					}
+				}
+			}
+			sortedDiscoveryAccounts = cardbookUtils.sortArrayByString(sortedDiscoveryAccounts,0,1);
+			return sortedDiscoveryAccounts;
+		},
+
 		startDiscovery: function () {
-			var allURLs = [];
-			allURLs = cardbookPreferences.getURLs();
-			
-			if (allURLs.length == 0) {
+			var allPrefsURLs = [];
+			allPrefsURLs = cardbookPreferences.getDiscoveryAccounts();
+
+			if (allPrefsURLs.length == 0) {
 				cardbookRepository.cardbookSyncMode = "NOSYNC";
 			} else {
-				for (var i = 0; i < allURLs.length; i++) {
+				for (var i = 0; i < allPrefsURLs.length; i++) {
 					if (i == 0) {
 						cardbookSynchronization.initDiscovery();
 						cardbookUtils.formatStringForOutput("discoveryRunning", [cardbookDiscovery.gDiscoveryDescription]);
 					}
 					var dirPrefId = cardbookUtils.getUUID();
 					cardbookSynchronization.initDiscoveryWithPrefId(dirPrefId);
-					cardbookRepository.cardbookServerValidation[dirPrefId] = {length: 0, user: allURLs[i][1]};
+					cardbookRepository.cardbookServerValidation[dirPrefId] = {length: 0, user: allPrefsURLs[i][1]};
 					cardbookRepository.cardbookServerSyncRequest[dirPrefId]++;
-					var connection = {connUser: allURLs[i][1], connPrefId: dirPrefId, connUrl: allURLs[i][0], connDescription: cardbookDiscovery.gDiscoveryDescription};
+					var connection = {connUser: allPrefsURLs[i][1], connPrefId: dirPrefId, connUrl: allPrefsURLs[i][0], connDescription: cardbookDiscovery.gDiscoveryDescription};
 					var params = {aDirPrefIdType: "CARDDAV"};
 					cardbookSynchronization.discoverPhase1(connection, "GETDISPLAYNAME", params);
 					cardbookDiscovery.waitForDiscoveryFinished(dirPrefId);
@@ -113,11 +142,10 @@ if ("undefined" == typeof(cardbookDiscovery)) {
 				var myDirPrefIdType = cardbookPreferences.getType(aDirPrefId);
 				
 				var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
-				var prompts = Services.prompt;
 				var confirmTitle = strBundle.GetStringFromName("confirmTitle");
 				var confirmMsg = strBundle.formatStringFromName("accountDeletionDiscoveryConfirmMessage", [myDirPrefIdName], 1);
 				var returnFlag = false;
-				returnFlag = prompts.confirm(window, confirmTitle, confirmMsg);
+				returnFlag = Services.prompt.confirm(window, confirmTitle, confirmMsg);
 				if (returnFlag) {
 					cardbookRepository.removeAccountFromComplexSearch(aDirPrefId);
 					cardbookRepository.removeAccountFromRepository(aDirPrefId);

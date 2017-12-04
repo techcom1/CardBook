@@ -940,11 +940,10 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 							var aListOfFileName = [];
 							aListOfFileName = cardbookSynchronization.getFilesFromDir(myDir.path);
 							if (aListOfFileName.length > 0) {
-								var prompts = Services.prompt;
 								var strBundle = document.getElementById("cardbook-strings");
 								var confirmTitle = strBundle.getString("confirmTitle");
 								var confirmMsg = strBundle.getFormattedString("directoryDeletionConfirmMessage", [myDir.leafName]);
-								if (prompts.confirm(window, confirmTitle, confirmMsg)) {
+								if (Services.prompt.confirm(window, confirmTitle, confirmMsg)) {
 									myDir.remove(true);
 									try {
 										myDir.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0o774);

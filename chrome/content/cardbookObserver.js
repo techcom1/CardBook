@@ -84,67 +84,65 @@ if ("undefined" == typeof(cardbookObserver)) {
 
 	var cardbookObserverRepository = {
 		registerAll: function(aObserver) {
-			var observerService = Services.obs;
-			observerService.addObserver(aObserver, "cardbook.catModifiedIndirect", false);
-			observerService.addObserver(aObserver, "cardbook.catModifiedDirect", false);
-			observerService.addObserver(aObserver, "cardbook.catRemovedIndirect", false);
-			observerService.addObserver(aObserver, "cardbook.catRemovedDirect", false);
-			observerService.addObserver(aObserver, "cardbook.catAddedIndirect", false);
-			observerService.addObserver(aObserver, "cardbook.catAddedDirect", false);
+			Services.obs.addObserver(aObserver, "cardbook.catModifiedIndirect", false);
+			Services.obs.addObserver(aObserver, "cardbook.catModifiedDirect", false);
+			Services.obs.addObserver(aObserver, "cardbook.catRemovedIndirect", false);
+			Services.obs.addObserver(aObserver, "cardbook.catRemovedDirect", false);
+			Services.obs.addObserver(aObserver, "cardbook.catAddedIndirect", false);
+			Services.obs.addObserver(aObserver, "cardbook.catAddedDirect", false);
 
-			observerService.addObserver(aObserver, "cardbook.ABAddedDirect", false);
-			observerService.addObserver(aObserver, "cardbook.ABRemovedDirect", false);
-			observerService.addObserver(aObserver, "cardbook.ABModifiedDirect", false);
+			Services.obs.addObserver(aObserver, "cardbook.ABAddedDirect", false);
+			Services.obs.addObserver(aObserver, "cardbook.ABRemovedDirect", false);
+			Services.obs.addObserver(aObserver, "cardbook.ABModifiedDirect", false);
 
-			observerService.addObserver(aObserver, "cardbook.cardAddedIndirect", false);
-			observerService.addObserver(aObserver, "cardbook.cardAddedDirect", false);
-			observerService.addObserver(aObserver, "cardbook.cardRemovedIndirect", false);
-			observerService.addObserver(aObserver, "cardbook.cardRemovedDirect", false);
-			observerService.addObserver(aObserver, "cardbook.cardModifiedIndirect", false);
-			observerService.addObserver(aObserver, "cardbook.cardModifiedDirect", false);
+			Services.obs.addObserver(aObserver, "cardbook.cardAddedIndirect", false);
+			Services.obs.addObserver(aObserver, "cardbook.cardAddedDirect", false);
+			Services.obs.addObserver(aObserver, "cardbook.cardRemovedIndirect", false);
+			Services.obs.addObserver(aObserver, "cardbook.cardRemovedDirect", false);
+			Services.obs.addObserver(aObserver, "cardbook.cardModifiedIndirect", false);
+			Services.obs.addObserver(aObserver, "cardbook.cardModifiedDirect", false);
 
-			observerService.addObserver(aObserver, "cardbook.syncRunning", false);
-			observerService.addObserver(aObserver, "cardbook.cardPasted", false);
-			observerService.addObserver(aObserver, "cardbook.cardDragged", false);
-			observerService.addObserver(aObserver, "cardbook.cardImportedFromFile", false);
+			Services.obs.addObserver(aObserver, "cardbook.syncRunning", false);
+			Services.obs.addObserver(aObserver, "cardbook.cardPasted", false);
+			Services.obs.addObserver(aObserver, "cardbook.cardDragged", false);
+			Services.obs.addObserver(aObserver, "cardbook.cardImportedFromFile", false);
 
-			observerService.addObserver(aObserver, "cardbook.DBOpen", false);
-			observerService.addObserver(aObserver, "cardbook.complexSearchInitLoaded", false);
-			observerService.addObserver(aObserver, "cardbook.complexSearchLoaded", false);
+			Services.obs.addObserver(aObserver, "cardbook.DBOpen", false);
+			Services.obs.addObserver(aObserver, "cardbook.complexSearchInitLoaded", false);
+			Services.obs.addObserver(aObserver, "cardbook.complexSearchLoaded", false);
 
-			observerService.addObserver(aObserver, "cardbook.preferencesChanged", false);
+			Services.obs.addObserver(aObserver, "cardbook.preferencesChanged", false);
 		},
 		
 		unregisterAll: function(aObserver) {
-			var observerService = Services.obs;
-			observerService.removeObserver(aObserver, "cardbook.catModifiedIndirect");
-			observerService.removeObserver(aObserver, "cardbook.catModifiedDirect");
-			observerService.removeObserver(aObserver, "cardbook.catRemovedIndirect");
-			observerService.removeObserver(aObserver, "cardbook.catRemovedDirect");
-			observerService.removeObserver(aObserver, "cardbook.catAddedIndirect");
-			observerService.removeObserver(aObserver, "cardbook.catAddedDirect");
+			Services.obs.removeObserver(aObserver, "cardbook.catModifiedIndirect");
+			Services.obs.removeObserver(aObserver, "cardbook.catModifiedDirect");
+			Services.obs.removeObserver(aObserver, "cardbook.catRemovedIndirect");
+			Services.obs.removeObserver(aObserver, "cardbook.catRemovedDirect");
+			Services.obs.removeObserver(aObserver, "cardbook.catAddedIndirect");
+			Services.obs.removeObserver(aObserver, "cardbook.catAddedDirect");
 
-			observerService.removeObserver(aObserver, "cardbook.ABAddedDirect");
-			observerService.removeObserver(aObserver, "cardbook.ABRemovedDirect");
-			observerService.removeObserver(aObserver, "cardbook.ABModifiedDirect");
+			Services.obs.removeObserver(aObserver, "cardbook.ABAddedDirect");
+			Services.obs.removeObserver(aObserver, "cardbook.ABRemovedDirect");
+			Services.obs.removeObserver(aObserver, "cardbook.ABModifiedDirect");
 
-			observerService.removeObserver(aObserver, "cardbook.cardAddedIndirect");
-			observerService.removeObserver(aObserver, "cardbook.cardAddedDirect");
-			observerService.removeObserver(aObserver, "cardbook.cardRemovedIndirect");
-			observerService.removeObserver(aObserver, "cardbook.cardRemovedDirect");
-			observerService.removeObserver(aObserver, "cardbook.cardModifiedIndirect");
-			observerService.removeObserver(aObserver, "cardbook.cardModifiedDirect");
+			Services.obs.removeObserver(aObserver, "cardbook.cardAddedIndirect");
+			Services.obs.removeObserver(aObserver, "cardbook.cardAddedDirect");
+			Services.obs.removeObserver(aObserver, "cardbook.cardRemovedIndirect");
+			Services.obs.removeObserver(aObserver, "cardbook.cardRemovedDirect");
+			Services.obs.removeObserver(aObserver, "cardbook.cardModifiedIndirect");
+			Services.obs.removeObserver(aObserver, "cardbook.cardModifiedDirect");
 
-			observerService.removeObserver(aObserver, "cardbook.syncRunning");
-			observerService.removeObserver(aObserver, "cardbook.cardPasted");
-			observerService.removeObserver(aObserver, "cardbook.cardDragged");
-			observerService.removeObserver(aObserver, "cardbook.cardImportedFromFile");
+			Services.obs.removeObserver(aObserver, "cardbook.syncRunning");
+			Services.obs.removeObserver(aObserver, "cardbook.cardPasted");
+			Services.obs.removeObserver(aObserver, "cardbook.cardDragged");
+			Services.obs.removeObserver(aObserver, "cardbook.cardImportedFromFile");
 
-			observerService.removeObserver(aObserver, "cardbook.DBOpen");
-			observerService.removeObserver(aObserver, "cardbook.complexSearchInitLoaded");
-			observerService.removeObserver(aObserver, "cardbook.complexSearchLoaded");
+			Services.obs.removeObserver(aObserver, "cardbook.DBOpen");
+			Services.obs.removeObserver(aObserver, "cardbook.complexSearchInitLoaded");
+			Services.obs.removeObserver(aObserver, "cardbook.complexSearchLoaded");
 
-			observerService.removeObserver(aObserver, "cardbook.preferencesChanged");
+			Services.obs.removeObserver(aObserver, "cardbook.preferencesChanged");
 		}
 	};
 

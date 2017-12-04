@@ -21,6 +21,8 @@
 	<stringbundleset id="stringbundleset"/>
 
 	<script src="chrome://cardbook/content/configuration/wdw_cardbookConfiguration.js"/>
+	<script src="chrome://cardbook/content/cardbookDiscovery.js"/>
+	<script src="chrome://cardbook/content/cardbookDates.js"/>
 	<script src="chrome://cardbook/content/cardbookUtils.js"/>
 	<script src="chrome://cardbook/content/cardbookNotifications.js"/>
 	<script src="chrome://cardbook/content/cardbookRepository.js"/>
@@ -38,6 +40,8 @@
 				name="extensions.cardbook.autocompletion" type="bool"/>
 			<preference id="extensions.cardbook.autocompleteSortByPopularity"
 				name="extensions.cardbook.autocompleteSortByPopularity" type="bool"/>
+			<preference id="extensions.cardbook.proposeConcatEmails"
+				name="extensions.cardbook.proposeConcatEmails" type="bool"/>
 			<preference id="extensions.cardbook.autocompleteShowAddressbook"
 				name="extensions.cardbook.autocompleteShowAddressbook" type="bool"/>
 			<preference id="extensions.cardbook.autocompleteWithColor"
@@ -94,6 +98,8 @@
 				name="extensions.cardbook.autoSync" type="bool"/>
 			<preference id="extensions.cardbook.autoSyncInterval"
 				name="extensions.cardbook.autoSyncInterval" type="string"/>
+			<preference id="extensions.cardbook.discoveryAccountsNameList"
+				name="extensions.cardbook.discoveryAccountsNameList" type="string"/>
 			<preference id="extensions.cardbook.multiget"
 				name="extensions.cardbook.multiget" type="string"/>
 			<preference id="extensions.cardbook.decodeReport"
@@ -155,6 +161,13 @@
 				<tabpanel orient="vertical">
 					<groupbox>
 						<caption label="&integrationGroupboxLabel;"/>
+						<hbox align="center">
+							<checkbox id="exclusiveCheckBox" label="&exclusiveLabel;"
+								accesskey="&exclusiveAccesskey;"
+								tooltiptext = "&exclusiveTooltip;"
+								preference="extensions.cardbook.exclusive"/>
+						</hbox>
+						<separator class="thin"/>
 						<vbox>
 							<checkbox id="autocompletionCheckBox" label="&autocompletionLabel;"
 								accesskey="&autocompletionAccesskey;"
@@ -167,6 +180,11 @@
 								class="indent"
 								preference="extensions.cardbook.autocompleteSortByPopularity"/>
 							<separator class="thin"/>
+							<checkbox id="autocompleteProposeConcatEmailsCheckBox" label="&autocompleteProposeConcatEmailsLabel;"
+								accesskey="&autocompleteProposeConcatEmailsAccesskey;"
+								class="indent"
+								preference="extensions.cardbook.proposeConcatEmails"/>
+							<separator class="thin"/>
 							<checkbox id="autocompleteShowAddressbookCheckBox" label="&autocompleteShowAddressbookLabel;"
 								accesskey="&autocompleteShowAddressbookAccesskey;"
 								class="indent"
@@ -177,13 +195,6 @@
 								class="indent"
 								preference="extensions.cardbook.autocompleteWithColor"/>
 						</vbox>
-						<separator class="thin"/>
-						<hbox align="center">
-							<checkbox id="exclusiveCheckBox" label="&exclusiveLabel;"
-								accesskey="&exclusiveAccesskey;"
-								tooltiptext = "&exclusiveTooltip;"
-								preference="extensions.cardbook.exclusive"/>
-						</hbox>
 						<separator class="thin"/>
 						<vbox>
 							<label value="&useColorLabel;"
@@ -682,27 +693,12 @@
 						<separator class="thin"/>
 						<description>&discoveryWarn;</description>
 						<separator class="thin"/>
-						<hbox flex="1">
-							<vbox flex="1">
-								<hbox flex="1">
-									<tree id="discoveryTree" class="cardbookTreeChildrenConfigClass" hidecolumnpicker="true" flex="1" seltype="single" enableColumnDrag="false" editable="true" onselect="wdw_cardbookConfiguration.selectURL();" sortDirection="ascending" sortResource="discoveryURL">
-										<treecols id="discoveryTreeCols">
-											<treecol id="discoveryURL" label="&discoveryURLLabel;" flex="1" persist="width ordinal hidden" onclick="wdw_cardbookConfiguration.sortTreesFromCol(event, this, 'discoveryTree');" style="text-align:left" editable="false"/>
-											<splitter class="tree-splitter"/>
-											<treecol id="discoveryUsername" label="&usernameLabel;" flex="1" persist="width ordinal hidden" onclick="wdw_cardbookConfiguration.sortTreesFromCol(event, this, 'discoveryTree');" style="text-align:left" editable="false"/>
-										</treecols>
-										<treechildren id="discoveryTreeChildren" ondblclick="wdw_cardbookConfiguration.doubleClickTree(event, 'discoveryTree');"/>
-									</tree>
-								</hbox>
-							</vbox>
-							<hbox align="top">
-								<vbox flex="1">
-									<button id="addURLLabel" label="&addURLLabel;" accesskey="&addURLAccesskey;" oncommand="wdw_cardbookConfiguration.addURL();"/>
-									<button id="renameURLLabel" label="&renameURLLabel;" accesskey="&renameURLAccesskey;" oncommand="wdw_cardbookConfiguration.renameURL();" disabled="true"/>
-									<button id="deleteURLLabel" label="&deleteURLLabel;" accesskey="&deleteURLAccesskey;" oncommand="wdw_cardbookConfiguration.deleteURL();" disabled="true"/>
-								</vbox>
-							</hbox>
-						</hbox>
+						<groupbox id="discoveryAccountsNameListGoupbox">
+							<caption>
+								<checkbox id="discoveryAccountsNameListCheckbox" oncommand="wdw_cardbookConfiguration.changeDiscoveryAccountsPref(this.id);" label="&discoveryAccountsGroupboxLabel;"/>
+							</caption>
+							<listbox rows="4" id="discoveryAccountsNameListListbox"/>
+						</groupbox>
 					</groupbox>
 
 					<groupbox>

@@ -15,6 +15,8 @@
 <!ENTITY autocompletionTooltip "Auto-aanvullen bij het typen van email adressen vanuit CardBook.">
 <!ENTITY autocompleteSortByPopularityLabel "Sorteer e-mail adressen op populariteit">
 <!ENTITY autocompleteSortByPopularityAccesskey "p">
+<!ENTITY autocompleteProposeConcatEmailsLabel "??Propose concatenated emails per contact??">
+<!ENTITY autocompleteProposeConcatEmailsAccesskey "c">
 <!ENTITY autocompleteShowAddressbookLabel "Toon naam adresboek">
 <!ENTITY autocompleteShowAddressbookAccesskey "T">
 <!ENTITY autocompleteWithColorLabel "Gebruik de kleur van het adresboek">
@@ -199,13 +201,7 @@
 <!ENTITY multigetAccesskey "G">
 <!ENTITY discoveryGroupboxLabel "Automatische adresboeken-controle op server">
 <!ENTITY discoveryWarn "Bij elke synchronisatie wordt op onderstaande URL's gecontroleerd op nieuwe of verwijderde adresboeken.">
-<!ENTITY discoveryURLLabel "URL">
-<!ENTITY addURLLabel "Toevoegen">
-<!ENTITY addURLAccesskey "T">
-<!ENTITY renameURLLabel "Bewerken">
-<!ENTITY renameURLAccesskey "B">
-<!ENTITY deleteURLLabel "Verwijderen">
-<!ENTITY deleteURLAccesskey "V">
+<!ENTITY discoveryAccountsGroupboxLabel "Accounts">
 <!ENTITY advancedSyncGroupboxLabel "Geavanceerde instellingen">
 <!ENTITY decodeReportLabel "URL's ontcijferen voor rapportage-verzoeken">
 <!ENTITY decodeReportAccesskey "O">
@@ -238,7 +234,7 @@
 <!ENTITY searchGroupboxLabel "Zoeken">
 <!ENTITY searchInNoteLabel "Zoek bijzondere gebeurtenissen in de rubriek Notities">
 <!ENTITY searchInNoteTooltip1 "Regels toevoegen in het Notitie-veld (Scheidingsteken : en datumformaat zoals ingesteld in adresboek) :">
-<!ENTITY searchInNoteTooltip2 "Gebeurtenis:Beschrijving:02.12.2006">
+<!ENTITY searchInNoteTooltip2 "Gebeurtenis:Beschrijving:2006-12-24">
 <!ENTITY searchInNoteAccesskey "Z">
 <!ENTITY dateFormatLabel "Datumformaat">
 <!ENTITY dateFormatAccesskey "D">
@@ -267,8 +263,8 @@
 <!ENTITY calendarEntryTimeAccesskey "i">
 <!ENTITY calendarEntryWholeDayLabel "Herinnering voor de hele dag">
 <!ENTITY calendarEntryWholeDayAccesskey "h">
-<!ENTITY calendarEntryAlarmLabel "Herinnering x dagen voor gebeurtenis (??Alarm(s) to n hours before calendar event??)">
-<!ENTITY calendarEntryAlarmTooltip "Stel het aantal dagen in vóór de verjaardag waarop Lightning een herinnering moet geven. Indien leeg, dan wordt er geen herinnering gegeven.?? If you want multiple alarms, enter the alarms in a comma separated list.??">
+<!ENTITY calendarEntryAlarmLabel "Herinnering(en) tot x uren voor gebeurtenis (Voorbeeld: 4,+1)">
+<!ENTITY calendarEntryAlarmTooltip "Stel het aantal uren in vóór de verjaardag waarop Lightning een herinnering moet geven. Indien leeg, dan wordt er geen herinnering gegeven. Als er meerdere alarmeringen gewenst zijn, dan kunnen ze worden gescheiden door komma's.">
 <!ENTITY calendarEntryAlarmAccesskey "H">
 <!ENTITY calendarEntryCategoriesLabel "Categorie(ën) voor herinnering">
 <!ENTITY calendarEntryCategoriesTooltip "Eén of meer categorieën, gescheiden door komma's. Indien leeg, dan is er geen categorie.">

@@ -5,7 +5,7 @@
 <!ENTITY searchContacts.label "Ieškoti:">
 <!ENTITY searchContacts.accesskey "l">
 <!ENTITY name.label "Vardas">
-<!ENTITY addtoReplytoFieldMenu.label "Pridėti į Atgalinio adreso“ lauką">
+<!ENTITY addtoReplytoFieldMenu.label "Pridėti į „Atgalinio adreso“ lauką">
 <!ENTITY addtoReplytoFieldMenu.accesskey "t">
-<!ENTITY replytoButton.label "Pridėti prie Atgalinio adreso">
+<!ENTITY replytoButton.label "Pridėti prie „Atgalinio adreso“">
 <!ENTITY replytoButton.accesskey "l">

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://cardbook/skin/cardbookMain.css" type="text/css"?>
 <?xul-overlay href="chrome://cardbook/content/ovl_cardbookStringBundle.xul"?>
 <!DOCTYPE window [
 	<!ENTITY % configurationDTD SYSTEM "chrome://cardbook/locale/wdw_cardbookConfiguration.dtd"> %configurationDTD;
@@ -13,7 +14,7 @@
 	onload="wdw_serverEdition.load();" resizable="true"
 	onclose="wdw_serverEdition.cancel();"
 	id="wdw_serverEdition" title="&namePage.wizard.description;"
-	persist="screenX screenY width height"
+	persist="screenX screenY width height" class="cardbookBackgroundColorClass dialog-content-box"
 	style="min-width:600px;min-height:400px;">
 	
 	<stringbundleset id="stringbundleset"/>
@@ -28,68 +29,88 @@
 
 	<hbox flex="1">
 		<vbox flex="1">
-			<grid align="center" flex="1">
-				<columns>
-					<column/>
-					<column flex="1"/>
-					<column/>
-				</columns>
-	
-				<rows>
-					<row align="center">
-						<label id="serverNameLabel" value="&namePage.name.label;" control="serverNameTextBox"/>
-						<textbox id="serverNameTextBox"/>
-					</row>
-					<separator class="thin"/>
-					<row align="center">
-						<label id="serverTypeLabel" value="&remotePage.type.label;" control="serverTypeTextBox"/>
-						<textbox id="serverTypeTextBox" disabled="true"/>
-					</row>
-					<separator class="thin"/>
-					<row align="center">
-						<label id="serverUrlLabel" value="&remotePage.uri.label;" control="serverUrlTextBox"/>
-						<textbox id="serverUrlTextBox" disabled="true"/>
-					</row>
-					<separator class="thin"/>
-					<row align="center">
-						<label id="serverUserLabel" value="&usernameLabel;" control="serverUserTextBox"/>
-						<textbox id="serverUserTextBox" disabled="true"/>
-					</row>
-					<separator class="thin"/>
-					<row align="center">
-						<label id="serverReadOnlyLabel" value="&namePage.readonly.label;" control="serverReadOnlyCheckBox"/>
-						<checkbox id="serverReadOnlyCheckBox"/>
-					</row>
-					<separator class="thin"/>
-					<row align="center">
-						<label value="&namePage.urnuuid.label;" control="serverUrnuuidCheckBox"/>
-						<checkbox id="serverUrnuuidCheckBox" disabled="true"/>
-					</row>
-					<separator class="thin"/>
-					<row align="center">
-						<label value="&namePage.color.label;" control="cardbook-color"/>
-						<hbox align="center">
-							<html:input id="serverColorInput"
-								class="small-margin"
-								type="color"/>
-						</hbox>
-					</row>
-					<separator class="thin"/>
-					<row align="center">
-						<label value="&namePage.vCardVersion.label;" control="serverVCardVersionMenu"/>
-						<textbox id="serverVCardVersionTextBox" disabled="true"/>
-					</row>
-					<separator class="thin"/>
-					<row align="center">
-						<label value="&dateFormatLabel;" control="dateFormatMenuList"/>
-						<hbox align="center">
-							<menulist id="dateFormatMenuList">
-								<menupopup id="dateFormatMenuPopup"/>
-							</menulist>
-						</hbox>
-					</row>
-				</rows>
-			</grid>
+			<groupbox>
+				<caption label="&generalTabLabel;" class="header"/>
+				<hbox flex="1">
+					<image id="dummyGeneralGroupbox" class="cardbookNoPrefStarClass"/>
+					<grid align="center" flex="1">
+						<columns>
+							<column/>
+							<column flex="1"/>
+						</columns>
+			
+						<rows>
+							<row align="center">
+								<label value="&namePage.color.label;" control="cardbook-color" class="header"/>
+								<hbox align="center">
+									<html:input id="serverColorInput"
+										class="small-margin"
+										type="color"/>
+								</hbox>
+							</row>
+							<separator class="thin"/>
+							<row align="center">
+								<label id="serverNameLabel" value="&namePage.name.label;" control="serverNameTextBox" class="header"/>
+								<textbox id="serverNameTextBox"/>
+							</row>
+							<separator class="thin"/>
+							<row align="center">
+								<label id="serverTypeLabel" value="&remotePage.type.label;" control="serverTypeTextBox" class="header"/>
+								<textbox id="serverTypeTextBox" disabled="true"/>
+							</row>
+							<separator class="thin"/>
+							<row align="center">
+								<label id="serverUrlLabel" value="&remotePage.uri.label;" control="serverUrlTextBox" class="header"/>
+								<textbox id="serverUrlTextBox" disabled="true"/>
+							</row>
+							<separator class="thin"/>
+							<row align="center">
+								<label id="serverUserLabel" value="&usernameLabel;" control="serverUserTextBox" class="header"/>
+								<textbox id="serverUserTextBox" disabled="true"/>
+							</row>
+							<separator class="thin"/>
+							<row align="center">
+								<label id="serverReadOnlyLabel" value="&namePage.readonly.label;" control="serverReadOnlyCheckBox" class="header"/>
+								<checkbox id="serverReadOnlyCheckBox"/>
+							</row>
+							<separator class="thin"/>
+							<row align="center">
+								<label value="&namePage.vCardVersion.label;" control="serverVCardVersionTextBox" class="header"/>
+								<textbox id="serverVCardVersionTextBox" disabled="true"/>
+							</row>
+						</rows>
+					</grid>
+				</hbox>
+			</groupbox>
+			<separator class="thin"/>
+			<groupbox>
+				<caption label="&advancedSyncGroupboxLabel;" class="header"/>
+				<hbox flex="1">
+					<image id="dummyAdvancedGroupbox" class="cardbookNoPrefStarClass"/>
+					<grid align="center" flex="1">
+						<columns>
+							<column class="header"/>
+							<column flex="1"/>
+						</columns>
+			
+						<rows>
+							<row align="center">
+								<label value="&dateFormatLabel;" control="dateFormatMenuList" class="header"/>
+								<hbox align="center">
+									<menulist id="dateFormatMenuList">
+										<menupopup id="dateFormatMenuPopup"/>
+									</menulist>
+								</hbox>
+							</row>
+							<separator class="thin"/>
+							<row align="center">
+								<label value="&namePage.urnuuid.label;" control="serverUrnuuidCheckBox" class="header"/>
+								<checkbox id="serverUrnuuidCheckBox" disabled="true"/>
+							</row>
+						</rows>
+					</grid>
+				</hbox>
+			</groupbox>
 		</vbox>
 	</hbox>
 
