@@ -8,7 +8,7 @@
 <!ENTITY nicknameLabel "Alcunha">
 <!ENTITY genderLabel "Género">
 <!ENTITY bdayLabel "Aniversário">
-<!ENTITY birthplaceLabel "??Birth Place??">
-<!ENTITY anniversaryLabel "??Anniversary??">
-<!ENTITY deathdateLabel "??Deathday??">
-<!ENTITY deathplaceLabel "??Death Place??">
+<!ENTITY birthplaceLabel "Sitio de nascimento">
+<!ENTITY anniversaryLabel "Aniverásario">
+<!ENTITY deathdateLabel "Dia de falecimento">
+<!ENTITY deathplaceLabel "Local de falecimento">
