@@ -15,8 +15,8 @@
 <!ENTITY autocompletionTooltip "Udvider den almindelige autofuldførelse af kontakter i adressebøger af Thunderbird med en autofuldførelse af kontakter i adressebøger af CardBook.">
 <!ENTITY autocompleteSortByPopularityLabel "Sorter e-mailadresser efter popularitet">
 <!ENTITY autocompleteSortByPopularityAccesskey "o">
-<!ENTITY autocompleteProposeConcatEmailsLabel "??Propose concatenated emails per contact??">
-<!ENTITY autocompleteProposeConcatEmailsAccesskey "c">
+<!ENTITY autocompleteProposeConcatEmailsLabel "Foreslå sammenkædede e-mails per kontakt">
+<!ENTITY autocompleteProposeConcatEmailsAccesskey "F">
 <!ENTITY autocompleteShowAddressbookLabel "Vis adressebogsnavn">
 <!ENTITY autocompleteShowAddressbookAccesskey "V">
 <!ENTITY autocompleteWithColorLabel "Brug adressebogsfarve">
