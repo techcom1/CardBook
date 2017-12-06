@@ -15,8 +15,8 @@
 <!ENTITY autocompletionTooltip "Rozšíří dokončování adres kontaktů Thunderbirdu o adresáře CardBooku">
 <!ENTITY autocompleteSortByPopularityLabel "Řadit e-mailové adresy podle oblíbenosti">
 <!ENTITY autocompleteSortByPopularityAccesskey "d">
-<!ENTITY autocompleteProposeConcatEmailsLabel "??Propose concatenated emails per contact??">
-<!ENTITY autocompleteProposeConcatEmailsAccesskey "c">
+<!ENTITY autocompleteProposeConcatEmailsLabel "Navrhovat pro každý kontakt zvlášť spojené e-maily">
+<!ENTITY autocompleteProposeConcatEmailsAccesskey "N">
 <!ENTITY autocompleteShowAddressbookLabel "Zobrazit jméno adresáře">
 <!ENTITY autocompleteShowAddressbookAccesskey "Z">
 <!ENTITY autocompleteWithColorLabel "Použít barvu adresáře">

@@ -15,8 +15,8 @@
 <!ENTITY autocompletionTooltip "Erweitert die standardmäßige Autovervollständigung von Kontakten in Adressbüchern von Thunderbird um eine Autovervollständigung von Kontakten in Adressbüchern von CardBook.">
 <!ENTITY autocompleteSortByPopularityLabel "Sortiere Email-Adressen nach Popularität">
 <!ENTITY autocompleteSortByPopularityAccesskey "S">
-<!ENTITY autocompleteProposeConcatEmailsLabel "??Propose concatenated emails per contact??">
-<!ENTITY autocompleteProposeConcatEmailsAccesskey "c">
+<!ENTITY autocompleteProposeConcatEmailsLabel "Verknüpfte E-Mails pro Kontakt vorschlagen">
+<!ENTITY autocompleteProposeConcatEmailsAccesskey "V">
 <!ENTITY autocompleteShowAddressbookLabel "Zeige den Namen des Adressbuchs">
 <!ENTITY autocompleteShowAddressbookAccesskey "Z">
 <!ENTITY autocompleteWithColorLabel "Benutze die Farbe des Adressbuchs">

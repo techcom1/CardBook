@@ -15,7 +15,7 @@
 <!ENTITY autocompletionTooltip "Auto-aanvullen bij het typen van email adressen vanuit CardBook.">
 <!ENTITY autocompleteSortByPopularityLabel "Sorteer e-mail adressen op populariteit">
 <!ENTITY autocompleteSortByPopularityAccesskey "p">
-<!ENTITY autocompleteProposeConcatEmailsLabel "??Propose concatenated emails per contact??">
+<!ENTITY autocompleteProposeConcatEmailsLabel "Stel samengestelde adressen per contactpersoon voor">
 <!ENTITY autocompleteProposeConcatEmailsAccesskey "c">
 <!ENTITY autocompleteShowAddressbookLabel "Toon naam adresboek">
 <!ENTITY autocompleteShowAddressbookAccesskey "T">

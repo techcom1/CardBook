@@ -7,6 +7,13 @@ if ("undefined" == typeof(ovl_collected)) {
 		addCollectedContact: function (aIdentity, aEmailsCollections, aDisplayName, aEmail) {
 			wdw_cardbooklog.updateStatusProgressInformationWithDebug2("debug mode : start of emails identitiy : " + aIdentity);
 			wdw_cardbooklog.updateStatusProgressInformationWithDebug2("debug mode : start of emails collection : " + aEmailsCollections.toSource());
+			if (!(aEmail != null && aEmail !== undefined && aEmail != "")) {
+				return;
+			} else if (aEmail.includes("{{") && aEmail.includes("}}")) {
+				return;
+			} else if (aEmail.includes("{{") && aDisplayName.includes("}}")) {
+				return;
+			}
 			if (!cardbookRepository.isEmailRegistered(aEmail, aIdentity)) {
 				for (var i = 0; i < aEmailsCollections.length; i++) {
 					var dirPrefId = aEmailsCollections[i][3];
