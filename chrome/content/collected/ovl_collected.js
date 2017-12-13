@@ -11,8 +11,11 @@ if ("undefined" == typeof(ovl_collected)) {
 				return;
 			} else if (aEmail.includes("{{") && aEmail.includes("}}")) {
 				return;
-			} else if (aEmail.includes("{{") && aDisplayName.includes("}}")) {
-				return;
+			}
+			if (aDisplayName != null && aDisplayName !== undefined && aDisplayName != "") {
+				if (aDisplayName.includes("{{") && aDisplayName.includes("}}")) {
+					return;
+				}
 			}
 			if (!cardbookRepository.isEmailRegistered(aEmail, aIdentity)) {
 				for (var i = 0; i < aEmailsCollections.length; i++) {

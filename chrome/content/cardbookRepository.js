@@ -653,6 +653,7 @@ var cardbookRepository = {
 				result.push([resultArray[0], resultArray[1], resultArray[2], resultArray[3], resultArray[4]]);
 			}
 		}
+		cardbookPreferences.delEmailsCollection();
 		for (var i = 0; i < result.length; i++) {
 			cardbookPreferences.setEmailsCollection(i.toString(), result[i][0] + "::" + result[i][1] + "::" + result[i][2] + "::" + result[i][3] + "::" + result[i][4]);
 		}

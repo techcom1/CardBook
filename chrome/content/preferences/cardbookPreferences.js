@@ -44,7 +44,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 	
 		getStringPref: function (prefName) {
 			try {
-				if (Services.vc.compare(Services.appinfo.version, "58") > 0) {
+				if (Services.vc.compare(Services.appinfo.version, "58") >= 0) {
 					return Services.prefs.getStringPref(prefName);
 				} else {
 					return Services.prefs.getComplexValue(prefName, Components.interfaces.nsISupportsString).data;
@@ -57,7 +57,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 	
 		setStringPref: function (prefName, value) {
 			try {
-				if (Services.vc.compare(Services.appinfo.version, "58") > 0) {
+				if (Services.vc.compare(Services.appinfo.version, "58") >= 0) {
 					Services.prefs.setStringPref(prefName, value);
 				} else {
 					var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
