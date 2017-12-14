@@ -94,8 +94,7 @@
 <!ENTITY showNameAsFLAccesskey "e">
 <!ENTITY showNameAsDSPLabel "Pokaži ime">
 <!ENTITY showNameAsDSPAccesskey "D">
-<!ENTITY fnLabelExplanation "Moguće je prilagoditi način na koji Kontakti stvara svoj prikaz imena. Formula se satoji od blokova unutar znaka'()'. U ovim blokovima su dva dijela ograničena znakom '|'.
-								Prvi dio se odnosi na uključen naziv, npr. {{1}}, nije poništen, drugi dio se odnosi kad je uključen naziv poništen.">
+<!ENTITY fnLabelExplanation "Moguće je prilagoditi način na koji Kontakti stvara svoj prikaz imena. Formula se satoji od blokova unutar znaka'()'. U ovim blokovima su dva dijela ograničena znakom '|'. Prvi dio se odnosi na uključen naziv, npr. {{1}}, nije poništen, drugi dio se odnosi kad je uključen naziv poništen.">
 <!ENTITY fnFormulaLabel "Stvori pokaži naziv">
 <!ENTITY fnFormulaAccesskey "y">
 <!ENTITY resetFnFormulaLabel "Vrati na uobičajeno">

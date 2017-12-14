@@ -94,8 +94,7 @@
 <!ENTITY showNameAsFLAccesskey "V">
 <!ENTITY showNameAsDSPLabel "Rodomas vardas">
 <!ENTITY showNameAsDSPAccesskey "R">
-<!ENTITY fnLabelExplanation "Galima pritaikyti „Kontaktų“ rodomo vardo būdą. Ši formulė susideda iš blokų, kuriuos apima skliausteliai „()“. Šiuose blokuose yra dvi dalys, kurias apibrėžia vertikalus brūkšnys „|“.
-								Pirmoji dalis taikoma tada, kai susijusi sąlyga, pvz., {{1}}, nėra nulinė, antra dalis taikoma tada, kai susijęs terminas yra nulis.">			
+<!ENTITY fnLabelExplanation "Galima pritaikyti „Kontaktų“ rodomo vardo būdą. Ši formulė susideda iš blokų, kuriuos apima skliausteliai „()“. Šiuose blokuose yra dvi dalys, kurias apibrėžia vertikalus brūkšnys „|“. Pirmoji dalis taikoma tada, kai susijusi sąlyga, pvz., {{1}}, nėra nulinė, antra dalis taikoma tada, kai susijęs terminas yra nulis.">			
 <!ENTITY fnFormulaLabel "Sukurti rodomo pavadinimą">
 <!ENTITY fnFormulaAccesskey "ą">
 <!ENTITY resetFnFormulaLabel "Atstatyti numatytąjį">

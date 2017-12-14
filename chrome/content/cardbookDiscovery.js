@@ -135,11 +135,7 @@ if ("undefined" == typeof(cardbookDiscovery)) {
 
 		addAddressbook: function (aAccountsToAdd) {
 			var myArgs = {action: "discovery", accountsToAdd: aAccountsToAdd};
-			var myWindow = window.openDialog("chrome://cardbook/content/addressbooksconfiguration/wdw_addressbooksAdd.xul", "",
-											   // Workaround for Bug 1151440 - the HTML color picker won't work
-											   // in linux when opened from modal dialog
-											   (Services.appinfo.OS == 'Linux') ? "chrome,resizable,centerscreen" : "modal,chrome,resizable,centerscreen"
-											   , myArgs);
+			openDialog("chrome://cardbook/content/addressbooksconfiguration/wdw_addressbooksAdd.xul", "", cardbookRepository.windowParams, myArgs);
 		},
 
 		removeAddressbook: function (aDirPrefId) {
@@ -152,7 +148,7 @@ if ("undefined" == typeof(cardbookDiscovery)) {
 				var confirmTitle = strBundle.GetStringFromName("confirmTitle");
 				var confirmMsg = strBundle.formatStringFromName("accountDeletionDiscoveryConfirmMessage", [myDirPrefIdName], 1);
 				var returnFlag = false;
-				returnFlag = Services.prompt.confirm(window, confirmTitle, confirmMsg);
+				returnFlag = Services.prompt.confirm(null, confirmTitle, confirmMsg);
 				if (returnFlag) {
 					cardbookRepository.removeAccountFromComplexSearch(aDirPrefId);
 					cardbookRepository.removeAccountFromRepository(aDirPrefId);

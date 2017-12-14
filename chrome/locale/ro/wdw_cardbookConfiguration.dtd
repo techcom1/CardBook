@@ -15,8 +15,8 @@
 <!ENTITY autocompletionTooltip "Extinde completarea automată standard a contactelor în cărți de adrese Thunderbird cu o completare automată a Contacte în cărți de adrese de contacte.">
 <!ENTITY autocompleteSortByPopularityLabel "Sortați adresele de poştă electronică adrese după popularitate">
 <!ENTITY autocompleteSortByPopularityAccesskey "p">
-<!ENTITY autocompleteProposeConcatEmailsLabel "??Propose concatenated emails per contact??">
-<!ENTITY autocompleteProposeConcatEmailsAccesskey "??c??">
+<!ENTITY autocompleteProposeConcatEmailsLabel "Sugerați poştă electronică uri concatenate pentru fiecare contact">
+<!ENTITY autocompleteProposeConcatEmailsAccesskey "c">
 <!ENTITY autocompleteShowAddressbookLabel "Afișați numele carte de adrese">
 <!ENTITY autocompleteShowAddressbookAccesskey "A">
 <!ENTITY autocompleteWithColorLabel "Utilizați culoarea carte de adresei">
@@ -94,8 +94,7 @@
 <!ENTITY showNameAsFLAccesskey "P">
 <!ENTITY showNameAsDSPLabel "Numele afișat">
 <!ENTITY showNameAsDSPAccesskey "N">
-<!ENTITY fnLabelExplanation "Este posibil să personalizați modul în care Contacte generează numele afișat. Această formulă constă în blocuri închise de „()”. În aceste blocuri, există două părți delimitate de „|”.
-								??The first part applies when the term involved, for example {{1}}, is not null, the second part applies when the term involved is null.??">
+<!ENTITY fnLabelExplanation "Este posibil să personalizați modul în care Contacte generează numele afișat. Această formulă constă în blocuri închise de „()”. În aceste blocuri, există două părți delimitate de „|”. Prima parte se aplică atunci când termenul implicat, de exemplu {{1}}, nu este nul, a doua parte se aplică atunci când termenul implicat este nul.">
 <!ENTITY fnFormulaLabel "Generați numele afișat">
 <!ENTITY fnFormulaAccesskey "G">
 <!ENTITY resetFnFormulaLabel "Desemnează ca implicit">
@@ -200,7 +199,7 @@
 <!ENTITY multigetAccesskey "O">
 <!ENTITY discoveryGroupboxLabel "Descoperirea cărților de adrese">
 <!ENTITY discoveryWarn "La fiecare sincronizare, se va verifica adresele URL de mai jos pentru a căuta cărți de adrese noi sau șterse">
-<!ENTITY discoveryAccountsGroupboxLabel "??Accounts??">
+<!ENTITY discoveryAccountsGroupboxLabel "Conturi">
 <!ENTITY advancedSyncGroupboxLabel "Proprietăți avansate">
 <!ENTITY decodeReportLabel "Decodează adresele URL pentru solicitările RAPORT">
 <!ENTITY decodeReportAccesskey "D">

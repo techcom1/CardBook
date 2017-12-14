@@ -267,6 +267,11 @@
 						<menupopup id="dateFormatMenuPopup"/>
 					</menulist>
 				</row>
+				<separator class="groove-thin" hidden="true"/>
+				<row id="URLRow" align="center" hidden="true">
+					<label control="URLPageName" hidden="true"/>
+					<textbox id="URLPageName" hidden="true"/>
+				</row>
 				<separator class="groove-thin"/>
 				<row id="readonlyRow" align="center">
 					<label value="&namePage.readonly.label;" control="readonlyPageName"/>
@@ -298,6 +303,7 @@
 				<column align="center"/>
 				<column align="center"/>
 				<column align="center" hidden="true"/>
+				<column align="center" hidden="true"/>
 				<column align="center"/>
 				<column align="center"/>
 			</columns>
@@ -308,6 +314,7 @@
 					<label value="&namePage.color.label;"/>
 					<label value="&namePage.vCardVersion.label;"/>
 					<label value="&dateFormatLabel;" hidden="true"/>
+					<label hidden="true"/>
 					<label value="&namePage.readonly.label;"/>
 					<label value="&namePage.urnuuid.label;"/>
 				</row>

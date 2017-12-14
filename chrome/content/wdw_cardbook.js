@@ -1634,11 +1634,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 
 		addAddressbook: function (aAction, aDirPrefId) {
 			var myArgs = {action: aAction, dirPrefId: aDirPrefId, rootWindow: window};
-			var myWindow = window.openDialog("chrome://cardbook/content/addressbooksconfiguration/wdw_addressbooksAdd.xul", "",
-											   // Workaround for Bug 1151440 - the HTML color picker won't work
-											   // in linux when opened from modal dialog
-											   (Services.appinfo.OS == 'Linux') ? "chrome,resizable,centerscreen" : "modal,chrome,resizable,centerscreen"
-											   , myArgs);
+			var myWindow = window.openDialog("chrome://cardbook/content/addressbooksconfiguration/wdw_addressbooksAdd.xul", "", cardbookRepository.windowParams, myArgs);
 		},
 		
 		editAddressbook: function () {

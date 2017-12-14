@@ -1932,7 +1932,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			"&client_id=" + cardbookRepository.cardbookgdata.CLIENT_ID +
 			"&redirect_uri=" + cardbookRepository.cardbookgdata.REDIRECT_URI +
 			"&scope=" + cardbookRepository.cardbookgdata.SCOPE +
-			"&login_hint=" + cardbookRepository.aEmail;
+			"&login_hint=" + aEmail;
 		},
 
 		addCertificateException: function (aUrl) {
