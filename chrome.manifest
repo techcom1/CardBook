@@ -16,8 +16,10 @@ locale   cardbook lt    chrome/locale/lt/
 locale   cardbook nl    chrome/locale/nl/
 locale   cardbook pl    chrome/locale/pl/
 locale   cardbook pt-PT chrome/locale/pt-PT/
+locale   cardbook ro    chrome/locale/ro/
 locale   cardbook ru    chrome/locale/ru/
 locale   cardbook sl    chrome/locale/sl/
+locale   cardbook sv-SE chrome/locale/sv-SE/
 
 skin   cardbook             classic/1.0   chrome/skin/
 skin   cardbook-osversion   classic/1.0   chrome/skin/osversion/unix/        os=Linux

@@ -84,6 +84,8 @@ Translations by:
 * Lucian Burca (ro)
 * Alexander Yavorsky (ru)
 * Peter Klofutar (sl)
+* Anders (sv-SE)
+* Kire Dyfvelsten (sv-SE)
 
 Trailblazer:
 * [Thomas McWork](https://github.com/thomas-mc-work): midwife for the public git repository

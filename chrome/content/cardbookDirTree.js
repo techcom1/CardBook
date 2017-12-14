@@ -15,7 +15,7 @@ if ("undefined" == typeof(cardbookDirTree)) {
 				else if (column.id == "accountId") return this.visibleData[idx][4];
 				else if (column.id == "accountType") return this.visibleData[idx][6];
 				else if (column.id == "accountEnabled") return this.visibleData[idx][5];
-				else if (column.id == "accountReadOnly") return this.visibleData[idx][7];
+				else if (column.id == "accountStatusCheckbox") return true;
 				else if (column.id == "accountTypeCheckbox") return true;
 				else if (column.id == "dummyForScroll") return true;
 			} else {
@@ -24,15 +24,13 @@ if ("undefined" == typeof(cardbookDirTree)) {
 		},
 		getCellValue: function(idx, column) {
 			if (column.id == "accountEnabled") return this.visibleData[idx][5];
-			else if (column.id == "accountReadOnly") return this.visibleData[idx][7];
+			else if (column.id == "accountStatusCheckbox") return true;
 			else if (column.id == "accountTypeCheckbox") return true;
 			else if (column.id == "dummyForScroll") return true;
 		},
 		setCellValue: function(idx, column) {
-			if (cardbookRepository.cardbookSyncMode === "NOSYNC") {
-				if (column.id == "accountEnabled") {
-					wdw_cardbook.enableOrDisableAddressbook(this.visibleData[idx][4], !this.visibleData[idx][5]);
-				}
+			if (column.id == "accountEnabled") {
+				wdw_cardbook.enableOrDisableAddressbook(this.visibleData[idx][4], !this.visibleData[idx][5]);
 			}
 		},
 		getRowProperties: function(idx) { return "" },
@@ -41,7 +39,9 @@ if ("undefined" == typeof(cardbookDirTree)) {
 			if (column.id == "accountColor" && this.visibleData[idx][1] && this.visibleData[idx][6] != "SEARCH") {
 				return "color_" + this.visibleData[idx][4];
 			} else if (column.id == "accountTypeCheckbox" && this.visibleData[idx][1]) {
-				return cardbookRepository.getIconType(this.visibleData[idx][6]);
+				return cardbookRepository.getABIconType(this.visibleData[idx][6]);
+			} else if (column.id == "accountStatusCheckbox" && this.visibleData[idx][1] && this.visibleData[idx][5] && this.visibleData[idx][6] != "SEARCH") {
+				return cardbookRepository.getABStatusType(this.visibleData[idx][4]);
 			}
 		},
 		canDrop: function(idx) { return (this.visibleData[idx][5] && !this.visibleData[idx][7] && this.visibleData[idx][6] != "SEARCH"); },

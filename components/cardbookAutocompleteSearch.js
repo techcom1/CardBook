@@ -321,7 +321,7 @@ cardbookAutocompleteSearch.prototype = {
 			if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] != "SEARCH") {
 				var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
 				if (cardbookRepository.verifyABRestrictions(myDirPrefId, "allAddressBooks", this.ABExclRestrictions, this.ABInclRestrictions)) {
-					var myStyle = cardbookRepository.getIconType(cardbookRepository.cardbookAccounts[i][6]) + " color_" + myDirPrefId;
+					var myStyle = cardbookRepository.getABIconType(cardbookRepository.cardbookAccounts[i][6]) + " color_" + myDirPrefId;
 					var myComment = null;
 					if (this.showAddressbookComments) {
 						// display addressbook name in the comments column
@@ -404,7 +404,7 @@ cardbookAutocompleteSearch.prototype = {
 			if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] != "SEARCH") {
 				var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
 				if (cardbookRepository.verifyABRestrictions(myDirPrefId, "allAddressBooks", this.ABExclRestrictions, this.ABInclRestrictions)) {
-					var myStyle = cardbookRepository.getIconType(cardbookPreferences.getType(myDirPrefId)) + " color_" + myDirPrefId;
+					var myStyle = cardbookRepository.getABIconType(cardbookPreferences.getType(myDirPrefId)) + " color_" + myDirPrefId;
 					var myComment = null;
 					if (this.showAddressbookComments) {
 						// display addressbook name in the comments column

@@ -1716,14 +1716,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			}
 		},
 
-		loadPeriodicSync: function () {
-			var autoSync = cardbookPreferences.getBoolPref("extensions.cardbook.autoSync");
-			if (!(autoSync)) {
-				document.getElementById('autoSyncInterval').disabled = true;
-				document.getElementById('autoSyncIntervalTextBox').disabled = true;
-			}
-		},
-
 		validateStatusInformationLineNumber: function () {
 			if (document.getElementById('statusInformationLineNumberTextBox').value < 10) {
 				document.getElementById('statusInformationLineNumberTextBox').value = 10;
@@ -1753,16 +1745,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			}
 		},
 
-		showAutoSyncInterval: function () {
-			if (document.getElementById('autoSyncCheckBox').checked) {
-				document.getElementById('autoSyncInterval').disabled = false;
-				document.getElementById('autoSyncIntervalTextBox').disabled = false;
-			} else {
-				document.getElementById('autoSyncInterval').disabled = true;
-				document.getElementById('autoSyncIntervalTextBox').disabled = true;
-			}
-		},
-
 		load: function () {
 			wdw_cardbookConfiguration.loadTitle();
 			wdw_cardbookConfiguration.addAcceptButton();
@@ -1779,7 +1761,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			wdw_cardbookConfiguration.loadDateDisplayedFormat();
 			wdw_cardbookConfiguration.loadDiscoveryAccounts("discoveryAccountsNameList");
 			wdw_cardbookConfiguration.loadInitialSyncDelay();
-			wdw_cardbookConfiguration.loadPeriodicSync();
 			wdw_cardbookConfiguration.loadAddressBooks("addressBooksNameList");
 			wdw_cardbookConfiguration.loadVCards();
 			wdw_cardbookConfiguration.sortTrees(null, "accountsVCardsTree");

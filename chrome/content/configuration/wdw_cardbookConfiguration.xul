@@ -94,10 +94,6 @@
 				name="extensions.cardbook.initialSyncDelay" type="string"/>
 			<preference id="extensions.cardbook.solveConflicts"
 				name="extensions.cardbook.solveConflicts" type="string"/>
-			<preference id="extensions.cardbook.autoSync"
-				name="extensions.cardbook.autoSync" type="bool"/>
-			<preference id="extensions.cardbook.autoSyncInterval"
-				name="extensions.cardbook.autoSyncInterval" type="string"/>
 			<preference id="extensions.cardbook.discoveryAccountsNameList"
 				name="extensions.cardbook.discoveryAccountsNameList" type="string"/>
 			<preference id="extensions.cardbook.multiget"
@@ -651,23 +647,6 @@
 					</groupbox>
 
 					<groupbox>
-						<caption label="&autoSyncGroupboxLabel;"/>
-						<hbox align="center">
-							<checkbox id="autoSyncCheckBox" label="&autoSyncLabel;"
-								accesskey="&autoSyncAccesskey;"
-								preference="extensions.cardbook.autoSync" oncommand="wdw_cardbookConfiguration.showAutoSyncInterval();"/>
-						</hbox>
-						<hbox align="center" class="indent">
-							<label value="&autoSyncIntervalLabel;"
-								accesskey="&autoSyncIntervalAccesskey;"
-								control="autoSyncIntervalTextBox"
-								id="autoSyncInterval"/>
-							<textbox id="autoSyncIntervalTextBox"
-								preference="extensions.cardbook.autoSyncInterval"/>
-						</hbox>
-					</groupbox>
-
-					<groupbox>
 						<caption label="&requestsGroupboxLabel;"/>
 						<hbox align="center">
 							<label value="&requestsTimeoutLabel;"
@@ -688,7 +667,7 @@
 						</hbox>
 					</groupbox>
 
-					<groupbox flex="1">
+					<groupbox>
 						<caption label="&discoveryGroupboxLabel;"/>
 						<separator class="thin"/>
 						<description>&discoveryWarn;</description>

@@ -1,0 +1,59 @@
+<!ENTITY wizard.title "Adăugați o nouă carte de adrese">
+<!ENTITY wizard.label "Adăugați o nouă carte de adrese">
+
+<!ENTITY welcomePage.wizard.description "Bine ati venit!">
+<!ENTITY welcomePage.description "Se pare că este prima dată când utilizați Contacte, așa că vom încerca să importem contactele din agenda telefonică standard Thunderbird în Contacte.">
+
+<!ENTITY initialPage.wizard.description "Locația pentru noul carte de adrese.">
+<!ENTITY initialPage.description "Este carte de adrese locală sau la distanță?">
+<!ENTITY initialPage.computer.label "Locală">
+<!ENTITY initialPage.network.label "La distanță">
+<!ENTITY initialPage.standard.label "Importați cărți de adrese standard din Thunderbird">
+<!ENTITY initialPage.search.label "Căutați utilizând cărți de adrese existente">
+
+<!ENTITY localPage.wizard.description "Tipul și locația noului carte de adrese locală.">
+<!ENTITY localPage.type.description "Care este tipul carte de adresei ta locale?">
+<!ENTITY localPage.type.label "Tip">
+<!ENTITY localPage.createDB.label "Creați o nouă carte de adrese">
+<!ENTITY localPage.createDirectory.label "Creați o nouă carte de adrese (director)">
+<!ENTITY localPage.createFile.label "Creați o nouă carte de adrese (fişier)">
+<!ENTITY localPage.openDirectory.label "Deschideți o carte de adrese existentă (director)">
+<!ENTITY localPage.openFile.label "Deschideți o carte de adrese existentă (fişier)">
+<!ENTITY localPage.uri.label "Director sau fișier">
+<!ENTITY localPage.uri.description "Alegeți locația noului carte de adrese locală. Dacă creați un fișier nou, specificați .vcf ca extensie de fișier.">
+<!ENTITY localPage.uributton.label "Răsfoiește">
+
+<!ENTITY remotePage.wizard.description "Tipul și locația noului carte de adrese de la distanță.">
+<!ENTITY remotePage.description "Care este tipul carte de adresei de la distanță? (Atenție: Google nu se conformează standardului vCard)">
+<!ENTITY remotePage.type.label "Tip">
+<!ENTITY remotePage.carddav.label "CardDAV">
+<!ENTITY remotePage.google.label "Google">
+<!ENTITY remotePage.apple.label "Apple">
+<!ENTITY remotePage.connection.label "Conexiune">
+<!ENTITY remotePage.uri.description "For a CardDAV type, enter the URL of the remote address card. Puteți încerca să utilizați o adresă URL parțială (de exemplu : http(s)://carddav.exemplu.org.ro). For a Google Address Book, do not specify this field.">
+<!ENTITY remotePage.uri.label "Adresa URL">
+<!ENTITY remotePage.credentials.description "Introduceți acreditările pentru accesarea carte de adresei dvs. For a Google Address Book, your username should be your Google email.">
+<!ENTITY remotePage.validatebutton.label "Valida">
+
+<!ENTITY locationSearchPage.wizard.description "Definirea căutărilor salvate">
+<!ENTITY locationSearchPage.label "Căutări salvate">
+
+<!ENTITY googleOauthPage.wizard.description "Autentificare Google">
+
+<!ENTITY namePage.wizard.description "Proprietăți carte de adrese">
+<!ENTITY namePage.selected.label "Selectat">
+<!ENTITY namePage.name.label "Nume">
+<!ENTITY namePage.color.label "Culoare">
+<!ENTITY namePage.urnuuid.label "Utilizați urn:uuid">
+<!ENTITY namePage.readonly.label "Mod numai pentru citire">
+<!ENTITY namePage.vCardVersion.label "vCard">
+
+<!ENTITY namesPage.wizard.description "Proprietăți cărți de adrese">
+<!ENTITY namesPage.name.label "Numele">
+<!ENTITY namesPage.name.description "Au fost descoperite mai multe cărți de adrese. Alegeți cărțile de adrese pe care doriți să le deschideți și numele acestora :">
+
+<!ENTITY finishPage.wizard.description "Carte cu adrese este configurată">
+<!ENTITY finishPage.description "Noua dvs. carte de adrese a fost configurată cu succes.">
+
+<!ENTITY finishsPage.wizard.description "Carte cu adrese este configurată">
+<!ENTITY finishsPage.description "Noua dvs. carte de adrese a fost configurată cu succes.">

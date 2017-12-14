@@ -5,14 +5,14 @@
 <!ENTITY welcomePage.description "Il semblerait que cela soit la première fois que vous utilisez CardBook, nous allons donc essayer d'importer les contacts existants dans CardBook.">
 
 <!ENTITY initialPage.wizard.description "Emplacement du nouveau carnet d'adresses.">
-<!ENTITY initialPage.description "Est ce que votre carnet d'adresses est local ou distant ? :">
+<!ENTITY initialPage.description "Emplacement de votre carnet d'adresses :">
 <!ENTITY initialPage.computer.label "Local">
 <!ENTITY initialPage.network.label "Distant">
 <!ENTITY initialPage.standard.label "Importer les carnets d'adresses standards">
 <!ENTITY initialPage.search.label "Recherche dans les carnets d'adresses existants">
 
 <!ENTITY localPage.wizard.description "Type et emplacement du nouveau carnet d'adresses local.">
-<!ENTITY localPage.type.description "Quel est le type de votre carnet d'adresses local ? :">
+<!ENTITY localPage.type.description "Type de votre carnet d'adresses local :">
 <!ENTITY localPage.type.label "Type">
 <!ENTITY localPage.createDB.label "Créér un nouveau carnet d'adresses">
 <!ENTITY localPage.createDirectory.label "Créér un nouveau carnet d'adresses (Répertoire)">

@@ -1,0 +1,5 @@
+<!ENTITY calendarNameLabel "Calendar">
+<!ENTITY calendarIdLabel "Identificarea calendarului">
+<!ENTITY existingLabel "Existent">
+<!ENTITY failedLabel "A eșuat">
+<!ENTITY succeededLabel "Reușit">

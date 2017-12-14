@@ -1,0 +1,18 @@
+<!ENTITY viewResultEditionLabel "Visa resultat">
+<!ENTITY viewResultEditionAccesskey "V">
+<!ENTITY createEditionLabel "Skapa">
+<!ENTITY createEditionAccesskey "k">
+<!ENTITY createAndReplaceEditionLabel "Skapa och ersätt">
+<!ENTITY createAndReplaceEditionAccesskey "e">
+<!ENTITY saveEditionLabel "Spara">
+<!ENTITY saveEditionAccesskey "S">
+<!ENTITY validateEditionLabel "Verifiera">
+<!ENTITY validateEditionAccesskey "V">
+<!ENTITY cancelEditionLabel "Avbryt">
+<!ENTITY cancelEditionAccesskey "A">
+<!ENTITY closeEditionLabel "Stäng">
+<!ENTITY closeEditionAccesskey "t">
+<!ENTITY buttonAppendToListLabel "Lägg till">
+<!ENTITY buttonAppendToListAccesskey "L">
+<!ENTITY buttonRemoveFromListLabel "Ta bort">
+<!ENTITY buttonRemoveFromListAccesskey "b">

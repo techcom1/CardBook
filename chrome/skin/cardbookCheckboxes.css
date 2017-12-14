@@ -30,13 +30,17 @@
 	/* -moz-image-region: rect(0, 16px, 16px, 0); */
 	/* list-style-image: url("chrome://messenger/skin/icons/search-glass.svg"); */
 }
-.cardbookTreeClass treechildren::-moz-tree-checkbox(accountReadOnly) {
+.cardbookTreeClass treechildren::-moz-tree-checkbox(accountStatusCheckbox) {
 	list-style-image: url("chrome://cardbook/skin/checkbox-images.png");
 	-moz-image-region: rect(0 65px 13px 52px);
 }
-.cardbookTreeClass treechildren::-moz-tree-checkbox(accountReadOnly, container, checked) {
+.cardbookTreeClass treechildren::-moz-tree-checkbox(accountStatusCheckbox, readonly) {
 	list-style-image: url("chrome://cardbook/skin/addressbook-status.png");
     -moz-image-region: rect(0px 14px 14px 0px);
+}
+.cardbookTreeClass treechildren::-moz-tree-checkbox(accountStatusCheckbox, syncing) {
+	list-style-image: url("chrome://cardbook/skin/addressbook-status.png");
+    -moz-image-region: rect(0px 28px 14px 14px);
 }
 
 .cardbookTreeChildrenConfigClass treechildren::-moz-tree-checkbox() {

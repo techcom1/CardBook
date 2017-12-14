@@ -29,8 +29,6 @@ if ("undefined" == typeof(ovl_synchro)) {
 			prefs.setBoolPref("initialSync", true);
 			prefs.setCharPref("initialSyncDelay", "0");
 			prefs.setCharPref("solveConflicts", "User");
-			prefs.setBoolPref("autoSync", true);
-			prefs.setCharPref("autoSyncInterval", "30");
 			prefs.setCharPref("discoveryAccountsNameList", "");
 			prefs.setCharPref("multiget", "40");
 			prefs.setBoolPref("decodeReport", true);
@@ -82,7 +80,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 			
 			prefs.setCharPref("accountsShown", "all");
 			prefs.setCharPref("uncategorizedCards", "");
-			prefs.setCharPref("addonVersion", "24.6");
+			prefs.setCharPref("addonVersion", "24.7");
 		},
 
 		lEventTimerSync : { notify: function(lTimerSync) {

@@ -6,32 +6,20 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 
 	var cardbookSynchronization = {
 
-		autoSync: "",
-		autoSyncInterval: "",
-		autoSyncId: "",
+		autoSync: {},
+		autoSyncInterval: {},
+		autoSyncId: {},
 
-		initSync: function() {
-			cardbookRepository.cardbookServerChangedPwd = {};
+		initDiscovery: function(aPrefId) {
+			cardbookRepository.cardbookServerValidation[aPrefId] = {};
 		},
 		
-		initRefreshToken: function(aPrefId) {
-			cardbookSynchronization.initMultipleOperations(aPrefId);
-		},
-		
-		initSyncWithPrefId: function(aPrefId) {
-			cardbookRepository.cardbookSyncMode = "SYNC";
-			cardbookSynchronization.initMultipleOperations(aPrefId);
-		},
-		
-		initDiscovery: function() {
-			cardbookRepository.cardbookServerValidation = {};
-		},
-		
-		initDiscoveryWithPrefId: function(aPrefId) {
-			cardbookSynchronization.initMultipleOperations(aPrefId);
+		stopDiscovery: function(aPrefId) {
+			delete cardbookRepository.cardbookServerValidation[aPrefId];
 		},
 		
 		initMultipleOperations: function(aPrefId) {
+			cardbookRepository.cardbookSyncMode[aPrefId] = 1;
 			cardbookRepository.cardbookGoogleAccessTokenRequest[aPrefId] = 0;
 			cardbookRepository.cardbookGoogleAccessTokenResponse[aPrefId] = 0;
 			cardbookRepository.cardbookGoogleAccessTokenError[aPrefId] = 0;
@@ -99,79 +87,9 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			cardbookRepository.cardbookImageGetError[aPrefId] = 0;
 		},
 
-		nullifyMultipleOperations: function() {
-			cardbookRepository.cardbookGoogleAccessTokenRequest = {};
-			cardbookRepository.cardbookGoogleAccessTokenResponse = {};
-			cardbookRepository.cardbookGoogleAccessTokenError = {};
-			cardbookRepository.cardbookGoogleRefreshTokenRequest = {};
-			cardbookRepository.cardbookGoogleRefreshTokenResponse = {};
-			cardbookRepository.cardbookGoogleRefreshTokenError = {};
-			cardbookRepository.cardbookDirRequest = {};
-			cardbookRepository.cardbookDirResponse = {};
-			cardbookRepository.cardbookFileRequest = {};
-			cardbookRepository.cardbookFileResponse = {};
-			cardbookRepository.cardbookDBRequest = {};
-			cardbookRepository.cardbookDBResponse = {};
-			cardbookRepository.cardbookComplexSearchRequest = {};
-			cardbookRepository.cardbookComplexSearchResponse = {};
-			cardbookRepository.cardbookComplexSearchReloadRequest = {};
-			cardbookRepository.cardbookComplexSearchReloadResponse = {};
-			cardbookRepository.filesFromCacheDB = {};
-			cardbookRepository.cardbookServerDiscoveryRequest = {};
-			cardbookRepository.cardbookServerDiscoveryResponse = {};
-			cardbookRepository.cardbookServerDiscoveryError = {};
-			cardbookRepository.cardbookServerSyncRequest = {};
-			cardbookRepository.cardbookServerSyncResponse = {};
-			cardbookRepository.cardbookServerSyncEmptyCache = {};
-			cardbookRepository.cardbookServerSyncLoadCacheDone = {};
-			cardbookRepository.cardbookServerSyncLoadCacheTotal = {};
-			cardbookRepository.cardbookServerSyncDone = {};
-			cardbookRepository.cardbookServerSyncTotal = {};
-			cardbookRepository.cardbookServerSyncError = {};
-			cardbookRepository.cardbookServerSyncNotUpdated = {};
-			cardbookRepository.cardbookServerSyncNewOnServer = {};
-			cardbookRepository.cardbookServerSyncNewOnDisk = {};
-			cardbookRepository.cardbookServerSyncUpdatedOnServer = {};
-			cardbookRepository.cardbookServerSyncUpdatedOnDisk = {};
-			cardbookRepository.cardbookServerSyncUpdatedOnBoth = {};
-			cardbookRepository.cardbookServerSyncUpdatedOnDiskDeletedOnServer = {};
-			cardbookRepository.cardbookServerSyncDeletedOnDisk = {};
-			cardbookRepository.cardbookServerSyncDeletedOnServer = {};
-			cardbookRepository.cardbookServerSyncDeletedOnDiskUpdatedOnServer = {};
-			cardbookRepository.cardbookServerSyncAgain = {};
-			cardbookRepository.cardbookServerSyncCompareWithCacheDone = {};
-			cardbookRepository.cardbookServerSyncCompareWithCacheTotal = {};
-			cardbookRepository.cardbookServerSyncHandleRemainingDone = {};
-			cardbookRepository.cardbookServerSyncHandleRemainingTotal = {};
-			cardbookRepository.cardbookServerGetRequest = {};
-			cardbookRepository.cardbookServerGetResponse = {};
-			cardbookRepository.cardbookServerGetError = {};
-			cardbookRepository.cardbookServerGetForMergeRequest = {};
-			cardbookRepository.cardbookServerGetForMergeResponse = {};
-			cardbookRepository.cardbookServerGetForMergeError = {};
-			cardbookRepository.cardbookServerMultiGetArray = {};
-			cardbookRepository.cardbookServerMultiGetParams = {};
-			cardbookRepository.cardbookServerMultiGetRequest = {};
-			cardbookRepository.cardbookServerMultiGetResponse = {};
-			cardbookRepository.cardbookServerMultiGetError = {};
-			cardbookRepository.cardbookServerUpdatedRequest = {};
-			cardbookRepository.cardbookServerUpdatedResponse = {};
-			cardbookRepository.cardbookServerUpdatedError = {};
-			cardbookRepository.cardbookServerCreatedRequest = {};
-			cardbookRepository.cardbookServerCreatedResponse = {};
-			cardbookRepository.cardbookServerCreatedError = {};
-			cardbookRepository.cardbookServerDeletedRequest = {};
-			cardbookRepository.cardbookServerDeletedResponse = {};
-			cardbookRepository.cardbookServerDeletedError = {};
-			cardbookRepository.cardbookImageGetRequest = {};
-			cardbookRepository.cardbookImageGetResponse = {};
-			cardbookRepository.cardbookImageGetError = {};
-
-			cardbookRepository.cardbookServerChangedPwd = {};
-		},
-
 		finishMultipleOperations: function(aPrefId) {
 			cardbookSynchronization.initMultipleOperations(aPrefId);
+			cardbookRepository.cardbookSyncMode[aPrefId] = 0;
 		},
 
 		getRequest: function(aPrefId, aPrefName) {
@@ -2033,51 +1951,63 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 		},
 
 		setPeriodicSync: function () {
-			var autoSync = cardbookPreferences.getBoolPref("extensions.cardbook.autoSync");
-			var autoSyncInterval = cardbookPreferences.getStringPref("extensions.cardbook.autoSyncInterval");
-			if ((cardbookSynchronization.autoSync == "") ||
-				(cardbookSynchronization.autoSync != autoSync || cardbookSynchronization.autoSyncInterval != autoSyncInterval)) {
-				try {
-					var autoSyncIntervalMs = autoSyncInterval * 60 * 1000;
-				} catch(e) {
-					var autoSyncIntervalMs = 30 * 60 * 1000;
-				}
-				if (cardbookSynchronization.autoSyncId != null && cardbookSynchronization.autoSyncId !== undefined && cardbookSynchronization.autoSyncId != "") {
-					cardbookUtils.formatStringForOutput("periodicSyncDeleting", [cardbookSynchronization.autoSyncId]);
-					clearInterval(cardbookSynchronization.autoSyncId);
-					cardbookSynchronization.autoSyncId = "";
-				}
-				
-				if (autoSync) {
-					cardbookSynchronization.autoSyncId = setInterval(cardbookSynchronization.syncAccounts, autoSyncIntervalMs);
-					cardbookUtils.formatStringForOutput("periodicSyncSetting", [autoSyncIntervalMs, cardbookSynchronization.autoSyncId]);
-				}
-				cardbookSynchronization.autoSync = autoSync;
-				cardbookSynchronization.autoSyncInterval = autoSyncInterval;
-			}
-		},
-
-		syncAccounts: function () {
-			if (cardbookRepository.cardbookSyncMode === "NOSYNC") {
-				var result = [];
-				result = cardbookPreferences.getAllPrefIds();
-				cardbookSynchronization.initSync();
-				for (let i = 0; i < result.length; i++) {
-					var myPrefId = result[i];
-					if (cardbookPreferences.getEnabled(myPrefId)) {
-						var myPrefIdType = cardbookPreferences.getType(myPrefId);
-						if (myPrefIdType === "GOOGLE" || myPrefIdType === "CARDDAV" || myPrefIdType === "APPLE") {
-							cardbookUtils.formatStringForOutput("periodicSyncSyncing");
-							cardbookSynchronization.initSyncWithPrefId(myPrefId);
-							cardbookSynchronization.syncAccount(myPrefId);
+			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
+				if (cardbookRepository.cardbookAccounts[i][5] && (cardbookRepository.cardbookAccounts[i][6] === "GOOGLE" || cardbookRepository.cardbookAccounts[i][6] === "CARDDAV" || cardbookRepository.cardbookAccounts[i][6] === "APPLE")) {
+					var dirPrefId = cardbookRepository.cardbookAccounts[i][4];
+					var dirPrefName = cardbookRepository.cardbookAccounts[i][0];
+					var autoSync = cardbookPreferences.getAutoSyncEnabled(dirPrefId);
+					var autoSyncInterval = cardbookPreferences.getAutoSyncInterval(dirPrefId);
+					if ((!(cardbookSynchronization.autoSync[dirPrefId] != null && cardbookSynchronization.autoSync[dirPrefId] !== undefined && cardbookSynchronization.autoSync[dirPrefId] != "")) ||
+						(autoSync && cardbookSynchronization.autoSyncInterval[dirPrefId] != autoSyncInterval)) {
+						cardbookSynchronization.removePeriodicSync(dirPrefId, dirPrefName);
+						if (autoSync) {
+							cardbookSynchronization.addPeriodicSync(dirPrefId, dirPrefName, autoSyncInterval);
 						}
 					}
 				}
 			}
 		},
 
+		removePeriodicSync: function(aDirPrefId, aDirPrefName) {
+			if (cardbookSynchronization.autoSyncId[aDirPrefId]) {
+				if (!(aDirPrefName != null && aDirPrefName !== undefined && aDirPrefName != "")) {
+					aDirPrefName = cardbookPreferences.getName(aDirPrefId);
+				}
+				cardbookUtils.formatStringForOutput("periodicSyncDeleting", [aDirPrefName, cardbookSynchronization.autoSyncId[aDirPrefId]]);
+				clearInterval(cardbookSynchronization.autoSyncId[aDirPrefId]);
+				delete cardbookSynchronization.autoSyncId[aDirPrefId];
+				delete cardbookSynchronization.autoSync[aDirPrefId];
+				delete cardbookSynchronization.autoSyncInterval[aDirPrefId];
+			}
+		},
+		
+		addPeriodicSync: function(aDirPrefId, aDirPrefName, aAutoSyncInterval) {
+			var autoSyncIntervalMs = aAutoSyncInterval * 60 * 1000;
+			cardbookSynchronization.autoSyncId[aDirPrefId] = setInterval(cardbookSynchronization.runPeriodicSync, autoSyncIntervalMs, aDirPrefId, aDirPrefName);
+			cardbookSynchronization.autoSync[aDirPrefId] = true;
+			cardbookSynchronization.autoSyncInterval[aDirPrefId] = aAutoSyncInterval;
+			cardbookUtils.formatStringForOutput("periodicSyncSetting", [aDirPrefName, autoSyncIntervalMs, cardbookSynchronization.autoSyncId[aDirPrefId]]);
+		},
+		
+		runPeriodicSync: function (aDirPrefId, aDirPrefName) {
+			cardbookUtils.formatStringForOutput("periodicSyncSyncing", [aDirPrefName]);
+			cardbookSynchronization.syncAccount(aDirPrefId);
+		},
+
+		syncAccounts: function () {
+			var result = [];
+			result = cardbookPreferences.getAllPrefIds();
+			for (let i = 0; i < result.length; i++) {
+				cardbookSynchronization.syncAccount(result[i]);
+			}
+		},
+
 		syncAccount: function (aPrefId, aMode) {
 			try {
+				if (cardbookUtils.isMyAccountSyncing(aPrefId)) {
+					return;
+				}
+				
 				var myPrefIdType = cardbookPreferences.getType(aPrefId);
 				var myPrefIdUrl = cardbookPreferences.getUrl(aPrefId);
 				var myPrefIdName = cardbookPreferences.getName(aPrefId);
@@ -2091,6 +2021,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 				if (myPrefEnabled) {
 					if (myPrefIdType === "GOOGLE" || myPrefIdType === "CARDDAV" || myPrefIdType === "APPLE") {
 						wdw_cardbooklog.initSyncActivity(aPrefId, myPrefIdName);
+						cardbookSynchronization.initMultipleOperations(aPrefId);
 						cardbookRepository.cardbookServerSyncRequest[aPrefId]++;
 						var params = {aMode: myMode, aPrefIdType: myPrefIdType};
 						if (myPrefIdType === "GOOGLE" ) {
@@ -2143,13 +2074,11 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							}
 							if (request == response) {
 								cardbookSynchronization.finishSync(aPrefId, aPrefName, myPrefIdType);
+								cardbookSynchronization.finishMultipleOperations(aPrefId);
 								if (cardbookRepository.cardbookServerSyncAgain[aPrefId]) {
-									cardbookSynchronization.finishMultipleOperations(aPrefId);
 									cardbookUtils.formatStringForOutput("synchroForcedToResync", [aPrefName]);
-									cardbookSynchronization.initSyncWithPrefId(aPrefId);
 									cardbookSynchronization.syncAccount(aPrefId, aMode);
 								} else {
-									cardbookSynchronization.finishMultipleOperations(aPrefId);
 									var total = cardbookSynchronization.getRequest() + cardbookSynchronization.getTotal() + cardbookSynchronization.getResponse() + cardbookSynchronization.getDone();
 									// all sync are finished
 									if (total === 0) {
@@ -2163,14 +2092,11 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 												syncFailed = syncFailed.concat(cardbookRepository.cardbookServerChangedPwd[i].dirPrefIdList);
 											}
 										}
-										if (syncAgain.length > 0) {
-											cardbookSynchronization.initSync();
-										}
+										cardbookRepository.cardbookServerChangedPwd = {};
 										for (var j = 0; j < syncAgain.length; j++) {
 											var myPrefId = syncAgain[j];
 											var myPrefName = cardbookUtils.getPrefNameFromPrefId(myPrefId);
 											cardbookUtils.formatStringForOutput("synchroForcedToResync", [myPrefName]);
-											cardbookSynchronization.initSyncWithPrefId(myPrefId);
 											cardbookSynchronization.syncAccount(myPrefId, aMode);
 										}
 										for (var j = 0; j < syncFailed.length; j++) {
@@ -2208,7 +2134,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 								cardbookSynchronization.finishMultipleOperations(aPrefId);
 								var total = cardbookSynchronization.getRequest() + cardbookSynchronization.getTotal() + cardbookSynchronization.getResponse() + cardbookSynchronization.getDone();
 								if (total === 0) {
-									cardbookRepository.cardbookSyncMode = "NOSYNC";
 									if (aMode == "INITIAL") {
 										ovl_birthdays.onLoad();
 									}
@@ -2234,6 +2159,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						((!cardbookRepository.cardbookServerSyncEmptyCache[aPrefId]) &&
 							(cardbookRepository.cardbookServerSyncLoadCacheDone[aPrefId] + cardbookRepository.cardbookDBRequest[aPrefId] ==
 								cardbookRepository.cardbookServerSyncLoadCacheTotal[aPrefId] + cardbookRepository.cardbookDBResponse[aPrefId]))) {
+							cardbookSynchronization.finishMultipleOperations(aPrefId);
 							cardbookPreferences.setDBCached(aPrefId, true);
 							// Web requests are delayed for a preference value
 							var initialSyncDelay = cardbookPreferences.getStringPref("extensions.cardbook.initialSyncDelay");
@@ -2263,7 +2189,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							cardbookSynchronization.finishMultipleOperations(aPrefId);
 							var total = cardbookSynchronization.getRequest() + cardbookSynchronization.getTotal() + cardbookSynchronization.getResponse() + cardbookSynchronization.getDone();
 							if (total === 0) {
-								cardbookRepository.cardbookSyncMode = "NOSYNC";
 								cardbookUtils.formatStringForOutput("importAllFinished");
 							}
 							lTimerImport.cancel();
@@ -2283,7 +2208,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							cardbookSynchronization.finishMultipleOperations(aPrefId);
 							var total = cardbookSynchronization.getRequest() + cardbookSynchronization.getResponse();
 							if (total === 0) {
-								cardbookRepository.cardbookSyncMode = "NOSYNC";
 								if (aMode == "INITIAL") {
 									cardbookUtils.notifyObservers("cardbook.complexSearchInitLoaded");
 								} else {
@@ -2320,7 +2244,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 		loadAccounts: function () {
 			var initialSync = cardbookPreferences.getBoolPref("extensions.cardbook.initialSync");
 			var myMode = "INITIAL";
-			cardbookSynchronization.initSync();
 			var result = [];
 			result = cardbookPreferences.getAllPrefIds();
 			for (let i = 0; i < result.length; i++) {
@@ -2346,16 +2269,18 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 				var myPrefDateFormat = cardbookPreferences.getDateFormat(aDirPrefId);
 				var myPrefUrnuuid = cardbookPreferences.getUrnuuid(aDirPrefId);
 				var myPrefDBCached = cardbookPreferences.getDBCached(aDirPrefId);
+				var myPrefAutoSyncEnabled = cardbookPreferences.getAutoSyncEnabled(aDirPrefId);
+				var myPrefAutoSyncInterval = cardbookPreferences.getAutoSyncInterval(aDirPrefId);
 				if (aAddAccount) {
 					cardbookRepository.addAccountToRepository(aDirPrefId, myPrefName, myPrefType, myPrefUrl, myPrefUser, myPrefColor, myPrefEnabled, myPrefExpanded,
-																myPrefVCard, myPrefReadOnly, myPrefDateFormat, myPrefUrnuuid, myPrefDBCached, false);
+																myPrefVCard, myPrefReadOnly, myPrefDateFormat, myPrefUrnuuid, myPrefDBCached, myPrefAutoSyncEnabled, myPrefAutoSyncInterval, false);
 					cardbookUtils.formatStringForOutput("addressbookOpened", [myPrefName]);
 				}
 			}
 
 			if (myPrefEnabled) {
 				if (myPrefType !== "SEARCH") {
-					cardbookSynchronization.initSyncWithPrefId(aDirPrefId);
+					cardbookSynchronization.initMultipleOperations(aDirPrefId);
 				}
 				if (myPrefType === "GOOGLE" || myPrefType === "CARDDAV" || myPrefType === "APPLE") {
 					cardbookSynchronization.loadCache(aDirPrefId, myPrefName, myPrefType, myPrefUser, myPrefUrl, aSync, aMode, myPrefDBCached);

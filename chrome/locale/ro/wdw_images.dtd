@@ -1,0 +1,5 @@
+<!ENTITY addImageCardFromFileLabel "Adăugați o imagine din fișier">
+<!ENTITY addImageCardFromClipboardLabel "Adăugați o imagine din clipboard">
+<!ENTITY addImageCardFromUrlLabel "Adăugați imaginea din adresa URL în clipboard">
+<!ENTITY saveImageCardLabel "Salvează imaginea">
+<!ENTITY deleteImageCardLabel "Ștergeți imaginea">

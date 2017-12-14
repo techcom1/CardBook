@@ -1,0 +1,9 @@
+<!ENTITY wdw_adrEditionTitle "Adressredigerare">
+
+<!ENTITY adrPostOfficeLabel "Box">
+<!ENTITY adrExtendedAddrLabel "Lägenhet">
+<!ENTITY adrStreetLabel "Gata">
+<!ENTITY adrLocalityLabel "Stad">
+<!ENTITY adrRegionLabel "Län">
+<!ENTITY adrPostalCodeLabel "Postnummer">
+<!ENTITY adrCountryLabel "Land">

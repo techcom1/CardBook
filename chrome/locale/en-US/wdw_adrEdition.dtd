@@ -1,7 +1,7 @@
 <!ENTITY wdw_adrEditionTitle "Address editor">
 
-<!ENTITY adrPostOfficeLabel "P.O. Box">
-<!ENTITY adrExtendedAddrLabel "APT or Suite">
+<!ENTITY adrPostOfficeLabel "Post Office Box">
+<!ENTITY adrExtendedAddrLabel "Apartment or Suite">
 <!ENTITY adrStreetLabel "Street">
 <!ENTITY adrLocalityLabel "Locality (Town or City)">
 <!ENTITY adrRegionLabel "Region (State or Province)">

@@ -47,7 +47,7 @@
 			<toolbarbutton id="cardbookToolbarSyncButton"
 				label="&cardbookToolbarSyncButtonLabel;"
 				tooltiptext="&cardbookToolbarSyncButtonTooltip;"
-				oncommand="wdw_cardbook.syncAccounts();"
+				oncommand="cardbookSynchronization.syncAccounts();"
 				class="toolbarbutton-1"/>
 			<toolbarbutton id="cardbookToolbarWriteButton"
 				label="&cardbookToolbarWriteButtonLabel;"
@@ -116,7 +116,7 @@
 							<menuitem id="cardbookAccountMenuReadOnlyOrReadWriteAddressbook" oncommand="wdw_cardbook.readOnlyOrReadWriteAddressbook();"/>
 							<menuseparator/>
 							<menuitem id="cardbookAccountMenuSync" label="&cardbookAccountMenuSyncLabel;" oncommand="wdw_cardbook.syncAccountFromAccountsOrCats();"/>
-							<menuitem id="cardbookAccountMenuSyncs" label="&cardbookAccountMenuSyncsLabel;" oncommand="wdw_cardbook.syncAccounts();"/>
+							<menuitem id="cardbookAccountMenuSyncs" label="&cardbookAccountMenuSyncsLabel;" oncommand="cardbookSynchronization.syncAccounts();"/>
 							<menuseparator/>
 							<menuitem id="cardbookAccountMenuExportToFile" label="&exportCardToFileLabel;" oncommand="wdw_cardbook.exportCardsFromAccountsOrCats(this);"/>
 							<menuitem id="cardbookAccountMenuExportToDir" label="&exportCardToDirLabel;" oncommand="wdw_cardbook.exportCardsFromAccountsOrCats(this);"/>

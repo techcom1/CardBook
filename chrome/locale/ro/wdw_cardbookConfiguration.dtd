@@ -1,0 +1,270 @@
+<!ENTITY generalTabLabel "General">
+<!ENTITY CardBookTabLabel "Filă Contacte">
+<!ENTITY typesTabLabel "Tipuri">
+<!ENTITY IMPPsTabLabel "Comunicatii pe Internet">
+<!ENTITY customFieldsTabLabel "Câmpuri customizate">
+<!ENTITY listsTabLabel "Liste">
+<!ENTITY syncTabLabel "Sincronizare">
+<!ENTITY emailTabLabel "Poştă electronică">
+<!ENTITY birthdaylistTabLabel "Aniversare">
+<!ENTITY synclistTabLabel "Aniversarea Memento">
+
+<!ENTITY integrationGroupboxLabel "Integrarea în Thunderbird">
+<!ENTITY autocompletionLabel "Completarea automată a adreselor de poştă electronică adresă">
+<!ENTITY autocompletionAccesskey "o">
+<!ENTITY autocompletionTooltip "Extinde completarea automată standard a contactelor în cărți de adrese Thunderbird cu o completare automată a Contacte în cărți de adrese de contacte.">
+<!ENTITY autocompleteSortByPopularityLabel "Sortați adresele de poştă electronică adrese după popularitate">
+<!ENTITY autocompleteSortByPopularityAccesskey "p">
+<!ENTITY autocompleteProposeConcatEmailsLabel "??Propose concatenated emails per contact??">
+<!ENTITY autocompleteProposeConcatEmailsAccesskey "??c??">
+<!ENTITY autocompleteShowAddressbookLabel "Afișați numele carte de adrese">
+<!ENTITY autocompleteShowAddressbookAccesskey "A">
+<!ENTITY autocompleteWithColorLabel "Utilizați culoarea carte de adresei">
+<!ENTITY autocompleteWithColorAccesskey "c">
+<!ENTITY useColorLabel "Utilizați culoarea cărții de adrese pentru:">
+<!ENTITY useColorBackgroundLabel "Culoare de fundal">
+<!ENTITY useColorBackgroundAccesskey "f">
+<!ENTITY useColorTextLabel "Culoarea textului">
+<!ENTITY useColorTextAccesskey "t">
+<!ENTITY exclusiveLabel "Sursă unică pentru contacte">
+<!ENTITY exclusiveAccesskey "u">
+<!ENTITY exclusiveTooltip "Dacă este dezactivată, această opțiune permite preluarea contactelor din carte de adrese standard Thunderbird pentru stelele galbene, pentru afișarea numelui de e-mail și pentru completarea automată a poştă electronicăului.">
+<!ENTITY accountsRestrictionsLabel "Restricții de cont poștal">
+<!ENTITY accountsRestrictionsEnabledLabel "Activat">
+<!ENTITY accountsRestrictionsMailNameLabel "Contul de corespondență">
+<!ENTITY accountsRestrictionsABNameLabel "Carte de adrese">
+<!ENTITY accountsRestrictionsCatNameLabel "Categorie">
+<!ENTITY accountsRestrictionsIncludeNameLabel "Tip">
+<!ENTITY addRestrictionLabel "Nou">
+<!ENTITY addRestrictionAccesskey "N">
+<!ENTITY renameRestrictionLabel "Editare">
+<!ENTITY renameRestrictionAccesskey "E">
+<!ENTITY deleteRestrictionLabel "Şterge">
+<!ENTITY deleteRestrictionAccesskey "g">
+<!ENTITY emailsCollectionLabel "Collect e-mail outputs">
+<!ENTITY emailsCollectionTooltip "Extends standard e-mail address collection from Thunderbird. Dacă această opțiune este activată, poştă electronică adrese care nu sunt prezente în agenda de contacte vor fi adăugate în agendele de adrese selectate.">
+<!ENTITY emailsCollectionEnabledLabel "Activat">
+<!ENTITY emailsCollectionMailNameLabel "Contul de corespondență">
+<!ENTITY emailsCollectionABNameLabel "Carte de adrese">
+<!ENTITY emailsCollectionCatNameLabel "Categorie">
+<!ENTITY addEmailsCollectionLabel "Nou">
+<!ENTITY addEmailsCollectionAccesskey "N">
+<!ENTITY renameEmailsCollectionLabel "Editare">
+<!ENTITY renameEmailsCollectionAccesskey "E">
+<!ENTITY deleteEmailsCollectionLabel "Şterge">
+<!ENTITY deleteEmailsCollectionAccesskey "g">
+<!ENTITY logGroupboxLabel "Log">
+<!ENTITY debugModeLabel "Modul de depanare">
+<!ENTITY debugModeAccesskey "d">
+<!ENTITY debugModeTooltip "Activați modul de depanare pentru înregistrarea extinsă.">
+<!ENTITY statusInformationLineNumberLabel "Numărul de linii păstrate în fișierul jurnal">
+<!ENTITY statusInformationLineNumberAccesskey "p">
+
+<!ENTITY tabsEdittingGroupboxLabel "Afișați filele">
+<!ENTITY noteTabLabel "Notițe">
+<!ENTITY noteTabAccesskey "N">
+<!ENTITY listTabLabel "Listă">
+<!ENTITY listTabAccesskey "L">
+<!ENTITY mailPopularityTabLabel "Poştă popularitate">
+<!ENTITY mailPopularityTabAccesskey "P">
+<!ENTITY technicalTabLabel "Tehnic">
+<!ENTITY technicalTabAccesskey "T">
+<!ENTITY vCardTabLabel "vCard">
+<!ENTITY vCardTabAccesskey "v">
+<!ENTITY advancedTabLabel "Avansat">
+<!ENTITY advancedTabAccesskey "A">
+<!ENTITY localizeEdittingGroupboxLabel "Harta cu:">
+<!ENTITY localizeEngineOpenStreetMapLabel "Deschis Stradă Hartă">
+<!ENTITY localizeEngineOpenStreetMapAccesskey "D">
+<!ENTITY localizeEngineGoogleMapsLabel "Hărți Google">
+<!ENTITY localizeEngineGoogleMapsAccesskey "G">
+<!ENTITY localizeEngineBingMapsLabel "Hărți Bing">
+<!ENTITY localizeEngineBingMapsAccesskey "B">
+<!ENTITY localizeTargetLabel "Deschideți legături externe:">
+<!ENTITY localizeTargetInLabel "În interiorul Thunderbird">
+<!ENTITY localizeTargetInAccesskey "i">
+<!ENTITY localizeTargetOutLabel "Afară de Thunderbird">
+<!ENTITY localizeTargetOutAccesskey "A">
+<!ENTITY showNameAsLabel "Afișați numele ca">
+<!ENTITY showNameAsLFLabel "Nume de familie Prenume">
+<!ENTITY showNameAsLFAccesskey "f">
+<!ENTITY showNameAsLFCommaLabel "Nume de familie, Prenume">
+<!ENTITY showNameAsLFCommaAccesskey "a">
+<!ENTITY showNameAsFLLabel "Prenume Nume de familie">
+<!ENTITY showNameAsFLAccesskey "P">
+<!ENTITY showNameAsDSPLabel "Numele afișat">
+<!ENTITY showNameAsDSPAccesskey "N">
+<!ENTITY fnLabelExplanation "Este posibil să personalizați modul în care Contacte generează numele afișat. Această formulă constă în blocuri închise de „()”. În aceste blocuri, există două părți delimitate de „|”.
+								??The first part applies when the term involved, for example {{1}}, is not null, the second part applies when the term involved is null.??">
+<!ENTITY fnFormulaLabel "Generați numele afișat">
+<!ENTITY fnFormulaAccesskey "G">
+<!ENTITY resetFnFormulaLabel "Desemnează ca implicit">
+<!ENTITY resetFnFormulaAccesskey "D">
+<!ENTITY miscEdittingGroupboxLabel "Diverse">
+<!ENTITY preferEmailEditionLabel "Dublu click pe o persoană de contact editează în loc de poştă electronică-l">
+<!ENTITY preferEmailEditionAccesskey "k">
+<!ENTITY dateDisplayedFormatLabel "Formatul datei:">
+<!ENTITY dateDisplayedFormatAccesskey "F">
+
+<!ENTITY typesGroupboxLabel "Tipuri">
+<!ENTITY typesCategoryAdrLabel "Adresă">
+<!ENTITY typesCategoryAdrAccesskey "A">
+<!ENTITY typesCategoryEmailLabel "Poştă electronică">
+<!ENTITY typesCategoryEmailAccesskey "e">
+<!ENTITY typesCategoryImppLabel "IMPP">
+<!ENTITY typesCategoryImppAccesskey "I">
+<!ENTITY typesCategoryTelLabel "Telefon">
+<!ENTITY typesCategoryTelAccesskey "T">
+<!ENTITY typesCategoryUrlLabel "Adresa URL">
+<!ENTITY typesCategoryUrlAccesskey "U">
+<!ENTITY typesCategoryGenderLabel "Gen">
+<!ENTITY typesCategoryGenderAccesskey "G">
+<!ENTITY typesCodeLabel "Cod">
+<!ENTITY typesLabelLabel "Eticheta">
+<!ENTITY addTypeLabel "Nou">
+<!ENTITY addTypeAccesskey "N">
+<!ENTITY renameTypeLabel "Editare">
+<!ENTITY renameTypeAccesskey "E">
+<!ENTITY deleteTypeLabel "Şterge">
+<!ENTITY deleteTypeAccesskey "g">
+<!ENTITY resetTypeLabel "Desemnează ca implicit">
+<!ENTITY resetTypeAccesskey "D">
+<!ENTITY preferenceGroupboxLabel "Preferința câmpului">
+<!ENTITY usePreferenceValueLabel "Utilizați o valoare de preferință (numai pentru vCard 4,0)">
+<!ENTITY usePreferenceValueAccesskey "p">
+<!ENTITY preferenceValueLabel "Eticheta câmpului de valoare preferință">
+<!ENTITY preferenceValueAccesskey "v">
+
+<!ENTITY IMPPGroupboxWarn "Această configurare permite comunicațiilor pe Internet utilizând protocolul dorit.">
+<!ENTITY IMPPGroupboxLabel "Comunicatii pe Internet">
+<!ENTITY preferIMPPPrefLabel "Preferă comunicațiile prin Internet marcate cu ">
+<!ENTITY preferIMPPPrefAccesskey "P">
+<!ENTITY preferIMPPPrefWarn "Dacă nu este marcată nici o adresă, se propune o conexiune pentru toate adresele contactului.">
+<!ENTITY IMPPCodeLabel "Cod">
+<!ENTITY IMPPLabelLabel "Eticheta">
+<!ENTITY IMPPProtocolLabel "Protocol">
+<!ENTITY addIMPPLabel "Nou">
+<!ENTITY addIMPPAccesskey "N">
+<!ENTITY renameIMPPLabel "Editare">
+<!ENTITY renameIMPPAccesskey "E">
+<!ENTITY deleteIMPPLabel "Şterge">
+<!ENTITY deleteIMPPAccesskey "g">
+
+<!ENTITY customFieldRankLabel "Rang">
+<!ENTITY customFieldCodeLabel "Numele domeniului">
+<!ENTITY customFieldLabelLabel "Câmp de etichetă">
+<!ENTITY customFieldsPersTitleLabel "Informatii personale">
+<!ENTITY customFieldsPersTitleAccesskey "p">
+<!ENTITY customFieldsOrgTitleLabel "Informații profesionale">
+<!ENTITY customFieldsOrgTitleAccesskey "o">
+<!ENTITY addCustomFieldsLabel "Nou">
+<!ENTITY addCustomFieldsAccesskey "N">
+<!ENTITY renameCustomFieldsLabel "Editare">
+<!ENTITY renameCustomFieldsAccesskey "E">
+<!ENTITY deleteCustomFieldsLabel "Şterge">
+<!ENTITY deleteCustomFieldsAccesskey "g">
+
+<!ENTITY orgWarn "Câmpul ORG poate conține o valoare de text structurată care constă din componente separate prin caracterul PUNCT ŞI VIRGULĂ (de exemplu : CompaniaDvs;DerviciulDvs;DepartamentulDvs).Câmpurile de mai jos descriu etichetele componente ale acestei structuri.">
+
+<!ENTITY listPanelLabel "Dacă serverul dvs. nu acceptă categorii (cum ar fi Google, Apple, Zimbra, etcetera), listele sunt o modalitate bună de a trimite e-mailuri către grupuri. VCard 3,0 nu suportă liste în mod nativ, dar acest lucru se poate realiza cu câmpuri personalizate, deci dacă doriți să utilizați liste în vCard 3,0, trebuie să definiți aceste câmpuri.">
+<!ENTITY listGroupboxLabel "Câmpuri personalizate pentru liste">
+<!ENTITY kindCustomLabel "Fel">
+<!ENTITY kindCustomAccesskey "F">
+<!ENTITY memberCustomLabel "Membru">
+<!ENTITY memberCustomAccesskey "M">
+<!ENTITY resetListLabel "Desemnează ca implicit">
+<!ENTITY resetListAccesskey "D">
+
+<!ENTITY syncGroupboxLabel "Sincronizare">
+<!ENTITY syncWarn "Sincronizarea vă propagă modificările la un server de la distanță și modificările serverului către dvs.">
+<!ENTITY initialSyncLabel "Rulați sincronizarea la pornirea Thunderbird">
+<!ENTITY initialSyncAccesskey "R">
+<!ENTITY initialSyncDelayLabel "Sincronizare întârziere (secunde)">
+<!ENTITY initialSyncDelayAccesskey "z">
+<!ENTITY solveConflictsLabel "Dacă un contact a fost actualizat atât pe server, cât și pe plan local:">
+<!ENTITY solveConflictsLocalLabel "Preferați modificarea locală">
+<!ENTITY solveConflictsLocalAccesskey "l">
+<!ENTITY solveConflictsRemoteLabel "Preferă modificarea serverului">
+<!ENTITY solveConflictsRemoteAccesskey "s">
+<!ENTITY solveConflictsUserLabel "Întrebați utilizatorul">
+<!ENTITY solveConflictsUserAccesskey "Î">
+<!ENTITY autoSyncGroupboxLabel "Sincronizarea periodică">
+<!ENTITY autoSyncLabel "Activați sincronizarea periodică">
+<!ENTITY autoSyncAccesskey "A">
+<!ENTITY autoSyncIntervalLabel "Interval pentru sincronizarea periodică (minute)">
+<!ENTITY autoSyncIntervalAccesskey "I">
+<!ENTITY requestsGroupboxLabel "Cereri">
+<!ENTITY requestsTimeoutLabel "Pauză (secunde)">
+<!ENTITY requestsTimeoutAccesskey "P">
+<!ENTITY multigetLabel "Pentru solicitările OBȚINE, contacte de grup prin">
+<!ENTITY multigetAccesskey "O">
+<!ENTITY discoveryGroupboxLabel "Descoperirea cărților de adrese">
+<!ENTITY discoveryWarn "La fiecare sincronizare, se va verifica adresele URL de mai jos pentru a căuta cărți de adrese noi sau șterse">
+<!ENTITY discoveryAccountsGroupboxLabel "??Accounts??">
+<!ENTITY advancedSyncGroupboxLabel "Proprietăți avansate">
+<!ENTITY decodeReportLabel "Decodează adresele URL pentru solicitările RAPORT">
+<!ENTITY decodeReportAccesskey "D">
+
+<!ENTITY miscEmailGroupboxLabel "Trimiterea de poştă electronică uri">
+<!ENTITY preferEmailPrefLabel "Prefer poştă electronică adrese marcate cu ">
+<!ENTITY preferEmailPrefAccesskey "P">
+<!ENTITY preferEmailPrefWarn "Dacă nu este marcată nici o adresă, mesajul este trimis la toate adresele contactului.">
+<!ENTITY warnEmptyEmailsLabel "Avertizați mă când încerc să trimiteți prin poştă electronică persoane de contact fără o poştă electronică adresă">
+<!ENTITY warnEmptyEmailsAccesskey "A">
+<!ENTITY useOnlyEmailLabel "Utilizați numai poştă electronică adrese fără numele lor de afișare">
+<!ENTITY useOnlyEmailAccesskey "ă">
+<!ENTITY attachVCardWarn "Pentru a adăuga automat o vCard la poştă electronică le dvs., selectaţi o vCard pentru fiecare cont de poştă electronică.">
+<!ENTITY attachVCardGroupboxLabel "Alăturați-vă unei vCard-uri">
+<!ENTITY accountsVCardsEnabledLabel "Activat">
+<!ENTITY accountsVCardsMailLabel "Contul de corespondență">
+<!ENTITY accountsVCardsABNameLabel "Carte de adrese">
+<!ENTITY accountsVCardsFileNameLabel "Fisier atasat">
+<!ENTITY accountsVCardsFnLabel "Contact">
+<!ENTITY addVCardLabel "Nou">
+<!ENTITY addVCardAccesskey "N">
+<!ENTITY renameVCardLabel "Editare">
+<!ENTITY renameVCardAccesskey "E">
+<!ENTITY deleteVCardLabel "Şterge">
+<!ENTITY deleteVCardAccesskey "g">
+
+<!ENTITY birthdayListWarn "Aniversările sunt căutate doar în Contacte carte de adrese. Formatele de date aniversare sunt configurate în proprietățile agendei de adrese.">
+<!ENTITY addressBooksGroupboxLabel "Cărți de adrese">
+<!ENTITY calendarsGroupboxLabel "Calendare">
+<!ENTITY searchGroupboxLabel "Căutare">
+<!ENTITY searchInNoteLabel "Căutați aniversarea evenimentului în câmpul de notițe">
+<!ENTITY searchInNoteTooltip1 "Adăugați astfel de linii în câmpul notițe (separator ar trebui să fie: și formatul datei ar trebui să fie cel definit pentru carte de adrese) :">
+<!ENTITY searchInNoteTooltip2 "Eveniment:Descriere:ZZ.LL.AAAA">
+<!ENTITY searchInNoteAccesskey "E">
+<!ENTITY dateFormatLabel "Formatul datei așteptate">
+<!ENTITY dateFormatAccesskey "">
+
+<!ENTITY remindersTabLabel "Mementouri">
+<!ENTITY remindViaPopupWindowGroupboxLabel "Amintiți-vă prin fereastra pop-up">
+<!ENTITY numberOfDaysForSearchingLabel "Numărul de zile pentru verificarea aniversărilor pentru">
+<!ENTITY numberOfDaysForSearchingAccesskey "N">
+<!ENTITY showPopupOnStartupLabel "Afișați fereastra pop-up la pornire">
+<!ENTITY showPopupOnStartupAccesskey "A">
+<!ENTITY showPeriodicPopupLabel "Afișați pop-up zilnic">
+<!ENTITY showPeriodicPopupAccesskey "z">
+<!ENTITY periodicPopupTimeLabel "Afișați ora (oo:mm)">
+<!ENTITY periodicPopupTimeAccesskey "i">
+<!ENTITY showPopupEvenIfNoBirthdayLabel "Afișați fereastra pop-up atunci când lista aniversărilor este goală">
+<!ENTITY showPopupEvenIfNoBirthdayAccesskey "g">
+<!ENTITY remindViaLightningGroupboxLabel "Reamintiți prin extensia Thunderbird Lightning Calendar">
+<!ENTITY numberOfDaysForWritingLabel "Numărul de zile pentru a scrie aniversări">
+<!ENTITY numberOfDaysForWritingAccesskey "s">
+<!ENTITY syncWithLightningOnStartupLabel "Sincronizați cu Lightning la pornire">
+<!ENTITY syncWithLightningOnStartupAccesskey "L">
+<!ENTITY calendarEntryTitleLabel "Titlul pentru evenimentul din calendar">
+<!ENTITY calendarEntryTitleTooltip "Titlul șablonului pentru evenimentul din calendar. Ar trebui să conțină doi substituenți &#37;S, respectiv înlocuiți cu numele și vârsta. Dacă câmpul este gol, se utilizează un mesaj standard.">
+<!ENTITY calendarEntryTitleAccesskey "T">
+<!ENTITY calendarEntryTimeLabel "Ora pentru evenimentul din calendar (oo:mm)">
+<!ENTITY calendarEntryTimeAccesskey "O">
+<!ENTITY calendarEntryWholeDayLabel "Eveniment calendaristic pentru întreaga zi">
+<!ENTITY calendarEntryWholeDayAccesskey "z">
+<!ENTITY calendarEntryAlarmLabel "Alarmă la n zile înainte de evenimentul din calendar">
+<!ENTITY calendarEntryAlarmTooltip "Introduceți cu câte zile înainte de alarmarea aniversării Lightning ar trebui să vă reamintesc. Fără data. Dacă câmpul este gol, nu ar exista nicio alarmă.">
+<!ENTITY calendarEntryAlarmAccesskey "n">
+<!ENTITY calendarEntryCategoriesLabel "Categorii pentru evenimentul din calendar">
+<!ENTITY calendarEntryCategoriesTooltip "Una sau mai multe categorii separate prin virgulă. Dacă câmpul este gol, nu ar exista nici o categorie.">
+<!ENTITY calendarEntryCategoriesAccesskey "g">

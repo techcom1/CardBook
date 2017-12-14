@@ -1,0 +1,12 @@
+<!ENTITY daysLeftColumnLabel "Zile rămase">
+<!ENTITY nameColumnLabel "Nume">
+<!ENTITY ageColumnLabel "Vârstă">
+<!ENTITY dateOfBirthColumnLabel "Data evenimentului">
+<!ENTITY dateOfBirthFoundColumnLabel "Data găsită">
+<!ENTITY emailColumnLabel "Poştă electronică">
+<!ENTITY sendEmailLabel "Scrie un mesaj nou">
+<!ENTITY sendEmailAccesskey "m">
+<!ENTITY syncLightningMenuItemLabel "Sincronizați cu Lightning">
+<!ENTITY syncLightningMenuAccesskey "S">
+<!ENTITY configurationButtonLabel "Configurație">
+<!ENTITY configurationButtonAccesskey "o">

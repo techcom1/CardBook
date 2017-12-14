@@ -125,7 +125,7 @@ var cardbookRepository = {
 	cardbookImageGetRequest : {},
 	cardbookImageGetResponse : {},
 	cardbookImageGetError : {},
-	cardbookSyncMode : "NOSYNC",
+	cardbookSyncMode : {},
 	
 	cardbookServerChangedPwd : {},
 	
@@ -485,7 +485,8 @@ var cardbookRepository = {
 		}
 	},
 	
-	addAccountToRepository: function(aAccountId, aAccountName, aAccountType, aAccountUrl, aAccountUser, aColor, aEnabled, aExpanded, aVCard, aReadOnly, aDateFormat, aUrnuuid, aDBcached, aPrefInsertion) {
+	addAccountToRepository: function(aAccountId, aAccountName, aAccountType, aAccountUrl, aAccountUser, aColor, aEnabled, aExpanded, aVCard, aReadOnly, aDateFormat, aUrnuuid,
+										aDBcached, aAutoSyncEnabled, aAutoSyncInterval, aPrefInsertion) {
 		var cacheDir = cardbookRepository.getLocalDirectory();
 		cacheDir.append(aAccountId);
 		if (!cacheDir.exists() || !cacheDir.isDirectory()) {
@@ -507,6 +508,8 @@ var cardbookRepository = {
 			cardbookPreferences.setDateFormat(aAccountId, aDateFormat);
 			cardbookPreferences.setUrnuuid(aAccountId, aUrnuuid);
 			cardbookPreferences.setDBCached(aAccountId, aDBcached);
+			cardbookPreferences.setAutoSyncEnabled(aAccountId, aAutoSyncEnabled);
+			cardbookPreferences.setAutoSyncInterval(aAccountId, aAutoSyncInterval);
 		}
 		
 		cardbookRepository.cardbookAccounts.push([aAccountName, true, aExpanded, true, aAccountId, aEnabled, aAccountType, aReadOnly]);
@@ -516,6 +519,7 @@ var cardbookRepository = {
 	},
 
 	removeAccountFromRepository: function(aAccountId) {
+		cardbookSynchronization.removePeriodicSync(aAccountId);
 		cardbookRepository.removeAccountFromCollected(aAccountId);
 		cardbookRepository.removeAccountFromBirthday(aAccountId);
 		cardbookRepository.removeAccountFromDiscovery(aAccountId);
@@ -1499,7 +1503,7 @@ var cardbookRepository = {
 		sss.loadAndRegisterSheet(uri, sss.AUTHOR_SHEET);
 	},
 
-	getIconType: function (aType) {
+	getABIconType: function (aType) {
 		switch(aType) {
 			case "CACHE":
 			case "DIRECTORY":
@@ -1517,6 +1521,16 @@ var cardbookRepository = {
 				break;
 		};
 		return aType;
+	},
+
+	getABStatusType: function (aDirPrefId) {
+		if (cardbookUtils.isMyAccountSyncing(aDirPrefId)) {
+				return "syncing";
+		} else if (cardbookPreferences.getReadOnly(aDirPrefId)) {
+			return "readonly";
+		} else {
+			return "readwrite";
+		}
 	}
 
 };

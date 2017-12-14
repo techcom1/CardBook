@@ -138,7 +138,7 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 							if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] != "SEARCH") {
 								var dirPrefId = cardbookRepository.cardbookAccounts[i][4];
 								var myColor = cardbookPreferences.getColor(dirPrefId)
-								var myStyle = cardbookRepository.getIconType(cardbookRepository.cardbookAccounts[i][6]) + " color_" + dirPrefId;
+								var myStyle = cardbookRepository.getABIconType(cardbookRepository.cardbookAccounts[i][6]) + " color_" + dirPrefId;
 								cardbookAutocomplete.createCssMsgAccountRules(styleSheet, myStyle, myColor, OSName, autocompleteWithColor, treeCellProperty, colorProperty);
 							}
 						}

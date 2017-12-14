@@ -1,0 +1,11 @@
+<!ENTITY categoriesPicker.label "Grupp Filter:">
+<!ENTITY categoriesPicker.accesskey "G">
+<!ENTITY editAddrBookCard.label "Redigera">
+<!ENTITY editAddrBookCard.accesskey "R">
+<!ENTITY searchContacts.label "Sök efter:">
+<!ENTITY searchContacts.accesskey "S">
+<!ENTITY name.label "Namn">
+<!ENTITY addtoReplytoFieldMenu.label "Lägg till i Svara-Till fältet">
+<!ENTITY addtoReplytoFieldMenu.accesskey "l">
+<!ENTITY replytoButton.label ">> Svara-Till:">
+<!ENTITY replytoButton.accesskey "l">

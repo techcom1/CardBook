@@ -1,0 +1,11 @@
+<!ENTITY wdw_logEditionTitle "Log viewer">
+
+<!ENTITY logEditionValueLabel "Evenimentul de timbru">
+<!ENTITY refreshLogEditionLabel "Reîncarcă">
+<!ENTITY refreshLogEditionAccesskey "R">
+<!ENTITY flushLogEditionLabel "Curăță listă">
+<!ENTITY flushLogEditionAccesskey "C">
+<!ENTITY clipboardLogEditionLabel "Copiați în clipboard">
+<!ENTITY clipboardLogEditionAccesskey "o">
+<!ENTITY cancelLogEditionLabel "Ok">
+<!ENTITY cancelLogEditionAccesskey "O">

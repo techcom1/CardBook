@@ -1,0 +1,9 @@
+<!ENTITY wdw_adrEditionTitle "Editor de adresă">
+
+<!ENTITY adrPostOfficeLabel "Cutie poștală">
+<!ENTITY adrExtendedAddrLabel "Apartament sau suită">
+<!ENTITY adrStreetLabel "Stradă">
+<!ENTITY adrLocalityLabel "Localitate">
+<!ENTITY adrRegionLabel "Județ/provincie">
+<!ENTITY adrPostalCodeLabel "Cod poştal">
+<!ENTITY adrCountryLabel "Țară">

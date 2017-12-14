@@ -1,0 +1,14 @@
+<!ENTITY persTitleLabel "Informatii personale">
+<!ENTITY fnLabel "Numele afișat">
+<!ENTITY lastnameLabel "Nume de familie">
+<!ENTITY firstnameLabel "Prenume">
+<!ENTITY othernameLabel "Alt nume">
+<!ENTITY suffixnameLabel "Suffix">
+<!ENTITY prefixnameLabel "Prefix">
+<!ENTITY nicknameLabel "Poreclă">
+<!ENTITY genderLabel "Gen">
+<!ENTITY bdayLabel "Zi de nastere">
+<!ENTITY birthplaceLabel "Locul nasterii">
+<!ENTITY anniversaryLabel "Aniversare">
+<!ENTITY deathdateLabel "Data mortii">
+<!ENTITY deathplaceLabel "Locul decesului">

@@ -1,0 +1,43 @@
+<!ENTITY cardbookMenuItemLabel "Contacte">
+<!ENTITY cardbookMenuItemAccesskey "C">
+<!ENTITY cardbookMenuItemKey "C">
+<!ENTITY cardbookMenuItemTooltip "Treceți la filă Contacte">
+
+<!ENTITY cardbookToolbarButtonLabel "Contacte">
+<!ENTITY cardbookToolbarButtonTooltip "Treceți la filă Contacte">
+
+<!ENTITY cardbookTabButtonLabel "Contacte">
+<!ENTITY cardbookTabButtonTooltip "Treceți la filă Contacte">
+
+<!ENTITY newCardBookCardMenuLabel "Contact…">
+<!ENTITY newCardBookCardMenuAccesskey "c">
+<!ENTITY newCardBookCardMenuKey "N">
+<!ENTITY newCardBookSearchMenuLabel "Căutați contacte…">
+<!ENTITY newCardBookSearchMenuAccesskey "C">
+<!ENTITY addToCardBookMenuLabel "Adaugă contact">
+<!ENTITY addToCardBookMenuAccesskey "d">
+<!ENTITY editInCardBookMenuLabel "Editați contact">
+<!ENTITY editInCardBookMenuAccesskey "E">
+<!ENTITY deleteInCardBookMenuLabel "Ștergeți contact">
+<!ENTITY deleteInCardBookMenuAccesskey "g">
+<!ENTITY IMPPMenuLabel "Conectează la">
+<!ENTITY IMPPMenuAccesskey "o">
+<!ENTITY findAllEmailsFromContactMessengerLabel "Găsiți poştă electronică uri legate de acest contact">
+<!ENTITY findAllEmailsFromContactMessengerAccesskey "">
+<!ENTITY findEmailsFromEmailMessengerLabel "Găsiți poştă electronică uri legate de acest poştă electronică adresă">
+<!ENTITY findEmailsFromEmailMessengerAccesskey "">
+<!ENTITY findAllEventsFromContactMessengerLabel "Găsiți evenimente din calendar legate de acest contact">
+<!ENTITY findAllEventsFromContactMessengerAccesskey "">
+<!ENTITY findEventsFromEmailMessengerLabel "Găsiți evenimente din calendar legate de acest poştă electronică adresă">
+<!ENTITY findEventsFromEmailMessengerAccesskey "">
+
+<!ENTITY mailContext-addToCardBookMenuLabel "Adaugă contact…">
+<!ENTITY mailContext-addToCardBookMenuAccesskey "d">
+
+<!ENTITY addAllAttachementsToCardBookMenuLabel "Toate contactele…">
+<!ENTITY addAttachementToCardBookMenuLabel "La Contacte…">
+
+<!ENTITY cardbookABPaneItemLabel "Panoul cu cărți de adrese">
+<!ENTITY cardbookABPaneItemAccesskey "a">
+<!ENTITY cardbookContactPaneItemLabel "Panoul cu contacte">
+<!ENTITY cardbookContactPaneItemAccesskey "c">

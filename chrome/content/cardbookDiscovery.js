@@ -39,23 +39,19 @@ if ("undefined" == typeof(cardbookDiscovery)) {
 			var allPrefsURLs = [];
 			allPrefsURLs = cardbookPreferences.getDiscoveryAccounts();
 
-			if (allPrefsURLs.length == 0) {
-				cardbookRepository.cardbookSyncMode = "NOSYNC";
-			} else {
-				for (var i = 0; i < allPrefsURLs.length; i++) {
-					if (i == 0) {
-						cardbookSynchronization.initDiscovery();
-						cardbookUtils.formatStringForOutput("discoveryRunning", [cardbookDiscovery.gDiscoveryDescription]);
-					}
-					var dirPrefId = cardbookUtils.getUUID();
-					cardbookSynchronization.initDiscoveryWithPrefId(dirPrefId);
-					cardbookRepository.cardbookServerValidation[dirPrefId] = {length: 0, user: allPrefsURLs[i][1]};
-					cardbookRepository.cardbookServerSyncRequest[dirPrefId]++;
-					var connection = {connUser: allPrefsURLs[i][1], connPrefId: dirPrefId, connUrl: allPrefsURLs[i][0], connDescription: cardbookDiscovery.gDiscoveryDescription};
-					var params = {aDirPrefIdType: "CARDDAV"};
-					cardbookSynchronization.discoverPhase1(connection, "GETDISPLAYNAME", params);
-					cardbookDiscovery.waitForDiscoveryFinished(dirPrefId);
+			for (var i = 0; i < allPrefsURLs.length; i++) {
+				var dirPrefId = cardbookUtils.getUUID();
+				if (i == 0) {
+					cardbookUtils.formatStringForOutput("discoveryRunning", [cardbookDiscovery.gDiscoveryDescription]);
 				}
+				cardbookSynchronization.initDiscovery(dirPrefId);
+				cardbookSynchronization.initMultipleOperations(dirPrefId);
+				cardbookRepository.cardbookServerValidation[dirPrefId] = {length: 0, user: allPrefsURLs[i][1]};
+				cardbookRepository.cardbookServerSyncRequest[dirPrefId]++;
+				var connection = {connUser: allPrefsURLs[i][1], connPrefId: dirPrefId, connUrl: allPrefsURLs[i][0], connDescription: cardbookDiscovery.gDiscoveryDescription};
+				var params = {aDirPrefIdType: "CARDDAV"};
+				cardbookSynchronization.discoverPhase1(connection, "GETDISPLAYNAME", params);
+				cardbookDiscovery.waitForDiscoveryFinished(dirPrefId);
 			}
 		},
 
@@ -63,9 +59,10 @@ if ("undefined" == typeof(cardbookDiscovery)) {
 			cardbookSynchronization.finishMultipleOperations(aDirPrefId);
 			var total = cardbookSynchronization.getRequest() + cardbookSynchronization.getTotal() + cardbookSynchronization.getResponse() + cardbookSynchronization.getDone();
 			if (total === 0) {
-				cardbookRepository.cardbookSyncMode = "NOSYNC";
 				if (aState) {
 					wdw_cardbooklog.updateStatusProgressInformationWithDebug1(cardbookDiscovery.gDiscoveryDescription + " : debug mode : cardbookRepository.cardbookServerValidation : ", cardbookRepository.cardbookServerValidation);
+					var myAccountsToAdd = [];
+					var myAccountsToRemove = [];
 					// find all current CARDDAV accounts
 					var myCurrentAccounts = [];
 					myCurrentAccounts = JSON.parse(JSON.stringify(cardbookRepository.cardbookAccounts));
@@ -77,6 +74,9 @@ if ("undefined" == typeof(cardbookDiscovery)) {
 					
 					// find all accounts that should be added and removed
 					for (var dirPrefId in cardbookRepository.cardbookServerValidation) {
+						if (dirPrefId != aDirPrefId) {
+							continue;
+						}
 						if (cardbookRepository.cardbookServerValidation[dirPrefId].length != 0) {
 							for (var url in cardbookRepository.cardbookServerValidation[dirPrefId]) {
 								if (url == "length" || url == "user") {
@@ -95,7 +95,7 @@ if ("undefined" == typeof(cardbookDiscovery)) {
 							}
 							// add accounts
 							if (cardbookRepository.cardbookServerValidation[dirPrefId].length > 0) {
-								cardbookDiscovery.addAddressbook("discovery", dirPrefId);
+								myAccountsToAdd.push(cardbookUtils.fromValidationToArray(dirPrefId));
 							}
 						}
 					}
@@ -107,35 +107,42 @@ if ("undefined" == typeof(cardbookDiscovery)) {
 						var myCurrentUser = cardbookPreferences.getUser(myCurrentAccountsNotFound[i][4]);
 						var myCurrentShortUrl = cardbookSynchronization.getShortUrl(myCurrentUrl);
 						for (var dirPrefId in cardbookRepository.cardbookServerValidation) {
+							if (dirPrefId != aDirPrefId) {
+								continue;
+							}
 							for (var url in cardbookRepository.cardbookServerValidation[dirPrefId]) {
 								if (url == "length" || url == "user") {
 									continue;
 								}
 								if ((myCurrentUser == cardbookRepository.cardbookServerValidation[dirPrefId].user) && (myCurrentShortUrl == cardbookSynchronization.getShortUrl(cardbookUtils.decodeURL(url)))) {
-									cardbookDiscovery.removeAddressbook(myCurrentAccountsNotFound[i][4], "DISCOVERY");
+									myAccountsToRemove.push(myCurrentAccountsNotFound[i][4]);
 									break;
 								}
 							}
 						}
 					}
+
+					for (var i = 0; i < myAccountsToAdd.length; i++) {
+						cardbookDiscovery.addAddressbook(myAccountsToAdd[i]);
+					}
+					for (var i = 0; i < myAccountsToRemove.length; i++) {
+						cardbookDiscovery.removeAddressbook(myAccountsToRemove[i]);
+					}
 				}
 			}
+			cardbookSynchronization.stopDiscovery(aDirPrefId);
 		},
 
-		addAddressbook: function (aAction, aDirPrefId) {
-			if ((aDirPrefId != null && aDirPrefId !== undefined && aDirPrefId != "") || (cardbookRepository.cardbookSyncMode === "NOSYNC")) {
-				cardbookRepository.cardbookSyncMode = "SYNC";
-				var myArgs = {action: aAction, dirPrefId: aDirPrefId};
-				var myWindow = window.openDialog("chrome://cardbook/content/addressbooksconfiguration/wdw_addressbooksAdd.xul", "",
-												   // Workaround for Bug 1151440 - the HTML color picker won't work
-												   // in linux when opened from modal dialog
-												   (Services.appinfo.OS == 'Linux') ? "chrome,resizable,centerscreen" : "modal,chrome,resizable,centerscreen"
-												   , myArgs);
-			}
+		addAddressbook: function (aAccountsToAdd) {
+			var myArgs = {action: "discovery", accountsToAdd: aAccountsToAdd};
+			var myWindow = window.openDialog("chrome://cardbook/content/addressbooksconfiguration/wdw_addressbooksAdd.xul", "",
+											   // Workaround for Bug 1151440 - the HTML color picker won't work
+											   // in linux when opened from modal dialog
+											   (Services.appinfo.OS == 'Linux') ? "chrome,resizable,centerscreen" : "modal,chrome,resizable,centerscreen"
+											   , myArgs);
 		},
 
-		// no need to set the sync mode for removing deleted CARDDAV account
-		removeAddressbook: function (aDirPrefId, aSource) {
+		removeAddressbook: function (aDirPrefId) {
 			try {
 				var myDirPrefIdName = cardbookPreferences.getName(aDirPrefId);
 				var myDirPrefUrl = cardbookPreferences.getUrl(aDirPrefId);

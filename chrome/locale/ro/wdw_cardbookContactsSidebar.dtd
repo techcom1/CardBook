@@ -1,0 +1,11 @@
+<!ENTITY categoriesPicker.label "Filtru de categorie:">
+<!ENTITY categoriesPicker.accesskey "t">
+<!ENTITY editAddrBookCard.label "Editare">
+<!ENTITY editAddrBookCard.accesskey "E">
+<!ENTITY searchContacts.label "Căutare:">
+<!ENTITY searchContacts.accesskey "C">
+<!ENTITY name.label "Nume">
+<!ENTITY addtoReplytoFieldMenu.label "Adaugă la câmpul Răspuns către">
+<!ENTITY addtoReplytoFieldMenu.accesskey "R">
+<!ENTITY replytoButton.label "Adaugă la Răspuns către:">
+<!ENTITY replytoButton.accesskey "R">

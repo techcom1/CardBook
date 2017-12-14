@@ -6,7 +6,7 @@
 	<Description about="urn:mozilla:install-manifest">
 		<em:id>cardbook@vigneau.philippe</em:id>
 		<em:name>CardBook</em:name>
-		<em:version>24.6</em:version>
+		<em:version>24.7</em:version>
 		<em:type>2</em:type>
 		<em:description>vCard Address Book</em:description>
 		<em:creator>Philippe Vigneau</em:creator>
@@ -36,8 +36,11 @@
 		<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 		<em:translator>Dominik Wnęk (pl)</em:translator>
 		<em:translator>André Bação (pt-PT)</em:translator>
+		<em:translator>Lucian Burca (ro)</em:translator>
 		<em:translator>Alexander Yavorsky (ru)</em:translator>
 		<em:translator>Peter Klofutar (sl)</em:translator>
+		<em:translator>Anders (sv-SE)</em:translator>
+		<em:translator>Kire Dyfvelsten (sv-SE)</em:translator>
 		<em:optionsURL>chrome://cardbook/content/configuration/wdw_cardbookConfiguration.xul</em:optionsURL>
 		<em:iconURL>chrome://cardbook/skin/cardbook_32_32.png</em:iconURL>
 
@@ -81,8 +84,11 @@
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 				<em:translator>Dominik Wnęk (pl)</em:translator>
 				<em:translator>André Bação (pt-PT)</em:translator>
+				<em:translator>Lucian Burca (ro)</em:translator>
 				<em:translator>Alexander Yavorsky (ru)</em:translator>
 				<em:translator>Peter Klofutar (sl)</em:translator>
+				<em:translator>Anders (sv-SE)</em:translator>
+				<em:translator>Kire Dyfvelsten (sv-SE)</em:translator>
 			</Description>
 		</em:localized>
 
@@ -117,8 +123,11 @@
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 				<em:translator>Dominik Wnęk (pl)</em:translator>
 				<em:translator>André Bação (pt-PT)</em:translator>
+				<em:translator>Lucian Burca (ro)</em:translator>
 				<em:translator>Alexander Yavorsky (ru)</em:translator>
 				<em:translator>Peter Klofutar (sl)</em:translator>
+				<em:translator>Anders (sv-SE)</em:translator>
+				<em:translator>Kire Dyfvelsten (sv-SE)</em:translator>
 			</Description>
 		</em:localized>
 
@@ -153,8 +162,11 @@
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 				<em:translator>Dominik Wnęk (pl)</em:translator>
 				<em:translator>André Bação (pt-PT)</em:translator>
+				<em:translator>Lucian Burca (ro)</em:translator>
 				<em:translator>Alexander Yavorsky (ru)</em:translator>
 				<em:translator>Peter Klofutar (sl)</em:translator>
+				<em:translator>Anders (sv-SE)</em:translator>
+				<em:translator>Kire Dyfvelsten (sv-SE)</em:translator>
 			</Description>
 		</em:localized>
 
@@ -189,8 +201,11 @@
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 				<em:translator>Dominik Wnęk (pl)</em:translator>
 				<em:translator>André Bação (pt-PT)</em:translator>
+				<em:translator>Lucian Burca (ro)</em:translator>
 				<em:translator>Alexander Yavorsky (ru)</em:translator>
 				<em:translator>Peter Klofutar (sl)</em:translator>
+				<em:translator>Anders (sv-SE)</em:translator>
+				<em:translator>Kire Dyfvelsten (sv-SE)</em:translator>
 			</Description>
 		</em:localized>
 
@@ -225,8 +240,11 @@
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 				<em:translator>Dominik Wnęk (pl)</em:translator>
 				<em:translator>André Bação (pt-PT)</em:translator>
+				<em:translator>Lucian Burca (ro)</em:translator>
 				<em:translator>Alexander Yavorsky (ru)</em:translator>
 				<em:translator>Peter Klofutar (sl)</em:translator>
+				<em:translator>Anders (sv-SE)</em:translator>
+				<em:translator>Kire Dyfvelsten (sv-SE)</em:translator>
 			</Description>
 		</em:localized>
 
@@ -261,8 +279,11 @@
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 				<em:translator>Dominik Wnęk (pl)</em:translator>
 				<em:translator>André Bação (pt-PT)</em:translator>
+				<em:translator>Lucian Burca (ro)</em:translator>
 				<em:translator>Alexander Yavorsky (ru)</em:translator>
 				<em:translator>Peter Klofutar (sl)</em:translator>
+				<em:translator>Anders (sv-SE)</em:translator>
+				<em:translator>Kire Dyfvelsten (sv-SE)</em:translator>
 			</Description>
 		</em:localized>
 
@@ -297,8 +318,11 @@
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 				<em:translator>Dominik Wnęk (pl)</em:translator>
 				<em:translator>André Bação (pt-PT)</em:translator>
+				<em:translator>Lucian Burca (ro)</em:translator>
 				<em:translator>Alexander Yavorsky (ru)</em:translator>
 				<em:translator>Peter Klofutar (sl)</em:translator>
+				<em:translator>Anders (sv-SE)</em:translator>
+				<em:translator>Kire Dyfvelsten (sv-SE)</em:translator>
 			</Description>
 		</em:localized>
 
@@ -333,8 +357,11 @@
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 				<em:translator>Dominik Wnęk (pl)</em:translator>
 				<em:translator>André Bação (pt-PT)</em:translator>
+				<em:translator>Lucian Burca (ro)</em:translator>
 				<em:translator>Alexander Yavorsky (ru)</em:translator>
 				<em:translator>Peter Klofutar (sl)</em:translator>
+				<em:translator>Anders (sv-SE)</em:translator>
+				<em:translator>Kire Dyfvelsten (sv-SE)</em:translator>
 			</Description>
 		</em:localized>
 
@@ -369,8 +396,11 @@
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 				<em:translator>Dominik Wnęk (pl)</em:translator>
 				<em:translator>André Bação (pt-PT)</em:translator>
+				<em:translator>Lucian Burca (ro)</em:translator>
 				<em:translator>Alexander Yavorsky (ru)</em:translator>
 				<em:translator>Peter Klofutar (sl)</em:translator>
+				<em:translator>Anders (sv-SE)</em:translator>
+				<em:translator>Kire Dyfvelsten (sv-SE)</em:translator>
 			</Description>
 		</em:localized>
 
@@ -405,8 +435,11 @@
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 				<em:translator>Dominik Wnęk (pl)</em:translator>
 				<em:translator>André Bação (pt-PT)</em:translator>
+				<em:translator>Lucian Burca (ro)</em:translator>
 				<em:translator>Alexander Yavorsky (ru)</em:translator>
 				<em:translator>Peter Klofutar (sl)</em:translator>
+				<em:translator>Anders (sv-SE)</em:translator>
+				<em:translator>Kire Dyfvelsten (sv-SE)</em:translator>
 			</Description>
 		</em:localized>
 
@@ -441,8 +474,11 @@
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 				<em:translator>Dominik Wnęk (pl)</em:translator>
 				<em:translator>André Bação (pt-PT)</em:translator>
+				<em:translator>Lucian Burca (ro)</em:translator>
 				<em:translator>Alexander Yavorsky (ru)</em:translator>
 				<em:translator>Peter Klofutar (sl)</em:translator>
+				<em:translator>Anders (sv-SE)</em:translator>
+				<em:translator>Kire Dyfvelsten (sv-SE)</em:translator>
 			</Description>
 		</em:localized>
 
@@ -477,8 +513,50 @@
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 				<em:translator>Dominik Wnęk (pl)</em:translator>
 				<em:translator>André Bação (pt-PT)</em:translator>
+				<em:translator>Lucian Burca (ro)</em:translator>
 				<em:translator>Alexander Yavorsky (ru)</em:translator>
 				<em:translator>Peter Klofutar (sl)</em:translator>
+				<em:translator>Anders (sv-SE)</em:translator>
+				<em:translator>Kire Dyfvelsten (sv-SE)</em:translator>
+			</Description>
+		</em:localized>
+
+		<em:localized>
+			<Description>
+				<em:locale>ro</em:locale>
+				<em:name>Contacte (CardBook)</em:name>
+				<em:description>Carte de adrese vCard</em:description>
+				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
+				<em:contributor>R. Kent James</em:contributor>
+				<em:contributor>Timothe Litt</em:contributor>
+				<em:contributor>Christoph Mair</em:contributor>
+				<em:contributor>Boris Prüssmann</em:contributor>
+				<em:contributor>Michael Roland</em:contributor>
+				<em:contributor>Lukáš Tyrychtr</em:contributor>
+				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
+				<em:translator>Johnny Nielsen (da)</em:translator>
+				<em:translator>Alexander Bergmann (de)</em:translator>
+				<em:translator>Markus Mauerer (de)</em:translator>
+				<em:translator>Oliver Schuppe (de)</em:translator>
+				<em:translator>SusiTux (de)</em:translator>
+				<em:translator>Timothe Litt (en-US)</em:translator>
+				<em:translator>Óvári (en-US)</em:translator>
+				<em:translator>Philippe Vigneau (fr)</em:translator>
+				<em:translator>Meri (hr)</em:translator>
+				<em:translator>Óvári (hu)</em:translator>
+				<em:translator>Stefano Bloisi (it)</em:translator>
+				<em:translator>Agnese Morettini (it)</em:translator>
+				<em:translator>Gintautas (lt)</em:translator>
+				<em:translator>Han Knols (nl)</em:translator>
+				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
+				<em:translator>Dominik Wnęk (pl)</em:translator>
+				<em:translator>André Bação (pt-PT)</em:translator>
+				<em:translator>Lucian Burca (ro)</em:translator>
+				<em:translator>Alexander Yavorsky (ru)</em:translator>
+				<em:translator>Peter Klofutar (sl)</em:translator>
+				<em:translator>Anders (sv-SE)</em:translator>
+				<em:translator>Kire Dyfvelsten (sv-SE)</em:translator>
 			</Description>
 		</em:localized>
 
@@ -513,8 +591,11 @@
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 				<em:translator>Dominik Wnęk (pl)</em:translator>
 				<em:translator>André Bação (pt-PT)</em:translator>
+				<em:translator>Lucian Burca (ro)</em:translator>
 				<em:translator>Alexander Yavorsky (ru)</em:translator>
 				<em:translator>Peter Klofutar (sl)</em:translator>
+				<em:translator>Anders (sv-SE)</em:translator>
+				<em:translator>Kire Dyfvelsten (sv-SE)</em:translator>
 			</Description>
 		</em:localized>
 
@@ -549,8 +630,50 @@
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
 				<em:translator>Dominik Wnęk (pl)</em:translator>
 				<em:translator>André Bação (pt-PT)</em:translator>
+				<em:translator>Lucian Burca (ro)</em:translator>
 				<em:translator>Alexander Yavorsky (ru)</em:translator>
 				<em:translator>Peter Klofutar (sl)</em:translator>
+				<em:translator>Anders (sv-SE)</em:translator>
+				<em:translator>Kire Dyfvelsten (sv-SE)</em:translator>
+			</Description>
+		</em:localized>
+
+		<em:localized>
+			<Description>
+				<em:locale>sv-SE</em:locale>
+				<em:name>Kontakter (CardBook)</em:name>
+				<em:description>vCard Adressbok</em:description>
+				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
+				<em:contributor>R. Kent James</em:contributor>
+				<em:contributor>Timothe Litt</em:contributor>
+				<em:contributor>Christoph Mair</em:contributor>
+				<em:contributor>Boris Prüssmann</em:contributor>
+				<em:contributor>Michael Roland</em:contributor>
+				<em:contributor>Lukáš Tyrychtr</em:contributor>
+				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
+				<em:translator>Johnny Nielsen (da)</em:translator>
+				<em:translator>Alexander Bergmann (de)</em:translator>
+				<em:translator>Markus Mauerer (de)</em:translator>
+				<em:translator>Oliver Schuppe (de)</em:translator>
+				<em:translator>SusiTux (de)</em:translator>
+				<em:translator>Timothe Litt (en-US)</em:translator>
+				<em:translator>Óvári (en-US)</em:translator>
+				<em:translator>Philippe Vigneau (fr)</em:translator>
+				<em:translator>Meri (hr)</em:translator>
+				<em:translator>Óvári (hu)</em:translator>
+				<em:translator>Stefano Bloisi (it)</em:translator>
+				<em:translator>Agnese Morettini (it)</em:translator>
+				<em:translator>Gintautas (lt)</em:translator>
+				<em:translator>Han Knols (nl)</em:translator>
+				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
+				<em:translator>Dominik Wnęk (pl)</em:translator>
+				<em:translator>André Bação (pt-PT)</em:translator>
+				<em:translator>Lucian Burca (ro)</em:translator>
+				<em:translator>Alexander Yavorsky (ru)</em:translator>
+				<em:translator>Peter Klofutar (sl)</em:translator>
+				<em:translator>Anders (sv-SE)</em:translator>
+				<em:translator>Kire Dyfvelsten (sv-SE)</em:translator>
 			</Description>
 		</em:localized>
 

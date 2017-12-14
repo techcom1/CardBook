@@ -1,0 +1,187 @@
+<!ENTITY wdw_cardbookWindowLabel "Contacte">
+
+<!ENTITY enableAccountsTooltip "Activează sau dezactivează căutarea şi sincronizarea cărţilor de adrese.">
+<!ENTITY colorAccountsTooltip "Rezultatele căutării cărților de adrese color (atunci când căutările se întind pe mai multe cărţi de adrese)">
+<!ENTITY readonlyAccountsTooltip "Setați cărți de adrese în mod read-only sau read-write.">
+
+<!ENTITY cardbookAccountMenuLabel "Carte de adrese">
+
+<!ENTITY cardbookAccountMenuAddServerLabel "Carte de adrese nouă">
+<!ENTITY cardbookAccountMenuEditServerLabel "Editați carte de adrese">
+<!ENTITY cardbookAccountMenuCloseServerLabel "Ștergeți carte de adrese">
+<!ENTITY cardbookAccountMenuSyncLabel "Sincronizați carte de adrese">
+<!ENTITY cardbookAccountMenuSyncsLabel "Sincronizați toate cărțile de adrese">
+
+<!ENTITY cardbookContactsMenuLabel "Contacte">
+
+<!ENTITY cardbookToolsMenuLabel "Unelte">
+<!ENTITY cardbookToolsMenuBirthdayListLabel "Vedeți lista aniversară">
+<!ENTITY cardbookToolsMenuSyncLightningLabel "Adăugați aniversări în calendar">
+<!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "Găsiți contacte duplicat în toate cărțile de adrese">
+<!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "Găsiți contacte duplicat în carte de adrese curentă">
+<!ENTITY cardbookToolsMenuPrefsLabel "Preferinţe Contacte">
+
+<!ENTITY cardbookToolbarLabel "Bară de unelte pentru contacte">
+<!ENTITY cardbookToolbarAccesskey "c">
+<!ENTITY cardbookABPaneToolbarLabel "Bara de instrumente carte de adrese">
+<!ENTITY cardbookABPaneToolbarAccesskey "i">
+<!ENTITY CustomizeCardBookToolbarLabel "Personalizare…">
+<!ENTITY CustomizeCardBookToolbarAccesskey "P">
+<!ENTITY cardbookToolbarAddServerButtonLabel "Carte de adrese nouă">
+<!ENTITY cardbookToolbarAddServerButtonTooltip "Adăugați o carte de adrese la distanță sau locală">
+<!ENTITY cardbookToolbarSyncButtonLabel "Sincroniza">
+<!ENTITY cardbookToolbarSyncButtonTooltip "Sincronizați toate cărți de adrese la distanță">
+<!ENTITY cardbookToolbarWriteButtonLabel "Scrie mesaj">
+<!ENTITY cardbookToolbarWriteButtonTooltip "Creează un mesaj nou">
+<!ENTITY cardbookToolbarChatButtonLabel "Conectează la">
+<!ENTITY cardbookToolbarChatButtonTooltip "Trimiteți un mesaj instant sau chat">
+<!ENTITY cardbookToolbarConfigurationButtonLabel "Preferinţe">
+<!ENTITY cardbookToolbarConfigurationButtonTooltip "Preferințe Contacte">
+<!ENTITY cardbookToolbarAddContactButtonLabel "Contact nou">
+<!ENTITY cardbookToolbarAddContactButtonTooltip "Creați un contact nou în carte de adrese">
+<!ENTITY cardbookToolbarAddListButtonLabel "Listă nouă">
+<!ENTITY cardbookToolbarAddListButtonTooltip "Listă nouă">
+<!ENTITY cardbookToolbarEditButtonLabel "Editare">
+<!ENTITY cardbookToolbarEditButtonTooltip "Editați contactul selectat">
+<!ENTITY cardbookToolbarRemoveButtonLabel "Şterge">
+<!ENTITY cardbookToolbarRemoveButtonTooltip "Ștergeți contactul selectat">
+<!ENTITY cardbookToolbarPrintButtonLabel "Previzualizează tipărirea">
+<!ENTITY cardbookToolbarPrintButtonTooltip "Previzualizează tipărirea selecției">
+<!ENTITY cardbookToolbarAppMenuButtonLabel "Contacte meniu">
+<!ENTITY cardbookToolbarAppMenuButtonTooltip "Contacte meniu">
+<!ENTITY cardbookToolbarSearchBoxLabel "Căutarea contactelor">
+<!ENTITY cardbookToolbarSearchBoxTooltip "Căutarea contactelor">
+<!ENTITY cardbookToolbarComplexSearchLabel "Căutări salvate">
+<!ENTITY cardbookToolbarComplexSearchTooltip "Creați un nou dosar de căutare salvat">
+<!ENTITY cardbookToolbarThMenuButtonLabel "AppMenu">
+<!ENTITY cardbookToolbarThMenuButtonTooltip "Afişare meniu &brandShortName;">
+
+<!ENTITY generalTabLabel "General">
+<!ENTITY mailPopularityTabLabel "Poştă popularitate">
+<!ENTITY technicalTabLabel "Tehnic">
+<!ENTITY vCardTabLabel "vCard">
+
+<!ENTITY cardIconColumnLabel "Icoană">
+<!ENTITY nameColumnLabel "Nume">
+<!ENTITY lastnameColumnLabel "Nume de familie">
+<!ENTITY firstnameColumnLabel "Prenume">
+<!ENTITY othernameColumnLabel "Alt nume">
+<!ENTITY prefixnameColumnLabel "Prefix">
+<!ENTITY suffixnameColumnLabel "Suffix">
+<!ENTITY fnColumnLabel "Numele afișat">
+<!ENTITY nicknameColumnLabel "Poreclă">
+<!ENTITY genderColumnLabel "Gen">
+<!ENTITY bdayColumnLabel "Zi de nastere">
+<!ENTITY dispadrColumnLabel "Adrese">
+<!ENTITY disphomeadrColumnLabel "Adresele de acasă">
+<!ENTITY dispworkadrColumnLabel "Adresele de muncă">
+<!ENTITY disptelColumnLabel "Telefoane">
+<!ENTITY disphometelColumnLabel "Telefoane de acasă">
+<!ENTITY dispworktelColumnLabel "Telefoane de muncă">
+<!ENTITY dispcelltelColumnLabel "Celulare">
+<!ENTITY dispemailColumnLabel "Poştă electronică">
+<!ENTITY disphomeemailColumnLabel "Poştă electronică de acasă">
+<!ENTITY dispworkemailColumnLabel "Poştă electronică de muncă">
+<!ENTITY mailerColumnLabel "Mailere">
+<!ENTITY tzColumnLabel "Fus orar">
+<!ENTITY geoColumnLabel "Geo">
+<!ENTITY titleColumnLabel "Titlu">
+<!ENTITY roleColumnLabel "Rol">
+<!ENTITY orgColumnLabel "Organizaţie">
+<!ENTITY categoriesColumnLabel "Categorii">
+<!ENTITY noteColumnLabel "Notițe">
+<!ENTITY prodidColumnLabel "Identificatorul produsului">
+<!ENTITY sortstringColumnLabel "Sortați șirul">
+<!ENTITY uidColumnLabel "Uid">
+<!ENTITY dispurlColumnLabel "Adresa URL">
+<!ENTITY versionColumnLabel "Versiune">
+<!ENTITY class1ColumnLabel "Clasă">
+<!ENTITY dispimppColumnLabel "Mesagerie instanta">
+<!ENTITY cardurlColumnLabel "Adresa URL a cartelei">
+<!ENTITY dirPrefIdColumnLabel "Identificarea preferințelor în director">
+<!ENTITY kindColumnLabel "Fel">
+<!ENTITY revColumnLabel "Ultima actualizare">
+<!ENTITY etagColumnLabel "Etag">
+<!ENTITY birthplaceColumnLabel "Locul nasterii">
+<!ENTITY anniversaryColumnLabel "Aniversare">
+<!ENTITY deathdateColumnLabel "Data mortii">
+<!ENTITY deathplaceColumnLabel "Locul decesului">
+
+<!ENTITY categoriesGroupboxLabel "Categorii">
+<!ENTITY noteTabLabel "Notițe">
+<!ENTITY advancedTabLabel "Avansat">
+
+<!ENTITY miscGroupboxLabel "Diverse">
+<!ENTITY othersGroupboxLabel "Alte">
+<!ENTITY techGroupboxLabel "Tehnic">
+<!ENTITY labelGroupboxLabel "Etichete">
+<!ENTITY class1Label "Clasă">
+<!ENTITY geoLabel "Geo">
+<!ENTITY mailerLabel "Mailere">
+<!ENTITY agentLabel "Agent">
+<!ENTITY keyLabel "Cheie">
+<!ENTITY photolocalURILabel "Fotografie locală">
+<!ENTITY logolocalURILabel "Logo local">
+<!ENTITY soundlocalURILabel "Sunet local">
+<!ENTITY photoURILabel "Fotografie">
+<!ENTITY logoURILabel "Logo">
+<!ENTITY soundURILabel "Sunet">
+<!ENTITY prodidLabel "Identificatorul produsului">
+<!ENTITY sortstringLabel "Sortați șirul">
+<!ENTITY uidLabel "Uid">
+<!ENTITY versionLabel "Versiune">
+<!ENTITY tzLabel "Fus orar">
+
+<!ENTITY dirPrefIdLabel "Identificarea preferințelor în director">
+<!ENTITY cardurlLabel "Adresa URL a cartelei">
+<!ENTITY cacheuriLabel "Cache URI">
+<!ENTITY revLabel "Ultima actualizare">
+<!ENTITY etagLabel "Etag">
+
+<!ENTITY localizeadrTreeLabel "Arată pe hartă">
+<!ENTITY toEmailEmailTreeLabel "Scrie un mesaj nou">
+<!ENTITY ccEmailEmailTreeLabel "Scrie un mesaj nou (copie / cc)">
+<!ENTITY bccemailemailTreeLabel "Scrie un mesaj nou (copie ascunsă)">
+<!ENTITY findemailemailTreeLabel "Găseşte poştă electronică uri legate de această poştă electronică adresă">
+<!ENTITY findeventemailTreeLabel "Găsiți evenimente din calendar legate de această poştă electronică adresă">
+<!ENTITY openURLTreeLabel "Deschideți adresa URL">
+
+<!ENTITY copyCardTreeLabel "Copiază câmp">
+<!ENTITY pasteCardTreeLabel "Lipeşte câmp">
+
+<!ENTITY toEmailCardFromAccountsOrCatsLabel "Scrie un mesaj nou">
+<!ENTITY toEmailCardFromCardsLabel "Scrie un mesaj nou">
+<!ENTITY ccEmailCardFromAccountsOrCatsLabel "Scrie un mesaj nou (copie / cc)">
+<!ENTITY ccEmailCardFromCardsLabel "Scrie un mesaj nou (copie / cc)">
+<!ENTITY bccEmailCardFromAccountsOrCatsLabel "Scrie un mesaj nou (copie ascunsă)">
+<!ENTITY bccEmailCardFromCardsLabel "Scrie un mesaj nou (copie ascunsă)">
+<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "Trimiteți prin poştă electronică">
+<!ENTITY shareCardByEmailFromCardsLabel "Trimiteți prin poştă electronică">
+<!ENTITY categoryLabel "Categorie">
+<!ENTITY findEmailsFromCardsLabel "Găseşte poştă electronică uri legate de acest contact">
+<!ENTITY findEventsFromCardsLabel "Găsiți evenimente din calendar legate de acest contact">
+<!ENTITY localizeCardFromCardsLabel "Arată pe hartă">
+<!ENTITY openURLCardFromCardsLabel "Deschideți adrese URL">
+<!ENTITY cutCardFromAccountsOrCatsLabel "Taie">
+<!ENTITY cutCardFromCardsLabel "Taie">
+<!ENTITY copyCardFromAccountsOrCatsLabel "Copiază">
+<!ENTITY copyCardFromCardsLabel "Copiază">
+<!ENTITY pasteCardFromAccountsOrCatsLabel "Lipeşte">
+<!ENTITY pasteCardFromCardsLabel "Lipeşte">
+<!ENTITY exportCardToFileLabel "Exportați într-un fișier">
+<!ENTITY exportCardToDirLabel "Exportați într-un director">
+<!ENTITY importCardFromFileLabel "Importați contacte dintr-un fișier">
+<!ENTITY importCardFromDirLabel "Importați contacte dintr-un director">
+<!ENTITY renameCatFromAccountsOrCatsLabel "Redenumiți categoria">
+<!ENTITY convertCatFromAccountsOrCatsLabel "Convertiți categoria în listă">
+<!ENTITY removeCatFromAccountsOrCatsLabel "Eliminați categoria">
+<!ENTITY findDuplicatesFromAccountsOrCatsLabel "Găsiți contacte duplicat în carte de adrese curentă">
+<!ENTITY generateFnFromAccountsOrCatsLabel "Generați nume afișate">
+<!ENTITY mergeCardsFromCardsLabel "Îmbinați contactele">
+<!ENTITY duplicateCardFromCardsLabel "Contact dublu">
+<!ENTITY convertListToCategoryFromCardsLabel "Convertiți lista în categorie">
+<!ENTITY editAccountFromAccountsOrCatsLabel "Editați carte de adrese">
+<!ENTITY syncAccountFromAccountsOrCatsLabel "Sincronizați carte de adrese">
+<!ENTITY removeAccountFromAccountsOrCatsLabel "Ștergeți carte de adrese">
+
+<!ENTITY IMPPMenuLabel "Conectează la">

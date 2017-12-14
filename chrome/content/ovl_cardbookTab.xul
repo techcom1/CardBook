@@ -86,7 +86,7 @@
 							<treecol id="accountName" flex="1" persist="width ordinal hidden" primary="true" hideheader="true" crop="center"/>
 							<treecol id="accountId" persist="width ordinal hidden" hidden="true" hideheader="true"/>
 							<treecol id="accountType" persist="width ordinal hidden" hidden="true" hideheader="true"/>
-							<treecol id="accountReadOnly" type="checkbox" persist="width ordinal hidden" width="17" hideheader="true" tooltiptext="&readonlyAccountsTooltip;"/>
+							<treecol id="accountStatusCheckbox" type="checkbox" persist="width ordinal hidden" width="17" hideheader="true" tooltiptext="&readonlyAccountsTooltip;"/>
 							<treecol id="dummyForScroll" type="checkbox" persist="width ordinal hidden" width="17" hideheader="true"/>
 						</treecols>
 						<treechildren id="accountsOrCatsTreeChildren" flex="1" ondragstart="wdw_cardbook.startDrag(event, this);" ondrop="wdw_cardbook.dragCards(event);"

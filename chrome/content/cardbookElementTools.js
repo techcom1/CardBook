@@ -218,10 +218,10 @@ if ("undefined" == typeof(cardbookElementTools)) {
 					}
 					if (aInclRestrictionList && aInclRestrictionList.length > 0) {
 						if (aInclRestrictionList[cardbookRepository.cardbookAccounts[i][4]]) {
-							sortedAddressBooks.push([cardbookRepository.cardbookAccounts[i][0], cardbookRepository.cardbookAccounts[i][4], cardbookRepository.getIconType(cardbookRepository.cardbookAccounts[i][6])]);
+							sortedAddressBooks.push([cardbookRepository.cardbookAccounts[i][0], cardbookRepository.cardbookAccounts[i][4], cardbookRepository.getABIconType(cardbookRepository.cardbookAccounts[i][6])]);
 						}
 					} else {
-						sortedAddressBooks.push([cardbookRepository.cardbookAccounts[i][0], cardbookRepository.cardbookAccounts[i][4], cardbookRepository.getIconType(cardbookRepository.cardbookAccounts[i][6])]);
+						sortedAddressBooks.push([cardbookRepository.cardbookAccounts[i][0], cardbookRepository.cardbookAccounts[i][4], cardbookRepository.getABIconType(cardbookRepository.cardbookAccounts[i][6])]);
 					}
 				}
 			}

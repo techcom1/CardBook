@@ -1,0 +1,8 @@
+<!ENTITY listTabLabel "Lista">
+<!ENTITY kindLabel "Sort">
+<!ENTITY kindAccesskey "S">
+<!ENTITY availableCardsGroupboxLabel "Tillgängliga kontakter">
+<!ENTITY addedCardsGroupboxLabel "Kontaktslista">
+<!ENTITY appendlistTreeLabel "Lägg till i lista">
+<!ENTITY deletelistTreeLabel "Tabort från lista">
+<!ENTITY editCardFromListLabel "Redigera den här kontakten">

@@ -1,0 +1,30 @@
+<!ENTITY settingsTitlelabel "Setările de imprimare">
+<!ENTITY titleLabel "Rubrică:">
+<!ENTITY titleAccesskey "R">
+<!ENTITY displayHeadersLabel "Afișați antetele paragrafelor">
+<!ENTITY displayHeadersAccesskey "p">
+<!ENTITY displayFieldNamesLabel "Numele câmpurilor">
+<!ENTITY displayFieldNamesAccesskey "c">
+<!ENTITY displayTypesLabel "Tipuri și preferințe">
+<!ENTITY displayTypesAccesskey "u">
+<!ENTITY whatToPrintGroupboxLabel "Ce să tipăriți">
+<!ENTITY displayLabel "Numele afișat">
+<!ENTITY displayAccesskey "N">
+<!ENTITY personalLabel "Informatii personale">
+<!ENTITY personalAccesskey "p">
+<!ENTITY orgLabel "Informații profesionale">
+<!ENTITY orgAccesskey "o">
+<!ENTITY categoriesLabel "Categorii">
+<!ENTITY categoriesAccesskey "C">
+<!ENTITY adrLabel "Adrese">
+<!ENTITY adrAccesskey "A">
+<!ENTITY telLabel "Numere de telefon">
+<!ENTITY telAccesskey "t">
+<!ENTITY emailLabel "Poştă electronică adrese">
+<!ENTITY emailAccesskey "e">
+<!ENTITY imppLabel "Comunicatii pe Internet">
+<!ENTITY imppAccesskey "I">
+<!ENTITY urlLabel "Adrese URL">
+<!ENTITY urlAccesskey "U">
+<!ENTITY noteLabel "Notițe">
+<!ENTITY noteAccesskey "N">

@@ -1,0 +1,18 @@
+<!ENTITY viewResultEditionLabel "Afișați rezultatul">
+<!ENTITY viewResultEditionAccesskey "A">
+<!ENTITY createEditionLabel "Crea">
+<!ENTITY createEditionAccesskey "r">
+<!ENTITY createAndReplaceEditionLabel "Creați și înlocuiți">
+<!ENTITY createAndReplaceEditionAccesskey "n">
+<!ENTITY saveEditionLabel "Salva">
+<!ENTITY saveEditionAccesskey "S">
+<!ENTITY validateEditionLabel "Valida">
+<!ENTITY validateEditionAccesskey "V">
+<!ENTITY cancelEditionLabel "Anulează">
+<!ENTITY cancelEditionAccesskey "u">
+<!ENTITY closeEditionLabel "Închide">
+<!ENTITY closeEditionAccesskey "Î">
+<!ENTITY buttonAppendToListLabel "Nou">
+<!ENTITY buttonAppendToListAccesskey "N">
+<!ENTITY buttonRemoveFromListLabel "Şterge">
+<!ENTITY buttonRemoveFromListAccesskey "g">

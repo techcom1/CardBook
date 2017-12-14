@@ -2,7 +2,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 	Components.utils.import("resource://gre/modules/Services.jsm");
 
 	var cardbookPreferences = {
-		
+
 		prefCardBookRoot: "extensions.cardbook.",
 		prefCardBookData: "extensions.cardbook.data.",
 		prefCardBookTypes: "extensions.cardbook.types.",
@@ -12,7 +12,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 		prefCardBookAccountVCards: "extensions.cardbook.vcards.",
 		prefCardBookAccountRestrictions: "extensions.cardbook.accountsRestrictions.",
 		prefCardBookEmailsCollection: "extensions.cardbook.emailsCollection.",
-		
+
 		_arrayUnique: function (array) {
 			var a = array.concat();
 			for(var i=0; i<a.length; ++i) {
@@ -23,16 +23,16 @@ if ("undefined" == typeof(cardbookPreferences)) {
 			}
 			return a;
 		},
-		
-		getBoolPref: function (prefName) {
+
+		getBoolPref: function (prefName, aDefaultValue) {
 			try {
 				return Services.prefs.getBoolPref(prefName);
 			}
 			catch(e) {
-				return false;
+				return aDefaultValue;
 			}
 		},
-	
+
 		setBoolPref: function (prefName, value) {
 			try {
 				Services.prefs.setBoolPref(prefName, value);
@@ -41,7 +41,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.setBoolPref : failed to set" + prefName + "\n" + e + "\n");
 			}
 		},
-	
+
 		getStringPref: function (prefName) {
 			try {
 				if (Services.vc.compare(Services.appinfo.version, "58") >= 0) {
@@ -54,7 +54,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				return "";
 			}
 		},
-	
+
 		setStringPref: function (prefName, value) {
 			try {
 				if (Services.vc.compare(Services.appinfo.version, "58") >= 0) {
@@ -69,7 +69,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.setStringPref : failed to set" + prefName + "\n" + e + "\n");
 			}
 		},
-	
+
 		insertIMPPsSeed: function () {
 			var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 			this.setIMPPs(0,"skype:" + strBundle.GetStringFromName("impp.skype") + ":skype");
@@ -78,7 +78,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 			this.setIMPPs(3,"qq:" + strBundle.GetStringFromName("impp.qq") + ":qq");
 			this.setIMPPs(4,"yahoo:" + strBundle.GetStringFromName("impp.yahoo") + ":ymsgr");
 		},
-	
+
 		getAllTypesCategory: function () {
 			try {
 				var count = {};
@@ -96,7 +96,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.getAllTypesCategory error : " + e + "\n");
 			}
 		},
-	
+
 		getTypes: function (prefName) {
 			try {
 				let value = this.getStringPref(this.prefCardBookTypes + prefName);
@@ -106,7 +106,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.getTypes : failed to get" + this.prefCardBookTypes + prefName + "\n" + e + "\n");
 			}
 		},
-	
+
 		setTypes: function (aType, prefName, value) {
 			try {
 				this.setStringPref(this.prefCardBookTypes + aType + "." + prefName, value);
@@ -115,7 +115,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.setTypes : failed to set" + this.prefCardBookTypes + aType + "." + prefName + "\n" + e + "\n");
 			}
 		},
-	
+
 		delTypes: function (aType) {
 			try {
 				if (aType != null && aType !== undefined && aType != "") {
@@ -128,7 +128,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.delTypes : failed to delete" + this.prefCardBookTypes + aType + "\n" + e + "\n");
 			}
 		},
-	
+
 		getAllTypesByType: function (aType) {
 			try {
 				var count = {};
@@ -178,7 +178,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.getAllTypesByType error : " + e + "\n");
 			}
 		},
-	
+
 		getAllTypes: function () {
 			try {
 				var finalResult = {};
@@ -198,7 +198,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.getAllTypes error : " + e + "\n");
 			}
 		},
-	
+
 		getAllTypesCurrent: function () {
 			try {
 				var finalResult = {};
@@ -226,7 +226,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.getAllTypesCurrent error : " + e + "\n");
 			}
 		},
-	
+
 		getTypeLabel: function (aType, aCode) {
 			try {
 				var resultTmp = [];
@@ -242,7 +242,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.getTypeLabel error : " + e + "\n");
 			}
 		},
-	
+
 		getAllCustomFieldsByType: function (aType) {
 			try {
 				var count = {};
@@ -263,7 +263,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.getAllCustomFieldsByType error : " + e + "\n");
 			}
 		},
-	
+
 		getAllCustomFields: function () {
 			try {
 				var finalResult = {};
@@ -283,7 +283,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.getAllCustomFields error : " + e + "\n");
 			}
 		},
-	
+
 		getDiscoveryAccounts: function () {
 			try {
 				var finalResult = [];
@@ -303,7 +303,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.getDiscoveryAccounts error : " + e + "\n");
 			}
 		},
-	
+
 		getAllTels: function () {
 			try {
 				var count = {};
@@ -327,7 +327,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.getAllTels error : " + e + "\n");
 			}
 		},
-	
+
 		getAllComplexSearchIds: function () {
 			try {
 				let count = {};
@@ -349,7 +349,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.getAllPrefIds error : " + e + "\n");
 			}
 		},
-	
+
 		getAllPrefIds: function () {
 			try {
 				let count = {};
@@ -368,7 +368,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.getAllPrefIds error : " + e + "\n");
 			}
 		},
-	
+
 		getAllRestrictions: function () {
 			try {
 				let count = {};
@@ -383,7 +383,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				return [];
 			}
 		},
-	
+
 		delRestrictions: function (aRestrictionId) {
 			try {
 				if (aRestrictionId != null && aRestrictionId !== undefined && aRestrictionId != "") {
@@ -396,7 +396,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.delRestrictions : failed to delete" + this.prefCardBookAccountRestrictions + "\n" + e + "\n");
 			}
 		},
-	
+
 		setRestriction: function (aRestrictionId, aRestrictionValue) {
 			try {
 				this.setStringPref(this.prefCardBookAccountRestrictions + aRestrictionId, aRestrictionValue);
@@ -405,7 +405,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.setRestriction : failed to set" + this.prefCardBookAccountRestrictions + aRestrictionId + "\n" + e + "\n");
 			}
 		},
-	
+
 		getAllVCards: function () {
 			try {
 				let count = {};
@@ -420,7 +420,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				return [];
 			}
 		},
-	
+
 		delVCards: function (aVCardId) {
 			try {
 				if (aVCardId != null && aVCardId !== undefined && aVCardId != "") {
@@ -433,7 +433,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.delVCards : failed to delete" + this.prefCardBookAccountVCards + "\n" + e + "\n");
 			}
 		},
-	
+
 		setVCard: function (aVCardId, aVCardValue) {
 			try {
 				this.setStringPref(this.prefCardBookAccountVCards + aVCardId, aVCardValue);
@@ -442,7 +442,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.setVCard : failed to set" + this.prefCardBookAccountVCards + aVCardId + "\n" + e + "\n");
 			}
 		},
-	
+
 		getAllEmailsCollections: function () {
 			try {
 				let count = {};
@@ -457,7 +457,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				return [];
 			}
 		},
-	
+
 		delEmailsCollection: function (aRestrictionId) {
 			try {
 				if (aRestrictionId != null && aRestrictionId !== undefined && aRestrictionId != "") {
@@ -470,7 +470,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.delEmailsCollection : failed to delete" + this.prefCardBookEmailsCollection + "\n" + e + "\n");
 			}
 		},
-	
+
 		setEmailsCollection: function (aRestrictionId, aRestrictionValue) {
 			try {
 				this.setStringPref(this.prefCardBookEmailsCollection + aRestrictionId, aRestrictionValue);
@@ -479,7 +479,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.setEmailsCollection : failed to set" + this.prefCardBookEmailsCollection + aRestrictionId + "\n" + e + "\n");
 			}
 		},
-	
+
 		getAllIMPPs: function () {
 			try {
 				var count = {};
@@ -503,7 +503,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.getAllIMPPs error : " + e + "\n");
 			}
 		},
-	
+
 		getIMPPs: function (prefName) {
 			try {
 				let value = this.getStringPref(this.prefCardBookIMPPs + prefName);
@@ -513,7 +513,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.getIMPPs : failed to get" + this.prefCardBookIMPPs + prefName + "\n" + e + "\n");
 			}
 		},
-	
+
 		setIMPPs: function (prefName, value) {
 			try {
 				this.setStringPref(this.prefCardBookIMPPs + prefName, value);
@@ -522,7 +522,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.setIMPPs : failed to set" + this.prefCardBookIMPPs + prefName + "\n" + e + "\n");
 			}
 		},
-	
+
 		delIMPPs: function () {
 			try {
 				Services.prefs.deleteBranch(this.prefCardBookIMPPs);
@@ -531,7 +531,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.delIMPPs : failed to delete" + this.prefCardBookIMPPs + "\n" + e + "\n");
 			}
 		},
-	
+
 		getCustomFields: function (prefName) {
 			try {
 				let value = this.getStringPref(this.prefCardBookCustomFields + prefName);
@@ -541,7 +541,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.getCustomFields : failed to get" + this.prefCardBookCustomFields + prefName + "\n" + e + "\n");
 			}
 		},
-	
+
 		setCustomFields: function (aType, prefName, value) {
 			try {
 				this.setStringPref(this.prefCardBookCustomFields + aType + "." + prefName, value);
@@ -550,7 +550,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.setCustomFields : failed to set" + this.prefCardBookCustomFields + aType + "." + prefName + "\n" + e + "\n");
 			}
 		},
-	
+
 		delCustomFields: function (aType) {
 			try {
 				if (aType != null && aType !== undefined && aType != "") {
@@ -563,7 +563,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.delCustomFields : failed to delete" + this.prefCardBookCustomFields + aType + "\n" + e + "\n");
 			}
 		},
-	
+
 		getTels: function (prefName) {
 			try {
 				let value = this.getStringPref(this.prefCardBookTels + prefName);
@@ -573,7 +573,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.getTels : failed to get" + this.prefCardBookTels + prefName + "\n" + e + "\n");
 			}
 		},
-	
+
 		setTels: function (prefName, value) {
 			try {
 				this.setStringPref(this.prefCardBookTels + prefName, value);
@@ -582,7 +582,7 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				dump("cardbookPreferences.setTels : failed to set" + this.prefCardBookTels + prefName + "\n" + e + "\n");
 			}
 		},
-	
+
 		delTels: function () {
 			try {
 				Services.prefs.deleteBranch(this.prefCardBookTels);
@@ -601,23 +601,23 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				return strBundle.GetStringFromName("prefValueLabel");
 			}
 		},
-	
+
 		getId: function (aDirPrefId) {
 			return this.getStringPref(this.prefCardBookData + aDirPrefId + "." + "id");
 		},
-	
+
 		setId: function (aDirPrefId, id) {
 			this.setStringPref(this.prefCardBookData + aDirPrefId + "." + "id", id);
 		},
-	
+
 		getName: function (aDirPrefId) {
 			return this.getStringPref(this.prefCardBookData + aDirPrefId + "." + "name");
 		},
-	
+
 		setName: function (aDirPrefId, name) {
 			this.setStringPref(this.prefCardBookData + aDirPrefId + "." + "name", name);
 		},
-	
+
 		getUrl: function (aDirPrefId) {
 			let url = this.getStringPref(this.prefCardBookData + aDirPrefId + "." + "url");
 			let type = this.getStringPref(this.prefCardBookData + aDirPrefId + "." + "type");
@@ -639,51 +639,51 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				}
 			}
 		},
-	
+
 		setUrl: function (aDirPrefId, url) {
 			this.setStringPref(this.prefCardBookData + aDirPrefId + "." + "url", url);
 		},
-	
+
 		getUser: function (aDirPrefId) {
 			return this.getStringPref(this.prefCardBookData + aDirPrefId + "." + "user");
 		},
-	
+
 		setUser: function (aDirPrefId, user) {
 			this.setStringPref(this.prefCardBookData + aDirPrefId + "." + "user", user);
 		},
-	
+
 		getType: function (aDirPrefId) {
 			return this.getStringPref(this.prefCardBookData + aDirPrefId + "." + "type");
 		},
-	
+
 		setType: function (aDirPrefId, type) {
 			this.setStringPref(this.prefCardBookData + aDirPrefId + "." + "type", type);
 		},
-	
+
 		getEnabled: function (aDirPrefId) {
 			return this.getBoolPref(this.prefCardBookData + aDirPrefId + "." + "enabled", true);
 		},
-	
+
 		setEnabled: function (aDirPrefId, enabled) {
 			this.setBoolPref(this.prefCardBookData + aDirPrefId + "." + "enabled", enabled);
 		},
-	
+
 		getReadOnly: function (aDirPrefId) {
 			return this.getBoolPref(this.prefCardBookData + aDirPrefId + "." + "readonly", false);
 		},
-	
+
 		setReadOnly: function (aDirPrefId, readonly) {
 			this.setBoolPref(this.prefCardBookData + aDirPrefId + "." + "readonly", readonly);
 		},
-	
+
 		getExpanded: function (aDirPrefId) {
 			return this.getBoolPref(this.prefCardBookData + aDirPrefId + "." + "expanded", true);
 		},
-	
+
 		setExpanded: function (aDirPrefId, expanded) {
 			this.setBoolPref(this.prefCardBookData + aDirPrefId + "." + "expanded", expanded);
 		},
-	
+
 	   getColor: function (aDirPrefId) {
 			let color = this.getStringPref(this.prefCardBookData + aDirPrefId + "." + "color");
 			if (color != null && color !== undefined && color != "") {
@@ -692,19 +692,19 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				return "#A8C2E1";
 			}
 		},
-	
+
 		setColor: function (aDirPrefId, color) {
 			this.setStringPref(this.prefCardBookData + aDirPrefId + "." + "color", color);
 		},
-	
+
 		getDBCached: function (aDirPrefId) {
 			return this.getBoolPref(this.prefCardBookData + aDirPrefId + "." + "DBcached", false);
 		},
-	
+
 		setDBCached: function (aDirPrefId, DBcached) {
 			this.setBoolPref(this.prefCardBookData + aDirPrefId + "." + "DBcached", DBcached);
 		},
-	
+
 		getVCardVersion: function (aDirPrefId) {
 			let vCard = this.getStringPref(this.prefCardBookData + aDirPrefId + "." + "vCard");
 			if (vCard != null && vCard !== undefined && vCard != "") {
@@ -713,14 +713,14 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				return "3.0";
 			}
 		},
-	
+
 		setVCardVersion: function (aDirPrefId, aVCard) {
 			if (aVCard != null && aVCard !== undefined && aVCard != "") {
 				this.setStringPref(this.prefCardBookData + aDirPrefId + "." + "vCard", aVCard);
 			}
 		},
-	
-	   getDateFormat: function (aDirPrefId) {
+
+		getDateFormat: function (aDirPrefId) {
 			let dateFormat = this.getStringPref(this.prefCardBookData + aDirPrefId + "." + "dateFormat");
 			if (dateFormat != null && dateFormat !== undefined && dateFormat != "") {
 				return dateFormat;
@@ -728,26 +728,44 @@ if ("undefined" == typeof(cardbookPreferences)) {
 				return "YYYYMMDD";
 			}
 		},
-	
+
 		setDateFormat: function (aDirPrefId, aDateFormat) {
 			if (aDateFormat != null && aDateFormat !== undefined && aDateFormat != "") {
 				this.setStringPref(this.prefCardBookData + aDirPrefId + "." + "dateFormat", aDateFormat);
 			}
 		},
-	
-	   getUrnuuid: function (aDirPrefId) {
-			let urnuuid = this.getBoolPref(this.prefCardBookData + aDirPrefId + "." + "urnuuid");
-			if (urnuuid != null && urnuuid !== undefined && urnuuid != "") {
-				return urnuuid;
-			} else {
-				return false;
-			}
+
+		getUrnuuid: function (aDirPrefId) {
+			return this.getBoolPref(this.prefCardBookData + aDirPrefId + "." + "urnuuid", false);
 		},
-	
+
 		setUrnuuid: function (aDirPrefId, aUrnuuid) {
 			this.setBoolPref(this.prefCardBookData + aDirPrefId + "." + "urnuuid", aUrnuuid);
 		},
-	
+
+		getAutoSyncEnabled: function (aDirPrefId) {
+			return this.getBoolPref(this.prefCardBookData + aDirPrefId + "." + "autoSyncEnabled", true);
+		},
+
+		setAutoSyncEnabled: function (aDirPrefId, aAutoSyncEnabled) {
+			this.setBoolPref(this.prefCardBookData + aDirPrefId + "." + "autoSyncEnabled", aAutoSyncEnabled);
+		},
+
+		getAutoSyncInterval: function (aDirPrefId) {
+			let autoSyncInterval = this.getStringPref(this.prefCardBookData + aDirPrefId + "." + "autoSyncInterval");
+			if (autoSyncInterval != null && autoSyncInterval !== undefined && autoSyncInterval != "") {
+				return autoSyncInterval;
+			} else {
+				return "60";
+			}
+		},
+
+		setAutoSyncInterval: function (aDirPrefId, aAutoSyncInterval) {
+			if (aAutoSyncInterval != null && aAutoSyncInterval !== undefined && aAutoSyncInterval != "") {
+				this.setStringPref(this.prefCardBookData + aDirPrefId + "." + "autoSyncInterval", aAutoSyncInterval);
+			}
+		},
+
 		delBranch: function (aDirPrefId) {
 			try {
 				Services.prefs.deleteBranch(this.prefCardBookData + aDirPrefId);

@@ -2609,15 +2609,13 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		connectCardsFromChatButton: function(aButton) {
 			try {
-				if (cardbookRepository.cardbookSyncMode === "NOSYNC") {
-					var myPopup = document.getElementById(aButton.id + "MenuPopup");
-					if (myPopup.childNodes.length == 0) {
-						return;
-					} else if (myPopup.childNodes.length == 1) {
-						myPopup.firstChild.doCommand();
-					} else {
-						myPopup.openPopup(aButton, 'after_start', 0, 0, false, false);
-					}
+				var myPopup = document.getElementById(aButton.id + "MenuPopup");
+				if (myPopup.childNodes.length == 0) {
+					return;
+				} else if (myPopup.childNodes.length == 1) {
+					myPopup.firstChild.doCommand();
+				} else {
+					myPopup.openPopup(aButton, 'after_start', 0, 0, false, false);
 				}
 			}
 			catch (e) {
@@ -2628,67 +2626,64 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		addCardToIMPPMenuSubMenu: function(aCard, aMenuName) {
 			try {
-				if (cardbookRepository.cardbookSyncMode === "NOSYNC") {
-					if (!document.getElementById(aMenuName)) {
-						return;
+				if (!document.getElementById(aMenuName)) {
+					return;
+				}
+				var myPopup = document.getElementById(aMenuName);
+				var myMenu = document.getElementById(aMenuName.replace("MenuPopup", ""));
+				while (myPopup.hasChildNodes()) {
+					myPopup.removeChild(myPopup.firstChild);
+				}
+				
+				myMenu.disabled = true;
+				if (aCard != null && aCard !== undefined && aCard != "") {
+					var telProtocolLine = "";
+					try {
+						var telProtocolLine = cardbookPreferences.getStringPref("extensions.cardbook.tels.0");
 					}
-					var myPopup = document.getElementById(aMenuName);
-					var myMenu = document.getElementById(aMenuName.replace("MenuPopup", ""));
-					while (myPopup.hasChildNodes()) {
-						myPopup.removeChild(myPopup.firstChild);
+					catch(e) {
 					}
-					
-					myMenu.disabled = true;
-					if (aCard != null && aCard !== undefined && aCard != "") {
-						var telProtocolLine = "";
-						try {
-							var telProtocolLine = cardbookPreferences.getStringPref("extensions.cardbook.tels.0");
-						}
-						catch(e) {
-						}
-						if (telProtocolLine != "") {
-							var telProtocolLineArray = telProtocolLine.split(':');
-							var telLabel = telProtocolLineArray[1];
-							var telProtocol = telProtocolLineArray[2];
-							var myTels = cardbookUtils.getPrefAddressFromCard(aCard, "tel", cardbookRepository.preferIMPPPref);
-							for (var i = 0; i < myTels.length; i++) {
-								var menuItem = document.createElement("menuitem");
-								var myRegexp = new RegExp("^" + telProtocol + ":");
-								var myAddress = myTels[i].replace(myRegexp, "");
-								menuItem.setAttribute("id", telProtocol + ":" + myAddress);
-								menuItem.addEventListener("command", function(aEvent) {
-										cardbookUtils.openExternalURL(cardbookUtils.formatTelForOpenning(this.id));
-										aEvent.stopPropagation();
-									}, false);
-								menuItem.setAttribute("label", telLabel + ": " + myAddress);
-								myPopup.appendChild(menuItem);
-								myMenu.disabled = false;
-							}
-						}
-						var myIMPPs = cardbookUtils.getPrefAddressFromCard(aCard, "impp", cardbookRepository.preferIMPPPref);
-						for (var i = 0; i < myIMPPs.length; i++) {
-							var serviceProtocol = cardbookTypes.getIMPPProtocol([myIMPPs[i]]);
-							var serviceLine = [];
-							serviceLine = cardbookTypes.getIMPPLineForProtocol(serviceProtocol)
-							if (serviceLine[0]) {
-								var menuItem = document.createElement("menuitem");
-								var myRegexp = new RegExp("^" + serviceLine[2] + ":");
-								var myAddress = myIMPPs[i].replace(myRegexp, "");
-								menuItem.setAttribute("id", serviceLine[2] + ":" + myAddress);
-								menuItem.addEventListener("command", function(aEvent) {
-										cardbookUtils.openExternalURL(cardbookUtils.formatIMPPForOpenning(this.id));
-										aEvent.stopPropagation();
-									}, false);
-								menuItem.setAttribute("label", serviceLine[1] + ": " + myAddress);
-								myPopup.appendChild(menuItem);
-								myMenu.disabled = false;
-							}
+					if (telProtocolLine != "") {
+						var telProtocolLineArray = telProtocolLine.split(':');
+						var telLabel = telProtocolLineArray[1];
+						var telProtocol = telProtocolLineArray[2];
+						var myTels = cardbookUtils.getPrefAddressFromCard(aCard, "tel", cardbookRepository.preferIMPPPref);
+						for (var i = 0; i < myTels.length; i++) {
+							var menuItem = document.createElement("menuitem");
+							var myRegexp = new RegExp("^" + telProtocol + ":");
+							var myAddress = myTels[i].replace(myRegexp, "");
+							menuItem.setAttribute("id", telProtocol + ":" + myAddress);
+							menuItem.addEventListener("command", function(aEvent) {
+									cardbookUtils.openExternalURL(cardbookUtils.formatTelForOpenning(this.id));
+									aEvent.stopPropagation();
+								}, false);
+							menuItem.setAttribute("label", telLabel + ": " + myAddress);
+							myPopup.appendChild(menuItem);
+							myMenu.disabled = false;
 						}
 					}
-					if (!myPopup.hasChildNodes()) {
-						myMenu.disabled=true;
+					var myIMPPs = cardbookUtils.getPrefAddressFromCard(aCard, "impp", cardbookRepository.preferIMPPPref);
+					for (var i = 0; i < myIMPPs.length; i++) {
+						var serviceProtocol = cardbookTypes.getIMPPProtocol([myIMPPs[i]]);
+						var serviceLine = [];
+						serviceLine = cardbookTypes.getIMPPLineForProtocol(serviceProtocol)
+						if (serviceLine[0]) {
+							var menuItem = document.createElement("menuitem");
+							var myRegexp = new RegExp("^" + serviceLine[2] + ":");
+							var myAddress = myIMPPs[i].replace(myRegexp, "");
+							menuItem.setAttribute("id", serviceLine[2] + ":" + myAddress);
+							menuItem.addEventListener("command", function(aEvent) {
+									cardbookUtils.openExternalURL(cardbookUtils.formatIMPPForOpenning(this.id));
+									aEvent.stopPropagation();
+								}, false);
+							menuItem.setAttribute("label", serviceLine[1] + ": " + myAddress);
+							myPopup.appendChild(menuItem);
+							myMenu.disabled = false;
+						}
 					}
-
+				}
+				if (!myPopup.hasChildNodes()) {
+					myMenu.disabled=true;
 				}
 			}
 			catch (e) {
@@ -2699,41 +2694,39 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		addCardsToCategoryMenuSubMenu: function(aMenuName) {
 			try {
-				if (cardbookRepository.cardbookSyncMode === "NOSYNC") {
-					var myPopup = document.getElementById(aMenuName);
-					var myMenu = document.getElementById(aMenuName.replace("MenuPopup", ""));
-					for (let i = myPopup.childNodes.length; i > 2; --i) {
-						myPopup.lastChild.remove();
-					}
+				var myPopup = document.getElementById(aMenuName);
+				var myMenu = document.getElementById(aMenuName.replace("MenuPopup", ""));
+				for (let i = myPopup.childNodes.length; i > 2; --i) {
+					myPopup.lastChild.remove();
+				}
 
-					var listOfDirPrefId = cardbookUtils.getSelectedCardsDirPrefId();
-					var selectedUid = cardbookUtils.getSelectedCardsId();
-					if (selectedUid.length > 0 && listOfDirPrefId.length == 1) {
-						var myDirPrefId = listOfDirPrefId[0];
-						var myCategoryList = cardbookUtils.cleanCategories(cardbookRepository.cardbookAccountsCategories[myDirPrefId]);
-						for (var i = 0; i < myCategoryList.length; i++) {
-							var myCategory = myCategoryList[i];
-							var myMenuItem = document.createElement("menuitem");
-							myMenuItem.setAttribute("id", myCategory);
-							myMenuItem.setAttribute("type", "checkbox");
-							myMenuItem.addEventListener("command", function(aEvent) {
-									if (this.getAttribute("checked") == "true") {
-										wdw_cardbook.addCategoryToSelectedCards(this.id, "", false);
-									} else {
-										wdw_cardbook.removeCategoryFromSelectedCards(this.id);
-									}
-									aEvent.stopPropagation();
-								}, false);
-							myMenuItem.setAttribute("label", myCategory);
-							myMenuItem.setAttribute("checked", "false");
-							myPopup.appendChild(myMenuItem);
-						}
-						if (selectedUid.length == 1) {
-							var myCard = cardbookRepository.cardbookCards[selectedUid[0]];
-							for (var i = 0; i < myCard.categories.length; i++) {
-								var myMenuItem = document.getElementById(myCard.categories[i]);
-								myMenuItem.setAttribute("checked", "true");
-							}
+				var listOfDirPrefId = cardbookUtils.getSelectedCardsDirPrefId();
+				var selectedUid = cardbookUtils.getSelectedCardsId();
+				if (selectedUid.length > 0 && listOfDirPrefId.length == 1) {
+					var myDirPrefId = listOfDirPrefId[0];
+					var myCategoryList = cardbookUtils.cleanCategories(cardbookRepository.cardbookAccountsCategories[myDirPrefId]);
+					for (var i = 0; i < myCategoryList.length; i++) {
+						var myCategory = myCategoryList[i];
+						var myMenuItem = document.createElement("menuitem");
+						myMenuItem.setAttribute("id", myCategory);
+						myMenuItem.setAttribute("type", "checkbox");
+						myMenuItem.addEventListener("command", function(aEvent) {
+								if (this.getAttribute("checked") == "true") {
+									wdw_cardbook.addCategoryToSelectedCards(this.id, "", false);
+								} else {
+									wdw_cardbook.removeCategoryFromSelectedCards(this.id);
+								}
+								aEvent.stopPropagation();
+							}, false);
+						myMenuItem.setAttribute("label", myCategory);
+						myMenuItem.setAttribute("checked", "false");
+						myPopup.appendChild(myMenuItem);
+					}
+					if (selectedUid.length == 1) {
+						var myCard = cardbookRepository.cardbookCards[selectedUid[0]];
+						for (var i = 0; i < myCard.categories.length; i++) {
+							var myMenuItem = document.getElementById(myCard.categories[i]);
+							myMenuItem.setAttribute("checked", "true");
 						}
 					}
 				}
@@ -2744,6 +2737,14 @@ if ("undefined" == typeof(cardbookUtils)) {
 			}
 		},
 
+		isMyAccountSyncing: function (aPrefId) {
+			if ((cardbookRepository.cardbookSyncMode[aPrefId] != null && cardbookRepository.cardbookSyncMode[aPrefId] !== undefined && cardbookRepository.cardbookSyncMode[aPrefId] != "")
+				&& (cardbookRepository.cardbookSyncMode[aPrefId] == 1)) {
+					return true;
+			}
+			return false;
+		},
+		
 		openEditionWindow: function(aCard, aMode, aSource) {
 			try {
 				var myArgs = {cardIn: aCard, cardOut: {}, editionMode: aMode, editionSource: aSource, cardEditionAction: "", editionCallback: cardbookUtils.openEditionWindowSave};
@@ -2795,6 +2796,22 @@ if ("undefined" == typeof(cardbookUtils)) {
 			} else {
 				return aURL;
 			}
+		},
+
+		fromValidationToArray: function (aDirPrefId) {
+			var aTargetArray = [];
+			for (var url in cardbookRepository.cardbookServerValidation[aDirPrefId]) {
+				if (url == "length" || url == "user") {
+					continue;
+				}
+				if (cardbookRepository.cardbookServerValidation[aDirPrefId][url].forget) {
+					continue;
+				}
+
+				aTargetArray.push([url, cardbookRepository.cardbookServerValidation[aDirPrefId].user, cardbookRepository.cardbookServerValidation[aDirPrefId][url].displayName,
+									cardbookRepository.cardbookServerValidation[aDirPrefId][url].version]);	
+			}
+			return aTargetArray;
 		},
 
 		notifyObservers: function (aTopic, aParam) {

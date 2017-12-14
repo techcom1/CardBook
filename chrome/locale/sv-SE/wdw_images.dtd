@@ -1,0 +1,5 @@
+<!ENTITY addImageCardFromFileLabel "Lägg till bild från fil">
+<!ENTITY addImageCardFromClipboardLabel "Lägg till bild från Urklipp">
+<!ENTITY addImageCardFromUrlLabel "Lägg till bild från Urklipps länk">
+<!ENTITY saveImageCardLabel "Spara bild">
+<!ENTITY deleteImageCardLabel "Ta bort bild">
