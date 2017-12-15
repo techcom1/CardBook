@@ -74,11 +74,11 @@
 <!ENTITY advancedTabLabel "Avancerad">
 <!ENTITY advancedTabAccesskey "A">
 <!ENTITY localizeEdittingGroupboxLabel "Hitta med:">
-<!ENTITY localizeEngineOpenStreetMapLabel "ÖppenGataKarta">
+<!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
-<!ENTITY localizeEngineGoogleMapsLabel "Google kartor">
+<!ENTITY localizeEngineGoogleMapsLabel "Google Maps">
 <!ENTITY localizeEngineGoogleMapsAccesskey "G">
-<!ENTITY localizeEngineBingMapsLabel "Bing kartor">
+<!ENTITY localizeEngineBingMapsLabel "Bing Maps">
 <!ENTITY localizeEngineBingMapsAccesskey "B">
 <!ENTITY localizeTargetLabel "Öppna externa länkar:">
 <!ENTITY localizeTargetInLabel "I Thunderbird">
@@ -213,7 +213,7 @@
 <!ENTITY useOnlyEmailLabel "Använd bara mejladressen, utan Visningsnamn">
 <!ENTITY useOnlyEmailAccesskey "O">
 <!ENTITY attachVCardWarn "För att automatiskt lägga till ett vCard i dina e-postmeddelanden, välj ett vCard för varje e-postkonto. Om det är aktiverat, kopplar Kontakter detta vCard till varje utgående e-post från det här kontot.">
-<!ENTITY attachVCardGroupboxLabel "Gå med i en vCard">
+<!ENTITY attachVCardGroupboxLabel "Bifoga vCard">
 <!ENTITY accountsVCardsEnabledLabel "Aktiverad">
 <!ENTITY accountsVCardsMailLabel "Postkonto">
 <!ENTITY accountsVCardsABNameLabel "Adressbok">

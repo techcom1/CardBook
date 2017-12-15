@@ -2561,7 +2561,11 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					if (myType === "FILE" || myType === "CACHE" || myType === "DIRECTORY" || myType === "LOCALDB") {
 						wdw_cardbook.enableOrDisableElement(['syncAccountFromAccountsOrCats'], true);
 					} else {
-						wdw_cardbook.enableOrDisableElement(['syncAccountFromAccountsOrCats'], false);
+						if (cardbookUtils.isMyAccountSyncing(myPrefId)) {
+							wdw_cardbook.enableOrDisableElement(['syncAccountFromAccountsOrCats'], true);
+						} else {
+							wdw_cardbook.enableOrDisableElement(['syncAccountFromAccountsOrCats'], false);
+						}
 					}
 				} else {
 					wdw_cardbook.setElementLabelWithBundle('enableOrDisableFromAccountsOrCats', "enableFromAccountsOrCats");
@@ -2599,7 +2603,10 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				}
 				if (cardbookUtils.isMyAccountSyncing(myPrefId)) {
 					wdw_cardbook.enableOrDisableElement(['editAccountFromAccountsOrCats', 'removeAccountFromAccountsOrCats', 'enableOrDisableFromAccountsOrCats',
-															'readOnlyOrReadWriteFromAccountsOrCats', 'syncAccountFromAccountsOrCats'], true);
+															'readOnlyOrReadWriteFromAccountsOrCats'], true);
+				} else {
+					wdw_cardbook.enableOrDisableElement(['editAccountFromAccountsOrCats', 'removeAccountFromAccountsOrCats', 'enableOrDisableFromAccountsOrCats',
+															'readOnlyOrReadWriteFromAccountsOrCats'], false);
 				}
 				wdw_cardbook.enableOrDisableElement(['addAccountFromAccountsOrCats'], false);
 				if (document.getElementById('cardsTree').view.rowCount == 0) {

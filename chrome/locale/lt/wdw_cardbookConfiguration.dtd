@@ -74,7 +74,7 @@
 <!ENTITY advancedTabLabel "Išplėstinė">
 <!ENTITY advancedTabAccesskey "š">
 <!ENTITY localizeEdittingGroupboxLabel "Rasti naudojant:">
-<!ENTITY localizeEngineOpenStreetMapLabel "Atvirasis kelių žemėlapis">
+<!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "A">
 <!ENTITY localizeEngineGoogleMapsLabel "„Google“ žemėlapiai">
 <!ENTITY localizeEngineGoogleMapsAccesskey "G">

@@ -75,7 +75,7 @@
 <!ENTITY advancedTabLabel "Avanzate">
 <!ENTITY advancedTabAccesskey "A">
 <!ENTITY localizeEdittingGroupboxLabel "Localizza:">
-<!ENTITY localizeEngineOpenStreetMapLabel "Aprire Street Map">
+<!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
 <!ENTITY localizeEngineGoogleMapsLabel "Google Maps">
 <!ENTITY localizeEngineGoogleMapsAccesskey "G">

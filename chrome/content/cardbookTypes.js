@@ -710,6 +710,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 										{readonly: 'true'});
 			if (document.getElementById('versionTextBox').value === "4.0") {
 				document.getElementById(aType + '_' + aIndex + '_prefWeightBox').setAttribute('hidden', 'false');
+				document.getElementById(aType + '_' + aIndex + '_prefWeightBox').setAttribute('width', '3'); //test
 			} else {
 				document.getElementById(aType + '_' + aIndex + '_prefWeightBox').setAttribute('hidden', 'true');
 			}

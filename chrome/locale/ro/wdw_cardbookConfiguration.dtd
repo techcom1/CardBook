@@ -74,7 +74,7 @@
 <!ENTITY advancedTabLabel "Avansat">
 <!ENTITY advancedTabAccesskey "A">
 <!ENTITY localizeEdittingGroupboxLabel "Harta cu:">
-<!ENTITY localizeEngineOpenStreetMapLabel "Deschis Stradă Hartă">
+<!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "D">
 <!ENTITY localizeEngineGoogleMapsLabel "Hărți Google">
 <!ENTITY localizeEngineGoogleMapsAccesskey "G">

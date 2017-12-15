@@ -8,7 +8,7 @@
 
 <!ENTITY cardbookAccountMenuAddServerLabel "Lägg till adressbok">
 <!ENTITY cardbookAccountMenuEditServerLabel "Redigera adressbok">
-<!ENTITY cardbookAccountMenuCloseServerLabel "Ta bort adressbok">
+<!ENTITY cardbookAccountMenuCloseServerLabel "Avregistrera adressbok">
 <!ENTITY cardbookAccountMenuSyncLabel "Synkronisera denna adressbok">
 <!ENTITY cardbookAccountMenuSyncsLabel "Synkronisera alla adressböcker">
 
@@ -182,6 +182,6 @@
 <!ENTITY convertListToCategoryFromCardsLabel "Konvertera lista till grupp">
 <!ENTITY editAccountFromAccountsOrCatsLabel "Redigera adressbok">
 <!ENTITY syncAccountFromAccountsOrCatsLabel "Synkronisera adressbok">
-<!ENTITY removeAccountFromAccountsOrCatsLabel "Ta bort adressbok">
+<!ENTITY removeAccountFromAccountsOrCatsLabel "Avregistrera adressbok">
 
 <!ENTITY IMPPMenuLabel "Anslut till">
