@@ -5,14 +5,14 @@
 <!ENTITY welcomePage.description "Det ser ud til at det er første gang du bruger CardBook, så vi vil prøve at importere kontakter fra Thunderbirds standard adressebøger til CardBook.">
 
 <!ENTITY initialPage.wizard.description "Den nye adressebogs sted.">
-<!ENTITY initialPage.description "Er din adressebog lokal eller fjern ? :">
+<!ENTITY initialPage.description "Adressebogens lokation:">
 <!ENTITY initialPage.computer.label "Lokal">
 <!ENTITY initialPage.network.label "Fjern">
 <!ENTITY initialPage.standard.label "Importer Thunderbirds standard adressebøger">
 <!ENTITY initialPage.search.label "Søg i eksisterende adressebøger">
 
 <!ENTITY localPage.wizard.description "Type og sted for den nye lokale adressebog.">
-<!ENTITY localPage.type.description "Hvilken type er din lokale adressebog ? :">
+<!ENTITY localPage.type.description "Lokal adressebogs type:">
 <!ENTITY localPage.type.label "Type">
 <!ENTITY localPage.createDB.label "Opret en ny adressebog">
 <!ENTITY localPage.createDirectory.label "Opret en ny adressebog (Katalog)">
@@ -24,7 +24,7 @@
 <!ENTITY localPage.uributton.label "Søg">
 
 <!ENTITY remotePage.wizard.description "Type og sted for den nye fjerne adressebog.">
-<!ENTITY remotePage.description "Hvilken type er din fjerne adressebog ? : (Forsigtig: Google overholder IKKE vCard-standarderne)">
+<!ENTITY remotePage.description "Hvilken type er din fjerne adressebog : (Forsigtig: Google overholder IKKE vCard-standarderne) ?">
 <!ENTITY remotePage.type.label "Type">
 <!ENTITY remotePage.carddav.label "CardDAV">
 <!ENTITY remotePage.google.label "Google">
