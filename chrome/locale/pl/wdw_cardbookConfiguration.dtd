@@ -61,7 +61,7 @@
 <!ENTITY statusInformationLineNumberLabel "Ilość linii przechowywanych w logu">
 <!ENTITY statusInformationLineNumberAccesskey "I">
 
-<!ENTITY tabsEdittingGroupboxLabel "Pokaż zakładki">
+<!ENTITY tabsEditingGroupboxLabel "Pokaż zakładki">
 <!ENTITY noteTabLabel "Notatki">
 <!ENTITY noteTabAccesskey "N">
 <!ENTITY listTabLabel "Lista">
@@ -74,7 +74,7 @@
 <!ENTITY vCardTabAccesskey "V">
 <!ENTITY advancedTabLabel "Zaawansowane">
 <!ENTITY advancedTabAccesskey "Z">
-<!ENTITY localizeEdittingGroupboxLabel "Lokalizuj przy pomocy:">
+<!ENTITY localizeEditingGroupboxLabel "Lokalizuj przy pomocy:">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
 <!ENTITY localizeEngineGoogleMapsLabel "Mapy Google">
@@ -100,7 +100,7 @@
 <!ENTITY fnFormulaAccesskey "S">
 <!ENTITY resetFnFormulaLabel "Przywróć domyślne">
 <!ENTITY resetFnFormulaAccesskey "P">
-<!ENTITY miscEdittingGroupboxLabel "Różne">
+<!ENTITY miscEditingGroupboxLabel "Różne">
 <!ENTITY preferEmailEditionLabel "Podwójne kliknięcie na wizytówce edytuje zamiast wysyłać e-mail">
 <!ENTITY preferEmailEditionAccesskey "o">
 <!ENTITY dateDisplayedFormatLabel "Format daty:">

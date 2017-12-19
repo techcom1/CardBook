@@ -7,7 +7,7 @@
 <!ENTITY displayFieldNamesAccesskey "M">
 <!ENTITY displayTypesLabel "Típusok és beállítások">
 <!ENTITY displayTypesAccesskey "b">
-<!ENTITY whatToPrintGroupboxLabel "Helyszíni beállítások">
+<!ENTITY fieldsToPrintGroupboxLabel "Helyszíni beállítások">
 <!ENTITY displayLabel "Megjelenítendő név">
 <!ENTITY displayAccesskey "n">
 <!ENTITY personalLabel "Személyes adat">

@@ -60,7 +60,7 @@
 <!ENTITY statusInformationLineNumberLabel "Broj linija čuvanih u dosjeu sa zapisima.">
 <!ENTITY statusInformationLineNumberAccesskey "k">
 
-<!ENTITY tabsEdittingGroupboxLabel "Pokaži Tabs trake">
+<!ENTITY tabsEditingGroupboxLabel "Pokaži Tabs trake">
 <!ENTITY noteTabLabel "Bilješke">
 <!ENTITY noteTabAccesskey "N">
 <!ENTITY listTabLabel "Popis">
@@ -73,7 +73,7 @@
 <!ENTITY vCardTabAccesskey "V">
 <!ENTITY advancedTabLabel "Napredan">
 <!ENTITY advancedTabAccesskey "N">
-<!ENTITY localizeEdittingGroupboxLabel "Lociraj s:">
+<!ENTITY localizeEditingGroupboxLabel "Lociraj s:">
 <!ENTITY localizeEngineOpenStreetMapLabel "Otvori StreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
 <!ENTITY localizeEngineGoogleMapsLabel "Google mape">
@@ -99,7 +99,7 @@
 <!ENTITY fnFormulaAccesskey "y">
 <!ENTITY resetFnFormulaLabel "Vrati na uobičajeno">
 <!ENTITY resetFnFormulaAccesskey "j">
-<!ENTITY miscEdittingGroupboxLabel "Sve i svašta">
+<!ENTITY miscEditingGroupboxLabel "Sve i svašta">
 <!ENTITY preferEmailEditionLabel "Dvaput kliknite uredi kontakte umjesto pošalji">
 <!ENTITY preferEmailEditionAccesskey "k">
 <!ENTITY dateDisplayedFormatLabel "Tekstualni oblik datuma:">

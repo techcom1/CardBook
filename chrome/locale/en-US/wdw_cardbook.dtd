@@ -130,7 +130,7 @@
 <!ENTITY sortstringLabel "Sort String">
 <!ENTITY uidLabel "UID">
 <!ENTITY versionLabel "Version">
-<!ENTITY tzLabel "Timezone">
+<!ENTITY tzLabel "Time Zone">
 
 <!ENTITY dirPrefIdLabel "dirPrefId">
 <!ENTITY cardurlLabel "Card URL">

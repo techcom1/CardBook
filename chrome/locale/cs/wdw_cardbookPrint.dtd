@@ -7,7 +7,7 @@
 <!ENTITY displayFieldNamesAccesskey "j">
 <!ENTITY displayTypesLabel "Zobrazit typy a předvolby">
 <!ENTITY displayTypesAccesskey "y">
-<!ENTITY whatToPrintGroupboxLabel "Co tisknout">
+<!ENTITY fieldsToPrintGroupboxLabel "Co tisknout">
 <!ENTITY displayLabel "Zobrazované jméno">
 <!ENTITY displayAccesskey "Z">
 <!ENTITY personalLabel "Osobní informace">

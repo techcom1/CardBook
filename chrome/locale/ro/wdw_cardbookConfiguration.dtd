@@ -60,7 +60,7 @@
 <!ENTITY statusInformationLineNumberLabel "Numărul de linii păstrate în fișierul jurnal">
 <!ENTITY statusInformationLineNumberAccesskey "p">
 
-<!ENTITY tabsEdittingGroupboxLabel "Afișați filele">
+<!ENTITY tabsEditingGroupboxLabel "Afișați filele">
 <!ENTITY noteTabLabel "Notițe">
 <!ENTITY noteTabAccesskey "N">
 <!ENTITY listTabLabel "Listă">
@@ -73,7 +73,7 @@
 <!ENTITY vCardTabAccesskey "v">
 <!ENTITY advancedTabLabel "Avansat">
 <!ENTITY advancedTabAccesskey "A">
-<!ENTITY localizeEdittingGroupboxLabel "Harta cu:">
+<!ENTITY localizeEditingGroupboxLabel "Harta cu:">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "D">
 <!ENTITY localizeEngineGoogleMapsLabel "Hărți Google">
@@ -99,7 +99,7 @@
 <!ENTITY fnFormulaAccesskey "G">
 <!ENTITY resetFnFormulaLabel "Desemnează ca implicit">
 <!ENTITY resetFnFormulaAccesskey "D">
-<!ENTITY miscEdittingGroupboxLabel "Diverse">
+<!ENTITY miscEditingGroupboxLabel "Diverse">
 <!ENTITY preferEmailEditionLabel "Dublu click pe o persoană de contact editează în loc de poştă electronică-l">
 <!ENTITY preferEmailEditionAccesskey "k">
 <!ENTITY dateDisplayedFormatLabel "Formatul datei:">

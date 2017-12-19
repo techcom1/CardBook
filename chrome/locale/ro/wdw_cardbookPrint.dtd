@@ -7,7 +7,7 @@
 <!ENTITY displayFieldNamesAccesskey "c">
 <!ENTITY displayTypesLabel "Tipuri și preferințe">
 <!ENTITY displayTypesAccesskey "u">
-<!ENTITY whatToPrintGroupboxLabel "Ce să tipăriți">
+<!ENTITY fieldsToPrintGroupboxLabel "Ce să tipăriți">
 <!ENTITY displayLabel "Numele afișat">
 <!ENTITY displayAccesskey "N">
 <!ENTITY personalLabel "Informatii personale">

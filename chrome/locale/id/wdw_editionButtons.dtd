@@ -1,0 +1,18 @@
+<!ENTITY viewResultEditionLabel "Tampilan Hasil">
+<!ENTITY viewResultEditionAccesskey "T">
+<!ENTITY createEditionLabel "Buat">
+<!ENTITY createEditionAccesskey "B">
+<!ENTITY createAndReplaceEditionLabel "Buat dan Ganti">
+<!ENTITY createAndReplaceEditionAccesskey "G">
+<!ENTITY saveEditionLabel "Simpan">
+<!ENTITY saveEditionAccesskey "S">
+<!ENTITY validateEditionLabel "Mengesahkan">
+<!ENTITY validateEditionAccesskey "M">
+<!ENTITY cancelEditionLabel "Batal">
+<!ENTITY cancelEditionAccesskey "B">
+<!ENTITY closeEditionLabel "Tutup">
+<!ENTITY closeEditionAccesskey "T">
+<!ENTITY buttonAppendToListLabel "Tambah">
+<!ENTITY buttonAppendToListAccesskey "T">
+<!ENTITY buttonRemoveFromListLabel "Hapus">
+<!ENTITY buttonRemoveFromListAccesskey "H">

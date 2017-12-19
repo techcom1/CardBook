@@ -7,7 +7,7 @@
 <!ENTITY displayFieldNamesAccesskey "И">
 <!ENTITY displayTypesLabel "Типы и настройки">
 <!ENTITY displayTypesAccesskey "н">
-<!ENTITY whatToPrintGroupboxLabel "Что печатать">
+<!ENTITY fieldsToPrintGroupboxLabel "Что печатать">
 <!ENTITY displayLabel "Отображаемое имя">
 <!ENTITY displayAccesskey "О">
 <!ENTITY personalLabel "Персональная информация">

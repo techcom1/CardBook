@@ -7,7 +7,7 @@
 <!ENTITY displayFieldNamesAccesskey "F">
 <!ENTITY displayTypesLabel "Tipai ir pageidavimai">
 <!ENTITY displayTypesAccesskey "y">
-<!ENTITY whatToPrintGroupboxLabel "Ką spausdinti">
+<!ENTITY fieldsToPrintGroupboxLabel "Ką spausdinti">
 <!ENTITY displayLabel "Rodomas pavadinimas">
 <!ENTITY displayAccesskey "D">
 <!ENTITY personalLabel "Asmeninė informacija">

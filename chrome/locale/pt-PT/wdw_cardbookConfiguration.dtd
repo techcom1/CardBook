@@ -61,7 +61,7 @@
 <!ENTITY statusInformationLineNumberLabel "Número de linhas para o log">
 <!ENTITY statusInformationLineNumberAccesskey "N">
 
-<!ENTITY tabsEdittingGroupboxLabel "Mostrar tabs">
+<!ENTITY tabsEditingGroupboxLabel "Mostrar tabs">
 <!ENTITY noteTabLabel "Notas">
 <!ENTITY noteTabAccesskey "N">
 <!ENTITY listTabLabel "Listas">
@@ -74,7 +74,7 @@
 <!ENTITY vCardTabAccesskey "V">
 <!ENTITY advancedTabLabel "Avançado">
 <!ENTITY advancedTabAccesskey "A">
-<!ENTITY localizeEdittingGroupboxLabel "Localizar:">
+<!ENTITY localizeEditingGroupboxLabel "Localizar:">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
 <!ENTITY localizeEngineGoogleMapsLabel "Google Maps">
@@ -100,7 +100,7 @@
 <!ENTITY fnFormulaAccesskey "P">
 <!ENTITY resetFnFormulaLabel "Restaurar para origem">
 <!ENTITY resetFnFormulaAccesskey "R">
-<!ENTITY miscEdittingGroupboxLabel "Diversos">
+<!ENTITY miscEditingGroupboxLabel "Diversos">
 <!ENTITY preferEmailEditionLabel "Duplo clique no contacto para edita-lo em vez de enviar email">
 <!ENTITY preferEmailEditionAccesskey "E">
 <!ENTITY dateDisplayedFormatLabel "Formato de texto da data:">

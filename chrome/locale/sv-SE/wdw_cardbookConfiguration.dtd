@@ -60,7 +60,7 @@
 <!ENTITY statusInformationLineNumberLabel "Antal rader i loggfilen">
 <!ENTITY statusInformationLineNumberAccesskey "g">
 
-<!ENTITY tabsEdittingGroupboxLabel "Visa flikar">
+<!ENTITY tabsEditingGroupboxLabel "Visa flikar">
 <!ENTITY noteTabLabel "Antekningar">
 <!ENTITY noteTabAccesskey "A">
 <!ENTITY listTabLabel "Lista">
@@ -73,7 +73,7 @@
 <!ENTITY vCardTabAccesskey "V">
 <!ENTITY advancedTabLabel "Avancerad">
 <!ENTITY advancedTabAccesskey "A">
-<!ENTITY localizeEdittingGroupboxLabel "Hitta med:">
+<!ENTITY localizeEditingGroupboxLabel "Hitta med:">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
 <!ENTITY localizeEngineGoogleMapsLabel "Google Maps">
@@ -99,7 +99,7 @@
 <!ENTITY fnFormulaAccesskey "G">
 <!ENTITY resetFnFormulaLabel "Återställ till standard">
 <!ENTITY resetFnFormulaAccesskey "i">
-<!ENTITY miscEdittingGroupboxLabel "Övrigt">
+<!ENTITY miscEditingGroupboxLabel "Övrigt">
 <!ENTITY preferEmailEditionLabel "Dubbeklicka på en kontakt för att redigera istället för att mejla till den">
 <!ENTITY preferEmailEditionAccesskey "D">
 <!ENTITY dateDisplayedFormatLabel "Datum Textformat:">

@@ -61,7 +61,7 @@
 <!ENTITY statusInformationLineNumberLabel "Antal linjer der beholdes i logfilen">
 <!ENTITY statusInformationLineNumberAccesskey "n">
 
-<!ENTITY tabsEdittingGroupboxLabel "Vis faner">
+<!ENTITY tabsEditingGroupboxLabel "Vis faner">
 <!ENTITY noteTabLabel "Noter">
 <!ENTITY noteTabAccesskey "r">
 <!ENTITY listTabLabel "Liste">
@@ -74,7 +74,7 @@
 <!ENTITY vCardTabAccesskey "V">
 <!ENTITY advancedTabLabel "Avanceret">
 <!ENTITY advancedTabAccesskey "A">
-<!ENTITY localizeEdittingGroupboxLabel "Lokaliser med:">
+<!ENTITY localizeEditingGroupboxLabel "Lokaliser med:">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
 <!ENTITY localizeEngineGoogleMapsLabel "Google Maps">
@@ -100,7 +100,7 @@
 <!ENTITY fnFormulaAccesskey "n">
 <!ENTITY resetFnFormulaLabel "Gendan standardvalg">
 <!ENTITY resetFnFormulaAccesskey "d">
-<!ENTITY miscEdittingGroupboxLabel "Diverse">
+<!ENTITY miscEditingGroupboxLabel "Diverse">
 <!ENTITY preferEmailEditionLabel "Dobbeltklik på en kontakt redigerer den i stedet for at e-maile den">
 <!ENTITY preferEmailEditionAccesskey "l">
 <!ENTITY dateDisplayedFormatLabel "Datoformat:">

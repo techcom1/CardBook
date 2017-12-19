@@ -60,7 +60,7 @@
 <!ENTITY statusInformationLineNumberLabel "Žurnalo faile laikomų eilučių skaičius">
 <!ENTITY statusInformationLineNumberAccesskey "Ž">
 
-<!ENTITY tabsEdittingGroupboxLabel "Rodyti korteles">
+<!ENTITY tabsEditingGroupboxLabel "Rodyti korteles">
 <!ENTITY noteTabLabel "Pastabos">
 <!ENTITY noteTabAccesskey "a">
 <!ENTITY listTabLabel "Sąrašas">
@@ -73,7 +73,7 @@
 <!ENTITY vCardTabAccesskey "v">
 <!ENTITY advancedTabLabel "Išplėstinė">
 <!ENTITY advancedTabAccesskey "š">
-<!ENTITY localizeEdittingGroupboxLabel "Rasti naudojant:">
+<!ENTITY localizeEditingGroupboxLabel "Rasti naudojant:">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "A">
 <!ENTITY localizeEngineGoogleMapsLabel "„Google“ žemėlapiai">
@@ -99,7 +99,7 @@
 <!ENTITY fnFormulaAccesskey "ą">
 <!ENTITY resetFnFormulaLabel "Atstatyti numatytąjį">
 <!ENTITY resetFnFormulaAccesskey "A">
-<!ENTITY miscEdittingGroupboxLabel "Įvairūs">
+<!ENTITY miscEditingGroupboxLabel "Įvairūs">
 <!ENTITY preferEmailEditionLabel "Spustelėjant kontaktą dukart, tai leidžia redaguoti kontaktą, o ne el. pašto žinutes">
 <!ENTITY preferEmailEditionAccesskey "S">
 <!ENTITY dateDisplayedFormatLabel "Datos formatas:">

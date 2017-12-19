@@ -7,7 +7,7 @@
 <!ENTITY displayFieldNamesAccesskey "m">
 <!ENTITY displayTypesLabel "Types et préférences">
 <!ENTITY displayTypesAccesskey "y">
-<!ENTITY whatToPrintGroupboxLabel "Champs à imprimer">
+<!ENTITY fieldsToPrintGroupboxLabel "Champs à imprimer">
 <!ENTITY displayLabel "Nom affiché">
 <!ENTITY displayAccesskey "N">
 <!ENTITY personalLabel "Informations personnelles">

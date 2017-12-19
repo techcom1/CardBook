@@ -7,7 +7,7 @@
 <!ENTITY displayFieldNamesAccesskey "m">
 <!ENTITY displayTypesLabel "Vrste in nastavitve">
 <!ENTITY displayTypesAccesskey "V">
-<!ENTITY whatToPrintGroupboxLabel "Kaj natisniti">
+<!ENTITY fieldsToPrintGroupboxLabel "Kaj natisniti">
 <!ENTITY displayLabel "Prikazano ime">
 <!ENTITY displayAccesskey "P">
 <!ENTITY personalLabel "Osebne podatke">

@@ -61,7 +61,7 @@
 <!ENTITY statusInformationLineNumberLabel "Zeilenanzahl der Logdatei">
 <!ENTITY statusInformationLineNumberAccesskey "Z">
 
-<!ENTITY tabsEdittingGroupboxLabel "Anzeige der Tabs">
+<!ENTITY tabsEditingGroupboxLabel "Anzeige der Tabs">
 <!ENTITY noteTabLabel "Notizen">
 <!ENTITY noteTabAccesskey "N">
 <!ENTITY listTabLabel "Liste">
@@ -74,7 +74,7 @@
 <!ENTITY vCardTabAccesskey "V">
 <!ENTITY advancedTabLabel "Erweitert">
 <!ENTITY advancedTabAccesskey "E">
-<!ENTITY localizeEdittingGroupboxLabel "Lokalisieren:">
+<!ENTITY localizeEditingGroupboxLabel "Lokalisieren:">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
 <!ENTITY localizeEngineGoogleMapsLabel "Google Maps">
@@ -100,7 +100,7 @@
 <!ENTITY fnFormulaAccesskey "e">
 <!ENTITY resetFnFormulaLabel "Zurücksetzen auf Standard">
 <!ENTITY resetFnFormulaAccesskey "Z">
-<!ENTITY miscEdittingGroupboxLabel "Sonstiges">
+<!ENTITY miscEditingGroupboxLabel "Sonstiges">
 <!ENTITY preferEmailEditionLabel "Durch einen Doppelklick den Kontakt bearbeiten anstatt eine E-Mail zu verfassen">
 <!ENTITY preferEmailEditionAccesskey "D">
 <!ENTITY dateDisplayedFormatLabel "Datums-Textformat:">

@@ -61,7 +61,7 @@
 <!ENTITY statusInformationLineNumberLabel "Počet řádků uchovávaných v souboru protokolu">
 <!ENTITY statusInformationLineNumberAccesskey "v">
 
-<!ENTITY tabsEdittingGroupboxLabel "Zobrazit záložky">
+<!ENTITY tabsEditingGroupboxLabel "Zobrazit záložky">
 <!ENTITY noteTabLabel "Poznámky">
 <!ENTITY noteTabAccesskey "P">
 <!ENTITY listTabLabel "Seznam">
@@ -74,7 +74,7 @@
 <!ENTITY vCardTabAccesskey "C">
 <!ENTITY advancedTabLabel "Rozšířené">
 <!ENTITY advancedTabAccesskey "R">
-<!ENTITY localizeEdittingGroupboxLabel "Vyhledat:">
+<!ENTITY localizeEditingGroupboxLabel "Vyhledat:">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
 <!ENTITY localizeEngineGoogleMapsLabel "Mapy Google">
@@ -100,7 +100,7 @@
 <!ENTITY fnFormulaAccesskey "z">
 <!ENTITY resetFnFormulaLabel "Obnovit na výchozí hodnotu">
 <!ENTITY resetFnFormulaAccesskey "h">
-<!ENTITY miscEdittingGroupboxLabel "Ost.">
+<!ENTITY miscEditingGroupboxLabel "Ost.">
 <!ENTITY preferEmailEditionLabel "Dvojklik na kontakt ho upraví namísto odeslání e-mailu">
 <!ENTITY preferEmailEditionAccesskey "D">
 <!ENTITY dateDisplayedFormatLabel "Formát data:">

@@ -7,7 +7,7 @@
 <!ENTITY displayFieldNamesAccesskey "F">
 <!ENTITY displayTypesLabel "Typer og foretrukne">
 <!ENTITY displayTypesAccesskey "y">
-<!ENTITY whatToPrintGroupboxLabel "Hvad der skal udskrives">
+<!ENTITY fieldsToPrintGroupboxLabel "Hvad der skal udskrives">
 <!ENTITY displayLabel "Vist navn">
 <!ENTITY displayAccesskey "i">
 <!ENTITY personalLabel "Personlig information">

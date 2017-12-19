@@ -7,7 +7,7 @@
 <!ENTITY displayFieldNamesAccesskey "r">
 <!ENTITY displayTypesLabel "Toon types en voorkeuren">
 <!ENTITY displayTypesAccesskey "y">
-<!ENTITY whatToPrintGroupboxLabel "Af te drukken">
+<!ENTITY fieldsToPrintGroupboxLabel "Af te drukken">
 <!ENTITY displayLabel "Getoonde naam">
 <!ENTITY displayAccesskey "G">
 <!ENTITY personalLabel "Persoonlijke informatie">

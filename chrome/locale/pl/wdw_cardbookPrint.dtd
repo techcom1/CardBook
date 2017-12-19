@@ -7,7 +7,7 @@
 <!ENTITY displayFieldNamesAccesskey "N">
 <!ENTITY displayTypesLabel "Typy i ustawienia">
 <!ENTITY displayTypesAccesskey "y">
-<!ENTITY whatToPrintGroupboxLabel "Co drukować">
+<!ENTITY fieldsToPrintGroupboxLabel "Co drukować">
 <!ENTITY displayLabel "Wyświetlana nazwa">
 <!ENTITY displayAccesskey "W">
 <!ENTITY personalLabel "Informacje osobiste">

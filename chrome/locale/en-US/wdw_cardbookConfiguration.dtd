@@ -60,7 +60,7 @@
 <!ENTITY statusInformationLineNumberLabel "Number of lines kept in the log file">
 <!ENTITY statusInformationLineNumberAccesskey "k">
 
-<!ENTITY tabsEdittingGroupboxLabel "Display Tabs">
+<!ENTITY tabsEditingGroupboxLabel "Display Tabs">
 <!ENTITY noteTabLabel "Notes">
 <!ENTITY noteTabAccesskey "N">
 <!ENTITY listTabLabel "List">
@@ -73,7 +73,7 @@
 <!ENTITY vCardTabAccesskey "V">
 <!ENTITY advancedTabLabel "Advanced">
 <!ENTITY advancedTabAccesskey "A">
-<!ENTITY localizeEdittingGroupboxLabel "Locate with:">
+<!ENTITY localizeEditingGroupboxLabel "Show on Map with:">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
 <!ENTITY localizeEngineGoogleMapsLabel "Google Maps">
@@ -99,7 +99,7 @@
 <!ENTITY fnFormulaAccesskey "y">
 <!ENTITY resetFnFormulaLabel "Restore to Default">
 <!ENTITY resetFnFormulaAccesskey "R">
-<!ENTITY miscEdittingGroupboxLabel "Miscellaneous">
+<!ENTITY miscEditingGroupboxLabel "Miscellaneous">
 <!ENTITY preferEmailEditionLabel "Double-click on a contact edits it instead of emails it">
 <!ENTITY preferEmailEditionAccesskey "k">
 <!ENTITY dateDisplayedFormatLabel "Date Text Format:">

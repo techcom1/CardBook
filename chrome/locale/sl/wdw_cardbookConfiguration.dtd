@@ -60,7 +60,7 @@
 <!ENTITY statusInformationLineNumberLabel "Največje število vrstic datoteke dnevnika">
 <!ENTITY statusInformationLineNumberAccesskey "a">
 
-<!ENTITY tabsEdittingGroupboxLabel "Prikaži zavihke">
+<!ENTITY tabsEditingGroupboxLabel "Prikaži zavihke">
 <!ENTITY noteTabLabel "Opombe">
 <!ENTITY noteTabAccesskey "O">
 <!ENTITY listTabLabel "Seznami">
@@ -73,7 +73,7 @@
 <!ENTITY vCardTabAccesskey "C">
 <!ENTITY advancedTabLabel "Napredno">
 <!ENTITY advancedTabAccesskey "N">
-<!ENTITY localizeEdittingGroupboxLabel "Za iskanje uporabi:">
+<!ENTITY localizeEditingGroupboxLabel "Za iskanje uporabi:">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
 <!ENTITY localizeEngineGoogleMapsLabel "Google Zemljevide">
@@ -99,7 +99,7 @@
 <!ENTITY fnFormulaAccesskey "U">
 <!ENTITY resetFnFormulaLabel "Obnovi na privzeto">
 <!ENTITY resetFnFormulaAccesskey "n">
-<!ENTITY miscEdittingGroupboxLabel "Razno">
+<!ENTITY miscEditingGroupboxLabel "Razno">
 <!ENTITY preferEmailEditionLabel "Dvoklik na stik ga uredi namesto pošlje">
 <!ENTITY preferEmailEditionAccesskey "D">
 <!ENTITY dateDisplayedFormatLabel "Oblika zapisa datuma:">

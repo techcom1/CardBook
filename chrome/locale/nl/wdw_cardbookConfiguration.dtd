@@ -61,7 +61,7 @@
 <!ENTITY statusInformationLineNumberLabel "Aantal regels in log-bestand">
 <!ENTITY statusInformationLineNumberAccesskey "r">
 
-<!ENTITY tabsEdittingGroupboxLabel "Toon tabbladen">
+<!ENTITY tabsEditingGroupboxLabel "Toon tabbladen">
 <!ENTITY noteTabLabel "Notities">
 <!ENTITY noteTabAccesskey "N">
 <!ENTITY listTabLabel "Lijst">
@@ -74,7 +74,7 @@
 <!ENTITY vCardTabAccesskey "V">
 <!ENTITY advancedTabLabel "Geavanceerd">
 <!ENTITY advancedTabAccesskey "G">
-<!ENTITY localizeEdittingGroupboxLabel "Locatie bepalen:">
+<!ENTITY localizeEditingGroupboxLabel "Locatie bepalen:">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
 <!ENTITY localizeEngineGoogleMapsLabel "Google Maps">
@@ -100,7 +100,7 @@
 <!ENTITY fnFormulaAccesskey "s">
 <!ENTITY resetFnFormulaLabel "Herstellen naar standaardwaarde">
 <!ENTITY resetFnFormulaAccesskey "H">
-<!ENTITY miscEdittingGroupboxLabel "Overig">
+<!ENTITY miscEditingGroupboxLabel "Overig">
 <!ENTITY preferEmailEditionLabel "Dubbelklikken op contactpersoon start wijzigen (i.p.v. bericht verzenden)">
 <!ENTITY preferEmailEditionAccesskey "D">
 <!ENTITY dateDisplayedFormatLabel "Datumtekstnotatie:">

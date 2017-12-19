@@ -61,7 +61,7 @@
 <!ENTITY statusInformationLineNumberLabel "Максимальное количество строк для файла журнала">
 <!ENTITY statusInformationLineNumberAccesskey "к">
 
-<!ENTITY tabsEdittingGroupboxLabel "Показывать вкладки">
+<!ENTITY tabsEditingGroupboxLabel "Показывать вкладки">
 <!ENTITY noteTabLabel "Заметки">
 <!ENTITY noteTabAccesskey "З">
 <!ENTITY listTabLabel "Список">
@@ -74,7 +74,7 @@
 <!ENTITY vCardTabAccesskey "V">
 <!ENTITY advancedTabLabel "Дополнительно">
 <!ENTITY advancedTabAccesskey "Д">
-<!ENTITY localizeEdittingGroupboxLabel "Использовать для показа местополжения:">
+<!ENTITY localizeEditingGroupboxLabel "Использовать для показа местополжения:">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
 <!ENTITY localizeEngineGoogleMapsLabel "Карты Google">
@@ -100,7 +100,7 @@
 <!ENTITY fnFormulaAccesskey "Ф">
 <!ENTITY resetFnFormulaLabel "Сбросить до значений по умолчанию">
 <!ENTITY resetFnFormulaAccesskey "у">
-<!ENTITY miscEdittingGroupboxLabel "Дополнительные настройки">
+<!ENTITY miscEditingGroupboxLabel "Дополнительные настройки">
 <!ENTITY preferEmailEditionLabel "Использовать двойной щелчок для редактирования контакта, а не для отправки письма">
 <!ENTITY preferEmailEditionAccesskey "щ">
 <!ENTITY dateDisplayedFormatLabel "Формат даты:">

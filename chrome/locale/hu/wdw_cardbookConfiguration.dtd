@@ -61,7 +61,7 @@
 <!ENTITY statusInformationLineNumberLabel "Sorok száma tartják a naplófájl">
 <!ENTITY statusInformationLineNumberAccesskey "p">
 
-<!ENTITY tabsEdittingGroupboxLabel "Kijelző lapok">
+<!ENTITY tabsEditingGroupboxLabel "Kijelző lapok">
 <!ENTITY noteTabLabel "Jegyzetek">
 <!ENTITY noteTabAccesskey "J">
 <!ENTITY listTabLabel "Lista">
@@ -74,7 +74,7 @@
 <!ENTITY vCardTabAccesskey "v">
 <!ENTITY advancedTabLabel "Speciális">
 <!ENTITY advancedTabAccesskey "S">
-<!ENTITY localizeEdittingGroupboxLabel "Térkép:">
+<!ENTITY localizeEditingGroupboxLabel "Térkép:">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
 <!ENTITY localizeEngineGoogleMapsLabel "Google Térkép">
@@ -100,7 +100,7 @@
 <!ENTITY fnFormulaAccesskey "P">
 <!ENTITY resetFnFormulaLabel "Alapértelmezés">
 <!ENTITY resetFnFormulaAccesskey "A">
-<!ENTITY miscEdittingGroupboxLabel "Különféle">
+<!ENTITY miscEditingGroupboxLabel "Különféle">
 <!ENTITY preferEmailEditionLabel "Dupla kattintás a névjegyre a névjegy szerkesztés helyett üzenet írás">
 <!ENTITY preferEmailEditionAccesskey "D">
 <!ENTITY dateDisplayedFormatLabel "Dátumszöveg formátuma:">

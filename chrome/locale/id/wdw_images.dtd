@@ -1,0 +1,5 @@
+<!ENTITY addImageCardFromFileLabel "Tambahkan gambar dari sebuah file">
+<!ENTITY addImageCardFromClipboardLabel "Tambahkan gambar dari papan klip">
+<!ENTITY addImageCardFromUrlLabel "Tambahkan gambar dari URL papan klip">
+<!ENTITY saveImageCardLabel "Simpan Gambar">
+<!ENTITY deleteImageCardLabel "Hapus Gambar">

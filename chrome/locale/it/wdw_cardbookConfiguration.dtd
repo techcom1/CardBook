@@ -61,7 +61,7 @@
 <!ENTITY statusInformationLineNumberLabel "Numero di righe da memorizzare nel file di registro">
 <!ENTITY statusInformationLineNumberAccesskey "N">
 
-<!ENTITY tabsEdittingGroupboxLabel "Mostra schede">
+<!ENTITY tabsEditingGroupboxLabel "Mostra schede">
 <!ENTITY noteTabLabel "Note">
 <!ENTITY noteTabAccesskey "N">
 <!ENTITY listTabLabel "Lista">
@@ -74,7 +74,7 @@
 <!ENTITY vCardTabAccesskey "V">
 <!ENTITY advancedTabLabel "Avanzate">
 <!ENTITY advancedTabAccesskey "A">
-<!ENTITY localizeEdittingGroupboxLabel "Localizza:">
+<!ENTITY localizeEditingGroupboxLabel "Localizza:">
 <!ENTITY localizeEngineOpenStreetMapLabel "OpenStreetMap">
 <!ENTITY localizeEngineOpenStreetMapAccesskey "O">
 <!ENTITY localizeEngineGoogleMapsLabel "Google Maps">
@@ -100,7 +100,7 @@
 <!ENTITY fnFormulaAccesskey "p">
 <!ENTITY resetFnFormulaLabel "Ripristina al Default">
 <!ENTITY resetFnFormulaAccesskey "R">
-<!ENTITY miscEdittingGroupboxLabel "Varie">
+<!ENTITY miscEditingGroupboxLabel "Varie">
 <!ENTITY preferEmailEditionLabel "Doppio click su un contatto apre la modifica anziché inviare una email.">
 <!ENTITY preferEmailEditionAccesskey "D">
 <!ENTITY dateDisplayedFormatLabel "Formato testo data:">

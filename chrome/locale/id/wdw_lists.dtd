@@ -1,0 +1,8 @@
+<!ENTITY listTabLabel "Daftar">
+<!ENTITY kindLabel "Jenis">
+<!ENTITY kindAccesskey "J">
+<!ENTITY availableCardsGroupboxLabel "Kontak yang tersedia">
+<!ENTITY addedCardsGroupboxLabel "Daftar Kontak">
+<!ENTITY appendlistTreeLabel "Tambahkan ke Daftar">
+<!ENTITY deletelistTreeLabel "Hapus dari Daftar">
+<!ENTITY editCardFromListLabel "Ubah Kontak ini">
