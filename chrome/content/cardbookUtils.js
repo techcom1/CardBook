@@ -624,13 +624,11 @@ if ("undefined" == typeof(cardbookUtils)) {
 			var myTempCard = new cardbookCardParser();
 			cardbookUtils.cloneCard(aCard, myTempCard);
 			function filterArray(element) {
-				return (element.search(/^UID:/) == -1 &&
-							element.search(/^PRODID:/) == -1 &&
-							element.search(/^REV:/) == -1 &&
-							element.search(/^X-THUNDERBIRD-MODIFICATION:/) == -1 &&
+				return (element.search(/^X-THUNDERBIRD-MODIFICATION:/) == -1 &&
 							element.search(/^X-THUNDERBIRD-ETAG:/) == -1);
 			}
 			myTempCard.others = myTempCard.others.filter(filterArray);
+			myTempCard.rev = "";
 			var cardContent = cardbookUtils.cardToVcardData(myTempCard, true);
 			myTempCard = null;
 			return cardContent;
@@ -689,149 +687,53 @@ if ("undefined" == typeof(cardbookUtils)) {
 			}
 		},
 
-		// only used by getDisplayedName
-		// used to fill the second part of the blocks (first part|second part)
-		replaceEmptyPart: function(aString, aNewN, aOrgStructure, aNewOrg) {
-			var result = "";
-			// personal informations part
-			if (aString.indexOf("{{1}}") >= 0) {
-				if (aNewN[0] != "") {
-					result = result + aString.replace(/\{\{1\}\}/g, aNewN[0]);
-				}
-			}
-			if (aString.indexOf("{{2}}") >= 0) {
-				if (aNewN[1] != "") {
-					result = result + aString.replace(/\{\{2\}\}/g, aNewN[1]);
-				}
-			}
-			if (aString.indexOf("{{3}}") >= 0) {
-				if (aNewN[2] != "") {
-					result = result + aString.replace(/\{\{3\}\}/g, aNewN[2]);
-				}
-			}
-			if (aString.indexOf("{{4}}") >= 0) {
-				if (aNewN[3] != "") {
-					result = result + aString.replace(/\{\{4\}\}/g, aNewN[3]);
-				}
-			}
-			if (aString.indexOf("{{5}}") >= 0) {
-				if (aNewN[4] != "") {
-					result = result + aString.replace(/\{\{5\}\}/g, aNewN[4]);
-				}
-			}
-
-			// professional informations part
-			if (aOrgStructure != "") {
-				var count = 6;
-				var aOrgArray = cardbookUtils.unescapeArray(cardbookUtils.escapeString(aNewOrg).split(";"));
-				var allOrg = cardbookUtils.unescapeArray(cardbookUtils.escapeString(aOrgStructure).split(";"));
-				for (var j = 0; j < allOrg.length; j++) {
-					var index = count + j;
-					if (aString.indexOf("{{" + index + "}}") >= 0) {
-						if (aOrgArray[j]) {
-							if (aOrgArray[j] != "") {
-								var myRegExp = new RegExp("\\{\\{" + index + "\\}\\}", "ig");
-								result = result + aString.replace(myRegExp, aOrgArray[j]);
-							}
-						}
-					}
-				}
-			} else {
-				if (aString.indexOf("{{6}}") >= 0) {
-					if (aNewOrg != "") {
-						result = result + aString.replace(/\{\{6\}\}/g, cardbookUtils.unescapeString(cardbookUtils.escapeString(aNewOrg)));
-					}
-				}
-			}
-			if (result == "") {
-				return aString;
-			} else {
-				return result;
-			}
-		},
-
 		getDisplayedName: function(aNewN, aNewOrg) {
-			var fnFormula = "";
 			var result =  "";
-			fnFormula = cardbookPreferences.getStringPref("extensions.cardbook.fnFormula");
-			if (fnFormula == "") {
-				fnFormula = cardbookRepository.defaultFnFormula;
+			var myFnFormula = cardbookPreferences.getStringPref("extensions.cardbook.fnFormula");
+			if (myFnFormula == "") {
+				myFnFormula = cardbookRepository.defaultFnFormula;
 			}
 			var orgStructure = cardbookPreferences.getStringPref("extensions.cardbook.orgStructure");
+			if (orgStructure != "") {
+				var myOrgArray = cardbookUtils.unescapeArray(cardbookUtils.escapeString(aNewOrg).split(";"));
+			} else {
+				var myOrgArray = [cardbookUtils.unescapeString(cardbookUtils.escapeString(aNewOrg))];
+			}
+			var myArray = [];
+			myArray = myArray.concat(aNewN);
+			myArray = myArray.concat(myOrgArray);
+			result = cardbookUtils.getStringFromFormula(myFnFormula, myArray, false);
+			return result.trim();
+		},
 
-			// personal informations part
-			var fnFormulaArray = cardbookUtils.escapeString1(fnFormula).split(')');
-			for (var i = 0; i < fnFormulaArray.length; i++) {
-				var tmpString = fnFormulaArray[i].substr(fnFormulaArray[i].indexOf("(")+1,fnFormulaArray[i].length);
+		getStringFromFormula: function(aFormula, aArray, aReplaceEmpty) {
+			var result = "";
+			var myFormulaArray = cardbookUtils.escapeString1(aFormula).split(')');
+			for (var i = 0; i < myFormulaArray.length; i++) {
+				var myReplaceEmpty = aReplaceEmpty;
+				var tmpString = myFormulaArray[i].substr(myFormulaArray[i].indexOf("(")+1,myFormulaArray[i].length);
 				var tmpStringArray = tmpString.split('|');
-				if (tmpStringArray[0].indexOf("{{1}}") >= 0) {
-					if (aNewN[0] != "") {
-						result = result + tmpStringArray[0].replace(/\{\{1\}\}/g, aNewN[0]);
-					} else if (tmpStringArray[1]) {
-						result = result + cardbookUtils.replaceEmptyPart(tmpStringArray[1], aNewN, orgStructure, aNewOrg);
-					}
+				if (!(tmpStringArray[1] != null && tmpStringArray[1] !== undefined && tmpStringArray[1] != "")) {
+					myReplaceEmpty = true;
 				}
-				if (tmpStringArray[0].indexOf("{{2}}") >= 0) {
-					if (aNewN[1] != "") {
-						result = result + tmpStringArray[0].replace(/\{\{2\}\}/g, aNewN[1]);
-					} else if (tmpStringArray[1]) {
-						result = result + cardbookUtils.replaceEmptyPart(tmpStringArray[1], aNewN, orgStructure, aNewOrg);
-					}
-				}
-				if (tmpStringArray[0].indexOf("{{3}}") >= 0) {
-					if (aNewN[2] != "") {
-						result = result + tmpStringArray[0].replace(/\{\{3\}\}/g, aNewN[2]);
-					} else if (tmpStringArray[1]) {
-						result = result + cardbookUtils.replaceEmptyPart(tmpStringArray[1], aNewN, orgStructure, aNewOrg);
-					}
-				}
-				if (tmpStringArray[0].indexOf("{{4}}") >= 0) {
-					if (aNewN[3] != "") {
-						result = result + tmpStringArray[0].replace(/\{\{4\}\}/g, aNewN[3]);
-					} else if (tmpStringArray[1]) {
-						result = result + cardbookUtils.replaceEmptyPart(tmpStringArray[1], aNewN, orgStructure, aNewOrg);
-					}
-				}
-				if (tmpStringArray[0].indexOf("{{5}}") >= 0) {
-					if (aNewN[4] != "") {
-						result = result + tmpStringArray[0].replace(/\{\{5\}\}/g, aNewN[4]);
-					} else if (tmpStringArray[1]) {
-						result = result + cardbookUtils.replaceEmptyPart(tmpStringArray[1], aNewN, orgStructure, aNewOrg);
-					}
-				}
-
-				// professional informations part
-				if (orgStructure != "") {
-					var count = 6;
-					var aOrgArray = cardbookUtils.unescapeArray(cardbookUtils.escapeString(aNewOrg).split(";"));
-					var allOrg = cardbookUtils.unescapeArray(cardbookUtils.escapeString(orgStructure).split(";"));
-					for (var j = 0; j < allOrg.length; j++) {
-						var index = count + j;
-						if (tmpStringArray[0].indexOf("{{" + index + "}}") >= 0) {
-							if (aOrgArray[j]) {
-								if (aOrgArray[j] != "") {
-									var myRegExp = new RegExp("\\{\\{" + index + "\\}\\}", "ig");
-									result = result + tmpStringArray[0].replace(myRegExp, aOrgArray[j]);
-								} else if (tmpStringArray[1]) {
-									result = result + cardbookUtils.replaceEmptyPart(tmpStringArray[1], aNewN, orgStructure, aNewOrg);
-								}
-							} else if (tmpStringArray[1]) {
-								result = result + cardbookUtils.replaceEmptyPart(tmpStringArray[1], aNewN, orgStructure, aNewOrg);
-							}
-						}
-					}
-				} else {
-					if (tmpStringArray[0].indexOf("{{6}}") >= 0) {
-						var myOrg = cardbookUtils.unescapeString(cardbookUtils.escapeString(aNewOrg));
-						if (aNewOrg != "") {
-							result = result + tmpStringArray[0].replace(/\{\{6\}\}/g, myOrg);
+				var changed = false;
+				for (var j = 1; j < aArray.length+1; j++) {
+					if (tmpStringArray[0].indexOf("{{" + j + "}}") >= 0) {
+						if (aArray[j-1] != "" || myReplaceEmpty) {
+							changed = true;
+							var myRegExp = new RegExp("\\{\\{" + j + "\\}\\}", "g");
+							result = result + tmpStringArray[0].replace(myRegExp, aArray[j-1]);
 						} else if (tmpStringArray[1]) {
-							result = result + cardbookUtils.replaceEmptyPart(tmpStringArray[1], aNewN, orgStructure, myOrg);
+							changed = true;
+							result = result + cardbookUtils.getStringFromFormula("(" + tmpStringArray[1] + ")", aArray, true);
 						}
 					}
+				}
+				if (!changed) {
+					result = result + tmpStringArray;
 				}
 			}
-			return cardbookUtils.unescapeString1(result).trim();
+			return result;
 		},
 
 		parseLists: function(aCard, aMemberLines, aKindValue) {
@@ -1783,7 +1685,11 @@ if ("undefined" == typeof(cardbookUtils)) {
 			var hour = ("0" + sysdate.getHours()).slice(-2);
 			var min = ("0" + sysdate.getMinutes()).slice(-2);
 			var sec = ("0" + sysdate.getSeconds()).slice(-2);
-			aCard.rev = year + month + day + "T" + hour + min + sec + "Z";
+			if (aCard.version == "4.0") {
+				aCard.rev = year + month + day + "T" + hour + min + sec + "Z";
+			} else {
+				aCard.rev = year + "-" + month + "-" + day + "T" + hour + ":" + min + ":" + sec + "Z";
+			}
 		},
 
 		addEtag: function(aCard, aEtag) {

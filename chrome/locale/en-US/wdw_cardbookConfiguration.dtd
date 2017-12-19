@@ -187,10 +187,10 @@
 <!ENTITY solveConflictsRemoteAccesskey "S">
 <!ENTITY solveConflictsUserLabel "Ask user">
 <!ENTITY solveConflictsUserAccesskey "A">
-<!ENTITY autoSyncGroupboxLabel "Periodic Syncing">
-<!ENTITY autoSyncLabel "Enable periodic syncing">
+<!ENTITY autoSyncGroupboxLabel "Periodic Synchronization">
+<!ENTITY autoSyncLabel "Enable periodic synchronization">
 <!ENTITY autoSyncAccesskey "E">
-<!ENTITY autoSyncIntervalLabel "Interval for periodic syncing (minutes)">
+<!ENTITY autoSyncIntervalLabel "Interval between periodic synchronizations (minutes)">
 <!ENTITY autoSyncIntervalAccesskey "I">
 <!ENTITY requestsGroupboxLabel "Requests">
 <!ENTITY requestsTimeoutLabel "Timeout (seconds)">

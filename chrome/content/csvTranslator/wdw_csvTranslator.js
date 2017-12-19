@@ -164,7 +164,7 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 
 		loadFoundColumns: function () {
 			wdw_csvTranslator.cardbookeditlists.foundColumns = [];
-			var mySep = document.getElementById('columnSeparatorTextBox').value;
+			var mySep = document.getElementById('fieldDelimiterTextBox').value;
 			if (mySep == "") {
 				mySep = ";";
 			}
@@ -203,8 +203,8 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 			document.title = strBundle.getString(window.arguments[0].mode + "MappingTitle");
 			document.getElementById('availableColumnsGroupboxLabel').label = strBundle.getString(window.arguments[0].mode + "availableColumnsGroupboxLabel");
 			document.getElementById('addedColumnsGroupboxLabel').label = strBundle.getString(window.arguments[0].mode + "addedColumnsGroupboxLabel");
-			document.getElementById('columnSeparatorLabel').value = strBundle.getString("columnSeparatorLabel");
-			document.getElementById('columnSeparatorTextBox').value = window.arguments[0].columnSeparator;
+			document.getElementById('fieldDelimiterLabel').value = strBundle.getString("fieldDelimiterLabel");
+			document.getElementById('fieldDelimiterTextBox').value = window.arguments[0].columnSeparator;
 			
 			wdw_csvTranslator.cardbookeditlists.availableColumns = [];
 			wdw_csvTranslator.cardbookeditlists.addedColumns = [];
@@ -233,7 +233,7 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 
 		save: function () {
 			window.arguments[0].template = wdw_csvTranslator.cardbookeditlists.addedColumns;
-			window.arguments[0].columnSeparator = document.getElementById('columnSeparatorTextBox').value;
+			window.arguments[0].columnSeparator = document.getElementById('fieldDelimiterTextBox').value;
 			window.arguments[0].lineHeader = document.getElementById('lineHeaderCheckBox').checked;
 			if (window.arguments[0].columnSeparator == "") {
 				window.arguments[0].columnSeparator = ";";

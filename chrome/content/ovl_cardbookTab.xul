@@ -307,8 +307,8 @@
 													</groupbox>
 												</hbox>
 											</vbox>
-											<vbox align="center" width="170px">
-												<hbox id="imageBox" align="center" height="170px">
+											<vbox id="imageBox" align="center" width="170px">
+												<hbox align="center" height="170px">
 													<html:img id="imageForSizing" hidden="true"/>
 													<image id="defaultCardImage"/>
 												</hbox>

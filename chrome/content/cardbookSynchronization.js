@@ -2074,11 +2074,12 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							}
 							if (request == response) {
 								cardbookSynchronization.finishSync(aPrefId, aPrefName, myPrefIdType);
-								cardbookSynchronization.finishMultipleOperations(aPrefId);
 								if (cardbookRepository.cardbookServerSyncAgain[aPrefId]) {
+									cardbookSynchronization.finishMultipleOperations(aPrefId);
 									cardbookUtils.formatStringForOutput("synchroForcedToResync", [aPrefName]);
 									cardbookSynchronization.syncAccount(aPrefId, aMode);
 								} else {
+									cardbookSynchronization.finishMultipleOperations(aPrefId);
 									var total = cardbookSynchronization.getRequest() + cardbookSynchronization.getTotal() + cardbookSynchronization.getResponse() + cardbookSynchronization.getDone();
 									// all sync are finished
 									if (total === 0) {
@@ -2537,7 +2538,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 
 				var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 				if (aAskUser && !cardbookRepository.importConflictChoicePersist && cardbookRepository.cardbookCards[myTargetPrefId+"::"+aNewCard.uid]) {
-					var message = strBundle.formatStringFromName("cardAlreadyExisting", [myTargetPrefIdName, aNewCard.fn], 2);
+					var message = strBundle.formatStringFromName("cardAlreadyExists", [myTargetPrefIdName, aNewCard.fn], 2);
 					var confirmMessage = strBundle.GetStringFromName("askUserPersistMessage");
 					var askUserResult = cardbookSynchronization.askUser(message, "keep", "overwrite", "duplicate", "merge", confirmMessage, false);
 					cardbookRepository.importConflictChoice = askUserResult.result;

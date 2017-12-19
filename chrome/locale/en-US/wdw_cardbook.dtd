@@ -83,7 +83,7 @@
 <!ENTITY disphomeemailColumnLabel "Home Emails">
 <!ENTITY dispworkemailColumnLabel "Work Emails">
 <!ENTITY mailerColumnLabel "Mailer">
-<!ENTITY tzColumnLabel "TZ">
+<!ENTITY tzColumnLabel "Time Zone">
 <!ENTITY geoColumnLabel "Geo">
 <!ENTITY titleColumnLabel "Title">
 <!ENTITY roleColumnLabel "Role">
@@ -138,7 +138,7 @@
 <!ENTITY revLabel "Last Updated">
 <!ENTITY etagLabel "Etag">
 
-<!ENTITY localizeadrTreeLabel "Localize">
+<!ENTITY localizeadrTreeLabel "Show on Map">
 <!ENTITY toEmailEmailTreeLabel "Write a new message">
 <!ENTITY ccEmailEmailTreeLabel "Write a new message (copy / cc)">
 <!ENTITY bccemailemailTreeLabel "Write a new message (blind copy / bcc)">
@@ -160,7 +160,7 @@
 <!ENTITY categoryLabel "Category">
 <!ENTITY findEmailsFromCardsLabel "Find emails related to this contact">
 <!ENTITY findEventsFromCardsLabel "Find calendar events related to this contact">
-<!ENTITY localizeCardFromCardsLabel "Localize">
+<!ENTITY localizeCardFromCardsLabel "Show on Map">
 <!ENTITY openURLCardFromCardsLabel "Open URLs">
 <!ENTITY cutCardFromAccountsOrCatsLabel "Cut">
 <!ENTITY cutCardFromCardsLabel "Cut">

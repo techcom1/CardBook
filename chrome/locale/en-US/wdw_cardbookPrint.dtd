@@ -7,7 +7,7 @@
 <!ENTITY displayFieldNamesAccesskey "F">
 <!ENTITY displayTypesLabel "Types and Preferences">
 <!ENTITY displayTypesAccesskey "y">
-<!ENTITY whatToPrintGroupboxLabel "What to Print">
+<!ENTITY whatToPrintGroupboxLabel "Fields to Print">
 <!ENTITY displayLabel "Display Name">
 <!ENTITY displayAccesskey "D">
 <!ENTITY personalLabel "Personal Information">

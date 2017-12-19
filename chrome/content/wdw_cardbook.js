@@ -2124,7 +2124,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 						for (var i = 0; i < myCards.length; i++) {
 							var myCard = myCards[i];
 							// as it is possible to rename a category from a virtual folder
-							// should avoid to modify cards belonging to a read only address book
+							// should avoid to modify cards belonging to a read-only address book
 							if (cardbookPreferences.getReadOnly(myCard.dirPrefId)) {
 								continue;
 							}
@@ -2171,7 +2171,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					for (var i = 0; i < myCards.length; i++) {
 						var myCard = myCards[i];
 						// as it is possible to remove a category from a virtual folder
-						// should avoid to modify cards belonging to a read only address book
+						// should avoid to modify cards belonging to a read-only address book
 						if (cardbookPreferences.getReadOnly(myCard.dirPrefId)) {
 							continue;
 						}
@@ -2211,7 +2211,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				for (var i = 0; i < myCards.length; i++) {
 					var myCard = myCards[i];
 					// as it is possible to remove a category from a virtual folder
-					// should avoid to modify cards belonging to a read only address book
+					// should avoid to modify cards belonging to a read-only address book
 					if (cardbookPreferences.getReadOnly(myCard.dirPrefId)) {
 						continue;
 					}

@@ -24,7 +24,7 @@
 <!ENTITY localPage.uributton.label "Browse">
 
 <!ENTITY remotePage.wizard.description "Type and location of the new remote address book.">
-<!ENTITY remotePage.description "What is the type of your remote address book (Caution: Google does NOT conform to vCard standards) ?">
+<!ENTITY remotePage.description "What is the type of your remote address book (Caution: Google does NOT conform to vCard standards)?">
 <!ENTITY remotePage.type.label "Type">
 <!ENTITY remotePage.carddav.label "CardDAV">
 <!ENTITY remotePage.google.label "Google">

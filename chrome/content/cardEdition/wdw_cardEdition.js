@@ -621,7 +621,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			wdw_cardEdition.loadCategories([]);
 		},
 
-		getOrg: function () {
+		getOrg: function (aTrimArray) {
 			var myOrg = [];
 			var result = "";
 			var aListRows = document.getElementById('orgRows');
@@ -634,12 +634,14 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 					break;
 				}
 			}
-			// trim the array
-			for (var i = myOrg.length-1; i >= 0; i--) {
-				if (myOrg[i] == "") {
-					myOrg.pop();
-				} else {
-					break;
+			if (aTrimArray) {
+				// trim the array
+				for (var i = myOrg.length-1; i >= 0; i--) {
+					if (myOrg[i] == "") {
+						myOrg.pop();
+					} else {
+						break;
+					}
 				}
 			}
 			result = cardbookUtils.unescapeStringSemiColon(myOrg.join(";"));
@@ -647,23 +649,14 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		},
 
 		setDisplayName: function () {
-			var myOldFn = cardbookUtils.getDisplayedName([wdw_cardEdition.workingCard.prefixname,
-															wdw_cardEdition.workingCard.firstname,
-															wdw_cardEdition.workingCard.othername,
-															wdw_cardEdition.workingCard.lastname,
-															wdw_cardEdition.workingCard.suffixname],
-															wdw_cardEdition.workingCard.org);
-			var myNewOrg = wdw_cardEdition.getOrg();
-			var myCurrentFn = document.getElementById('fnTextBox').value.trim();
-			if (myCurrentFn == myOldFn || myCurrentFn == "") {
-				var myNewFn = cardbookUtils.getDisplayedName([document.getElementById('prefixnameTextBox').value.trim(),
+			var myNewOrg = wdw_cardEdition.getOrg(false);
+			var myNewFn = cardbookUtils.getDisplayedName([document.getElementById('prefixnameTextBox').value.trim(),
 																document.getElementById('firstnameTextBox').value.trim(),
 																document.getElementById('othernameTextBox').value.trim(),
 																document.getElementById('lastnameTextBox').value.trim(),
 																document.getElementById('suffixnameTextBox').value.trim()],
 																myNewOrg);
-				document.getElementById('fnTextBox').value = myNewFn;
-			}
+			document.getElementById('fnTextBox').value = myNewFn;
 			wdw_cardEdition.workingCard.lastname = document.getElementById('lastnameTextBox').value.trim();
 			wdw_cardEdition.workingCard.firstname = document.getElementById('firstnameTextBox').value.trim();
 			wdw_cardEdition.workingCard.othername = document.getElementById('othernameTextBox').value.trim();
@@ -884,7 +877,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			aCard.version = document.getElementById("versionTextBox").value;
 			aCard.categories = wdw_cardEdition.getCategories();
 			
-			aCard.org = wdw_cardEdition.getOrg();
+			aCard.org = wdw_cardEdition.getOrg(true);
 			aCard.title = document.getElementById('titleTextBox').value.trim();
 			aCard.role = document.getElementById('roleTextBox').value.trim();
 

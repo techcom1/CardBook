@@ -37,8 +37,8 @@
 			
 						<rows>
 							<row align="center">
-								<label id="columnSeparatorLabel" control="columnSeparatorTextBox" class="header"/>
-								<textbox id="columnSeparatorTextBox" size="5" oninput="wdw_csvTranslator.loadFoundColumns();"/>
+								<label id="fieldDelimiterLabel" control="fieldDelimiterTextBox" class="header"/>
+								<textbox id="fieldDelimiterTextBox" size="5" oninput="wdw_csvTranslator.loadFoundColumns();"/>
 							</row>
 							<row align="center">
 								<label id="lineHeaderLabel" control="lineHeaderCheckBox" class="header"/>
