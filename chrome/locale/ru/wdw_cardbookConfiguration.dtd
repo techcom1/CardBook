@@ -100,6 +100,11 @@
 <!ENTITY fnFormulaAccesskey "Ф">
 <!ENTITY resetFnFormulaLabel "Сбросить до значений по умолчанию">
 <!ENTITY resetFnFormulaAccesskey "у">
+<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Эта формула состоит из блоков, ограниченных «()». В каждом из блоков есть две части, разделяемые «|». Первая часть применяется, если указанное поле присутствует, например {{1}} — не пустое значение, вторая часть применяется если указанное значение является пустым.">
+<!ENTITY adrFormulaLabel "??Address Format Formula??">
+<!ENTITY adrFormulaAccesskey "??R??">
+<!ENTITY resetAdrFormulaLabel "Сбросить до значений по умолчанию">
+<!ENTITY resetAdrFormulaAccesskey "y">
 <!ENTITY miscEditingGroupboxLabel "Дополнительные настройки">
 <!ENTITY preferEmailEditionLabel "Использовать двойной щелчок для редактирования контакта, а не для отправки письма">
 <!ENTITY preferEmailEditionAccesskey "щ">

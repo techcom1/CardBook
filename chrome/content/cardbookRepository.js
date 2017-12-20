@@ -28,6 +28,7 @@ var cardbookRepository = {
 	dateFormats : ["YYYY-MM-DD", "YYYY.MM.DD", "YYYY/MM/DD", "YYYYMMDD", "DD-MM-YYYY", "DD.MM.YYYY", "DD/MM/YYYY", "DDMMYYYY", "MM-DD-YYYY", "MM.DD.YYYY", "MM/DD/YYYY", "MMDDYYYY"],
 
 	defaultFnFormula : "({{1}} |)({{2}} |)({{3}} |)({{4}} |)({{5}} |)({{6}} |)",
+	defaultAdrFormula : "",
 	defaultKindCustom : "X-ADDRESSBOOKSERVER-KIND",
 	defaultMemberCustom : "X-ADDRESSBOOKSERVER-MEMBER",
 

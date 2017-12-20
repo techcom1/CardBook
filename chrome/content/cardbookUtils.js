@@ -10,7 +10,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 		},
 
 		formatTelForOpenning: function (aString) {
-			return aString.replace(/\s*/g, "");
+			return aString.replace(/\s*/g, "").replace(/-*/g, "").replace(/\.*/g, "");
 		},
 
 		formatIMPPForOpenning: function (aString) {
@@ -68,34 +68,17 @@ if ("undefined" == typeof(cardbookUtils)) {
 			return cardbookRepository.arrayUnique(result);
 		},
 
-		formatAddress: function (aAddress) {
-			function appendElement(aResult, aArrayElement) {
-				var myElement = "";
-				for (var i = 0; i < aArrayElement.length; i++) {
-					if (aArrayElement[i] != null && aArrayElement[i] !== undefined && aArrayElement[i] != "") {
-						if (myElement == "") {
-							myElement = aArrayElement[i];
-						} else {
-							myElement = myElement + " " + aArrayElement[i];
-						}
-					}
-				}
-				var myResultTemp = myElement.trim();
-				if (myResultTemp != "") {
-					if (aResult == "") {
-						aResult = myResultTemp;
-					} else {
-						aResult = aResult + "\r\n" + myResultTemp;
-					}
-				}
-				return aResult;
-			};
-			var myResult = "";
-			myResult = appendElement(myResult, [aAddress[0], aAddress[1]]);
-			myResult = appendElement(myResult, [aAddress[2]]);
-			myResult = appendElement(myResult, [aAddress[3], aAddress[4], aAddress[5]]);
-			myResult = appendElement(myResult, [aAddress[6]]);
-			return myResult;
+		formatAddress: function(aAddress) {
+			var result =  "";
+			var resultArray =  [];
+			var myAdrFormula = cardbookPreferences.getStringPref("extensions.cardbook.adrFormula");
+			if (myAdrFormula == "") {
+				myAdrFormula = cardbookRepository.defaultAdrFormula;
+			}
+			result = cardbookUtils.getStringFromFormula(myAdrFormula, aAddress, false);
+			var re = /[\n\u0085\u2028\u2029]|\r\n?/;
+			var myAdrResultArray = result.split(re);
+			return cardbookUtils.cleanArray(myAdrResultArray).join("\n");
 		},
 
 		// Due to this fucking Property Group, this is not easy
@@ -524,7 +507,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			var newArray = [];
 			for(let i = 0; i<vArray.length; i++){
 				if (vArray[i] && vArray[i] != ""){
-					newArray.push(vArray[i]);
+					newArray.push(vArray[i].trim());
 				}
 			}
 			return newArray;

@@ -74,6 +74,8 @@
 				name="extensions.cardbook.showNameAs" type="string"/>
 			<preference id="extensions.cardbook.fnFormula"
 				name="extensions.cardbook.fnFormula" type="string"/>
+			<preference id="extensions.cardbook.adrFormula"
+				name="extensions.cardbook.adrFormula" type="string"/>
 			<preference id="extensions.cardbook.localizeTarget"
 				name="extensions.cardbook.localizeTarget" type="string"/>
 			<preference id="extensions.cardbook.usePreferenceValue"
@@ -344,7 +346,7 @@
 					</groupbox>
 
 					<groupbox>
-						<caption label="&fnLabel;"/>
+						<caption label="&fnFormulaLabel;"/>
 						<description>&fnLabelExplanation;</description>
 						<grid align="center" flex="1">
 							<columns>
@@ -352,7 +354,7 @@
 								<column flex="1"/>
 								<column/>
 							</columns>
-				
+
 							<rows>
 								<row align="center">
 									<label value="&fnFormulaLabel;"
@@ -372,6 +374,40 @@
 								<row align="center">
 									<label value=""/>
 									<label id="fnFormulaDescriptionLabel2"/>
+									<label value=""/>
+								</row>
+							</rows>
+						</grid>
+					</groupbox>
+
+					<groupbox>
+						<caption label="&adrFormulaLabel;"/>
+						<description>&adrLabelExplanation;</description>
+						<grid align="center" flex="1">
+							<columns>
+								<column/>
+								<column flex="1"/>
+								<column/>
+							</columns>
+
+							<rows>
+								<row align="center">
+									<label value="&adrFormulaLabel;"
+										accesskey="&adrFormulaAccesskey;"
+										control="adrFormulaTextBox"
+										id="adrFormula"/>
+									<textbox id="adrFormulaTextBox"/>
+									<button id="resetAdrFormulaButton" label="&resetAdrFormulaLabel;" accesskey="&resetAdrFormulaAccesskey;"
+										oncommand="wdw_cardbookConfiguration.resetAdrFormula();"/>
+								</row>
+								<row align="center">
+									<label value=""/>
+									<label id="adrFormulaDescriptionLabel1"/>
+									<label value=""/>
+								</row>
+								<row align="center">
+									<label value=""/>
+									<label id="adrFormulaDescriptionLabel2"/>
 									<label value=""/>
 								</row>
 							</rows>
@@ -421,7 +457,7 @@
 								<radio value="gender" label="&typesCategoryGenderLabel;" accesskey="&typesCategoryGenderAccesskey;"/>
 							</radiogroup>
 						</hbox>
-						
+
 						<hbox flex="1">
 							<vbox flex="1">
 								<hbox flex="1">
@@ -583,7 +619,7 @@
 										<column flex="1"/>
 										<column flex="1"/>
 									</columns>
-						
+
 									<rows>
 										<row align="center">
 											<label value="&kindCustomLabel;"
@@ -612,7 +648,7 @@
 						</hbox>
 					</groupbox>
 				</tabpanel>
-				
+
 				<tabpanel orient="vertical">
 					<description>&syncWarn;</description>
 					<separator class="thin"/>
@@ -782,7 +818,7 @@
 						<description>&searchInNoteTooltip2;</description>
 					</groupbox>
 				</tabpanel>
-			
+
 				<tabpanel orient="vertical">
 					<groupbox>
 						<caption label="&remindViaPopupWindowGroupboxLabel;"/>
@@ -823,9 +859,9 @@
 								preference="extensions.cardbook.showPopupEvenIfNoBirthday"/>
 						</hbox>
 					</groupbox>
-	
+
 					<separator class="thin"/>
-	
+
 					<groupbox>
 						<caption label="&remindViaLightningGroupboxLabel;"/>
 						<hbox align="center">

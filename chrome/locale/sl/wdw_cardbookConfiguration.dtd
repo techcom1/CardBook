@@ -99,6 +99,11 @@
 <!ENTITY fnFormulaAccesskey "U">
 <!ENTITY resetFnFormulaLabel "Obnovi na privzeto">
 <!ENTITY resetFnFormulaAccesskey "n">
+<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Ta formula vsebuje bloke, ki so obdani z '()'. V teh blokih sta dva dela, ki sta ločena z '|'. Prvi del se uporabi, kadar vrednost vpletenega izraza, npr. {{1}}, ni prazna, drugi del pa, kadar je vrednost vpletenega izraza prazna.">
+<!ENTITY adrFormulaLabel "??Address Format Formula??">
+<!ENTITY adrFormulaAccesskey "??R??">
+<!ENTITY resetAdrFormulaLabel "Obnovi na privzeto">
+<!ENTITY resetAdrFormulaAccesskey "n">
 <!ENTITY miscEditingGroupboxLabel "Razno">
 <!ENTITY preferEmailEditionLabel "Dvoklik na stik ga uredi namesto pošlje">
 <!ENTITY preferEmailEditionAccesskey "D">

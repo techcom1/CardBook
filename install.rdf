@@ -6,7 +6,7 @@
 	<Description about="urn:mozilla:install-manifest">
 		<em:id>cardbook@vigneau.philippe</em:id>
 		<em:name>CardBook</em:name>
-		<em:version>25.1</em:version>
+		<em:version>25.2</em:version>
 		<em:type>2</em:type>
 		<em:description>vCard Address Book</em:description>
 		<em:creator>Philippe Vigneau</em:creator>
@@ -336,9 +336,9 @@
 
 		<em:localized>
 			<Description>
-				<em:locale>it</em:locale>
-				<em:name>CardBook</em:name>
-				<em:description>Rubrica vCard</em:description>
+				<em:locale>id</em:locale>
+				<em:name>Kontak (CardBook)</em:name>
+				<em:description>Buku Alamat vKartu</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
 				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
@@ -376,9 +376,9 @@
 
 		<em:localized>
 			<Description>
-				<em:locale>id</em:locale>
-				<em:name>Kontak (CardBook)</em:name>
-				<em:description>Buku Alamat vKartu</em:description>
+				<em:locale>it</em:locale>
+				<em:name>CardBook</em:name>
+				<em:description>Rubrica vCard</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
 				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>

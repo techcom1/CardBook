@@ -99,6 +99,11 @@
 <!ENTITY fnFormulaAccesskey "ą">
 <!ENTITY resetFnFormulaLabel "Atstatyti numatytąjį">
 <!ENTITY resetFnFormulaAccesskey "A">
+<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Ši formulė susideda iš blokų, kuriuos apima skliausteliai „()“. Šiuose blokuose yra dvi dalys, kurias apibrėžia vertikalus brūkšnys „|“. Pirmoji dalis taikoma tada, kai susijusi sąlyga, pvz., {{1}}, nėra nulinė, antra dalis taikoma tada, kai susijęs terminas yra nulis.">
+<!ENTITY adrFormulaLabel "??Address Format Formula??">
+<!ENTITY adrFormulaAccesskey "??R??">
+<!ENTITY resetAdrFormulaLabel "Atstatyti numatytąjį">
+<!ENTITY resetAdrFormulaAccesskey "A">
 <!ENTITY miscEditingGroupboxLabel "Įvairūs">
 <!ENTITY preferEmailEditionLabel "Spustelėjant kontaktą dukart, tai leidžia redaguoti kontaktą, o ne el. pašto žinutes">
 <!ENTITY preferEmailEditionAccesskey "S">

@@ -56,6 +56,12 @@ if ("undefined" == typeof(ovl_synchro)) {
 			prefs.setCharPref("localizeTarget", "out");
 			prefs.setCharPref("showNameAs", "LF");
 			prefs.setCharPref("fnFormula", "({{1}} |)({{2}} |)({{3}} |)({{4}} |)({{5}} |)({{6}} |)");
+			
+			// localized
+			let strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
+			cardbookRepository.defaultAdrFormula = strBundle.GetStringFromName("addressFormatFormula");
+			prefs.setCharPref("adrFormula", cardbookRepository.defaultAdrFormula);
+			
 			prefs.setCharPref("dateDisplayedFormat", "0");
 			
 			prefs.setCharPref("addressBooksNameList", "allAddressBooks");
@@ -80,7 +86,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 			
 			prefs.setCharPref("accountsShown", "all");
 			prefs.setCharPref("uncategorizedCards", "");
-			prefs.setCharPref("addonVersion", "25.1");
+			prefs.setCharPref("addonVersion", "25.2");
 		},
 
 		lEventTimerSync : { notify: function(lTimerSync) {

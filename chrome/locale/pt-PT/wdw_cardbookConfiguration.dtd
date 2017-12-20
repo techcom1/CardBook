@@ -100,6 +100,11 @@
 <!ENTITY fnFormulaAccesskey "P">
 <!ENTITY resetFnFormulaLabel "Restaurar para origem">
 <!ENTITY resetFnFormulaAccesskey "R">
+<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. A formula consiste num bloco dentro de '()'. Nesse bloco existem 2 partes delimitadas por '|'. A primeira é aplicada quando o termo envolvido (ex: {{1}}), não é nulo e a segunda parte é aplicada quando o termo é nulo">
+<!ENTITY adrFormulaLabel "??Address Format Formula??">
+<!ENTITY adrFormulaAccesskey "??R??">
+<!ENTITY resetAdrFormulaLabel "Restaurar para origem">
+<!ENTITY resetAdrFormulaAccesskey "R">
 <!ENTITY miscEditingGroupboxLabel "Diversos">
 <!ENTITY preferEmailEditionLabel "Duplo clique no contacto para edita-lo em vez de enviar email">
 <!ENTITY preferEmailEditionAccesskey "E">

@@ -95,10 +95,15 @@
 <!ENTITY showNameAsDSPLabel "Display Name">
 <!ENTITY showNameAsDSPAccesskey "D">
 <!ENTITY fnLabelExplanation "It is possible to customize the way CardBook generates its Display Name. This formula consists in blocks enclosed by '()'. In these blocks, there are two parts delimited by '|'. The first part applies when the term involved, for example {{1}}, is not null, the second part applies when the term involved is null.">
-<!ENTITY fnFormulaLabel "Generate Display Name">
+<!ENTITY fnFormulaLabel "Display Name Formula">
 <!ENTITY fnFormulaAccesskey "y">
 <!ENTITY resetFnFormulaLabel "Restore to Default">
 <!ENTITY resetFnFormulaAccesskey "R">
+<!ENTITY adrLabelExplanation "It is possible to customize the way CardBook formats its addresses. This formula consists in blocks enclosed by '()'. In these blocks, there are two parts delimited by '|'. The first part applies when the term involved, for example {{1}}, is not null, the second part applies when the term involved is null.">
+<!ENTITY adrFormulaLabel "Address Format Formula">
+<!ENTITY adrFormulaAccesskey "R">
+<!ENTITY resetAdrFormulaLabel "Restore to Default">
+<!ENTITY resetAdrFormulaAccesskey "R">
 <!ENTITY miscEditingGroupboxLabel "Miscellaneous">
 <!ENTITY preferEmailEditionLabel "Double-click on a contact edits it instead of emails it">
 <!ENTITY preferEmailEditionAccesskey "k">

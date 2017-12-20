@@ -21,7 +21,7 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "T">
 <!ENTITY autocompleteWithColorLabel "Gunakan warna buku alamat">
 <!ENTITY autocompleteWithColorAccesskey "w">
-<!ENTITY useColorLabel "Use address book color for:">
+<!ENTITY useColorLabel "Gunakan warna buku alamat untuk:">
 <!ENTITY useColorBackgroundLabel "Warna latar belakang">
 <!ENTITY useColorBackgroundAccesskey "b">
 <!ENTITY useColorTextLabel "Warna teks">
@@ -99,6 +99,11 @@
 <!ENTITY fnFormulaAccesskey "M">
 <!ENTITY resetFnFormulaLabel "Kembalikan Nilai Default">
 <!ENTITY resetFnFormulaAccesskey "K">
+<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Formula ini terdiri dari blok yang dilingkupi “()”. Di blok ini, ada dua bagian yang dibatasi oleh “|”. Bagian pertama berlaku bila istilah yang terlibat, misalnya {{1}}, bukan null, bagian kedua berlaku bila istilah yang terlibat adalah null.">
+<!ENTITY adrFormulaLabel "??Address Format Formula??">
+<!ENTITY adrFormulaAccesskey "??R??">
+<!ENTITY resetAdrFormulaLabel "Kembalikan Nilai Default">
+<!ENTITY resetAdrFormulaAccesskey "K">
 <!ENTITY miscEditingGroupboxLabel "Serba Aneka">
 <!ENTITY preferEmailEditionLabel "Klik dua kali pada kontak yang mengeditnya alih-alih email itu">
 <!ENTITY preferEmailEditionAccesskey "K">

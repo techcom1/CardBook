@@ -100,6 +100,11 @@
 <!ENTITY fnFormulaAccesskey "m">
 <!ENTITY resetFnFormulaLabel "Réinitialiser">
 <!ENTITY resetFnFormulaAccesskey "R">
+<!ENTITY adrLabelExplanation "Il est possible de choisir comment CardBook formatte ses adresses. Cette formule est une succession de blocs délimités par '()'. Dans ces blocs, il y a deux parties délimitées par '|'. La première partie s'applique lorsque le terme impliqué, par exemple {{1}}, n'est pas null, la seconde partie s'applique lorsque le terme impliqué est null.">
+<!ENTITY adrFormulaLabel "Formattage des adresses">
+<!ENTITY adrFormulaAccesskey "F">
+<!ENTITY resetAdrFormulaLabel "Réinitialiser">
+<!ENTITY resetAdrFormulaAccesskey "R">
 <!ENTITY miscEditingGroupboxLabel "Divers">
 <!ENTITY preferEmailEditionLabel "Au lieu d'envoyer un email, double-cliquer sur un contact provoque l'édition">
 <!ENTITY preferEmailEditionAccesskey "A">

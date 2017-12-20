@@ -761,13 +761,11 @@ if ("undefined" == typeof(cardbookTypes)) {
 				cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', myDisplayedTypes.join(" "), {readonly: 'true'});
 	
 				if (aType == "adr") {
-					var myTmpArray = [];
-					for (var i = 0; i < aCardValue.length; i++) {
-						if (aCardValue[i] != "") {
-							myTmpArray.push(aCardValue[i].replace(/\n/g, " "));
-						}
-					}
-					myValueTextbox = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myTmpArray.join(" "), {context: myContextMenu, flex: '1'});
+					var re = /[\n\u0085\u2028\u2029]|\r\n?/;
+					var myAdrResult = cardbookUtils.formatAddress(aCardValue);
+					var myAdrResultArray = myAdrResult.split(re);
+					myValueTextbox = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myAdrResult, {context: myContextMenu, flex: '1', 
+																								multiline: 'true', wrap: 'virtual', rows: myAdrResultArray.length});
 				} else {
 					myValueTextbox = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', cardbookUtils.cleanArray(aCardValue).join(" "), {context: myContextMenu, flex: '1'});
 				}

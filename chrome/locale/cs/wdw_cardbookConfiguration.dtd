@@ -100,6 +100,11 @@
 <!ENTITY fnFormulaAccesskey "z">
 <!ENTITY resetFnFormulaLabel "Obnovit na výchozí hodnotu">
 <!ENTITY resetFnFormulaAccesskey "h">
+<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Tento vzorec se skládá z bloků uzavřených v '()'. V těchto blocích jsou dvě části oddělené '|'. První část se použije, když je zmíněný termín, například {{1}} nenulový, druhá se použije, když je zmíněný termín nulový.">
+<!ENTITY adrFormulaLabel "??Address Format Formula??">
+<!ENTITY adrFormulaAccesskey "??R??">
+<!ENTITY resetAdrFormulaLabel "Obnovit na výchozí hodnotu">
+<!ENTITY resetAdrFormulaAccesskey "h">
 <!ENTITY miscEditingGroupboxLabel "Ost.">
 <!ENTITY preferEmailEditionLabel "Dvojklik na kontakt ho upraví namísto odeslání e-mailu">
 <!ENTITY preferEmailEditionAccesskey "D">

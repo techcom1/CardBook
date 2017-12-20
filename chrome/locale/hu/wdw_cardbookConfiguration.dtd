@@ -100,6 +100,11 @@
 <!ENTITY fnFormulaAccesskey "P">
 <!ENTITY resetFnFormulaLabel "Alapértelmezés">
 <!ENTITY resetFnFormulaAccesskey "A">
+<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Ez a képlet áll blokkok által közrezárt „()”. Két része van ezekben a blokkokban által határolt „|”. Az első rész alkalmazandó, ha a kifejezés részt, például a {{1}}, nem nulla, a második része alkalmazandó, ha a kifejezés részt null.">
+<!ENTITY adrFormulaLabel "??Address Format Formula??">
+<!ENTITY adrFormulaAccesskey "??R??">
+<!ENTITY resetAdrFormulaLabel "Alapértelmezés">
+<!ENTITY resetAdrFormulaAccesskey "A">
 <!ENTITY miscEditingGroupboxLabel "Különféle">
 <!ENTITY preferEmailEditionLabel "Dupla kattintás a névjegyre a névjegy szerkesztés helyett üzenet írás">
 <!ENTITY preferEmailEditionAccesskey "D">

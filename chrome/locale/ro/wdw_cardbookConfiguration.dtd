@@ -99,6 +99,11 @@
 <!ENTITY fnFormulaAccesskey "G">
 <!ENTITY resetFnFormulaLabel "Desemnează ca implicit">
 <!ENTITY resetFnFormulaAccesskey "D">
+<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Această formulă constă în blocuri închise de „()”. În aceste blocuri, există două părți delimitate de „|”. Prima parte se aplică atunci când termenul implicat, de exemplu {{1}}, nu este nul, a doua parte se aplică atunci când termenul implicat este nul.">
+<!ENTITY adrFormulaLabel "??Address Format Formula??">
+<!ENTITY adrFormulaAccesskey "??R??">
+<!ENTITY resetAdrFormulaLabel "Desemnează ca implicit">
+<!ENTITY resetAdrFormulaAccesskey "D">
 <!ENTITY miscEditingGroupboxLabel "Diverse">
 <!ENTITY preferEmailEditionLabel "Dublu click pe o persoană de contact editează în loc de poştă electronică-l">
 <!ENTITY preferEmailEditionAccesskey "k">

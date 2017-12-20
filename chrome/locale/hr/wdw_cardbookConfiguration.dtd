@@ -99,6 +99,11 @@
 <!ENTITY fnFormulaAccesskey "y">
 <!ENTITY resetFnFormulaLabel "Vrati na uobičajeno">
 <!ENTITY resetFnFormulaAccesskey "j">
+<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Formula se satoji od blokova unutar znaka'()'. U ovim blokovima su dva dijela ograničena znakom '|'. Prvi dio se odnosi na uključen naziv, npr. {{1}}, nije poništen, drugi dio se odnosi kad je uključen naziv poništen.">
+<!ENTITY adrFormulaLabel "??Address Format Formula??">
+<!ENTITY adrFormulaAccesskey "??R??">
+<!ENTITY resetAdrFormulaLabel "Vrati na uobičajeno">
+<!ENTITY resetAdrFormulaAccesskey "j">
 <!ENTITY miscEditingGroupboxLabel "Sve i svašta">
 <!ENTITY preferEmailEditionLabel "Dvaput kliknite uredi kontakte umjesto pošalji">
 <!ENTITY preferEmailEditionAccesskey "k">
