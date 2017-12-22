@@ -23,6 +23,7 @@ locale   cardbook sl    chrome/locale/sl/
 locale   cardbook sv-SE chrome/locale/sv-SE/
 
 skin   cardbook             classic/1.0   chrome/skin/
+skin   cardbook-config      classic/1.0   chrome/skin/configuration/
 skin   cardbook-osversion   classic/1.0   chrome/skin/osversion/unix/        os=Linux
 skin   cardbook-osversion   classic/1.0   chrome/skin/osversion/unix58/      os=Linux      appversion>=57.*
 skin   cardbook-osversion   classic/1.0   chrome/skin/osversion/windows/     os=WINNT

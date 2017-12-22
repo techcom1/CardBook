@@ -293,7 +293,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		showTab: function () {
 			if (window.arguments) {
 				if (window.arguments[0].showTab != null && window.arguments[0].showTab !== undefined && window.arguments[0].showTab != "") {
-					document.getElementById('advancedPrefs').selectedTab = document.getElementById(window.arguments[0].showTab);
+					document.getElementById('wdw_cardbookConfigurationWindow').showPane(document.getElementById(window.arguments[0].showTab));
 				}
 			}
 		},

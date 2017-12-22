@@ -1,0 +1,59 @@
+/* Preferences window */
+#wdw_cardbookConfigurationWindow {
+	width:  50em;
+	height: 40em;
+}
+
+/* Originally written by Leszek(teo)Życzkowski */
+radio[pane] {
+	-moz-appearance:     none;
+	background-color:    transparent;
+	background-position: center bottom;
+	background-repeat:   repeat-x;
+	min-width:           80px;
+}
+
+radio[pane]:hover {
+	background-color: rgb(94, 138, 188);
+	background-image: url("chrome://cardbook-config/skin/hover.png");
+	color:            white;
+}
+
+radio[pane][selected="true"] {
+	background-color: rgb(174, 198, 226);
+	background-image: none;
+	background-image: url("chrome://cardbook-config/skin/selected.png");
+	color:            black;
+}
+
+/* Preference tabs */
+radio[pane=generalTab] {
+	list-style-image: url("chrome://cardbook-config/skin/generalTab.png");
+}
+radio[pane=CardBookTab] {
+	list-style-image: url("chrome://cardbook-config/skin/CardBookTab.png");
+}
+radio[pane=typesTab] {
+	list-style-image: url("chrome://cardbook-config/skin/typesTab.png");
+}
+radio[pane=IMPPTab] {
+	list-style-image: url("chrome://cardbook-config/skin/IMPPTab.png");
+}
+radio[pane=customFieldsTab] {
+	list-style-image: url("chrome://cardbook-config/skin/customFieldsTab.png");
+}
+radio[pane=listsTab] {
+	list-style-image: url("chrome://cardbook-config/skin/listsTab.png");
+}
+radio[pane=syncTab] {
+	list-style-image: url("chrome://cardbook-config/skin/syncTab.png");
+}
+radio[pane=emailTab] {
+	list-style-image: url("chrome://cardbook-config/skin/emailTab.png");
+}
+radio[pane=birthdaylistTab] {
+	list-style-image: url("chrome://cardbook-config/skin/birthdaylistTab.png");
+}
+radio[pane=synclistTab] {
+	list-style-image: url("chrome://cardbook-config/skin/synclistTab.png");
+}

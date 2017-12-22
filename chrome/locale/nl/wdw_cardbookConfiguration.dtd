@@ -100,9 +100,9 @@
 <!ENTITY fnFormulaAccesskey "s">
 <!ENTITY resetFnFormulaLabel "Herstellen naar standaardwaarde">
 <!ENTITY resetFnFormulaAccesskey "H">
-<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. De formule bestaat uit blokken, omsloten door haakjes, (). In die blokken zitten twee delen, gescheiden door een verticaal streepje, |. Het eerste deel is van toepassing als het betreffende deel {{1}} ingevuld is, het tweede deel als het niet ingevuld is.">
-<!ENTITY adrFormulaLabel "??Address Format Formula??">
-<!ENTITY adrFormulaAccesskey "??R??">
+<!ENTITY adrLabelExplanation "Het is mogelijk om in te stellen hoe CardBook de adressen formatteert. De formule bestaat uit blokken, omsloten door haakjes, (). In die blokken zitten twee delen, gescheiden door een verticaal streepje, |. Het eerste deel is van toepassing als het betreffende deel {{1}} ingevuld is, het tweede deel als het niet ingevuld is.">
+<!ENTITY adrFormulaLabel "Adresformaat samenstellen">
+<!ENTITY adrFormulaAccesskey "F">
 <!ENTITY resetAdrFormulaLabel "Herstellen naar standaardwaarde">
 <!ENTITY resetAdrFormulaAccesskey "H">
 <!ENTITY miscEditingGroupboxLabel "Overig">
