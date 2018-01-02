@@ -8,7 +8,7 @@
 * Easy **CardDAV synchronisation**!
 * Access to **all vCard data**!
 * **Customizable** data fields!
-* *And many more ...*
+* *And many more…*
 
 
 ### Installation
@@ -40,9 +40,9 @@ Community efforts:
 ### Contribution
 
 You are welcomed to contribute to this project by:
-* adding translations at [locale](https://github.com/CardBook/CardBook/tree/master/chrome/locale),
-* creating issues about problems,
-* creating issues about possible improvements,
+* adding or improving the localizations (i.e. translations) at [locale](https://github.com/CardBook/CardBook/tree/master/chrome/locale) or by emailing (in English or French) [cardbook.thunderbird@gmail.com](mailto:cardbook.thunderbird@gmail.com),
+* creating [issues](https://github.com/CardBook/CardBook/issues) about problems,
+* creating [issues](https://github.com/CardBook/CardBook/issues) about possible improvements,
 * helping people who have problems or questions,
 * improving the documentation,
 * working on the code,
@@ -63,30 +63,30 @@ Main contributors:
 * Lukáš Tyrychtr
 
 Translations by:
-* Lukáš Tyrychtr (cs)
-* Johnny Nielsen (da)
-* Alexander Bergmann (de)
-* Markus Mauerer (de)
-* Oliver Schuppe (de)
-* SusiTux (de)
-* Timothe Litt (en-US)
-* Óvári (en-US)
-* Philippe Vigneau (fr)
-* Meri (hr)
-* Óvári (hu)
-* Zuraida (id)
-* Stefano Bloisi (it)
-* Agnese Morettini (it)
-* Gintautas (lt)
-* Han Knols (nl)
-* Adam Gorzkiewicz (pl)
-* Dominik Wnęk (pl)
-* [André Bação](https://github.com/abacao) (pt-PT)
-* Lucian Burca (ro)
-* Alexander Yavorsky (ru)
-* Peter Klofutar (sl)
-* Anders (sv-SE)
-* Kire Dyfvelsten (sv-SE)
+* Lukáš Tyrychtr ([cs](https://github.com/CardBook/CardBook/tree/master/chrome/locale/cs)) [Stáhnout](https://addons.mozilla.org/cs/thunderbird/addon/cardbook/)
+* Johnny Nielsen ([da](https://github.com/CardBook/CardBook/tree/master/chrome/locale/da)) [Hent nu](https://addons.mozilla.org/da/thunderbird/addon/cardbook/)
+* Alexander Bergmann ([de](https://github.com/CardBook/CardBook/tree/master/chrome/locale/de)) [Jetzt herunterladen](https://addons.mozilla.org/de/thunderbird/addon/cardbook/)
+* Markus Mauerer ([de](https://github.com/CardBook/CardBook/tree/master/chrome/locale/de)) [Jetzt herunterladen](https://addons.mozilla.org/de/thunderbird/addon/cardbook/)
+* Oliver Schuppe ([de](https://github.com/CardBook/CardBook/tree/master/chrome/locale/de)) [Jetzt herunterladen](https://addons.mozilla.org/de/thunderbird/addon/cardbook/)
+* SusiTux ([de](https://github.com/CardBook/CardBook/tree/master/chrome/locale/de)) [Jetzt herunterladen](https://addons.mozilla.org/de/thunderbird/addon/cardbook/)
+* Timothe Litt ([en-US](https://github.com/CardBook/CardBook/tree/master/chrome/locale/en-US)) [Download Now](https://addons.mozilla.org/en-US/thunderbird/addon/cardbook/)
+* Óvári ([en-US](https://github.com/CardBook/CardBook/tree/master/chrome/locale/en-US)) [Download Now](https://addons.mozilla.org/en-US/thunderbird/addon/cardbook/)
+* Philippe Vigneau ([fr](https://github.com/CardBook/CardBook/tree/master/chrome/locale/fr)) [Télécharger maintenant](https://addons.mozilla.org/fr/thunderbird/addon/cardbook/)
+* Meri ([hr](https://github.com/CardBook/CardBook/tree/master/chrome/locale/hr)) [Preuzeti sada](https://addons.mozilla.org/hr/thunderbird/addon/cardbook/)
+* Óvári ([hu](https://github.com/CardBook/CardBook/tree/master/chrome/locale/hu)) [Letöltés most](https://addons.mozilla.org/hu/thunderbird/addon/cardbook/)
+* Zuraida ([id](https://github.com/CardBook/CardBook/tree/master/chrome/locale/id)) [Unduh Sekarang](https://addons.mozilla.org/id/thunderbird/addon/cardbook/)
+* Stefano Bloisi ([it](https://github.com/CardBook/CardBook/tree/master/chrome/locale/it)) [Scarica ora](https://addons.mozilla.org/it/thunderbird/addon/cardbook/)
+* Agnese Morettini ([it](https://github.com/CardBook/CardBook/tree/master/chrome/locale/it)) [Scarica ora](https://addons.mozilla.org/it/thunderbird/addon/cardbook/)
+* Gintautas ([lt](https://github.com/CardBook/CardBook/tree/master/chrome/locale/lt)) [Parsiųsti dabar](https://addons.mozilla.org/lt/thunderbird/addon/cardbook/)
+* Han Knols ([nl](https://github.com/CardBook/CardBook/tree/master/chrome/locale/nl)) [Nu downloaden](https://addons.mozilla.org/nl/thunderbird/addon/cardbook/)
+* Adam Gorzkiewicz ([pl](https://github.com/CardBook/CardBook/tree/master/chrome/locale/pl)) [Pobierz](https://addons.mozilla.org/pl/thunderbird/addon/cardbook/)
+* Dominik Wnęk ([pl](https://github.com/CardBook/CardBook/tree/master/chrome/locale/pl)) [Pobierz](https://addons.mozilla.org/pl/thunderbird/addon/cardbook/)
+* [André Bação](https://github.com/abacao) ([pt-PT](https://github.com/CardBook/CardBook/tree/master/chrome/locale/pt-PT)) [Transferir agora](https://addons.mozilla.org/pt-PT/thunderbird/addon/cardbook/)
+* Lucian Burca ([ro](https://github.com/CardBook/CardBook/tree/master/chrome/locale/ro)) [Descarcă acum](https://addons.mozilla.org/ro/thunderbird/addon/cardbook/)
+* Alexander Yavorsky ([ru](https://github.com/CardBook/CardBook/tree/master/chrome/locale/ru)) [Загрузить сейчас](https://addons.mozilla.org/ru/thunderbird/addon/cardbook/)
+* Peter Klofutar ([sl](https://github.com/CardBook/CardBook/tree/master/chrome/locale/sl)) [Prenesi zdaj](https://addons.mozilla.org/sl/thunderbird/addon/cardbook/)
+* Anders ([sv-SE](https://github.com/CardBook/CardBook/tree/master/chrome/locale/sv-SE)) [Hämta nu](https://addons.mozilla.org/sv-SE/thunderbird/addon/cardbook/)
+* Kire Dyfvelsten ([sv-SE](https://github.com/CardBook/CardBook/tree/master/chrome/locale/sv-SE)) [Hämta nu](https://addons.mozilla.org/sv-SE/thunderbird/addon/cardbook/)
 
 Trailblazer:
 * [Thomas McWork](https://github.com/thomas-mc-work): midwife for the public git repository
