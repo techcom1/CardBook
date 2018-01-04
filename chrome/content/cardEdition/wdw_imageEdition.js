@@ -121,9 +121,8 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 				var myCard = wdw_cardEdition.workingCard;
 				myExtension = cardbookUtils.formatExtension(myExtension, myCard.version);
 				var targetFile = wdw_imageEdition.getEditionPhotoTempFile(myExtension);
-				var ioService = Services.io;
 				var myFileURISpec = "file:///" + targetFile.path;
-				var myFileURI = ioService.newURI(myFileURISpec, null, null);
+				var myFileURI = Services.io.newURI(myFileURISpec, null, null);
 				var myFile1 = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
 				aFile.copyToFollowingLinks(myFile1.parent, myFile1.leafName);
 				cardbookUtils.formatStringForOutput("imageSavedToFile", [myFile1.path]);
@@ -202,9 +201,8 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 		},
 
 		saveImageCardNext: function (aFile) {
-			var ioService = Services.io;
 			var myFileURISpec = document.getElementById('photolocalURITextBox').value;
-			var myFileURI = ioService.newURI(myFileURISpec, null, null);
+			var myFileURI = Services.io.newURI(myFileURISpec, null, null);
 			var myFile1 = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
 			myFile1.copyToFollowingLinks(aFile.parent,aFile.leafName);
 			cardbookUtils.formatStringForOutput("imageSavedToFile", [aFile.path]);

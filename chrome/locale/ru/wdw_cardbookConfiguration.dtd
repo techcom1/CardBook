@@ -95,11 +95,6 @@
 <!ENTITY showNameAsFLAccesskey "И">
 <!ENTITY showNameAsDSPLabel "Отображаемое имя">
 <!ENTITY showNameAsDSPAccesskey "О">
-<!ENTITY fnLabelExplanation "Возможна настройка правила для формирования поля «Отображаемое имя». Эта формула состоит из блоков, ограниченных «()». В каждом из блоков есть две части, разделяемые «|». Первая часть применяется, если указанное поле присутствует, например {{1}} — не пустое значение, вторая часть применяется если указанное значение является пустым.">
-<!ENTITY fnFormulaLabel "Формировать отображаемое имя">
-<!ENTITY fnFormulaAccesskey "Ф">
-<!ENTITY resetFnFormulaLabel "Сбросить до значений по умолчанию">
-<!ENTITY resetFnFormulaAccesskey "у">
 <!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Эта формула состоит из блоков, ограниченных «()». В каждом из блоков есть две части, разделяемые «|». Первая часть применяется, если указанное поле присутствует, например {{1}} — не пустое значение, вторая часть применяется если указанное значение является пустым.">
 <!ENTITY adrFormulaLabel "??Address Format Formula??">
 <!ENTITY adrFormulaAccesskey "??R??">
@@ -193,11 +188,6 @@
 <!ENTITY solveConflictsRemoteAccesskey "с">
 <!ENTITY solveConflictsUserLabel "Спрашивать">
 <!ENTITY solveConflictsUserAccesskey "С">
-<!ENTITY autoSyncGroupboxLabel "Переодическая синхронизация">
-<!ENTITY autoSyncLabel "Включить периодическую синхронизацию">
-<!ENTITY autoSyncAccesskey "П">
-<!ENTITY autoSyncIntervalLabel "Интервал между синхронизациями (минут)">
-<!ENTITY autoSyncIntervalAccesskey "И">
 <!ENTITY requestsGroupboxLabel "Запросы к серверу">
 <!ENTITY requestsTimeoutLabel "Таймаут (секунд)">
 <!ENTITY requestsTimeoutAccesskey "Т">
@@ -240,8 +230,6 @@
 <!ENTITY searchInNoteTooltip1 "Добавьте такие строки в поле «Заметка» (разделителем должно быть «:» ,а формат даты — как в настройках адресной книги):">
 <!ENTITY searchInNoteTooltip2 "Событие:Описание:2006-12-24">
 <!ENTITY searchInNoteAccesskey "З">
-<!ENTITY dateFormatLabel "Ожидаемый формат даты">
-<!ENTITY dateFormatAccesskey "О">
 
 <!ENTITY remindersTabLabel "Напоминания">
 <!ENTITY remindViaPopupWindowGroupboxLabel "Открывать всплывающее окно для напоминаний">

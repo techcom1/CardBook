@@ -30,8 +30,8 @@
 <!ENTITY remotePage.google.label "Google">
 <!ENTITY remotePage.apple.label "Apple">
 <!ENTITY remotePage.connection.label "Conexiune">
-<!ENTITY remotePage.uri.description "For a CardDAV type, enter the URL of the remote address card. Puteți încerca să utilizați o adresă URL parțială (de exemplu : http(s)://carddav.exemplu.org.ro). For a Google Address Book, do not specify this field.">
-<!ENTITY remotePage.uri.label "Adresa URL">
+<!ENTITY remotePage.url.description "For a CardDAV type, enter the URL of the remote address card. Puteți încerca să utilizați o adresă URL parțială (de exemplu : http(s)://carddav.exemplu.org.ro). For a Google Address Book, do not specify this field.">
+<!ENTITY remotePage.url.label "Adresa URL">
 <!ENTITY remotePage.credentials.description "Introduceți acreditările pentru accesarea carte de adresei dvs. For a Google Address Book, your username should be your Google email.">
 <!ENTITY remotePage.validatebutton.label "Valida">
 

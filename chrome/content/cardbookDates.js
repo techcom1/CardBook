@@ -19,19 +19,19 @@ if ("undefined" == typeof(cardbookDates)) {
 		getDateForCompare: function (aCard, aField) {
 			try {
 				if (aCard[aField] == "") {
-					return new Date('666', '6', '6');
+					return new Date(Date.UTC('666', '6', '6'));
 				} else {
 					var dateFormat = cardbookPreferences.getDateFormat(aCard.dirPrefId);
 					var myDate = cardbookDates.convertDateStringToDate(aCard[aField], dateFormat);
 					if (myDate == "WRONGDATE") {
-						return new Date('666', '6', '6');
+						return new Date(Date.UTC('666', '6', '6'));
 					} else {
 						return myDate;
 					}
 				}
 			}
 			catch (e) {
-				return new Date('666', '6', '6');
+				return new Date(Date.UTC('666', '6', '6'));
 			}
 		},
 
@@ -71,9 +71,9 @@ if ("undefined" == typeof(cardbookDates)) {
 				} else {
 					if (Services.vc.compare(Services.appinfo.version, "57") >= 0) {
 						if (aTargetDateFormat == "0") {
-							var formatter = Services.intl.createDateTimeFormat(undefined, { dateStyle: "long"});
+							var formatter = Services.intl.createDateTimeFormat(undefined, {dateStyle: "long"});
 						} else {
-							var formatter = Services.intl.createDateTimeFormat(undefined, { dateStyle: "short"});
+							var formatter = Services.intl.createDateTimeFormat(undefined, {dateStyle: "short"});
 						}
 						return formatter.format(myDate);
 					} else {
@@ -174,7 +174,7 @@ if ("undefined" == typeof(cardbookDates)) {
 									lThirdField = aDateString.replace(EmptyParamRegExp2, "$3");
 									lThirdField = (lThirdField.length<2?'0':'') + lThirdField;
 								}
-								lReturn = new Date(lFirstField, lSecondField-1, lThirdField);
+								lReturn = new Date(Date.UTC(lFirstField, lSecondField-1, lThirdField));
 							} else {
 								var EmptyParamRegExp2 = new RegExp("^([^\-]*)\\" + lSeparator + "([^\-]*)", "ig");
 								if (aDateString.replace(EmptyParamRegExp2, "$1")!=aDateString) {
@@ -183,7 +183,7 @@ if ("undefined" == typeof(cardbookDates)) {
 									lSecondField = aDateString.replace(EmptyParamRegExp2, "$2");
 									lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
 								}
-								lReturn = new Date('666', lFirstField-1, lSecondField);
+								lReturn = new Date(Date.UTC('666', lFirstField-1, lSecondField));
 							}
 							break;
 						case "DD-MM-YYYY":
@@ -199,7 +199,7 @@ if ("undefined" == typeof(cardbookDates)) {
 									lThirdField = aDateString.replace(EmptyParamRegExp2, "$3");
 									lThirdField = (lThirdField.length<2?'0':'') + lThirdField;
 								}
-								lReturn = new Date(lThirdField, lSecondField-1, lFirstField);
+								lReturn = new Date(Date.UTC(lThirdField, lSecondField-1, lFirstField));
 							} else {
 								var EmptyParamRegExp2 = new RegExp("^([^\.]*)\\" + lSeparator + "([^\.]*)", "ig");
 								if (aDateString.replace(EmptyParamRegExp2, "$1")!=aDateString) {
@@ -208,7 +208,7 @@ if ("undefined" == typeof(cardbookDates)) {
 									lSecondField = aDateString.replace(EmptyParamRegExp2, "$2");
 									lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
 								}
-								lReturn = new Date('666', lSecondField-1, lFirstField);
+								lReturn = new Date(Date.UTC('666', lSecondField-1, lFirstField));
 							}
 							break;
 						case "MM-DD-YYYY":
@@ -224,7 +224,7 @@ if ("undefined" == typeof(cardbookDates)) {
 									lThirdField = aDateString.replace(EmptyParamRegExp2, "$3");
 									lThirdField = (lThirdField.length<2?'0':'') + lThirdField;
 								}
-								lReturn = new Date(lThirdField, lFirstField-1, lSecondField);
+								lReturn = new Date(Date.UTC(lThirdField, lFirstField-1, lSecondField));
 							} else {
 								var EmptyParamRegExp2 = new RegExp("^([^\/]*)\\" + lSeparator + "([^\/]*)", "ig");
 								if (aDateString.replace(EmptyParamRegExp2, "$1")!=aDateString) {
@@ -233,7 +233,7 @@ if ("undefined" == typeof(cardbookDates)) {
 									lSecondField = aDateString.replace(EmptyParamRegExp2, "$2");
 									lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
 								}
-								lReturn = new Date('666', lFirstField-1, lSecondField);
+								lReturn = new Date(Date.UTC('666', lFirstField-1, lSecondField));
 							}
 							break;
 						case "YYYYMMDD":
@@ -244,12 +244,12 @@ if ("undefined" == typeof(cardbookDates)) {
 								lFirstField = aDateString.substr(0, 4);
 								lSecondField = aDateString.substr(4, 2);
 								lThirdField = aDateString.substr(6, 2);
-								lReturn = new Date(lFirstField, lSecondField-1, lThirdField);
+								lReturn = new Date(Date.UTC(lFirstField, lSecondField-1, lThirdField));
 							} else if (aDateString.length == 4 || aDateString.length == 3) {
 								lFirstField = aDateString.substr(0, 2);
 								lSecondField = aDateString.substr(2, 2);
 								lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-								lReturn = new Date('666', lFirstField-1, lSecondField);
+								lReturn = new Date(Date.UTC('666', lFirstField-1, lSecondField));
 							} else {
 								lReturn = "WRONGDATE";
 							}
@@ -259,12 +259,12 @@ if ("undefined" == typeof(cardbookDates)) {
 								lFirstField = aDateString.substr(0, 2);
 								lSecondField = aDateString.substr(2, 2);
 								lThirdField = aDateString.substr(4, 4);
-								lReturn = new Date(lThirdField, lSecondField-1, lFirstField);
+								lReturn = new Date(Date.UTC(lThirdField, lSecondField-1, lFirstField));
 							} else if (aDateString.length == 4 || aDateString.length == 3) {
 								lFirstField = aDateString.substr(0, 2);
 								lSecondField = aDateString.substr(2, 2);
 								lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-								lReturn = new Date('666', lSecondField-1, lFirstField);
+								lReturn = new Date(Date.UTC('666', lSecondField-1, lFirstField));
 							} else {
 								lReturn = "WRONGDATE";
 							}
@@ -274,12 +274,12 @@ if ("undefined" == typeof(cardbookDates)) {
 								lFirstField = aDateString.substr(0, 2);
 								lSecondField = aDateString.substr(2, 2);
 								lThirdField = aDateString.substr(4, 4);
-								lReturn = new Date(lThirdField, lFirstField-1, lSecondField);
+								lReturn = new Date(Date.UTC(lThirdField, lFirstField-1, lSecondField));
 							} else if (aDateString.length == 4 || aDateString.length == 3) {
 								lFirstField = aDateString.substr(0, 2);
 								lSecondField = aDateString.substr(2, 2);
 								lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-								lReturn = new Date('666', lFirstField-1, lSecondField);
+								lReturn = new Date(Date.UTC('666', lFirstField-1, lSecondField));
 							} else {
 								lReturn = "WRONGDATE";
 							}

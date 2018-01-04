@@ -453,7 +453,7 @@ if ("undefined" == typeof(cardbookCardParser)) {
 					}
 					
 					if (this.fn == "") {
-						this.fn = cardbookUtils.getDisplayedName([this.prefixname, this.firstname, this.othername, this.lastname, this.suffixname], this.org);
+						this.fn = cardbookUtils.getDisplayedName(this.dirPrefId, [this.prefixname, this.firstname, this.othername, this.lastname, this.suffixname], this.org);
 					}
 					
 					cardbookUtils.addEtag(this, vEtag);

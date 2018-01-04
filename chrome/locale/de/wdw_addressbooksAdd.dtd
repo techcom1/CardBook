@@ -30,8 +30,8 @@
 <!ENTITY remotePage.google.label "Google">
 <!ENTITY remotePage.apple.label "Apple">
 <!ENTITY remotePage.connection.label "Verbindung">
-<!ENTITY remotePage.uri.description "Adresse für das CardDAV-Adressbuch. Sie können versuchen, Teil-URLs anzugeben (z.B. http(s)://carddav.example.org). Für Google-Adressbücher muss keine URL angegeben werden.">
-<!ENTITY remotePage.uri.label "URL">
+<!ENTITY remotePage.url.description "Adresse für das CardDAV-Adressbuch. Sie können versuchen, Teil-URLs anzugeben (z.B. http(s)://carddav.example.org). Für Google-Adressbücher muss keine URL angegeben werden.">
+<!ENTITY remotePage.url.label "URL">
 <!ENTITY remotePage.credentials.description "Zugangsdaten für das Adressbuch. Für Google-Adressbücher sollte der Benutzername der Email-Adresse entsprechen.">
 <!ENTITY remotePage.validatebutton.label "Überprüfen">
 

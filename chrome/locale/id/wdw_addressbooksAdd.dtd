@@ -30,8 +30,8 @@
 <!ENTITY remotePage.google.label "Google">
 <!ENTITY remotePage.apple.label "Apple">
 <!ENTITY remotePage.connection.label "Koneksi">
-<!ENTITY remotePage.uri.description "Untuk tipe CardDAV, masukkan URL buku alamat jauh Anda. Anda dapat mencoba menggunakan sebagian Alamat URL (sebagai contoh: http(s)://carddav.contoh.or.id). Untuk buku alamat Google, jangan tentukan bidang ini.">
-<!ENTITY remotePage.uri.label "Alamat URL">
+<!ENTITY remotePage.url.description "Untuk tipe CardDAV, masukkan URL buku alamat jauh Anda. Anda dapat mencoba menggunakan sebagian Alamat URL (sebagai contoh: http(s)://carddav.contoh.or.id). Untuk buku alamat Google, jangan tentukan bidang ini.">
+<!ENTITY remotePage.url.label "Alamat URL">
 <!ENTITY remotePage.credentials.description "Masukkan kredensial untuk mengakses buku alamat Anda. Untuk buku alamat Google, nama pengguna seharusnya email Google Anda.">
 <!ENTITY remotePage.validatebutton.label "Mengesahkan">
 

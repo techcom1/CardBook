@@ -30,8 +30,8 @@
 <!ENTITY remotePage.google.label "Google">
 <!ENTITY remotePage.apple.label "Apple">
 <!ENTITY remotePage.connection.label "Kapcsolat">
-<!ENTITY remotePage.uri.description "CardDAV-re, írjál be a távoli névjegytár mappa webcímet. Megpróbálja használni részleges webcímet (például http(s)://carddav.például.hu). Google névjegytár: hagyja üresen a mezőt.">
-<!ENTITY remotePage.uri.label "Webcím">
+<!ENTITY remotePage.url.description "CardDAV-re, írjál be a távoli névjegytár mappa webcímet. Megpróbálja használni részleges webcímet (például http(s)://carddav.például.hu). Google névjegytár: hagyja üresen a mezőt.">
+<!ENTITY remotePage.url.label "Webcím">
 <!ENTITY remotePage.credentials.description "Írja be a hitelesítő adatok hozzáférését a névjegytár. Google névjegytár: Google e-mailcím a felhasználónév.">
 <!ENTITY remotePage.validatebutton.label "Érvényesít">
 

@@ -95,11 +95,6 @@
 <!ENTITY showNameAsFLAccesskey "N">
 <!ENTITY showNameAsDSPLabel "Nome de apresentação">
 <!ENTITY showNameAsDSPAccesskey "d">
-<!ENTITY fnLabelExplanation "É possivel determinar como o CardBook gera o nome. A formula consiste num bloco dentro de '()'. Nesse bloco existem 2 partes delimitadas por '|'. A primeira é aplicada quando o termo envolvido (ex: {{1}}), não é nulo e a segunda parte é aplicada quando o termo é nulo">
-<!ENTITY fnFormulaLabel "Gerar Nome">
-<!ENTITY fnFormulaAccesskey "P">
-<!ENTITY resetFnFormulaLabel "Restaurar para origem">
-<!ENTITY resetFnFormulaAccesskey "R">
 <!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. A formula consiste num bloco dentro de '()'. Nesse bloco existem 2 partes delimitadas por '|'. A primeira é aplicada quando o termo envolvido (ex: {{1}}), não é nulo e a segunda parte é aplicada quando o termo é nulo">
 <!ENTITY adrFormulaLabel "??Address Format Formula??">
 <!ENTITY adrFormulaAccesskey "??R??">
@@ -193,11 +188,6 @@
 <!ENTITY solveConflictsRemoteAccesskey "R">
 <!ENTITY solveConflictsUserLabel "Perguntar ao utilizador">
 <!ENTITY solveConflictsUserAccesskey "U">
-<!ENTITY autoSyncGroupboxLabel "Sincronização periódica">
-<!ENTITY autoSyncLabel "Activar sincronização periódica">
-<!ENTITY autoSyncAccesskey "P">
-<!ENTITY autoSyncIntervalLabel "Intervalo para sincronização periódica em minutos">
-<!ENTITY autoSyncIntervalAccesskey "I">
 <!ENTITY requestsGroupboxLabel "Pedidos">
 <!ENTITY requestsTimeoutLabel "Timeout em segundos">
 <!ENTITY requestsTimeoutAccesskey "T">
@@ -240,8 +230,6 @@
 <!ENTITY searchInNoteTooltip1 "Adicionar tantas linhas no campo das Notas (o separador deve ser : e o formato da data deve ser definido na agenda) :">
 <!ENTITY searchInNoteTooltip2 "Evento:Descrição:2006-12-24">
 <!ENTITY searchInNoteAccesskey "A">
-<!ENTITY dateFormatLabel "Formato de data esperado">
-<!ENTITY dateFormatAccesskey "F">
 
 <!ENTITY remindersTabLabel "Lembrete">
 <!ENTITY remindViaPopupWindowGroupboxLabel "Lembrete em janela de popup">

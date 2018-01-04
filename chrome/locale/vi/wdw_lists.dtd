@@ -1,0 +1,8 @@
+<!ENTITY listTabLabel "Danh sách">
+<!ENTITY kindLabel "Loại">
+<!ENTITY kindAccesskey "L">
+<!ENTITY availableCardsGroupboxLabel "Địa chỉ liên hệ sẵn có">
+<!ENTITY addedCardsGroupboxLabel "Danh sách liên lạc">
+<!ENTITY appendlistTreeLabel "Thêm vào danh sách">
+<!ENTITY deletelistTreeLabel "Xóa từ danh sách">
+<!ENTITY editCardFromListLabel "Chỉnh sửa địa chỉ liên hệ này">

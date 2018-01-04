@@ -95,11 +95,6 @@
 <!ENTITY showNameAsFLAccesskey "R">
 <!ENTITY showNameAsDSPLabel "Getoonde naam">
 <!ENTITY showNameAsDSPAccesskey "G">
-<!ENTITY fnLabelExplanation "Het is mogelijk om in te stellen hoe CardBook de 'Getoonde naam' samenstelt. De formule bestaat uit blokken, omsloten door haakjes, (). In die blokken zitten twee delen, gescheiden door een verticaal streepje, |. Het eerste deel is van toepassing als het betreffende deel {{1}} ingevuld is, het tweede deel als het niet ingevuld is.">
-<!ENTITY fnFormulaLabel "'Getoonde naam' samenstellen">
-<!ENTITY fnFormulaAccesskey "s">
-<!ENTITY resetFnFormulaLabel "Herstellen naar standaardwaarde">
-<!ENTITY resetFnFormulaAccesskey "H">
 <!ENTITY adrLabelExplanation "Het is mogelijk om in te stellen hoe CardBook de adressen formatteert. De formule bestaat uit blokken, omsloten door haakjes, (). In die blokken zitten twee delen, gescheiden door een verticaal streepje, |. Het eerste deel is van toepassing als het betreffende deel {{1}} ingevuld is, het tweede deel als het niet ingevuld is.">
 <!ENTITY adrFormulaLabel "Adresformaat samenstellen">
 <!ENTITY adrFormulaAccesskey "F">
@@ -193,11 +188,6 @@
 <!ENTITY solveConflictsRemoteAccesskey "S">
 <!ENTITY solveConflictsUserLabel "Vraag mij">
 <!ENTITY solveConflictsUserAccesskey "V">
-<!ENTITY autoSyncGroupboxLabel "Periodiek synchroniseren">
-<!ENTITY autoSyncLabel "Periodiek synchroniseren inschakelen">
-<!ENTITY autoSyncAccesskey "P">
-<!ENTITY autoSyncIntervalLabel "Interval (in minuten) voor periodiek synchroniseren">
-<!ENTITY autoSyncIntervalAccesskey "I">
 <!ENTITY requestsGroupboxLabel "Verzoeken">
 <!ENTITY requestsTimeoutLabel "Timeout (in seconden)">
 <!ENTITY requestsTimeoutAccesskey "T">
@@ -240,8 +230,6 @@
 <!ENTITY searchInNoteTooltip1 "Regels toevoegen in het Notitie-veld (Scheidingsteken : en datumformaat zoals ingesteld in adresboek) :">
 <!ENTITY searchInNoteTooltip2 "Gebeurtenis:Beschrijving:2006-12-24">
 <!ENTITY searchInNoteAccesskey "Z">
-<!ENTITY dateFormatLabel "Datumformaat">
-<!ENTITY dateFormatAccesskey "D">
 
 <!ENTITY remindersTabLabel "Verjaardagsherinneringen">
 <!ENTITY remindViaPopupWindowGroupboxLabel "Verjaardagsherinneringen via popup-scherm">

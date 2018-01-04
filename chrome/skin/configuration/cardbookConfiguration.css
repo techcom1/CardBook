@@ -1,7 +1,11 @@
 /* Preferences window */
 #wdw_cardbookConfigurationWindow {
-	width:  50em;
-	height: 40em;
+	max-width:  800px;
+	max-height: 700px;
+}
+
+prefpane {
+	overflow: auto;
 }
 
 /* Originally written by Leszek(teo)Życzkowski */

@@ -28,7 +28,7 @@ var LDAPAbCardFormatter = {
 											"[o]");
 	},
 
-    requiredPropertiesFromBook: function requiredAttributesFromBook(aBook) {
+	requiredPropertiesFromBook: function requiredAttributesFromBook(aBook) {
 		var nameFormat = this.nameFormatFromBook(aBook);
 		var addressFormat = this.addressFormatFromBook(aBook);
 		var commentFormat = this.commentFormatFromBook(aBook);
@@ -101,7 +101,7 @@ var LDAPAbCardFormatter = {
 			Components.utils.reportError(error);
 		}
 		return aDefaultValue;
-    },
+	},
 
 	commentFromCard: function commentFromCard(aCard, aBook, aDefaultValue) {
 		try {

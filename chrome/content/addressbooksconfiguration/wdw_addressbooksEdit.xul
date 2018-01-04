@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://cardbook/skin/cardbookMain.css" type="text/css"?>
+<?xul-overlay href="chrome://cardbook/content/ovl_cardbookStringBundle.xul"?>
+<!DOCTYPE window [
+	<!ENTITY % addressbooksEditDTD SYSTEM "chrome://cardbook/locale/wdw_addressbooksEdit.dtd"> %addressbooksEditDTD;
+	<!ENTITY % configurationDTD SYSTEM "chrome://cardbook/locale/wdw_cardbookConfiguration.dtd"> %configurationDTD;
+	<!ENTITY % passwordDTD SYSTEM "chrome://cardbook/locale/wdw_password.dtd"> %passwordDTD;
+	<!ENTITY % buttonsDTD SYSTEM "chrome://cardbook/locale/wdw_editionButtons.dtd"> %buttonsDTD;
+]>
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	onload="wdw_addressbooksEdit.load();" resizable="true"
+	onclose="wdw_addressbooksEdit.cancel();"
+	id="wdw_addressbooksEdit" title="&wdw_addressbooksEditTitle;"
+	persist="screenX screenY width height" class="cardbookBackgroundColorClass dialog-content-box"
+	style="min-width:700px;min-height:400px;">
+	
+	<stringbundleset id="stringbundleset"/>
+
+	<script src="chrome://cardbook/content/preferences/cardbookPreferences.js"/>
+	<script src="chrome://cardbook/content/cardbookElementTools.js"/>
+	<script src="chrome://cardbook/content/cardbookDates.js"/>
+	<script src="chrome://cardbook/content/addressbooksconfiguration/wdw_addressbooksEdit.js"/>
+
+	<keyset id="wdw_addressbooksEdit-keys">
+		<key keycode="VK_ESCAPE" oncommand="wdw_addressbooksEdit.cancel();"/>
+	</keyset>
+
+	<tabbox id="accountPrefs" flex="1">
+
+		<tabs>
+			<tab id="generalTab" label="&generalTabLabel;"/>
+			<tab id="syncTab" label="&syncTabLabel;"/>
+			<tab id="miscTab" label="&miscTabLabel;"/>
+		</tabs>
+
+		<tabpanels>
+			<tabpanel orient="vertical">
+				<groupbox>
+					<caption label="&generalTabLabel;" class="header"/>
+					<hbox flex="1">
+						<image id="dummyGeneralGroupbox" class="cardbookNoPrefStarClass"/>
+						<grid align="center" flex="1">
+							<columns>
+								<column/>
+								<column flex="1"/>
+							</columns>
+				
+							<rows>
+								<row align="center">
+									<label value="&colorLabel;" accesskey="&colorAccesskey;" control="colorInput" class="header"/>
+									<hbox align="center">
+										<html:input id="colorInput"
+											class="small-margin"
+											type="color"/>
+									</hbox>
+								</row>
+								<separator class="thin"/>
+								<row align="center">
+									<label id="nameLabel" value="&nameLabel;" accesskey="&nameAccesskey;" control="nameTextBox" class="header"/>
+									<textbox id="nameTextBox"/>
+								</row>
+								<separator class="thin"/>
+								<row align="center">
+									<label id="typeLabel" value="&typeLabel;" control="typeTextBox" class="header"/>
+									<textbox id="typeTextBox" disabled="true"/>
+								</row>
+								<separator class="thin"/>
+								<row align="center">
+									<label id="urlLabel" value="&urlLabel;" control="urlTextBox" class="header"/>
+									<textbox id="urlTextBox" disabled="true"/>
+								</row>
+								<separator class="thin"/>
+								<row align="center">
+									<label id="usernameLabel" value="&usernameLabel;" control="usernameTextBox" class="header"/>
+									<textbox id="usernameTextBox" disabled="true"/>
+								</row>
+								<separator class="thin"/>
+								<row align="center">
+									<label id="readonlyLabel" value="&readonlyLabel;" accesskey="&readonlyAccesskey;" control="readonlyCheckBox" class="header"/>
+									<checkbox id="readonlyCheckBox"/>
+								</row>
+								<separator class="thin"/>
+								<row align="center">
+									<label value="&vCardVersionLabel;" control="vCardVersionTextBox" class="header"/>
+									<textbox id="vCardVersionTextBox" disabled="true"/>
+								</row>
+							</rows>
+						</grid>
+					</hbox>
+				</groupbox>
+				<separator class="thin"/>
+				<groupbox>
+					<caption label="&advancedSyncGroupboxLabel;" class="header"/>
+					<hbox flex="1">
+						<image id="dummyAdvancedGroupbox" class="cardbookNoPrefStarClass"/>
+						<grid align="center" flex="1">
+							<columns>
+								<column class="header"/>
+								<column flex="1"/>
+							</columns>
+				
+							<rows>
+								<row align="center">
+									<label value="&dateFormatLabel;" accesskey="&dateFormatAccesskey;" control="dateFormatMenuList" class="header"/>
+									<hbox align="center">
+										<menulist id="dateFormatMenuList">
+											<menupopup id="dateFormatMenuPopup"/>
+										</menulist>
+									</hbox>
+								</row>
+								<separator class="thin"/>
+								<row align="center">
+									<label value="&urnuuidLabel;" accesskey="&urnuuidAccesskey;" control="urnuuidCheckBox" class="header"/>
+									<checkbox id="urnuuidCheckBox" disabled="true"/>
+								</row>
+							</rows>
+						</grid>
+					</hbox>
+				</groupbox>
+			</tabpanel>
+
+			<tabpanel orient="vertical">
+				<groupbox>
+					<caption label="&autoSyncGroupboxLabel;" class="header"/>
+					<hbox flex="1">
+						<image id="dummyAdvancedGroupbox" class="cardbookNoPrefStarClass"/>
+						<grid align="center" flex="1">
+							<columns>
+								<column class="header"/>
+								<column flex="1"/>
+							</columns>
+				
+							<rows>
+								<row align="center">
+									<label value="&autoSyncLabel;" accesskey="&autoSyncAccesskey;" control="autoSyncCheckBox" class="header"/>
+									<checkbox id="autoSyncCheckBox" oncommand="wdw_addressbooksEdit.showAutoSyncInterval();"/>
+								</row>
+								<row align="center">
+									<label value="&autoSyncIntervalLabel;" accesskey="&autoSyncIntervalAccesskey;"
+										control="autoSyncIntervalTextBox" class="header indent"
+										id="autoSyncInterval"/>
+									<textbox id="autoSyncIntervalTextBox"/>
+								</row>
+							</rows>
+						</grid>
+					</hbox>
+				</groupbox>
+			</tabpanel>
+
+			<tabpanel orient="vertical">
+				<groupbox>
+					<caption label="&fnFormulaLabel;" class="header"/>
+					<description>&fnLabelExplanation;</description>
+					<hbox flex="1">
+						<image id="dummyMiscGroupbox" class="cardbookNoPrefStarClass"/>
+						<grid align="center" flex="1">
+							<columns>
+								<column/>
+								<column flex="1"/>
+								<column/>
+							</columns>
+			
+							<rows>
+								<row align="center">
+									<label value="&fnFormulaLabel;" accesskey="&fnFormulaAccesskey;" control="fnFormulaTextBox" class="header"/>
+									<textbox id="fnFormulaTextBox"/>
+									<button id="resetFnFormulaButton" label="&resetFnFormulaLabel;" accesskey="&resetFnFormulaAccesskey;"
+										oncommand="wdw_addressbooksEdit.resetFnFormula();"/>
+								</row>
+								<row align="center">
+									<label value=""/>
+									<label id="fnFormulaDescriptionLabel1"/>
+									<label value=""/>
+								</row>
+								<row align="center">
+									<label value=""/>
+									<label id="fnFormulaDescriptionLabel2"/>
+									<label value=""/>
+								</row>
+							</rows>
+						</grid>
+					</hbox>
+				</groupbox>
+			</tabpanel>
+		</tabpanels>
+	</tabbox>
+
+	<hbox>
+		<spacer flex="1"/>
+		<button id="saveEditionLabel" label="&saveEditionLabel;" accesskey="&saveEditionAccesskey;" oncommand="wdw_addressbooksEdit.save();"/>
+		<button id="cancelEditionLabel" label="&cancelEditionLabel;" accesskey="&cancelEditionAccesskey;" oncommand="wdw_addressbooksEdit.cancel();"/>
+	</hbox>
+</window>

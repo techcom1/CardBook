@@ -109,8 +109,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 				var photoURI = aABCard.getProperty("PhotoURI", "");
 				var photoType = aABCard.getProperty("PhotoType", "");
 				if (photoType == "file") {
-					var ioService = Services.io;
-					var myFileURI = ioService.newURI(photoURI, null, null);
+					var myFileURI = Services.io.newURI(photoURI, null, null);
 					myCard.photo.extension = cardbookUtils.getFileExtension(photoURI);
 					myCard.photo.value = cardbookSynchronization.getFileBinary(myFileURI);
 				} else if (photoType == "web") {

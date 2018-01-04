@@ -1,0 +1,28 @@
+<!ENTITY wdw_addressbooksEditTitle "Thuộc tính của sổ địa chỉ">
+
+<!ENTITY colorLabel "Màu">
+<!ENTITY colorAccesskey "M">
+<!ENTITY nameLabel "Tên">
+<!ENTITY nameAccesskey "T">
+<!ENTITY typeLabel "Loại">
+<!ENTITY urlLabel "Địa chỉ URL">
+<!ENTITY readonlyLabel "Chế độ chỉ đọc">
+<!ENTITY readonlyAccesskey "C">
+<!ENTITY vCardVersionLabel "Thẻ Ảo">
+<!ENTITY dateFormatLabel "Định dạng ngày mong muốn">
+<!ENTITY dateFormatAccesskey "n">
+<!ENTITY urnuuidLabel "Sử dụng urn:uuid">
+<!ENTITY urnuuidAccesskey "u">
+
+<!ENTITY autoSyncGroupboxLabel "Đồng bộ định kỳ">
+<!ENTITY autoSyncLabel "Bật đồng bộ hóa định kỳ">
+<!ENTITY autoSyncAccesskey "B">
+<!ENTITY autoSyncIntervalLabel "Khoảng giữa các lần đồng bộ định kỳ (phút)">
+<!ENTITY autoSyncIntervalAccesskey "K">
+
+<!ENTITY miscTabLabel "Khác">
+<!ENTITY fnLabelExplanation "Có thể tùy chỉnh cách Danh bạ tạo Tên hiển thị. Công thức này bao gồm các khối kèm theo “()”. Trong các khối này, có hai phần được phân cách bởi “|”. Phần thứ nhất áp dụng khi thuật ngữ có liên quan, ví dụ {{1}}, không phải là không, phần thứ hai áp dụng khi thuật ngữ có liên quan là vô giá trị.">
+<!ENTITY fnFormulaLabel "Tạo tên Hiển thị">
+<!ENTITY fnFormulaAccesskey "i">
+<!ENTITY resetFnFormulaLabel "Khôi phục về Mặc định">
+<!ENTITY resetFnFormulaAccesskey "M">

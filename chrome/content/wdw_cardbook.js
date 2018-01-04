@@ -319,7 +319,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			var positionOfSelectedCard = 0;
 			for (let i = 0; i < numRanges; i++) {
 				myTree.view.selection.getRangeAt(i,start,end);
-			    for (let k = start.value; k <= end.value; k++) {
+				for (let k = start.value; k <= end.value; k++) {
 					numberOfSelectedCard++;
 					positionOfSelectedCard = k;
 				}
@@ -548,7 +548,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					var myCard = myCards[i];
 					var myOutCard = new cardbookCardParser();
 					cardbookUtils.cloneCard(myCard, myOutCard);
-					var myFn = cardbookUtils.getDisplayedName([myOutCard.prefixname, myOutCard.firstname, myOutCard.othername, myOutCard.lastname, myOutCard.suffixname], myOutCard.org);
+					var myFn = cardbookUtils.getDisplayedName(myOutCard.dirPrefId, [myOutCard.prefixname, myOutCard.firstname, myOutCard.othername, myOutCard.lastname, myOutCard.suffixname], myOutCard.org);
 					if (myFn != "" && myFn != myOutCard.fn) {
 						myOutCard.fn = myFn;
 						cardbookRepository.saveCard(myCard, myOutCard, "cardbook.cardModifiedDirect");
@@ -1649,22 +1649,8 @@ if ("undefined" == typeof(wdw_cardbook)) {
 						return;
 					}
 					cardbookSynchronization.initMultipleOperations(myPrefId);
-					var myPrefIdName = cardbookPreferences.getName(myPrefId);
-					var myPrefIdUrl = cardbookPreferences.getUrl(myPrefId);
-					var myPrefIdUser = cardbookPreferences.getUser(myPrefId);
-					var myPrefIdColor = cardbookPreferences.getColor(myPrefId);
-					var myPrefIdVCard = cardbookPreferences.getVCardVersion(myPrefId);
-					var myPrefIdReadOnly = cardbookPreferences.getReadOnly(myPrefId);
-					var myPrefIdDateFormat = cardbookPreferences.getDateFormat(myPrefId);
-					var myPrefIdUrnuuid = cardbookPreferences.getUrnuuid(myPrefId);
-					var myPrefAutoSyncEnabled = cardbookPreferences.getAutoSyncEnabled(myPrefId);
-					var myPrefAutoSyncInterval = cardbookPreferences.getAutoSyncInterval(myPrefId);
-					var myArgs = {serverEditionName: myPrefIdName, serverEditionType: myPrefIdType, serverEditionUrl: myPrefIdUrl, serverEditionUser: myPrefIdUser,
-									serverEditionReadOnly: myPrefIdReadOnly, serverEditionColor: myPrefIdColor, serverEditionVCard: myPrefIdVCard,
-									serverEditionId: myPrefId, serverEditionDateFormat: myPrefIdDateFormat, serverEditionUrnuuid: myPrefIdUrnuuid,
-									serverEditionAutoSyncEnabled: myPrefAutoSyncEnabled, serverEditionAutoSyncInterval: myPrefAutoSyncInterval,
-									serverCallback: wdw_cardbook.modifyAddressbook};
-					var myWindow = window.openDialog("chrome://cardbook/content/wdw_serverEdition.xul", "",
+					var myArgs = {dirPrefId: myPrefId, serverCallback: wdw_cardbook.modifyAddressbook};
+					var myWindow = window.openDialog("chrome://cardbook/content/addressbooksconfiguration/wdw_addressbooksEdit.xul", "",
 													   // Workaround for Bug 1151440 - the HTML color picker won't work
 													   // in linux when opened from modal dialog
 													   (Services.appinfo.OS == 'Linux') ? "chrome,resizable,centerscreen" : "modal,chrome,resizable,centerscreen"
@@ -1673,16 +1659,8 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			}
 		},
 
-		modifyAddressbook: function (aChoice, aDirPrefId, aName, aColor, aVCard, aReadOnly, aDateFormat, aUrnuuid, aAutoSyncEnabled, aAutoSyncInterval) {
+		modifyAddressbook: function (aChoice, aDirPrefId, aName, aReadOnly) {
 			if (aChoice == "SAVE") {
-				cardbookPreferences.setName(aDirPrefId, aName);
-				cardbookPreferences.setColor(aDirPrefId, aColor);
-				cardbookPreferences.setVCardVersion(aDirPrefId, aVCard);
-				cardbookPreferences.setReadOnly(aDirPrefId, aReadOnly);
-				cardbookPreferences.setDateFormat(aDirPrefId, aDateFormat);
-				cardbookPreferences.setUrnuuid(aDirPrefId, aUrnuuid);
-				cardbookPreferences.setAutoSyncEnabled(aDirPrefId, aAutoSyncEnabled);
-				cardbookPreferences.setAutoSyncInterval(aDirPrefId, aAutoSyncInterval);
 				wdw_cardbook.loadCssRules();
 				for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
 					if (cardbookRepository.cardbookAccounts[i][4] === aDirPrefId) {

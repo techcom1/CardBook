@@ -4,9 +4,9 @@ if ("undefined" == typeof(wdw_cardbookPrint)) {
 	var wdw_cardbookPrint = {
 		
 		refreshHTML: function () {
-            var iframeDoc = document.getElementById("content").contentDocument;
+			var iframeDoc = document.getElementById("content").contentDocument;
 			cardbookRepository.reloadCss("chrome://cardbook/skin/cardbookDataPrint.css");
-            var myHTML = cardbookPrint.buildHTML(window.arguments[0].listOfCards, document.getElementById("titleTextBox").value,
+			var myHTML = cardbookPrint.buildHTML(window.arguments[0].listOfCards, document.getElementById("titleTextBox").value,
 																		{ display: document.getElementById("displayCheckBox").checked,
 																			headers: document.getElementById("displayHeadersCheckBox").checked,
 																			fieldNames: document.getElementById("displayFieldNamesCheckBox").checked,
@@ -31,7 +31,7 @@ if ("undefined" == typeof(wdw_cardbookPrint)) {
 				iframeDoc.title = "CardBook";
 			}
 			window.setTimeout(function() { PrintUtils.printPreview(); }, 500);
-        },
+		},
 
 		setWindowTitle: function () {
 			var strBundle = document.getElementById("cardbook-strings");

@@ -1,7 +1,7 @@
 <!ENTITY generalTabLabel "Général">
-<!ENTITY CardBookTabLabel "Onglet CardBook">
+<!ENTITY CardBookTabLabel "Onglet">
 <!ENTITY typesTabLabel "Types">
-<!ENTITY IMPPsTabLabel "Communications internet">
+<!ENTITY IMPPsTabLabel "Communications">
 <!ENTITY customFieldsTabLabel "Champs personnalisés">
 <!ENTITY listsTabLabel "Listes">
 <!ENTITY syncTabLabel "Synchronisations">
@@ -95,11 +95,6 @@
 <!ENTITY showNameAsFLAccesskey "P">
 <!ENTITY showNameAsDSPLabel "Nom affiché">
 <!ENTITY showNameAsDSPAccesskey "f">
-<!ENTITY fnLabelExplanation "Il est possible de choisir comment CardBook génère ses Noms affichés. Cette formule est une succession de blocs délimités par '()'. Dans ces blocs, il y a deux parties délimitées par '|'. La première partie s'applique lorsque le terme impliqué, par exemple {{1}}, n'est pas null, la seconde partie s'applique lorsque le terme impliqué est null.">
-<!ENTITY fnFormulaLabel "Génération du nom affiché">
-<!ENTITY fnFormulaAccesskey "m">
-<!ENTITY resetFnFormulaLabel "Réinitialiser">
-<!ENTITY resetFnFormulaAccesskey "R">
 <!ENTITY adrLabelExplanation "Il est possible de choisir comment CardBook formatte ses adresses. Cette formule est une succession de blocs délimités par '()'. Dans ces blocs, il y a deux parties délimitées par '|'. La première partie s'applique lorsque le terme impliqué, par exemple {{1}}, n'est pas null, la seconde partie s'applique lorsque le terme impliqué est null.">
 <!ENTITY adrFormulaLabel "Formattage des adresses">
 <!ENTITY adrFormulaAccesskey "F">
@@ -193,11 +188,6 @@
 <!ENTITY solveConflictsRemoteAccesskey "S">
 <!ENTITY solveConflictsUserLabel "Demander à l'utilisateur">
 <!ENTITY solveConflictsUserAccesskey "U">
-<!ENTITY autoSyncGroupboxLabel "Synchronisation périodique">
-<!ENTITY autoSyncLabel "Activer la synchronisation périodique">
-<!ENTITY autoSyncAccesskey "A">
-<!ENTITY autoSyncIntervalLabel "Intervalle pour la synchronisation périodique (minutes)">
-<!ENTITY autoSyncIntervalAccesskey "I">
 <!ENTITY requestsGroupboxLabel "Requêtes">
 <!ENTITY requestsTimeoutLabel "Délai (secondes)">
 <!ENTITY requestsTimeoutAccesskey "D">
@@ -240,8 +230,6 @@
 <!ENTITY searchInNoteTooltip1 "Ajoutez ce genre de ligne dans le champ Note (le separateur doit être : et le format de date doit être celui défini pour le carnet d'adresses) :">
 <!ENTITY searchInNoteTooltip2 "Évènement:Description:2006-12-24">
 <!ENTITY searchInNoteAccesskey "R">
-<!ENTITY dateFormatLabel "Format de date attendu">
-<!ENTITY dateFormatAccesskey "F">
 
 <!ENTITY remindersTabLabel "Rappels">
 <!ENTITY remindViaPopupWindowGroupboxLabel "Rappel par Popup">

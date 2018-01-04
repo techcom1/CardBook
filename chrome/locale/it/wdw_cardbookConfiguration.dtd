@@ -95,11 +95,6 @@
 <!ENTITY showNameAsFLAccesskey "N">
 <!ENTITY showNameAsDSPLabel "Mostra nome">
 <!ENTITY showNameAsDSPAccesskey "M">
-<!ENTITY fnLabelExplanation "E’ possibile modificare le modalita’ in cui CardBook genera il nome in mostra. Questa formula consiste in blocchi racchiusi da '()'. In questi blocchi, ci sono due parti delimitate da '|'. La prima parte è applicata quando la parola usata, per esempio {{1}}, non è nulla, la seconda parte è applicata quando la parola usata è nulla.">
-<!ENTITY fnFormulaLabel "Genera Nome Display">
-<!ENTITY fnFormulaAccesskey "p">
-<!ENTITY resetFnFormulaLabel "Ripristina al Default">
-<!ENTITY resetFnFormulaAccesskey "R">
 <!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Questa formula consiste in blocchi racchiusi da '()'. In questi blocchi, ci sono due parti delimitate da '|'. La prima parte è applicata quando la parola usata, per esempio {{1}}, non è nulla, la seconda parte è applicata quando la parola usata è nulla.">
 <!ENTITY adrFormulaLabel "??Address Format Formula??">
 <!ENTITY adrFormulaAccesskey "??R??">
@@ -193,11 +188,6 @@
 <!ENTITY solveConflictsRemoteAccesskey "S">
 <!ENTITY solveConflictsUserLabel "Chiedi all'utente">
 <!ENTITY solveConflictsUserAccesskey "A">
-<!ENTITY autoSyncGroupboxLabel "Sincronizzazione periodica">
-<!ENTITY autoSyncLabel "Abilita la sincronizzazione periodica">
-<!ENTITY autoSyncAccesskey "E">
-<!ENTITY autoSyncIntervalLabel "Intervallo di sincronizzazione periodica (Minuti)">
-<!ENTITY autoSyncIntervalAccesskey "I">
 <!ENTITY requestsGroupboxLabel "Richieste">
 <!ENTITY requestsTimeoutLabel "Timeout (Secondi)">
 <!ENTITY requestsTimeoutAccesskey "T">
@@ -240,8 +230,6 @@
 <!ENTITY searchInNoteTooltip1 "Aggiungi questa riga nel campo Note (separatori dovrebbero essere: e il formato della data dovrebbe essere lo stesso identificato nella rubrica) :">
 <!ENTITY searchInNoteTooltip2 "Evento:Descrizione:2006-12-24">
 <!ENTITY searchInNoteAccesskey "S">
-<!ENTITY dateFormatLabel "Formato per la data previsto">
-<!ENTITY dateFormatAccesskey "E">
 
 <!ENTITY remindersTabLabel "Promemoria">
 <!ENTITY remindViaPopupWindowGroupboxLabel "Visualizza un promemoria attraverso una finestra di pop-up">

@@ -423,8 +423,8 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 		},
 		
 		getFileBinary: function (afileURI) {
-            var content = "";
-            var data = "";
+			var content = "";
+			var data = "";
 			var file = afileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
 
 			if (file.exists() && file.isReadable()) {
@@ -619,15 +619,14 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					}
 				} else if (aCard[aField].localURI != null && aCard[aField].localURI !== undefined && aCard[aField].localURI != "") {
 					if (!cacheDir.exists()) {
-						var ioService = Services.io;
-						var myFileURI = ioService.newURI(aCard[aField].localURI, null, null);
+						var myFileURI = Services.io.newURI(aCard[aField].localURI, null, null);
 						var myFile1 = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
 						myFile1.copyToFollowingLinks(cacheDir.parent,cacheDir.leafName);
 						aCard[aField].localURI = "file:///" + cacheDir.path;
 					}
 				} else if (aCard[aField].URI != null && aCard[aField].URI !== undefined && aCard[aField].URI != "") {
 					if (!cacheDir.exists()) {
-						if (aCard[aField].URI.indexOf("http") == 0) {
+						if (aCard[aField].URI.startsWith("http")) {
 							var listener_getimage = {
 								onDAVQueryComplete: function(status, response, askCertificate, etag) {
 									if (status > 199 && status < 400) {
@@ -648,10 +647,31 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							cardbookUtils.formatStringForOutput("serverCardGettingImage", [aImageConnection.connDescription, aCard.fn]);
 							cardbookRepository.cardbookImageGetRequest[aCard.dirPrefId]++;
 							request.getimage();
-						} else {
-							var ioService = Services.io;
-							var myFileURI = ioService.newURI(aCard[aField].URI, null, null);
-							var fileContent = btoa(cardbookSynchronization.getFileBinary(myFileURI));
+						} else if (aCard[aField].URI.startsWith("file")) {
+							var myType = cardbookPreferences.getType(aCard.dirPrefId);
+							if (myType == "FILE" || myType == "DIRECTORY") {
+								var myBaseURIPath = "file:///" + cardbookPreferences.getUrl(aCard.dirPrefId);
+								if (myType == "DIRECTORY") {
+									if (Services.appinfo.OS == "WINNT") {
+										var mySep = "\\";
+									} else {
+										var mySep = "/";
+									}
+									if (myBaseURIPath[myBaseURIPath.length - 1] != mySep) {
+										myBaseURIPath += mySep;
+									}
+								}
+								if (aCard[aField].URI.startsWith("file://") && !aCard[aField].URI.startsWith("file:///")) {
+									var myFileURIPath = aCard[aField].URI.replace("file://", "");
+								} else {
+									var myFileURIPath = aCard[aField].URI;
+								}
+								var myBaseURI = Services.io.newURI(myBaseURIPath, null, null);
+								var myFileURI = Services.io.newURI(myFileURIPath, null, myBaseURI);
+							} else {
+								var myFileURI = Services.io.newURI(aCard[aField].URI, null, null);
+							}
+							var fileContent = cardbookSynchronization.getFileBinary(myFileURI);
 							cardbookSynchronization.writeContentToFile(cacheDir.path, fileContent, "NOUTF8");
 							aCard[aField].localURI = "file:///" + cacheDir.path;
 							wdw_cardbooklog.updateStatusProgressInformationWithDebug2(myPrefName + " : debug mode : Contact " + aCard.fn + " " + aField + " written to cache");
@@ -1323,8 +1343,8 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 				baseUrl = baseUrl + "/";
 			}
 			cardbookUtils.formatStringForOutput("synchronizationSearchingCards", [aConnection.connDescription]);
-            let request = new cardbookWebDAV(aConnection, listener_propfind, "", true);
-            request.propfind(["DAV: getetag"]);
+			let request = new cardbookWebDAV(aConnection, listener_propfind, "", true);
+			request.propfind(["DAV: getetag"]);
 		},
 
 		serverSyncCards: function(aConnection, aMode, aPrefIdType) {
@@ -1421,8 +1441,8 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 				baseUrl = baseUrl + "/";
 			}
 			cardbookUtils.formatStringForOutput("synchronizationSearchingCards", [aConnection.connDescription]);
-            let request = new cardbookWebDAV(aConnection, listener_propfind, "", true);
-            request.propfind(["DAV: getcontenttype", "DAV: getetag"]);
+			let request = new cardbookWebDAV(aConnection, listener_propfind, "", true);
+			request.propfind(["DAV: getcontenttype", "DAV: getetag"]);
 		},
 
 		// only called at setup
@@ -1626,7 +1646,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 													}
 													wdw_cardbooklog.updateStatusProgressInformationWithDebug2(aConnection.connDescription + " : href found : " + href);
 													wdw_cardbooklog.updateStatusProgressInformationWithDebug2(aConnection.connDescription + " : displayName found : " + displayName);
-													if (href.indexOf("http") == 0 ) {
+													if (href.startsWith("http")) {
 														aConnection.connUrl = href;
 													} else {
 														aConnection.connUrl = aRootUrl + href;
@@ -1716,7 +1736,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 												href += '/';
 											}
 											wdw_cardbooklog.updateStatusProgressInformationWithDebug2(aConnection.connDescription + " : addressbook-home-set found : " + href);
-											if (href.indexOf("http") == 0 ) {
+											if (href.startsWith("http")) {
 												aConnection.connUrl = href;
 											} else {
 												aConnection.connUrl = aRootUrl + href;
@@ -2476,7 +2496,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 								cardbookUtils.setCardUUID(myCard);
 								cardbookUtils.setCalculatedFields(myCard);
 								if (myCard.fn == "") {
-									myCard.fn = cardbookUtils.getDisplayedName([myCard.prefixname, myCard.firstname, myCard.othername, myCard.lastname, myCard.suffixname], myCard.org);
+									myCard.fn = cardbookUtils.getDisplayedName(myCard.dirPrefId, [myCard.prefixname, myCard.firstname, myCard.othername, myCard.lastname, myCard.suffixname], myCard.org);
 								}
 							}
 							catch (e) {

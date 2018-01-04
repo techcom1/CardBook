@@ -94,11 +94,6 @@
 <!ENTITY showNameAsFLAccesskey "e">
 <!ENTITY showNameAsDSPLabel "Pokaži ime">
 <!ENTITY showNameAsDSPAccesskey "D">
-<!ENTITY fnLabelExplanation "Moguće je prilagoditi način na koji Kontakti stvara svoj prikaz imena. Formula se satoji od blokova unutar znaka'()'. U ovim blokovima su dva dijela ograničena znakom '|'. Prvi dio se odnosi na uključen naziv, npr. {{1}}, nije poništen, drugi dio se odnosi kad je uključen naziv poništen.">
-<!ENTITY fnFormulaLabel "Stvori pokaži naziv">
-<!ENTITY fnFormulaAccesskey "y">
-<!ENTITY resetFnFormulaLabel "Vrati na uobičajeno">
-<!ENTITY resetFnFormulaAccesskey "j">
 <!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Formula se satoji od blokova unutar znaka'()'. U ovim blokovima su dva dijela ograničena znakom '|'. Prvi dio se odnosi na uključen naziv, npr. {{1}}, nije poništen, drugi dio se odnosi kad je uključen naziv poništen.">
 <!ENTITY adrFormulaLabel "??Address Format Formula??">
 <!ENTITY adrFormulaAccesskey "??R??">
@@ -192,11 +187,6 @@
 <!ENTITY solveConflictsRemoteAccesskey "S">
 <!ENTITY solveConflictsUserLabel "Ask user">
 <!ENTITY solveConflictsUserAccesskey "A">
-<!ENTITY autoSyncGroupboxLabel "Periodic Syncing">
-<!ENTITY autoSyncLabel "Omogući povremeno usklađivanje">
-<!ENTITY autoSyncAccesskey "E">
-<!ENTITY autoSyncIntervalLabel "Interval za povremeno usklađivanje (minuta)">
-<!ENTITY autoSyncIntervalAccesskey "I">
 <!ENTITY requestsGroupboxLabel "Zahtjevi">
 <!ENTITY requestsTimeoutLabel "Pauza (sekundi)">
 <!ENTITY requestsTimeoutAccesskey "T">
@@ -239,8 +229,6 @@
 <!ENTITY searchInNoteTooltip1 "Dodaj takve linije u polje bilježaka (treba biti odvojeno: a način pisanja datuma treba biti definiran isto kao u adresaru.) :">
 <!ENTITY searchInNoteTooltip2 "Događaj:Opis:2006-12-24">
 <!ENTITY searchInNoteAccesskey "S">
-<!ENTITY dateFormatLabel "Format očekivanog datuma">
-<!ENTITY dateFormatAccesskey "E">
 
 <!ENTITY remindersTabLabel "Podsjetnici">
 <!ENTITY remindViaPopupWindowGroupboxLabel "Remind via Popup Window">

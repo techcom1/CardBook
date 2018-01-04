@@ -34,7 +34,7 @@
 	<script src="chrome://cardbook/content/birthdays/cardbookBirthdaysUtils.js"/>
 	<script src="chrome://cardbook/content/cardbookElementTools.js"/>
 
-	<prefpane id="generalTab" label="&generalTabLabel;" index="general" style="overflow:auto">
+	<prefpane id="generalTab" label="&generalTabLabel;" index="general">
 		
 		<preferences id="cardbookGeneralPreferences">
 			<preference id="extensions.cardbook.exclusive"
@@ -203,7 +203,7 @@
 		</groupbox>
 	</prefpane>
 
-	<prefpane id="CardBookTab" label="&CardBookTabLabel;" index="CardBook" style="overflow:auto">
+	<prefpane id="CardBookTab" label="&CardBookTabLabel;" index="CardBook">
 
 		<preferences id="cardbookCardBookPreferences">
 			<preference id="extensions.cardbook.mailPopularityTabView"
@@ -218,8 +218,6 @@
 				name="extensions.cardbook.localizeEngine" type="string"/>
 			<preference id="extensions.cardbook.showNameAs"
 				name="extensions.cardbook.showNameAs" type="string"/>
-			<preference id="extensions.cardbook.fnFormula"
-				name="extensions.cardbook.fnFormula" type="string"/>
 			<preference id="extensions.cardbook.adrFormula"
 				name="extensions.cardbook.adrFormula" type="string"/>
 			<preference id="extensions.cardbook.localizeTarget"
@@ -272,41 +270,6 @@
 		</groupbox>
 
 		<groupbox>
-			<caption label="&fnFormulaLabel;"/>
-			<description>&fnLabelExplanation;</description>
-			<grid align="center" flex="1">
-				<columns>
-					<column/>
-					<column flex="1"/>
-					<column/>
-				</columns>
-
-				<rows>
-					<row align="center">
-						<label value="&fnFormulaLabel;"
-							accesskey="&fnFormulaAccesskey;"
-							control="fnFormulaTextBox"
-							id="fnFormula"/>
-						<textbox id="fnFormulaTextBox"
-							preference="extensions.cardbook.fnFormula"/>
-						<button id="resetFnFormulaButton" label="&resetFnFormulaLabel;" accesskey="&resetFnFormulaAccesskey;"
-							oncommand="wdw_cardbookConfiguration.resetFnFormula();"/>
-					</row>
-					<row align="center">
-						<label value=""/>
-						<label id="fnFormulaDescriptionLabel1"/>
-						<label value=""/>
-					</row>
-					<row align="center">
-						<label value=""/>
-						<label id="fnFormulaDescriptionLabel2"/>
-						<label value=""/>
-					</row>
-				</rows>
-			</grid>
-		</groupbox>
-
-		<groupbox>
 			<caption label="&adrFormulaLabel;"/>
 			<description>&adrLabelExplanation;</description>
 			<grid align="center" flex="1">
@@ -352,13 +315,13 @@
 
 		<groupbox>
 			<caption label="&miscEditingGroupboxLabel;"/>
-			<hbox align="center">
+			<hbox flex="1" align="center">
 				<checkbox id="preferEmailEditionCheckBox" label="&preferEmailEditionLabel;"
 					accesskey="&preferEmailEditionAccesskey;"
 					preference="extensions.cardbook.preferEmailEdition"/>
 			</hbox>
 			<separator class="thin"/>
-			<hbox align="center">
+			<hbox flex="1" align="center">
 				<label value="&dateDisplayedFormatLabel;" accesskey="&dateDisplayedFormatAccesskey;" control="dateDisplayedFormatMenulist"/>
 				<menulist id="dateDisplayedFormatMenulist" crop="none" preference="extensions.cardbook.dateDisplayedFormat">
 					<menupopup id="dateDisplayedFormatMenupopup">
@@ -370,7 +333,7 @@
 		</groupbox>
 	</prefpane>
 
-	<prefpane id="typesTab" label="&typesTabLabel;" index="types" style="overflow:auto">
+	<prefpane id="typesTab" label="&typesTabLabel;" index="types">
 
 		<preferences id="cardbookTypesPreferences">
 			<preference id="extensions.cardbook.usePreferenceValue"
@@ -433,7 +396,7 @@
 		</groupbox>
 	</prefpane>
 
-	<prefpane id="IMPPTab" label="&IMPPsTabLabel;" index="IMPP" style="overflow:auto">
+	<prefpane id="IMPPTab" label="&IMPPsTabLabel;" index="IMPP">
 
 		<preferences id="cardbookIMPPPreferences">
 			<preference id="extensions.cardbook.preferIMPPPref"
@@ -489,7 +452,7 @@
 		</groupbox>
 	</prefpane>
 
-	<prefpane id="customFieldsTab" label="&customFieldsTabLabel;" index="customFields" style="overflow:auto">
+	<prefpane id="customFieldsTab" label="&customFieldsTabLabel;" index="customFields">
 
 		<groupbox flex="1">
 			<caption label="&customFieldsTabLabel;"/>
@@ -549,7 +512,7 @@
 		</groupbox>
 	</prefpane>
 
-	<prefpane id="listsTab" label="&listsTabLabel;" index="lists" style="overflow:auto">
+	<prefpane id="listsTab" label="&listsTabLabel;" index="lists">
 
 		<preferences id="cardbookListsPreferences">
 			<preference id="extensions.cardbook.kindCustom"
@@ -598,7 +561,7 @@
 		</groupbox>
 	</prefpane>
 
-	<prefpane id="syncTab" label="&syncTabLabel;" index="sync" style="overflow:auto">
+	<prefpane id="syncTab" label="&syncTabLabel;" index="sync">
 
 		<preferences id="cardbookSyncPreferences">
 			<preference id="extensions.cardbook.initialSync"
@@ -693,7 +656,7 @@
 		</groupbox>
 	</prefpane>
 
-	<prefpane id="emailTab" label="&emailTabLabel;" index="email" style="overflow:auto">
+	<prefpane id="emailTab" label="&emailTabLabel;" index="email">
 
 		<preferences id="cardbookEmailPreferences">
 			<preference id="extensions.cardbook.preferEmailPref"
@@ -767,7 +730,7 @@
 		</groupbox>
 	</prefpane>
 
-	<prefpane id="birthdaylistTab" label="&birthdaylistTabLabel;" index="birthdaylist" style="overflow:auto">
+	<prefpane id="birthdaylistTab" label="&birthdaylistTabLabel;" index="birthdaylist">
 
 		<preferences id="cardbookBirthdaylistPreferences">
 			<preference id="extensions.cardbook.addressBooksNameList"
@@ -806,7 +769,7 @@
 		</groupbox>
 	</prefpane>
 
-	<prefpane id="synclistTab" label="&synclistTabLabel;" index="synclist" style="overflow:auto">
+	<prefpane id="synclistTab" label="&synclistTabLabel;" index="synclist">
 
 		<preferences id="cardbookSynclistPreferences">
 			<preference id="extensions.cardbook.numberOfDaysForSearching"

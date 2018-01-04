@@ -650,7 +650,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 
 		setDisplayName: function () {
 			var myNewOrg = wdw_cardEdition.getOrg(false);
-			var myNewFn = cardbookUtils.getDisplayedName([document.getElementById('prefixnameTextBox').value.trim(),
+			var myNewFn = cardbookUtils.getDisplayedName(document.getElementById('dirPrefIdTextBox').value, [document.getElementById('prefixnameTextBox').value.trim(),
 																document.getElementById('firstnameTextBox').value.trim(),
 																document.getElementById('othernameTextBox').value.trim(),
 																document.getElementById('lastnameTextBox').value.trim(),

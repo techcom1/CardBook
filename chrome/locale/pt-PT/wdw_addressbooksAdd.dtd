@@ -30,8 +30,8 @@
 <!ENTITY remotePage.google.label "Google">
 <!ENTITY remotePage.apple.label "Apple">
 <!ENTITY remotePage.connection.label "Ligação">
-<!ENTITY remotePage.uri.description "Para CardDAV, insira o URL da agenda remota. Deve tentar usar um URL deste tipo (ex: http(s)://carddav.example.org). Para agenda do Google, não coloque nada neste campo.">
-<!ENTITY remotePage.uri.label "URL">
+<!ENTITY remotePage.url.description "Para CardDAV, insira o URL da agenda remota. Deve tentar usar um URL deste tipo (ex: http(s)://carddav.example.org). Para agenda do Google, não coloque nada neste campo.">
+<!ENTITY remotePage.url.label "URL">
 <!ENTITY remotePage.credentials.description "Coloque as credenciais de acesso à agenda. Para a agenda da Google, o username deverá ser o seu email Google.">
 <!ENTITY remotePage.validatebutton.label "Validar">
 

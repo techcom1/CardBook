@@ -30,8 +30,8 @@
 <!ENTITY remotePage.google.label "Google">
 <!ENTITY remotePage.apple.label "Apple">
 <!ENTITY remotePage.connection.label "Connessione">
-<!ENTITY remotePage.uri.description "Per rubriche CardDAV, inserisci l'URL della tua rubrica remota. Puoi provare a utilizzare un URL parziale (esempio: http(s)://carddav.example.org). Per rubriche Google, NON riempire questo campo.">
-<!ENTITY remotePage.uri.label "URL">
+<!ENTITY remotePage.url.description "Per rubriche CardDAV, inserisci l'URL della tua rubrica remota. Puoi provare a utilizzare un URL parziale (esempio: http(s)://carddav.example.org). Per rubriche Google, NON riempire questo campo.">
+<!ENTITY remotePage.url.label "URL">
 <!ENTITY remotePage.credentials.description "Inserire le credenziali di accesso alla tua rubrica. Per rubriche Google, il nome utente corrisponde alla tua email su Google.">
 <!ENTITY remotePage.validatebutton.label "Conferma">
 

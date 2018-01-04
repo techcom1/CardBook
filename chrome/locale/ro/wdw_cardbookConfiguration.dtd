@@ -94,11 +94,6 @@
 <!ENTITY showNameAsFLAccesskey "P">
 <!ENTITY showNameAsDSPLabel "Numele afișat">
 <!ENTITY showNameAsDSPAccesskey "N">
-<!ENTITY fnLabelExplanation "Este posibil să personalizați modul în care Contacte generează numele afișat. Această formulă constă în blocuri închise de „()”. În aceste blocuri, există două părți delimitate de „|”. Prima parte se aplică atunci când termenul implicat, de exemplu {{1}}, nu este nul, a doua parte se aplică atunci când termenul implicat este nul.">
-<!ENTITY fnFormulaLabel "Generați numele afișat">
-<!ENTITY fnFormulaAccesskey "G">
-<!ENTITY resetFnFormulaLabel "Desemnează ca implicit">
-<!ENTITY resetFnFormulaAccesskey "D">
 <!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Această formulă constă în blocuri închise de „()”. În aceste blocuri, există două părți delimitate de „|”. Prima parte se aplică atunci când termenul implicat, de exemplu {{1}}, nu este nul, a doua parte se aplică atunci când termenul implicat este nul.">
 <!ENTITY adrFormulaLabel "??Address Format Formula??">
 <!ENTITY adrFormulaAccesskey "??R??">
@@ -192,11 +187,6 @@
 <!ENTITY solveConflictsRemoteAccesskey "s">
 <!ENTITY solveConflictsUserLabel "Întrebați utilizatorul">
 <!ENTITY solveConflictsUserAccesskey "Î">
-<!ENTITY autoSyncGroupboxLabel "Sincronizarea periodică">
-<!ENTITY autoSyncLabel "Activați sincronizarea periodică">
-<!ENTITY autoSyncAccesskey "A">
-<!ENTITY autoSyncIntervalLabel "Interval pentru sincronizarea periodică (minute)">
-<!ENTITY autoSyncIntervalAccesskey "I">
 <!ENTITY requestsGroupboxLabel "Cereri">
 <!ENTITY requestsTimeoutLabel "Pauză (secunde)">
 <!ENTITY requestsTimeoutAccesskey "P">
@@ -239,8 +229,6 @@
 <!ENTITY searchInNoteTooltip1 "Adăugați astfel de linii în câmpul notițe (separator ar trebui să fie: și formatul datei ar trebui să fie cel definit pentru carte de adrese) :">
 <!ENTITY searchInNoteTooltip2 "Eveniment:Descriere:ZZ.LL.AAAA">
 <!ENTITY searchInNoteAccesskey "E">
-<!ENTITY dateFormatLabel "Formatul datei așteptate">
-<!ENTITY dateFormatAccesskey "">
 
 <!ENTITY remindersTabLabel "Mementouri">
 <!ENTITY remindViaPopupWindowGroupboxLabel "Amintiți-vă prin fereastra pop-up">

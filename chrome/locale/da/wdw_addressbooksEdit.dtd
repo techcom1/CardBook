@@ -1,0 +1,28 @@
+<!ENTITY wdw_addressbooksEditTitle "Adressebogsegenskaber">
+
+<!ENTITY colorLabel "Farve">
+<!ENTITY colorAccesskey "F">
+<!ENTITY nameLabel "Navn">
+<!ENTITY nameAccesskey "N">
+<!ENTITY typeLabel "Type">
+<!ENTITY urlLabel "URL">
+<!ENTITY readonlyLabel "Skrivebeskyttet tilstand">
+<!ENTITY readonlyAccesskey "S">
+<!ENTITY vCardVersionLabel "vCard">
+<!ENTITY dateFormatLabel "Forventet datoformat">
+<!ENTITY dateFormatAccesskey "d">
+<!ENTITY urnuuidLabel "Brug urn:uuid">
+<!ENTITY urnuuidAccesskey "B">
+
+<!ENTITY autoSyncGroupboxLabel "Periodisk synkronisering">
+<!ENTITY autoSyncLabel "Aktiver periodisk synkronisering">
+<!ENTITY autoSyncAccesskey "A">
+<!ENTITY autoSyncIntervalLabel "Interval for periodisk synkronisering (minutter)">
+<!ENTITY autoSyncIntervalAccesskey "I">
+
+<!ENTITY miscTabLabel "Diverse">
+<!ENTITY fnLabelExplanation "Det er muligt at indstille den måde CardBook genererer sine viste navne. Denne formel består af blokke omgivet af '()'. I disse blokke er der to dele adskilt af '|'. Den første del anvendes når det involverede led, for eksempel {{1}}, ikke er nul, den anden del anvendes når det involverede led er nul.">
+<!ENTITY fnFormulaLabel "Generer vist navn">
+<!ENTITY fnFormulaAccesskey "n">
+<!ENTITY resetFnFormulaLabel "Gendan standardvalg">
+<!ENTITY resetFnFormulaAccesskey "d">

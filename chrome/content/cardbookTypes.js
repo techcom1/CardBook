@@ -680,7 +680,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 			aOrigBox.appendChild(aRow);
 			aRow.setAttribute('id', aType + '_' + aIndex + '_row');
 			aRow.setAttribute('flex', '1');
-			aRow.setAttribute('align', 'center');
+			aRow.setAttribute('align', 'start');
 			var myInputTypes = [];
 			myInputTypes = cardbookUtils.getOnlyTypesFromTypes(aInputTypes);
 			var myDisplayedTypes = [];
@@ -725,14 +725,14 @@ if ("undefined" == typeof(cardbookTypes)) {
 					serviceLine = cardbookTypes.getIMPPLineForCode(serviceCode)
 					if (serviceLine[0]) {
 						myDisplayedTypes = myDisplayedTypes.concat(serviceLine[1]);
-						cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', myDisplayedTypes.join(" "), {readonly: 'true'});
+						cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', cardbookUtils.formatTypesForDisplay(myDisplayedTypes), {readonly: 'true'});
 						var myRegexp = new RegExp("^" + serviceLine[2] + ":");
 						myValue = myValue.replace(myRegexp, "");
 						myValueTextbox = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myValue, {context: myContextMenu, flex: '1'});
 						myValueTextbox.setAttribute('link', 'true');
 					} else {
 						myDisplayedTypes = myDisplayedTypes.concat(serviceCode);
-						cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', myDisplayedTypes.join(" "), {readonly: 'true'});
+						cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', cardbookUtils.formatTypesForDisplay(myDisplayedTypes), {readonly: 'true'});
 						myValueTextbox = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myValue, {context: myContextMenu, flex: '1'});
 						myValueTextbox.setAttribute('readonly', 'true');
 					}
@@ -741,30 +741,30 @@ if ("undefined" == typeof(cardbookTypes)) {
 					serviceLine = cardbookTypes.getIMPPLineForProtocol(serviceProtocol)
 					if (serviceLine[0]) {
 						myDisplayedTypes = myDisplayedTypes.concat(serviceLine[1]);
-						cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', myDisplayedTypes.join(" "), {readonly: 'true'});
+						cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', cardbookUtils.formatTypesForDisplay(myDisplayedTypes), {readonly: 'true'});
 						var myRegexp = new RegExp("^" + serviceLine[2] + ":");
 						myValue = myValue.replace(myRegexp, "");
 						myValueTextbox = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myValue, {context: myContextMenu, flex: '1'});
 						myValueTextbox.setAttribute('link', 'true');
 					} else {
 						myDisplayedTypes = myDisplayedTypes.concat(serviceCode);
-						cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', myDisplayedTypes.join(" "), {readonly: 'true'});
+						cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', cardbookUtils.formatTypesForDisplay(myDisplayedTypes), {readonly: 'true'});
 						myValueTextbox = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myValue, {context: myContextMenu, flex: '1'});
 						myValueTextbox.setAttribute('readonly', 'true');
 					}
 				} else {
-					cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', myDisplayedTypes.join(" "), {readonly: 'true'});
+					cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', cardbookUtils.formatTypesForDisplay(myDisplayedTypes), {readonly: 'true'});
 					myValueTextbox = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myValue, {context: myContextMenu, flex: '1'});
 					myValueTextbox.setAttribute('readonly', 'true');
 				}
 			} else {
-				cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', myDisplayedTypes.join(" "), {readonly: 'true'});
+				cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', cardbookUtils.formatTypesForDisplay(myDisplayedTypes), {readonly: 'true'});
 	
 				if (aType == "adr") {
 					var re = /[\n\u0085\u2028\u2029]|\r\n?/;
 					var myAdrResult = cardbookUtils.formatAddress(aCardValue);
 					var myAdrResultArray = myAdrResult.split(re);
-					myValueTextbox = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myAdrResult, {context: myContextMenu, flex: '1', 
+					myValueTextbox = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myAdrResult, {context: myContextMenu,
 																								multiline: 'true', wrap: 'virtual', rows: myAdrResultArray.length});
 				} else {
 					myValueTextbox = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', cardbookUtils.cleanArray(aCardValue).join(" "), {context: myContextMenu, flex: '1'});

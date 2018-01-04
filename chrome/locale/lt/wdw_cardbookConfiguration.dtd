@@ -94,11 +94,6 @@
 <!ENTITY showNameAsFLAccesskey "V">
 <!ENTITY showNameAsDSPLabel "Rodomas vardas">
 <!ENTITY showNameAsDSPAccesskey "R">
-<!ENTITY fnLabelExplanation "Galima pritaikyti „Kontaktų“ rodomo vardo būdą. Ši formulė susideda iš blokų, kuriuos apima skliausteliai „()“. Šiuose blokuose yra dvi dalys, kurias apibrėžia vertikalus brūkšnys „|“. Pirmoji dalis taikoma tada, kai susijusi sąlyga, pvz., {{1}}, nėra nulinė, antra dalis taikoma tada, kai susijęs terminas yra nulis.">			
-<!ENTITY fnFormulaLabel "Sukurti rodomo pavadinimą">
-<!ENTITY fnFormulaAccesskey "ą">
-<!ENTITY resetFnFormulaLabel "Atstatyti numatytąjį">
-<!ENTITY resetFnFormulaAccesskey "A">
 <!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Ši formulė susideda iš blokų, kuriuos apima skliausteliai „()“. Šiuose blokuose yra dvi dalys, kurias apibrėžia vertikalus brūkšnys „|“. Pirmoji dalis taikoma tada, kai susijusi sąlyga, pvz., {{1}}, nėra nulinė, antra dalis taikoma tada, kai susijęs terminas yra nulis.">
 <!ENTITY adrFormulaLabel "??Address Format Formula??">
 <!ENTITY adrFormulaAccesskey "??R??">
@@ -192,11 +187,6 @@
 <!ENTITY solveConflictsRemoteAccesskey "s">
 <!ENTITY solveConflictsUserLabel "Paklausti naudotojo">
 <!ENTITY solveConflictsUserAccesskey "P">
-<!ENTITY autoSyncGroupboxLabel "Periodiškas sinchronizavimas">
-<!ENTITY autoSyncLabel "Įgalinti periodinę sinchronizaciją">
-<!ENTITY autoSyncAccesskey "g">
-<!ENTITY autoSyncIntervalLabel "Periodinio sinchronizavimo intervalas (minutės)">
-<!ENTITY autoSyncIntervalAccesskey "į">
 <!ENTITY requestsGroupboxLabel "Prašymai">
 <!ENTITY requestsTimeoutLabel "Intervalas (sekundės)">
 <!ENTITY requestsTimeoutAccesskey "t">
@@ -239,8 +229,6 @@
 <!ENTITY searchInNoteTooltip1 "Pridėti šias eilutes Pastabų lauke (skirtukas turėtų būti : ir datos formatas turėtų būti tas, kuris nurodytas adresų knygelėje) :">
 <!ENTITY searchInNoteTooltip2 "Įvykis:Apibūdinimas:2006-12-24">
 <!ENTITY searchInNoteAccesskey "A">
-<!ENTITY dateFormatLabel "Numatomas datos formatas">
-<!ENTITY dateFormatAccesskey "N">
 
 <!ENTITY remindersTabLabel "Priminimai">
 <!ENTITY remindViaPopupWindowGroupboxLabel "Priminti per iššokantį langelį">

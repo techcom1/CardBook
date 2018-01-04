@@ -94,11 +94,6 @@
 <!ENTITY showNameAsFLAccesskey "m">
 <!ENTITY showNameAsDSPLabel "Visningsnamn">
 <!ENTITY showNameAsDSPAccesskey "s">
-<!ENTITY fnLabelExplanation "Man kan få Cardbook till att generera Visningsnamn. Detta görs med block som innesluts innom '()'. Man kan dela upp blocken i delar med '|'. Den första delen används, t.ex {{1}}, om den inte är tom, den andra delen används då, om den första är tom, logist kan man anta att ”|” är samma som ”eller”">
-<!ENTITY fnFormulaLabel "Generera Visningsnamn">
-<!ENTITY fnFormulaAccesskey "G">
-<!ENTITY resetFnFormulaLabel "Återställ till standard">
-<!ENTITY resetFnFormulaAccesskey "i">
 <!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Detta görs med block som innesluts innom '()'. Man kan dela upp blocken i delar med '|'. Den första delen används, t.ex {{1}}, om den inte är tom, den andra delen används då, om den första är tom, logist kan man anta att ”|” är samma som ”eller”">
 <!ENTITY adrFormulaLabel "??Address Format Formula??">
 <!ENTITY adrFormulaAccesskey "??R??">
@@ -192,11 +187,6 @@
 <!ENTITY solveConflictsRemoteAccesskey "s">
 <!ENTITY solveConflictsUserLabel "Fråga användaren">
 <!ENTITY solveConflictsUserAccesskey "a">
-<!ENTITY autoSyncGroupboxLabel "Periodisk synkning">
-<!ENTITY autoSyncLabel "Aktivera periodisk synkning">
-<!ENTITY autoSyncAccesskey "p">
-<!ENTITY autoSyncIntervalLabel "Intervall för periodisk synkning (minuter)">
-<!ENTITY autoSyncIntervalAccesskey "I">
 <!ENTITY requestsGroupboxLabel "Förfrågningar">
 <!ENTITY requestsTimeoutLabel "Avbrott (sekunder)">
 <!ENTITY requestsTimeoutAccesskey "A">
@@ -239,8 +229,6 @@
 <!ENTITY searchInNoteTooltip1 "Lägg till sådana rader i anteckningsfältet (separator ska vara : och datumformatet ska vara det som definieras för adressboken) :">
 <!ENTITY searchInNoteTooltip2 "Händelse:Beskrivning:ÅÅÅÅ.MM.DD">
 <!ENTITY searchInNoteAccesskey "S">
-<!ENTITY dateFormatLabel "Förväntat datumformat">
-<!ENTITY dateFormatAccesskey "F">
 
 <!ENTITY remindersTabLabel "Påminnelser">
 <!ENTITY remindViaPopupWindowGroupboxLabel "Påminn via popup-fönster">

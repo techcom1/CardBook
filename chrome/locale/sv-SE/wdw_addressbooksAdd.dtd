@@ -30,8 +30,8 @@
 <!ENTITY remotePage.google.label "Google">
 <!ENTITY remotePage.apple.label "Apple">
 <!ENTITY remotePage.connection.label "Anslutning">
-<!ENTITY remotePage.uri.description "För CardDAV, ange URL'en till din online adressbok. Du kan prova att ange en del av URL'n (t.ex : http(s)://carddav.example.org). Lämna tomt om du ansluter till en Google adressbok.">
-<!ENTITY remotePage.uri.label "URL">
+<!ENTITY remotePage.url.description "För CardDAV, ange URL'en till din online adressbok. Du kan prova att ange en del av URL'n (t.ex : http(s)://carddav.example.org). Lämna tomt om du ansluter till en Google adressbok.">
+<!ENTITY remotePage.url.label "URL">
 <!ENTITY remotePage.credentials.description "Ange dina inloggningsuppgifter för adressboken. För en Google adressbok, ange din Google mejladress.">
 <!ENTITY remotePage.validatebutton.label "Validera/Testa">
 

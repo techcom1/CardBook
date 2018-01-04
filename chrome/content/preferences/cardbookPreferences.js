@@ -1,5 +1,6 @@
 if ("undefined" == typeof(cardbookPreferences)) {
 	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 
 	var cardbookPreferences = {
 
@@ -763,6 +764,21 @@ if ("undefined" == typeof(cardbookPreferences)) {
 		setAutoSyncInterval: function (aDirPrefId, aAutoSyncInterval) {
 			if (aAutoSyncInterval != null && aAutoSyncInterval !== undefined && aAutoSyncInterval != "") {
 				this.setStringPref(this.prefCardBookData + aDirPrefId + "." + "autoSyncInterval", aAutoSyncInterval);
+			}
+		},
+
+		getFnFormula: function (aDirPrefId) {
+			let fnFormula = this.getStringPref(this.prefCardBookData + aDirPrefId + "." + "fnFormula");
+			if (fnFormula != null && fnFormula !== undefined && fnFormula != "") {
+				return fnFormula;
+			} else {
+				return cardbookRepository.defaultFnFormula;
+			}
+		},
+
+		setFnFormula: function (aDirPrefId, aFnFormula) {
+			if (aFnFormula != null && aFnFormula !== undefined && aFnFormula != "") {
+				this.setStringPref(this.prefCardBookData + aDirPrefId + "." + "fnFormula", aFnFormula);
 			}
 		},
 

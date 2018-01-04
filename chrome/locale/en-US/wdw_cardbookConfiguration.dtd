@@ -1,10 +1,10 @@
 <!ENTITY generalTabLabel "General">
-<!ENTITY CardBookTabLabel "CardBook Tab">
+<!ENTITY CardBookTabLabel "Tab">
 <!ENTITY typesTabLabel "Types">
-<!ENTITY IMPPsTabLabel "Internet Communications">
+<!ENTITY IMPPsTabLabel "Communicate">
 <!ENTITY customFieldsTabLabel "Custom Fields">
 <!ENTITY listsTabLabel "Lists">
-<!ENTITY syncTabLabel "Sync.">
+<!ENTITY syncTabLabel "Sync">
 <!ENTITY emailTabLabel "Email">
 <!ENTITY birthdaylistTabLabel "Anniversary">
 <!ENTITY synclistTabLabel "Anniversary Reminders">
@@ -94,11 +94,6 @@
 <!ENTITY showNameAsFLAccesskey "e">
 <!ENTITY showNameAsDSPLabel "Display Name">
 <!ENTITY showNameAsDSPAccesskey "D">
-<!ENTITY fnLabelExplanation "It is possible to customize the way CardBook generates its Display Name. This formula consists in blocks enclosed by '()'. In these blocks, there are two parts delimited by '|'. The first part applies when the term involved, for example {{1}}, is not null, the second part applies when the term involved is null.">
-<!ENTITY fnFormulaLabel "Display Name Formula">
-<!ENTITY fnFormulaAccesskey "y">
-<!ENTITY resetFnFormulaLabel "Restore to Default">
-<!ENTITY resetFnFormulaAccesskey "R">
 <!ENTITY adrLabelExplanation "It is possible to customize the way CardBook formats its addresses. This formula consists in blocks enclosed by '()'. In these blocks, there are two parts delimited by '|'. The first part applies when the term involved, for example {{1}}, is not null, the second part applies when the term involved is null.">
 <!ENTITY adrFormulaLabel "Address Format Formula">
 <!ENTITY adrFormulaAccesskey "R">
@@ -192,11 +187,6 @@
 <!ENTITY solveConflictsRemoteAccesskey "S">
 <!ENTITY solveConflictsUserLabel "Ask user">
 <!ENTITY solveConflictsUserAccesskey "A">
-<!ENTITY autoSyncGroupboxLabel "Periodic Synchronization">
-<!ENTITY autoSyncLabel "Enable periodic synchronization">
-<!ENTITY autoSyncAccesskey "E">
-<!ENTITY autoSyncIntervalLabel "Interval between periodic synchronizations (minutes)">
-<!ENTITY autoSyncIntervalAccesskey "I">
 <!ENTITY requestsGroupboxLabel "Requests">
 <!ENTITY requestsTimeoutLabel "Timeout (seconds)">
 <!ENTITY requestsTimeoutAccesskey "T">
@@ -236,11 +226,9 @@
 <!ENTITY calendarsGroupboxLabel "Calendars">
 <!ENTITY searchGroupboxLabel "Search">
 <!ENTITY searchInNoteLabel "Search Notes field for event anniversaries">
-<!ENTITY searchInNoteTooltip1 "Add such lines in the Notes field  (separator should be : and the date format should be the one defined for the address book) :">
+<!ENTITY searchInNoteTooltip1 "Add such lines in the Notes field (separator should be : and the date format should be the one defined for the address book):">
 <!ENTITY searchInNoteTooltip2 "Event:Description:2006-12-24">
 <!ENTITY searchInNoteAccesskey "S">
-<!ENTITY dateFormatLabel "Expected date format">
-<!ENTITY dateFormatAccesskey "E">
 
 <!ENTITY remindersTabLabel "Reminders">
 <!ENTITY remindViaPopupWindowGroupboxLabel "Remind via Popup Window">

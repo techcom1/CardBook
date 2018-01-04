@@ -11,7 +11,7 @@
 		</resources>
 		<content>
 			<xul:menulist flex="1" class="search-value-menulist" xbl:inherits="disabled"
-                    oncommand="this.parentNode.setAttribute('value', this.value);this.parentNode.value=this.getAttribute('label');">
+					oncommand="this.parentNode.setAttribute('value', this.value);this.parentNode.value=this.getAttribute('label');">
 				<xul:menupopup class="search-value-popup"/>
 			</xul:menulist>
 		</content>
@@ -65,7 +65,7 @@
 		</resources>
 		<content>
 			<xul:menulist flex="1" class="ruleactionitem" xbl:inherits="disabled"
-                    oncommand="this.parentNode.setAttribute('value', this.value);this.parentNode.value=this.getAttribute('label');">
+					oncommand="this.parentNode.setAttribute('value', this.value);this.parentNode.value=this.getAttribute('label');">
 				<xul:menupopup/>
 			</xul:menulist>
 		</content>

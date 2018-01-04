@@ -15,12 +15,12 @@
 <!ENTITY autocompletionTooltip "Rozszerza automatyczne uzupełnianie adresów z wizytówek we wbudowanych książkach adresowych Thunderbirda o automatyczne uzupełnianie adresów z wizytówek w książkach adresowych CardBook.">
 <!ENTITY autocompleteSortByPopularityLabel "Sortuj adresy e-mail według popularności">
 <!ENTITY autocompleteSortByPopularityAccesskey "p">
-<!ENTITY autocompleteProposeConcatEmailsLabel "??Propose concatenated emails per contact??">
-<!ENTITY autocompleteProposeConcatEmailsAccesskey "c">
+<!ENTITY autocompleteProposeConcatEmailsLabel "Proponuj wszystkie e-maile z wizytówki w jednym ciągu">
+<!ENTITY autocompleteProposeConcatEmailsAccesskey "C">
 <!ENTITY autocompleteShowAddressbookLabel "Pokaż nazwę książki adresowej">
 <!ENTITY autocompleteShowAddressbookAccesskey "S">
 <!ENTITY autocompleteWithColorLabel "Używaj koloru książki adresowej">
-<!ENTITY autocompleteWithColorAccesskey "U">
+<!ENTITY autocompleteWithColorAccesskey "O">
 <!ENTITY useColorLabel "Używaj koloru książki adresowej do:">
 <!ENTITY useColorBackgroundLabel "tła">
 <!ENTITY useColorBackgroundAccesskey "T">
@@ -56,7 +56,7 @@
 <!ENTITY deleteEmailsCollectionAccesskey "U">
 <!ENTITY logGroupboxLabel "Log">
 <!ENTITY debugModeLabel "Tryb debugowania">
-<!ENTITY debugModeAccesskey "T">
+<!ENTITY debugModeAccesskey "B">
 <!ENTITY debugModeTooltip "Włącz tryb debugowania, aby zwiększyć szczegółowość logu.">
 <!ENTITY statusInformationLineNumberLabel "Ilość linii przechowywanych w logu">
 <!ENTITY statusInformationLineNumberAccesskey "I">
@@ -67,9 +67,9 @@
 <!ENTITY listTabLabel "Lista">
 <!ENTITY listTabAccesskey "L">
 <!ENTITY mailPopularityTabLabel "Popularność e-mail">
-<!ENTITY mailPopularityTabAccesskey "P">
+<!ENTITY mailPopularityTabAccesskey "E">
 <!ENTITY technicalTabLabel "Techniczne">
-<!ENTITY technicalTabAccesskey "T">
+<!ENTITY technicalTabAccesskey "C">
 <!ENTITY vCardTabLabel "vCard">
 <!ENTITY vCardTabAccesskey "V">
 <!ENTITY advancedTabLabel "Zaawansowane">
@@ -83,31 +83,26 @@
 <!ENTITY localizeEngineBingMapsAccesskey "B">
 <!ENTITY localizeTargetLabel "Otwieraj zewnętrzne linki:">
 <!ENTITY localizeTargetInLabel "W Thunderbirdzie">
-<!ENTITY localizeTargetInAccesskey "W">
+<!ENTITY localizeTargetInAccesskey "T">
 <!ENTITY localizeTargetOutLabel "Poza Thunderbirdem">
-<!ENTITY localizeTargetOutAccesskey "P">
+<!ENTITY localizeTargetOutAccesskey "H">
 <!ENTITY showNameAsLabel "Pokazuj nazwę jako">
 <!ENTITY showNameAsLFLabel "Nazwisko Imię">
 <!ENTITY showNameAsLFAccesskey "N">
 <!ENTITY showNameAsLFCommaLabel "Nazwisko, Imię">
-<!ENTITY showNameAsLFCommaAccesskey "z">
+<!ENTITY showNameAsLFCommaAccesskey "A">
 <!ENTITY showNameAsFLLabel "Imię Nazwisko">
 <!ENTITY showNameAsFLAccesskey "I">
 <!ENTITY showNameAsDSPLabel "Wyświetlana nazwa">
 <!ENTITY showNameAsDSPAccesskey "W">
-<!ENTITY fnLabelExplanation "Można dostosować sposób, w który CardBook tworzy Wyświetlaną nazwę. Formuła zawiera bloki otoczone '()'. Bloki zawierają dwa elementy oddzielone'|'. Pierwszy element jest używany, gdy wybrane pole, na przykład {{1}}, nie jest puste, drugi element jest używany, gdy wybrane pole jest puste.">
-<!ENTITY fnFormulaLabel "Stwórz Wyświetlaną nazwę">
-<!ENTITY fnFormulaAccesskey "S">
-<!ENTITY resetFnFormulaLabel "Przywróć domyślne">
-<!ENTITY resetFnFormulaAccesskey "P">
-<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Formuła zawiera bloki otoczone '()'. Bloki zawierają dwa elementy oddzielone'|'. Pierwszy element jest używany, gdy wybrane pole, na przykład {{1}}, nie jest puste, drugi element jest używany, gdy wybrane pole jest puste.">
-<!ENTITY adrFormulaLabel "??Address Format Formula??">
-<!ENTITY adrFormulaAccesskey "??R??">
+<!ENTITY adrLabelExplanation "Można dostosować sposób, w który CardBook wyświetla adresy. Formuła zawiera bloki otoczone '()'. Bloki zawierają dwa elementy oddzielone'|'. Pierwszy element jest używany, gdy wybrane pole, na przykład {{1}}, nie jest puste, drugi element jest używany, gdy wybrane pole jest puste.">
+<!ENTITY adrFormulaLabel "Sposób wyświetlania adresów">
+<!ENTITY adrFormulaAccesskey "R">
 <!ENTITY resetAdrFormulaLabel "Przywróć domyślne">
 <!ENTITY resetAdrFormulaAccesskey "P">
 <!ENTITY miscEditingGroupboxLabel "Różne">
 <!ENTITY preferEmailEditionLabel "Podwójne kliknięcie na wizytówce edytuje zamiast wysyłać e-mail">
-<!ENTITY preferEmailEditionAccesskey "o">
+<!ENTITY preferEmailEditionAccesskey "D">
 <!ENTITY dateDisplayedFormatLabel "Format daty:">
 <!ENTITY dateDisplayedFormatAccesskey "y">
 
@@ -121,7 +116,7 @@
 <!ENTITY typesCategoryTelLabel "Telefon">
 <!ENTITY typesCategoryTelAccesskey "T">
 <!ENTITY typesCategoryUrlLabel "URL">
-<!ENTITY typesCategoryUrlAccesskey "U">
+<!ENTITY typesCategoryUrlAccesskey "R">
 <!ENTITY typesCategoryGenderLabel "Płeć">
 <!ENTITY typesCategoryGenderAccesskey "P">
 <!ENTITY typesCodeLabel "Kod">
@@ -133,10 +128,10 @@
 <!ENTITY deleteTypeLabel "Usuń">
 <!ENTITY deleteTypeAccesskey "U">
 <!ENTITY resetTypeLabel "Przywróć domyślne">
-<!ENTITY resetTypeAccesskey "P">
+<!ENTITY resetTypeAccesskey "Z">
 <!ENTITY preferenceGroupboxLabel "Oznaczenie Podstawowy">
-<!ENTITY usePreferenceValueLabel "??Use a preference value?? (tylko vCard 4.0)">
-<!ENTITY usePreferenceValueAccesskey "??p??">
+<!ENTITY usePreferenceValueLabel "Używaj wartości ustawienia (tylko vCard 4.0)">
+<!ENTITY usePreferenceValueAccesskey "Y">
 <!ENTITY preferenceValueLabel "Etykieta oznaczenia Podstawowy">
 <!ENTITY preferenceValueAccesskey "o">
 
@@ -184,8 +179,8 @@
 <!ENTITY syncWarn "Synchronizacja wysyła Twoje zmiany do zdalnego serwera, a zmiany na serwerze do Ciebie.">
 <!ENTITY initialSyncLabel "Wykonaj początkową synchronizację przy uruchomieniu Thunderbirda">
 <!ENTITY initialSyncAccesskey "W">
-<!ENTITY initialSyncDelayLabel "??Delay for running first requests (seconds)??">
-<!ENTITY initialSyncDelayAccesskey "??D??">
+<!ENTITY initialSyncDelayLabel "Opóźnij wykonanie pierwszych zapytań (sekundy)">
+<!ENTITY initialSyncDelayAccesskey "O">
 <!ENTITY solveConflictsLabel "Jeśli wizytówka została zmodyfikowana zarówno na serwerze jak i lokalnie:">
 <!ENTITY solveConflictsLocalLabel "Preferuj zmianę lokalną">
 <!ENTITY solveConflictsLocalAccesskey "l">
@@ -193,18 +188,13 @@
 <!ENTITY solveConflictsRemoteAccesskey "z">
 <!ENTITY solveConflictsUserLabel "Zapytaj użytkownika">
 <!ENTITY solveConflictsUserAccesskey "u">
-<!ENTITY autoSyncGroupboxLabel "Synchronizacja okresowa">
-<!ENTITY autoSyncLabel "Włącz synchronizację okresową">
-<!ENTITY autoSyncAccesskey "s">
-<!ENTITY autoSyncIntervalLabel "Interwał synchronizacji okresowej (w minutach)">
-<!ENTITY autoSyncIntervalAccesskey "I">
 <!ENTITY requestsGroupboxLabel "Połączenia">
 <!ENTITY requestsTimeoutLabel "Czas oczekiwania (w sekundach)">
 <!ENTITY requestsTimeoutAccesskey "C">
 <!ENTITY multigetLabel "Dla zapytań GET, grupuj wizytówki po">
 <!ENTITY multigetAccesskey "D">
-<!ENTITY discoveryGroupboxLabel "??Address books discovery??">
-<!ENTITY discoveryWarn "??At every synchronization, a check on the URLs below will be run to search for any new or deleted address books.??">
+<!ENTITY discoveryGroupboxLabel "Wykrywanie książek adresowych">
+<!ENTITY discoveryWarn "Przy każdej synchronizacji poniższe adresy będą sprawdzane w poszukiwaniu nowych lub usuniętych książek adresowych.">
 <!ENTITY discoveryAccountsGroupboxLabel "Konta">
 <!ENTITY advancedSyncGroupboxLabel "Ustawienia zaawansowane">
 <!ENTITY decodeReportLabel "Dekoduj adresy URL dla zapytań REPORT">
@@ -240,8 +230,6 @@
 <!ENTITY searchInNoteTooltip1 "Dodaj takie linie w polu Notatki (oddzielone : i w formacie daty takim, jaki jest ustawiony dla danej książki adresowej):">
 <!ENTITY searchInNoteTooltip2 "Wydarzenie:Opis:2006-12-24">
 <!ENTITY searchInNoteAccesskey "D">
-<!ENTITY dateFormatLabel "Oczekiwany format daty">
-<!ENTITY dateFormatAccesskey "O">
 
 <!ENTITY remindersTabLabel "Przypomnienia">
 <!ENTITY remindViaPopupWindowGroupboxLabel "Przypomnij w wyskakującym okienku">
@@ -252,7 +240,7 @@
 <!ENTITY showPeriodicPopupLabel "Pokaż wyskakujące okienko codziennie">
 <!ENTITY showPeriodicPopupAccesskey "c">
 <!ENTITY periodicPopupTimeLabel "Pokaż o (hh:mm)">
-<!ENTITY periodicPopupTimeAccesskey "P">
+<!ENTITY periodicPopupTimeAccesskey "O">
 <!ENTITY showPopupEvenIfNoBirthdayLabel "Pokaż wyskakujące okienko, gdy lista urodzin jest pusta">
 <!ENTITY showPopupEvenIfNoBirthdayAccesskey "w">
 <!ENTITY remindViaLightningGroupboxLabel "Przypominaj za pomocą Lightning, dodatku kalendarzowego do Thunderbird">
@@ -266,10 +254,10 @@
 <!ENTITY calendarEntryTimeLabel "Czas wydarzenia (hh:mm)">
 <!ENTITY calendarEntryTimeAccesskey "z">
 <!ENTITY calendarEntryWholeDayLabel "Wydarzenie całodniowe">
-<!ENTITY calendarEntryWholeDayAccesskey "w">
-<!ENTITY calendarEntryAlarmLabel "??Alarm(s) to n hours for calendar events (Example: 4,+1)??">
-<!ENTITY calendarEntryAlarmTooltip "Wpisz, ile dni przed wydarzeniem Lightning ma pokazać przypomnienie. Przypomnienie się nie pojawi jeśli pole pozostawisz puste.?? If you want multiple alarms, enter the alarms in a comma separated list.??">
+<!ENTITY calendarEntryWholeDayAccesskey "A">
+<!ENTITY calendarEntryAlarmLabel "Przypomnienie(a) na n godzin przed wydarzeniem w kalendarzu (przykład: 4,+1)">
+<!ENTITY calendarEntryAlarmTooltip "Wpisz na ile godzin przed rocznicą Lightning powinien wyświetlić przypomnienie. Jeśli pole pozostawisz puste, przypomnienie nie pojawi się. Jeśli chcesz kilka przypomnień, oddziel je przecinkami.">
 <!ENTITY calendarEntryAlarmAccesskey "p">
 <!ENTITY calendarEntryCategoriesLabel "Kategoria(e) wydarzenia">
 <!ENTITY calendarEntryCategoriesTooltip "Jedna lub więcej kategorii, rozdzielonych przecinkami. Jeśli pole jest puste, nie będzie kategorii.">
-<!ENTITY calendarEntryCategoriesAccesskey "J">
+<!ENTITY calendarEntryCategoriesAccesskey "K">

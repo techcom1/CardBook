@@ -21,6 +21,7 @@ locale   cardbook ro    chrome/locale/ro/
 locale   cardbook ru    chrome/locale/ru/
 locale   cardbook sl    chrome/locale/sl/
 locale   cardbook sv-SE chrome/locale/sv-SE/
+locale   cardbook vi    chrome/locale/vi/
 
 skin   cardbook             classic/1.0   chrome/skin/
 skin   cardbook-config      classic/1.0   chrome/skin/configuration/
@@ -35,7 +36,7 @@ skin   cardbook-os          classic/1.0   chrome/skin/os/windows/            os=
 skin   cardbook-os          classic/1.0   chrome/skin/os/mac/                os=Darwin
 
 # support for customizing toolbars
-style    chrome://global/content/customizeToolbar.xul chrome://cardbook/skin/toolbarButton.css
+style    chrome://global/content/customizeToolbar.xul chrome://cardbook-osversion/skin/mainToolbarButton.css
 style    chrome://global/content/customizeToolbar.xul chrome://cardbook-osversion/skin/cardbookToolbarButtons.css
 
 # support for CardBook, yellow stars, creation from emails, formatting email fields

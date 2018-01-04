@@ -42,13 +42,13 @@ if ("undefined" == typeof(wdw_cardbookEventContacts)) {
 				columnName = myTree.getAttribute("sortResource");
 				var myColumn = document.getElementById(columnName);
 			}
-            var sortKey = myColumn.getAttribute("itemproperty");
-            var sortType = cal.getSortTypeForSortKey(sortKey);
-            cal.sortEntry.mSortKey = sortKey;
-            cal.sortEntry.mSortStartedDate = cal.now();
-            var entries = wdw_cardbookEventContacts.allEvents.map(cal.sortEntry, cal.sortEntry);
-            entries.sort(cal.sortEntryComparer(sortType, order));
-            wdw_cardbookEventContacts.allEvents = entries.map(cal.sortEntryItem);
+			var sortKey = myColumn.getAttribute("itemproperty");
+			var sortType = cal.getSortTypeForSortKey(sortKey);
+			cal.sortEntry.mSortKey = sortKey;
+			cal.sortEntry.mSortStartedDate = cal.now();
+			var entries = wdw_cardbookEventContacts.allEvents.map(cal.sortEntry, cal.sortEntry);
+			entries.sort(cal.sortEntryComparer(sortType, order));
+			wdw_cardbookEventContacts.allEvents = entries.map(cal.sortEntryItem);
 
 			//setting these will make the sort option persist
 			myTree.setAttribute("sortDirection", order == 1 ? "ascending" : "descending");

@@ -49,6 +49,10 @@ if ("undefined" == typeof(cardbookUtils)) {
 			return cardbookUtils.sortArrayByString(aCategoryList,-1,1).join("    ");
 		},
 
+		formatTypesForDisplay: function (aTypeList) {
+			return cardbookUtils.sortArrayByString(aTypeList,-1,1).join("    ");
+		},
+
 		// aTypesList should be escaped
 		// TYPE="WORK,VOICE" would be splitted into TYPE=WORK,TYPE=HOME
 		// the duplicate types would also be removed
@@ -639,8 +643,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 						result = "VALUE=URI:" + aCard[aType].URI;
 					} else if (aCard[aType].localURI != null && aCard[aType].localURI !== undefined && aCard[aType].localURI != "") {
 						result = "VALUE=URI:" + aCard[aType].localURI;
-						var ioService = Services.io;
-						var myFileURI = ioService.newURI(aCard[aType].localURI, null, null);
+						var myFileURI = Services.io.newURI(aCard[aType].localURI, null, null);
 						var content = btoa(cardbookSynchronization.getFileBinary(myFileURI));
 						if (aCard.version === "4.0") {
 							if (aCard[aType].extension != "") {
@@ -670,12 +673,9 @@ if ("undefined" == typeof(cardbookUtils)) {
 			}
 		},
 
-		getDisplayedName: function(aNewN, aNewOrg) {
+		getDisplayedName: function(aDirPrefId, aNewN, aNewOrg) {
 			var result =  "";
-			var myFnFormula = cardbookPreferences.getStringPref("extensions.cardbook.fnFormula");
-			if (myFnFormula == "") {
-				myFnFormula = cardbookRepository.defaultFnFormula;
-			}
+			var myFnFormula = cardbookPreferences.getFnFormula(aDirPrefId);
 			var orgStructure = cardbookPreferences.getStringPref("extensions.cardbook.orgStructure");
 			if (orgStructure != "") {
 				var myOrgArray = cardbookUtils.unescapeArray(cardbookUtils.escapeString(aNewOrg).split(";"));
@@ -689,31 +689,31 @@ if ("undefined" == typeof(cardbookUtils)) {
 			return result.trim();
 		},
 
-		getStringFromFormula: function(aFormula, aArray, aReplaceEmpty) {
+		getStringFromFormula: function(aFormula, aArray) {
 			var result = "";
 			var myFormulaArray = cardbookUtils.escapeString1(aFormula).split(')');
 			for (var i = 0; i < myFormulaArray.length; i++) {
-				var myReplaceEmpty = aReplaceEmpty;
 				var tmpString = myFormulaArray[i].substr(myFormulaArray[i].indexOf("(")+1,myFormulaArray[i].length);
 				var tmpStringArray = tmpString.split('|');
-				if (!(tmpStringArray[1] != null && tmpStringArray[1] !== undefined && tmpStringArray[1] != "")) {
-					myReplaceEmpty = true;
-				}
 				var changed = false;
 				for (var j = 1; j < aArray.length+1; j++) {
 					if (tmpStringArray[0].indexOf("{{" + j + "}}") >= 0) {
-						if (aArray[j-1] != "" || myReplaceEmpty) {
+						if (aArray[j-1] != "") {
 							changed = true;
 							var myRegExp = new RegExp("\\{\\{" + j + "\\}\\}", "g");
 							result = result + tmpStringArray[0].replace(myRegExp, aArray[j-1]);
-						} else if (tmpStringArray[1]) {
+						} else if (tmpStringArray[1] || tmpStringArray[1] == "") {
 							changed = true;
-							result = result + cardbookUtils.getStringFromFormula("(" + tmpStringArray[1] + ")", aArray, true);
+							result = result + cardbookUtils.getStringFromFormula("(" + tmpStringArray[1] + ")", aArray);
 						}
 					}
 				}
 				if (!changed) {
-					result = result + tmpStringArray;
+					if (tmpStringArray[1]) {
+						result = result + tmpStringArray[1];
+					} else {
+						result = result + tmpStringArray[0];
+					}
 				}
 			}
 			return result;
@@ -1758,8 +1758,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 				fileName = fileName.replace(/([\\\/\:\*\?\"\<\>\|]+)/g, '-');
 				mediaFile.append(fileName);
 				// bug on windows (with Apple photo)
-				var osString = Services.appinfo.OS;
-				if ((osString == "WINNT") && (mediaFile.path.length > 259)) {
+				if ((Services.appinfo.OS == "WINNT") && (mediaFile.path.length > 259)) {
 					mediaFile.initWithPath(mediaFile.path.substring(0, 259));
 				}
 				return mediaFile;
@@ -1771,14 +1770,13 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		changeMediaFromFileToContent: function (aCard) {
 			try {
-				var ioService = Services.io;
 				var mediaName = [ 'photo', 'logo', 'sound' ];
 
 				for (var i in mediaName) {
 					if (aCard[mediaName[i]].localURI != null && aCard[mediaName[i]].localURI !== undefined && aCard[mediaName[i]].localURI != "") {
 						var myFileURISpec = aCard[mediaName[i]].localURI.replace("VALUE=uri:","");
 						if (myFileURISpec.indexOf("file:///") === 0) {
-							var myFileURI = ioService.newURI(myFileURISpec, null, null);
+							var myFileURI = Services.io.newURI(myFileURISpec, null, null);
 							aCard[mediaName[i]].value = cardbookSynchronization.getFileBinary(myFileURI);
 							aCard[mediaName[i]].localURI = "";
 						}
@@ -1823,7 +1821,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 	
 				clipboard.getData(trans, clipboard.kGlobalClipboard);
 	
-				let str       = {};
+				let str = {};
 				let strLength = {};
 	
 				trans.getTransferData("text/unicode", str, strLength);
@@ -2243,8 +2241,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		openURL: function (aUrl) {
 			try {
-				var ioService = Services.io;
-				var uri = ioService.newURI(aUrl, null, null);
+				var uri = Services.io.newURI(aUrl, null, null);
 			}
 			catch(e) {
 				cardbookUtils.formatStringForOutput("invalidURL", [aUrl], "Error");
@@ -2296,8 +2293,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 		},
 
 		openExternalURL: function (aUrl) {
-			var ioService = Services.io;
-			var uri = ioService.newURI(aUrl, null, null);
+			var uri = Services.io.newURI(aUrl, null, null);
 			var externalProtocolService = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"].getService(Components.interfaces.nsIExternalProtocolService);
 			externalProtocolService.loadURI(uri, null);
 		},

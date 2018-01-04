@@ -30,8 +30,8 @@
 <!ENTITY remotePage.google.label "Google">
 <!ENTITY remotePage.apple.label "Apple">
 <!ENTITY remotePage.connection.label "Verbinding">
-<!ENTITY remotePage.uri.description "Bij een CardDAV-type: vul de URL van het internet-adresboek in.">
-<!ENTITY remotePage.uri.label "URL">
+<!ENTITY remotePage.url.description "Bij een CardDAV-type: vul de URL van het internet-adresboek in.">
+<!ENTITY remotePage.url.label "URL">
 <!ENTITY remotePage.credentials.description "Toegangscodes voor het internet-adresboek. (Let op: voor Google-adresboek de Google-email invullen.)">
 <!ENTITY remotePage.validatebutton.label "Controleren">
 

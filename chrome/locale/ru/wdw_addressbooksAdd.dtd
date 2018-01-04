@@ -30,8 +30,8 @@
 <!ENTITY remotePage.google.label "Google">
 <!ENTITY remotePage.apple.label "Apple">
 <!ENTITY remotePage.connection.label "Соединиться">
-<!ENTITY remotePage.uri.description "Для типа CardDAV введите URL удалённой адресной книги. Можно попробовать использовать часть URL (например : http(s)://carddav.example.org). Для адресной книги Google, оставьте поле пустым.">
-<!ENTITY remotePage.uri.label "URL">
+<!ENTITY remotePage.url.description "Для типа CardDAV введите URL удалённой адресной книги. Можно попробовать использовать часть URL (например : http(s)://carddav.example.org). Для адресной книги Google, оставьте поле пустым.">
+<!ENTITY remotePage.url.label "URL">
 <!ENTITY remotePage.credentials.description "Введите реквизиты доступа для подключения к адресной книге. Для адресной книги Google именем пользователя является адрес email на серверах Google.">
 <!ENTITY remotePage.validatebutton.label "Проверить">
 

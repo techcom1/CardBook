@@ -1487,8 +1487,7 @@ var cardbookRepository = {
 
 	unregisterCss: function (aChromeUri) {
 		var sss = Components.classes['@mozilla.org/content/style-sheet-service;1'].getService(Components.interfaces.nsIStyleSheetService);
-		var ios = Services.io;
-		var uri = ios.newURI(aChromeUri, null, null);
+		var uri = Services.io.newURI(aChromeUri, null, null);
 		if (sss.sheetRegistered(uri, sss.AUTHOR_SHEET)) {
 			sss.unregisterSheet(uri, sss.AUTHOR_SHEET);
 		}
@@ -1496,8 +1495,7 @@ var cardbookRepository = {
 
 	reloadCss: function (aChromeUri) {
 		var sss = Components.classes['@mozilla.org/content/style-sheet-service;1'].getService(Components.interfaces.nsIStyleSheetService);
-		var ios = Services.io;
-		var uri = ios.newURI(aChromeUri, null, null);
+		var uri = Services.io.newURI(aChromeUri, null, null);
 		if (sss.sheetRegistered(uri, sss.AUTHOR_SHEET)) {
 			sss.unregisterSheet(uri, sss.AUTHOR_SHEET);
 		}

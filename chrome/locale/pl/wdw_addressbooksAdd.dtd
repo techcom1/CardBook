@@ -30,8 +30,8 @@
 <!ENTITY remotePage.google.label "Google">
 <!ENTITY remotePage.apple.label "Apple">
 <!ENTITY remotePage.connection.label "Połączenie">
-<!ENTITY remotePage.uri.description "Dla CardDAV, wpisz URL zdalnej książki adresowej. Możesz spróbować wpisać częściowy URL (np. http(s)://carddav.example.org). Jeśli masz książkę adresową Google, nic tu nie wpisuj.">
-<!ENTITY remotePage.uri.label "URL">
+<!ENTITY remotePage.url.description "Dla CardDAV, wpisz URL zdalnej książki adresowej. Możesz spróbować wpisać częściowy URL (np. http(s)://carddav.example.org). Jeśli masz książkę adresową Google, nic tu nie wpisuj.">
+<!ENTITY remotePage.url.label "URL">
 <!ENTITY remotePage.credentials.description "Wpisz dane logowania do książki adresowej. Jeśli masz książkę adresową Google, nazwa użytkownika to Twój adres e-mail Google.">
 <!ENTITY remotePage.validatebutton.label "Sprawdź">
 

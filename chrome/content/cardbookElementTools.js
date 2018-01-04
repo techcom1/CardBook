@@ -231,9 +231,9 @@ if ("undefined" == typeof(cardbookElementTools)) {
 				while ( contacts.hasMoreElements() ) {
 					var contact = contacts.getNext().QueryInterface(Components.interfaces.nsIAbDirectory);
 					// remote LDAP directory
-                    if (contact.isRemote && contact.dirType === 0) {
-                    	continue;
-                    }
+					if (contact.isRemote && contact.dirType === 0) {
+						continue;
+					}
 					if (aInclRestrictionList && aInclRestrictionList.length > 0) {
 						if (aInclRestrictionList[contact.dirPrefId]) {
 							sortedAddressBooks.push([contact.dirName, contact.dirPrefId, "standard-abook"]);

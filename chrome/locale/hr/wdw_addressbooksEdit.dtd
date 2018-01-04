@@ -1,0 +1,28 @@
+<!ENTITY wdw_addressbooksEditTitle "Svojstva adresara">
+
+<!ENTITY colorLabel "Boja">
+<!ENTITY colorAccesskey "B">
+<!ENTITY nameLabel "Naziv">
+<!ENTITY nameAccesskey "N">
+<!ENTITY typeLabel "Vrsta">
+<!ENTITY urlLabel "URL">
+<!ENTITY readonlyLabel "Moguće je samo čitati">
+<!ENTITY readonlyAccesskey "M">
+<!ENTITY vCardVersionLabel "vCard">
+<!ENTITY dateFormatLabel "Format očekivanog datuma">
+<!ENTITY dateFormatAccesskey "E">
+<!ENTITY urnuuidLabel "Koristite urn:uuid">
+<!ENTITY urnuuidAccesskey "K">
+
+<!ENTITY autoSyncGroupboxLabel "Periodic Syncing">
+<!ENTITY autoSyncLabel "Omogući povremeno usklađivanje">
+<!ENTITY autoSyncAccesskey "E">
+<!ENTITY autoSyncIntervalLabel "Interval za povremeno usklađivanje (minuta)">
+<!ENTITY autoSyncIntervalAccesskey "I">
+
+<!ENTITY miscTabLabel "Sve i svašta">
+<!ENTITY fnLabelExplanation "Moguće je prilagoditi način na koji Kontakti stvara svoj prikaz imena. Formula se satoji od blokova unutar znaka'()'. U ovim blokovima su dva dijela ograničena znakom '|'. Prvi dio se odnosi na uključen naziv, npr. {{1}}, nije poništen, drugi dio se odnosi kad je uključen naziv poništen.">
+<!ENTITY fnFormulaLabel "Stvori pokaži naziv">
+<!ENTITY fnFormulaAccesskey "y">
+<!ENTITY resetFnFormulaLabel "Vrati na uobičajeno">
+<!ENTITY resetFnFormulaAccesskey "j">

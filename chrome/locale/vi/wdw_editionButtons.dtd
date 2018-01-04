@@ -1,0 +1,18 @@
+<!ENTITY viewResultEditionLabel "Xem kết quả">
+<!ENTITY viewResultEditionAccesskey "X">
+<!ENTITY createEditionLabel "Tạo">
+<!ENTITY createEditionAccesskey "T">
+<!ENTITY createAndReplaceEditionLabel "Tạo và Thay thế">
+<!ENTITY createAndReplaceEditionAccesskey "y">
+<!ENTITY saveEditionLabel "Lưu">
+<!ENTITY saveEditionAccesskey "L">
+<!ENTITY validateEditionLabel "Xác thực">
+<!ENTITY validateEditionAccesskey "c">
+<!ENTITY cancelEditionLabel "Hủy bỏ">
+<!ENTITY cancelEditionAccesskey "H">
+<!ENTITY closeEditionLabel "Đóng">
+<!ENTITY closeEditionAccesskey "g">
+<!ENTITY buttonAppendToListLabel "Mới">
+<!ENTITY buttonAppendToListAccesskey "M">
+<!ENTITY buttonRemoveFromListLabel "Xóa">
+<!ENTITY buttonRemoveFromListAccesskey "X">

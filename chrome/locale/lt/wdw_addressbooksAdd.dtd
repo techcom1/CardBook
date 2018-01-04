@@ -30,8 +30,8 @@
 <!ENTITY remotePage.google.label "Google">
 <!ENTITY remotePage.apple.label "Apple">
 <!ENTITY remotePage.connection.label "Ryšys">
-<!ENTITY remotePage.uri.description "Įveskite CardDAV“ tipo nuotolinės adresų knygos URL adresą. Galite pabandyti naudoti dalinį URL (pavyzdžiui: http(s)://carddav.example.org). Google“ adresų knygelėje nenurodykite šio lauko.">
-<!ENTITY remotePage.uri.label "Tinklalapis">
+<!ENTITY remotePage.url.description "Įveskite CardDAV“ tipo nuotolinės adresų knygos URL adresą. Galite pabandyti naudoti dalinį URL (pavyzdžiui: http(s)://carddav.example.org). Google“ adresų knygelėje nenurodykite šio lauko.">
+<!ENTITY remotePage.url.label "Tinklalapis">
 <!ENTITY remotePage.credentials.description "Įveskite prieigos prie savo adresų knygos įgaliojimus. Google“ adresų knygoje naudotojo vardas turėtų būti jūsų Google“ el. pašto adresas.">
 <!ENTITY remotePage.validatebutton.label "Patvirtinti">
 

@@ -1,0 +1,28 @@
+<!ENTITY wdw_addressbooksEditTitle "Eigenschappen van adresboek">
+
+<!ENTITY colorLabel "Kleur">
+<!ENTITY colorAccesskey "K">
+<!ENTITY nameLabel "Naam">
+<!ENTITY nameAccesskey "N">
+<!ENTITY typeLabel "Type">
+<!ENTITY urlLabel "URL">
+<!ENTITY readonlyLabel "Alleen lezen-modus">
+<!ENTITY readonlyAccesskey "A">
+<!ENTITY vCardVersionLabel "vCard">
+<!ENTITY dateFormatLabel "Datumformaat">
+<!ENTITY dateFormatAccesskey "D">
+<!ENTITY urnuuidLabel "Gebruik maken van urn:uuid">
+<!ENTITY urnuuidAccesskey "G">
+
+<!ENTITY autoSyncGroupboxLabel "Periodiek synchroniseren">
+<!ENTITY autoSyncLabel "Periodiek synchroniseren inschakelen">
+<!ENTITY autoSyncAccesskey "P">
+<!ENTITY autoSyncIntervalLabel "Interval (in minuten) voor periodiek synchroniseren">
+<!ENTITY autoSyncIntervalAccesskey "I">
+
+<!ENTITY miscTabLabel "Overig">
+<!ENTITY fnLabelExplanation "Het is mogelijk om in te stellen hoe CardBook de 'Getoonde naam' samenstelt. De formule bestaat uit blokken, omsloten door haakjes, (). In die blokken zitten twee delen, gescheiden door een verticaal streepje, |. Het eerste deel is van toepassing als het betreffende deel {{1}} ingevuld is, het tweede deel als het niet ingevuld is.">
+<!ENTITY fnFormulaLabel "'Getoonde naam' samenstellen">
+<!ENTITY fnFormulaAccesskey "s">
+<!ENTITY resetFnFormulaLabel "Herstellen naar standaardwaarde">
+<!ENTITY resetFnFormulaAccesskey "H">

@@ -1,0 +1,28 @@
+<!ENTITY wdw_addressbooksEditTitle "Propriedades da agenda">
+
+<!ENTITY colorLabel "Cor">
+<!ENTITY colorAccesskey "C">
+<!ENTITY nameLabel "Nome">
+<!ENTITY nameAccesskey "N">
+<!ENTITY typeLabel "Tipo">
+<!ENTITY urlLabel "URL">
+<!ENTITY readonlyLabel "Modo de só de leitura">
+<!ENTITY readonlyAccesskey "M">
+<!ENTITY vCardVersionLabel "vCard">
+<!ENTITY dateFormatLabel "Formato de data esperado">
+<!ENTITY dateFormatAccesskey "F">
+<!ENTITY urnuuidLabel "Usar urn:uuid">
+<!ENTITY urnuuidAccesskey "U">
+
+<!ENTITY autoSyncGroupboxLabel "Sincronização periódica">
+<!ENTITY autoSyncLabel "Activar sincronização periódica">
+<!ENTITY autoSyncAccesskey "P">
+<!ENTITY autoSyncIntervalLabel "Intervalo para sincronização periódica em minutos">
+<!ENTITY autoSyncIntervalAccesskey "I">
+
+<!ENTITY miscTabLabel "Diversos">
+<!ENTITY fnLabelExplanation "É possivel determinar como o CardBook gera o nome. A formula consiste num bloco dentro de '()'. Nesse bloco existem 2 partes delimitadas por '|'. A primeira é aplicada quando o termo envolvido (ex: {{1}}), não é nulo e a segunda parte é aplicada quando o termo é nulo">
+<!ENTITY fnFormulaLabel "Gerar Nome">
+<!ENTITY fnFormulaAccesskey "P">
+<!ENTITY resetFnFormulaLabel "Restaurar para origem">
+<!ENTITY resetFnFormulaAccesskey "R">

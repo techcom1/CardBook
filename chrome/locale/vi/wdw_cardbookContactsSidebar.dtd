@@ -1,0 +1,11 @@
+<!ENTITY categoriesPicker.label "Danh mục Thanh lọc:">
+<!ENTITY categoriesPicker.accesskey "T">
+<!ENTITY editAddrBookCard.label "Chỉnh sửa">
+<!ENTITY editAddrBookCard.accesskey "C">
+<!ENTITY searchContacts.label "Tìm kiếm:">
+<!ENTITY searchContacts.accesskey "T">
+<!ENTITY name.label "Tên">
+<!ENTITY addtoReplytoFieldMenu.label "Thêm vào trường Trả lời Tới">
+<!ENTITY addtoReplytoFieldMenu.accesskey "l">
+<!ENTITY replytoButton.label "Thêm vào Trả lời Tới:">
+<!ENTITY replytoButton.accesskey "l">

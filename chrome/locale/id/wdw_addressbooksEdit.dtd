@@ -1,0 +1,28 @@
+<!ENTITY wdw_addressbooksEditTitle "Alamat buku properti">
+
+<!ENTITY colorLabel "Warna">
+<!ENTITY colorAccesskey "W">
+<!ENTITY nameLabel "Nama">
+<!ENTITY nameAccesskey "N">
+<!ENTITY typeLabel "Jenis">
+<!ENTITY urlLabel "Alamat URL">
+<!ENTITY readonlyLabel "Mode baca-saja">
+<!ENTITY readonlyAccesskey "M">
+<!ENTITY vCardVersionLabel "vKartu">
+<!ENTITY dateFormatLabel "Format tanggal yang diharapkan">
+<!ENTITY dateFormatAccesskey "F">
+<!ENTITY urnuuidLabel "Gunakan urn:uuid">
+<!ENTITY urnuuidAccesskey "G">
+
+<!ENTITY autoSyncGroupboxLabel "Sinkronisasi Berkala">
+<!ENTITY autoSyncLabel "Aktifkan sinkronisasi berkala">
+<!ENTITY autoSyncAccesskey "A">
+<!ENTITY autoSyncIntervalLabel "Interval antara sinkronisasi periodik (menit)">
+<!ENTITY autoSyncIntervalAccesskey "I">
+
+<!ENTITY miscTabLabel "Serba Aneka">
+<!ENTITY fnLabelExplanation "Hal ini dimungkinkan untuk menyesuaikan cara Kontak menghasilkan Nama Tampilannya. Formula ini terdiri dari blok yang dilingkupi “()”. Di blok ini, ada dua bagian yang dibatasi oleh “|”. Bagian pertama berlaku bila istilah yang terlibat, misalnya {{1}}, bukan null, bagian kedua berlaku bila istilah yang terlibat adalah null.">
+<!ENTITY fnFormulaLabel "Menghasilkan Nama Tampilan">
+<!ENTITY fnFormulaAccesskey "M">
+<!ENTITY resetFnFormulaLabel "Kembalikan Nilai Default">
+<!ENTITY resetFnFormulaAccesskey "K">

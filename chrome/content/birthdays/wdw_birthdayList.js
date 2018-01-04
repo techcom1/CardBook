@@ -144,7 +144,7 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 
 			for (var i = 0; i < numRanges; i++) {
 				myTree.view.selection.getRangeAt(i,start,end);
-			    for (var k = start.value; k <= end.value; k++){
+				for (var k = start.value; k <= end.value; k++){
 					var myEmail = myTree.view.getCellText(k, myTree.columns.getNamedColumn('email'));
 					var myName = myTree.view.getCellText(k, myTree.columns.getNamedColumn('name'));
 					if (myEmail == "") {
@@ -169,7 +169,7 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 							}
 						}
 					}
-			    }
+				}
 			}
 		},
 	

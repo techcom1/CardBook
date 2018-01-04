@@ -1,0 +1,28 @@
+<!ENTITY wdw_addressbooksEditTitle "Lastnosti imenika">
+
+<!ENTITY colorLabel "Barva">
+<!ENTITY colorAccesskey "B">
+<!ENTITY nameLabel "Ime">
+<!ENTITY nameAccesskey "I">
+<!ENTITY typeLabel "Vrsta">
+<!ENTITY urlLabel "URL">
+<!ENTITY readonlyLabel "Način samo za branje">
+<!ENTITY readonlyAccesskey "N">
+<!ENTITY vCardVersionLabel "vCard">
+<!ENTITY dateFormatLabel "Pričakuj obliko datuma">
+<!ENTITY dateFormatAccesskey "P">
+<!ENTITY urnuuidLabel "Uporabi urn:uuid">
+<!ENTITY urnuuidAccesskey "U">
+
+<!ENTITY autoSyncGroupboxLabel "Občasna sinhronizacija">
+<!ENTITY autoSyncLabel "Omnogoči občasno sinhronizacijo">
+<!ENTITY autoSyncAccesskey "O">
+<!ENTITY autoSyncIntervalLabel "Razmik občasne sinhronizacije (minute)">
+<!ENTITY autoSyncIntervalAccesskey "R">
+
+<!ENTITY miscTabLabel "Razno">
+<!ENTITY fnLabelExplanation "Cardbookovo ustvarjanje prikazanega imena je mogoče prilagoditi. Ta formula vsebuje bloke, ki so obdani z '()'. V teh blokih sta dva dela, ki sta ločena z '|'. Prvi del se uporabi, kadar vrednost vpletenega izraza, npr. {{1}}, ni prazna, drugi del pa, kadar je vrednost vpletenega izraza prazna.">
+<!ENTITY fnFormulaLabel "Ustvari prikazano ime">
+<!ENTITY fnFormulaAccesskey "U">
+<!ENTITY resetFnFormulaLabel "Obnovi na privzeto">
+<!ENTITY resetFnFormulaAccesskey "n">

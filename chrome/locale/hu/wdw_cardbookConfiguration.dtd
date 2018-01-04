@@ -95,11 +95,6 @@
 <!ENTITY showNameAsFLAccesskey "K">
 <!ENTITY showNameAsDSPLabel "Megjelenítendő név">
 <!ENTITY showNameAsDSPAccesskey "M">
-<!ENTITY fnLabelExplanation "Lehetőség van a megszokott módon névjegyzék állítja elő az megjelenített neve. Ez a képlet áll blokkok által közrezárt „()”. Két része van ezekben a blokkokban által határolt „|”. Az első rész alkalmazandó, ha a kifejezés részt, például a {{1}}, nem nulla, a második része alkalmazandó, ha a kifejezés részt null.">
-<!ENTITY fnFormulaLabel "Képlet">
-<!ENTITY fnFormulaAccesskey "P">
-<!ENTITY resetFnFormulaLabel "Alapértelmezés">
-<!ENTITY resetFnFormulaAccesskey "A">
 <!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Ez a képlet áll blokkok által közrezárt „()”. Két része van ezekben a blokkokban által határolt „|”. Az első rész alkalmazandó, ha a kifejezés részt, például a {{1}}, nem nulla, a második része alkalmazandó, ha a kifejezés részt null.">
 <!ENTITY adrFormulaLabel "??Address Format Formula??">
 <!ENTITY adrFormulaAccesskey "??R??">
@@ -193,11 +188,6 @@
 <!ENTITY solveConflictsRemoteAccesskey "s">
 <!ENTITY solveConflictsUserLabel "Kérdezze felhasználó">
 <!ENTITY solveConflictsUserAccesskey "K">
-<!ENTITY autoSyncGroupboxLabel "Időszakos összehangolása">
-<!ENTITY autoSyncLabel "Engedélyezze időszakos összehangolás">
-<!ENTITY autoSyncAccesskey "E">
-<!ENTITY autoSyncIntervalLabel "Rendszeres összehangolás időköze (perc)">
-<!ENTITY autoSyncIntervalAccesskey "i">
 <!ENTITY requestsGroupboxLabel "Kérések">
 <!ENTITY requestsTimeoutLabel "Időkorlát (másodperc)">
 <!ENTITY requestsTimeoutAccesskey "I">
@@ -240,8 +230,6 @@
 <!ENTITY searchInNoteTooltip1 "Sor hozzáadása a jegyzetek mezőibe (kettőspont az elválasztóvonal az esemény a leírás és a dátum között és a dátumformátum a névjegytárban megadott formában legyen):">
 <!ENTITY searchInNoteTooltip2 "Esemény:Leírás:2006-12-24">
 <!ENTITY searchInNoteAccesskey "S">
-<!ENTITY dateFormatLabel "Várható dátum formátum">
-<!ENTITY dateFormatAccesskey "V">
 
 <!ENTITY remindersTabLabel "Emlékeztetők">
 <!ENTITY remindViaPopupWindowGroupboxLabel "Emlékeztesd keresztül felugró ablakban">

@@ -95,11 +95,6 @@
 <!ENTITY showNameAsFLAccesskey "F">
 <!ENTITY showNameAsDSPLabel "Vist navn">
 <!ENTITY showNameAsDSPAccesskey "i">
-<!ENTITY fnLabelExplanation "Det er muligt at indstille den måde CardBook genererer sine viste navne. Denne formel består af blokke omgivet af '()'. I disse blokke er der to dele adskilt af '|'. Den første del anvendes når det involverede led, for eksempel {{1}}, ikke er nul, den anden del anvendes når det involverede led er nul.">
-<!ENTITY fnFormulaLabel "Generer vist navn">
-<!ENTITY fnFormulaAccesskey "n">
-<!ENTITY resetFnFormulaLabel "Gendan standardvalg">
-<!ENTITY resetFnFormulaAccesskey "d">
 <!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Denne formel består af blokke omgivet af '()'. I disse blokke er der to dele adskilt af '|'. Den første del anvendes når det involverede led, for eksempel {{1}}, ikke er nul, den anden del anvendes når det involverede led er nul.">
 <!ENTITY adrFormulaLabel "??Address Format Formula??">
 <!ENTITY adrFormulaAccesskey "??R??">
@@ -193,11 +188,6 @@
 <!ENTITY solveConflictsRemoteAccesskey "o">
 <!ENTITY solveConflictsUserLabel "Spørg bruger">
 <!ENTITY solveConflictsUserAccesskey "S">
-<!ENTITY autoSyncGroupboxLabel "Periodisk synkronisering">
-<!ENTITY autoSyncLabel "Aktiver periodisk synkronisering">
-<!ENTITY autoSyncAccesskey "A">
-<!ENTITY autoSyncIntervalLabel "Interval for periodisk synkronisering (minutter)">
-<!ENTITY autoSyncIntervalAccesskey "I">
 <!ENTITY requestsGroupboxLabel "Forespørgsler">
 <!ENTITY requestsTimeoutLabel "Tidsudløb (sekunder)">
 <!ENTITY requestsTimeoutAccesskey "T">
@@ -240,8 +230,6 @@
 <!ENTITY searchInNoteTooltip1 "Tilføj sådanne linjer i notefeltet (adskiller bør være : og datoformatet bør være det der er defineret for adressebogen) :">
 <!ENTITY searchInNoteTooltip2 "Begivenhed:Beskrivelse:2006-12-24">
 <!ENTITY searchInNoteAccesskey "S">
-<!ENTITY dateFormatLabel "Forventet datoformat">
-<!ENTITY dateFormatAccesskey "F">
 
 <!ENTITY remindersTabLabel "Påmindelser">
 <!ENTITY remindViaPopupWindowGroupboxLabel "Påmind via pop-op-vindue">

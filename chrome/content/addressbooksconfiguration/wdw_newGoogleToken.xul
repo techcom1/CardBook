@@ -6,9 +6,9 @@
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 		id="wdw_newGoogleToken" title="&NewGoogleTokenTitle;"
 		persist="screenX screenY width height"
-        height="740px"
-        width="700px"
-        onclose="wdw_newGoogleToken.closeKO();">
+		height="740px"
+		width="700px"
+		onclose="wdw_newGoogleToken.closeKO();">
 
 	<stringbundleset id="stringbundleset"/>
 

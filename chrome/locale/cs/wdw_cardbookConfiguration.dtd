@@ -95,11 +95,6 @@
 <!ENTITY showNameAsFLAccesskey "K">
 <!ENTITY showNameAsDSPLabel "Zobrazované jméno">
 <!ENTITY showNameAsDSPAccesskey "Z">
-<!ENTITY fnLabelExplanation "Je možné si přizpůsobit, jak CardBook vytváří zobrazované jméno. Tento vzorec se skládá z bloků uzavřených v '()'. V těchto blocích jsou dvě části oddělené '|'. První část se použije, když je zmíněný termín, například {{1}} nenulový, druhá se použije, když je zmíněný termín nulový.">
-<!ENTITY fnFormulaLabel "Vytvořit zobrazované jméno">
-<!ENTITY fnFormulaAccesskey "z">
-<!ENTITY resetFnFormulaLabel "Obnovit na výchozí hodnotu">
-<!ENTITY resetFnFormulaAccesskey "h">
 <!ENTITY adrLabelExplanation "Formátování adres CardBooku lze přizpůsobit. Tento vzorec se skládá z bloků uzavřených v '()'. V těchto blocích jsou dvě části oddělené '|'. První část se použije, když je zmíněný termín, například {{1}} nenulový, druhá se použije, když je zmíněný termín nulový.">
 <!ENTITY adrFormulaLabel "Vzorec pro formátování adresy">
 <!ENTITY adrFormulaAccesskey "V">
@@ -193,11 +188,6 @@
 <!ENTITY solveConflictsRemoteAccesskey "S">
 <!ENTITY solveConflictsUserLabel "Zeptat se uživatele">
 <!ENTITY solveConflictsUserAccesskey "Z">
-<!ENTITY autoSyncGroupboxLabel "Opakovaná synchronizace">
-<!ENTITY autoSyncLabel "Povolit opakovanou synchronizaci">
-<!ENTITY autoSyncAccesskey "P">
-<!ENTITY autoSyncIntervalLabel "Interval opakované synchronizace (minuty)">
-<!ENTITY autoSyncIntervalAccesskey "T">
 <!ENTITY requestsGroupboxLabel "Požadavky">
 <!ENTITY requestsTimeoutLabel "Časový limit (sekundy)">
 <!ENTITY requestsTimeoutAccesskey "L">
@@ -240,8 +230,6 @@
 <!ENTITY searchInNoteTooltip1 "Přidejte řádky do poznámek podobné následujícímu oddělovač by měl být : a formát data by měl odpovídat nastavenému ve vlastnostech adresáře :">
 <!ENTITY searchInNoteTooltip2 "Událost:Popis:2006-12-24">
 <!ENTITY searchInNoteAccesskey "H">
-<!ENTITY dateFormatLabel "Očekávaný formát data">
-<!ENTITY dateFormatAccesskey "O">
 
 <!ENTITY remindersTabLabel "Připomínky">
 <!ENTITY remindViaPopupWindowGroupboxLabel "Připomenout pomocí vyskakovacího okna">

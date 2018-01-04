@@ -1,0 +1,5 @@
+<!ENTITY addImageCardFromFileLabel "Thêm ảnh từ Tập tin">
+<!ENTITY addImageCardFromClipboardLabel "Thêm ảnh từ Khay nhớ tạm">
+<!ENTITY addImageCardFromUrlLabel "Thêm ảnh từ Khay nhớ tạm Địa chỉ URL">
+<!ENTITY saveImageCardLabel "Lưu Ảnh">
+<!ENTITY deleteImageCardLabel "Xóa Ảnh">

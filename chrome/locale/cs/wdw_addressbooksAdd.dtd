@@ -30,8 +30,8 @@
 <!ENTITY remotePage.google.label "Google">
 <!ENTITY remotePage.apple.label "Apple">
 <!ENTITY remotePage.connection.label "Připojení">
-<!ENTITY remotePage.uri.description "Pro adresář CardDAV zadejte URL vašeho vzdáleného adresáře. Můžete zkusit částečnou URL (příklad : http(s)://carddav.example.org). Pro Google adresář toto pole nevyplňujte">
-<!ENTITY remotePage.uri.label "URL">
+<!ENTITY remotePage.url.description "Pro adresář CardDAV zadejte URL vašeho vzdáleného adresáře. Můžete zkusit částečnou URL (příklad : http(s)://carddav.example.org). Pro Google adresář toto pole nevyplňujte">
+<!ENTITY remotePage.url.label "URL">
 <!ENTITY remotePage.credentials.description "Zadejte přihlašovací údaje pro přístup k vašemu vzdálenému adresáři. Pro Google adresář by mělo být uživatelské jméno váš Google e-mail.">
 <!ENTITY remotePage.validatebutton.label "Ověřit">
 

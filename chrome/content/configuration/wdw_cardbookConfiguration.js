@@ -219,40 +219,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			cardbookRepository.preferIMPPPref = document.getElementById('preferIMPPPrefCheckBox').checked;
 		},
 
-		loadFnFormula: function () {
-			var strBundle = document.getElementById("cardbook-strings");
-			var myLabel = "";
-			myLabel = myLabel + "{{1}} : " + strBundle.getString("prefixnameLabel") + "    ";
-			myLabel = myLabel + "{{2}} : " + strBundle.getString("firstnameLabel") + "    ";
-			myLabel = myLabel + "{{3}} : " + strBundle.getString("othernameLabel") + "    ";
-			myLabel = myLabel + "{{4}} : " + strBundle.getString("lastnameLabel");
-			document.getElementById('fnFormulaDescriptionLabel1').value = myLabel.trim();
-			myLabel = "";
-			myLabel = myLabel + "{{5}} : " + strBundle.getString("suffixnameLabel") + "    ";
-			var count = 6;
-			if (wdw_cardbookConfiguration.allOrg.length === 0) {
-				myLabel = "{{6}} : " + strBundle.getString("orgLabel");
-			} else {
-				for (var i = 0; i < wdw_cardbookConfiguration.allOrg.length; i++) {
-					var index = count + i;
-					myLabel = myLabel + "{{" + index + "}} : " + wdw_cardbookConfiguration.allOrg[i] + "    ";
-				}
-			}
-			document.getElementById('fnFormulaDescriptionLabel2').value = myLabel.trim();
-		},
-
-		resetFnFormula: function () {
-			document.getElementById('fnFormulaTextBox').value = cardbookRepository.defaultFnFormula;
-		},
-
-		validateFnFormula: function () {
-			if (document.getElementById('fnFormulaTextBox').value == "") {
-				wdw_cardbookConfiguration.resetFnFormula();
-			}
-			// to be sure the pref is saved (resetting its value does not save the preference)
-			cardbookPreferences.setStringPref("extensions.cardbook.fnFormula", document.getElementById('fnFormulaTextBox').value);
-		},
-
 		loadAdrFormula: function () {
 			var adrFormula = cardbookPreferences.getStringPref("extensions.cardbook.adrFormula");
 			document.getElementById('adrFormulaTextBox').value = adrFormula.replace(/\n/g, "\\n").trim();
@@ -1798,8 +1764,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			wdw_cardbookConfiguration.loadEmailsCollection();
 			wdw_cardbookConfiguration.sortTrees(null, "emailsCollectionTree");
 			wdw_cardbookConfiguration.loadPrefEmailPref();
-			// loadFnFormula() depends on loadOrg()
-			wdw_cardbookConfiguration.loadFnFormula();
 			wdw_cardbookConfiguration.loadAdrFormula();
 			AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, wdw_cardbookConfiguration.loadCalendars);
 			wdw_cardbookConfiguration.remindViaPopup();
@@ -1819,7 +1783,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			wdw_cardbookConfiguration.validatePrefEmailPref();
 			wdw_cardbookConfiguration.validatePrefIMPPPref();
 			wdw_cardbookConfiguration.validateEventEntryTitle();
-			wdw_cardbookConfiguration.validateFnFormula();
 			wdw_cardbookConfiguration.validateAdrFormula();
 			if (!(wdw_cardbookConfiguration.validateCustomValues())) {
 				// don't work

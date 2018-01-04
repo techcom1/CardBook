@@ -1,0 +1,28 @@
+<!ENTITY wdw_addressbooksEditTitle "Adreso knygos savybės">
+
+<!ENTITY colorLabel "Spalva">
+<!ENTITY colorAccesskey "S">
+<!ENTITY nameLabel "Vardas">
+<!ENTITY nameAccesskey "V">
+<!ENTITY typeLabel "Tipo">
+<!ENTITY urlLabel "Tinklalapis">
+<!ENTITY readonlyLabel "Tik skaitymo režimas">
+<!ENTITY readonlyAccesskey "T">
+<!ENTITY vCardVersionLabel "vCard">
+<!ENTITY dateFormatLabel "Numatomas datos formatas">
+<!ENTITY dateFormatAccesskey "N">
+<!ENTITY urnuuidLabel "Naudokite urn:uuid">
+<!ENTITY urnuuidAccesskey "u">
+
+<!ENTITY autoSyncGroupboxLabel "Periodiškas sinchronizavimas">
+<!ENTITY autoSyncLabel "Įgalinti periodinę sinchronizaciją">
+<!ENTITY autoSyncAccesskey "g">
+<!ENTITY autoSyncIntervalLabel "Periodinio sinchronizavimo intervalas (minutės)">
+<!ENTITY autoSyncIntervalAccesskey "į">
+
+<!ENTITY miscTabLabel "Įvairūs">
+<!ENTITY fnLabelExplanation "Galima pritaikyti „Kontaktų“ rodomo vardo būdą. Ši formulė susideda iš blokų, kuriuos apima skliausteliai „()“. Šiuose blokuose yra dvi dalys, kurias apibrėžia vertikalus brūkšnys „|“. Pirmoji dalis taikoma tada, kai susijusi sąlyga, pvz., {{1}}, nėra nulinė, antra dalis taikoma tada, kai susijęs terminas yra nulis.">			
+<!ENTITY fnFormulaLabel "Sukurti rodomo pavadinimą">
+<!ENTITY fnFormulaAccesskey "ą">
+<!ENTITY resetFnFormulaLabel "Atstatyti numatytąjį">
+<!ENTITY resetFnFormulaAccesskey "A">

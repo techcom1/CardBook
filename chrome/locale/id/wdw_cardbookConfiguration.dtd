@@ -94,11 +94,6 @@
 <!ENTITY showNameAsFLAccesskey "D">
 <!ENTITY showNameAsDSPLabel "Nama Tampilan">
 <!ENTITY showNameAsDSPAccesskey "T">
-<!ENTITY fnLabelExplanation "Hal ini dimungkinkan untuk menyesuaikan cara Kontak menghasilkan Nama Tampilannya. Formula ini terdiri dari blok yang dilingkupi “()”. Di blok ini, ada dua bagian yang dibatasi oleh “|”. Bagian pertama berlaku bila istilah yang terlibat, misalnya {{1}}, bukan null, bagian kedua berlaku bila istilah yang terlibat adalah null.">
-<!ENTITY fnFormulaLabel "Menghasilkan Nama Tampilan">
-<!ENTITY fnFormulaAccesskey "M">
-<!ENTITY resetFnFormulaLabel "Kembalikan Nilai Default">
-<!ENTITY resetFnFormulaAccesskey "K">
 <!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Formula ini terdiri dari blok yang dilingkupi “()”. Di blok ini, ada dua bagian yang dibatasi oleh “|”. Bagian pertama berlaku bila istilah yang terlibat, misalnya {{1}}, bukan null, bagian kedua berlaku bila istilah yang terlibat adalah null.">
 <!ENTITY adrFormulaLabel "??Address Format Formula??">
 <!ENTITY adrFormulaAccesskey "??R??">
@@ -192,11 +187,6 @@
 <!ENTITY solveConflictsRemoteAccesskey "s">
 <!ENTITY solveConflictsUserLabel "Tanya pengguna">
 <!ENTITY solveConflictsUserAccesskey "T">
-<!ENTITY autoSyncGroupboxLabel "Sinkronisasi Berkala">
-<!ENTITY autoSyncLabel "Aktifkan sinkronisasi berkala">
-<!ENTITY autoSyncAccesskey "A">
-<!ENTITY autoSyncIntervalLabel "Interval antara sinkronisasi periodik (menit)">
-<!ENTITY autoSyncIntervalAccesskey "I">
 <!ENTITY requestsGroupboxLabel "Permintaan">
 <!ENTITY requestsTimeoutLabel "Waktu habis (detik)">
 <!ENTITY requestsTimeoutAccesskey "">
@@ -239,8 +229,6 @@
 <!ENTITY searchInNoteTooltip1 "Tambahkan baris tersebut di bidang Catatan (pemisah harus: dan format tanggal harus ditetapkan untuk buku alamat):">
 <!ENTITY searchInNoteTooltip2 "Peristiwa:Deskripsi:HH/BB/TTTT">
 <!ENTITY searchInNoteAccesskey "P">
-<!ENTITY dateFormatLabel "Format tanggal yang diharapkan">
-<!ENTITY dateFormatAccesskey "d">
 
 <!ENTITY remindersTabLabel "Pengingat">
 <!ENTITY remindViaPopupWindowGroupboxLabel "Ingatkan via Jendela Popup">

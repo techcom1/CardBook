@@ -1,0 +1,22 @@
+.icon-holder[type="cardbookTab"],
+.tabmail-tab[type="cardbookTab"] {
+	list-style-image: url("chrome://cardbook/skin/cardbook_16_16.png");
+}
+
+#cardbookMenuItem {
+	list-style-image: url("chrome://cardbook/skin/cardbook_16_16.png");
+}
+
+#cardbookToolbarButton {
+	list-style-image: url("chrome://cardbook/skin/cardbook_24_24.png");
+}
+toolbar[brighttext] #cardbookToolbarButton {
+	list-style-image: url("chrome://cardbook/skin/cardbook_24_24.png");
+}
+
+#cardbookTabButton {
+	list-style-image: url("chrome://cardbook/skin/cardbook_16_16.black.png");
+}
+toolbar[brighttext] #cardbookTabButton {
+	list-style-image: url("chrome://cardbook/skin/cardbook_16_16.white.png");
+}

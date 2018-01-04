@@ -15,7 +15,7 @@
 	title="&wizard.title;"
 	windowtype="Addressbook:NewAddressbookWizard"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-    xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:html="http://www.w3.org/1999/xhtml"
 	onload="wdw_addressbooksAdd.loadWizard();"
 	onwizardcancel="wdw_addressbooksAdd.cancelWizard();"
 	onclose="wdw_addressbooksAdd.cancelWizard();"
@@ -154,9 +154,9 @@
 					<column flex="1"/>
 				</columns>
 				<rows>
-					<description>&remotePage.uri.description;</description>
+					<description>&remotePage.url.description;</description>
 					<row align="center">
-						<label id="remotePageUriLabel" value="&remotePage.uri.label;" control="remotePageURI"/>
+						<label id="remotePageUriLabel" value="&remotePage.url.label;" control="remotePageURI"/>
 						<textbox id="remotePageURI"
 							required="true"
 							oninput="wdw_addressbooksAdd.remotePageTextboxInput();"/>
