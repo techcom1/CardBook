@@ -262,7 +262,7 @@
 				</row>
 				<separator class="groove-thin" hidden="true"/>
 				<row id="dateFormatRow" align="center" hidden="true">
-					<label value="&dateFormatLabel;" control="dateFormatMenuList" hidden="true"/>
+					<label control="dateFormatMenuList" hidden="true"/>
 					<menulist id="dateFormatMenuList" hidden="true">
 						<menupopup id="dateFormatMenuPopup"/>
 					</menulist>
@@ -313,7 +313,7 @@
 					<label flex="1" value="&namePage.name.label;"/>
 					<label value="&namePage.color.label;"/>
 					<label value="&namePage.vCardVersion.label;"/>
-					<label value="&dateFormatLabel;" hidden="true"/>
+					<label hidden="true"/>
 					<label hidden="true"/>
 					<label value="&namePage.readonly.label;"/>
 					<label value="&namePage.urnuuid.label;"/>

@@ -87,6 +87,10 @@ Translations by:
 * Peter Klofutar ([sl](https://github.com/CardBook/CardBook/tree/master/chrome/locale/sl)) [Prenesi zdaj](https://addons.mozilla.org/sl/thunderbird/addon/cardbook/)
 * Anders ([sv-SE](https://github.com/CardBook/CardBook/tree/master/chrome/locale/sv-SE)) [Hämta nu](https://addons.mozilla.org/sv-SE/thunderbird/addon/cardbook/)
 * Kire Dyfvelsten ([sv-SE](https://github.com/CardBook/CardBook/tree/master/chrome/locale/sv-SE)) [Hämta nu](https://addons.mozilla.org/sv-SE/thunderbird/addon/cardbook/)
+* Loan ([vi](https://github.com/CardBook/CardBook/tree/master/chrome/locale/vi)) [Tải xuống ngay](https://addons.mozilla.org/vi/thunderbird/addon/cardbook/)
+* Nguyễn ([vi](https://github.com/CardBook/CardBook/tree/master/chrome/locale/vi)) [Tải xuống ngay](https://addons.mozilla.org/vi/thunderbird/addon/cardbook/)
+* Thanh ([vi](https://github.com/CardBook/CardBook/tree/master/chrome/locale/vi)) [Tải xuống ngay](https://addons.mozilla.org/vi/thunderbird/addon/cardbook/)
+
 
 Trailblazer:
 * [Thomas McWork](https://github.com/thomas-mc-work): midwife for the public git repository

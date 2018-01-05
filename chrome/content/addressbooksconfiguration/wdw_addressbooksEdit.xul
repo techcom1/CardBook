@@ -15,7 +15,7 @@
 	onclose="wdw_addressbooksEdit.cancel();"
 	id="wdw_addressbooksEdit" title="&wdw_addressbooksEditTitle;"
 	persist="screenX screenY width height" class="cardbookBackgroundColorClass dialog-content-box"
-	style="min-width:700px;min-height:400px;">
+	style="max-width:700px;max-height:400px;">
 	
 	<stringbundleset id="stringbundleset"/>
 
