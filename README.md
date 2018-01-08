@@ -54,10 +54,12 @@ You are welcomed to contribute to this project by:
 Main contributors:
 * Philippe Vigneau (author and maintainer)
 * [Alexander Bergmann](https://addons.mozilla.org/thunderbird/user/tempuser/)
+* Sisim Biva
 * [Günter Gersdorf](https://addons.mozilla.org/thunderbird/user/guenter-gersdorf/)
 * [R. Kent James](https://github.com/rkent)
 * Timothe Litt
 * Christoph Mair
+* Günther Palfinger
 * Boris Prüssmann
 * Michael Roland
 * Lukáš Tyrychtr
