@@ -11,10 +11,12 @@
 		<em:description>vCard Address Book</em:description>
 		<em:creator>Philippe Vigneau</em:creator>
 		<em:contributor>Alexander Bergmann</em:contributor>
+		<em:contributor>Sisim Biva</em:contributor>
 		<em:contributor>Günter Gersdorf</em:contributor>
 		<em:contributor>R. Kent James</em:contributor>
 		<em:contributor>Timothe Litt</em:contributor>
 		<em:contributor>Christoph Mair</em:contributor>
+		<em:contributor>Günther Palfinger</em:contributor>
 		<em:contributor>Boris Prüssmann</em:contributor>
 		<em:contributor>Michael Roland</em:contributor>
 		<em:contributor>Lukáš Tyrychtr</em:contributor>
@@ -63,10 +65,12 @@
 				<em:name>CardBook</em:name>
 				<em:description>Adresář vCard</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Sisim Biva</em:contributor>
 				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
+				<em:contributor>Günther Palfinger</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
@@ -106,10 +110,12 @@
 				<em:name>CardBook</em:name>
 				<em:description>vCard Adressebog</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Sisim Biva</em:contributor>
 				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
+				<em:contributor>Günther Palfinger</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
@@ -149,10 +155,12 @@
 				<em:name>CardBook</em:name>
 				<em:description>vCard Adressbuch</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Sisim Biva</em:contributor>
 				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
+				<em:contributor>Günther Palfinger</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
@@ -192,10 +200,12 @@
 				<em:name>CardBook</em:name>
 				<em:description>vCard address book</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Sisim Biva</em:contributor>
 				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
+				<em:contributor>Günther Palfinger</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
@@ -235,10 +245,12 @@
 				<em:name>CardBook</em:name>
 				<em:description>Carnet d'adresses vCard</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Sisim Biva</em:contributor>
 				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
+				<em:contributor>Günther Palfinger</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
@@ -278,10 +290,12 @@
 				<em:name>Kontakti (CardBook)</em:name>
 				<em:description>vCard kontakti</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Sisim Biva</em:contributor>
 				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
+				<em:contributor>Günther Palfinger</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
@@ -321,10 +335,12 @@
 				<em:name>Névjegyzék (CardBook)</em:name>
 				<em:description>vCard névjegyzék</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Sisim Biva</em:contributor>
 				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
+				<em:contributor>Günther Palfinger</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
@@ -364,10 +380,12 @@
 				<em:name>Kontak (CardBook)</em:name>
 				<em:description>Buku Alamat vKartu</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Sisim Biva</em:contributor>
 				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
+				<em:contributor>Günther Palfinger</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
@@ -407,10 +425,12 @@
 				<em:name>CardBook</em:name>
 				<em:description>Rubrica vCard</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Sisim Biva</em:contributor>
 				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
+				<em:contributor>Günther Palfinger</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
@@ -450,10 +470,12 @@
 				<em:name>Kontaktai (CardBook)</em:name>
 				<em:description>„vCard“ adresų knyga</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Sisim Biva</em:contributor>
 				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
+				<em:contributor>Günther Palfinger</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
@@ -493,10 +515,12 @@
 				<em:name>CardBook</em:name>
 				<em:description>vCard adresboek</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Sisim Biva</em:contributor>
 				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
+				<em:contributor>Günther Palfinger</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
@@ -536,10 +560,12 @@
 				<em:name>CardBook</em:name>
 				<em:description>Książka adresowa z obsługą vCard</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Sisim Biva</em:contributor>
 				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
+				<em:contributor>Günther Palfinger</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
@@ -579,10 +605,12 @@
 				<em:name>CardBook</em:name>
 				<em:description>Agenda vCard</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Sisim Biva</em:contributor>
 				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
+				<em:contributor>Günther Palfinger</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
@@ -622,10 +650,12 @@
 				<em:name>Contacte (CardBook)</em:name>
 				<em:description>Carte de adrese vCard</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Sisim Biva</em:contributor>
 				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
+				<em:contributor>Günther Palfinger</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
@@ -665,10 +695,12 @@
 				<em:name>CardBook</em:name>
 				<em:description>Адресная книга vCard</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Sisim Biva</em:contributor>
 				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
+				<em:contributor>Günther Palfinger</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
@@ -708,10 +740,12 @@
 				<em:name>CardBook</em:name>
 				<em:description>Imenik vCard</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Sisim Biva</em:contributor>
 				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
+				<em:contributor>Günther Palfinger</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
@@ -751,10 +785,12 @@
 				<em:name>Kontakter (CardBook)</em:name>
 				<em:description>vCard Adressbok</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Sisim Biva</em:contributor>
 				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
+				<em:contributor>Günther Palfinger</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
@@ -795,10 +831,12 @@
 				<em:name>Danh bạ (CardBook)</em:name>
 				<em:description>Sổ Địa Chỉ Thẻ Ảo (vCard)</em:description>
 				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Sisim Biva</em:contributor>
 				<em:contributor>Günter Gersdorf</em:contributor>
 				<em:contributor>R. Kent James</em:contributor>
 				<em:contributor>Timothe Litt</em:contributor>
 				<em:contributor>Christoph Mair</em:contributor>
+				<em:contributor>Günther Palfinger</em:contributor>
 				<em:contributor>Boris Prüssmann</em:contributor>
 				<em:contributor>Michael Roland</em:contributor>
 				<em:contributor>Lukáš Tyrychtr</em:contributor>
