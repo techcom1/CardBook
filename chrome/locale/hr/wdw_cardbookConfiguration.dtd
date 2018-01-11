@@ -94,7 +94,7 @@
 <!ENTITY showNameAsFLAccesskey "e">
 <!ENTITY showNameAsDSPLabel "Pokaži ime">
 <!ENTITY showNameAsDSPAccesskey "D">
-<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Formula se satoji od blokova unutar znaka'()'. U ovim blokovima su dva dijela ograničena znakom '|'. Prvi dio se odnosi na uključen naziv, npr. {{1}}, nije poništen, drugi dio se odnosi kad je uključen naziv poništen.">
+<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Formula se satoji od blokova unutar znaka „()”. U ovim blokovima su dva dijela ograničena znakom „|”. Prvi dio se odnosi na uključen naziv, npr. {{1}}, nije poništen, drugi dio se odnosi kad je uključen naziv poništen.">
 <!ENTITY adrFormulaLabel "??Address Format Formula??">
 <!ENTITY adrFormulaAccesskey "??R??">
 <!ENTITY resetAdrFormulaLabel "Vrati na uobičajeno">
@@ -250,6 +250,8 @@
 <!ENTITY calendarEntryTitleLabel "??Title for calendar event??">
 <!ENTITY calendarEntryTitleTooltip "??Template title for the calendar event. It should contain two placeholders &#37;S, respectively replaced by name and age. If the field is empty, a standard message is used.??">
 <!ENTITY calendarEntryTitleAccesskey "T">
+<!ENTITY resetCalendarEntryTitleButtonLabel "Vrati na uobičajeno">
+<!ENTITY resetCalendarEntryTitleButtonAccesskey "V">
 <!ENTITY calendarEntryTimeLabel "??Time for calendar event (hh:mm)??">
 <!ENTITY calendarEntryTimeAccesskey "m">
 <!ENTITY calendarEntryWholeDayLabel "Cijeli dan događaj iz kalendara">

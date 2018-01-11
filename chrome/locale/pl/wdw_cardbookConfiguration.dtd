@@ -95,7 +95,7 @@
 <!ENTITY showNameAsFLAccesskey "I">
 <!ENTITY showNameAsDSPLabel "Wyświetlana nazwa">
 <!ENTITY showNameAsDSPAccesskey "W">
-<!ENTITY adrLabelExplanation "Można dostosować sposób, w który CardBook wyświetla adresy. Formuła zawiera bloki otoczone '()'. Bloki zawierają dwa elementy oddzielone'|'. Pierwszy element jest używany, gdy wybrane pole, na przykład {{1}}, nie jest puste, drugi element jest używany, gdy wybrane pole jest puste.">
+<!ENTITY adrLabelExplanation "Można dostosować sposób, w który CardBook wyświetla adresy. Formuła zawiera bloki otoczone „()”. Bloki zawierają dwa elementy oddzielone „|”. Pierwszy element jest używany, gdy wybrane pole, na przykład {{1}}, nie jest puste, drugi element jest używany, gdy wybrane pole jest puste.">
 <!ENTITY adrFormulaLabel "Sposób wyświetlania adresów">
 <!ENTITY adrFormulaAccesskey "R">
 <!ENTITY resetAdrFormulaLabel "Przywróć domyślne">
@@ -251,6 +251,8 @@
 <!ENTITY calendarEntryTitleLabel "Nazwa wydarzenia">
 <!ENTITY calendarEntryTitleTooltip "Szablon nazwy wydarzenia. Powinien zawierać dwa pola &#37;S, odpowiednio zastępowane imieniem i nazwiskiem oraz wiekiem. Jeśli pole jest puste, użyty zostanie komunikat domyślny.">
 <!ENTITY calendarEntryTitleAccesskey "y">
+<!ENTITY resetCalendarEntryTitleButtonLabel "Przywróć domyślne">
+<!ENTITY resetCalendarEntryTitleButtonAccesskey "P">
 <!ENTITY calendarEntryTimeLabel "Czas wydarzenia (hh:mm)">
 <!ENTITY calendarEntryTimeAccesskey "z">
 <!ENTITY calendarEntryWholeDayLabel "Wydarzenie całodniowe">

@@ -95,7 +95,7 @@
 <!ENTITY showNameAsFLAccesskey "F">
 <!ENTITY showNameAsDSPLabel "Vist navn">
 <!ENTITY showNameAsDSPAccesskey "i">
-<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Denne formel består af blokke omgivet af '()'. I disse blokke er der to dele adskilt af '|'. Den første del anvendes når det involverede led, for eksempel {{1}}, ikke er nul, den anden del anvendes når det involverede led er nul.">
+<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Denne formel består af blokke omgivet af „()”. I disse blokke er der to dele adskilt af „|”. Den første del anvendes når det involverede led, for eksempel {{1}}, ikke er nul, den anden del anvendes når det involverede led er nul.">
 <!ENTITY adrFormulaLabel "??Address Format Formula??">
 <!ENTITY adrFormulaAccesskey "??R??">
 <!ENTITY resetAdrFormulaLabel "Gendan standardvalg">
@@ -203,7 +203,7 @@
 <!ENTITY miscEmailGroupboxLabel "Afsendelse af e-mails">
 <!ENTITY preferEmailPrefLabel "Foretræk e-mailadresser markeret PREF">
 <!ENTITY preferEmailPrefAccesskey "F">
-<!ENTITY preferEmailPrefWarn "Hvis ingen adresse er markeret 'PREF' bliver beskeden sendt til alle kontaktens adresser.">
+<!ENTITY preferEmailPrefWarn "Hvis ingen adresse er markeret „PREF” bliver beskeden sendt til alle kontaktens adresser.">
 <!ENTITY warnEmptyEmailsLabel "Advar mig når jeg forsøger at e-maile kontakter uden en e-mailadresse">
 <!ENTITY warnEmptyEmailsAccesskey "A">
 <!ENTITY useOnlyEmailLabel "Brug kun e-mailadresser, uden deres viste navne">
@@ -251,6 +251,8 @@
 <!ENTITY calendarEntryTitleLabel "Kalenderbegivenheds titel">
 <!ENTITY calendarEntryTitleTooltip "Titelskabelon for kalenderbegivenheden. Den bør indeholde to pladsholdere &#37;S, respektivt udskiftet med navn og alder. Hvis feltet er tomt, bliver en forvalgt besked brugt.">
 <!ENTITY calendarEntryTitleAccesskey "K">
+<!ENTITY resetCalendarEntryTitleButtonLabel "Gendan standardvalg">
+<!ENTITY resetCalendarEntryTitleButtonAccesskey "G">
 <!ENTITY calendarEntryTimeLabel "Tidspunkt for kalenderbegivenhed (tt:mm)">
 <!ENTITY calendarEntryTimeAccesskey "d">
 <!ENTITY calendarEntryWholeDayLabel "Kalenderbegivenhed for hele dagen">

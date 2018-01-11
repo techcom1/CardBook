@@ -21,7 +21,7 @@
 <!ENTITY autoSyncIntervalAccesskey "I">
 
 <!ENTITY miscTabLabel "Varie">
-<!ENTITY fnLabelExplanation "E’ possibile modificare le modalita’ in cui CardBook genera il nome in mostra. Questa formula consiste in blocchi racchiusi da '()'. In questi blocchi, ci sono due parti delimitate da '|'. La prima parte è applicata quando la parola usata, per esempio {{1}}, non è nulla, la seconda parte è applicata quando la parola usata è nulla.">
+<!ENTITY fnLabelExplanation "E’ possibile modificare le modalita’ in cui CardBook genera il nome in mostra. Questa formula consiste in blocchi racchiusi da «()». In questi blocchi, ci sono due parti delimitate da «|». La prima parte è applicata quando la parola usata, per esempio {{1}}, non è nulla, la seconda parte è applicata quando la parola usata è nulla.">
 <!ENTITY fnFormulaLabel "Genera Nome Display">
 <!ENTITY fnFormulaAccesskey "p">
 <!ENTITY resetFnFormulaLabel "Ripristina al Default">

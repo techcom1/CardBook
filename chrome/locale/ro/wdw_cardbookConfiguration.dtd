@@ -250,6 +250,8 @@
 <!ENTITY calendarEntryTitleLabel "Titlul pentru evenimentul din calendar">
 <!ENTITY calendarEntryTitleTooltip "Titlul șablonului pentru evenimentul din calendar. Ar trebui să conțină doi substituenți &#37;S, respectiv înlocuiți cu numele și vârsta. Dacă câmpul este gol, se utilizează un mesaj standard.">
 <!ENTITY calendarEntryTitleAccesskey "T">
+<!ENTITY resetCalendarEntryTitleButtonLabel "Desemnează ca implicit">
+<!ENTITY resetCalendarEntryTitleButtonAccesskey "D">
 <!ENTITY calendarEntryTimeLabel "Ora pentru evenimentul din calendar (oo:mm)">
 <!ENTITY calendarEntryTimeAccesskey "O">
 <!ENTITY calendarEntryWholeDayLabel "Eveniment calendaristic pentru întreaga zi">

@@ -250,6 +250,8 @@
 <!ENTITY calendarEntryTitleLabel "Kalendorinio įvykio pavadinimas">
 <!ENTITY calendarEntryTitleTooltip "Kalendoriaus įvykio šablono pavadinimas. Jame turėtų būti du užpildai &#37;S, atitinkamai pakeisti pavadinimu ir amžiumi. Jei laukas tuščias, naudojama standartinė žinutė.">
 <!ENTITY calendarEntryTitleAccesskey "p">
+<!ENTITY resetCalendarEntryTitleButtonLabel "Atstatyti numatytąjį">
+<!ENTITY resetCalendarEntryTitleButtonAccesskey "A">
 <!ENTITY calendarEntryTimeLabel "Kalendoriaus įvykio laikas (vv:mm)">
 <!ENTITY calendarEntryTimeAccesskey "l">
 <!ENTITY calendarEntryWholeDayLabel "Kalendoriaus įvykis visą dieną">

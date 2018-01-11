@@ -5,6 +5,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 	var wdw_migrate = {
 		
 		customMap : [ ["1", false], ["2", false], ["3", false], ["4", false] ],
+		allLists : {},
 
 		writeCustomToPreference: function () {
 			var myType = 'pers';
@@ -119,14 +120,19 @@ if ("undefined" == typeof(wdw_migrate)) {
 				wdw_migrate.getNotNullFn(myCard, aABCard);
 				
 				cardbookUtils.setCalculatedFields(myCard);
-				cardbookRepository.addCardToRepository(myCard, aMode);
-				cardbookUtils.formatStringForOutput("cardCreatedOK", [aDirPrefIdTargetName, myCard.fn]);
-				wdw_cardbooklog.addActivity("cardCreatedOK", [aDirPrefIdTargetName, myCard.fn], "addItem");
-
-				var email = aABCard.getProperty("PrimaryEmail", "");
-				var emailValue = aABCard.getProperty("PopularityIndex", "0");
-				if (email != "" && emailValue != "0" && emailValue != " ") {
-					cardbookRepository.cardbookMailPopularityIndex[email] = emailValue;
+				
+				// for nested lists within the same address book, the standard address book creates
+				// one unusefull card for the nested lists
+				if (myCard.emails == "" || myCard.emails.join("").includes("@")) {
+					cardbookRepository.addCardToRepository(myCard, aMode);
+					cardbookUtils.formatStringForOutput("cardCreatedOK", [aDirPrefIdTargetName, myCard.fn]);
+					wdw_cardbooklog.addActivity("cardCreatedOK", [aDirPrefIdTargetName, myCard.fn], "addItem");
+	
+					var email = aABCard.getProperty("PrimaryEmail", "");
+					var emailValue = aABCard.getProperty("PopularityIndex", "0");
+					if (email != "" && emailValue != "0" && emailValue != " ") {
+						cardbookRepository.cardbookMailPopularityIndex[email] = emailValue;
+					}
 				}
 							
 				cardbookRepository.cardbookServerSyncDone[aDirPrefIdTarget]++;
@@ -138,35 +144,88 @@ if ("undefined" == typeof(wdw_migrate)) {
 			}
 		},
 
-		translateStandardLists: function (aDirPrefIdTarget, aDirPrefIdTargetName, aABList, aVersion, aMode) {
-			try {
-				var myCard = new cardbookCardParser();
-				myCard.dirPrefId = aDirPrefIdTarget;
-				cardbookUtils.setCardUUID(myCard);
-				myCard.version = aVersion;
-				var myMap = [ ["dirName", "fn"], ["listNickName", "nickname"], ["description", "note"] ];
-				for (var i = 0; i < myMap.length; i++) {
-					myCard[myMap[i][1]] = aABList[myMap[i][0]];
+		getSolvedListNumber: function () {
+			var result = 0;
+			for (i in wdw_migrate.allLists) {
+				if (wdw_migrate.allLists[i].solved) {
+					result++;
 				}
-				var myTargetMembers = [];
+			}
+			return result;
+		},
+
+		mayTheListBeResolved: function (aABList) {
+			try {
 				for (var i = 0; i < aABList.addressLists.length; i++) {
 					var myABCard = aABList.addressLists.queryElementAt(i, Components.interfaces.nsIAbCard);
-					var myEmail = myABCard.primaryEmail.toLowerCase();
-					try {
-						if (cardbookRepository.cardbookCardEmails[aDirPrefIdTarget][myEmail]) {
-							var myTargetCard = cardbookRepository.cardbookCardEmails[aDirPrefIdTarget][myEmail][0];
-							myTargetMembers.push(["urn:uuid:" + myTargetCard.uid, myTargetCard.fn]);
+					var myEmail = myABCard.primaryEmail;
+					var myName = myABCard.getProperty("DisplayName","");
+					if ((myName == myEmail) && wdw_migrate.allLists[myName]) {
+						if (!wdw_migrate.allLists[myName].solved) {
+							return false;
 						}
 					}
-					catch (e) {}
 				}
-				cardbookUtils.parseLists(myCard, myTargetMembers, "group");
+				return true
+			}
+			catch (e) {
+				wdw_cardbooklog.updateStatusProgressInformation("wdw_migrate.mayTheListBeResolved error : " + e, "Error");
+				return false;
+			}
+		},
 
-				cardbookUtils.setCalculatedFields(myCard);
-				cardbookRepository.addCardToRepository(myCard, aMode);
-				cardbookUtils.formatStringForOutput("cardCreatedOK", [aDirPrefIdTargetName, myCard.fn]);
-				wdw_cardbooklog.addActivity("cardCreatedOK", [aDirPrefIdTargetName, myCard.fn], "addItem");
-				cardbookRepository.cardbookServerSyncDone[aDirPrefIdTarget]++;
+		translateStandardLists1: function (aDirPrefIdTarget, aDirPrefIdTargetName, aVersion, aMode) {
+			try {
+				var myBeforeNumber = wdw_migrate.getSolvedListNumber();
+				var myAfterNumber = 0;
+				var myCondition = true;
+				// loop until all lists may be solved
+				while (myCondition) {
+					for (listName in wdw_migrate.allLists) {
+						if (!wdw_migrate.allLists[listName].solved && wdw_migrate.mayTheListBeResolved(wdw_migrate.allLists[listName].list)) {
+							var myList = wdw_migrate.allLists[listName].list;
+							var myCard = new cardbookCardParser();
+							myCard.dirPrefId = aDirPrefIdTarget;
+							cardbookUtils.setCardUUID(myCard);
+							myCard.version = aVersion;
+							var myMap = [ ["dirName", "fn"], ["listNickName", "nickname"], ["description", "note"] ];
+							for (var i = 0; i < myMap.length; i++) {
+								myCard[myMap[i][1]] = myList[myMap[i][0]];
+							}
+							var myTargetMembers = [];
+							for (var i = 0; i < myList.addressLists.length; i++) {
+								var myABCard = myList.addressLists.queryElementAt(i, Components.interfaces.nsIAbCard);
+								var myEmail = myABCard.primaryEmail;
+								var myLowerEmail = myEmail.toLowerCase();
+								var myName = myABCard.getProperty("DisplayName","");
+								try {
+									// within a standard list all members are simple cards... weird...
+									if ((myName == myEmail) && wdw_migrate.allLists[myName] && wdw_migrate.allLists[myName].solved) {
+										myTargetMembers.push(["urn:uuid:" + wdw_migrate.allLists[myName].uid, myName]);
+									} else if (cardbookRepository.cardbookCardEmails[aDirPrefIdTarget][myLowerEmail]) {
+										var myTargetCard = cardbookRepository.cardbookCardEmails[aDirPrefIdTarget][myLowerEmail][0];
+										myTargetMembers.push(["urn:uuid:" + myTargetCard.uid, myTargetCard.fn]);
+									}
+								}
+								catch (e) {}
+							}
+
+							cardbookUtils.parseLists(myCard, myTargetMembers, "group");
+							cardbookUtils.setCalculatedFields(myCard);
+							
+							cardbookRepository.addCardToRepository(myCard, aMode);
+							cardbookUtils.formatStringForOutput("cardCreatedOK", [aDirPrefIdTargetName, myCard.fn]);
+							wdw_cardbooklog.addActivity("cardCreatedOK", [aDirPrefIdTargetName, myCard.fn], "addItem");
+							cardbookRepository.cardbookServerSyncDone[aDirPrefIdTarget]++;
+
+							wdw_migrate.allLists[listName].solved = true;
+							wdw_migrate.allLists[listName].uid = myCard.uid;
+						}
+					}
+					myAfterNumber = wdw_migrate.getSolvedListNumber();
+					myCondition = (myBeforeNumber != myAfterNumber);
+					myBeforeNumber = myAfterNumber;
+				}
 			}
 			catch (e) {
 				wdw_cardbooklog.updateStatusProgressInformation("wdw_migrate.translateStandardLists error : " + e, "Error");
@@ -225,10 +284,13 @@ if ("undefined" == typeof(wdw_migrate)) {
 						myABCard = myABCard.QueryInterface(Components.interfaces.nsIAbCard);
 						if (myABCard.isMailList) {
 							var myABList = contactManager.getDirectory(myABCard.mailListURI);
+							wdw_migrate.allLists[myABList.dirName] = {};
+							wdw_migrate.allLists[myABList.dirName].solved = false;
+							wdw_migrate.allLists[myABList.dirName].list = myABList;
 							cardbookRepository.cardbookServerSyncTotal[aDirPrefIdTarget]++;
-							wdw_migrate.translateStandardLists(aDirPrefIdTarget, aDirPrefIdTargetName, myABList, aVersion, aMode);
 						}
 					}
+					wdw_migrate.translateStandardLists(aDirPrefIdTarget, aDirPrefIdTargetName, aVersion, aMode);
 					break;
 				}
 			}

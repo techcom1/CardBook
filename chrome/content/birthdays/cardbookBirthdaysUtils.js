@@ -13,16 +13,6 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			return (!aCalendar.getProperty("disabled") && !aCalendar.readOnly);
 		},
 		
-		printf: function (S, L) {
-			var nS = "";
-			var tS = S.split("%S");
-			if (tS.length != L.length+1) throw "Input error";
-			
-			for(var i=0; i<L.length; i++)
-			nS += tS[i] + L[i];
-			return nS + tS[tS.length-1];
-		},
-
 		getCalendars: function () {
 			var myCalendar = cardbookPreferences.getStringPref("extensions.cardbook.calendarsNameList");
 			var calendarManager = Components.classes["@mozilla.org/calendar/manager;1"].getService(Components.interfaces.calICalendarManager);
@@ -123,12 +113,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 				var lBirthdayId = cardbookUtils.getUUID();
 
 				var leventEntryTitle = cardbookPreferences.getStringPref("extensions.cardbook.eventEntryTitle");
-				var checkTest = leventEntryTitle.split("%S").length - 1;
-				if (checkTest != 2) {
-					var lBirthdayTitle = strBundle.getFormattedString("eventEntryTitleMessage", [lBirthdayName, lBirthdayAge]);
-				} else {
-					var lBirthdayTitle = cardbookBirthdaysUtils.printf(leventEntryTitle, [lBirthdayName, lBirthdayAge]);
-				}
+				var lBirthdayTitle = leventEntryTitle.replace("%1$S", lBirthdayName).replace("%2$S",lBirthdayAge);
 
 				// prepare Listener
 				var getListener = {

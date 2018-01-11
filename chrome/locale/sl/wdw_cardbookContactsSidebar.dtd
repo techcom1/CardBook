@@ -5,7 +5,7 @@
 <!ENTITY searchContacts.label "Poišči:">
 <!ENTITY searchContacts.accesskey "P">
 <!ENTITY name.label "Ime">
-<!ENTITY addtoReplytoFieldMenu.label "Dodaj v polje 'Odgovori za'">
+<!ENTITY addtoReplytoFieldMenu.label "Dodaj v polje „Odgovori za”">
 <!ENTITY addtoReplytoFieldMenu.accesskey "D">
-<!ENTITY replytoButton.label "Dodaj v 'Odgovori za:'">
+<!ENTITY replytoButton.label "Dodaj v „Odgovori za:”">
 <!ENTITY replytoButton.accesskey "D">

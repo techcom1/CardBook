@@ -21,7 +21,7 @@
 <!ENTITY autoSyncIntervalAccesskey "I">
 
 <!ENTITY miscTabLabel "Divers">
-<!ENTITY fnLabelExplanation "Il est possible de choisir comment CardBook génère ses Noms affichés. Cette formule est une succession de blocs délimités par '()'. Dans ces blocs, il y a deux parties délimitées par '|'. La première partie s'applique lorsque le terme impliqué, par exemple {{1}}, n'est pas null, la seconde partie s'applique lorsque le terme impliqué est null.">
+<!ENTITY fnLabelExplanation "Il est possible de choisir comment CardBook génère ses Noms affichés. Cette formule est une succession de blocs délimités par « () ». Dans ces blocs, il y a deux parties délimitées par « | ». La première partie s'applique lorsque le terme impliqué, par exemple {{1}}, n'est pas null, la seconde partie s'applique lorsque le terme impliqué est null.">
 <!ENTITY fnFormulaLabel "Génération du nom affiché">
 <!ENTITY fnFormulaAccesskey "m">
 <!ENTITY resetFnFormulaLabel "Réinitialiser">

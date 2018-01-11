@@ -203,7 +203,7 @@
 <!ENTITY miscEmailGroupboxLabel "Üzenet küldés">
 <!ENTITY preferEmailPrefLabel "Inkább e-mail címek jelölt részesített">
 <!ENTITY preferEmailPrefAccesskey "r">
-<!ENTITY preferEmailPrefWarn "Ha e-mail cím nincs jelölve 'PREFerált', az üzenetet küldi, hogy minden névjegy e-mail címét.">
+<!ENTITY preferEmailPrefWarn "Ha e-mail cím nincs jelölve „PREFerált”, az üzenetet küldi, hogy minden névjegy e-mail címét.">
 <!ENTITY warnEmptyEmailsLabel "Figyelmeztessen, amikor e-mail cím nélkül üzenetet próbálok létrehozni">
 <!ENTITY warnEmptyEmailsAccesskey "F">
 <!ENTITY useOnlyEmailLabel "Csak az e-mail címek használata">
@@ -251,6 +251,8 @@
 <!ENTITY calendarEntryTitleLabel "Naptári esemény címe">
 <!ENTITY calendarEntryTitleTooltip "Naptári esemény sablon címét. A bejelentésnek tartalmaznia kell a két helyőrzők &#37;S, illetve helyébe nevét és életkorát.  Ha a mező üres egy szabványos üzenet jelentés.">
 <!ENTITY calendarEntryTitleAccesskey "C">
+<!ENTITY resetCalendarEntryTitleButtonLabel "Alapértelmezés">
+<!ENTITY resetCalendarEntryTitleButtonAccesskey "A">
 <!ENTITY calendarEntryTimeLabel "Naptár esemény idő (óó:pp)">
 <!ENTITY calendarEntryTimeAccesskey "i">
 <!ENTITY calendarEntryWholeDayLabel "Naptár esemény egész nap">

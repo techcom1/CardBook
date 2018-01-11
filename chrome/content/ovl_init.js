@@ -6,6 +6,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 		lTimerSync: null,
 		
 		initPrefs: function () {
+			var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 			var prefs = Services.prefs.getDefaultBranch("extensions.cardbook.");
 			
 			prefs.setBoolPref("autocompletion", true);
@@ -58,7 +59,6 @@ if ("undefined" == typeof(ovl_synchro)) {
 			prefs.setCharPref("fnFormula", "({{1}} |)({{2}} |)({{3}} |)({{4}} |)({{5}} |)({{6}} |)");
 			
 			// localized
-			let strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 			cardbookRepository.defaultAdrFormula = strBundle.GetStringFromName("addressFormatFormula");
 			prefs.setCharPref("adrFormula", cardbookRepository.defaultAdrFormula);
 			
@@ -74,7 +74,9 @@ if ("undefined" == typeof(ovl_synchro)) {
 			prefs.setBoolPref("showPopupEvenIfNoBirthday", true);
 			prefs.setBoolPref("syncWithLightningOnStartup", false);
 			prefs.setCharPref("numberOfDaysForWriting", "30");
-			prefs.setCharPref("eventEntryTitle", "");
+			// localized
+			prefs.setCharPref("eventEntryTitle", strBundle.GetStringFromName("eventEntryTitleMessage"));
+			prefs.setBoolPref("eventEntryTitleMigrated", false);
 			prefs.setCharPref("eventEntryTime", "00:00");
 			prefs.setBoolPref("eventEntryWholeDay", false);
 			prefs.setCharPref("calendarEntryAlarm", "168");
@@ -86,7 +88,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 			
 			prefs.setCharPref("accountsShown", "all");
 			prefs.setCharPref("uncategorizedCards", "");
-			prefs.setCharPref("addonVersion", "25.4");
+			prefs.setCharPref("addonVersion", "25.6");
 		},
 
 		lEventTimerSync : { notify: function(lTimerSync) {
@@ -121,6 +123,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 				cardbookRepository.setTypes();
 				cardbookRepository.loadCustoms();
 				cardbookRepository.setCalendarEntryAlarm();
+				cardbookRepository.setEventEntryTitle();
 				
 				// observers are needed not only UI but also for synchro
 				// there is no unregister launched

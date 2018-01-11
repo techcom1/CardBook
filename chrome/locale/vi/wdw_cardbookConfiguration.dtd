@@ -250,6 +250,8 @@
 <!ENTITY calendarEntryTitleLabel "Tiêu đề cho sự kiện lịch">
 <!ENTITY calendarEntryTitleTooltip "Tiêu đề mẫu cho sự kiện lịch. Nó nên chứa hai người giữ chỗ &#37;S, tương ứng được thay thế bằng tên và tuổi. Nếu trường trống, một thông báo chuẩn sẽ được sử dụng.">
 <!ENTITY calendarEntryTitleAccesskey "T">
+<!ENTITY resetCalendarEntryTitleButtonLabel "Khôi phục về Mặc định">
+<!ENTITY resetCalendarEntryTitleButtonAccesskey "K">
 <!ENTITY calendarEntryTimeLabel "Thời gian cho sự kiện lịch (gg:pp)">
 <!ENTITY calendarEntryTimeAccesskey "h">
 <!ENTITY calendarEntryWholeDayLabel "Sự kiện trên lịch cho cả ngày">

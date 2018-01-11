@@ -251,6 +251,8 @@
 <!ENTITY calendarEntryTitleLabel "Название события календаря">
 <!ENTITY calendarEntryTitleTooltip "Шаблон названия события в календаре. Он должен содержать две переменные «&#37;S», которые будут заменены, соответственно, именем и возрастом. Если поле пустое, будет использовано стандартное сообщение.">
 <!ENTITY calendarEntryTitleAccesskey "Н">
+<!ENTITY resetCalendarEntryTitleButtonLabel "Сбросить до значений по умолчанию">
+<!ENTITY resetCalendarEntryTitleButtonAccesskey "C">
 <!ENTITY calendarEntryTimeLabel "Время для события календаря  (чч:мм)">
 <!ENTITY calendarEntryTimeAccesskey "В">
 <!ENTITY calendarEntryWholeDayLabel "Событие на весь день">

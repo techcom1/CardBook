@@ -95,7 +95,7 @@
 <!ENTITY showNameAsFLAccesskey "R">
 <!ENTITY showNameAsDSPLabel "Getoonde naam">
 <!ENTITY showNameAsDSPAccesskey "G">
-<!ENTITY adrLabelExplanation "Het is mogelijk om in te stellen hoe CardBook de adressen formatteert. De formule bestaat uit blokken, omsloten door haakjes, (). In die blokken zitten twee delen, gescheiden door een verticaal streepje, |. Het eerste deel is van toepassing als het betreffende deel {{1}} ingevuld is, het tweede deel als het niet ingevuld is.">
+<!ENTITY adrLabelExplanation "Het is mogelijk om in te stellen hoe CardBook de adressen formatteert. De formule bestaat uit blokken, omsloten door haakjes, „()”. In die blokken zitten twee delen, gescheiden door een verticaal streepje, „|”. Het eerste deel is van toepassing als het betreffende deel {{1}} ingevuld is, het tweede deel als het niet ingevuld is.">
 <!ENTITY adrFormulaLabel "Adresformaat samenstellen">
 <!ENTITY adrFormulaAccesskey "F">
 <!ENTITY resetAdrFormulaLabel "Herstellen naar standaardwaarde">
@@ -129,10 +129,10 @@
 <!ENTITY deleteTypeAccesskey "V">
 <!ENTITY resetTypeLabel "Herstellen naar standaardwaarde">
 <!ENTITY resetTypeAccesskey "H">
-<!ENTITY preferenceGroupboxLabel "Rubriek 'Voorkeur'">
+<!ENTITY preferenceGroupboxLabel "Rubriek „Voorkeur”">
 <!ENTITY usePreferenceValueLabel "Gebruik voorkeurswaarde (uitsluitend voor vCard 4.0)">
 <!ENTITY usePreferenceValueAccesskey "k">
-<!ENTITY preferenceValueLabel "Naam van de rubriek 'Voorkeur'">
+<!ENTITY preferenceValueLabel "Naam van de rubriek „Voorkeur”">
 <!ENTITY preferenceValueAccesskey "R">
 
 <!ENTITY IMPPGroupboxWarn "Deze instelling opent een IM-adres met gebruikmaking van het protocol.">
@@ -201,7 +201,7 @@
 <!ENTITY decodeReportAccesskey "O">
 
 <!ENTITY miscEmailGroupboxLabel "Versturen emails">
-<!ENTITY preferEmailPrefLabel "Voorkeur voor email adressen die als 'Voorkeur' gemarkeerd zijn">
+<!ENTITY preferEmailPrefLabel "Voorkeur voor email adressen die als „Voorkeur” gemarkeerd zijn">
 <!ENTITY preferEmailPrefAccesskey "V">
 <!ENTITY preferEmailPrefWarn "Als er geen email adres gemarkeerd is, dan worden berichten naar alle adressen van de betreffende contactpersoon verstuurd.">
 <!ENTITY warnEmptyEmailsLabel "Waarschuwing als ik een bericht verstuur naar een contactpersoon zonder e-mail adres">
@@ -251,6 +251,8 @@
 <!ENTITY calendarEntryTitleLabel "Titel voor herinnering in agenda">
 <!ENTITY calendarEntryTitleTooltip "Standaard-titel voor herinnering. Deze moet twee onderdelen &#37;S bevatten, voor naam en leeftijd. Indien leeg, dan wordt een standaardherinnering gebruikt.">
 <!ENTITY calendarEntryTitleAccesskey "v">
+<!ENTITY resetCalendarEntryTitleButtonLabel "Herstellen naar standaardwaarde">
+<!ENTITY resetCalendarEntryTitleButtonAccesskey "H">
 <!ENTITY calendarEntryTimeLabel "Tijd voor herinnering (hh:mm)">
 <!ENTITY calendarEntryTimeAccesskey "i">
 <!ENTITY calendarEntryWholeDayLabel "Herinnering voor de hele dag">

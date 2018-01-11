@@ -562,15 +562,20 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			}
 		},
 	
+		resetCalendarEntryTitle: function () {
+			var strBundle = document.getElementById("cardbook-strings");
+			document.getElementById('calendarEntryTitleTextBox').value = strBundle.getString("eventEntryTitleMessage");
+		},
+
 		validateEventEntryTitle: function () {
-			var checkTest = document.getElementById('calendarEntryTitleTextBox').value.split("%S").length - 1;
-			if (checkTest != 2) {
+			if (document.getElementById('calendarEntryTitleTextBox').value == "") {
 				var strBundle = document.getElementById("cardbook-strings");
-				var errorTitle = strBundle.getString("eventEntryTitleProblemTitle");
-				var errorMsg = strBundle.getString("eventEntryTitleProblemMessage") + ' (' + strBundle.getString("eventEntryTitleMessage") + ').';
-				Services.prompt.alert(null, errorTitle, errorMsg);
 				cardbookPreferences.setStringPref("extensions.cardbook.eventEntryTitle", strBundle.getString("eventEntryTitleMessage"));
+			} else {
+				// need to force it in case of reset
+				cardbookPreferences.setStringPref("extensions.cardbook.eventEntryTitle", document.getElementById('calendarEntryTitleTextBox').value);
 			}
+				
 		},
 
 		//needed for linux

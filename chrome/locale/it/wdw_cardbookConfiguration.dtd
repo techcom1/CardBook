@@ -95,7 +95,7 @@
 <!ENTITY showNameAsFLAccesskey "N">
 <!ENTITY showNameAsDSPLabel "Mostra nome">
 <!ENTITY showNameAsDSPAccesskey "M">
-<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Questa formula consiste in blocchi racchiusi da '()'. In questi blocchi, ci sono due parti delimitate da '|'. La prima parte è applicata quando la parola usata, per esempio {{1}}, non è nulla, la seconda parte è applicata quando la parola usata è nulla.">
+<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Questa formula consiste in blocchi racchiusi da «()». In questi blocchi, ci sono due parti delimitate da «|». La prima parte è applicata quando la parola usata, per esempio {{1}}, non è nulla, la seconda parte è applicata quando la parola usata è nulla.">
 <!ENTITY adrFormulaLabel "??Address Format Formula??">
 <!ENTITY adrFormulaAccesskey "??R??">
 <!ENTITY resetAdrFormulaLabel "Ripristina al Default">
@@ -203,7 +203,7 @@
 <!ENTITY miscEmailGroupboxLabel "Invio di email">
 <!ENTITY preferEmailPrefLabel "Prediligi gli indirizzi email contrassegnati come PREFeriti">
 <!ENTITY preferEmailPrefAccesskey "P">
-<!ENTITY preferEmailPrefWarn "Se nessun indirizzo è contrassegnato come 'PREFerito', il messaggio viene inviato a tutti gli indirizzi email del contatto.">
+<!ENTITY preferEmailPrefWarn "Se nessun indirizzo è contrassegnato come «PREFerito», il messaggio viene inviato a tutti gli indirizzi email del contatto.">
 <!ENTITY warnEmptyEmailsLabel "Avvisami quando provo a spedire una email senza indirizzo">
 <!ENTITY warnEmptyEmailsAccesskey "W">
 <!ENTITY useOnlyEmailLabel "Usa solo indirizzi, senza il loro Nome di Display">
@@ -251,6 +251,8 @@
 <!ENTITY calendarEntryTitleLabel "Titolo per evento del calendario">
 <!ENTITY calendarEntryTitleTooltip "Titolo modello per evento del calendario. Deve contenere due &#37;S, da sostituire rispettivamente con nome ed età. Se il campo è vuoto, viene usato un messaggio standard.">
 <!ENTITY calendarEntryTitleAccesskey "T">
+<!ENTITY resetCalendarEntryTitleButtonLabel "Ripristina al Default">
+<!ENTITY resetCalendarEntryTitleButtonAccesskey "R">
 <!ENTITY calendarEntryTimeLabel "Orario per evento del calendario (hh:mm)">
 <!ENTITY calendarEntryTimeAccesskey "m">
 <!ENTITY calendarEntryWholeDayLabel "Evento del calendario per tutto il giorno">

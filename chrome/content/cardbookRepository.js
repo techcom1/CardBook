@@ -389,6 +389,21 @@ var cardbookRepository = {
 		}
 	},
 
+	setEventEntryTitle: function() {
+		try {
+			// for file opened with version <= 25.4
+			var eventEntryTitleMigrated = cardbookPreferences.getBoolPref("extensions.cardbook.eventEntryTitleMigrated");
+			if (!eventEntryTitleMigrated) {
+				var eventEntryTitle = cardbookPreferences.getStringPref("extensions.cardbook.eventEntryTitle");
+				cardbookPreferences.setStringPref("extensions.cardbook.eventEntryTitle", eventEntryTitle.replace("%S","%1$S").replace("%S","%2$S"));
+				cardbookPreferences.setBoolPref("extensions.cardbook.eventEntryTitleMigrated", true);
+			}
+		}
+		catch (e) {
+			return "";
+		}
+	},
+
 	setSolveConflicts: function() {
 		try {
 			// for file opened with version <= 14.0

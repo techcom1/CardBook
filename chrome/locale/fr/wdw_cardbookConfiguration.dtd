@@ -95,7 +95,7 @@
 <!ENTITY showNameAsFLAccesskey "P">
 <!ENTITY showNameAsDSPLabel "Nom affiché">
 <!ENTITY showNameAsDSPAccesskey "f">
-<!ENTITY adrLabelExplanation "Il est possible de choisir comment CardBook formatte ses adresses. Cette formule est une succession de blocs délimités par '()'. Dans ces blocs, il y a deux parties délimitées par '|'. La première partie s'applique lorsque le terme impliqué, par exemple {{1}}, n'est pas null, la seconde partie s'applique lorsque le terme impliqué est null.">
+<!ENTITY adrLabelExplanation "Il est possible de choisir comment CardBook formatte ses adresses. Cette formule est une succession de blocs délimités par « () ». Dans ces blocs, il y a deux parties délimitées par « | ». La première partie s'applique lorsque le terme impliqué, par exemple {{1}}, n'est pas null, la seconde partie s'applique lorsque le terme impliqué est null.">
 <!ENTITY adrFormulaLabel "Formattage des adresses">
 <!ENTITY adrFormulaAccesskey "F">
 <!ENTITY resetAdrFormulaLabel "Réinitialiser">
@@ -139,7 +139,7 @@
 <!ENTITY IMPPGroupboxLabel "Communications internet">
 <!ENTITY preferIMPPPrefLabel "Préférer les communications internet marqués avec ">
 <!ENTITY preferIMPPPrefAccesskey "P">
-<!ENTITY preferIMPPPrefWarn "Pour cette option, si il n'y a pas de communications internet de type 'pref', toutes les communications internet sont prises en compte.">
+<!ENTITY preferIMPPPrefWarn "Pour cette option, si il n'y a pas de communications internet de type « pref », toutes les communications internet sont prises en compte.">
 <!ENTITY IMPPCodeLabel "Code">
 <!ENTITY IMPPLabelLabel "Label">
 <!ENTITY IMPPProtocolLabel "Protocole">
@@ -203,7 +203,7 @@
 <!ENTITY miscEmailGroupboxLabel "Envoi d'emails">
 <!ENTITY preferEmailPrefLabel "Préférer les emails marqués avec ">
 <!ENTITY preferEmailPrefAccesskey "P">
-<!ENTITY preferEmailPrefWarn "Pour cette option, si il n'y a pas d'email de type 'pref', tous les emails sont pris en compte.">
+<!ENTITY preferEmailPrefWarn "Pour cette option, si il n'y a pas d'email de type « pref », tous les emails sont pris en compte.">
 <!ENTITY warnEmptyEmailsLabel "M'avertir lorsque je tente d'envoyer un email à un contact qui n'a pas d'adresse email">
 <!ENTITY warnEmptyEmailsAccesskey "M">
 <!ENTITY useOnlyEmailLabel "Utiliser uniquement les adresses email, sans les noms">
@@ -251,6 +251,8 @@
 <!ENTITY calendarEntryTitleLabel "Titre pour les entrées du calendrier">
 <!ENTITY calendarEntryTitleTooltip "Titre modèle pour les entrées du calendrier. Ce champ doit comporter deux &#37;S, remplacés respectivement par le nom et l'âge. Si le champ est vide alors un message standard est utilisé.">
 <!ENTITY calendarEntryTitleAccesskey "T">
+<!ENTITY resetCalendarEntryTitleButtonLabel "Réinitialiser">
+<!ENTITY resetCalendarEntryTitleButtonAccesskey "R">
 <!ENTITY calendarEntryTimeLabel "Heure pour les entrées du calendrier (hh:mm)">
 <!ENTITY calendarEntryTimeAccesskey "e">
 <!ENTITY calendarEntryWholeDayLabel "Entrées du calendrier sur toute la journée">

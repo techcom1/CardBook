@@ -2310,9 +2310,11 @@ if ("undefined" == typeof(wdw_cardbook)) {
 
 		copyEntryFromTree: function () {
 			var myCard = cardbookRepository.cardbookCards[document.getElementById('dirPrefIdTextBox').value+"::"+document.getElementById('uidTextBox').value];
-			var myResult = cardbookUtils.formatAddress(myCard[wdw_cardbook.currentType][wdw_cardbook.currentIndex][0]);
 			if (wdw_cardbook.currentType == "adr") {
+				var myResult = cardbookUtils.formatAddress(myCard[wdw_cardbook.currentType][wdw_cardbook.currentIndex][0]);
 				myResult = document.getElementById('fnTextBox').value + "\n" + myResult;
+			} else {
+				var myResult = myCard[wdw_cardbook.currentType][wdw_cardbook.currentIndex][0][0];
 			}
 			wdw_cardbook.currentCopiedEntry = [];
 			wdw_cardbook.currentCopiedEntry.push([wdw_cardbook.currentType, myCard[wdw_cardbook.currentType][wdw_cardbook.currentIndex]]);

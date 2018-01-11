@@ -95,7 +95,7 @@
 <!ENTITY showNameAsFLAccesskey "m">
 <!ENTITY showNameAsDSPLabel "Anzeigename">
 <!ENTITY showNameAsDSPAccesskey "A">
-<!ENTITY adrLabelExplanation "Es ist möglich, die Art und Weise anzupassen, wie CardBook Adressen formatiert. Die Formel besteht aus Blöcken, die in '()' eingeschlossen sind. In diesen Blöcken sind zwei Teile getrennt durch '|'. Der erste Teil wird verwendet, falls der Ausdruck, z.B. {{1}} nicht 'null' ist; der zweite Teil wird verwendet, falls der Ausdruck 'null' ist.">
+<!ENTITY adrLabelExplanation "Es ist möglich, die Art und Weise anzupassen, wie CardBook Adressen formatiert. Die Formel besteht aus Blöcken, die in „()” eingeschlossen sind. In diesen Blöcken sind zwei Teile getrennt durch „|”. Der erste Teil wird verwendet, falls der Ausdruck, z.B. {{1}} nicht „null” ist; der zweite Teil wird verwendet, falls der Ausdruck „null” ist.">
 <!ENTITY adrFormulaLabel "Formel für das Format der Adressen">
 <!ENTITY adrFormulaAccesskey "F">
 <!ENTITY resetAdrFormulaLabel "Zurücksetzen auf Standard">
@@ -201,9 +201,9 @@
 <!ENTITY decodeReportAccesskey "D">
 
 <!ENTITY miscEmailGroupboxLabel "Email-Versand">
-<!ENTITY preferEmailPrefLabel "Adressen mit dem Typ 'pref' bevorzugen">
+<!ENTITY preferEmailPrefLabel "Adressen mit dem Typ „pref” bevorzugen">
 <!ENTITY preferEmailPrefAccesskey "P">
-<!ENTITY preferEmailPrefWarn "Ist keine Adresse mit dem Typ 'pref' vorhanden, so werden alle Adressen genutzt.">
+<!ENTITY preferEmailPrefWarn "Ist keine Adresse mit dem Typ „pref” vorhanden, so werden alle Adressen genutzt.">
 <!ENTITY warnEmptyEmailsLabel "Mich warnen, wenn ich versuche an einen Kontakt zu senden, zu dem keine E-Mailadresse gespeichert ist">
 <!ENTITY warnEmptyEmailsAccesskey "W">
 <!ENTITY useOnlyEmailLabel "Nur die E-Mail-Adressen verwenden">
@@ -251,6 +251,8 @@
 <!ENTITY calendarEntryTitleLabel "Titel für Termin">
 <!ENTITY calendarEntryTitleTooltip "Das Feld sollte zwei Platzhalter &#37;S für Namen und Alter enthalten. Falls leer, wird eine Standard-Nachricht verwendet.">
 <!ENTITY calendarEntryTitleAccesskey "T">
+<!ENTITY resetCalendarEntryTitleButtonLabel "Zurücksetzen auf Standard">
+<!ENTITY resetCalendarEntryTitleButtonAccesskey "Z">
 <!ENTITY calendarEntryTimeLabel "Zeit für Termin (hh:mm)">
 <!ENTITY calendarEntryTimeAccesskey "r">
 <!ENTITY calendarEntryWholeDayLabel "Ganztägiger Termin">

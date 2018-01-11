@@ -95,7 +95,7 @@
 <!ENTITY showNameAsFLAccesskey "K">
 <!ENTITY showNameAsDSPLabel "Zobrazované jméno">
 <!ENTITY showNameAsDSPAccesskey "Z">
-<!ENTITY adrLabelExplanation "Formátování adres CardBooku lze přizpůsobit. Tento vzorec se skládá z bloků uzavřených v '()'. V těchto blocích jsou dvě části oddělené '|'. První část se použije, když je zmíněný termín, například {{1}} nenulový, druhá se použije, když je zmíněný termín nulový.">
+<!ENTITY adrLabelExplanation "Formátování adres CardBooku lze přizpůsobit. Tento vzorec se skládá z bloků uzavřených v „()”. V těchto blocích jsou dvě části oddělené „|”. První část se použije, když je zmíněný termín, například {{1}} nenulový, druhá se použije, když je zmíněný termín nulový.">
 <!ENTITY adrFormulaLabel "Vzorec pro formátování adresy">
 <!ENTITY adrFormulaAccesskey "V">
 <!ENTITY resetAdrFormulaLabel "Obnovit na výchozí hodnotu">
@@ -203,7 +203,7 @@
 <!ENTITY miscEmailGroupboxLabel "Posílání e-mailů">
 <!ENTITY preferEmailPrefLabel "Upřednostnit e-mailové adresy označené jako PREFerované">
 <!ENTITY preferEmailPrefAccesskey "W">
-<!ENTITY preferEmailPrefWarn "Pokud není žádná z adres označena jako 'PREFerovaná', zprávaje poslána na všechny adresy kontaktu.">
+<!ENTITY preferEmailPrefWarn "Pokud není žádná z adres označena jako „PREFerovaná”, zprávaje poslána na všechny adresy kontaktu.">
 <!ENTITY warnEmptyEmailsLabel "Upozornit mě při pokusu o odeslání e-mailu kontaktu bez e-mailové adresy">
 <!ENTITY warnEmptyEmailsAccesskey "U">
 <!ENTITY useOnlyEmailLabel "Použít pouze e-mailové adresy">
@@ -251,6 +251,8 @@
 <!ENTITY calendarEntryTitleLabel "Titulek události v kalendáři">
 <!ENTITY calendarEntryTitleTooltip "Šablona titulku pro událost v kalendáři. Měla by obsahovat dva zástupné znaky &#37;S, které budou nahrazeny jménem a věkem. Pokud je pole prázdné, použije se standardní zpráva.">
 <!ENTITY calendarEntryTitleAccesskey "T">
+<!ENTITY resetCalendarEntryTitleButtonLabel "Obnovit na výchozí hodnotu">
+<!ENTITY resetCalendarEntryTitleButtonAccesskey "h">
 <!ENTITY calendarEntryTimeLabel "Čas události v kalendáři (hh:mm)">
 <!ENTITY calendarEntryTimeAccesskey "s">
 <!ENTITY calendarEntryWholeDayLabel "Událost v kalendáři na  celý den">

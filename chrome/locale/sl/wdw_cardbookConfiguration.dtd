@@ -94,7 +94,7 @@
 <!ENTITY showNameAsFLAccesskey "I">
 <!ENTITY showNameAsDSPLabel "Prikazano ime">
 <!ENTITY showNameAsDSPAccesskey "k">
-<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Ta formula vsebuje bloke, ki so obdani z '()'. V teh blokih sta dva dela, ki sta ločena z '|'. Prvi del se uporabi, kadar vrednost vpletenega izraza, npr. {{1}}, ni prazna, drugi del pa, kadar je vrednost vpletenega izraza prazna.">
+<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Ta formula vsebuje bloke, ki so obdani z „()”. V teh blokih sta dva dela, ki sta ločena z „|”. Prvi del se uporabi, kadar vrednost vpletenega izraza, npr. {{1}}, ni prazna, drugi del pa, kadar je vrednost vpletenega izraza prazna.">
 <!ENTITY adrFormulaLabel "??Address Format Formula??">
 <!ENTITY adrFormulaAccesskey "??R??">
 <!ENTITY resetAdrFormulaLabel "Obnovi na privzeto">
@@ -202,7 +202,7 @@
 <!ENTITY miscEmailGroupboxLabel "Pošiljanje e-pošte">
 <!ENTITY preferEmailPrefLabel "Daj prednost -poštnim naslovom, ki so označeni z oznako PREF">
 <!ENTITY preferEmailPrefAccesskey "D">
-<!ENTITY preferEmailPrefWarn "Če noben naslov ni označen z oznako 'PREF', bo sporočilo poslano na vse e-poštne naslove stika.">
+<!ENTITY preferEmailPrefWarn "Če noben naslov ni označen z oznako „PREF”, bo sporočilo poslano na vse e-poštne naslove stika.">
 <!ENTITY warnEmptyEmailsLabel "Opozori me, kadar poskušam poslati pošto stikom brez e-poštnega naslova">
 <!ENTITY warnEmptyEmailsAccesskey "O">
 <!ENTITY useOnlyEmailLabel "Uporabi samo e-poštne naslove">
@@ -250,6 +250,8 @@
 <!ENTITY calendarEntryTitleLabel "Naziv dogodka">
 <!ENTITY calendarEntryTitleTooltip "Naziv predloge dogodka. Vsebovati mora dve označbi mesta &#37;S, ki se ustrezno nadomestita z imenom in starostjo. Če je polje prazno se uporabi običajno sporočilo.">
 <!ENTITY calendarEntryTitleAccesskey "a">
+<!ENTITY resetCalendarEntryTitleButtonLabel "Obnovi na privzeto">
+<!ENTITY resetCalendarEntryTitleButtonAccesskey "O">
 <!ENTITY calendarEntryTimeLabel "Čas dogodka (hh:mm)">
 <!ENTITY calendarEntryTimeAccesskey "d">
 <!ENTITY calendarEntryWholeDayLabel "Celodnevni dogodek">

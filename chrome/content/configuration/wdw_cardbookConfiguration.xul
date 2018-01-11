@@ -865,6 +865,8 @@
 					id="calendarEntryTitleLabel"/>
 				<textbox id="calendarEntryTitleTextBox" flex="1"
 					preference="extensions.cardbook.eventEntryTitle"/>
+				<button id="resetCalendarEntryTitleButton" label="&resetCalendarEntryTitleButtonLabel;" accesskey="&resetCalendarEntryTitleButtonAccesskey;"
+					oncommand="wdw_cardbookConfiguration.resetCalendarEntryTitle();"/>
 				<splitter flex="1"/>
 			</hbox>
 			<separator class="thin"/>

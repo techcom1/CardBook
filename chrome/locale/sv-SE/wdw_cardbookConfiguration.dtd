@@ -94,7 +94,7 @@
 <!ENTITY showNameAsFLAccesskey "m">
 <!ENTITY showNameAsDSPLabel "Visningsnamn">
 <!ENTITY showNameAsDSPAccesskey "s">
-<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Detta görs med block som innesluts innom '()'. Man kan dela upp blocken i delar med '|'. Den första delen används, t.ex {{1}}, om den inte är tom, den andra delen används då, om den första är tom, logist kan man anta att ”|” är samma som ”eller”">
+<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Detta görs med block som innesluts innom “()”. Man kan dela upp blocken i delar med “|”. Den första delen används, t.ex {{1}}, om den inte är tom, den andra delen används då, om den första är tom, logist kan man anta att ”|” är samma som ”eller”">
 <!ENTITY adrFormulaLabel "??Address Format Formula??">
 <!ENTITY adrFormulaAccesskey "??R??">
 <!ENTITY resetAdrFormulaLabel "Återställ till standard">
@@ -250,6 +250,8 @@
 <!ENTITY calendarEntryTitleLabel "Titel för kalenderhändelse">
 <!ENTITY calendarEntryTitleTooltip "Mall titel för kalenderhändelsen. Den ska innehålla två platshållare &#37;S, respektive ersatt med namn och ålder. Om fältet är tomt används ett standardmeddelande.">
 <!ENTITY calendarEntryTitleAccesskey "T">
+<!ENTITY resetCalendarEntryTitleButtonLabel "Återställ till standard">
+<!ENTITY resetCalendarEntryTitleButtonAccesskey "t">
 <!ENTITY calendarEntryTimeLabel "Tid för kalenderhändelse (tt:mm)">
 <!ENTITY calendarEntryTimeAccesskey "m">
 <!ENTITY calendarEntryWholeDayLabel "Kalenderhändelse hela dagen">

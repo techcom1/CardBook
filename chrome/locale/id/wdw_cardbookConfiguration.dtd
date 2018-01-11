@@ -250,6 +250,8 @@
 <!ENTITY calendarEntryTitleLabel "Judul untuk acara kalender">
 <!ENTITY calendarEntryTitleTooltip "Judul template untuk acara kalender. Ini harus berisi dua placeholder &#37;S, masing-masing diganti dengan nama dan umur. Jika bidang kosong, pesan standar digunakan.">
 <!ENTITY calendarEntryTitleAccesskey "p">
+<!ENTITY resetCalendarEntryTitleButtonLabel "Kembalikan Nilai Default">
+<!ENTITY resetCalendarEntryTitleButtonAccesskey "K">
 <!ENTITY calendarEntryTimeLabel "Waktu untuk acara kalender (JJ:MM)">
 <!ENTITY calendarEntryTimeAccesskey "W">
 <!ENTITY calendarEntryWholeDayLabel "Acara kalender sepanjang hari">

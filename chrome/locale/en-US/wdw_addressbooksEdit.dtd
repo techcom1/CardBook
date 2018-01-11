@@ -21,7 +21,7 @@
 <!ENTITY autoSyncIntervalAccesskey "I">
 
 <!ENTITY miscTabLabel "Miscellaneous">
-<!ENTITY fnLabelExplanation "It is possible to customize the way CardBook generates its Display Name. This formula consists in blocks enclosed by '()'. In these blocks, there are two parts delimited by '|'. The first part applies when the term involved, for example {{1}}, is not null, the second part applies when the term involved is null.">
+<!ENTITY fnLabelExplanation "It is possible to customize the way CardBook generates its Display Name. This formula consists in blocks enclosed by “()”. In these blocks, there are two parts delimited by “|”. The first part applies when the term involved, for example {{1}}, is not null, the second part applies when the term involved is null.">
 <!ENTITY fnFormulaLabel "Display Name Formula">
 <!ENTITY fnFormulaAccesskey "y">
 <!ENTITY resetFnFormulaLabel "Restore to Default">

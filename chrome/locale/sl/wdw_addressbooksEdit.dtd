@@ -21,7 +21,7 @@
 <!ENTITY autoSyncIntervalAccesskey "R">
 
 <!ENTITY miscTabLabel "Razno">
-<!ENTITY fnLabelExplanation "Cardbookovo ustvarjanje prikazanega imena je mogoče prilagoditi. Ta formula vsebuje bloke, ki so obdani z '()'. V teh blokih sta dva dela, ki sta ločena z '|'. Prvi del se uporabi, kadar vrednost vpletenega izraza, npr. {{1}}, ni prazna, drugi del pa, kadar je vrednost vpletenega izraza prazna.">
+<!ENTITY fnLabelExplanation "Cardbookovo ustvarjanje prikazanega imena je mogoče prilagoditi. Ta formula vsebuje bloke, ki so obdani z „()”. V teh blokih sta dva dela, ki sta ločena z „|”. Prvi del se uporabi, kadar vrednost vpletenega izraza, npr. {{1}}, ni prazna, drugi del pa, kadar je vrednost vpletenega izraza prazna.">
 <!ENTITY fnFormulaLabel "Ustvari prikazano ime">
 <!ENTITY fnFormulaAccesskey "U">
 <!ENTITY resetFnFormulaLabel "Obnovi na privzeto">

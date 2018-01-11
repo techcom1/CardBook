@@ -94,7 +94,7 @@
 <!ENTITY showNameAsFLAccesskey "e">
 <!ENTITY showNameAsDSPLabel "Display Name">
 <!ENTITY showNameAsDSPAccesskey "D">
-<!ENTITY adrLabelExplanation "It is possible to customize the way CardBook formats its addresses. This formula consists in blocks enclosed by '()'. In these blocks, there are two parts delimited by '|'. The first part applies when the term involved, for example {{1}}, is not null, the second part applies when the term involved is null.">
+<!ENTITY adrLabelExplanation "It is possible to customize the way CardBook formats its addresses. This formula consists in blocks enclosed by “()”. In these blocks, there are two parts delimited by “|”. The first part applies when the term involved, for example {{1}}, is not null, the second part applies when the term involved is null.">
 <!ENTITY adrFormulaLabel "Address Format Formula">
 <!ENTITY adrFormulaAccesskey "R">
 <!ENTITY resetAdrFormulaLabel "Restore to Default">
@@ -250,6 +250,8 @@
 <!ENTITY calendarEntryTitleLabel "Title for calendar event">
 <!ENTITY calendarEntryTitleTooltip "Template title for the calendar event. It should contain two placeholders &#37;S, respectively replaced by name and age. If the field is empty, a standard message is used.">
 <!ENTITY calendarEntryTitleAccesskey "T">
+<!ENTITY resetCalendarEntryTitleButtonLabel "Restore to Default">
+<!ENTITY resetCalendarEntryTitleButtonAccesskey "R">
 <!ENTITY calendarEntryTimeLabel "Time for calendar event (hh:mm)">
 <!ENTITY calendarEntryTimeAccesskey "m">
 <!ENTITY calendarEntryWholeDayLabel "Calendar event for the whole day">

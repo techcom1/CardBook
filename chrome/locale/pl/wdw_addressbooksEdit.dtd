@@ -21,7 +21,7 @@
 <!ENTITY autoSyncIntervalAccesskey "I">
 
 <!ENTITY miscTabLabel "Różne">
-<!ENTITY fnLabelExplanation "Można dostosować sposób, w który CardBook tworzy Wyświetlaną nazwę. Formuła zawiera bloki otoczone '()'. Bloki zawierają dwa elementy oddzielone'|'. Pierwszy element jest używany, gdy wybrane pole, na przykład {{1}}, nie jest puste, drugi element jest używany, gdy wybrane pole jest puste.">
+<!ENTITY fnLabelExplanation "Można dostosować sposób, w który CardBook tworzy Wyświetlaną nazwę. Formuła zawiera bloki otoczone „()”. Bloki zawierają dwa elementy oddzielone „|”. Pierwszy element jest używany, gdy wybrane pole, na przykład {{1}}, nie jest puste, drugi element jest używany, gdy wybrane pole jest puste.">
 <!ENTITY fnFormulaLabel "Stwórz Wyświetlaną nazwę">
 <!ENTITY fnFormulaAccesskey "S">
 <!ENTITY resetFnFormulaLabel "Przywróć domyślne">
