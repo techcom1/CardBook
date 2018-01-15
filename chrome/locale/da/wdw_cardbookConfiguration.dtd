@@ -21,6 +21,12 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "V">
 <!ENTITY autocompleteWithColorLabel "Brug adressebogsfarve">
 <!ENTITY autocompleteWithColorAccesskey "B">
+<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
+<!ENTITY autocompleteRestrictSearchAccesskey "P">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Rediger">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "R">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonLabel "Gendan standardvalg">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonAccesskey "G">
 <!ENTITY useColorLabel "Brug adressebogs farve til:">
 <!ENTITY useColorBackgroundLabel "Baggrundsfarve">
 <!ENTITY useColorBackgroundAccesskey "g">
@@ -47,7 +53,6 @@
 <!ENTITY emailsCollectionMailNameLabel "Mailkonto">
 <!ENTITY emailsCollectionABNameLabel "Adressebog">
 <!ENTITY emailsCollectionCatNameLabel "Kategori">
-<!ENTITY emailsCollectionIncludeNameLabel "Type">
 <!ENTITY addEmailsCollectionLabel "Tilføj">
 <!ENTITY addEmailsCollectionAccesskey "T">
 <!ENTITY renameEmailsCollectionLabel "Rediger">

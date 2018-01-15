@@ -14,6 +14,8 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		allEmailsCollections: [],
 		allVCards: [],
 		preferEmailPrefOld: false,
+		autocompleteRestrictSearchFields: "",
+		autocompleteRestrictSearchFieldsOld: "",
 		
 		customFieldCheck: function (aTextBox) {
 			var myValue = aTextBox.value.trim();
@@ -198,6 +200,115 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			document.title = strBundle.getString("cardbookPrefTitle") + " (" + cardbookRepository.addonVersion + ")";
 		},
 
+		autocompleteRestrictSearch: function () {
+			document.getElementById('chooseAutocompleteRestrictSearchFieldsButton').disabled=!document.getElementById('autocompleteRestrictSearchCheckBox').checked;
+			document.getElementById('resetAutocompleteRestrictSearchFieldsButton').disabled=!document.getElementById('autocompleteRestrictSearchCheckBox').checked;
+		},
+
+		getTranslatedField: function (aField) {
+			var strBundle = document.getElementById("cardbook-strings");
+			for (var i in cardbookRepository.allColumns) {
+				for (var j = 0; j < cardbookRepository.allColumns[i].length; j++) {
+					if (i != "arrayColumns" && i != "categories") {
+						if (cardbookRepository.allColumns[i][j] == aField) {
+							return strBundle.getString(cardbookRepository.allColumns[i][j] + "Label");
+						}
+					} else if (i == "categories") {
+						if (cardbookRepository.allColumns[i][j] + ".0.array" == aField) {
+							return strBundle.getString(cardbookRepository.allColumns[i][j] + "Label");
+						}
+					}
+				}
+			}
+			for (var i in cardbookRepository.customFields) {
+				for (var j = 0; j < cardbookRepository.customFields[i].length; j++) {
+					if (cardbookRepository.customFields[i][j][0] == aField) {
+						return cardbookRepository.customFields[i][j][1];
+					}
+				}
+			}
+			for (var i = 0; i < cardbookRepository.allColumns.arrayColumns.length; i++) {
+				for (var k = 0; k < cardbookRepository.allColumns.arrayColumns[i][1].length; k++) {
+					if (cardbookRepository.allColumns.arrayColumns[i][0] + "." + k + ".all" == aField) {
+						return strBundle.getString(cardbookRepository.allColumns.arrayColumns[i][1][k] + "Label");
+					} else if (cardbookRepository.allColumns.arrayColumns[i][0] + "." + k + ".notype" == aField) {
+						return strBundle.getString(cardbookRepository.allColumns.arrayColumns[i][1][k] + "Label") + " (" + strBundle.getString("importNoTypeLabel") + ")";
+					}
+				}
+			}
+			for (var i = 0; i < cardbookRepository.allColumns.arrayColumns.length; i++) {
+				var myPrefTypes = cardbookPreferences.getAllTypesByType(cardbookRepository.allColumns.arrayColumns[i][0]);
+				for (var j = 0; j < myPrefTypes.length; j++) {
+					for (var k = 0; k < cardbookRepository.allColumns.arrayColumns[i][1].length; k++) {
+						if (cardbookRepository.allColumns.arrayColumns[i][0] + "." + k + "." + myPrefTypes[j][0] == aField) {
+							return strBundle.getString(cardbookRepository.allColumns.arrayColumns[i][1][k] + "Label") + " (" + myPrefTypes[j][1] + ")";
+						}
+					}
+				}
+			}
+			return "";
+		},
+
+		translateSearchFields: function (aFieldList) {
+			var myFieldArray = aFieldList.split('|');
+			var result = [];
+			for (var i = 0; i < myFieldArray.length; i++) {
+				result.push(wdw_cardbookConfiguration.getTranslatedField(myFieldArray[i]));
+			}
+			return cardbookUtils.cleanArray(result).join('|');
+		},
+
+		loadAutocompleteRestrictSearchFields: function () {
+			wdw_cardbookConfiguration.autocompleteRestrictSearchFieldsOld = cardbookPreferences.getStringPref("extensions.cardbook.autocompleteRestrictSearchFields");
+			wdw_cardbookConfiguration.autocompleteRestrictSearchFields = wdw_cardbookConfiguration.autocompleteRestrictSearchFieldsOld;
+			document.getElementById('autocompleteRestrictSearchFieldsTextBox').value = wdw_cardbookConfiguration.translateSearchFields(wdw_cardbookConfiguration.autocompleteRestrictSearchFields);
+		},
+
+		getTemplate: function (aFieldList) {
+			var myFieldArray = aFieldList.split('|');
+			var result = [];
+			for (var i = 0; i < myFieldArray.length; i++) {
+				result.push([myFieldArray[i], wdw_cardbookConfiguration.getTranslatedField(myFieldArray[i])]);
+			}
+			return result;
+		},
+
+		chooseAutocompleteRestrictSearchFieldsButton: function () {
+			var myTemplate = wdw_cardbookConfiguration.getTemplate(wdw_cardbookConfiguration.autocompleteRestrictSearchFields);
+			var myArgs = {template: myTemplate, mode: "choice", lineHeader: true, columnSeparator: "", action: ""};
+			var myWindow = window.openDialog("chrome://cardbook/content/csvTranslator/wdw_csvTranslator.xul", "", cardbookRepository.modalWindowParams, myArgs);
+			if (myArgs.action == "SAVE") {
+				var result = [];
+				for (var i = 0; i < myArgs.template.length; i++) {
+					result.push(myArgs.template[i][0]);
+				}
+				wdw_cardbookConfiguration.autocompleteRestrictSearchFields = result.join('|');
+				document.getElementById('autocompleteRestrictSearchFieldsTextBox').value = wdw_cardbookConfiguration.translateSearchFields(wdw_cardbookConfiguration.autocompleteRestrictSearchFields);
+			}
+		},
+
+		resetAutocompleteRestrictSearchFieldsButton: function () {
+			wdw_cardbookConfiguration.autocompleteRestrictSearchFields = cardbookRepository.defaultAutocompleteRestrictSearchFields;
+			document.getElementById('autocompleteRestrictSearchFieldsTextBox').value = wdw_cardbookConfiguration.translateSearchFields(wdw_cardbookConfiguration.autocompleteRestrictSearchFields);
+		},
+
+		validateAutocompleteRestrictSearchFields: function () {
+			cardbookRepository.autocompleteRestrictSearch = document.getElementById('autocompleteRestrictSearchCheckBox').checked;
+			if (document.getElementById('autocompletionCheckBox').checked && document.getElementById('autocompleteRestrictSearchCheckBox').checked) {
+				if (wdw_cardbookConfiguration.autocompleteRestrictSearchFieldsOld !== wdw_cardbookConfiguration.autocompleteRestrictSearchFields) {
+					cardbookPreferences.setStringPref("extensions.cardbook.autocompleteRestrictSearchFields", wdw_cardbookConfiguration.autocompleteRestrictSearchFields);
+					cardbookRepository.autocompleteRestrictSearchFields = wdw_cardbookConfiguration.autocompleteRestrictSearchFields.split('|');
+					cardbookRepository.cardbookCardShortSearch = {};
+					for (j in cardbookRepository.cardbookCards) {
+						let myCard = cardbookRepository.cardbookCards[j];
+						cardbookRepository.addCardToShortSearch(myCard);
+					}
+				}
+			} else {
+				cardbookRepository.cardbookCardShortSearch = {};
+			}
+		},
+
 		loadPrefEmailPref: function () {
 			wdw_cardbookConfiguration.preferEmailPrefOld = cardbookPreferences.getBoolPref("extensions.cardbook.preferEmailPref");
 		},
@@ -265,16 +376,17 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		},
 
 		cardbookAutoComplete: function () {
-			if (document.getElementById('autocompletionCheckBox').checked) {
-				document.getElementById('autocompleteSortByPopularityCheckBox').disabled=false;
-				document.getElementById('autocompleteProposeConcatEmailsCheckBox').disabled=false;
-				document.getElementById('autocompleteShowAddressbookCheckBox').disabled=false;
-				document.getElementById('autocompleteWithColorCheckBox').disabled=false;
+			document.getElementById('autocompleteSortByPopularityCheckBox').disabled=!document.getElementById('autocompletionCheckBox').checked;
+			document.getElementById('autocompleteProposeConcatEmailsCheckBox').disabled=!document.getElementById('autocompletionCheckBox').checked;
+			document.getElementById('autocompleteShowAddressbookCheckBox').disabled=!document.getElementById('autocompletionCheckBox').checked;
+			document.getElementById('autocompleteWithColorCheckBox').disabled=!document.getElementById('autocompletionCheckBox').checked;
+			document.getElementById('autocompleteRestrictSearchCheckBox').disabled=!document.getElementById('autocompletionCheckBox').checked;
+			if (document.getElementById('autocompletionCheckBox').checked && document.getElementById('autocompleteRestrictSearchCheckBox').checked) {
+				document.getElementById('chooseAutocompleteRestrictSearchFieldsButton').disabled=false;
+				document.getElementById('resetAutocompleteRestrictSearchFieldsButton').disabled=false;
 			} else {
-				document.getElementById('autocompleteSortByPopularityCheckBox').disabled=true;
-				document.getElementById('autocompleteProposeConcatEmailsCheckBox').disabled=true;
-				document.getElementById('autocompleteShowAddressbookCheckBox').disabled=true;
-				document.getElementById('autocompleteWithColorCheckBox').disabled=true;
+				document.getElementById('chooseAutocompleteRestrictSearchFieldsButton').disabled=true;
+				document.getElementById('resetAutocompleteRestrictSearchFieldsButton').disabled=true;
 			}
 		},
 
@@ -284,23 +396,13 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			} else {
 				document.getElementById('showPopupEvenIfNoBirthdayCheckBox').disabled=true;
 			}
-			if (document.getElementById('showPeriodicPopupCheckBox').checked) {
-				document.getElementById('periodicPopupTimeTextBox').disabled=false;
-				document.getElementById('periodicPopupTimeLabel').disabled=false;
-			} else {
-				document.getElementById('periodicPopupTimeTextBox').disabled=true;
-				document.getElementById('periodicPopupTimeLabel').disabled=true;
-			}
+			document.getElementById('periodicPopupTimeTextBox').disabled=!document.getElementById('showPeriodicPopupCheckBox').checked;
+			document.getElementById('periodicPopupTimeLabel').disabled=!document.getElementById('showPeriodicPopupCheckBox').checked;
 		},
 
 		wholeDay: function () {
-			if (document.getElementById('calendarEntryWholeDayCheckBox').checked) {
-				document.getElementById('calendarEntryTimeTextBox').disabled=true;
-				document.getElementById('calendarEntryTimeLabel').disabled=true;
-			} else {
-				document.getElementById('calendarEntryTimeTextBox').disabled=false;
-				document.getElementById('calendarEntryTimeLabel').disabled=false;
-			}
+			document.getElementById('calendarEntryTimeTextBox').disabled=document.getElementById('calendarEntryWholeDayCheckBox').checked;
+			document.getElementById('calendarEntryTimeLabel').disabled=document.getElementById('calendarEntryWholeDayCheckBox').checked;
 		},
 
 		LightningInstallation: function (aValue) {
@@ -1773,6 +1875,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			AddonManager.getAddonByID(cardbookRepository.LIGHTNING_ID, wdw_cardbookConfiguration.loadCalendars);
 			wdw_cardbookConfiguration.remindViaPopup();
 			wdw_cardbookConfiguration.cardbookAutoComplete();
+			wdw_cardbookConfiguration.loadAutocompleteRestrictSearchFields();
 			wdw_cardbookConfiguration.loadEventEntryTitle();
 			wdw_cardbookConfiguration.showTab();
 		},
@@ -1789,6 +1892,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			wdw_cardbookConfiguration.validatePrefIMPPPref();
 			wdw_cardbookConfiguration.validateEventEntryTitle();
 			wdw_cardbookConfiguration.validateAdrFormula();
+			wdw_cardbookConfiguration.validateAutocompleteRestrictSearchFields();
 			if (!(wdw_cardbookConfiguration.validateCustomValues())) {
 				// don't work
 				// return false;

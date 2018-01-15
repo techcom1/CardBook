@@ -21,6 +21,12 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "Z">
 <!ENTITY autocompleteWithColorLabel "Použít barvu adresáře">
 <!ENTITY autocompleteWithColorAccesskey "P">
+<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
+<!ENTITY autocompleteRestrictSearchAccesskey "P">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Upravit">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "U">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonLabel "Obnovit na výchozí hodnotu">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonAccesskey "O">
 <!ENTITY useColorLabel "Použít barvu adresáře jako:">
 <!ENTITY useColorBackgroundLabel "Barvu pozadí">
 <!ENTITY useColorBackgroundAccesskey "i">
@@ -47,7 +53,6 @@
 <!ENTITY emailsCollectionMailNameLabel "E-mailový účet">
 <!ENTITY emailsCollectionABNameLabel "Adresář">
 <!ENTITY emailsCollectionCatNameLabel "Kategorie">
-<!ENTITY emailsCollectionIncludeNameLabel "Typ">
 <!ENTITY addEmailsCollectionLabel "Přidat">
 <!ENTITY addEmailsCollectionAccesskey "P">
 <!ENTITY renameEmailsCollectionLabel "Upravit">

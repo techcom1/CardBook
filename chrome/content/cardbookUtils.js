@@ -716,7 +716,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 					}
 				}
 			}
-			return result;
+			return cardbookUtils.unescapeString1(result);
 		},
 
 		parseLists: function(aCard, aMemberLines, aKindValue) {
@@ -1205,6 +1205,8 @@ if ("undefined" == typeof(cardbookUtils)) {
 				}
 			} else if (aField == "age") {
 				result.push(cardbookDates.getAge(aCard));
+			} else if (aField == "ABName") {
+				result.push(cardbookPreferences.getName(aCard.dirPrefId));
 			} else {
 				if (aCard[aField]) {
 					result.push(aCard[aField]);
@@ -2322,9 +2324,9 @@ if ("undefined" == typeof(cardbookUtils)) {
 			var result = [];
 			for (var i in cardbookRepository.allColumns) {
 				for (var j = 0; j < cardbookRepository.allColumns[i].length; j++) {
-					if (i != "arrayColumns" && i != "categories") {
+					if (i != "arrayColumns" && i != "categories" && i != "calculated") {
 						result.push([cardbookRepository.allColumns[i][j], strBundle.getString(cardbookRepository.allColumns[i][j] + "Label")]);
-					} else if (i == "age" && aMode != "import" && aMode != "export") {
+					} else if (i == "calculated" && aMode == "search") {
 						result.push([cardbookRepository.allColumns[i][j], strBundle.getString(cardbookRepository.allColumns[i][j] + "Label")]);
 					} else if (i == "categories") {
 						result.push([cardbookRepository.allColumns[i][j] + ".0.array", strBundle.getString(cardbookRepository.allColumns[i][j] + "Label")]);
@@ -2336,15 +2338,13 @@ if ("undefined" == typeof(cardbookUtils)) {
 					result.push([cardbookRepository.customFields[i][j][0], cardbookRepository.customFields[i][j][1]]);
 				}
 			}
-			if (aMode === "export" || aMode === "all") {
-				for (var i = 0; i < cardbookRepository.allColumns.arrayColumns.length; i++) {
-					for (var k = 0; k < cardbookRepository.allColumns.arrayColumns[i][1].length; k++) {
-						result.push([cardbookRepository.allColumns.arrayColumns[i][0] + "." + k + ".all",
-													strBundle.getString(cardbookRepository.allColumns.arrayColumns[i][1][k] + "Label")]);
-					}
+			for (var i = 0; i < cardbookRepository.allColumns.arrayColumns.length; i++) {
+				for (var k = 0; k < cardbookRepository.allColumns.arrayColumns[i][1].length; k++) {
+					result.push([cardbookRepository.allColumns.arrayColumns[i][0] + "." + k + ".all",
+												strBundle.getString(cardbookRepository.allColumns.arrayColumns[i][1][k] + "Label")]);
 				}
 			}
-			if (aMode === "import" || aMode === "all") {
+			if (aMode == "export" || aMode == "import" || aMode == "search") {
 				for (var i = 0; i < cardbookRepository.allColumns.arrayColumns.length; i++) {
 					for (var k = 0; k < cardbookRepository.allColumns.arrayColumns[i][1].length; k++) {
 						if (cardbookRepository.allColumns.arrayColumns[i][0] != "adr") {
@@ -2353,13 +2353,13 @@ if ("undefined" == typeof(cardbookUtils)) {
 						}
 					}
 				}
-			}
-			for (var i = 0; i < cardbookRepository.allColumns.arrayColumns.length; i++) {
-				var myPrefTypes = cardbookPreferences.getAllTypesByType(cardbookRepository.allColumns.arrayColumns[i][0]);
-				for (var j = 0; j < myPrefTypes.length; j++) {
-					for (var k = 0; k < cardbookRepository.allColumns.arrayColumns[i][1].length; k++) {
-						result.push([cardbookRepository.allColumns.arrayColumns[i][0] + "." + k + "." + myPrefTypes[j][0],
-													strBundle.getString(cardbookRepository.allColumns.arrayColumns[i][1][k] + "Label") + " (" + myPrefTypes[j][1] + ")"]);
+				for (var i = 0; i < cardbookRepository.allColumns.arrayColumns.length; i++) {
+					var myPrefTypes = cardbookPreferences.getAllTypesByType(cardbookRepository.allColumns.arrayColumns[i][0]);
+					for (var j = 0; j < myPrefTypes.length; j++) {
+						for (var k = 0; k < cardbookRepository.allColumns.arrayColumns[i][1].length; k++) {
+							result.push([cardbookRepository.allColumns.arrayColumns[i][0] + "." + k + "." + myPrefTypes[j][0],
+														strBundle.getString(cardbookRepository.allColumns.arrayColumns[i][1][k] + "Label") + " (" + myPrefTypes[j][1] + ")"]);
+						}
 					}
 				}
 			}

@@ -21,6 +21,12 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "S">
 <!ENTITY autocompleteWithColorLabel "Use address book color">
 <!ENTITY autocompleteWithColorAccesskey "c">
+<!ENTITY autocompleteRestrictSearchLabel "Restrict searched fields">
+<!ENTITY autocompleteRestrictSearchAccesskey "R">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Edit">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "E">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonLabel "Restore to Default">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonAccesskey "D">
 <!ENTITY useColorLabel "Use address book color for:">
 <!ENTITY useColorBackgroundLabel "Background color">
 <!ENTITY useColorBackgroundAccesskey "B">

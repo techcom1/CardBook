@@ -2248,7 +2248,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			cardbookRepository.cardbookDisplayCards = {};
 			cardbookRepository.cardbookFileCacheCards = {};
 			cardbookRepository.cardbookCards = {};
-			cardbookRepository.cardbookCardSearch = {};
+			cardbookRepository.cardbookCardLongSearch = {};
 			cardbookRepository.cardbookComplexSearch = {};
 			
 			var myMode = "INITIAL";

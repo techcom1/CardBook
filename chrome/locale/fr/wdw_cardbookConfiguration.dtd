@@ -21,6 +21,12 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "V">
 <!ENTITY autocompleteWithColorLabel "Utiliser la couleur du carnet d'adresses">
 <!ENTITY autocompleteWithColorAccesskey "c">
+<!ENTITY autocompleteRestrictSearchLabel "Restreindre les champs recherchés">
+<!ENTITY autocompleteRestrictSearchAccesskey "R">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Modifier">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "M">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonLabel "Réinitialiser">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonAccesskey "R">
 <!ENTITY useColorLabel "Utiliser la couleur du carnet d'adresses pour :">
 <!ENTITY useColorBackgroundLabel "La couleur du fond">
 <!ENTITY useColorBackgroundAccesskey "f">
@@ -47,7 +53,6 @@
 <!ENTITY emailsCollectionMailNameLabel "Compte courrier">
 <!ENTITY emailsCollectionABNameLabel "Carnet d'adresses">
 <!ENTITY emailsCollectionCatNameLabel "Catégorie">
-<!ENTITY emailsCollectionIncludeNameLabel "Type">
 <!ENTITY addEmailsCollectionLabel "Ajouter">
 <!ENTITY addEmailsCollectionAccesskey "A">
 <!ENTITY renameEmailsCollectionLabel "Modifier">

@@ -21,6 +21,12 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "S">
 <!ENTITY autocompleteWithColorLabel "Upotrijebi boju adresara">
 <!ENTITY autocompleteWithColorAccesskey "c">
+<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
+<!ENTITY autocompleteRestrictSearchAccesskey "P">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Uredi">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "U">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonLabel "Vrati na uobičajeno">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonAccesskey "V">
 <!ENTITY useColorLabel "Upotrijebi boju adresara za:">
 <!ENTITY useColorBackgroundLabel "Boja pozadine">
 <!ENTITY useColorBackgroundAccesskey "B">

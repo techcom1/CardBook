@@ -203,26 +203,37 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 			document.title = strBundle.getString(window.arguments[0].mode + "MappingTitle");
 			document.getElementById('availableColumnsGroupboxLabel').label = strBundle.getString(window.arguments[0].mode + "availableColumnsGroupboxLabel");
 			document.getElementById('addedColumnsGroupboxLabel').label = strBundle.getString(window.arguments[0].mode + "addedColumnsGroupboxLabel");
-			document.getElementById('fieldDelimiterLabel').value = strBundle.getString("fieldDelimiterLabel");
-			document.getElementById('fieldDelimiterTextBox').value = window.arguments[0].columnSeparator;
 			
 			wdw_csvTranslator.cardbookeditlists.availableColumns = [];
 			wdw_csvTranslator.cardbookeditlists.addedColumns = [];
 			
-			if (window.arguments[0].mode == "export") {
+			if (window.arguments[0].mode == "choice") {
 				document.getElementById('foundColumnsVBox').hidden = true;
 				document.getElementById('lineHeaderLabel').hidden = true;
 				document.getElementById('lineHeaderCheckBox').hidden = true;
+				document.getElementById('lineHeaderCheckBox').hidden = true;
+				document.getElementById('fieldDelimiterLabel').hidden = true;
+				document.getElementById('fieldDelimiterTextBox').hidden = true;
+			} else if (window.arguments[0].mode == "export") {
+				document.getElementById('foundColumnsVBox').hidden = true;
+				document.getElementById('lineHeaderLabel').hidden = true;
+				document.getElementById('lineHeaderCheckBox').hidden = true;
+				document.getElementById('fieldDelimiterLabel').value = strBundle.getString("fieldDelimiterLabel");
+				document.getElementById('fieldDelimiterTextBox').value = window.arguments[0].columnSeparator;
 			} else if (window.arguments[0].mode == "import") {
 				document.getElementById('foundColumnsGroupboxLabel').label = strBundle.getString(window.arguments[0].mode + "foundColumnsGroupboxLabel");
 				document.getElementById('lineHeaderLabel').value = strBundle.getString("lineHeaderLabel");
 				document.getElementById('lineHeaderCheckBox').setAttribute('checked', true);
+				document.getElementById('fieldDelimiterLabel').value = strBundle.getString("fieldDelimiterLabel");
+				document.getElementById('fieldDelimiterTextBox').value = window.arguments[0].columnSeparator;
 				wdw_csvTranslator.blankColumn = strBundle.getString(window.arguments[0].mode + "blankColumn");
 				wdw_csvTranslator.cardbookeditlists.availableColumns.push(["blank", wdw_csvTranslator.blankColumn]);
 			}
 			
-			wdw_csvTranslator.cardbookeditlists.availableColumns = wdw_csvTranslator.cardbookeditlists.availableColumns.concat(cardbookUtils.getAllAvailableColumns(window.arguments[0].mode));
-			
+			wdw_csvTranslator.cardbookeditlists.addedColumns = window.arguments[0].template;
+			wdw_csvTranslator.displayListTrees("addedColumns");
+
+			wdw_csvTranslator.cardbookeditlists.availableColumns = cardbookUtils.getAllAvailableColumns(window.arguments[0].mode);
 			wdw_csvTranslator.displayListTrees("availableColumns");
 
 			if (window.arguments[0].mode == "import") {

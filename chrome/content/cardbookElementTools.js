@@ -556,7 +556,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			aMenulist.appendChild(aMenupopup);
 			aMenupopup.setAttribute('id', aType + '_' + aIndex + '_menupopupObj');
 			cardbookElementTools.deleteRows(aMenupopup.id);
-			var myColumns = cardbookUtils.getAllAvailableColumns("all");
+			var myColumns = cardbookUtils.getAllAvailableColumns("search");
 			var found = false;
 			for (var i = 0; i < myColumns.length; i++) {
 				var menuItem = document.createElement("menuitem");

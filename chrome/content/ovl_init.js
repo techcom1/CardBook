@@ -14,6 +14,8 @@ if ("undefined" == typeof(ovl_synchro)) {
 			prefs.setBoolPref("proposeConcatEmails", false);
 			prefs.setBoolPref("autocompleteShowAddressbook", false);
 			prefs.setBoolPref("autocompleteWithColor", true);
+			prefs.setBoolPref("autocompleteRestrictSearch", false);
+			prefs.setCharPref("autocompleteRestrictSearchFields", cardbookRepository.defaultAutocompleteRestrictSearchFields);
 			prefs.setCharPref("useColor", "background");
 			prefs.setBoolPref("exclusive", false);
 			prefs.setCharPref("requestsTimeout", "120");
@@ -88,7 +90,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 			
 			prefs.setCharPref("accountsShown", "all");
 			prefs.setCharPref("uncategorizedCards", "");
-			prefs.setCharPref("addonVersion", "25.6");
+			prefs.setCharPref("addonVersion", "25.7");
 		},
 
 		lEventTimerSync : { notify: function(lTimerSync) {
@@ -113,6 +115,10 @@ if ("undefined" == typeof(ovl_synchro)) {
 				cardbookRepository.addonVersion = cardbookPreferences.getStringPref("extensions.cardbook.addonVersion");
 				cardbookRepository.userAgent = "Thunderbird CardBook/" + cardbookRepository.addonVersion;
 				cardbookRepository.prodid = "-//Thunderbird.org/NONSGML Thunderbird CardBook V"+ cardbookRepository.addonVersion + "//EN";
+
+				// setting autocompleteRestrictSearch and autocompleteRestrictSearchFields
+				cardbookRepository.autocompleteRestrictSearch = cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteRestrictSearch");
+				cardbookRepository.autocompleteRestrictSearchFields = cardbookPreferences.getStringPref("extensions.cardbook.autocompleteRestrictSearchFields").split('|');
 
 				// setting currentTypes for having lookups
 				cardbookRepository.currentTypes = cardbookPreferences.getAllTypesCurrent();

@@ -49,6 +49,10 @@
 				name="extensions.cardbook.autocompleteShowAddressbook" type="bool"/>
 			<preference id="extensions.cardbook.autocompleteWithColor"
 				name="extensions.cardbook.autocompleteWithColor" type="bool"/>
+			<preference id="extensions.cardbook.autocompleteRestrictSearch"
+				name="extensions.cardbook.autocompleteRestrictSearch" type="bool"/>
+			<preference id="extensions.cardbook.autocompleteRestrictSearchFields"
+				name="extensions.cardbook.autocompleteRestrictSearchFields" type="string"/>
 			<preference id="extensions.cardbook.useColor"
 				name="extensions.cardbook.useColor" type="string"/>
 			<preference id="extensions.cardbook.debugMode"
@@ -92,6 +96,18 @@
 					accesskey="&autocompleteWithColorAccesskey;"
 					class="indent"
 					preference="extensions.cardbook.autocompleteWithColor"/>
+				<separator class="thin"/>
+				<hbox flex="1">
+					<checkbox id="autocompleteRestrictSearchCheckBox" label="&autocompleteRestrictSearchLabel;"
+						accesskey="&autocompleteRestrictSearchAccesskey;" class="indent"
+						preference="extensions.cardbook.autocompleteRestrictSearch"
+						oncommand="wdw_cardbookConfiguration.autocompleteRestrictSearch();"/>
+					<textbox id="autocompleteRestrictSearchFieldsTextBox" flex="1" disabled="true"/>
+					<button id="chooseAutocompleteRestrictSearchFieldsButton" label="&chooseAutocompleteRestrictSearchFieldsButtonLabel;" accesskey="&chooseAutocompleteRestrictSearchFieldsButtonAccesskey;"
+						oncommand="wdw_cardbookConfiguration.chooseAutocompleteRestrictSearchFieldsButton();"/>
+					<button id="resetAutocompleteRestrictSearchFieldsButton" label="&resetAutocompleteRestrictSearchFieldsButtonLabel;" accesskey="&resetAutocompleteRestrictSearchFieldsButtonAccesskey;"
+						oncommand="wdw_cardbookConfiguration.resetAutocompleteRestrictSearchFieldsButton();"/>
+				</hbox>
 			</vbox>
 			<separator class="thin"/>
 			<vbox>

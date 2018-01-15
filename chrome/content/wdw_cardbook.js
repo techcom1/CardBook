@@ -1544,10 +1544,10 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
 				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] != "SEARCH") {
 					var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
-					for (var j in cardbookRepository.cardbookCardSearch[myDirPrefId]) {
+					for (var j in cardbookRepository.cardbookCardLongSearch[myDirPrefId]) {
 						if (cardbookRepository.cardbookSearchValue == "" || j.search(myRegexp) != -1) {
-							for (var k = 0; k < cardbookRepository.cardbookCardSearch[myDirPrefId][j].length; k++) {
-								cardbookRepository.cardbookDisplayCards[cardbookRepository.cardbookSearchValue].push(cardbookRepository.cardbookCardSearch[myDirPrefId][j][k]);
+							for (var k = 0; k < cardbookRepository.cardbookCardLongSearch[myDirPrefId][j].length; k++) {
+								cardbookRepository.cardbookDisplayCards[cardbookRepository.cardbookSearchValue].push(cardbookRepository.cardbookCardLongSearch[myDirPrefId][j][k]);
 							}
 						}
 					}
@@ -1559,7 +1559,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				// selected cards may have been deleted
 				if (cardbookRepository.cardbookCards[listOfSelectedCard[i]]) {
 					var myCard = cardbookRepository.cardbookCards[listOfSelectedCard[i]];
-					if (cardbookRepository.getSearchString(myCard).indexOf(cardbookRepository.cardbookSearchValue) >= 0) {
+					if (cardbookRepository.getLongSearchString(myCard).indexOf(cardbookRepository.cardbookSearchValue) >= 0) {
 						myListOfSelectedCards.push(listOfSelectedCard[i]);
 					}
 				}

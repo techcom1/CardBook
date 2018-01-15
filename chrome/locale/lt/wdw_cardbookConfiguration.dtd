@@ -21,6 +21,12 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "R">
 <!ENTITY autocompleteWithColorLabel "Naudokite adresų knygos spalvą">
 <!ENTITY autocompleteWithColorAccesskey "N">
+<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
+<!ENTITY autocompleteRestrictSearchAccesskey "P">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Keisti">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "K">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonLabel "Atstatyti numatytąjį">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonAccesskey "A">
 <!ENTITY useColorLabel "Adresų knygos spalvos naudojimas:">
 <!ENTITY useColorBackgroundLabel "Fono spalva">
 <!ENTITY useColorBackgroundAccesskey "F">

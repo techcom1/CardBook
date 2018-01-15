@@ -21,6 +21,12 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "S">
 <!ENTITY autocompleteWithColorLabel "Używaj koloru książki adresowej">
 <!ENTITY autocompleteWithColorAccesskey "O">
+<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
+<!ENTITY autocompleteRestrictSearchAccesskey "P">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Edytuj">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "E">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonLabel "Przywróć domyślne">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonAccesskey "d">
 <!ENTITY useColorLabel "Używaj koloru książki adresowej do:">
 <!ENTITY useColorBackgroundLabel "tła">
 <!ENTITY useColorBackgroundAccesskey "T">
@@ -47,7 +53,6 @@
 <!ENTITY emailsCollectionMailNameLabel "Konto pocztowe">
 <!ENTITY emailsCollectionABNameLabel "Książka adresowa">
 <!ENTITY emailsCollectionCatNameLabel "Kategoria">
-<!ENTITY emailsCollectionIncludeNameLabel "Typ">
 <!ENTITY addEmailsCollectionLabel "Dodaj">
 <!ENTITY addEmailsCollectionAccesskey "D">
 <!ENTITY renameEmailsCollectionLabel "Edytuj">

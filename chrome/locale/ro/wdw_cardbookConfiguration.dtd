@@ -21,6 +21,12 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "A">
 <!ENTITY autocompleteWithColorLabel "Utilizați culoarea carte de adresei">
 <!ENTITY autocompleteWithColorAccesskey "c">
+<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
+<!ENTITY autocompleteRestrictSearchAccesskey "P">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Editare">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "E">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonLabel "Desemnează ca implicit">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonAccesskey "D">
 <!ENTITY useColorLabel "Utilizați culoarea cărții de adrese pentru:">
 <!ENTITY useColorBackgroundLabel "Culoare de fundal">
 <!ENTITY useColorBackgroundAccesskey "f">

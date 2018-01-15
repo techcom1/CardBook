@@ -21,6 +21,12 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "M">
 <!ENTITY autocompleteWithColorLabel "Usar cor da agenda">
 <!ENTITY autocompleteWithColorAccesskey "U">
+<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
+<!ENTITY autocompleteRestrictSearchAccesskey "P">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Editar">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "E">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonLabel "Restaurar para origem">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonAccesskey "R">
 <!ENTITY useColorLabel "Usar cor da agenda para:">
 <!ENTITY useColorBackgroundLabel "Cor de fundo">
 <!ENTITY useColorBackgroundAccesskey "f">
@@ -47,7 +53,6 @@
 <!ENTITY emailsCollectionMailNameLabel "Conta de email">
 <!ENTITY emailsCollectionABNameLabel "Agenda">
 <!ENTITY emailsCollectionCatNameLabel "Categoria">
-<!ENTITY emailsCollectionIncludeNameLabel "Tipo">
 <!ENTITY addEmailsCollectionLabel "Adicionar">
 <!ENTITY addEmailsCollectionAccesskey "A">
 <!ENTITY renameEmailsCollectionLabel "Editar">

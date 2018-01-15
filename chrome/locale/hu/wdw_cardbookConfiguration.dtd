@@ -21,6 +21,12 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "m">
 <!ENTITY autocompleteWithColorLabel "Használja a névjegytár színét">
 <!ENTITY autocompleteWithColorAccesskey "n">
+<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
+<!ENTITY autocompleteRestrictSearchAccesskey "P">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Szerkesztés…">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "S">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonLabel "Alapértelmezés">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonAccesskey "A">
 <!ENTITY useColorLabel "Használja a névjegytár színét a következőhöz:">
 <!ENTITY useColorBackgroundLabel "Háttérszín">
 <!ENTITY useColorBackgroundAccesskey "H">
@@ -47,7 +53,6 @@
 <!ENTITY emailsCollectionMailNameLabel "Postafiók">
 <!ENTITY emailsCollectionABNameLabel "Névjegytár">
 <!ENTITY emailsCollectionCatNameLabel "Kategória">
-<!ENTITY emailsCollectionIncludeNameLabel "Típus">
 <!ENTITY addEmailsCollectionLabel "Új…">
 <!ENTITY addEmailsCollectionAccesskey "j">
 <!ENTITY renameEmailsCollectionLabel "Szerkesztés…">

@@ -21,6 +21,12 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "а">
 <!ENTITY autocompleteWithColorLabel "Использовать цвет адресной книги">
 <!ENTITY autocompleteWithColorAccesskey "ц">
+<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
+<!ENTITY autocompleteRestrictSearchAccesskey "P">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Редактировать">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "P">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonLabel "Сбросить до значений по умолчанию">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonAccesskey "C">
 <!ENTITY useColorLabel "Использовать цвет адресной книги для:">
 <!ENTITY useColorBackgroundLabel "Фона">
 <!ENTITY useColorBackgroundAccesskey "Ф">
@@ -47,7 +53,6 @@
 <!ENTITY emailsCollectionMailNameLabel "Почтовый аккаунт">
 <!ENTITY emailsCollectionABNameLabel "Адресная книга">
 <!ENTITY emailsCollectionCatNameLabel "Категория">
-<!ENTITY emailsCollectionIncludeNameLabel "Тип">
 <!ENTITY addEmailsCollectionLabel "Добавить">
 <!ENTITY addEmailsCollectionAccesskey "Д">
 <!ENTITY renameEmailsCollectionLabel "Редактировать">

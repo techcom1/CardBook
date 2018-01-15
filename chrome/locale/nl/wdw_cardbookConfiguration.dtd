@@ -21,6 +21,12 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "T">
 <!ENTITY autocompleteWithColorLabel "Gebruik de kleur van het adresboek">
 <!ENTITY autocompleteWithColorAccesskey "G">
+<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
+<!ENTITY autocompleteRestrictSearchAccesskey "P">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Bewerken">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "B">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonLabel "Herstellen naar standaardwaarde">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonAccesskey "H">
 <!ENTITY useColorLabel "Gebruik kleur van adresboek voor:">
 <!ENTITY useColorBackgroundLabel "Achtergrondkleur">
 <!ENTITY useColorBackgroundAccesskey "A">
@@ -47,7 +53,6 @@
 <!ENTITY emailsCollectionMailNameLabel "Mail account">
 <!ENTITY emailsCollectionABNameLabel "Adresboek">
 <!ENTITY emailsCollectionCatNameLabel "Categorie">
-<!ENTITY emailsCollectionIncludeNameLabel "Type">
 <!ENTITY addEmailsCollectionLabel "Toevoegen">
 <!ENTITY addEmailsCollectionAccesskey "T">
 <!ENTITY renameEmailsCollectionLabel "Bewerken">

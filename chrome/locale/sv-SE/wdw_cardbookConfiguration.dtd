@@ -21,6 +21,12 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "d">
 <!ENTITY autocompleteWithColorLabel "Använd Adressboksfärg">
 <!ENTITY autocompleteWithColorAccesskey "f">
+<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
+<!ENTITY autocompleteRestrictSearchAccesskey "P">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Redigera">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "R">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonLabel "Återställ till standard">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonAccesskey "s">
 <!ENTITY useColorLabel "Använd adressboksfärgen som">
 <!ENTITY useColorBackgroundLabel "Bakgrundsfärg">
 <!ENTITY useColorBackgroundAccesskey "B">

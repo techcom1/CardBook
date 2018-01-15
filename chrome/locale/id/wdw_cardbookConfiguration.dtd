@@ -21,6 +21,12 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "T">
 <!ENTITY autocompleteWithColorLabel "Gunakan warna buku alamat">
 <!ENTITY autocompleteWithColorAccesskey "w">
+<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
+<!ENTITY autocompleteRestrictSearchAccesskey "P">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Ubah">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "U">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonLabel "Kembalikan Nilai Default">
+<!ENTITY resetAutocompleteRestrictSearchFieldsButtonAccesskey "K">
 <!ENTITY useColorLabel "Gunakan warna buku alamat untuk:">
 <!ENTITY useColorBackgroundLabel "Warna latar belakang">
 <!ENTITY useColorBackgroundAccesskey "b">

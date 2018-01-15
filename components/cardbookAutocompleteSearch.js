@@ -312,6 +312,11 @@ cardbookAutocompleteSearch.prototype = {
 		this.showAddressbookComments = cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteShowAddressbook");
 		this.useOnlyEmail = cardbookPreferences.getBoolPref("extensions.cardbook.useOnlyEmail");
 		this.proposeConcatEmails = cardbookPreferences.getBoolPref("extensions.cardbook.proposeConcatEmails");
+		if (cardbookRepository.autocompleteRestrictSearch) {
+			var mySearchArray = cardbookRepository.cardbookCardShortSearch;
+		} else {
+			var mySearchArray = cardbookRepository.cardbookCardLongSearch;
+		}
 
 		var mySearchParamObj = JSON.parse(aSearchParam);
 		this.loadRestrictions(mySearchParamObj.idKey);
@@ -327,10 +332,10 @@ cardbookAutocompleteSearch.prototype = {
 						// display addressbook name in the comments column
 						myComment = cardbookRepository.cardbookAccounts[i][0];
 					}
-					for (var j in cardbookRepository.cardbookCardSearch[myDirPrefId]) {
+					for (var j in mySearchArray[myDirPrefId]) {
 						if (j.indexOf(aSearchString) >= 0 || aSearchString == "") {
-							for (var k = 0; k < cardbookRepository.cardbookCardSearch[myDirPrefId][j].length; k++) {
-								var myCard = cardbookRepository.cardbookCardSearch[myDirPrefId][j][k];
+							for (var k = 0; k < mySearchArray[myDirPrefId][j].length; k++) {
+								var myCard = mySearchArray[myDirPrefId][j][k];
 								if (this.catExclRestrictions[myDirPrefId]) {
 									var add = true;
 									for (var l in this.catExclRestrictions[myDirPrefId]) {
