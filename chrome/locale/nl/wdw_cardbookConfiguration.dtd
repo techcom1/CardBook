@@ -21,8 +21,8 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "T">
 <!ENTITY autocompleteWithColorLabel "Gebruik de kleur van het adresboek">
 <!ENTITY autocompleteWithColorAccesskey "G">
-<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
-<!ENTITY autocompleteRestrictSearchAccesskey "P">
+<!ENTITY autocompleteRestrictSearchLabel "Beperk te doorzoeken rubrieken">
+<!ENTITY autocompleteRestrictSearchAccesskey "d">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Bewerken">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "B">
 <!ENTITY resetAutocompleteRestrictSearchFieldsButtonLabel "Herstellen naar standaardwaarde">

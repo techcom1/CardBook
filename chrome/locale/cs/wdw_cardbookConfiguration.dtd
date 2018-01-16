@@ -21,7 +21,7 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "Z">
 <!ENTITY autocompleteWithColorLabel "Použít barvu adresáře">
 <!ENTITY autocompleteWithColorAccesskey "P">
-<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
+<!ENTITY autocompleteRestrictSearchLabel "Omezit prohledávaná pole">
 <!ENTITY autocompleteRestrictSearchAccesskey "P">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Upravit">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "U">

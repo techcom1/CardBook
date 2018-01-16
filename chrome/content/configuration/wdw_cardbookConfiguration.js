@@ -15,7 +15,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		allVCards: [],
 		preferEmailPrefOld: false,
 		autocompleteRestrictSearchFields: "",
-		autocompleteRestrictSearchFieldsOld: "",
 		
 		customFieldCheck: function (aTextBox) {
 			var myValue = aTextBox.value.trim();
@@ -259,8 +258,10 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		},
 
 		loadAutocompleteRestrictSearchFields: function () {
-			wdw_cardbookConfiguration.autocompleteRestrictSearchFieldsOld = cardbookPreferences.getStringPref("extensions.cardbook.autocompleteRestrictSearchFields");
-			wdw_cardbookConfiguration.autocompleteRestrictSearchFields = wdw_cardbookConfiguration.autocompleteRestrictSearchFieldsOld;
+			wdw_cardbookConfiguration.autocompleteRestrictSearchFields = cardbookRepository.autocompleteRestrictSearchFields.join('|');
+			if (wdw_cardbookConfiguration.autocompleteRestrictSearchFields == "") {
+				wdw_cardbookConfiguration.autocompleteRestrictSearchFields = cardbookRepository.defaultAutocompleteRestrictSearchFields;
+			}
 			document.getElementById('autocompleteRestrictSearchFieldsTextBox').value = wdw_cardbookConfiguration.translateSearchFields(wdw_cardbookConfiguration.autocompleteRestrictSearchFields);
 		},
 
@@ -293,18 +294,22 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		},
 
 		validateAutocompleteRestrictSearchFields: function () {
-			cardbookRepository.autocompleteRestrictSearch = document.getElementById('autocompleteRestrictSearchCheckBox').checked;
 			if (document.getElementById('autocompletionCheckBox').checked && document.getElementById('autocompleteRestrictSearchCheckBox').checked) {
-				if (wdw_cardbookConfiguration.autocompleteRestrictSearchFieldsOld !== wdw_cardbookConfiguration.autocompleteRestrictSearchFields) {
+				if ((wdw_cardbookConfiguration.autocompleteRestrictSearchFields != cardbookRepository.autocompleteRestrictSearchFields.join('|')) ||
+					(document.getElementById('autocompleteRestrictSearchCheckBox').checked != cardbookRepository.autocompleteRestrictSearch)) {
 					cardbookPreferences.setStringPref("extensions.cardbook.autocompleteRestrictSearchFields", wdw_cardbookConfiguration.autocompleteRestrictSearchFields);
+					cardbookRepository.autocompleteRestrictSearch = document.getElementById('autocompleteRestrictSearchCheckBox').checked;
 					cardbookRepository.autocompleteRestrictSearchFields = wdw_cardbookConfiguration.autocompleteRestrictSearchFields.split('|');
 					cardbookRepository.cardbookCardShortSearch = {};
 					for (j in cardbookRepository.cardbookCards) {
 						let myCard = cardbookRepository.cardbookCards[j];
 						cardbookRepository.addCardToShortSearch(myCard);
 					}
+				} else {
+					cardbookRepository.autocompleteRestrictSearch = document.getElementById('autocompleteRestrictSearchCheckBox').checked;
 				}
 			} else {
+				cardbookRepository.autocompleteRestrictSearch = document.getElementById('autocompleteRestrictSearchCheckBox').checked;
 				cardbookRepository.cardbookCardShortSearch = {};
 			}
 		},
