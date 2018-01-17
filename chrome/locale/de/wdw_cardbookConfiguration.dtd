@@ -21,7 +21,7 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "Z">
 <!ENTITY autocompleteWithColorLabel "Benutze die Farbe des Adressbuchs">
 <!ENTITY autocompleteWithColorAccesskey "F">
-<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
+<!ENTITY autocompleteRestrictSearchLabel "Begrenze die durchsuchten Felder">
 <!ENTITY autocompleteRestrictSearchAccesskey "P">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Bearbeiten">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "B">

@@ -1215,7 +1215,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 						var othersTempArray = aCard.others[i].split(":");
 						if (aField == othersTempArray[0]) {
 							result.push(othersTempArray[1]);
-							return result;
+							break;
 						}
 					}
 				}

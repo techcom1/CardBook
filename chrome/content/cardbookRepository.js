@@ -488,7 +488,7 @@ var cardbookRepository = {
 	getShortSearchString: function(aCard) {
 		var lResult = "";
 		for (let i = 0; i < cardbookRepository.autocompleteRestrictSearchFields.length; i++) {
-			lResult = lResult + cardbookUtils.getCardValueByField(aCard, cardbookRepository.autocompleteRestrictSearchFields[i]);
+			lResult = lResult + cardbookUtils.getCardValueByField(aCard, cardbookRepository.autocompleteRestrictSearchFields[i]).join();
 		}
 		lResult = lResult.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase();
 		return lResult;

@@ -57,9 +57,9 @@ if ("undefined" == typeof(cardbookDates)) {
 				} else if (myDate.getFullYear() == "666") {
 					if (Services.vc.compare(Services.appinfo.version, "57") >= 0) {
 						if (aTargetDateFormat == "0") {
-							var formatter = Services.intl.createDateTimeFormat(undefined, { month: "long", day: "numeric"});
+							var formatter = Services.intl.createDateTimeFormat(undefined, { month: "long", day: "numeric", timeZone: "UTC"});
 						} else {
-							var formatter = Services.intl.createDateTimeFormat(undefined, { month: "short", day: "numeric"});
+							var formatter = Services.intl.createDateTimeFormat(undefined, { month: "short", day: "numeric", timeZone: "UTC"});
 						}
 						return formatter.format(myDate);
 					} else {
@@ -71,17 +71,17 @@ if ("undefined" == typeof(cardbookDates)) {
 				} else {
 					if (Services.vc.compare(Services.appinfo.version, "57") >= 0) {
 						if (aTargetDateFormat == "0") {
-							var formatter = Services.intl.createDateTimeFormat(undefined, {dateStyle: "long"});
+							var formatter = Services.intl.createDateTimeFormat(undefined, {dateStyle: "long", timeZone: "UTC"});
 						} else {
-							var formatter = Services.intl.createDateTimeFormat(undefined, {dateStyle: "short"});
+							var formatter = Services.intl.createDateTimeFormat(undefined, {dateStyle: "short", timeZone: "UTC"});
 						}
 						return formatter.format(myDate);
 					} else {
 						var myDateService = Components.classes["@mozilla.org/intl/scriptabledateformat;1"].getService(Components.interfaces.nsIScriptableDateFormat);
 						if (aTargetDateFormat == "0") {
-							return myDateService.FormatDate("", Components.interfaces.nsIScriptableDateFormat.dateFormatLong, myDate.getFullYear(), myDate.getMonth() + 1, myDate.getDate());
+							return myDateService.FormatDate("", Components.interfaces.nsIScriptableDateFormat.dateFormatLong, myDate.getUTCFullYear(), myDate.getUTCMonth() + 1, myDate.getUTCDate());
 						} else {
-							return myDateService.FormatDate("", Components.interfaces.nsIScriptableDateFormat.dateFormatShort, myDate.getFullYear(), myDate.getMonth() + 1, myDate.getDate());
+							return myDateService.FormatDate("", Components.interfaces.nsIScriptableDateFormat.dateFormatShort, myDate.getUTCFullYear(), myDate.getUTCMonth() + 1, myDate.getUTCDate());
 						}
 					}
 				}
