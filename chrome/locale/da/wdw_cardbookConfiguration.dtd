@@ -21,8 +21,8 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "V">
 <!ENTITY autocompleteWithColorLabel "Brug adressebogsfarve">
 <!ENTITY autocompleteWithColorAccesskey "B">
-<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
-<!ENTITY autocompleteRestrictSearchAccesskey "P">
+<!ENTITY autocompleteRestrictSearchLabel "Begræns søgte felter">
+<!ENTITY autocompleteRestrictSearchAccesskey "æ">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Rediger">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "R">
 <!ENTITY resetAutocompleteRestrictSearchFieldsButtonLabel "Gendan standardvalg">
@@ -100,9 +100,9 @@
 <!ENTITY showNameAsFLAccesskey "F">
 <!ENTITY showNameAsDSPLabel "Vist navn">
 <!ENTITY showNameAsDSPAccesskey "i">
-<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Denne formel består af blokke omgivet af „()”. I disse blokke er der to dele adskilt af „|”. Den første del anvendes når det involverede led, for eksempel {{1}}, ikke er nul, den anden del anvendes når det involverede led er nul.">
-<!ENTITY adrFormulaLabel "??Address Format Formula??">
-<!ENTITY adrFormulaAccesskey "??R??">
+<!ENTITY adrLabelExplanation "Det er muligt at indstille den måde CardBook formaterer sine adresser. Denne formel består af blokke omgivet af „()”. I disse blokke er der to dele adskilt af „|”. Den første del anvendes når det involverede led, for eksempel {{1}}, ikke er nul, den anden del anvendes når det involverede led er nul.">
+<!ENTITY adrFormulaLabel "Adresseformatformel">
+<!ENTITY adrFormulaAccesskey "r">
 <!ENTITY resetAdrFormulaLabel "Gendan standardvalg">
 <!ENTITY resetAdrFormulaAccesskey "d">
 <!ENTITY miscEditingGroupboxLabel "Diverse">
