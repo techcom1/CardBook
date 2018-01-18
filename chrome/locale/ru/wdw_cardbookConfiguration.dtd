@@ -15,13 +15,13 @@
 <!ENTITY autocompletionTooltip "Расширяет стандартное автоматическое завершение ввода для контактов из адресной книги Thunderbird добавлением контактов из CardBook.">
 <!ENTITY autocompleteSortByPopularityLabel "Сортировка адресов эл. почты по популярности">
 <!ENTITY autocompleteSortByPopularityAccesskey "п">
-<!ENTITY autocompleteProposeConcatEmailsLabel "??Propose concatenated emails per contact??">
-<!ENTITY autocompleteProposeConcatEmailsAccesskey "c">
+<!ENTITY autocompleteProposeConcatEmailsLabel "Предлагать объединённые адреса эл.почты">
+<!ENTITY autocompleteProposeConcatEmailsAccesskey "ъ">
 <!ENTITY autocompleteShowAddressbookLabel "Показывать название адресной книги">
 <!ENTITY autocompleteShowAddressbookAccesskey "а">
 <!ENTITY autocompleteWithColorLabel "Использовать цвет адресной книги">
 <!ENTITY autocompleteWithColorAccesskey "ц">
-<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
+<!ENTITY autocompleteRestrictSearchLabel "Выбрать поля поиска">
 <!ENTITY autocompleteRestrictSearchAccesskey "P">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Редактировать">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "P">
@@ -100,9 +100,9 @@
 <!ENTITY showNameAsFLAccesskey "И">
 <!ENTITY showNameAsDSPLabel "Отображаемое имя">
 <!ENTITY showNameAsDSPAccesskey "О">
-<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Эта формула состоит из блоков, ограниченных «()». В каждом из блоков есть две части, разделяемые «|». Первая часть применяется, если указанное поле присутствует, например {{1}} — не пустое значение, вторая часть применяется если указанное значение является пустым.">
-<!ENTITY adrFormulaLabel "??Address Format Formula??">
-<!ENTITY adrFormulaAccesskey "??R??">
+<!ENTITY adrLabelExplanation "Возможно задать правило заполнения адресной информации. Формула состоит из блоков, ограниченных «()». В каждом из блоков есть две части, разделяемые «|». Первая часть применяется, если указанное поле присутствует, например {{1}} — не пустое значение, вторая часть применяется если указанное значение является пустым.">
+<!ENTITY adrFormulaLabel "Формула заполнения адреса">
+<!ENTITY adrFormulaAccesskey "д">
 <!ENTITY resetAdrFormulaLabel "Сбросить до значений по умолчанию">
 <!ENTITY resetAdrFormulaAccesskey "y">
 <!ENTITY miscEditingGroupboxLabel "Дополнительные настройки">
@@ -262,8 +262,8 @@
 <!ENTITY calendarEntryTimeAccesskey "В">
 <!ENTITY calendarEntryWholeDayLabel "Событие на весь день">
 <!ENTITY calendarEntryWholeDayAccesskey "д">
-<!ENTITY calendarEntryAlarmLabel "??Alarm(s) to n hours for calendar events (Example: 4,+1)??">
-<!ENTITY calendarEntryAlarmTooltip "Укажите, за сколько дней до дня рождения Lightning должен показать оповещение. Без даты. Если поле пустое, то оповещения не будет.?? If you want multiple alarms, enter the alarms in a comma separated list.??">
+<!ENTITY calendarEntryAlarmLabel "Уведомлять за заданное количество часов до начала события (Пример: 4,+1)">
+<!ENTITY calendarEntryAlarmTooltip "Укажите, за сколько дней до дня рождения Lightning должен показать оповещение. Без даты. Если поле пустое, то оповещения не будет. Что бы задать нескольно напоминаний — разделите числа запятой.">
 <!ENTITY calendarEntryAlarmAccesskey "д">
 <!ENTITY calendarEntryCategoriesLabel "Категория (категории) для событий календаря">
 <!ENTITY calendarEntryCategoriesTooltip "Одна или больше категорий, разделённые запятыми. Если поле пустое, то категория не назначается.">
