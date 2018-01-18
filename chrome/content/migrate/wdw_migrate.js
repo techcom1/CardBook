@@ -174,7 +174,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 			}
 		},
 
-		translateStandardLists1: function (aDirPrefIdTarget, aDirPrefIdTargetName, aVersion, aMode) {
+		translateStandardLists: function (aDirPrefIdTarget, aDirPrefIdTargetName, aVersion, aMode) {
 			try {
 				var myBeforeNumber = wdw_migrate.getSolvedListNumber();
 				var myAfterNumber = 0;

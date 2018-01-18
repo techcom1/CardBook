@@ -23,8 +23,8 @@
 <!ENTITY autocompleteWithColorAccesskey "F">
 <!ENTITY autocompleteRestrictSearchLabel "Begrenze die durchsuchten Felder">
 <!ENTITY autocompleteRestrictSearchAccesskey "P">
-<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Bearbeiten">
-<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "B">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Hinzufügen">
+<!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "H">
 <!ENTITY resetAutocompleteRestrictSearchFieldsButtonLabel "Zurücksetzen auf Standard">
 <!ENTITY resetAutocompleteRestrictSearchFieldsButtonAccesskey "Z">
 <!ENTITY useColorLabel "Benutze die Farbe des Adressbuchs als:">

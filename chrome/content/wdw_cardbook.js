@@ -404,12 +404,25 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			var myTree = document.getElementById('accountsOrCatsTree');
 			if (myTree.currentIndex != -1) {
 				var myCurrentAccountId = myTree.view.getCellText(myTree.currentIndex, {id: "accountId"});
-				aCard.dirPrefId = cardbookUtils.getAccountId(myCurrentAccountId);
-				var mySepPosition = myCurrentAccountId.indexOf("::",0);
-				if (mySepPosition != -1) {
-					var myCategory = myCurrentAccountId.substr(mySepPosition+2, myCurrentAccountId.length);
-					cardbookRepository.addCategoryToCard(aCard, myCategory);
+				// to be sure that this accountId is defined : in search mode, it's possible to have weird results
+				if (myCurrentAccountId != "false") {
+					aCard.dirPrefId = cardbookUtils.getAccountId(myCurrentAccountId);
+					var mySepPosition = myCurrentAccountId.indexOf("::",0);
+					if (mySepPosition != -1) {
+						var myCategory = myCurrentAccountId.substr(mySepPosition+2, myCurrentAccountId.length);
+						cardbookRepository.addCategoryToCard(aCard, myCategory);
+					}
+				} else {
+					for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
+						if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] != "SEARCH"
+							&& !cardbookRepository.cardbookAccounts[i][7]) {
+							aCard.dirPrefId = cardbookRepository.cardbookAccounts[i][4];
+							break;
+						}
+					}
 				}
+			} else {
+				return;
 			}
 			cardbookUtils.openEditionWindow(aCard, aEditionMode, "cardbook.cardAddedDirect");
 		},

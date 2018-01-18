@@ -1302,16 +1302,18 @@ var cardbookRepository = {
 	},
 		
 	removeCardFromShortSearch: function(aCard) {
-		var myShortText = cardbookRepository.getShortSearchString(aCard);
-		if (myShortText != null && myShortText !== undefined && myShortText != "") {
-			if (cardbookRepository.cardbookCardShortSearch[aCard.dirPrefId][myShortText]) {
-				if (cardbookRepository.cardbookCardShortSearch[aCard.dirPrefId][myShortText].length == 1) {
-					delete cardbookRepository.cardbookCardShortSearch[aCard.dirPrefId][myShortText];
-				} else {
-					function searchCard(element) {
-						return (element.dirPrefId+"::"+element.uid != aCard.dirPrefId+"::"+aCard.uid);
+		if (cardbookRepository.autocompleteRestrictSearch) {
+			var myShortText = cardbookRepository.getShortSearchString(aCard);
+			if (myShortText != null && myShortText !== undefined && myShortText != "") {
+				if (cardbookRepository.cardbookCardShortSearch[aCard.dirPrefId][myShortText]) {
+					if (cardbookRepository.cardbookCardShortSearch[aCard.dirPrefId][myShortText].length == 1) {
+						delete cardbookRepository.cardbookCardShortSearch[aCard.dirPrefId][myShortText];
+					} else {
+						function searchCard(element) {
+							return (element.dirPrefId+"::"+element.uid != aCard.dirPrefId+"::"+aCard.uid);
+						}
+						cardbookRepository.cardbookCardShortSearch[aCard.dirPrefId][myShortText] = cardbookRepository.cardbookCardShortSearch[aCard.dirPrefId][myShortText].filter(searchCard);
 					}
-					cardbookRepository.cardbookCardShortSearch[aCard.dirPrefId][myShortText] = cardbookRepository.cardbookCardShortSearch[aCard.dirPrefId][myShortText].filter(searchCard);
 				}
 			}
 		}
