@@ -221,8 +221,8 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 					changed = true;
 				} else if (myArgs.action == "CREATEANDREPLACE") {
 					var myNullCard = new cardbookCardParser();
-					cardbookRepository.deleteCards(myArgs.cardsIn);
 					cardbookRepository.saveCard(myNullCard, myArgs.cardsOut[0], "cardbook.cardAddedIndirect");
+					cardbookRepository.deleteCards(myArgs.cardsIn, "cardbook.cardRemovedDirect");
 					cardbookRepository.reWriteFiles([myArgs.cardsOut[0].dirPrefId]);
 					changed = true;
 				}

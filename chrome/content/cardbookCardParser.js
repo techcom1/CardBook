@@ -102,7 +102,7 @@ if ("undefined" == typeof(cardbookCardParser)) {
 				this[aField].value = atob(trailerTmp);
 				for (let i = 0; i < headerTmpArray.length; i++) {
 					if (headerTmpArray[i].indexOf("data:image",0) >= 0) {
-						this[aField].extension = headerTmpArray[i].replace(/:data:image\//g,"").replace(/\s/g,"");
+						this[aField].extension = headerTmpArray[i].replace(/data:image\//g,"").replace(/\s/g,"");
 					}
 				}
 				this[aField].extension = cardbookUtils.formatExtension(this[aField].extension, "4.0");

@@ -545,6 +545,7 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 						var myCheckBox = document.getElementById(listOfFields[i] + 'Checkbox' + j);
 						if (myCheckBox.checked) {
 							aCard[listOfFields[i]].localURI = wdw_mergeCards.arrayField[listOfFields[i] + 'Textbox' + j];
+							aCard[listOfFields[i]].extension = cardbookUtils.getFileNameExtension(aCard[listOfFields[i]].localURI);
 						}
 					}
 				}

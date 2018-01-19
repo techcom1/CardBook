@@ -481,8 +481,8 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					cardbookRepository.reWriteFiles([myArgs.cardsOut[0].dirPrefId]);
 				} else if (myArgs.action == "CREATEANDREPLACE") {
 					var myNullCard = new cardbookCardParser();
-					cardbookRepository.deleteCards(myArgs.cardsIn);
 					cardbookRepository.saveCard(myNullCard, myArgs.cardsOut[0], "cardbook.cardAddedDirect");
+					cardbookRepository.deleteCards(myArgs.cardsIn, "cardbook.cardRemovedDirect");
 					cardbookRepository.reWriteFiles([myArgs.cardsOut[0].dirPrefId]);
 				}
 			}
@@ -2309,7 +2309,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 							}
 						}
 					}
-					cardbookRepository.deleteCards([myCard]);
+					cardbookRepository.deleteCards([myCard], "cardbook.cardRemovedDirect");
 					cardbookUtils.formatStringForOutput("categoryCreatedOK", [myDirPrefIdName, myCategoryName]);
 					wdw_cardbooklog.addActivity("categoryCreatedOK", [myDirPrefIdName, myCategoryName], "addItem");
 					cardbookUtils.notifyObservers("cardbook.catAddedDirect", "accountid:" + myOutCard.dirPrefId+"::"+myCategoryName);

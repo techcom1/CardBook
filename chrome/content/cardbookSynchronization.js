@@ -2603,8 +2603,8 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							cardbookRepository.reWriteFiles([myArgs.cardsOut[0].dirPrefId]);
 						} else if (myArgs.action == "CREATEANDREPLACE") {
 							var myNullCard = new cardbookCardParser();
-							cardbookRepository.deleteCards(myArgs.cardsIn);
 							cardbookRepository.saveCard(myNullCard, myArgs.cardsOut[0], "cardbook.cardAddedDirect");
+							cardbookRepository.deleteCards(myArgs.cardsIn, "cardbook.cardRemovedDirect");
 							cardbookRepository.reWriteFiles([myArgs.cardsOut[0].dirPrefId]);
 						}
 						break;
