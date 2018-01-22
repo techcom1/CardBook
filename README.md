@@ -79,6 +79,7 @@ Translations by:
 * Zuraida ([id](https://github.com/CardBook/CardBook/tree/master/chrome/locale/id)) [Unduh Sekarang](https://addons.mozilla.org/id/thunderbird/addon/cardbook/)
 * Stefano Bloisi ([it](https://github.com/CardBook/CardBook/tree/master/chrome/locale/it)) [Scarica ora](https://addons.mozilla.org/it/thunderbird/addon/cardbook/)
 * Agnese Morettini ([it](https://github.com/CardBook/CardBook/tree/master/chrome/locale/it)) [Scarica ora](https://addons.mozilla.org/it/thunderbird/addon/cardbook/)
+* 공성은 ([ko](https://github.com/CardBook/CardBook/tree/master/chrome/locale/ko)) [다운로드](https://addons.mozilla.org/ko/thunderbird/addon/cardbook/)
 * Gintautas ([lt](https://github.com/CardBook/CardBook/tree/master/chrome/locale/lt)) [Parsiųsti dabar](https://addons.mozilla.org/lt/thunderbird/addon/cardbook/)
 * Han Knols ([nl](https://github.com/CardBook/CardBook/tree/master/chrome/locale/nl)) [Nu downloaden](https://addons.mozilla.org/nl/thunderbird/addon/cardbook/)
 * Adam Gorzkiewicz ([pl](https://github.com/CardBook/CardBook/tree/master/chrome/locale/pl)) [Pobierz](https://addons.mozilla.org/pl/thunderbird/addon/cardbook/)
