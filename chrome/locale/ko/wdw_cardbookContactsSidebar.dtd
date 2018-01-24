@@ -1,0 +1,11 @@
+<!ENTITY categoriesPicker.label "카테고리 필터:">
+<!ENTITY categoriesPicker.accesskey "t">
+<!ENTITY editAddrBookCard.label "수정">
+<!ENTITY editAddrBookCard.accesskey "E">
+<!ENTITY searchContacts.label "검색:">
+<!ENTITY searchContacts.accesskey "o">
+<!ENTITY name.label "이름">
+<!ENTITY addtoReplytoFieldMenu.label "회신 주소에 추가">
+<!ENTITY addtoReplytoFieldMenu.accesskey "l">
+<!ENTITY replytoButton.label "회신 주소에 추가">
+<!ENTITY replytoButton.accesskey "l">

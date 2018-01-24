@@ -113,7 +113,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 				var lBirthdayId = cardbookUtils.getUUID();
 
 				var leventEntryTitle = cardbookPreferences.getStringPref("extensions.cardbook.eventEntryTitle");
-				var lBirthdayTitle = leventEntryTitle.replace("%1$S", lBirthdayName).replace("%2$S",lBirthdayAge);
+				var lBirthdayTitle = leventEntryTitle.replace("%1$S", lBirthdayName).replace("%2$S",lBirthdayAge).replace("%S", lBirthdayName).replace("%S",lBirthdayAge);
 
 				// prepare Listener
 				var getListener = {

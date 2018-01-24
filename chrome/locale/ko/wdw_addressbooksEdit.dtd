@@ -1,0 +1,28 @@
+<!ENTITY wdw_addressbooksEditTitle "주소록 속성">
+
+<!ENTITY colorLabel "색깔">
+<!ENTITY colorAccesskey "C">
+<!ENTITY nameLabel "이름">
+<!ENTITY nameAccesskey "N">
+<!ENTITY typeLabel "종류">
+<!ENTITY urlLabel "URL 주소">
+<!ENTITY readonlyLabel "읽기 전용 모드">
+<!ENTITY readonlyAccesskey "R">
+<!ENTITY vCardVersionLabel "가상 카드">
+<!ENTITY dateFormatLabel "예상된 날짜 형식">
+<!ENTITY dateFormatAccesskey "E">
+<!ENTITY urnuuidLabel "urn:uuid 사용">
+<!ENTITY urnuuidAccesskey "U">
+
+<!ENTITY autoSyncGroupboxLabel "주기적 동기화">
+<!ENTITY autoSyncLabel "주기적 동기화 사용">
+<!ENTITY autoSyncAccesskey "E">
+<!ENTITY autoSyncIntervalLabel "주기적 동기화 간격 (분)">
+<!ENTITY autoSyncIntervalAccesskey "I">
+
+<!ENTITY miscTabLabel "여러 가지 잡다한">
+<!ENTITY fnLabelExplanation "연락처가 이름표시를생성하는 방식을 사용자 정의 할 수 있습니다. 이 수식은 『()』로 묶인 블록으로 구성됩니다. 이 블록에는 『|』로 구분 된 두 부분이 있습니다. 첫 번째 부분은 관련된 용어 (예: {{1}})가 null이 아닐 때 적용되며 두 번째 부분은 관련된 용어가 null 일 때 적용됩니다.">
+<!ENTITY fnFormulaLabel "표시 이름 생성">
+<!ENTITY fnFormulaAccesskey "y">
+<!ENTITY resetFnFormulaLabel "초기 설정">
+<!ENTITY resetFnFormulaAccesskey "R">

@@ -202,8 +202,8 @@ if ("undefined" == typeof(cardbookCardParser)) {
 						
 						// Splitting data
 						if (localDelim1 >= 0) {
-							vCardDataArrayHeader = vCardDataArray[vCardDataArrayIndex].substr(0,localDelim1);
-							vCardDataArrayTrailer = vCardDataArray[vCardDataArrayIndex].substr(localDelim1+1,vCardDataArray[vCardDataArrayIndex].length);
+							vCardDataArrayHeader = vCardDataArray[vCardDataArrayIndex].substr(0,localDelim1).trim();
+							vCardDataArrayTrailer = vCardDataArray[vCardDataArrayIndex].substr(localDelim1+1,vCardDataArray[vCardDataArrayIndex].length).trim();
 							// for Google
 							vCardDataArrayTrailer = vCardDataArrayTrailer.replace(/\\:/g, ":");
 							localDelim2 = vCardDataArrayHeader.indexOf(";",0);

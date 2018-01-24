@@ -34,7 +34,7 @@ if ("undefined" == typeof(wdw_addressbooksEdit)) {
 		},
 
 		resetFnFormula: function () {
-			document.getElementById('fnFormulaTextBox').value = cardbookPreferences.getFnFormula(window.arguments[0].dirPrefId);
+			document.getElementById('fnFormulaTextBox').value = cardbookRepository.defaultFnFormula;
 		},
 
 		showAutoSyncInterval: function () {

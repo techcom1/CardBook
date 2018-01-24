@@ -251,7 +251,7 @@
 <!ENTITY remindViaLightningGroupboxLabel "Rappel par l'extension de calendrier Lightning de Thunderbird">
 <!ENTITY numberOfDaysForWritingLabel "Nombre de jours pour écrire les anniversaires">
 <!ENTITY numberOfDaysForWritingAccesskey "o">
-<!ENTITY syncWithLightningOnStartupLabel "Sync. avec Lightning au démarrage">
+<!ENTITY syncWithLightningOnStartupLabel "Synchroniser avec Lightning au démarrage">
 <!ENTITY syncWithLightningOnStartupAccesskey "S">
 <!ENTITY calendarEntryTitleLabel "Titre pour les entrées du calendrier">
 <!ENTITY calendarEntryTitleTooltip "Titre modèle pour les entrées du calendrier. Ce champ doit comporter deux &#37;S, remplacés respectivement par le nom et l'âge. Si le champ est vide alors un message standard est utilisé.">

@@ -180,7 +180,7 @@
 <!ENTITY resetListLabel "Restore to Default">
 <!ENTITY resetListAccesskey "R">
 
-<!ENTITY syncGroupboxLabel "Sync.">
+<!ENTITY syncGroupboxLabel "Synchronization">
 <!ENTITY syncWarn "Synchronizing propagates your modifications to a remote server and the server's modifications to you.">
 <!ENTITY initialSyncLabel "Run synchronization at Thunderbird startup">
 <!ENTITY initialSyncAccesskey "R">
@@ -251,7 +251,7 @@
 <!ENTITY remindViaLightningGroupboxLabel "Remind via Thunderbird Lightning Calendar Extension">
 <!ENTITY numberOfDaysForWritingLabel "Number of days to write anniversaries">
 <!ENTITY numberOfDaysForWritingAccesskey "w">
-<!ENTITY syncWithLightningOnStartupLabel "Sync with Lightning on startup">
+<!ENTITY syncWithLightningOnStartupLabel "Synchronize with Lightning on startup">
 <!ENTITY syncWithLightningOnStartupAccesskey "L">
 <!ENTITY calendarEntryTitleLabel "Title for calendar event">
 <!ENTITY calendarEntryTitleTooltip "Template title for the calendar event. It should contain two placeholders &#37;S, respectively replaced by name and age. If the field is empty, a standard message is used.">

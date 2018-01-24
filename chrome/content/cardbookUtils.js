@@ -1224,7 +1224,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 		},
 
 		setCardValueByField: function(aCard, aField, aValue) {
-			aValue = aValue.replace(/^\"|\"$/g, "");
+			aValue = aValue.replace(/^\"|\"$/g, "").trim();
 			if (aValue == "") {
 				return;
 			} else if (aField == "blank") {
@@ -1245,7 +1245,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 							}
 						}
 						if (!found) {
-							if (myType == "notype") {
+							if (myType == "notype" || myType == "all") {
 								var myType2 = "";
 							} else {
 								var myType2 = "type=" + myType;
@@ -1256,7 +1256,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 					} else if (myField == "categories") {
 						aCard[myField] = cardbookUtils.unescapeArray(cardbookUtils.escapeString(aValue).split(","));
 					} else {
-						if (myType == "notype") {
+						if (myType == "notype" || myType == "all") {
 							var myType2 = "";
 						} else {
 							var myType2 = "type=" + myType;
@@ -2705,6 +2705,30 @@ if ("undefined" == typeof(cardbookUtils)) {
 			}
 		},
 
+		cleanWebArray: function (aArray) {
+			var cleanArrayArray = [];
+			for (var i = 0; i < aArray.length; i++) {
+				if (aArray[i].startsWith("refresh_token=")) {
+					cleanArrayArray.push("refresh_token=*****");
+				} else {
+					cleanArrayArray.push(aArray[i]);
+				}
+			}
+			return cleanArrayArray.join('&');
+		},
+
+		cleanWebObject: function (aObject) {
+			var cleanObjectArray = [];
+			for (var key in aObject) {
+				if (key == "Authorization" || key == "access_token") {
+					cleanObjectArray.push(key + ': "*****"');
+				} else {
+					cleanObjectArray.push(key + ': "' + aObject[key] + '"');
+				}
+			}
+			return cleanObjectArray.join(', ');
+		},
+	
 		formatStringForOutput: function(aStringCode, aValuesArray, aErrorCode) {
 			var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 			if (aValuesArray) {

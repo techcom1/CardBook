@@ -6,7 +6,7 @@
 <!ENTITY emailColumnLabel "Email">
 <!ENTITY sendEmailLabel "Write a new message">
 <!ENTITY sendEmailAccesskey "E">
-<!ENTITY syncLightningMenuItemLabel "Sync. with Lightning">
+<!ENTITY syncLightningMenuItemLabel "Synchronize with Lightning">
 <!ENTITY syncLightningMenuAccesskey "S">
 <!ENTITY configurationButtonLabel "Configuration">
 <!ENTITY configurationButtonAccesskey "o">

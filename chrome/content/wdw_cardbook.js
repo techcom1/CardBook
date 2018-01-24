@@ -50,10 +50,12 @@ if ("undefined" == typeof(wdw_cardbook)) {
 
    	setToolbarCustom: function () {
 		var toolbox = document.getElementById("cardbook-toolbox");
-		toolbox.customizeDone = function(aEvent) {
-			MailToolboxCustomizeDone(aEvent, "CustomizeCardBookToolbar");
-		};
-		toolbox.setAttribute('toolbarHighlight','true');
+		if (toolbox) {
+			toolbox.customizeDone = function(aEvent) {
+				MailToolboxCustomizeDone(aEvent, "CustomizeCardBookToolbar");
+			};
+			toolbox.setAttribute('toolbarHighlight','true');
+		}
 	},
 
    	showCorrectTabs: function () {
@@ -743,7 +745,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				if (cardbookUtils.getFileNameExtension(aFile.leafName).toLowerCase() == "csv") {
 					cardbookSynchronization.loadCSVFile(aFile, myTarget, "WINDOW", "cardbook.cardImportedFromFile");
 				} else {
-					cardbookSynchronization.loadFile(aFile, myTarget, "", "WINDOW", "cardbook.cardImportedFromFile");
+					cardbookSynchronization.loadFile(aFile, myTarget, "WINDOW", "cardbook.cardImportedFromFile");
 				}
 				cardbookSynchronization.waitForImportFinished(myDirPrefId, myDirPrefIdName);
 			}
@@ -776,7 +778,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				}
 				cardbookSynchronization.initMultipleOperations(myDirPrefId);
 				cardbookRepository.cardbookDirRequest[myDirPrefId]++;
-				cardbookSynchronization.loadDir(aDirectory, myTarget, "", "WINDOW", "cardbook.cardImportedFromFile");
+				cardbookSynchronization.loadDir(aDirectory, myTarget, "WINDOW", "cardbook.cardImportedFromFile");
 				cardbookSynchronization.waitForImportFinished(myDirPrefId, myDirPrefIdName);
 			}
 			catch (e) {

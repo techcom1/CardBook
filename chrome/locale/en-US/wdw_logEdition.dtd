@@ -6,6 +6,6 @@
 <!ENTITY flushLogEditionLabel "Clear List">
 <!ENTITY flushLogEditionAccesskey "C">
 <!ENTITY clipboardLogEditionLabel "Copy to Clipboard">
-<!ENTITY clipboardLogEditionAccesskey "o">
+<!ENTITY clipboardLogEditionAccesskey "p">
 <!ENTITY cancelLogEditionLabel "OK">
 <!ENTITY cancelLogEditionAccesskey "O">

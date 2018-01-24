@@ -66,6 +66,7 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 		this.accessToken = connection.accessToken;
 		this.reportLength = 0;
 		this.askCertificate = false;
+		this.hideResponse = false;
 	}
 	
 	cardbookWebDAV.prototype = {
@@ -254,7 +255,7 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 			}
 		},
 	
-		_sendHTTPRequest: function(method, body, headers, aOverrideMime) {
+		_sendHTTPRequest: function(method, body, headers, aOverrideMime, aCleanBody) {
 			try {
 			let httpChannel = Components.classes["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Components.interfaces.nsIXMLHttpRequest);
 			httpChannel.loadFlags |= Components.interfaces.nsIRequest.LOAD_ANONYMOUS | Components.interfaces.nsIRequest.LOAD_BYPASS_CACHE | Components.interfaces.nsIRequest.INHIBIT_PERSISTENT_CACHING;
@@ -290,10 +291,14 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 				};
 	
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1(this.logDescription + " : debug mode : method : ", method);
-				wdw_cardbooklog.updateStatusProgressInformationWithDebug1(this.logDescription + " : debug mode : body : ", body);
 				if (headers) {
-					wdw_cardbooklog.updateStatusProgressInformationWithDebug1(this.logDescription + " : debug mode : headers : ", headers.toSource());
+					wdw_cardbooklog.updateStatusProgressInformationWithDebug1(this.logDescription + " : debug mode : headers : ", cardbookUtils.cleanWebObject(headers));
 				}
+				if (aCleanBody) {
+					wdw_cardbooklog.updateStatusProgressInformationWithDebug1(this.logDescription + " : debug mode : body : ", aCleanBody);
+				} else {
+					wdw_cardbooklog.updateStatusProgressInformationWithDebug1(this.logDescription + " : debug mode : body : ", body);
+				}	
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1(this.logDescription + " : debug mode : username : ", this.username);
 				wdw_cardbooklog.updateStatusProgressInformationWithDebug1(this.logDescription + " : debug mode : url : ", this.url);
 	
@@ -329,9 +334,11 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 			var status = aStatus;
 			var headers = {};
 			var response = null;
-			wdw_cardbooklog.updateStatusProgressInformationWithDebug1(this.logDescription + " : debug mode : response text : ", aResult);
-			wdw_cardbooklog.updateStatusProgressInformationWithDebug1(this.logDescription + " : debug mode : response code : ", aStatus);
-			wdw_cardbooklog.updateStatusProgressInformationWithDebug1(this.logDescription + " : debug mode : response etag : ", aChannel.getResponseHeader("etag"));
+			if (!this.hideResponse) {
+				wdw_cardbooklog.updateStatusProgressInformationWithDebug1(this.logDescription + " : debug mode : response text : ", aResult);
+				wdw_cardbooklog.updateStatusProgressInformationWithDebug1(this.logDescription + " : debug mode : response code : ", aStatus);
+				wdw_cardbooklog.updateStatusProgressInformationWithDebug1(this.logDescription + " : debug mode : response etag : ", aChannel.getResponseHeader("etag"));
+			}
 			if (status !== 499 && status !== 0 && status !== 408) {
 				if (aResultLength > 0) {
 					var responseText = aResult;
@@ -384,7 +391,7 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 				let query = this._reportQuery(parameters.props);
 				this._sendHTTPRequest(operation, query, headers);
 			} else if (operation == "DELETE") {
-				this._sendHTTPRequest(operation, parameters, {});
+				this._sendHTTPRequest(operation, null, {});
 			}
 		},
 	
@@ -415,17 +422,12 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 		},
 	
 		googleToken: function(aType, aParams, aHeaders) {
-			var paramsString = "";
+			this.hideResponse = true;
+			var paramsArray = [];
 			for (var param in aParams) {
-				if (!(paramsString != null && paramsString !== undefined && paramsString != "")) {
-					paramsString = param + "=" + encodeURIComponent(aParams[param]);
-				} else {
-					paramsString = paramsString + "&" + param + "=" + encodeURIComponent(aParams[param]);
-				}
+				paramsArray.push(param + "=" + encodeURIComponent(aParams[param]));
 			}
-			var body = paramsString;
-	
-			this._sendHTTPRequest(aType, body, aHeaders);
+			this._sendHTTPRequest(aType, paramsArray.join("&"), aHeaders, null, cardbookUtils.cleanWebArray(paramsArray));
 		},
 		
 		delete: function() {
@@ -496,4 +498,5 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 	var loader = Services.scriptloader;
 	loader.loadSubScript("chrome://cardbook/content/cardbookPasswordManager.js");
 	loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");
+	loader.loadSubScript("chrome://cardbook/content/cardbookUtils.js");
 };

@@ -6,7 +6,7 @@
 	<Description about="urn:mozilla:install-manifest">
 		<em:id>cardbook@vigneau.philippe</em:id>
 		<em:name>CardBook</em:name>
-		<em:version>26.0</em:version>
+		<em:version>26.1</em:version>
 		<em:type>2</em:type>
 		<em:description>vCard Address Book</em:description>
 		<em:creator>Philippe Vigneau</em:creator>
@@ -34,6 +34,7 @@
 		<em:translator>Zuraida (id)</em:translator>
 		<em:translator>Stefano Bloisi (it)</em:translator>
 		<em:translator>Agnese Morettini (it)</em:translator>
+		<em:translator>공성은 (ko)</em:translator>
 		<em:translator>Gintautas (lt)</em:translator>
 		<em:translator>Han Knols (nl)</em:translator>
 		<em:translator>Adam Gorzkiewicz (pl)</em:translator>
@@ -88,6 +89,7 @@
 				<em:translator>Zuraida (id)</em:translator>
 				<em:translator>Stefano Bloisi (it)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
+				<em:translator>공성은 (ko)</em:translator>
 				<em:translator>Gintautas (lt)</em:translator>
 				<em:translator>Han Knols (nl)</em:translator>
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
@@ -133,6 +135,7 @@
 				<em:translator>Zuraida (id)</em:translator>
 				<em:translator>Stefano Bloisi (it)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
+				<em:translator>공성은 (ko)</em:translator>
 				<em:translator>Gintautas (lt)</em:translator>
 				<em:translator>Han Knols (nl)</em:translator>
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
@@ -178,6 +181,7 @@
 				<em:translator>Zuraida (id)</em:translator>
 				<em:translator>Stefano Bloisi (it)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
+				<em:translator>공성은 (ko)</em:translator>
 				<em:translator>Gintautas (lt)</em:translator>
 				<em:translator>Han Knols (nl)</em:translator>
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
@@ -223,6 +227,7 @@
 				<em:translator>Zuraida (id)</em:translator>
 				<em:translator>Stefano Bloisi (it)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
+				<em:translator>공성은 (ko)</em:translator>
 				<em:translator>Gintautas (lt)</em:translator>
 				<em:translator>Han Knols (nl)</em:translator>
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
@@ -268,6 +273,7 @@
 				<em:translator>Zuraida (id)</em:translator>
 				<em:translator>Stefano Bloisi (it)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
+				<em:translator>공성은 (ko)</em:translator>
 				<em:translator>Gintautas (lt)</em:translator>
 				<em:translator>Han Knols (nl)</em:translator>
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
@@ -313,6 +319,7 @@
 				<em:translator>Zuraida (id)</em:translator>
 				<em:translator>Stefano Bloisi (it)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
+				<em:translator>공성은 (ko)</em:translator>
 				<em:translator>Gintautas (lt)</em:translator>
 				<em:translator>Han Knols (nl)</em:translator>
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
@@ -358,6 +365,7 @@
 				<em:translator>Zuraida (id)</em:translator>
 				<em:translator>Stefano Bloisi (it)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
+				<em:translator>공성은 (ko)</em:translator>
 				<em:translator>Gintautas (lt)</em:translator>
 				<em:translator>Han Knols (nl)</em:translator>
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
@@ -403,6 +411,7 @@
 				<em:translator>Zuraida (id)</em:translator>
 				<em:translator>Stefano Bloisi (it)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
+				<em:translator>공성은 (ko)</em:translator>
 				<em:translator>Gintautas (lt)</em:translator>
 				<em:translator>Han Knols (nl)</em:translator>
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
@@ -448,6 +457,53 @@
 				<em:translator>Zuraida (id)</em:translator>
 				<em:translator>Stefano Bloisi (it)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
+				<em:translator>공성은 (ko)</em:translator>
+				<em:translator>Gintautas (lt)</em:translator>
+				<em:translator>Han Knols (nl)</em:translator>
+				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
+				<em:translator>Dominik Wnęk (pl)</em:translator>
+				<em:translator>André Bação (pt-PT)</em:translator>
+				<em:translator>Lucian Burca (ro)</em:translator>
+				<em:translator>Alexander Yavorsky (ru)</em:translator>
+				<em:translator>Peter Klofutar (sl)</em:translator>
+				<em:translator>Anders (sv-SE)</em:translator>
+				<em:translator>Kire Dyfvelsten (sv-SE)</em:translator>
+				<em:translator>Loan (vi)</em:translator>
+				<em:translator>Nguyễn (vi)</em:translator>
+				<em:translator>Thanh (vi)</em:translator>
+			</Description>
+		</em:localized>
+
+		<em:localized>
+			<Description>
+				<em:locale>ko</em:locale>
+				<em:name>연락처(CardBook)</em:name>
+				<em:description>가상 카드(vCard) 주소록</em:description>
+				<em:contributor>Alexander Bergmann</em:contributor>
+				<em:contributor>Sisim Biva</em:contributor>
+				<em:contributor>Günter Gersdorf</em:contributor>
+				<em:contributor>R. Kent James</em:contributor>
+				<em:contributor>Timothe Litt</em:contributor>
+				<em:contributor>Christoph Mair</em:contributor>
+				<em:contributor>Günther Palfinger</em:contributor>
+				<em:contributor>Boris Prüssmann</em:contributor>
+				<em:contributor>Michael Roland</em:contributor>
+				<em:contributor>Lukáš Tyrychtr</em:contributor>
+				<em:translator>Lukáš Tyrychtr (cs)</em:translator>
+				<em:translator>Johnny Nielsen (da)</em:translator>
+				<em:translator>Alexander Bergmann (de)</em:translator>
+				<em:translator>Markus Mauerer (de)</em:translator>
+				<em:translator>Oliver Schuppe (de)</em:translator>
+				<em:translator>SusiTux (de)</em:translator>
+				<em:translator>Timothe Litt (en-US)</em:translator>
+				<em:translator>Óvári (en-US)</em:translator>
+				<em:translator>Philippe Vigneau (fr)</em:translator>
+				<em:translator>Meri (hr)</em:translator>
+				<em:translator>Óvári (hu)</em:translator>
+				<em:translator>Zuraida (id)</em:translator>
+				<em:translator>Stefano Bloisi (it)</em:translator>
+				<em:translator>Agnese Morettini (it)</em:translator>
+				<em:translator>공성은 (ko)</em:translator>
 				<em:translator>Gintautas (lt)</em:translator>
 				<em:translator>Han Knols (nl)</em:translator>
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
@@ -493,6 +549,7 @@
 				<em:translator>Zuraida (id)</em:translator>
 				<em:translator>Stefano Bloisi (it)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
+				<em:translator>공성은 (ko)</em:translator>
 				<em:translator>Gintautas (lt)</em:translator>
 				<em:translator>Han Knols (nl)</em:translator>
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
@@ -538,6 +595,7 @@
 				<em:translator>Zuraida (id)</em:translator>
 				<em:translator>Stefano Bloisi (it)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
+				<em:translator>공성은 (ko)</em:translator>
 				<em:translator>Gintautas (lt)</em:translator>
 				<em:translator>Han Knols (nl)</em:translator>
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
@@ -583,6 +641,7 @@
 				<em:translator>Zuraida (id)</em:translator>
 				<em:translator>Stefano Bloisi (it)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
+				<em:translator>공성은 (ko)</em:translator>
 				<em:translator>Gintautas (lt)</em:translator>
 				<em:translator>Han Knols (nl)</em:translator>
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
@@ -628,6 +687,7 @@
 				<em:translator>Zuraida (id)</em:translator>
 				<em:translator>Stefano Bloisi (it)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
+				<em:translator>공성은 (ko)</em:translator>
 				<em:translator>Gintautas (lt)</em:translator>
 				<em:translator>Han Knols (nl)</em:translator>
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
@@ -673,6 +733,7 @@
 				<em:translator>Zuraida (id)</em:translator>
 				<em:translator>Stefano Bloisi (it)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
+				<em:translator>공성은 (ko)</em:translator>
 				<em:translator>Gintautas (lt)</em:translator>
 				<em:translator>Han Knols (nl)</em:translator>
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
@@ -718,6 +779,7 @@
 				<em:translator>Zuraida (id)</em:translator>
 				<em:translator>Stefano Bloisi (it)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
+				<em:translator>공성은 (ko)</em:translator>
 				<em:translator>Gintautas (lt)</em:translator>
 				<em:translator>Han Knols (nl)</em:translator>
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
@@ -763,6 +825,7 @@
 				<em:translator>Zuraida (id)</em:translator>
 				<em:translator>Stefano Bloisi (it)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
+				<em:translator>공성은 (ko)</em:translator>
 				<em:translator>Gintautas (lt)</em:translator>
 				<em:translator>Han Knols (nl)</em:translator>
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
@@ -808,6 +871,7 @@
 				<em:translator>Zuraida (id)</em:translator>
 				<em:translator>Stefano Bloisi (it)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
+				<em:translator>공성은 (ko)</em:translator>
 				<em:translator>Gintautas (lt)</em:translator>
 				<em:translator>Han Knols (nl)</em:translator>
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>
@@ -854,6 +918,7 @@
 				<em:translator>Zuraida (id)</em:translator>
 				<em:translator>Stefano Bloisi (it)</em:translator>
 				<em:translator>Agnese Morettini (it)</em:translator>
+				<em:translator>공성은 (ko)</em:translator>
 				<em:translator>Gintautas (lt)</em:translator>
 				<em:translator>Han Knols (nl)</em:translator>
 				<em:translator>Adam Gorzkiewicz (pl)</em:translator>

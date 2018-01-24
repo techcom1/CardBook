@@ -1064,12 +1064,8 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			cardbookRepository.cardbookServerSyncLoadCacheDone[aParams.aPrefId]++;
 		},
 
-		loadDir: function (aDir, aTarget, aDirPrefId, aMode, aSource) {
-			if (aTarget == "") {
-				var myDirPrefId = aDirPrefId;
-			} else {
-				var myDirPrefId = cardbookUtils.getAccountId(aTarget);
-			}
+		loadDir: function (aDir, aTarget, aMode, aSource) {
+			var myDirPrefId = cardbookUtils.getAccountId(aTarget);
 			var aListOfFileName = [];
 			aListOfFileName = cardbookSynchronization.getFilesFromDir(aDir.path);
 			for (var i = 0; i < aListOfFileName.length; i++) {
@@ -1078,7 +1074,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 				myFile.append(aListOfFileName[i]);
 				if (myFile.exists() && myFile.isFile()) {
 					cardbookRepository.cardbookFileRequest[myDirPrefId]++;
-					cardbookSynchronization.loadFile(myFile, aTarget, aDirPrefId, aMode, aSource);
+					cardbookSynchronization.loadFile(myFile, aTarget, aMode, aSource);
 				}
 			}
 			cardbookRepository.cardbookDirResponse[myDirPrefId]++;
@@ -1849,8 +1845,8 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 				onDAVQueryComplete: function(status, response, askCertificate) {
 					if (status > 199 && status < 400) {
 						try {
-							cardbookUtils.formatStringForOutput("googleAccessTokenOK", [aConnection.connDescription, response]);
 							var responseText = JSON.parse(response);
+							cardbookUtils.formatStringForOutput("googleAccessTokenOK", [aConnection.connDescription, cardbookUtils.cleanWebObject(responseText)]);
 							aConnection.accessToken = responseText.token_type + " " + responseText.access_token;
 							aConnection.connUrl = cardbookSynchronization.getWellKnownUrl(cardbookRepository.cardbookgdata.GOOGLE_API);
 							cardbookSynchronization.discoverPhase1(aConnection, aOperationType, aParams);
@@ -1888,9 +1884,10 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 				onDAVQueryComplete: function(status, response, askCertificate) {
 					if (status > 199 && status < 400) {
 						try {
-							cardbookUtils.formatStringForOutput("googleRefreshTokenOK", [aConnection.connDescription, response]);
+							var responseText = JSON.parse(response);
+							cardbookUtils.formatStringForOutput("googleRefreshTokenOK", [aConnection.connDescription, cardbookUtils.cleanWebObject(responseText)]);
 							if (aCallback) {
-								aCallback(JSON.parse(response));
+								aCallback(responseText);
 							}
 						}
 						catch(e) {
@@ -2313,35 +2310,31 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					cardbookRepository.cardbookFileRequest[aDirPrefId]++;
 					var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 					myFile.initWithPath(myPrefUrl);
-					cardbookSynchronization.loadFile(myFile, "", aDirPrefId, aMode, "");
+					cardbookSynchronization.loadFile(myFile, aDirPrefId, aMode, "");
 					cardbookSynchronization.waitForDirFinished(aDirPrefId, myPrefName, aMode);
 				} else if (myPrefType === "DIRECTORY") {
 					cardbookRepository.cardbookDirRequest[aDirPrefId]++;
 					var myDir = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 					myDir.initWithPath(myPrefUrl);
-					cardbookSynchronization.loadDir(myDir, "", aDirPrefId, aMode, "");
+					cardbookSynchronization.loadDir(myDir, aDirPrefId, aMode, "");
 					cardbookSynchronization.waitForDirFinished(aDirPrefId, myPrefName, aMode);
 				} else if (myPrefType === "CACHE") {
 					cardbookRepository.cardbookDirRequest[aDirPrefId]++;
 					var myDir = cardbookRepository.getLocalDirectory();
 					myDir.append("Collected");
-					cardbookSynchronization.loadDir(myDir, "", aDirPrefId, aMode, "");
+					cardbookSynchronization.loadDir(myDir, aDirPrefId, aMode, "");
 					cardbookSynchronization.waitForDirFinished(aDirPrefId, myPrefName, aMode);
 				}
 			}
 		},
 
-		loadFile: function (aFile, aTarget, aFileId, aMode, aSource) {
-			if (aTarget == "") {
-				var myDirPrefId = aFileId;
-			} else {
-				var myDirPrefId = cardbookUtils.getAccountId(aTarget);
-			}
+		loadFile: function (aFile, aTarget, aMode, aSource) {
+			var myDirPrefId = cardbookUtils.getAccountId(aTarget);
+
 			var params = {};
 			params["showError"] = true;
 			params["aFile"] = aFile;
 			params["aTarget"] = aTarget;
-			params["aFileId"] = aFileId;
 			params["aMode"] = aMode;
 			params["aPrefId"] = myDirPrefId;
 			params["aPrefIdType"] = cardbookPreferences.getType(myDirPrefId);
@@ -2371,7 +2364,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						} else if (fileContentArray[i] == "END:VCARD") {
 							cardContent = cardContent + "\r\n" + fileContentArray[i];
 							try {
-								var myCard = new cardbookCardParser(cardContent, "", "", aParams.aFileId);
+								var myCard = new cardbookCardParser(cardContent, "", "", aParams.aPrefId);
 							}
 							catch (e) {
 								cardbookRepository.cardbookServerSyncError[aParams.aPrefId]++;
@@ -2427,10 +2420,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						}
 					}
 				} else {
-					if (aParams.aFileId != null && aParams.aFileId !== undefined && aParams.aFileId != "") {
-						cardbookRepository.cardbookAccountsCategories[aParams.aFileId]=[];
-						cardbookRepository.cardbookDisplayCards[aParams.aFileId]=[];
-					}
 					cardbookUtils.formatStringForOutput("fileEmpty", [aParams.aFile.path]);
 				}
 				cardbookRepository.cardbookFileResponse[aParams.aPrefId]++;
