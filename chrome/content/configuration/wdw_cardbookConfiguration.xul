@@ -33,6 +33,7 @@
 	<script src="chrome://cardbook/content/cardbookPasswordManager.js"/>
 	<script src="chrome://cardbook/content/birthdays/cardbookBirthdaysUtils.js"/>
 	<script src="chrome://cardbook/content/cardbookElementTools.js"/>
+	<script src="chrome://cardbook/content/csvTranslator/wdw_csvTranslator.js"/>
 
 	<prefpane id="generalTab" label="&generalTabLabel;" index="general">
 		

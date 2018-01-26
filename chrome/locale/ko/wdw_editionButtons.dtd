@@ -16,3 +16,9 @@
 <!ENTITY buttonAppendToListAccesskey "A">
 <!ENTITY buttonRemoveFromListLabel "삭제">
 <!ENTITY buttonRemoveFromListAccesskey "O">
+<!ENTITY buttonGuessFromListLabel "??Guess??">
+<!ENTITY buttonGuessFromListAccesskey "??G??">
+<!ENTITY loadTemplateLabel "템플릿 선택">
+<!ENTITY loadTemplateAccesskey "t">
+<!ENTITY saveTemplateLabel "??Save template??">
+<!ENTITY saveTemplateAccesskey "??e??">

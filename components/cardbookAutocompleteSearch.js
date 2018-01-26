@@ -626,8 +626,8 @@ cardbookAutocompleteSearch.prototype = {
 			context.numQueries++;
 			context.contextId = context.query.doQuery(context.book, args, context.listener, context.book.maxHits, 0);
 		} catch(error) {
-			Components.utils.reportError(error);
-			throw error;
+			Components.utils.reportError("cardbookAutocompleteSearch.startSearchFor : " + error);
+			// throw error;
 		}
 	},
 	

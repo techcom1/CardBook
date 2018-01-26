@@ -16,3 +16,9 @@
 <!ENTITY buttonAppendToListAccesskey "A">
 <!ENTITY buttonRemoveFromListLabel "Verwijderen">
 <!ENTITY buttonRemoveFromListAccesskey "W">
+<!ENTITY buttonGuessFromListLabel "??Guess??">
+<!ENTITY buttonGuessFromListAccesskey "??G??">
+<!ENTITY loadTemplateLabel "Sjabloon selecteren">
+<!ENTITY loadTemplateAccesskey "e">
+<!ENTITY saveTemplateLabel "??Save template??">
+<!ENTITY saveTemplateAccesskey "??e??">

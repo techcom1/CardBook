@@ -16,3 +16,9 @@
 <!ENTITY buttonAppendToListAccesskey "H">
 <!ENTITY buttonRemoveFromListLabel "Törlés">
 <!ENTITY buttonRemoveFromListAccesskey "T">
+<!ENTITY buttonGuessFromListLabel "??Guess??">
+<!ENTITY buttonGuessFromListAccesskey "??G??">
+<!ENTITY loadTemplateLabel "Válasszon sablont">
+<!ENTITY loadTemplateAccesskey "V">
+<!ENTITY saveTemplateLabel "??Save template??">
+<!ENTITY saveTemplateAccesskey "??e??">

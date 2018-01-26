@@ -16,3 +16,9 @@
 <!ENTITY buttonAppendToListAccesskey "R">
 <!ENTITY buttonRemoveFromListLabel "Entfernen">
 <!ENTITY buttonRemoveFromListAccesskey "N">
+<!ENTITY buttonGuessFromListLabel "??Guess??">
+<!ENTITY buttonGuessFromListAccesskey "??G??">
+<!ENTITY loadTemplateLabel "Vorlage auswählen">
+<!ENTITY loadTemplateAccesskey "V">
+<!ENTITY saveTemplateLabel "??Save template??">
+<!ENTITY saveTemplateAccesskey "??e??">

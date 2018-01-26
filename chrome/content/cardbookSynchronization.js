@@ -2616,7 +2616,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 		writeCardsToCSVFile: function (aFileName, aFileLeafName, aListofCard) {
 			try {
 				var output = "";
-				var myArgs = {template: [], mode: "export", lineHeader: true, columnSeparator: "", action: ""};
+				var myArgs = {template: [], mode: "export", lineHeader: true, columnSeparator: ";", action: ""};
 				var myWindow = window.openDialog("chrome://cardbook/content/csvTranslator/wdw_csvTranslator.xul", "", cardbookRepository.modalWindowParams, myArgs);
 				if (myArgs.action == "SAVE") {
 					var k = 0;

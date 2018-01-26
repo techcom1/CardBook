@@ -16,3 +16,9 @@
 <!ENTITY buttonAppendToListAccesskey "A">
 <!ENTITY buttonRemoveFromListLabel "Remover">
 <!ENTITY buttonRemoveFromListAccesskey "O">
+<!ENTITY buttonGuessFromListLabel "??Guess??">
+<!ENTITY buttonGuessFromListAccesskey "??G??">
+<!ENTITY loadTemplateLabel "Selecionar modelo">
+<!ENTITY loadTemplateAccesskey "m">
+<!ENTITY saveTemplateLabel "??Save template??">
+<!ENTITY saveTemplateAccesskey "??e??">

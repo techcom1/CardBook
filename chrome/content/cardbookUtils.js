@@ -1850,6 +1850,8 @@ if ("undefined" == typeof(cardbookUtils)) {
 				}
 				if (aType === "VCF") {
 					fp.appendFilter("VCF File","*.vcf");
+				} else if (aType === "TPL") {
+					fp.appendFilter("TPL File","*.tpl");
 				} else if (aType === "EXPORTFILE") {
 					//bug 545091 on linux and macosx
 					fp.defaultExtension = "vcf";
@@ -2376,7 +2378,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			if (aDelimiter != null && aDelimiter !== undefined && aDelimiter != "") {
 				var myDelimiter = aDelimiter;
 			} else {
-				var myDelimiter = ",";
+				var myDelimiter = ";";
 			}
 			// first part for the splitted lines
 			var myNewContent = [];

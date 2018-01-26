@@ -204,55 +204,11 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			document.getElementById('resetAutocompleteRestrictSearchFieldsButton').disabled=!document.getElementById('autocompleteRestrictSearchCheckBox').checked;
 		},
 
-		getTranslatedField: function (aField) {
-			var strBundle = document.getElementById("cardbook-strings");
-			for (var i in cardbookRepository.allColumns) {
-				for (var j = 0; j < cardbookRepository.allColumns[i].length; j++) {
-					if (i != "arrayColumns" && i != "categories") {
-						if (cardbookRepository.allColumns[i][j] == aField) {
-							return strBundle.getString(cardbookRepository.allColumns[i][j] + "Label");
-						}
-					} else if (i == "categories") {
-						if (cardbookRepository.allColumns[i][j] + ".0.array" == aField) {
-							return strBundle.getString(cardbookRepository.allColumns[i][j] + "Label");
-						}
-					}
-				}
-			}
-			for (var i in cardbookRepository.customFields) {
-				for (var j = 0; j < cardbookRepository.customFields[i].length; j++) {
-					if (cardbookRepository.customFields[i][j][0] == aField) {
-						return cardbookRepository.customFields[i][j][1];
-					}
-				}
-			}
-			for (var i = 0; i < cardbookRepository.allColumns.arrayColumns.length; i++) {
-				for (var k = 0; k < cardbookRepository.allColumns.arrayColumns[i][1].length; k++) {
-					if (cardbookRepository.allColumns.arrayColumns[i][0] + "." + k + ".all" == aField) {
-						return strBundle.getString(cardbookRepository.allColumns.arrayColumns[i][1][k] + "Label");
-					} else if (cardbookRepository.allColumns.arrayColumns[i][0] + "." + k + ".notype" == aField) {
-						return strBundle.getString(cardbookRepository.allColumns.arrayColumns[i][1][k] + "Label") + " (" + strBundle.getString("importNoTypeLabel") + ")";
-					}
-				}
-			}
-			for (var i = 0; i < cardbookRepository.allColumns.arrayColumns.length; i++) {
-				var myPrefTypes = cardbookPreferences.getAllTypesByType(cardbookRepository.allColumns.arrayColumns[i][0]);
-				for (var j = 0; j < myPrefTypes.length; j++) {
-					for (var k = 0; k < cardbookRepository.allColumns.arrayColumns[i][1].length; k++) {
-						if (cardbookRepository.allColumns.arrayColumns[i][0] + "." + k + "." + myPrefTypes[j][0] == aField) {
-							return strBundle.getString(cardbookRepository.allColumns.arrayColumns[i][1][k] + "Label") + " (" + myPrefTypes[j][1] + ")";
-						}
-					}
-				}
-			}
-			return "";
-		},
-
 		translateSearchFields: function (aFieldList) {
 			var myFieldArray = aFieldList.split('|');
 			var result = [];
 			for (var i = 0; i < myFieldArray.length; i++) {
-				result.push(wdw_cardbookConfiguration.getTranslatedField(myFieldArray[i]));
+				result.push(wdw_csvTranslator.getTranslatedField(myFieldArray[i]));
 			}
 			return cardbookUtils.cleanArray(result).join('|');
 		},
@@ -265,17 +221,8 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			document.getElementById('autocompleteRestrictSearchFieldsTextBox').value = wdw_cardbookConfiguration.translateSearchFields(wdw_cardbookConfiguration.autocompleteRestrictSearchFields);
 		},
 
-		getTemplate: function (aFieldList) {
-			var myFieldArray = aFieldList.split('|');
-			var result = [];
-			for (var i = 0; i < myFieldArray.length; i++) {
-				result.push([myFieldArray[i], wdw_cardbookConfiguration.getTranslatedField(myFieldArray[i])]);
-			}
-			return result;
-		},
-
 		chooseAutocompleteRestrictSearchFieldsButton: function () {
-			var myTemplate = wdw_cardbookConfiguration.getTemplate(wdw_cardbookConfiguration.autocompleteRestrictSearchFields);
+			var myTemplate = wdw_csvTranslator.getTemplate(wdw_cardbookConfiguration.autocompleteRestrictSearchFields);
 			var myArgs = {template: myTemplate, mode: "choice", lineHeader: true, columnSeparator: "", action: ""};
 			var myWindow = window.openDialog("chrome://cardbook/content/csvTranslator/wdw_csvTranslator.xul", "", cardbookRepository.modalWindowParams, myArgs);
 			if (myArgs.action == "SAVE") {

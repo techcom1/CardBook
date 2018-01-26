@@ -16,3 +16,9 @@
 <!ENTITY buttonAppendToListAccesskey "A">
 <!ENTITY buttonRemoveFromListLabel "Obriši">
 <!ENTITY buttonRemoveFromListAccesskey "O">
+<!ENTITY buttonGuessFromListLabel "??Guess??">
+<!ENTITY buttonGuessFromListAccesskey "??G??">
+<!ENTITY loadTemplateLabel "Odaberi predložak">
+<!ENTITY loadTemplateAccesskey "O">
+<!ENTITY saveTemplateLabel "??Save template??">
+<!ENTITY saveTemplateAccesskey "??e??">

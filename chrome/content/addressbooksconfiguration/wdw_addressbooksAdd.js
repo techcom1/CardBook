@@ -186,10 +186,10 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 					cardbookUtils.callDirPicker("dirChooseTitle", wdw_addressbooksAdd.checkFile);
 					break;
 				case "createFile":
-					cardbookUtils.callFilePicker("fileCreationTitle", "SAVE", "VCF", "", wdw_addressbooksAdd.checkFile);
+					cardbookUtils.callFilePicker("fileCreationVCFTitle", "SAVE", "VCF", "", wdw_addressbooksAdd.checkFile);
 					break;
 				case "openFile":
-					cardbookUtils.callFilePicker("fileSelectionTitle", "OPEN", "VCF", "", wdw_addressbooksAdd.checkFile);
+					cardbookUtils.callFilePicker("fileSelectionVCFTitle", "OPEN", "VCF", "", wdw_addressbooksAdd.checkFile);
 					break;
 			}
 		},

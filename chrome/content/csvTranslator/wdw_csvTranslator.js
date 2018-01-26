@@ -8,6 +8,63 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 		blankColumn : "",
 		nIntervId : "",
 
+		getTemplate: function (aFieldList) {
+			var myFieldArray = aFieldList.split('|');
+			var result = [];
+			for (var i = 0; i < myFieldArray.length; i++) {
+				result.push([myFieldArray[i], wdw_csvTranslator.getTranslatedField(myFieldArray[i])]);
+			}
+			return result;
+		},
+
+		getTranslatedField: function (aField) {
+			var strBundle = document.getElementById("cardbook-strings");
+			for (var i in cardbookRepository.allColumns) {
+				for (var j = 0; j < cardbookRepository.allColumns[i].length; j++) {
+					if (i != "arrayColumns" && i != "categories") {
+						if (cardbookRepository.allColumns[i][j] == aField) {
+							return strBundle.getString(cardbookRepository.allColumns[i][j] + "Label");
+						}
+					} else if (i == "categories") {
+						if (cardbookRepository.allColumns[i][j] + ".0.array" == aField) {
+							return strBundle.getString(cardbookRepository.allColumns[i][j] + "Label");
+						}
+					}
+				}
+			}
+			for (var i in cardbookRepository.customFields) {
+				for (var j = 0; j < cardbookRepository.customFields[i].length; j++) {
+					if (cardbookRepository.customFields[i][j][0] == aField) {
+						return cardbookRepository.customFields[i][j][1];
+					}
+				}
+			}
+			for (var i = 0; i < cardbookRepository.allColumns.arrayColumns.length; i++) {
+				for (var k = 0; k < cardbookRepository.allColumns.arrayColumns[i][1].length; k++) {
+					if (cardbookRepository.allColumns.arrayColumns[i][0] + "." + k + ".all" == aField) {
+						return strBundle.getString(cardbookRepository.allColumns.arrayColumns[i][1][k] + "Label");
+					} else if (cardbookRepository.allColumns.arrayColumns[i][0] + "." + k + ".notype" == aField) {
+						return strBundle.getString(cardbookRepository.allColumns.arrayColumns[i][1][k] + "Label") + " (" + strBundle.getString("importNoTypeLabel") + ")";
+					}
+				}
+			}
+			for (var i = 0; i < cardbookRepository.allColumns.arrayColumns.length; i++) {
+				var myPrefTypes = cardbookPreferences.getAllTypesByType(cardbookRepository.allColumns.arrayColumns[i][0]);
+				for (var j = 0; j < myPrefTypes.length; j++) {
+					for (var k = 0; k < cardbookRepository.allColumns.arrayColumns[i][1].length; k++) {
+						if (cardbookRepository.allColumns.arrayColumns[i][0] + "." + k + "." + myPrefTypes[j][0] == aField) {
+							return strBundle.getString(cardbookRepository.allColumns.arrayColumns[i][1][k] + "Label") + " (" + myPrefTypes[j][1] + ")";
+						}
+					}
+				}
+			}
+			if ("blank" == aField) {
+				var strBundle = document.getElementById("cardbook-strings");
+				return strBundle.getString(window.arguments[0].mode + "blankColumn");
+			}
+			return "";
+		},
+
 		getSelectedLines: function (aTreeName) {
 			var myTree = document.getElementById(aTreeName + 'Tree');
 			var listOfSelected = {};
@@ -95,6 +152,7 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 			var availableCardsTreeView = {
 				get rowCount() { return wdw_csvTranslator.cardbookeditlists[aTreeName].length; },
 				isContainer: function(idx) { return false },
+				canDrop: function(idx) { return (aTreeName == "addedColumns") },
 				cycleHeader: function(idx) { return false },
 				isEditable: function(idx, column) { return false },
 				getCellText: function(idx, column) {
@@ -175,6 +233,59 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 			wdw_csvTranslator.displayListTrees("foundColumns");
 		},
 
+		startDrag: function (aEvent, aTreeChildren) {
+			try {
+				var listOfUid = [];
+				if (aTreeChildren.id == "availableColumnsTreeChildren") {
+					var myTree = document.getElementById('availableColumnsTree');
+				} else if (aTreeChildren.id == "addedColumnsTreeChildren") {
+					var myTree = document.getElementById('addedColumnsTree');
+				} else {
+					return;
+				}
+				var numRanges = myTree.view.selection.getRangeCount();
+				var start = new Object();
+				var end = new Object();
+				for (var i = 0; i < numRanges; i++) {
+					myTree.view.selection.getRangeAt(i,start,end);
+					for (var j = start.value; j <= end.value; j++){
+						var myId = myTree.view.getCellText(j, {id: myTree.id.replace("Tree", "") + "Id"});
+						listOfUid.push(j+"::"+myId);
+					}
+				}
+				aEvent.dataTransfer.setData("text/plain", myTree.id+"::"+listOfUid.join("@@@@@"));
+			}
+			catch (e) {
+				wdw_cardbooklog.updateStatusProgressInformation("wdw_csvTranslator.startDrag error : " + e, "Error");
+			}
+		},
+
+		dragCards: function (aEvent) {
+			var myTree = document.getElementById('addedColumnsTree');
+			var myTarget = myTree.treeBoxObject.getRowAt(aEvent.clientX, aEvent.clientY);
+
+			var myData = aEvent.dataTransfer.getData("text/plain");
+			var localDelim1 = myData.indexOf("::",0);
+			var myTreeSource = myData.substr(0,localDelim1);
+			var myColumns = myData.substr(localDelim1+2,myData.length).split("@@@@@");
+
+			if (myTreeSource == "addedColumnsTree") {
+				for (var i = myColumns.length-1; i >= 0; i--) {
+					var myTempArray = myColumns[i].split("::");
+					var myIndex = myTempArray[0];
+					wdw_csvTranslator.cardbookeditlists.addedColumns.splice(myIndex,1);
+				}
+			}
+				
+			for (var i = 0; i < myColumns.length; i++) {
+				var myTempArray = myColumns[i].split("::");
+				var myValue = myTempArray[1];
+				wdw_csvTranslator.cardbookeditlists.addedColumns.splice(myTarget, 0, [myValue, wdw_csvTranslator.getTranslatedField(myValue)]);
+				myTarget++;
+			}
+			wdw_csvTranslator.displayListTrees("addedColumns");
+		},
+
 		windowControlShowing: function () {
 			var myTreeName = "addedColumns";
 			var listOfSelected = {};
@@ -196,6 +307,30 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 			clearInterval(wdw_csvTranslator.nIntervId);
 		},
 
+		guess: function () {
+			var oneFound = false;
+			var result = [];
+			for (var i = 0; i < wdw_csvTranslator.cardbookeditlists.foundColumns.length; i++) {
+				var myFoundColumn = wdw_csvTranslator.cardbookeditlists.foundColumns[i][1].replace(/^\"|\"$/g, "").replace(/^\'|\'$/g, "");
+				for (var j = 0; j < wdw_csvTranslator.cardbookeditlists.availableColumns.length; j++) {
+					var found = false;
+					if (wdw_csvTranslator.cardbookeditlists.availableColumns[j][1].toLowerCase() == myFoundColumn.toLowerCase()) {
+						result.push([wdw_csvTranslator.cardbookeditlists.availableColumns[j][0], wdw_csvTranslator.cardbookeditlists.availableColumns[j][1]]);
+						found = true;
+						oneFound = true;
+						break;
+					}
+				}
+				if (!found) {
+					result.push(["blank", wdw_csvTranslator.blankColumn]);
+				}
+			}
+			if (oneFound) {
+				wdw_csvTranslator.cardbookeditlists.addedColumns = result;
+				wdw_csvTranslator.displayListTrees("addedColumns");
+			}
+		},
+
 		load: function () {
 			wdw_csvTranslator.setSyncControl();
 
@@ -214,12 +349,16 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 				document.getElementById('lineHeaderCheckBox').hidden = true;
 				document.getElementById('fieldDelimiterLabel').hidden = true;
 				document.getElementById('fieldDelimiterTextBox').hidden = true;
+				document.getElementById('saveTemplateLabel').hidden = true;
+				document.getElementById('loadTemplateLabel').hidden = true;
+				document.getElementById('guesslistavailableColumnsTreeButton').hidden = true;
 			} else if (window.arguments[0].mode == "export") {
 				document.getElementById('foundColumnsVBox').hidden = true;
 				document.getElementById('lineHeaderLabel').hidden = true;
 				document.getElementById('lineHeaderCheckBox').hidden = true;
 				document.getElementById('fieldDelimiterLabel').value = strBundle.getString("fieldDelimiterLabel");
 				document.getElementById('fieldDelimiterTextBox').value = window.arguments[0].columnSeparator;
+				document.getElementById('guesslistavailableColumnsTreeButton').hidden = true;
 			} else if (window.arguments[0].mode == "import") {
 				document.getElementById('foundColumnsGroupboxLabel').label = strBundle.getString(window.arguments[0].mode + "foundColumnsGroupboxLabel");
 				document.getElementById('lineHeaderLabel').value = strBundle.getString("lineHeaderLabel");
@@ -233,7 +372,7 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 			wdw_csvTranslator.cardbookeditlists.addedColumns = window.arguments[0].template;
 			wdw_csvTranslator.displayListTrees("addedColumns");
 
-			wdw_csvTranslator.cardbookeditlists.availableColumns = cardbookUtils.getAllAvailableColumns(window.arguments[0].mode);
+			wdw_csvTranslator.cardbookeditlists.availableColumns = wdw_csvTranslator.cardbookeditlists.availableColumns.concat(cardbookUtils.getAllAvailableColumns(window.arguments[0].mode));
 			wdw_csvTranslator.displayListTrees("availableColumns");
 
 			if (window.arguments[0].mode == "import") {
@@ -256,6 +395,55 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 				}
 			}
 			wdw_csvTranslator.close();
+		},
+
+		loadTemplate: function () {
+			cardbookUtils.callFilePicker("fileSelectionTPLTitle", "OPEN", "TPL", "", wdw_csvTranslator.loadTemplateNext);
+		},
+
+		loadTemplateNext: function (aFile) {
+			try {
+				if (aFile != null && aFile !== undefined && aFile != "") {
+					cardbookSynchronization.getFileDataAsync(aFile.path, wdw_csvTranslator.loadTemplateNext2, {});
+				}
+			}
+			catch (e) {
+				wdw_cardbooklog.updateStatusProgressInformation("wdw_csvTranslator.loadTemplateNext error : " + e, "Error");
+			}
+		},
+
+		loadTemplateNext2: function (aContent, aParams) {
+			try {
+				if (aContent != null && aContent !== undefined && aContent != "") {
+					wdw_csvTranslator.cardbookeditlists.addedColumns = wdw_csvTranslator.getTemplate(aContent);
+					wdw_csvTranslator.displayListTrees("addedColumns");
+				}
+			}
+			catch (e) {
+				wdw_cardbooklog.updateStatusProgressInformation("wdw_csvTranslator.loadTemplateNext2 error : " + e, "Error");
+			}
+		},
+
+		saveTemplate: function () {
+			cardbookUtils.callFilePicker("fileCreationTPLTitle", "SAVE", "TPL", "", wdw_csvTranslator.saveTemplateNext);
+		},
+
+		saveTemplateNext: function (aFile) {
+			try {
+				if (!(aFile.exists())) {
+					aFile.create( Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420 );
+				}
+
+				var result = [];
+				for (var i = 0; i < wdw_csvTranslator.cardbookeditlists.addedColumns.length; i++) {
+					result.push(wdw_csvTranslator.cardbookeditlists.addedColumns[i][0]);
+				}
+
+				cardbookSynchronization.writeContentToFile(aFile.path, result.join('|'), "UTF8");
+			}
+			catch (e) {
+				wdw_cardbooklog.updateStatusProgressInformation("wdw_csvTranslator.saveTemplateNext error : " + e, "Error");
+			}
 		},
 
 		cancel: function () {

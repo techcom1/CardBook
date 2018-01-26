@@ -17,6 +17,7 @@
 	<stringbundleset id="stringbundleset"/>
 
 	<script src="chrome://cardbook/content/preferences/cardbookPreferences.js"/>
+	<script src="chrome://cardbook/content/cardbookSynchronization.js"/>
 	<script src="chrome://cardbook/content/cardbookUtils.js"/>
 	<script src="chrome://cardbook/content/wdw_log.js"/>
 	<script src="chrome://cardbook/content/csvTranslator/wdw_csvTranslator.js"/>
@@ -57,7 +58,7 @@
 								<treecol id="availableColumnsId" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left"/>
 								<treecol id="availableColumnsName" flex="1" persist="width ordinal hidden" style="text-align:left" hideheader="true"/>
 							</treecols>
-							<treechildren id="availableColumnsTreeChildren" ondblclick="wdw_csvTranslator.modifyLists(this);"/>
+							<treechildren id="availableColumnsTreeChildren" ondblclick="wdw_csvTranslator.modifyLists(this);" ondragstart="wdw_csvTranslator.startDrag(event, this);"/>
 						</tree>
 					</groupbox>
 				</vbox>
@@ -70,6 +71,8 @@
 									accesskey="&buttonRemoveFromListAccesskey;" oncommand="wdw_csvTranslator.modifyLists(this);"/>
 							<button id="upAddedColumnsTreeButton" label="↑" oncommand="wdw_csvTranslator.upColumns();"/>
 							<button id="downAddedColumnsTreeButton" label="↓" oncommand="wdw_csvTranslator.downColumns(this);"/>
+							<button id="guesslistavailableColumnsTreeButton" label="&buttonGuessFromListLabel;"
+									accesskey="&buttonGuessFromListAccesskey;" oncommand="wdw_csvTranslator.guess();"/>
 						</vbox>
 					</hbox>
 				</vbox>
@@ -81,7 +84,7 @@
 								<treecol id="addedColumnsId" flex="1" persist="width ordinal hidden" hidden="true"/>
 								<treecol id="addedColumnsName" flex="1" persist="width ordinal hidden" style="text-align:left" hideheader="true"/>
 							</treecols>
-							<treechildren id="addedColumnsTreeChildren" ondblclick="wdw_csvTranslator.modifyLists(this);"/>
+							<treechildren id="addedColumnsTreeChildren" ondblclick="wdw_csvTranslator.modifyLists(this);" ondragstart="wdw_csvTranslator.startDrag(event, this);" ondrop="wdw_csvTranslator.dragCards(event);"/>
 						</tree>
 					</groupbox>
 				</vbox>
@@ -103,6 +106,8 @@
 
 	<hbox>
 		<spacer flex="1"/>
+		<button id="saveTemplateLabel" label="&saveTemplateLabel;" accesskey="&saveTemplateAccesskey;" oncommand="wdw_csvTranslator.saveTemplate();"/>
+		<button id="loadTemplateLabel" label="&loadTemplateLabel;" accesskey="&loadTemplateAccesskey;" oncommand="wdw_csvTranslator.loadTemplate();"/>
 		<button id="saveEditionLabel" label="&saveEditionLabel;" accesskey="&saveEditionAccesskey;" oncommand="wdw_csvTranslator.save();"/>
 		<button id="cancelEditionLabel" label="&cancelEditionLabel;" accesskey="&cancelEditionAccesskey;" oncommand="wdw_csvTranslator.cancel();"/>
 	</hbox>
