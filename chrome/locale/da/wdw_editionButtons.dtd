@@ -16,9 +16,9 @@
 <!ENTITY buttonAppendToListAccesskey "T">
 <!ENTITY buttonRemoveFromListLabel "Fjern">
 <!ENTITY buttonRemoveFromListAccesskey "F">
-<!ENTITY buttonGuessFromListLabel "??Guess??">
-<!ENTITY buttonGuessFromListAccesskey "??G??">
+<!ENTITY buttonGuessFromListLabel "Gæt">
+<!ENTITY buttonGuessFromListAccesskey "æ">
 <!ENTITY loadTemplateLabel "Vælg skabelon">
 <!ENTITY loadTemplateAccesskey "s">
-<!ENTITY saveTemplateLabel "??Save template??">
-<!ENTITY saveTemplateAccesskey "??e??">
+<!ENTITY saveTemplateLabel "Gem skabelon">
+<!ENTITY saveTemplateAccesskey "m">
