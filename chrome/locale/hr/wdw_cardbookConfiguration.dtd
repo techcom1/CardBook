@@ -15,13 +15,13 @@
 <!ENTITY autocompletionTooltip "Produžava standardno automatsko okončanje kontakata iz adresara iz Thunderbird-a s automatskim okončanjem kontakata iz adresara u Kontakti-u.">
 <!ENTITY autocompleteSortByPopularityLabel "Sortiraj e-pošta adrese prema popularnosti">
 <!ENTITY autocompleteSortByPopularityAccesskey "p">
-<!ENTITY autocompleteProposeConcatEmailsLabel "??Propose concatenated emails per contact??">
+<!ENTITY autocompleteProposeConcatEmailsLabel "Predložite povezane poruke e-pošte po kontaktu">
 <!ENTITY autocompleteProposeConcatEmailsAccesskey "c">
 <!ENTITY autocompleteShowAddressbookLabel "Pokaži naziv adresara">
 <!ENTITY autocompleteShowAddressbookAccesskey "S">
 <!ENTITY autocompleteWithColorLabel "Upotrijebi boju adresara">
 <!ENTITY autocompleteWithColorAccesskey "c">
-<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
+<!ENTITY autocompleteRestrictSearchLabel "Ograničite polja za pretraživanje">
 <!ENTITY autocompleteRestrictSearchAccesskey "P">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Uredi">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "U">
@@ -100,9 +100,9 @@
 <!ENTITY showNameAsFLAccesskey "e">
 <!ENTITY showNameAsDSPLabel "Pokaži ime">
 <!ENTITY showNameAsDSPAccesskey "D">
-<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Formula se satoji od blokova unutar znaka „()”. U ovim blokovima su dva dijela ograničena znakom „|”. Prvi dio se odnosi na uključen naziv, npr. {{1}}, nije poništen, drugi dio se odnosi kad je uključen naziv poništen.">
-<!ENTITY adrFormulaLabel "??Address Format Formula??">
-<!ENTITY adrFormulaAccesskey "??R??">
+<!ENTITY adrLabelExplanation "Moguće je prilagoditi način na koji Kontakti oblikuje svoje adrese. Formula se satoji od blokova unutar znaka „()”. U ovim blokovima su dva dijela ograničena znakom „|”. Prvi dio se odnosi na uključen naziv, npr. {{1}}, nije poništen, drugi dio se odnosi kad je uključen naziv poništen.">
+<!ENTITY adrFormulaLabel "Formula formata adrese">
+<!ENTITY adrFormulaAccesskey "r">
 <!ENTITY resetAdrFormulaLabel "Vrati na uobičajeno">
 <!ENTITY resetAdrFormulaAccesskey "j">
 <!ENTITY miscEditingGroupboxLabel "Sve i svašta">
@@ -253,18 +253,18 @@
 <!ENTITY numberOfDaysForWritingAccesskey "w">
 <!ENTITY syncWithLightningOnStartupLabel "Sinhroniziraj s Lightning kod uključenja">
 <!ENTITY syncWithLightningOnStartupAccesskey "L">
-<!ENTITY calendarEntryTitleLabel "??Title for calendar event??">
-<!ENTITY calendarEntryTitleTooltip "??Template title for the calendar event. It should contain two placeholders &#37;S, respectively replaced by name and age. If the field is empty, a standard message is used.??">
+<!ENTITY calendarEntryTitleLabel "Naslov za kalendarski događaj">
+<!ENTITY calendarEntryTitleTooltip "Naslov predloška za kalendarski događaj. Treba sadržavati dva rezervirana mjesta &#37;S zamijenjena imenom i dobi. Ako je polje prazno, koristi se standardna poruka.">
 <!ENTITY calendarEntryTitleAccesskey "T">
 <!ENTITY resetCalendarEntryTitleButtonLabel "Vrati na uobičajeno">
 <!ENTITY resetCalendarEntryTitleButtonAccesskey "V">
-<!ENTITY calendarEntryTimeLabel "??Time for calendar event (hh:mm)??">
+<!ENTITY calendarEntryTimeLabel "Vrijeme za kalendarski događaj (ss:mm)">
 <!ENTITY calendarEntryTimeAccesskey "m">
 <!ENTITY calendarEntryWholeDayLabel "Cijeli dan događaj iz kalendara">
 <!ENTITY calendarEntryWholeDayAccesskey "y">
-<!ENTITY calendarEntryAlarmLabel "??Alarm(s) to n hours for calendar events (Example: 4,+1)??">
-<!ENTITY calendarEntryAlarmTooltip "Unesi koliko dana ranije da te Lightning upozori na godišnjicu na koju te treba podsjetiti. If the field is empty, there would be no alarm.?? If you want multiple alarms, enter the alarms in a comma separated list.??">
+<!ENTITY calendarEntryAlarmLabel "Alarmi do b sati za kalendarske događaje (Primjer: 4,+1)">
+<!ENTITY calendarEntryAlarmTooltip "Unesi koliko dana ranije da te Lightning upozori na godišnjicu na koju te treba podsjetiti. Ako je polje prazno, neće biti nikakvih alarma. Ako želite više alarma, unesite alarme u popis odvojene zarezima.">
 <!ENTITY calendarEntryAlarmAccesskey "n">
 <!ENTITY calendarEntryCategoriesLabel "Kategorija(-e) za događaj u kalendaru">
-<!ENTITY calendarEntryCategoriesTooltip "??One or more categories, comma separated. If the field is empty, there would be no category.??">
+<!ENTITY calendarEntryCategoriesTooltip "Jedna ili više kategorija, odvojene zarezom. Ako je polje prazno, ne bi bilo kategorije.">
 <!ENTITY calendarEntryCategoriesAccesskey "g">

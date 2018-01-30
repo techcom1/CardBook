@@ -11,18 +11,18 @@
 
 <!ENTITY integrationGroupboxLabel "Integrasi di Thunderbird">
 <!ENTITY autocompletionLabel "Pelengkapan otomatis alamat email">
-<!ENTITY autocompletionAccesskey "">
+<!ENTITY autocompletionAccesskey "P">
 <!ENTITY autocompletionTooltip "Memperluas pelengkapan otomatis kontak dalam buku alamat Thunderbird dengan pelengkapan otomatis kontak di buku alamat Kontak.">
 <!ENTITY autocompleteSortByPopularityLabel "Urutkan alamat email dengan popularitas">
-<!ENTITY autocompleteSortByPopularityAccesskey "p">
+<!ENTITY autocompleteSortByPopularityAccesskey "U">
 <!ENTITY autocompleteProposeConcatEmailsLabel "Mengusulkan email menggabungkan setiap kontak">
 <!ENTITY autocompleteProposeConcatEmailsAccesskey "m">
 <!ENTITY autocompleteShowAddressbookLabel "Tampilkan nama buku alamat">
 <!ENTITY autocompleteShowAddressbookAccesskey "T">
 <!ENTITY autocompleteWithColorLabel "Gunakan warna buku alamat">
 <!ENTITY autocompleteWithColorAccesskey "w">
-<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
-<!ENTITY autocompleteRestrictSearchAccesskey "P">
+<!ENTITY autocompleteRestrictSearchLabel "Batasi bidang pencarian">
+<!ENTITY autocompleteRestrictSearchAccesskey "B">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Ubah">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "U">
 <!ENTITY resetAutocompleteRestrictSearchFieldsButtonLabel "Kembalikan Nilai Default">
@@ -100,9 +100,9 @@
 <!ENTITY showNameAsFLAccesskey "D">
 <!ENTITY showNameAsDSPLabel "Nama Tampilan">
 <!ENTITY showNameAsDSPAccesskey "T">
-<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Formula ini terdiri dari blok yang dilingkupi “()”. Di blok ini, ada dua bagian yang dibatasi oleh “|”. Bagian pertama berlaku bila istilah yang terlibat, misalnya {{1}}, bukan null, bagian kedua berlaku bila istilah yang terlibat adalah null.">
-<!ENTITY adrFormulaLabel "??Address Format Formula??">
-<!ENTITY adrFormulaAccesskey "??R??">
+<!ENTITY adrLabelExplanation "Hal ini dimungkinkan untuk menyesuaikan cara format Kontak alamatnya. Formula ini terdiri dari blok yang dilingkupi “()”. Di blok ini, ada dua bagian yang dibatasi oleh “|”. Bagian pertama berlaku bila istilah yang terlibat, misalnya {{1}}, bukan batal, bagian kedua berlaku bila istilah yang terlibat adalah batal.">
+<!ENTITY adrFormulaLabel "Rumus Pola Alamat">
+<!ENTITY adrFormulaAccesskey "R">
 <!ENTITY resetAdrFormulaLabel "Kembalikan Nilai Default">
 <!ENTITY resetAdrFormulaAccesskey "K">
 <!ENTITY miscEditingGroupboxLabel "Serba Aneka">

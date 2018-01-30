@@ -16,9 +16,9 @@
 <!ENTITY buttonAppendToListAccesskey "N">
 <!ENTITY buttonRemoveFromListLabel "Şterge">
 <!ENTITY buttonRemoveFromListAccesskey "g">
-<!ENTITY buttonGuessFromListLabel "??Guess??">
-<!ENTITY buttonGuessFromListAccesskey "??G??">
-<!ENTITY loadTemplateLabel "??Select template??">
-<!ENTITY loadTemplateAccesskey "??t??">
-<!ENTITY saveTemplateLabel "??Save template??">
-<!ENTITY saveTemplateAccesskey "??e??">
+<!ENTITY buttonGuessFromListLabel "Ghici">
+<!ENTITY buttonGuessFromListAccesskey "G">
+<!ENTITY loadTemplateLabel "Selectați șablonul">
+<!ENTITY loadTemplateAccesskey "ș">
+<!ENTITY saveTemplateLabel "Salvați șablonul">
+<!ENTITY saveTemplateAccesskey "a">

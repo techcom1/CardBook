@@ -15,13 +15,13 @@
 <!ENTITY autocompletionTooltip "Kiterjeszti az alapértelmezett automatikus kiegészítéséhez névjegyzéket a Thunderbird egy automatikus kiegészítéséhez kapcsolatok címjegyzékei CardBook.">
 <!ENTITY autocompleteSortByPopularityLabel "Rendezze az e-mail címeket népszerűsége szerint">
 <!ENTITY autocompleteSortByPopularityAccesskey "R">
-<!ENTITY autocompleteProposeConcatEmailsLabel "??Propose concatenated emails per contact??">
+<!ENTITY autocompleteProposeConcatEmailsLabel "Javasoljuk a kapcsolattartó e-maileket">
 <!ENTITY autocompleteProposeConcatEmailsAccesskey "c">
 <!ENTITY autocompleteShowAddressbookLabel "A névjegytár nevének megjelenítése">
 <!ENTITY autocompleteShowAddressbookAccesskey "m">
 <!ENTITY autocompleteWithColorLabel "Használja a névjegytár színét">
 <!ENTITY autocompleteWithColorAccesskey "n">
-<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
+<!ENTITY autocompleteRestrictSearchLabel "Korlátozza a keresési mezőket">
 <!ENTITY autocompleteRestrictSearchAccesskey "P">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Szerkesztés…">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "S">
@@ -100,9 +100,9 @@
 <!ENTITY showNameAsFLAccesskey "K">
 <!ENTITY showNameAsDSPLabel "Megjelenítendő név">
 <!ENTITY showNameAsDSPAccesskey "M">
-<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Ez a képlet áll blokkok által közrezárt „()”. Két része van ezekben a blokkokban által határolt „|”. Az első rész alkalmazandó, ha a kifejezés részt, például a {{1}}, nem nulla, a második része alkalmazandó, ha a kifejezés részt null.">
-<!ENTITY adrFormulaLabel "??Address Format Formula??">
-<!ENTITY adrFormulaAccesskey "??R??">
+<!ENTITY adrLabelExplanation "Lehetőség van arra, hogy személyre szabja a Névjegyzék formátumát a címek formátumában. Ez a képlet áll blokkok által közrezárt „()”. Két része van ezekben a blokkokban által határolt „|”. Az első rész alkalmazandó, ha a kifejezés részt, például a {{1}}, nem nulla, a második része alkalmazandó, ha a kifejezés részt nulla.">
+<!ENTITY adrFormulaLabel "Címformátum-képlet">
+<!ENTITY adrFormulaAccesskey "k">
 <!ENTITY resetAdrFormulaLabel "Alapértelmezés">
 <!ENTITY resetAdrFormulaAccesskey "A">
 <!ENTITY miscEditingGroupboxLabel "Különféle">
@@ -262,8 +262,8 @@
 <!ENTITY calendarEntryTimeAccesskey "i">
 <!ENTITY calendarEntryWholeDayLabel "Naptár esemény egész nap">
 <!ENTITY calendarEntryWholeDayAccesskey "e">
-<!ENTITY calendarEntryAlarmLabel "??Alarm(s) to n hours for calendar events (Example: 4,+1)??">
-<!ENTITY calendarEntryAlarmTooltip "Adja meg, hogy hány nappal az évforduló előtt emlékeztesse Önt a Lightning kiegészítő program. Dátum nélkül. Ha a mező üres, akkor nem lesz emlékeztető.?? If you want multiple alarms, enter the alarms in a comma separated list.??">
+<!ENTITY calendarEntryAlarmLabel "Riasztás(ok) sz. óráig naptári eseményekhez (Példa: 4,+1)">
+<!ENTITY calendarEntryAlarmTooltip "Adja meg, hogy hány nappal az évforduló előtt emlékeztesse Önt a Lightning kiegészítő program. Dátum nélkül. Ha a mező üres, akkor nem lesz emlékeztető. Ha több riasztást szeretne, adja meg a riasztásokat a vesszővel elválasztott listán.">
 <!ENTITY calendarEntryAlarmAccesskey "n">
 <!ENTITY calendarEntryCategoriesLabel "Naptári események kategória">
 <!ENTITY calendarEntryCategoriesTooltip "Egy vagy több kategóriát, vesszővel elválasztva. Ha a mező üres, akkor nincs kategória.">

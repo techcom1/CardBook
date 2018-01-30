@@ -16,9 +16,9 @@
 <!ENTITY buttonAppendToListAccesskey "D">
 <!ENTITY buttonRemoveFromListLabel "Usuń">
 <!ENTITY buttonRemoveFromListAccesskey "U">
-<!ENTITY buttonGuessFromListLabel "??Guess??">
-<!ENTITY buttonGuessFromListAccesskey "??G??">
-<!ENTITY loadTemplateLabel "??Select template??">
-<!ENTITY loadTemplateAccesskey "??t??">
-<!ENTITY saveTemplateLabel "??Save template??">
-<!ENTITY saveTemplateAccesskey "??e??">
+<!ENTITY buttonGuessFromListLabel "Automatycznie">
+<!ENTITY buttonGuessFromListAccesskey "t">
+<!ENTITY loadTemplateLabel "Wybierz szablon">
+<!ENTITY loadTemplateAccesskey "w">
+<!ENTITY saveTemplateLabel "Zapisz szablon">
+<!ENTITY saveTemplateAccesskey "s">

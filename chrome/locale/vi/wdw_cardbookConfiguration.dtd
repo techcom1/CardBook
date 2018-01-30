@@ -21,8 +21,8 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "H">
 <!ENTITY autocompleteWithColorLabel "Sử dụng màu sổ địa chỉ">
 <!ENTITY autocompleteWithColorAccesskey "m">
-<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
-<!ENTITY autocompleteRestrictSearchAccesskey "P">
+<!ENTITY autocompleteRestrictSearchLabel "Hạn chế các trường tìm kiếm">
+<!ENTITY autocompleteRestrictSearchAccesskey "c">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Chỉnh sửa">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "C">
 <!ENTITY resetAutocompleteRestrictSearchFieldsButtonLabel "Khôi phục về Mặc định">

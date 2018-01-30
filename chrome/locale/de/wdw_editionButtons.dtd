@@ -16,9 +16,9 @@
 <!ENTITY buttonAppendToListAccesskey "R">
 <!ENTITY buttonRemoveFromListLabel "Entfernen">
 <!ENTITY buttonRemoveFromListAccesskey "N">
-<!ENTITY buttonGuessFromListLabel "??Guess??">
-<!ENTITY buttonGuessFromListAccesskey "??G??">
+<!ENTITY buttonGuessFromListLabel "Spalten finden">
+<!ENTITY buttonGuessFromListAccesskey "f">
 <!ENTITY loadTemplateLabel "Vorlage auswählen">
 <!ENTITY loadTemplateAccesskey "V">
-<!ENTITY saveTemplateLabel "??Save template??">
-<!ENTITY saveTemplateAccesskey "??e??">
+<!ENTITY saveTemplateLabel "Als Vorlage speichern">
+<!ENTITY saveTemplateAccesskey "e">

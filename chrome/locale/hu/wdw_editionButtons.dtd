@@ -16,9 +16,9 @@
 <!ENTITY buttonAppendToListAccesskey "H">
 <!ENTITY buttonRemoveFromListLabel "Törlés">
 <!ENTITY buttonRemoveFromListAccesskey "T">
-<!ENTITY buttonGuessFromListLabel "??Guess??">
-<!ENTITY buttonGuessFromListAccesskey "??G??">
+<!ENTITY buttonGuessFromListLabel "Találgatás">
+<!ENTITY buttonGuessFromListAccesskey "T">
 <!ENTITY loadTemplateLabel "Válasszon sablont">
 <!ENTITY loadTemplateAccesskey "V">
-<!ENTITY saveTemplateLabel "??Save template??">
-<!ENTITY saveTemplateAccesskey "??e??">
+<!ENTITY saveTemplateLabel "Sablon mentése">
+<!ENTITY saveTemplateAccesskey "e">

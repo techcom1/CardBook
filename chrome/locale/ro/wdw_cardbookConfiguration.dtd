@@ -21,8 +21,8 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "A">
 <!ENTITY autocompleteWithColorLabel "Utilizați culoarea carte de adresei">
 <!ENTITY autocompleteWithColorAccesskey "c">
-<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
-<!ENTITY autocompleteRestrictSearchAccesskey "P">
+<!ENTITY autocompleteRestrictSearchLabel "Restricționați câmpurile de căutare">
+<!ENTITY autocompleteRestrictSearchAccesskey "R">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Editare">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "E">
 <!ENTITY resetAutocompleteRestrictSearchFieldsButtonLabel "Desemnează ca implicit">
@@ -100,9 +100,9 @@
 <!ENTITY showNameAsFLAccesskey "P">
 <!ENTITY showNameAsDSPLabel "Numele afișat">
 <!ENTITY showNameAsDSPAccesskey "N">
-<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Această formulă constă în blocuri închise de „()”. În aceste blocuri, există două părți delimitate de „|”. Prima parte se aplică atunci când termenul implicat, de exemplu {{1}}, nu este nul, a doua parte se aplică atunci când termenul implicat este nul.">
-<!ENTITY adrFormulaLabel "??Address Format Formula??">
-<!ENTITY adrFormulaAccesskey "??R??">
+<!ENTITY adrLabelExplanation "Este posibil să personalizați modul în care Contacte formatează adresele sale. Această formulă constă în blocuri închise de „()”. În aceste blocuri, există două părți delimitate de „|”. Prima parte se aplică atunci când termenul implicat, de exemplu {{1}}, nu este nul, a doua parte se aplică atunci când termenul implicat este nul.">
+<!ENTITY adrFormulaLabel "Formula formulei de adrese">
+<!ENTITY adrFormulaAccesskey "r">
 <!ENTITY resetAdrFormulaLabel "Desemnează ca implicit">
 <!ENTITY resetAdrFormulaAccesskey "D">
 <!ENTITY miscEditingGroupboxLabel "Diverse">

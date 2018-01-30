@@ -21,7 +21,7 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "S">
 <!ENTITY autocompleteWithColorLabel "Use address book color">
 <!ENTITY autocompleteWithColorAccesskey "c">
-<!ENTITY autocompleteRestrictSearchLabel "Restrict searched fields">
+<!ENTITY autocompleteRestrictSearchLabel "Restrict search fields">
 <!ENTITY autocompleteRestrictSearchAccesskey "R">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Edit">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "E">
@@ -263,8 +263,8 @@
 <!ENTITY calendarEntryWholeDayLabel "Calendar event for the whole day">
 <!ENTITY calendarEntryWholeDayAccesskey "y">
 <!ENTITY calendarEntryAlarmLabel "Alarm(s) to n hours for calendar events (Example: 4,+1)">
-<!ENTITY calendarEntryAlarmTooltip "Enter how many hours before the anniversary Lightning's alarm should remind you. If the field is empty, there would be no alarm. If you want multiple alarms, enter the alarms in a comma separated list.">
+<!ENTITY calendarEntryAlarmTooltip "Enter how many hours before the anniversary Lightning's alarm should remind you. If the field is empty, there would be no alarm. If you want multiple alarms, enter the alarms in a comma-separated list.">
 <!ENTITY calendarEntryAlarmAccesskey "n">
 <!ENTITY calendarEntryCategoriesLabel "Category(ies) for calendar event">
-<!ENTITY calendarEntryCategoriesTooltip "One or more categories, comma separated. If the field is empty, there would be no category.">
+<!ENTITY calendarEntryCategoriesTooltip "One or more categories, comma-separated. If the field is empty, there would be no category.">
 <!ENTITY calendarEntryCategoriesAccesskey "g">

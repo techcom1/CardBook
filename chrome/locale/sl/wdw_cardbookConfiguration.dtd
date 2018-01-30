@@ -263,7 +263,7 @@
 <!ENTITY calendarEntryWholeDayLabel "Celodnevni dogodek">
 <!ENTITY calendarEntryWholeDayAccesskey "C">
 <!ENTITY calendarEntryAlarmLabel "??Alarm(s) to n hours for calendar events (Example: 4,+1)??">
-<!ENTITY calendarEntryAlarmTooltip "Vnesite št. dni pred obletnico, ko naj vas opozori Lightningovo opozorilo. Če je polje prazno, opozorila ne bo.?? If you want multiple alarms, enter the alarms in a comma separated list.??">
+<!ENTITY calendarEntryAlarmTooltip "Vnesite št. dni pred obletnico, ko naj vas opozori Lightningovo opozorilo. Če je polje prazno, opozorila ne bo.?? If you want multiple alarms, enter the alarms in a comma-separated list.??">
 <!ENTITY calendarEntryAlarmAccesskey "O">
 <!ENTITY calendarEntryCategoriesLabel "Kategorija/-e dogodka">
 <!ENTITY calendarEntryCategoriesTooltip "Ena ali več kategorij, ločene z vejico.">

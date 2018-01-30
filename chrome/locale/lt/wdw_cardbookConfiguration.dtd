@@ -11,18 +11,18 @@
 
 <!ENTITY integrationGroupboxLabel "Integracija į „Thunderbird“">
 <!ENTITY autocompletionLabel "Elektroninio pašto adresų automatinis prirašymas">
-<!ENTITY autocompletionAccesskey "">
+<!ENTITY autocompletionAccesskey "E">
 <!ENTITY autocompletionTooltip "Išplečia standartinį adresų knygos „Thunderbird“ automatinį užpildymą, kai „Kontaktų“ adresų knygos adresai automatiškai užbaigiami.">
 <!ENTITY autocompleteSortByPopularityLabel "Rūšiuoti el. pašto adresus pagal populiarumą">
 <!ENTITY autocompleteSortByPopularityAccesskey "p">
-<!ENTITY autocompleteProposeConcatEmailsLabel "??Propose concatenated emails per contact??">
-<!ENTITY autocompleteProposeConcatEmailsAccesskey "c">
+<!ENTITY autocompleteProposeConcatEmailsLabel "Siūlome susietus elektroniniai laiškai laiškus vienam adresatui">
+<!ENTITY autocompleteProposeConcatEmailsAccesskey "S">
 <!ENTITY autocompleteShowAddressbookLabel "Rodyti adresų knygos pavadinimą">
 <!ENTITY autocompleteShowAddressbookAccesskey "R">
 <!ENTITY autocompleteWithColorLabel "Naudokite adresų knygos spalvą">
 <!ENTITY autocompleteWithColorAccesskey "N">
-<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
-<!ENTITY autocompleteRestrictSearchAccesskey "P">
+<!ENTITY autocompleteRestrictSearchLabel "Apriboti paieškos laukus">
+<!ENTITY autocompleteRestrictSearchAccesskey "p">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Keisti">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "K">
 <!ENTITY resetAutocompleteRestrictSearchFieldsButtonLabel "Atstatyti numatytąjį">
@@ -100,9 +100,9 @@
 <!ENTITY showNameAsFLAccesskey "V">
 <!ENTITY showNameAsDSPLabel "Rodomas vardas">
 <!ENTITY showNameAsDSPAccesskey "R">
-<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Ši formulė susideda iš blokų, kuriuos apima skliausteliai „()“. Šiuose blokuose yra dvi dalys, kurias apibrėžia vertikalus brūkšnys „|“. Pirmoji dalis taikoma tada, kai susijusi sąlyga, pvz., {{1}}, nėra nulinė, antra dalis taikoma tada, kai susijęs terminas yra nulis.">
-<!ENTITY adrFormulaLabel "??Address Format Formula??">
-<!ENTITY adrFormulaAccesskey "??R??">
+<!ENTITY adrLabelExplanation "Galima pritaikyti, kaip „Kontaktai“ formato savo adresus. Ši formulė susideda iš blokų, kuriuos apima skliausteliai „()“. Šiuose blokuose yra dvi dalys, kurias apibrėžia vertikalus brūkšnys „|“. Pirmoji dalis taikoma tada, kai susijusi sąlyga, pvz., {{1}}, nėra nulinė, antra dalis taikoma tada, kai susijęs terminas yra nulis.">
+<!ENTITY adrFormulaLabel "Formatas adreso formatas">
+<!ENTITY adrFormulaAccesskey "r">
 <!ENTITY resetAdrFormulaLabel "Atstatyti numatytąjį">
 <!ENTITY resetAdrFormulaAccesskey "A">
 <!ENTITY miscEditingGroupboxLabel "Įvairūs">
@@ -262,8 +262,8 @@
 <!ENTITY calendarEntryTimeAccesskey "l">
 <!ENTITY calendarEntryWholeDayLabel "Kalendoriaus įvykis visą dieną">
 <!ENTITY calendarEntryWholeDayAccesskey "v">
-<!ENTITY calendarEntryAlarmLabel "??Alarm(s) to n hours for calendar events (Example: 4,+1)??">
-<!ENTITY calendarEntryAlarmTooltip "Įveskite, kiek dienų prieš jubiliejų „Lightning“ signalas turėtų jums priminti. Be datos, jei laukas yra tuščias, signal0 nebus.?? If you want multiple alarms, enter the alarms in a comma separated list.??">
+<!ENTITY calendarEntryAlarmLabel "Signalai iki n valandų kalendoriniams įvykiams (Pavyzdys: 4,+1)">
+<!ENTITY calendarEntryAlarmTooltip "Įveskite, kiek dienų prieš jubiliejų „Lightning“ signalas turėtų jums priminti. Be datos, jei laukas yra tuščias, signal0 nebus. Jei norite kelis pavojaus signalus, įveskite įspėjimus kableliais atskirtu sąrašu.">
 <!ENTITY calendarEntryAlarmAccesskey "n">
 <!ENTITY calendarEntryCategoriesLabel "Kalendoriaus įvykio kategorija">
 <!ENTITY calendarEntryCategoriesTooltip "Viena ar daugiau kategorijų, atskirtos kableliais. Jei laukas tuščias, kategorijos nebus.">

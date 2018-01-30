@@ -17,17 +17,21 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 			return result;
 		},
 
-		getTranslatedField: function (aField) {
-			var strBundle = document.getElementById("cardbook-strings");
+		getTranslatedField: function (aField, aLocale) {
+			if (aLocale != null && aLocale !== undefined && aLocale != "") {
+				var strBundle = Services.strings.createBundle("resource://" + aLocale + "/cardbook.properties");
+			} else {
+				var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
+			}
 			for (var i in cardbookRepository.allColumns) {
 				for (var j = 0; j < cardbookRepository.allColumns[i].length; j++) {
 					if (i != "arrayColumns" && i != "categories") {
 						if (cardbookRepository.allColumns[i][j] == aField) {
-							return strBundle.getString(cardbookRepository.allColumns[i][j] + "Label");
+							return strBundle.GetStringFromName(cardbookRepository.allColumns[i][j] + "Label");
 						}
 					} else if (i == "categories") {
 						if (cardbookRepository.allColumns[i][j] + ".0.array" == aField) {
-							return strBundle.getString(cardbookRepository.allColumns[i][j] + "Label");
+							return strBundle.GetStringFromName(cardbookRepository.allColumns[i][j] + "Label");
 						}
 					}
 				}
@@ -42,9 +46,9 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 			for (var i = 0; i < cardbookRepository.allColumns.arrayColumns.length; i++) {
 				for (var k = 0; k < cardbookRepository.allColumns.arrayColumns[i][1].length; k++) {
 					if (cardbookRepository.allColumns.arrayColumns[i][0] + "." + k + ".all" == aField) {
-						return strBundle.getString(cardbookRepository.allColumns.arrayColumns[i][1][k] + "Label");
+						return strBundle.GetStringFromName(cardbookRepository.allColumns.arrayColumns[i][1][k] + "Label");
 					} else if (cardbookRepository.allColumns.arrayColumns[i][0] + "." + k + ".notype" == aField) {
-						return strBundle.getString(cardbookRepository.allColumns.arrayColumns[i][1][k] + "Label") + " (" + strBundle.getString("importNoTypeLabel") + ")";
+						return strBundle.GetStringFromName(cardbookRepository.allColumns.arrayColumns[i][1][k] + "Label") + " (" + strBundle.GetStringFromName("importNoTypeLabel") + ")";
 					}
 				}
 			}
@@ -53,14 +57,13 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 				for (var j = 0; j < myPrefTypes.length; j++) {
 					for (var k = 0; k < cardbookRepository.allColumns.arrayColumns[i][1].length; k++) {
 						if (cardbookRepository.allColumns.arrayColumns[i][0] + "." + k + "." + myPrefTypes[j][0] == aField) {
-							return strBundle.getString(cardbookRepository.allColumns.arrayColumns[i][1][k] + "Label") + " (" + myPrefTypes[j][1] + ")";
+							return strBundle.GetStringFromName(cardbookRepository.allColumns.arrayColumns[i][1][k] + "Label") + " (" + myPrefTypes[j][1] + ")";
 						}
 					}
 				}
 			}
 			if ("blank" == aField) {
-				var strBundle = document.getElementById("cardbook-strings");
-				return strBundle.getString(window.arguments[0].mode + "blankColumn");
+				return strBundle.GetStringFromName(window.arguments[0].mode + "blankColumn");
 			}
 			return "";
 		},
@@ -310,10 +313,11 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 		guess: function () {
 			var oneFound = false;
 			var result = [];
+			// search with current locale
 			for (var i = 0; i < wdw_csvTranslator.cardbookeditlists.foundColumns.length; i++) {
 				var myFoundColumn = wdw_csvTranslator.cardbookeditlists.foundColumns[i][1].replace(/^\"|\"$/g, "").replace(/^\'|\'$/g, "");
+				var found = false;
 				for (var j = 0; j < wdw_csvTranslator.cardbookeditlists.availableColumns.length; j++) {
-					var found = false;
 					if (wdw_csvTranslator.cardbookeditlists.availableColumns[j][1].toLowerCase() == myFoundColumn.toLowerCase()) {
 						result.push([wdw_csvTranslator.cardbookeditlists.availableColumns[j][0], wdw_csvTranslator.cardbookeditlists.availableColumns[j][1]]);
 						found = true;
@@ -323,6 +327,26 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 				}
 				if (!found) {
 					result.push(["blank", wdw_csvTranslator.blankColumn]);
+				}
+			}
+			if (!oneFound) {
+				result = [];
+				// search with en-US locale
+				for (var i = 0; i < wdw_csvTranslator.cardbookeditlists.foundColumns.length; i++) {
+					var myFoundColumn = wdw_csvTranslator.cardbookeditlists.foundColumns[i][1].replace(/^\"|\"$/g, "").replace(/^\'|\'$/g, "");
+					var found = false;
+					for (var j = 0; j < wdw_csvTranslator.cardbookeditlists.availableColumns.length; j++) {
+						var myTranslatedColumn = wdw_csvTranslator.getTranslatedField(wdw_csvTranslator.cardbookeditlists.availableColumns[j][0], "cardbook-locale-US");
+						if (myTranslatedColumn.toLowerCase() == myFoundColumn.toLowerCase()) {
+							result.push([wdw_csvTranslator.cardbookeditlists.availableColumns[j][0], wdw_csvTranslator.cardbookeditlists.availableColumns[j][1]]);
+							found = true;
+							oneFound = true;
+							break;
+						}
+					}
+					if (!found) {
+						result.push(["blank", wdw_csvTranslator.blankColumn]);
+					}
 				}
 			}
 			if (oneFound) {

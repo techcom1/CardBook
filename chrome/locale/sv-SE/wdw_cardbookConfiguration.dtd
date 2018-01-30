@@ -21,7 +21,7 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "d">
 <!ENTITY autocompleteWithColorLabel "Använd Adressboksfärg">
 <!ENTITY autocompleteWithColorAccesskey "f">
-<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
+<!ENTITY autocompleteRestrictSearchLabel "Begränsa sökfälten">
 <!ENTITY autocompleteRestrictSearchAccesskey "P">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Redigera">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "R">
@@ -100,9 +100,9 @@
 <!ENTITY showNameAsFLAccesskey "m">
 <!ENTITY showNameAsDSPLabel "Visningsnamn">
 <!ENTITY showNameAsDSPAccesskey "s">
-<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Detta görs med block som innesluts innom “()”. Man kan dela upp blocken i delar med “|”. Den första delen används, t.ex {{1}}, om den inte är tom, den andra delen används då, om den första är tom, logist kan man anta att ”|” är samma som ”eller”">
-<!ENTITY adrFormulaLabel "??Address Format Formula??">
-<!ENTITY adrFormulaAccesskey "??R??">
+<!ENTITY adrLabelExplanation "Det är möjligt att anpassa hur Kontakter formaterar adresserna. Detta görs med block som innesluts innom ”()”. Man kan dela upp blocken i delar med ”|”. Den första delen används, t.ex {{1}}, om den inte är tom, den andra delen används då, om den första är tom, logist kan man anta att ”|” är samma som ”eller”">
+<!ENTITY adrFormulaLabel "Adressformatformel">
+<!ENTITY adrFormulaAccesskey "r">
 <!ENTITY resetAdrFormulaLabel "Återställ till standard">
 <!ENTITY resetAdrFormulaAccesskey "i">
 <!ENTITY miscEditingGroupboxLabel "Övrigt">

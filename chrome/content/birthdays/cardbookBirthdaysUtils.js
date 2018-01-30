@@ -201,10 +201,10 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			for (var i = 0; i < lcalendarEntryAlarmArray.length; i++) {
 				// default before alarm before event
 				var sign = "-";
-				lcalendarEntryAlarmArray[i] = lcalendarEntryAlarmArray[i].replace(/\-/g, "");
+				lcalendarEntryAlarmArray[i] = lcalendarEntryAlarmArray[i].replace(/\-/g, "").replace(/ /g, "");
 				if (lcalendarEntryAlarmArray[i].includes("+")) {
 					sign = "";
-					lcalendarEntryAlarmArray[i] = lcalendarEntryAlarmArray[i].replace(/\+/g, "");
+					lcalendarEntryAlarmArray[i] = lcalendarEntryAlarmArray[i].replace(/\+/g, "").replace(/ /g, "");
 				}
 				if (!isNaN(parseInt(lcalendarEntryAlarmArray[i]))) {
 					iCalString += "BEGIN:VALARM\nACTION:DISPLAY\nTRIGGER:" + sign + "PT" + parseInt(lcalendarEntryAlarmArray[i]) + "H\nEND:VALARM\n";

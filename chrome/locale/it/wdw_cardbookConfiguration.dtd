@@ -15,13 +15,13 @@
 <!ENTITY autocompletionTooltip "Sostituisce la funzionalità standard di autocompletamento degli indirizzi nelle rubriche di Thunderbird con l'autocompletamento dei contatti nelle rubriche in CardBook.">
 <!ENTITY autocompleteSortByPopularityLabel "Ordinare indirizzi email addresses secondo popolarità">
 <!ENTITY autocompleteSortByPopularityAccesskey "p">
-<!ENTITY autocompleteProposeConcatEmailsLabel "??Propose concatenated emails per contact??">
+<!ENTITY autocompleteProposeConcatEmailsLabel "Proponi email concatenate per contatto">
 <!ENTITY autocompleteProposeConcatEmailsAccesskey "c">
 <!ENTITY autocompleteShowAddressbookLabel "Mostra nome rubrica">
 <!ENTITY autocompleteShowAddressbookAccesskey "M">
 <!ENTITY autocompleteWithColorLabel "Usa colore rubrica">
 <!ENTITY autocompleteWithColorAccesskey "U">
-<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
+<!ENTITY autocompleteRestrictSearchLabel "Limita i campi di ricerca">
 <!ENTITY autocompleteRestrictSearchAccesskey "P">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Rinomina">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "R">
@@ -100,9 +100,9 @@
 <!ENTITY showNameAsFLAccesskey "N">
 <!ENTITY showNameAsDSPLabel "Mostra nome">
 <!ENTITY showNameAsDSPAccesskey "M">
-<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. Questa formula consiste in blocchi racchiusi da «()». In questi blocchi, ci sono due parti delimitate da «|». La prima parte è applicata quando la parola usata, per esempio {{1}}, non è nulla, la seconda parte è applicata quando la parola usata è nulla.">
-<!ENTITY adrFormulaLabel "??Address Format Formula??">
-<!ENTITY adrFormulaAccesskey "??R??">
+<!ENTITY adrLabelExplanation "È possibile personalizzare il modo in cui CardBook formatta i suoi indirizzi. Questa formula consiste in blocchi racchiusi da «()». In questi blocchi, ci sono due parti delimitate da «|». La prima parte è applicata quando la parola usata, per esempio {{1}}, non è nulla, la seconda parte è applicata quando la parola usata è nulla.">
+<!ENTITY adrFormulaLabel "Formula formato indirizzo">
+<!ENTITY adrFormulaAccesskey "F">
 <!ENTITY resetAdrFormulaLabel "Ripristina al Default">
 <!ENTITY resetAdrFormulaAccesskey "R">
 <!ENTITY miscEditingGroupboxLabel "Varie">
@@ -198,8 +198,8 @@
 <!ENTITY requestsTimeoutAccesskey "T">
 <!ENTITY multigetLabel "Per le richieste di tipo GET, raggruppa i contatti per">
 <!ENTITY multigetAccesskey "G">
-<!ENTITY discoveryGroupboxLabel "??Address books discovery??">
-<!ENTITY discoveryWarn "??At every synchronization, a check on the URLs below will be run to search for any new or deleted address books.??">
+<!ENTITY discoveryGroupboxLabel "Scoperta della rubrica">
+<!ENTITY discoveryWarn "Ad ogni sincronizzazione, verrà eseguito un controllo sugli URL di seguito per cercare eventuali rubriche nuove o cancellate.">
 <!ENTITY discoveryAccountsGroupboxLabel "Account">
 <!ENTITY advancedSyncGroupboxLabel "Proprietà avanzate">
 <!ENTITY decodeReportLabel "Decodifica gli URL per richieste di tipo REPORT">
@@ -262,8 +262,8 @@
 <!ENTITY calendarEntryTimeAccesskey "m">
 <!ENTITY calendarEntryWholeDayLabel "Evento del calendario per tutto il giorno">
 <!ENTITY calendarEntryWholeDayAccesskey "y">
-<!ENTITY calendarEntryAlarmLabel "??Alarm(s) to n hours for calendar events (Example: 4,+1)??">
-<!ENTITY calendarEntryAlarmTooltip "Indica il numero di giorni precedenti al compleanno che Lightning utilizzerà per inviare l'avviso. Senza data. Se il campo è vuoto, non viene inviato nessun avviso.?? If you want multiple alarms, enter the alarms in a comma separated list.??">
+<!ENTITY calendarEntryAlarmLabel "Allarmi a n ore per gli eventi del calendario (Esempio: 4,+1)">
+<!ENTITY calendarEntryAlarmTooltip "Indica il numero di giorni precedenti al compleanno che Lightning utilizzerà per inviare l'avviso. Senza data. Se il campo è vuoto, non viene inviato nessun avviso. Se vuoi più allarmi, inserisci gli allarmi in un elenco separato da virgole.">
 <!ENTITY calendarEntryAlarmAccesskey "n">
 <!ENTITY calendarEntryCategoriesLabel "Categoria/e per evento del calendario">
 <!ENTITY calendarEntryCategoriesTooltip "Una o più categorie, separate da una VIRGOLA. Se il campo è vuoto, non viene visualizzata nessuna categoria.">

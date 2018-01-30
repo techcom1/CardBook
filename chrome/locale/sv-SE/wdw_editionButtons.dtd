@@ -16,9 +16,9 @@
 <!ENTITY buttonAppendToListAccesskey "L">
 <!ENTITY buttonRemoveFromListLabel "Ta bort">
 <!ENTITY buttonRemoveFromListAccesskey "b">
-<!ENTITY buttonGuessFromListLabel "??Guess??">
-<!ENTITY buttonGuessFromListAccesskey "??G??">
+<!ENTITY buttonGuessFromListLabel "Gissa">
+<!ENTITY buttonGuessFromListAccesskey "G">
 <!ENTITY loadTemplateLabel "Välj mall">
 <!ENTITY loadTemplateAccesskey "m">
-<!ENTITY saveTemplateLabel "??Save template??">
-<!ENTITY saveTemplateAccesskey "??e??">
+<!ENTITY saveTemplateLabel "Spara mall">
+<!ENTITY saveTemplateAccesskey "a">

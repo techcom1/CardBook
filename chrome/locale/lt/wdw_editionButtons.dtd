@@ -16,9 +16,9 @@
 <!ENTITY buttonAppendToListAccesskey "P">
 <!ENTITY buttonRemoveFromListLabel "Pašalinti">
 <!ENTITY buttonRemoveFromListAccesskey "š">
-<!ENTITY buttonGuessFromListLabel "??Guess??">
-<!ENTITY buttonGuessFromListAccesskey "??G??">
+<!ENTITY buttonGuessFromListLabel "Atspėk">
+<!ENTITY buttonGuessFromListAccesskey "t">
 <!ENTITY loadTemplateLabel "Pasirinkite šabloną">
 <!ENTITY loadTemplateAccesskey "i">
-<!ENTITY saveTemplateLabel "??Save template??">
-<!ENTITY saveTemplateAccesskey "??e??">
+<!ENTITY saveTemplateLabel "Išsaugoti šabloną">
+<!ENTITY saveTemplateAccesskey "n">
