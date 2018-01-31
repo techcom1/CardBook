@@ -21,7 +21,7 @@
 <!ENTITY autocompleteShowAddressbookAccesskey "V">
 <!ENTITY autocompleteWithColorLabel "Brug adressebogsfarve">
 <!ENTITY autocompleteWithColorAccesskey "B">
-<!ENTITY autocompleteRestrictSearchLabel "Begræns søgte felter">
+<!ENTITY autocompleteRestrictSearchLabel "Begræns søgefelter">
 <!ENTITY autocompleteRestrictSearchAccesskey "æ">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Rediger">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "R">
