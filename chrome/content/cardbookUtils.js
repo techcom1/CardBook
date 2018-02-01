@@ -1427,17 +1427,20 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		getSelectedCards: function () {
 			var myTree = document.getElementById('cardsTree');
-			var listOfUid = [];
+			var listOfSelectedCard = [];
 			var numRanges = myTree.view.selection.getRangeCount();
 			var start = new Object();
 			var end = new Object();
 			for (var i = 0; i < numRanges; i++) {
 				myTree.view.selection.getRangeAt(i,start,end);
 				for (var j = start.value; j <= end.value; j++){
-					listOfUid.push(myTree.view.getCellText(j, {id: "uid"}));
+					var myId = myTree.view.getCellText(j, {id: "cbid"});
+					if (cardbookRepository.cardbookCards[myId]) {
+						listOfSelectedCard.push(cardbookRepository.cardbookCards[myId]);
+					}
 				}
 			}
-			return listOfUid;
+			return listOfSelectedCard;
 		},
 
 		getSelectedCardsCount: function () {
@@ -1466,19 +1469,29 @@ if ("undefined" == typeof(cardbookUtils)) {
 			}
 		},
 
-		setSelectedCards: function (aListOfUid, aFirstVisibleRow, aLastVisibleRow) {
-			if (aListOfUid.length == 0) {
+		setSelectedCards: function (aListOfCard, aFirstVisibleRow, aLastVisibleRow) {
+			var myList = JSON.parse(JSON.stringify(aListOfCard));
+			if (myList.length == 0) {
 				return;
 			}
-			var foundIndex;
+			var foundIndex = 0;
 			var myTree = document.getElementById('cardsTree');
-			for (var i = 0; i < aListOfUid.length; i++) {
-				for (var j = 0; j < myTree.view.rowCount; j++) {
-					if (myTree.view.getCellText(j, {id: "uid"}) == aListOfUid[i]) {
-						myTree.view.selection.rangedSelect(j,j,true);
+			myTree.view.selection.clearSelection();
+			// the list of Cards should be ordered
+			var treeLength = myTree.view.rowCount;
+			for (var j = 0; j < treeLength; j++) {
+				if (myList.length == 0) {
+					break;
+				}
+				if (myTree.view.getCellText(j, {id: "cbid"}) == myList[0].cbid) {
+					myTree.view.selection.rangedSelect(j,j,true);
+					myList.shift();
+					if (foundIndex == 0) {
 						foundIndex = j;
-						break;
 					}
+				}
+				if (j == treeLength -1) {
+					break;
 				}
 			}
 			if (foundIndex < aFirstVisibleRow || foundIndex > aLastVisibleRow) {
@@ -1512,7 +1525,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			for (var i = 0; i < numRanges; i++) {
 				myTree.view.selection.getRangeAt(i,start,end);
 				for (var j = start.value; j <= end.value; j++){
-					listOfUid.push(myTree.view.getCellText(j, {id: "dirPrefId"}) + "::" + myTree.view.getCellText(j, {id: "uid"}));
+					listOfUid.push(myTree.view.getCellText(j, {id: "cbid"}));
 				}
 			}
 			return listOfUid;
@@ -1736,7 +1749,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 				for (var i = 0; i < numRanges; i++) {
 					myTree.view.selection.getRangeAt(i,start,end);
 					for (var j = start.value; j <= end.value; j++){
-						listOfSelectedCard.push(cardbookRepository.cardbookCards[myTree.view.getCellText(j, {id: "dirPrefId"})+"::"+myTree.view.getCellText(j, {id: "uid"})]);
+						listOfSelectedCard.push(cardbookRepository.cardbookCards[myTree.view.getCellText(j, {id: "cbid"})]);
 					}
 				}
 				return listOfSelectedCard;

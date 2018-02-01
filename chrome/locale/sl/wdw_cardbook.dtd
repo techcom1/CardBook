@@ -93,6 +93,7 @@
 <!ENTITY prodidColumnLabel "Prodid">
 <!ENTITY sortstringColumnLabel "Niz za razvrščanje">
 <!ENTITY uidColumnLabel "Uid">
+<!ENTITY cbidColumnLabel "CardBook id">
 <!ENTITY dispurlColumnLabel "URL">
 <!ENTITY versionColumnLabel "Različica">
 <!ENTITY class1ColumnLabel "Razred">

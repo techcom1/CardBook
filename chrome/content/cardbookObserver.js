@@ -183,12 +183,14 @@ if ("undefined" == typeof(cardbookObserver)) {
 				case "cardbook.ABModifiedDirect":
 					wdw_cardbookContactsSidebar.loadAB();
 					break;
+				case "cardbook.syncRunning":
+					wdw_cardbookContactsSidebar.onABChange(aData);
+					break;
 				case "cardbook.catAddedIndirect":
 				case "cardbook.cardAddedIndirect":
 				case "cardbook.cardRemovedIndirect":
 				case "cardbook.cardRemovedDirect":
 				case "cardbook.cardModifiedIndirect":
-				case "cardbook.syncRunning":
 				case "cardbook.cardPasted":
 				case "cardbook.cardDragged":
 				case "cardbook.cardImportedFromFile":
@@ -245,11 +247,13 @@ if ("undefined" == typeof(cardbookObserver)) {
 			switch (aTopic) {
 				case "cardbook.catAddedIndirect":
 					break;
+				case "cardbook.syncRunning":
+					wdw_cardbook.refreshWindow(aData);
+					break;
 				case "cardbook.cardAddedIndirect":
 				case "cardbook.cardRemovedIndirect":
 				case "cardbook.cardRemovedDirect":
 				case "cardbook.cardModifiedIndirect":
-				case "cardbook.syncRunning":
 				case "cardbook.cardPasted":
 				case "cardbook.cardDragged":
 				case "cardbook.cardImportedFromFile":

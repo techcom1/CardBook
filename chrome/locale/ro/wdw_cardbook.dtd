@@ -93,6 +93,7 @@
 <!ENTITY prodidColumnLabel "Identificatorul produsului">
 <!ENTITY sortstringColumnLabel "Sortați șirul">
 <!ENTITY uidColumnLabel "Uid">
+<!ENTITY cbidColumnLabel "CardBook id">
 <!ENTITY dispurlColumnLabel "Adresa URL">
 <!ENTITY versionColumnLabel "Versiune">
 <!ENTITY class1ColumnLabel "Clasă">

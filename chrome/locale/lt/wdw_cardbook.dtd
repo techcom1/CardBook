@@ -93,6 +93,7 @@
 <!ENTITY prodidColumnLabel "Produkto identifikatorius">
 <!ENTITY sortstringColumnLabel "Rūšiuoti eilutę">
 <!ENTITY uidColumnLabel "Uid">
+<!ENTITY cbidColumnLabel "CardBook id">
 <!ENTITY dispurlColumnLabel "Tinklalapis">
 <!ENTITY versionColumnLabel "Versija">
 <!ENTITY class1ColumnLabel "Klasė">

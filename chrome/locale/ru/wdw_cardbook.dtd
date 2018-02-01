@@ -93,6 +93,7 @@
 <!ENTITY prodidColumnLabel "Product ID">
 <!ENTITY sortstringColumnLabel "Строка для сортировки">
 <!ENTITY uidColumnLabel "Uid">
+<!ENTITY cbidColumnLabel "CardBook id">
 <!ENTITY dispurlColumnLabel "URL">
 <!ENTITY versionColumnLabel "Версия">
 <!ENTITY class1ColumnLabel "Классификатор доступа">

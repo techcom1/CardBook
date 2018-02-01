@@ -93,6 +93,7 @@
 <!ENTITY prodidColumnLabel "Prodid">
 <!ENTITY sortstringColumnLabel "Ordina stringa">
 <!ENTITY uidColumnLabel "Uid">
+<!ENTITY cbidColumnLabel "CardBook id">
 <!ENTITY dispurlColumnLabel "URL">
 <!ENTITY versionColumnLabel "Versione">
 <!ENTITY class1ColumnLabel "Class">

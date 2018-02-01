@@ -93,6 +93,7 @@
 <!ENTITY prodidColumnLabel "Produk Identitas">
 <!ENTITY sortstringColumnLabel "Urutkan String">
 <!ENTITY uidColumnLabel "Uid">
+<!ENTITY cbidColumnLabel "CardBook id">
 <!ENTITY dispurlColumnLabel "Alamat URL">
 <!ENTITY versionColumnLabel "Versi">
 <!ENTITY class1ColumnLabel "Kelas">

@@ -165,6 +165,8 @@
 								<splitter class="tree-splitter"/>
 								<treecol id="uid" label="&uidColumnLabel;" flex="1" persist="width ordinal hidden" style="text-align:left" hidden="true" class="sortDirectionIndicator" sortDirection="ascending"/>
 								<splitter class="tree-splitter"/>
+								<treecol id="cbid" label="&cbidColumnLabel;" flex="1" persist="width ordinal hidden" style="text-align:left" hidden="true" class="sortDirectionIndicator" sortDirection="ascending"/>
+								<splitter class="tree-splitter"/>
 								<treecol id="dispurl" label="&dispurlColumnLabel;" flex="1" persist="width ordinal hidden" style="text-align:left" hidden="true" class="sortDirectionIndicator" sortDirection="ascending"/>
 								<splitter class="tree-splitter"/>
 								<treecol id="version" label="&versionColumnLabel;" flex="1" persist="width ordinal hidden" style="text-align:left" hidden="true" class="sortDirectionIndicator" sortDirection="ascending"/>

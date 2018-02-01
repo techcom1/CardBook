@@ -93,6 +93,7 @@
 <!ENTITY prodidColumnLabel "제품 신분증">
 <!ENTITY sortstringColumnLabel "문자열 정렬">
 <!ENTITY uidColumnLabel "사용자 번호">
+<!ENTITY cbidColumnLabel "??CardBook id??">
 <!ENTITY dispurlColumnLabel "URL 주소">
 <!ENTITY versionColumnLabel "버전">
 <!ENTITY class1ColumnLabel "수업">

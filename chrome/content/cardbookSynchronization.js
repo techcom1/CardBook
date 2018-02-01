@@ -2072,7 +2072,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			cardbookRepository.lTimerSyncAll[aPrefId] = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);
 			var lTimerSync = cardbookRepository.lTimerSyncAll[aPrefId];
 			lTimerSync.initWithCallback({ notify: function(lTimerSync) {
-						cardbookUtils.notifyObservers("cardbook.syncRunning");
+						cardbookUtils.notifyObservers("cardbook.syncRunning", "syncaccountid:" + aPrefId);
 						if (cardbookRepository.cardbookServerSyncCompareWithCacheDone[aPrefId] != 0) {
 							if (cardbookRepository.cardbookServerSyncCompareWithCacheDone[aPrefId] == cardbookRepository.cardbookServerSyncCompareWithCacheTotal[aPrefId]) {
 								cardbookRepository.cardbookServerSyncCompareWithCacheDone[aPrefId] = 0;
@@ -2142,7 +2142,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			cardbookRepository.lTimerDirAll[aPrefId] = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);
 			var lTimerDir = cardbookRepository.lTimerDirAll[aPrefId];
 			lTimerDir.initWithCallback({ notify: function(lTimerDir) {
-						cardbookUtils.notifyObservers("cardbook.syncRunning");
+						cardbookUtils.notifyObservers("cardbook.syncRunning", "syncaccountid:" + aPrefId);
 						if (cardbookRepository.cardbookServerSyncHandleRemainingDone[aPrefId] == cardbookRepository.cardbookServerSyncHandleRemainingTotal[aPrefId]) {
 							var request = cardbookSynchronization.getRequest(aPrefId, aPrefName) + cardbookSynchronization.getTotal(aPrefId, aPrefName);
 							var response = cardbookSynchronization.getResponse(aPrefId, aPrefName) + cardbookSynchronization.getDone(aPrefId, aPrefName);
@@ -2167,7 +2167,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			cardbookRepository.lTimerLoadCacheAll[aPrefId] = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);
 			var lTimerLoadCache = cardbookRepository.lTimerLoadCacheAll[aPrefId];
 			lTimerLoadCache.initWithCallback({ notify: function(lTimerLoadCache) {
-					cardbookUtils.notifyObservers("cardbook.syncRunning");
+					cardbookUtils.notifyObservers("cardbook.syncRunning", "syncaccountid:" + aPrefId);
 					wdw_cardbooklog.updateStatusProgressInformationWithDebug1(aPrefName + " : debug mode : cardbookRepository.cardbookServerSyncEmptyCache : ", cardbookRepository.cardbookServerSyncEmptyCache[aPrefId]);
 					wdw_cardbooklog.updateStatusProgressInformationWithDebug1(aPrefName + " : debug mode : cardbookRepository.cardbookServerSyncLoadCacheDone : ", cardbookRepository.cardbookServerSyncLoadCacheDone[aPrefId]);
 					wdw_cardbooklog.updateStatusProgressInformationWithDebug1(aPrefName + " : debug mode : cardbookRepository.cardbookServerSyncLoadCacheTotal : ", cardbookRepository.cardbookServerSyncLoadCacheTotal[aPrefId]);
@@ -2199,7 +2199,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			cardbookRepository.lTimerImportAll[aPrefId] = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);
 			var lTimerImport = cardbookRepository.lTimerImportAll[aPrefId];
 			lTimerImport.initWithCallback({ notify: function(lTimerImport) {
-						cardbookUtils.notifyObservers("cardbook.syncRunning");
+						cardbookUtils.notifyObservers("cardbook.syncRunning", "syncaccountid:" + aPrefId);
 						var request = cardbookSynchronization.getRequest(aPrefId, aPrefName) + cardbookSynchronization.getTotal(aPrefId, aPrefName);
 						var response = cardbookSynchronization.getResponse(aPrefId, aPrefName) + cardbookSynchronization.getDone(aPrefId, aPrefName);
 						if (request == response) {
@@ -2219,7 +2219,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			cardbookRepository.lComplexSearchAll[aPrefId] = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);
 			var lComplexSearch = cardbookRepository.lComplexSearchAll[aPrefId];
 			lComplexSearch.initWithCallback({ notify: function(lComplexSearch) {
-						cardbookUtils.notifyObservers("cardbook.syncRunning");
+						cardbookUtils.notifyObservers("cardbook.syncRunning", "syncaccountid:" + aPrefId);
 						var request = cardbookSynchronization.getRequest(aPrefId, aPrefName);
 						var response = cardbookSynchronization.getResponse(aPrefId, aPrefName);
 						if (request == response) {

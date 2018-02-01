@@ -93,6 +93,7 @@
 <!ENTITY prodidColumnLabel "Danh tính Sản phẩm">
 <!ENTITY sortstringColumnLabel "Sắp xếp chuỗi">
 <!ENTITY uidColumnLabel "Uid">
+<!ENTITY cbidColumnLabel "CardBook id">
 <!ENTITY dispurlColumnLabel "Địa chỉ URL">
 <!ENTITY versionColumnLabel "Phiên bản">
 <!ENTITY class1ColumnLabel "Lớp học">

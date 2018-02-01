@@ -93,6 +93,7 @@
 <!ENTITY prodidColumnLabel "Prodid">
 <!ENTITY sortstringColumnLabel "String rendezése">
 <!ENTITY uidColumnLabel "Uid">
+<!ENTITY cbidColumnLabel "CardBook id">
 <!ENTITY dispurlColumnLabel "Webcím">
 <!ENTITY versionColumnLabel "Változat">
 <!ENTITY class1ColumnLabel "Osztály">

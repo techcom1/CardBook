@@ -718,40 +718,50 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 			document.getElementById('peopleSearchInput').placeholder = strBundle.getString("cardbookSearchInputDefault");
 		},
 		
-		onABChange: function () {
-			var addrbookColumn = document.getElementById("addrbook");
-			if (document.getElementById('CardBookABMenulist').selectedItem.value != "allAddressBooks" && document.getElementById('CardBookABMenulist').selectedItem.getAttribute("ABtype") != "search") {
-				addrbookColumn.setAttribute('hidden', 'true');
-				addrbookColumn.setAttribute('ignoreincolumnpicker', "true");
+		onABChange: function (aParams) {
+			// no need to refresh cards for others syncing dirprefid
+			if (aParams && aParams.search(/^syncaccountid:/) != -1) {
+				mySyncAccountId = aParams.replace(/^syncaccountid:/, "");
+				var mySyncCondition = (mySyncAccountId == document.getElementById('CardBookABMenulist').selectedItem.value || 
+											document.getElementById('CardBookABMenulist').selectedItem.value == "allAddressBooks");
 			} else {
-				addrbookColumn.removeAttribute('hidden');
-				addrbookColumn.removeAttribute('ignoreincolumnpicker');
+				mySyncCondition = true;
 			}
-
-			var ABList = document.getElementById('CardBookABMenulist').selectedItem;
-			if (ABList.value != null && ABList.value !== undefined && ABList.value != "") {
-				var ABDefaultValue = ABList.value;
-			} else {
-				var ABDefaultValue = 0;
+			if (mySyncCondition) {
+				var addrbookColumn = document.getElementById("addrbook");
+				if (document.getElementById('CardBookABMenulist').selectedItem.value != "allAddressBooks" && document.getElementById('CardBookABMenulist').selectedItem.getAttribute("ABtype") != "search") {
+					addrbookColumn.setAttribute('hidden', 'true');
+					addrbookColumn.setAttribute('ignoreincolumnpicker', "true");
+				} else {
+					addrbookColumn.removeAttribute('hidden');
+					addrbookColumn.removeAttribute('ignoreincolumnpicker');
+				}
+	
+				var ABList = document.getElementById('CardBookABMenulist').selectedItem;
+				if (ABList.value != null && ABList.value !== undefined && ABList.value != "") {
+					var ABDefaultValue = ABList.value;
+				} else {
+					var ABDefaultValue = 0;
+				}
+				var categoryList = document.getElementById('categoriesMenulist');
+				if (categoryList.value != null && categoryList.value !== undefined && categoryList.value != "") {
+					var categoryDefaultValue = categoryList.value;
+				} else {
+					var categoryDefaultValue = 0;
+				}
+				cardbookElementTools.loadCategories("categoriesMenupopup", "categoriesMenulist", ABDefaultValue, categoryDefaultValue, true, true, true, false,
+													wdw_cardbookContactsSidebar.catInclRestrictions, wdw_cardbookContactsSidebar.catExclRestrictions);
+				
+				if (document.getElementById('categoriesMenulist').itemCount == 3) {
+					document.getElementById('categoriesPickerLabel').setAttribute('hidden', 'true');
+					document.getElementById('categoriesMenulist').setAttribute('hidden', 'true');
+				} else {
+					document.getElementById('categoriesPickerLabel').removeAttribute('hidden');
+					document.getElementById('categoriesMenulist').removeAttribute('hidden');
+				}
+				
+				wdw_cardbookContactsSidebar.search();
 			}
-			var categoryList = document.getElementById('categoriesMenulist');
-			if (categoryList.value != null && categoryList.value !== undefined && categoryList.value != "") {
-				var categoryDefaultValue = categoryList.value;
-			} else {
-				var categoryDefaultValue = 0;
-			}
-			cardbookElementTools.loadCategories("categoriesMenupopup", "categoriesMenulist", ABDefaultValue, categoryDefaultValue, true, true, true, false,
-												wdw_cardbookContactsSidebar.catInclRestrictions, wdw_cardbookContactsSidebar.catExclRestrictions);
-			
-			if (document.getElementById('categoriesMenulist').itemCount == 3) {
-				document.getElementById('categoriesPickerLabel').setAttribute('hidden', 'true');
-				document.getElementById('categoriesMenulist').setAttribute('hidden', 'true');
-			} else {
-				document.getElementById('categoriesPickerLabel').removeAttribute('hidden');
-				document.getElementById('categoriesMenulist').removeAttribute('hidden');
-			}
-			
-			wdw_cardbookContactsSidebar.search();
 		},
 
 		// works only when the restrictions are changed
