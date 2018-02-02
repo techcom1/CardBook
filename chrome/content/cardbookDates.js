@@ -56,12 +56,21 @@ if ("undefined" == typeof(cardbookDates)) {
 					return aDateString;
 				} else if (myDate.getFullYear() == "666") {
 					if (Services.vc.compare(Services.appinfo.version, "57") >= 0) {
-						if (aTargetDateFormat == "0") {
-							var formatter = Services.intl.createDateTimeFormat(undefined, { month: "long", day: "numeric", timeZone: "UTC"});
+						if (Services.vc.compare(Services.appinfo.version, "59") >= 0) {
+							if (aTargetDateFormat == "0") {
+								var formatter = new Services.intl.DateTimeFormat(undefined, { month: "long", day: "numeric", timeZone: "UTC"});
+							} else {
+								var formatter = new Services.intl.DateTimeFormat(undefined, { month: "short", day: "numeric", timeZone: "UTC"});
+							}
+							return formatter.format(myDate);
 						} else {
-							var formatter = Services.intl.createDateTimeFormat(undefined, { month: "short", day: "numeric", timeZone: "UTC"});
+							if (aTargetDateFormat == "0") {
+								var formatter = Services.intl.createDateTimeFormat(undefined, { month: "long", day: "numeric", timeZone: "UTC"});
+							} else {
+								var formatter = Services.intl.createDateTimeFormat(undefined, { month: "short", day: "numeric", timeZone: "UTC"});
+							}
+							return formatter.format(myDate);
 						}
-						return formatter.format(myDate);
 					} else {
 						if (aDateString.startsWith("--") && aSourceDateFormat == "YYYYMMDD") {
 							aDateString = aDateString.replace(/^--/, "");
@@ -70,12 +79,21 @@ if ("undefined" == typeof(cardbookDates)) {
 					}
 				} else {
 					if (Services.vc.compare(Services.appinfo.version, "57") >= 0) {
-						if (aTargetDateFormat == "0") {
-							var formatter = Services.intl.createDateTimeFormat(undefined, {dateStyle: "long", timeZone: "UTC"});
+						if (Services.vc.compare(Services.appinfo.version, "59") >= 0) {
+							if (aTargetDateFormat == "0") {
+								var formatter = new Services.intl.DateTimeFormat(undefined, {dateStyle: "long", timeZone: "UTC"});
+							} else {
+								var formatter = new Services.intl.DateTimeFormat(undefined, {dateStyle: "short", timeZone: "UTC"});
+							}
+							return formatter.format(myDate);
 						} else {
-							var formatter = Services.intl.createDateTimeFormat(undefined, {dateStyle: "short", timeZone: "UTC"});
+							if (aTargetDateFormat == "0") {
+								var formatter = Services.intl.createDateTimeFormat(undefined, {dateStyle: "long", timeZone: "UTC"});
+							} else {
+								var formatter = Services.intl.createDateTimeFormat(undefined, {dateStyle: "short", timeZone: "UTC"});
+							}
+							return formatter.format(myDate);
 						}
-						return formatter.format(myDate);
 					} else {
 						var myDateService = Components.classes["@mozilla.org/intl/scriptabledateformat;1"].getService(Components.interfaces.nsIScriptableDateFormat);
 						if (aTargetDateFormat == "0") {

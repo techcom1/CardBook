@@ -2945,10 +2945,10 @@ if ("undefined" == typeof(wdw_cardbook)) {
 
 			// no need to refresh cards for others syncing dirprefid
 			if (aParams && aParams.search(/^syncaccountid:/) != -1) {
-				mySyncAccountId = aParams.replace(/^syncaccountid:/, "");
+				var mySyncAccountId = aParams.replace(/^syncaccountid:/, "");
 				var mySyncCondition = (mySyncAccountId == myAccountId || cardbookRepository.cardbookComplexSearchMode == "SEARCH");
 			} else {
-				mySyncCondition = true;
+				var mySyncCondition = true;
 			}
 			
 			// for search mode the reselection is done inside their functions
