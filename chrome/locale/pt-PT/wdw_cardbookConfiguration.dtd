@@ -15,13 +15,13 @@
 <!ENTITY autocompletionTooltip "Trocar o normal autocomplete pelo do carbook. Quando activado, os email serão provenientes do repositorio do cardbook ou os emails recolhidos.">
 <!ENTITY autocompleteSortByPopularityLabel "Organizar email por popularidade">
 <!ENTITY autocompleteSortByPopularityAccesskey "p">
-<!ENTITY autocompleteProposeConcatEmailsLabel "??Propose concatenated emails per contact??">
+<!ENTITY autocompleteProposeConcatEmailsLabel "Propor emails contatenados por contacto">
 <!ENTITY autocompleteProposeConcatEmailsAccesskey "c">
 <!ENTITY autocompleteShowAddressbookLabel "Mostrar nome da agenda">
 <!ENTITY autocompleteShowAddressbookAccesskey "M">
 <!ENTITY autocompleteWithColorLabel "Usar cor da agenda">
 <!ENTITY autocompleteWithColorAccesskey "U">
-<!ENTITY autocompleteRestrictSearchLabel "??Restrict searched fields??">
+<!ENTITY autocompleteRestrictSearchLabel "Restringir campos de pesquisa">
 <!ENTITY autocompleteRestrictSearchAccesskey "P">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonLabel "Editar">
 <!ENTITY chooseAutocompleteRestrictSearchFieldsButtonAccesskey "E">
@@ -100,9 +100,9 @@
 <!ENTITY showNameAsFLAccesskey "N">
 <!ENTITY showNameAsDSPLabel "Nome de apresentação">
 <!ENTITY showNameAsDSPAccesskey "d">
-<!ENTITY adrLabelExplanation "??It is possible to customize the way CardBook formats its addresses??. A formula consiste num bloco dentro de «()». Nesse bloco existem 2 partes delimitadas por «|». A primeira é aplicada quando o termo envolvido (ex: {{1}}), não é nulo e a segunda parte é aplicada quando o termo é nulo">
-<!ENTITY adrFormulaLabel "??Address Format Formula??">
-<!ENTITY adrFormulaAccesskey "??R??">
+<!ENTITY adrLabelExplanation "É possivel alterar a maneira como o CardBook formata as suas moradas. A formula consiste num bloco dentro de «()». Nesse bloco existem 2 partes delimitadas por «|». A primeira é aplicada quando o termo envolvido (ex: {{1}}), não é nulo e a segunda parte é aplicada quando o termo é nulo">
+<!ENTITY adrFormulaLabel "Formola para formato da Morada">
+<!ENTITY adrFormulaAccesskey "R">
 <!ENTITY resetAdrFormulaLabel "Restaurar para origem">
 <!ENTITY resetAdrFormulaAccesskey "R">
 <!ENTITY miscEditingGroupboxLabel "Diversos">
