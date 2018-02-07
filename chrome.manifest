@@ -38,9 +38,9 @@ skin   cardbook-os          classic/1.0   chrome/skin/os/windows/            os=
 skin   cardbook-os          classic/1.0   chrome/skin/os/mac/                os=Darwin
 
 # support for customizing toolbars
-style    chrome://global/content/customizeToolbar.xul chrome://cardbook-osversion/skin/mainToolbarButton.css        appversion<=58.0b3
+style    chrome://global/content/customizeToolbar.xul chrome://cardbook-osversion/skin/mainToolbarButton.css        appversion<59.0a1
 style    chrome://messenger/content/customizeToolbar.xul chrome://cardbook-osversion/skin/mainToolbarButton.css        appversion>=59.0a1
-style    chrome://global/content/customizeToolbar.xul chrome://cardbook-osversion/skin/cardbookToolbarButtons.css   appversion<=58.0b3
+style    chrome://global/content/customizeToolbar.xul chrome://cardbook-osversion/skin/cardbookToolbarButtons.css   appversion<59.0a1
 style    chrome://messenger/content/customizeToolbar.xul chrome://cardbook-osversion/skin/cardbookToolbarButtons.css   appversion>=59.0a1
 
 # support for CardBook, yellow stars, creation from emails, formatting email fields

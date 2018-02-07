@@ -136,6 +136,8 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			// in case of opening a new window without having a reload
 			wdw_cardbook.loadCssRules();
 			wdw_cardbook.refreshAccountsInDirTree();
+			var accountShown = cardbookPreferences.getStringPref("extensions.cardbook.accountShown");
+			cardbookUtils.setSelectedAccount(accountShown, wdw_cardbook.currentFirstVisibleRow, wdw_cardbook.currentLastVisibleRow);
 		},
 
 		syncAccountFromAccountsOrCats: function () {
@@ -257,6 +259,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				var myAccountId = myTree.view.getCellText(0, {id: "accountId"});
 			}
 			wdw_cardbook.clearCard();
+			cardbookPreferences.setStringPref("extensions.cardbook.accountShown", cardbookUtils.getAccountId(myAccountId));
 			wdw_cardbook.refreshWindow("accountid:" + myAccountId);
 		},
 

@@ -707,7 +707,7 @@ var cardbookRepository = {
 		result.push(["true", "include", "allMailAccounts", aDirPrefId, ""]);
 
 		for (var i = 0; i < result.length; i++) {
-			cardbookPreferences.cardbookPreferences(i.toString(), result[i][0] + "::" + result[i][1] + "::" + result[i][2] + "::" + result[i][3] + "::" + result[i][4]);
+			cardbookPreferences.setEmailsCollection(i.toString(), result[i][0] + "::" + result[i][1] + "::" + result[i][2] + "::" + result[i][3] + "::" + result[i][4]);
 		}
 	},
 

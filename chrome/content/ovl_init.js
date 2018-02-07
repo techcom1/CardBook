@@ -89,8 +89,9 @@ if ("undefined" == typeof(ovl_synchro)) {
 			prefs.setBoolPref("viewABContact", true);
 			
 			prefs.setCharPref("accountsShown", "all");
+			prefs.setCharPref("accountShown", "");
 			prefs.setCharPref("uncategorizedCards", "");
-			prefs.setCharPref("addonVersion", "26.6");
+			prefs.setCharPref("addonVersion", "26.7");
 		},
 
 		lEventTimerSync : { notify: function(lTimerSync) {

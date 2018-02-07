@@ -58,7 +58,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			var contacts = contactManager.directories;
 			while ( contacts.hasMoreElements() ) {
 				var contact = contacts.getNext().QueryInterface(Components.interfaces.nsIAbDirectory);
-				if (contact.dirPrefId == "ldap_2.servers.history" && window.arguments[0].action == "first") {
+				if (contact.dirPrefId == "ldap_2.servers.history") {
 					wdw_addressbooksAdd.gStandardAddressbooks.push([contact.dirPrefId, contact.dirName, true]);
 				} else {
 					wdw_addressbooksAdd.gStandardAddressbooks.push([contact.dirPrefId, contact.dirName, false]);
