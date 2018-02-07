@@ -121,6 +121,8 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		},
 
 		loadFirstWindow: function () {
+			cardBookPrefObserver.register();
+			cardBookWindowObserver.register();
 			// for versions <= 20.4
 			wdw_cardbook.migrateIcons();
 			wdw_cardbook.setSyncControl();

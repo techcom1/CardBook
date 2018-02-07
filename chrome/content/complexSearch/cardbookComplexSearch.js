@@ -47,6 +47,8 @@ if ("undefined" == typeof(cardbookComplexSearch)) {
 						var found = true;
 					} else if (cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules[i][2] == "IsntEmpty") {
 						var found = true;
+					} else {
+						var found = false;
 					}
 				} else if (myField.find(searchArray) == undefined) {
 					var found = false;

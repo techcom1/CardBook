@@ -3,8 +3,8 @@ if ("undefined" == typeof(ovl_cardbookComposeMsg)) {
 	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
 
 	var ovl_cardbookComposeMsg = {
-		onIdentityChanged: function() {
-			var outerID = content.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsIDOMWindowUtils).outerWindowID;
+		LoadIdentity: function() {
+			var outerID = GetCurrentEditorElement().outerWindowID;
 			cardbookRepository.composeMsgIdentity[outerID] = document.getElementById("msgIdentity").selectedItem.getAttribute("identitykey");
 			// this event is used only when the identity is changed, not for the initial start
 			cardbookUtils.notifyObservers("cardbook.identityChanged", outerID);
@@ -79,7 +79,7 @@ if ("undefined" == typeof(ovl_cardbookComposeMsg)) {
 		var rv = _original.apply(null, arguments);
 
 		// Execute some action afterwards.
-		ovl_cardbookComposeMsg.onIdentityChanged();
+		ovl_cardbookComposeMsg.LoadIdentity();
 
 		// return the original result
 		return rv;

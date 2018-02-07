@@ -31,6 +31,7 @@
 	onclose="wdw_cardEdition.cancel();"
 	id="wdw_cardEdition"
 	persist="screenX screenY width height" class="cardbookBackgroundColorClass dialog-content-box"
+	windowtype="CardBook:contactEditionWindow"
 	style="min-width:500px;min-height:600px;">
 	
 	<stringbundleset id="stringbundleset"/>

@@ -23,7 +23,7 @@ if ("undefined" == typeof(wdw_addressbooksEdit)) {
 			myLabel = myLabel + "{{5}} : " + strBundle.getString("suffixnameLabel") + "    ";
 			var count = 6;
 			if (allOrg.length === 0) {
-				myLabel = "{{6}} : " + strBundle.getString("orgLabel");
+				myLabel = myLabel + "{{6}} : " + strBundle.getString("orgLabel");
 			} else {
 				for (var i = 0; i < allOrg.length; i++) {
 					var index = count + i;

@@ -13,13 +13,13 @@
 
 <wizard id="addressbook-wizard"
 	title="&wizard.title;"
-	windowtype="Addressbook:NewAddressbookWizard"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 	xmlns:html="http://www.w3.org/1999/xhtml"
 	onload="wdw_addressbooksAdd.loadWizard();"
 	onwizardcancel="wdw_addressbooksAdd.cancelWizard();"
 	onclose="wdw_addressbooksAdd.cancelWizard();"
 	onwizardfinish="wdw_addressbooksAdd.closeWizard();"
+	windowtype="CardBook:addressbookAddWindow"
 	style="min-height:600px;min-width:1200px;"
 	persist="screenX screenY">
 

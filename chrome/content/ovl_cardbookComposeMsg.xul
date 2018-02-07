@@ -30,10 +30,4 @@
 			oncommand="ovl_cardbook.open();"
 			insertafter="tasksMenuAddressBook"/>
 	</menupopup>
-	
-	<menulist id="msgIdentity" type="description" flex="1"
-			disableautoselect="true" onkeypress="fromKeyPress(event);"
-			oncommand="LoadIdentity(false);ovl_cardbookComposeMsg.onIdentityChanged();" disableonsend="true">
-		<menupopup id="msgIdentityPopup"/>
-	</menulist>
 </overlay>

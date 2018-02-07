@@ -8,6 +8,7 @@ if ("undefined" == typeof(cardbookTabType)) {
 		onTabTitleChanged: function() {},
 		onTabOpened: function(aTab) {
 			if (aTab.mode.name == "cardbook") {
+				// in case of opening a new window without having a reload
 				wdw_cardbook.loadFirstWindow();
 			}
 		},

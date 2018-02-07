@@ -17,7 +17,7 @@
 <!ENTITY buttonRemoveFromListLabel "Remover">
 <!ENTITY buttonRemoveFromListAccesskey "O">
 <!ENTITY buttonGuessFromListLabel "Escolha">
-<!ENTITY buttonGuessFromListAccesskey "G">
+<!ENTITY buttonGuessFromListAccesskey "E">
 <!ENTITY loadTemplateLabel "Selecionar modelo">
 <!ENTITY loadTemplateAccesskey "m">
 <!ENTITY saveTemplateLabel "Gravar modelo">

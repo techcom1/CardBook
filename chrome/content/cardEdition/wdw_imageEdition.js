@@ -107,6 +107,7 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 				cardbookUtils.adjustFields();
 				wdw_imageEdition.resizeImageCard("chrome://cardbook/skin/missing_photo_200_214.png");
 			}
+
 		},
 
 		addImageCardFromFile: function () {

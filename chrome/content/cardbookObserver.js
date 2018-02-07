@@ -1,4 +1,4 @@
-if ("undefined" == typeof(cardbookObserver)) {
+if ("undefined" == typeof(cardBookObserver)) {
 	Components.utils.import("resource://gre/modules/Services.jsm");
 
 	var cardBookPrefObserverRepository = {
@@ -82,7 +82,7 @@ if ("undefined" == typeof(cardbookObserver)) {
 		}
 	};
 
-	var cardbookObserverRepository = {
+	var cardBookObserverRepository = {
 		registerAll: function(aObserver) {
 			Services.obs.addObserver(aObserver, "cardbook.catModifiedIndirect", false);
 			Services.obs.addObserver(aObserver, "cardbook.catModifiedDirect", false);
@@ -112,6 +112,8 @@ if ("undefined" == typeof(cardbookObserver)) {
 			Services.obs.addObserver(aObserver, "cardbook.complexSearchLoaded", false);
 
 			Services.obs.addObserver(aObserver, "cardbook.preferencesChanged", false);
+			
+			Services.obs.addObserver(aObserver, "cardbook.identityChanged", false);
 		},
 		
 		unregisterAll: function(aObserver) {
@@ -143,16 +145,18 @@ if ("undefined" == typeof(cardbookObserver)) {
 			Services.obs.removeObserver(aObserver, "cardbook.complexSearchLoaded");
 
 			Services.obs.removeObserver(aObserver, "cardbook.preferencesChanged");
+
+			Services.obs.removeObserver(aObserver, "cardbook.identityChanged");
 		}
 	};
 
 	var myCardBookLightningObserver = {
 		register: function() {
-			cardbookObserverRepository.registerAll(this);
+			cardBookObserverRepository.registerAll(this);
 		},
 		
 		unregister: function() {
-			cardbookObserverRepository.unregisterAll(this);
+			cardBookObserverRepository.unregisterAll(this);
 		},
 		
 		observe: function(aSubject, aTopic, aData) {
@@ -169,11 +173,11 @@ if ("undefined" == typeof(cardbookObserver)) {
 
 	var myCardBookSideBarObserver = {
 		register: function() {
-			cardbookObserverRepository.registerAll(this);
+			cardBookObserverRepository.registerAll(this);
 		},
 		
 		unregister: function() {
-			cardbookObserverRepository.unregisterAll(this);
+			cardBookObserverRepository.unregisterAll(this);
 		},
 		
 		observe: function(aSubject, aTopic, aData) {
@@ -215,11 +219,11 @@ if ("undefined" == typeof(cardbookObserver)) {
 
 	var myCardBookComposeMsgObserver = {
 		register: function() {
-			cardbookObserverRepository.registerAll(this);
+			cardBookObserverRepository.registerAll(this);
 		},
 		
 		unregister: function() {
-			cardbookObserverRepository.unregisterAll(this);
+			cardBookObserverRepository.unregisterAll(this);
 		},
 		
 		observe: function(aSubject, aTopic, aData) {
@@ -234,13 +238,37 @@ if ("undefined" == typeof(cardbookObserver)) {
 		}
 	};
 
-	var cardbookObserver = {
+	var cardBookObserver = {
 		register: function() {
-			cardbookObserverRepository.registerAll(this);
+			cardBookObserverRepository.registerAll(this);
 		},
 		
 		unregister: function() {
-			cardbookObserverRepository.unregisterAll(this);
+			cardBookObserverRepository.unregisterAll(this);
+		},
+		
+		observe: function(aSubject, aTopic, aData) {
+			switch (aTopic) {
+				case "cardbook.DBOpen":
+					cardbookSynchronization.loadComplexSearchAccounts();
+					break;
+				case "cardbook.complexSearchInitLoaded":
+					cardbookSynchronization.loadAccounts();
+					if (wdw_cardbook) {
+						wdw_cardbook.loadFirstWindow();
+					}
+					break;
+			}
+		}
+	};
+
+	var cardBookWindowObserver = {
+		register: function() {
+			cardBookObserverRepository.registerAll(this);
+		},
+		
+		unregister: function() {
+			cardBookObserverRepository.unregisterAll(this);
 		},
 		
 		observe: function(aSubject, aTopic, aData) {
@@ -278,15 +306,6 @@ if ("undefined" == typeof(cardbookObserver)) {
 				case "cardbook.complexSearchLoaded":
 					wdw_cardbook.loadCssRules();
 					wdw_cardbook.refreshWindow(aData);
-					break;
-				case "cardbook.DBOpen":
-					cardbookSynchronization.loadComplexSearchAccounts();
-					break;
-				case "cardbook.complexSearchInitLoaded":
-					cardbookSynchronization.loadAccounts();
-					if (wdw_cardbook) {
-						wdw_cardbook.loadFirstWindow();
-					}
 					break;
 			}
 		}
