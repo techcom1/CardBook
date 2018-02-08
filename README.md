@@ -16,6 +16,11 @@
 You can get CardBook from the [official Thunderbird Add-On page](https://addons.mozilla.org/thunderbird/addon/cardbook/)!
 
 
+### Compatible and complementary add-ons:
+* [Mail Merge](https://addons.mozilla.org/thunderbird/addon/mail-merge/)
+* [Mail Redirect](https://addons.mozilla.org/thunderbird/addon/mailredirect/)
+
+
 ### Issues
 
 If you encounter any problems with CardBook please have a look at our [GitHub issue tracker](https://github.com/CardBook/CardBook/issues) and [our forum](https://cardbook.6660.eu/).
