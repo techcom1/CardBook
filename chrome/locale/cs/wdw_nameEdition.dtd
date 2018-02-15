@@ -1,4 +1,5 @@
 <!ENTITY persTitleLabel "Osobní informace">
+<!ENTITY nameLabel "Název">
 <!ENTITY fnLabel "Zobrazované jméno">
 <!ENTITY lastnameLabel "Příjmení">
 <!ENTITY firstnameLabel "Křestní jméno">
@@ -12,3 +13,4 @@
 <!ENTITY anniversaryLabel "Výroèí">
 <!ENTITY deathdateLabel "Den úmrtí">
 <!ENTITY deathplaceLabel "Místo úmrtí">
+<!ENTITY uidLabel "Uid">

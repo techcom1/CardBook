@@ -61,53 +61,6 @@
 <!ENTITY technicalTabLabel "Techninis">
 <!ENTITY vCardTabLabel "vCard">
 
-<!ENTITY cardIconColumnLabel "Piktograma">
-<!ENTITY nameColumnLabel "Vardas">
-<!ENTITY lastnameColumnLabel "Pavardė">
-<!ENTITY firstnameColumnLabel "Vardas">
-<!ENTITY othernameColumnLabel "Kitas vardas">
-<!ENTITY prefixnameColumnLabel "Prefikso pavadinimas">
-<!ENTITY suffixnameColumnLabel "Priesagos pavadinimas">
-<!ENTITY fnColumnLabel "Rodomas vardas">
-<!ENTITY nicknameColumnLabel "Slapyvardis">
-<!ENTITY genderColumnLabel "Lytis">
-<!ENTITY bdayColumnLabel "Gimimo diena">
-<!ENTITY dispadrColumnLabel "Adresai">
-<!ENTITY disphomeadrColumnLabel "Namų adresai">
-<!ENTITY dispworkadrColumnLabel "Darbo adresai">
-<!ENTITY disptelColumnLabel "Telefonai">
-<!ENTITY disphometelColumnLabel "Namų telefonai">
-<!ENTITY dispworktelColumnLabel "Darbo telefonai">
-<!ENTITY dispcelltelColumnLabel "Mobilieji telefonai">
-<!ENTITY dispemailColumnLabel "Elektroninio pašto adresai">
-<!ENTITY disphomeemailColumnLabel "Namų elektroninio pašto adresai">
-<!ENTITY dispworkemailColumnLabel "Darbo elektroninio pašto adresai">
-<!ENTITY mailerColumnLabel "Mailer">
-<!ENTITY tzColumnLabel "TZ">
-<!ENTITY geoColumnLabel "Geo">
-<!ENTITY titleColumnLabel "Pavadinimas">
-<!ENTITY roleColumnLabel "Vaidmuo">
-<!ENTITY orgColumnLabel "Organizacija">
-<!ENTITY categoriesColumnLabel "Kategorijos">
-<!ENTITY noteColumnLabel "Pastabos">
-<!ENTITY prodidColumnLabel "Produkto identifikatorius">
-<!ENTITY sortstringColumnLabel "Rūšiuoti eilutę">
-<!ENTITY uidColumnLabel "Uid">
-<!ENTITY cbidColumnLabel "CardBook id">
-<!ENTITY dispurlColumnLabel "Tinklalapis">
-<!ENTITY versionColumnLabel "Versija">
-<!ENTITY class1ColumnLabel "Klasė">
-<!ENTITY dispimppColumnLabel "Pokalbiai">
-<!ENTITY cardurlColumnLabel "Kortelės tinklalapis">
-<!ENTITY dirPrefIdColumnLabel "Katalogo privilegijų tapatybė">
-<!ENTITY kindColumnLabel "Rūšis">
-<!ENTITY revColumnLabel "Paskutinį kartą atnaujinta">
-<!ENTITY etagColumnLabel "Etag">
-<!ENTITY birthplaceColumnLabel "Gimimo vieta">
-<!ENTITY anniversaryColumnLabel "Jubiliejus">
-<!ENTITY deathdateColumnLabel "Mirties data">
-<!ENTITY deathplaceColumnLabel "Mirties vieta">
-
 <!ENTITY categoriesGroupboxLabel "Kategorijos">
 <!ENTITY noteTabLabel "Pastabos">
 <!ENTITY advancedTabLabel "Išplėstinė">

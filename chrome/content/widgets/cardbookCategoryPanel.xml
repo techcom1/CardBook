@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- adapted from Lightning -->
 <!DOCTYPE dialog [
-	<!ENTITY % cardbookWidgetsDTD SYSTEM "chrome://cardbook/locale/wdw_categoriesEdition.dtd"> %cardbookWidgetsDTD;
+	<!ENTITY % cardbookCategoryPanelDTD SYSTEM "chrome://cardbook/locale/wdw_categoriesEdition.dtd"> %cardbookCategoryPanelDTD;
 ]>
 
-<bindings id="cardbookWidgets"
+<bindings id="cardbookCategoryPanel"
 	xmlns="http://www.mozilla.org/xbl"
 	xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 	xmlns:xbl="http://www.mozilla.org/xbl">
@@ -24,7 +24,7 @@
 	
 	<binding id="cardbookItemPanel" extends="chrome://global/content/bindings/popup.xml#panel">
 		<resources>
-			<stylesheet src="chrome://cardbook/skin/cardbookWidgets.css"/>
+			<stylesheet src="chrome://cardbook/skin/cardbookCategoryPanel.css"/>
 		</resources>
 		<content>
 			<xul:textbox anonid="addItemTextbox"

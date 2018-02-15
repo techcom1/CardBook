@@ -61,53 +61,6 @@
 <!ENTITY technicalTabLabel "Technique">
 <!ENTITY vCardTabLabel "vCard">
 
-<!ENTITY cardIconColumnLabel "Icône">
-<!ENTITY nameColumnLabel "Nom">
-<!ENTITY lastnameColumnLabel "Nom de famille">
-<!ENTITY firstnameColumnLabel "Prénom">
-<!ENTITY othernameColumnLabel "Autre nom">
-<!ENTITY prefixnameColumnLabel "Préfixe">
-<!ENTITY suffixnameColumnLabel "Suffixe">
-<!ENTITY fnColumnLabel "Nom affiché">
-<!ENTITY nicknameColumnLabel "Surnom">
-<!ENTITY genderColumnLabel "Genre">
-<!ENTITY bdayColumnLabel "Jour de naissance">
-<!ENTITY dispadrColumnLabel "Adresses">
-<!ENTITY disphomeadrColumnLabel "Adresses maison">
-<!ENTITY dispworkadrColumnLabel "Adresses travail">
-<!ENTITY disptelColumnLabel "Téléphones">
-<!ENTITY disphometelColumnLabel "Téléphones maison">
-<!ENTITY dispworktelColumnLabel "Téléphones travail">
-<!ENTITY dispcelltelColumnLabel "Téléphones portables">
-<!ENTITY dispemailColumnLabel "Emails">
-<!ENTITY disphomeemailColumnLabel "Emails maison">
-<!ENTITY dispworkemailColumnLabel "Emails travail">
-<!ENTITY mailerColumnLabel "Mailer">
-<!ENTITY tzColumnLabel "Tz">
-<!ENTITY geoColumnLabel "Geo">
-<!ENTITY titleColumnLabel "Titre">
-<!ENTITY roleColumnLabel "Rôle">
-<!ENTITY orgColumnLabel "Société">
-<!ENTITY categoriesColumnLabel "Catégories">
-<!ENTITY noteColumnLabel "Note">
-<!ENTITY prodidColumnLabel "Prodid">
-<!ENTITY sortstringColumnLabel "Sort string">
-<!ENTITY uidColumnLabel "Uid">
-<!ENTITY cbidColumnLabel "CardBook id">
-<!ENTITY dispurlColumnLabel "URL">
-<!ENTITY versionColumnLabel "Version">
-<!ENTITY class1ColumnLabel "Class">
-<!ENTITY dispimppColumnLabel "Instant messaging">
-<!ENTITY cardurlColumnLabel "Card URL">
-<!ENTITY dirPrefIdColumnLabel "DirPrefId">
-<!ENTITY kindColumnLabel "Type">
-<!ENTITY revColumnLabel "Dernière mise à jour">
-<!ENTITY etagColumnLabel "Etag">
-<!ENTITY birthplaceColumnLabel "Lieu de naissance">
-<!ENTITY anniversaryColumnLabel "Anniversaire">
-<!ENTITY deathdateColumnLabel "Jour du décès">
-<!ENTITY deathplaceColumnLabel "Lieu du décès">
-
 <!ENTITY categoriesGroupboxLabel "Catégories">
 <!ENTITY noteTabLabel "Notes">
 <!ENTITY advancedTabLabel "Avancé">

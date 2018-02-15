@@ -1,4 +1,5 @@
 <!ENTITY persTitleLabel "Asmeninė informacija">
+<!ENTITY nameLabel "Vardas">
 <!ENTITY fnLabel "Rodomas pavadinimas">
 <!ENTITY lastnameLabel "Pavardė">
 <!ENTITY firstnameLabel "Vardas">
@@ -12,3 +13,4 @@
 <!ENTITY anniversaryLabel "Jubiliejus">
 <!ENTITY deathdateLabel "Mirties data">
 <!ENTITY deathplaceLabel "Mirties vieta">
+<!ENTITY uidLabel "Uid">

@@ -1,4 +1,5 @@
 <!ENTITY persTitleLabel "Persoonlijke informatie">
+<!ENTITY nameLabel "Naam">
 <!ENTITY fnLabel "Getoonde naam">
 <!ENTITY lastnameLabel "Achternaam">
 <!ENTITY firstnameLabel "Roepnaam">
@@ -12,3 +13,4 @@
 <!ENTITY anniversaryLabel "Verjaardag">
 <!ENTITY deathdateLabel "Overlijdensdatum">
 <!ENTITY deathplaceLabel "Overlijdensplaats">
+<!ENTITY uidLabel "Uid">

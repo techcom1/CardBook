@@ -61,53 +61,6 @@
 <!ENTITY technicalTabLabel "Technisch">
 <!ENTITY vCardTabLabel "vCard">
 
-<!ENTITY cardIconColumnLabel "Pictogram">
-<!ENTITY nameColumnLabel "Naam">
-<!ENTITY lastnameColumnLabel "Achternaam">
-<!ENTITY firstnameColumnLabel "Voornaam">
-<!ENTITY othernameColumnLabel "Extra naam">
-<!ENTITY prefixnameColumnLabel "Voorvoegsel">
-<!ENTITY suffixnameColumnLabel "Achtervoegsel">
-<!ENTITY fnColumnLabel "Getoonde naam">
-<!ENTITY nicknameColumnLabel "Bijnaam">
-<!ENTITY genderColumnLabel "Geslacht">
-<!ENTITY bdayColumnLabel "Geboortedatum">
-<!ENTITY dispadrColumnLabel "Adressen">
-<!ENTITY disphomeadrColumnLabel "Huis adres">
-<!ENTITY dispworkadrColumnLabel "Werk adres">
-<!ENTITY disptelColumnLabel "Telefoonnummers">
-<!ENTITY disphometelColumnLabel "Huis telefoonnummer">
-<!ENTITY dispworktelColumnLabel "Werk telefoonnummer">
-<!ENTITY dispcelltelColumnLabel "Mobiel telefoonnummer">
-<!ENTITY dispemailColumnLabel "Emails">
-<!ENTITY disphomeemailColumnLabel "Huis email">
-<!ENTITY dispworkemailColumnLabel "Werk email">
-<!ENTITY mailerColumnLabel "Mailer">
-<!ENTITY tzColumnLabel "Tijdzone">
-<!ENTITY geoColumnLabel "Geo">
-<!ENTITY titleColumnLabel "Titel">
-<!ENTITY roleColumnLabel "Rol">
-<!ENTITY orgColumnLabel "Organisatie">
-<!ENTITY categoriesColumnLabel "Categorieën">
-<!ENTITY noteColumnLabel "Notities">
-<!ENTITY prodidColumnLabel "Prodid">
-<!ENTITY sortstringColumnLabel "Sorteerkenmerk">
-<!ENTITY uidColumnLabel "Uid">
-<!ENTITY cbidColumnLabel "CardBook id">
-<!ENTITY dispurlColumnLabel "URL">
-<!ENTITY versionColumnLabel "Versie">
-<!ENTITY class1ColumnLabel "Klasse">
-<!ENTITY dispimppColumnLabel "Instant Messaging">
-<!ENTITY cardurlColumnLabel "Contactpersoon URL">
-<!ENTITY dirPrefIdColumnLabel "DirPrefId">
-<!ENTITY kindColumnLabel "Soort">
-<!ENTITY revColumnLabel "Laatst bijgewerkt">
-<!ENTITY etagColumnLabel "Etag">
-<!ENTITY birthplaceColumnLabel "Geboorteplaats">
-<!ENTITY anniversaryColumnLabel "Verjaardag">
-<!ENTITY deathdateColumnLabel "Overlijdensdatum">
-<!ENTITY deathplaceColumnLabel "Overlijdensplaats">
-
 <!ENTITY categoriesGroupboxLabel "Categorieën">
 <!ENTITY noteTabLabel "Notities">
 <!ENTITY advancedTabLabel "Geavanceerd">

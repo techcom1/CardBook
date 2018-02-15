@@ -61,53 +61,6 @@
 <!ENTITY technicalTabLabel "Tehnic">
 <!ENTITY vCardTabLabel "vCard">
 
-<!ENTITY cardIconColumnLabel "Icoană">
-<!ENTITY nameColumnLabel "Nume">
-<!ENTITY lastnameColumnLabel "Nume de familie">
-<!ENTITY firstnameColumnLabel "Prenume">
-<!ENTITY othernameColumnLabel "Alt nume">
-<!ENTITY prefixnameColumnLabel "Prefix">
-<!ENTITY suffixnameColumnLabel "Suffix">
-<!ENTITY fnColumnLabel "Numele afișat">
-<!ENTITY nicknameColumnLabel "Poreclă">
-<!ENTITY genderColumnLabel "Gen">
-<!ENTITY bdayColumnLabel "Zi de nastere">
-<!ENTITY dispadrColumnLabel "Adrese">
-<!ENTITY disphomeadrColumnLabel "Adresele de acasă">
-<!ENTITY dispworkadrColumnLabel "Adresele de muncă">
-<!ENTITY disptelColumnLabel "Telefoane">
-<!ENTITY disphometelColumnLabel "Telefoane de acasă">
-<!ENTITY dispworktelColumnLabel "Telefoane de muncă">
-<!ENTITY dispcelltelColumnLabel "Celulare">
-<!ENTITY dispemailColumnLabel "Poştă electronică">
-<!ENTITY disphomeemailColumnLabel "Poştă electronică de acasă">
-<!ENTITY dispworkemailColumnLabel "Poştă electronică de muncă">
-<!ENTITY mailerColumnLabel "Mailere">
-<!ENTITY tzColumnLabel "Fus orar">
-<!ENTITY geoColumnLabel "Geo">
-<!ENTITY titleColumnLabel "Titlu">
-<!ENTITY roleColumnLabel "Rol">
-<!ENTITY orgColumnLabel "Organizaţie">
-<!ENTITY categoriesColumnLabel "Categorii">
-<!ENTITY noteColumnLabel "Notițe">
-<!ENTITY prodidColumnLabel "Identificatorul produsului">
-<!ENTITY sortstringColumnLabel "Sortați șirul">
-<!ENTITY uidColumnLabel "Uid">
-<!ENTITY cbidColumnLabel "CardBook id">
-<!ENTITY dispurlColumnLabel "Adresa URL">
-<!ENTITY versionColumnLabel "Versiune">
-<!ENTITY class1ColumnLabel "Clasă">
-<!ENTITY dispimppColumnLabel "Mesagerie instanta">
-<!ENTITY cardurlColumnLabel "Adresa URL a cartelei">
-<!ENTITY dirPrefIdColumnLabel "Identificarea preferințelor în director">
-<!ENTITY kindColumnLabel "Fel">
-<!ENTITY revColumnLabel "Ultima actualizare">
-<!ENTITY etagColumnLabel "Etag">
-<!ENTITY birthplaceColumnLabel "Locul nasterii">
-<!ENTITY anniversaryColumnLabel "Aniversare">
-<!ENTITY deathdateColumnLabel "Data mortii">
-<!ENTITY deathplaceColumnLabel "Locul decesului">
-
 <!ENTITY categoriesGroupboxLabel "Categorii">
 <!ENTITY noteTabLabel "Notițe">
 <!ENTITY advancedTabLabel "Avansat">

@@ -46,12 +46,10 @@ if ("undefined" == typeof(ovl_synchro)) {
 			
 			prefs.setBoolPref("firstRun", true);
 			prefs.setBoolPref("firstOpen", true);
-			prefs.setBoolPref("firstOpenModern", true);
 			prefs.setBoolPref("iconsMigrated", false);
 			
 			prefs.setCharPref("kindCustom", "X-ADDRESSBOOKSERVER-KIND");
 			prefs.setCharPref("memberCustom", "X-ADDRESSBOOKSERVER-MEMBER");
-			prefs.setCharPref("customColumnsShown", "");
 			
 			prefs.setCharPref("orgStructure", "");
 			
@@ -91,7 +89,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 			prefs.setCharPref("accountsShown", "all");
 			prefs.setCharPref("accountShown", "");
 			prefs.setCharPref("uncategorizedCards", "");
-			prefs.setCharPref("addonVersion", "26.7");
+			prefs.setCharPref("addonVersion", "26.8");
 		},
 
 		lEventTimerSync : { notify: function(lTimerSync) {

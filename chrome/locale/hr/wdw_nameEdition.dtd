@@ -1,4 +1,5 @@
 <!ENTITY persTitleLabel "Osobni podaci">
+<!ENTITY nameLabel "Ime">
 <!ENTITY fnLabel "Prikaži ime">
 <!ENTITY lastnameLabel "Prezime">
 <!ENTITY firstnameLabel "Ime">
@@ -12,3 +13,4 @@
 <!ENTITY anniversaryLabel "Godišnjica">
 <!ENTITY deathdateLabel "Datum smrti">
 <!ENTITY deathplaceLabel "Mjesto smrti">
+<!ENTITY uidLabel "Uid">

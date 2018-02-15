@@ -218,7 +218,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			if (wdw_cardbookConfiguration.autocompleteRestrictSearchFields == "") {
 				wdw_cardbookConfiguration.autocompleteRestrictSearchFields = cardbookRepository.defaultAutocompleteRestrictSearchFields;
 			}
-			document.getElementById('autocompleteRestrictSearchFieldsTextBox').value = wdw_cardbookConfiguration.translateSearchFields(wdw_cardbookConfiguration.autocompleteRestrictSearchFields);
+			document.getElementById('autocompleteRestrictSearchFieldsTextBox').value = wdw_csvTranslator.translateFields(wdw_cardbookConfiguration.autocompleteRestrictSearchFields);
 		},
 
 		chooseAutocompleteRestrictSearchFieldsButton: function () {
@@ -231,13 +231,13 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 					result.push(myArgs.template[i][0]);
 				}
 				wdw_cardbookConfiguration.autocompleteRestrictSearchFields = result.join('|');
-				document.getElementById('autocompleteRestrictSearchFieldsTextBox').value = wdw_cardbookConfiguration.translateSearchFields(wdw_cardbookConfiguration.autocompleteRestrictSearchFields);
+				document.getElementById('autocompleteRestrictSearchFieldsTextBox').value = wdw_csvTranslator.translateFields(wdw_cardbookConfiguration.autocompleteRestrictSearchFields);
 			}
 		},
 
 		resetAutocompleteRestrictSearchFieldsButton: function () {
 			wdw_cardbookConfiguration.autocompleteRestrictSearchFields = cardbookRepository.defaultAutocompleteRestrictSearchFields;
-			document.getElementById('autocompleteRestrictSearchFieldsTextBox').value = wdw_cardbookConfiguration.translateSearchFields(wdw_cardbookConfiguration.autocompleteRestrictSearchFields);
+			document.getElementById('autocompleteRestrictSearchFieldsTextBox').value = wdw_csvTranslator.translateFields(wdw_cardbookConfiguration.autocompleteRestrictSearchFields);
 		},
 
 		validateAutocompleteRestrictSearchFields: function () {

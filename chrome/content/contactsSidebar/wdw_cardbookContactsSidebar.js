@@ -705,12 +705,13 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 		loadAB: function () {
 			wdw_cardbookContactsSidebar.loadRestrictions();
 			var ABList = document.getElementById('CardBookABMenulist');
+			var ABPopup = document.getElementById('CardBookABMenupopup');
 			if (ABList.value != null && ABList.value !== undefined && ABList.value != "") {
 				var ABDefaultValue = ABList.value;
 			} else {
 				var ABDefaultValue = 0;
 			}
-			cardbookElementTools.loadAddressBooks("CardBookABMenupopup", "CardBookABMenulist", ABDefaultValue, cardbookPreferences.getBoolPref("extensions.cardbook.exclusive"), true, true, true,
+			cardbookElementTools.loadAddressBooks(ABPopup, ABList, ABDefaultValue, cardbookPreferences.getBoolPref("extensions.cardbook.exclusive"), true, true, true, false,
 													wdw_cardbookContactsSidebar.ABInclRestrictions, wdw_cardbookContactsSidebar.ABExclRestrictions);
 			wdw_cardbookContactsSidebar.onABChange();
 			
@@ -787,7 +788,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 								lTimerMsgIdentity.cancel();
 							}
 						}
-					}, 1000, Components.interfaces.nsITimer.TYPE_REPEATING_SLACK);
+					}, 500, Components.interfaces.nsITimer.TYPE_REPEATING_SLACK);
 		},
 		
 		onCategoryChange: function () {

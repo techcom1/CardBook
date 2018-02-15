@@ -61,53 +61,6 @@
 <!ENTITY technicalTabLabel "Kỹ thuật">
 <!ENTITY vCardTabLabel "Thẻ Ảo">
 
-<!ENTITY cardIconColumnLabel "Biểu tượng">
-<!ENTITY nameColumnLabel "Tên">
-<!ENTITY lastnameColumnLabel "Họ">
-<!ENTITY firstnameColumnLabel "Tên">
-<!ENTITY othernameColumnLabel "Tên Khác">
-<!ENTITY prefixnameColumnLabel "Tiền tố">
-<!ENTITY suffixnameColumnLabel "Hậu tố">
-<!ENTITY fnColumnLabel "Hiển thị">
-<!ENTITY nicknameColumnLabel "Tên hiệu">
-<!ENTITY genderColumnLabel "Giới tính">
-<!ENTITY bdayColumnLabel "Ngày Sinh">
-<!ENTITY dispadrColumnLabel "Địa chỉ">
-<!ENTITY disphomeadrColumnLabel "Địa chỉ Nhà">
-<!ENTITY dispworkadrColumnLabel "Địa chỉ Công ty">
-<!ENTITY disptelColumnLabel "Điện thoại">
-<!ENTITY disphometelColumnLabel "Điện thoại Nhà">
-<!ENTITY dispworktelColumnLabel "Điện thoại Công ty">
-<!ENTITY dispcelltelColumnLabel "Điện thoại Di dộng">
-<!ENTITY dispemailColumnLabel "Email">
-<!ENTITY disphomeemailColumnLabel "Email Nhà">
-<!ENTITY dispworkemailColumnLabel "Email Công ty">
-<!ENTITY mailerColumnLabel "Người gửi thư">
-<!ENTITY tzColumnLabel "Múi Giờ">
-<!ENTITY geoColumnLabel "Geo">
-<!ENTITY titleColumnLabel "Chức vụ">
-<!ENTITY roleColumnLabel "Vai trò">
-<!ENTITY orgColumnLabel "Tổ chức">
-<!ENTITY categoriesColumnLabel "Danh mục">
-<!ENTITY noteColumnLabel "Lưu ý">
-<!ENTITY prodidColumnLabel "Danh tính Sản phẩm">
-<!ENTITY sortstringColumnLabel "Sắp xếp chuỗi">
-<!ENTITY uidColumnLabel "Uid">
-<!ENTITY cbidColumnLabel "CardBook id">
-<!ENTITY dispurlColumnLabel "Địa chỉ URL">
-<!ENTITY versionColumnLabel "Phiên bản">
-<!ENTITY class1ColumnLabel "Lớp học">
-<!ENTITY dispimppColumnLabel "Tin khẩn">
-<!ENTITY cardurlColumnLabel "Thẻ Địa chỉ URL">
-<!ENTITY dirPrefIdColumnLabel "DirPrefId">
-<!ENTITY kindColumnLabel "Loại">
-<!ENTITY revColumnLabel "Cập nhật Mới nhất">
-<!ENTITY etagColumnLabel "Etag">
-<!ENTITY birthplaceColumnLabel "Nơi Sinh">
-<!ENTITY anniversaryColumnLabel "Ngày kỷ niệm">
-<!ENTITY deathdateColumnLabel "Ngày Chết">
-<!ENTITY deathplaceColumnLabel "Nơi Chết">
-
 <!ENTITY categoriesGroupboxLabel "Danh mục">
 <!ENTITY noteTabLabel "Lưu ý">
 <!ENTITY advancedTabLabel "Nâng cao">

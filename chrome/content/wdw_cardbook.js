@@ -25,14 +25,6 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				cardbookPreferences.setBoolPref("extensions.cardbook.technicalTabView", false);
 				cardbookPreferences.setBoolPref("extensions.cardbook.vcardTabView", false);
 			}
-			var firstOpenModern = cardbookPreferences.getBoolPref("extensions.cardbook.firstOpenModern");
-			var panesView = cardbookPreferences.getStringPref("extensions.cardbook.panesView");
-			if (firstOpenModern && panesView == "modern") {
-				document.getElementById('dispadr').setAttribute('hidden', 'true');
-				document.getElementById('disptel').setAttribute('hidden', 'true');
-				document.getElementById('dispemail').setAttribute('hidden', 'true');
-				cardbookPreferences.setBoolPref("extensions.cardbook.firstOpenModern", false);
-			}
 			wdw_cardbook.showCorrectTabs();
 		},
 
@@ -65,54 +57,28 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		document.getElementById('cardbookTabbox').selectedTab = document.getElementById("generalTab");
 	},
 
-		checkCustomColumns: function () {
-			var myTreecols = document.getElementById('cardsTreecols');
-			var childNodes = myTreecols.childNodes;
-			var toKeep = [];
-			for (var i = 0; i < childNodes.length; i++) {
-				var child = childNodes[i];
-				if (child.getAttribute('id').startsWith("X-")) {
-					if (child.getAttribute('hidden') == "false") {
-						toKeep.push(child.getAttribute('id'));
+		addTreeColumns: function () {
+			if (cardbookRepository.cardbookReorderMode == "NOREORDER") {
+				cardbookRepository.cardbookReorderMode = "REORDER";
+				var myTreecols = document.getElementById('cardsTreecols');
+				var myColumns = cardbookUtils.getAllAvailableColumns("cardstree");
+				cardbookElementTools.deleteRows(myTreecols.id)
+				
+				var myOrdinal = 0;
+				for (var i = 0; i < myColumns.length; i++) {
+					var myCode = myColumns[i][0];
+					var myLabel = myColumns[i][1];
+					cardbookElementTools.addTreeSplitter(myTreecols, {ordinal: myOrdinal++});
+					if (myCode == "cardIcon") {
+						cardbookElementTools.addTreecol(myTreecols, myCode, myLabel, {fixed: 'true', persist: 'width ordinal hidden', style: 'text-align:left', hidden: 'true',
+														class: 'sortDirectionIndicator', sortDirection: 'ascending', ordinal: myOrdinal++});
+					} else {
+						cardbookElementTools.addTreecol(myTreecols, myCode, myLabel, {flex: '1', persist: 'width ordinal hidden', style: 'text-align:left', hidden: 'true',
+														class: 'sortDirectionIndicator', sortDirection: 'ascending', ordinal: myOrdinal++});
 					}
 				}
 			}
-			cardbookPreferences.setStringPref("extensions.cardbook.customColumnsShown", toKeep.join(','));
-		},
-
-		addCustomColumns: function () {
-			var myTreecols = document.getElementById('cardsTreecols');
-			// first delete all custom columns
-			var childNodes = myTreecols.childNodes;
-			var toDelete = [];
-			for (var i = 0; i < childNodes.length; i++) {
-				var child = childNodes[i];
-				if (child.getAttribute('id').startsWith("X-")) {
-					toDelete.push(child);
-				}
-			}
-			for (var i = 0; i < toDelete.length; i++) {
-				var oldChild = myTreecols.removeChild(toDelete[i]);
-			}
-			// then add custom according to their persistence
-			var customColumnsShown = cardbookPreferences.getStringPref("extensions.cardbook.customColumnsShown");
-			var customColumnsShownArray = customColumnsShown.split(',');
-			for (var i in cardbookRepository.customFields) {
-				for (let j = 0; j < cardbookRepository.customFields[i].length; j++) {
-					var myCode = cardbookRepository.customFields[i][j][0];
-					var myLabel = cardbookRepository.customFields[i][j][1];
-					cardbookElementTools.addTreeSplitter(myTreecols);
-					var aHidden = "true";
-					for (let k = 0; k < customColumnsShownArray.length; k++) {
-						if (myCode == customColumnsShownArray[k]) {
-							var aHidden = "false";
-							break;
-						}
-					}
-					cardbookElementTools.addTreecol(myTreecols, myCode, myLabel, {flex: '1', persist: 'width ordinal hidden', style: 'text-align:left', hidden: aHidden,
-														class: 'sortDirectionIndicator', sortDirection: 'ascending'});
-				}
-			}
+			cardbookRepository.cardbookReorderMode = "NOREORDER";
 		},
 
 		setAccountsTreeMenulist: function () {
@@ -123,6 +89,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		loadFirstWindow: function () {
 			cardBookPrefObserver.register();
 			cardBookWindowObserver.register();
+			cardBookWindowMutationObserver.register();
 			// for versions <= 20.4
 			wdw_cardbook.migrateIcons();
 			wdw_cardbook.setSyncControl();
@@ -135,8 +102,10 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			wdw_cardbook.firstOpen();
 			// in case of opening a new window without having a reload
 			wdw_cardbook.loadCssRules();
+			wdw_cardbook.addTreeColumns();
 			wdw_cardbook.refreshAccountsInDirTree();
 			var accountShown = cardbookPreferences.getStringPref("extensions.cardbook.accountShown");
+			cardbookUtils.setColumnsStateForAccount(accountShown);
 			cardbookUtils.setSelectedAccount(accountShown, wdw_cardbook.currentFirstVisibleRow, wdw_cardbook.currentLastVisibleRow);
 		},
 
@@ -175,57 +144,16 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				getCellProperties: function(row, column) {
 					return this.getRowProperties(row);
 				},
-				getCellText: function(row,column){
+				getCellText: function(row, column){
 					if (column.id == "cardIcon") return "";
 					else if (column.id == "name") return cardbookUtils.getName(aCardList[row]);
-					else if (column.id == "lastname") return aCardList[row].lastname;
-					else if (column.id == "firstname") return aCardList[row].firstname;
-					else if (column.id == "othername") return aCardList[row].othername;
-					else if (column.id == "prefixname") return aCardList[row].prefixname;
-					else if (column.id == "suffixname") return aCardList[row].suffixname;
-					else if (column.id == "fn") return aCardList[row].fn;
-					else if (column.id == "nickname") return aCardList[row].nickname;
 					else if (column.id == "gender") return cardbookRepository.currentTypes.gender[aCardList[row].gender];
 					else if (column.id == "bday") return cardbookDates.getFormattedDateForCard(aCardList[row], column.id);
-					else if (column.id == "dispadr") return aCardList[row].dispadr;
-					else if (column.id == "disphomeadr") return aCardList[row].disphomeadr;
-					else if (column.id == "dispworkadr") return aCardList[row].dispworkadr;
-					else if (column.id == "disptel") return aCardList[row].disptel;
-					else if (column.id == "disphometel") return aCardList[row].disphometel;
-					else if (column.id == "dispworktel") return aCardList[row].dispworktel;
-					else if (column.id == "dispcelltel") return aCardList[row].dispcelltel;
-					else if (column.id == "dispemail") return aCardList[row].dispemail;
-					else if (column.id == "disphomeemail") return aCardList[row].disphomeemail;
-					else if (column.id == "dispworkemail") return aCardList[row].dispworkemail;
-					else if (column.id == "mailer") return aCardList[row].mailer;
-					else if (column.id == "tz") return aCardList[row].tz;
-					else if (column.id == "geo") return aCardList[row].geo;
-					else if (column.id == "title") return aCardList[row].title;
-					else if (column.id == "role") return aCardList[row].role;
-					else if (column.id == "org") return aCardList[row].org;
-					else if (column.id == "dispcategories") return aCardList[row].dispcategories;
-					else if (column.id == "note") return aCardList[row].note;
-					else if (column.id == "prodid") return aCardList[row].prodid;
-					else if (column.id == "sortstring") return aCardList[row].sortstring;
-					else if (column.id == "uid") return aCardList[row].uid;
-					else if (column.id == "cbid") return aCardList[row].cbid;
-					else if (column.id == "dispurl") return aCardList[row].dispurl;
-					else if (column.id == "version") return aCardList[row].version;
-					else if (column.id == "class1") return aCardList[row].class1;
-					else if (column.id == "dispimpp") return aCardList[row].dispimpp;
-					else if (column.id == "dirPrefId") return aCardList[row].dirPrefId;
-					else if (column.id == "kind") return aCardList[row].kind;
-					else if (column.id == "rev") return aCardList[row].rev;
-					else if (column.id == "cardurl") return aCardList[row].cardurl;
-					else if (column.id == "etag") return aCardList[row].etag;
-					else if (column.id == "birthplace") return aCardList[row].birthplace;
 					else if (column.id == "anniversary") return cardbookDates.getFormattedDateForCard(aCardList[row], column.id);
 					else if (column.id == "deathdate") return cardbookDates.getFormattedDateForCard(aCardList[row], column.id);
-					else if (column.id == "deathplace") return aCardList[row].deathplace;
 					else return cardbookUtils.getCardValueByField(aCardList[row], column.id);
 				}
 			}
-			wdw_cardbook.addCustomColumns();
 			cardbookRepository.showNameAs = cardbookPreferences.getStringPref("extensions.cardbook.showNameAs");
 			cardbookRepository.dateDisplayedFormat = cardbookPreferences.getStringPref("extensions.cardbook.dateDisplayedFormat");
 			document.getElementById('cardsTree').view = accountsOrCatsTreeView;
@@ -259,7 +187,9 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				var myAccountId = myTree.view.getCellText(0, {id: "accountId"});
 			}
 			wdw_cardbook.clearCard();
-			cardbookPreferences.setStringPref("extensions.cardbook.accountShown", cardbookUtils.getAccountId(myAccountId));
+			var myDirPrefId = cardbookUtils.getAccountId(myAccountId);
+			cardbookPreferences.setStringPref("extensions.cardbook.accountShown", myDirPrefId);
+			cardbookUtils.setColumnsStateForAccount(myDirPrefId);
 			wdw_cardbook.refreshWindow("accountid:" + myAccountId);
 		},
 
@@ -2900,8 +2830,6 @@ if ("undefined" == typeof(wdw_cardbook)) {
 												'cardbookAccountMenu', 'cardbookContactsMenu', 'cardbookToolsMenu', 'cardbookToolbarComplexSearch', 'cardbookToolbarPrintButton'], false);
 			wdw_cardbook.updateStatusInformation();
 			wdw_cardbook.updateStatusProgressInformationField();
-			// to save custom columns persistency
-			wdw_cardbook.checkCustomColumns();
 		},
 
 		refreshWindow: function (aParams) {

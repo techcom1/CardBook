@@ -61,53 +61,6 @@
 <!ENTITY technicalTabLabel "Teknis">
 <!ENTITY vCardTabLabel "vKartu">
 
-<!ENTITY cardIconColumnLabel "Ikon">
-<!ENTITY nameColumnLabel "Nama">
-<!ENTITY lastnameColumnLabel "Nama Belakang">
-<!ENTITY firstnameColumnLabel "Nama Depan">
-<!ENTITY othernameColumnLabel "Nama Lain">
-<!ENTITY prefixnameColumnLabel "Awalan">
-<!ENTITY suffixnameColumnLabel "Akhiran">
-<!ENTITY fnColumnLabel "Nama Tampilan">
-<!ENTITY nicknameColumnLabel "Nama Panggilan">
-<!ENTITY genderColumnLabel "Jenis Kelamin">
-<!ENTITY bdayColumnLabel "Ulang Tahun">
-<!ENTITY dispadrColumnLabel "Alamat">
-<!ENTITY disphomeadrColumnLabel "Alamat Rumah">
-<!ENTITY dispworkadrColumnLabel "Alamat Kantor">
-<!ENTITY disptelColumnLabel "Telepon ">
-<!ENTITY disphometelColumnLabel "Telepon Rumah">
-<!ENTITY dispworktelColumnLabel "Telepon Kantor">
-<!ENTITY dispcelltelColumnLabel "Handphone">
-<!ENTITY dispemailColumnLabel "Email">
-<!ENTITY disphomeemailColumnLabel "Email Rumah">
-<!ENTITY dispworkemailColumnLabel "Email Kantor">
-<!ENTITY mailerColumnLabel "Pengirim">
-<!ENTITY tzColumnLabel "Zona Waktu">
-<!ENTITY geoColumnLabel "Geo">
-<!ENTITY titleColumnLabel "Title">
-<!ENTITY roleColumnLabel "Tugas">
-<!ENTITY orgColumnLabel "Organisasi">
-<!ENTITY categoriesColumnLabel "Kategori">
-<!ENTITY noteColumnLabel "Catatan">
-<!ENTITY prodidColumnLabel "Produk Identitas">
-<!ENTITY sortstringColumnLabel "Urutkan String">
-<!ENTITY uidColumnLabel "Uid">
-<!ENTITY cbidColumnLabel "CardBook id">
-<!ENTITY dispurlColumnLabel "Alamat URL">
-<!ENTITY versionColumnLabel "Versi">
-<!ENTITY class1ColumnLabel "Kelas">
-<!ENTITY dispimppColumnLabel "Pesan Singkat">
-<!ENTITY cardurlColumnLabel "URL kartu">
-<!ENTITY dirPrefIdColumnLabel "Identitas Preferensi Direktori">
-<!ENTITY kindColumnLabel "Jenis">
-<!ENTITY revColumnLabel "Terakhir Diperbarui">
-<!ENTITY etagColumnLabel "Etag">
-<!ENTITY birthplaceColumnLabel "Tempat Lahir">
-<!ENTITY anniversaryColumnLabel "Ulang Tahun">
-<!ENTITY deathdateColumnLabel "Tanggal Kematian">
-<!ENTITY deathplaceColumnLabel "Tempat Meninggal">
-
 <!ENTITY categoriesGroupboxLabel "Kategori">
 <!ENTITY noteTabLabel "Catatan">
 <!ENTITY advancedTabLabel "Canggih">

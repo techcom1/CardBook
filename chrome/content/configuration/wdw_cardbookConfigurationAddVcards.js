@@ -6,7 +6,9 @@ if ("undefined" == typeof(wdw_cardbookConfigurationAddVcards)) {
 		},
 		
 		loadAB: function () {
-			cardbookElementTools.loadAddressBooks("CardBookABMenupopup", "CardBookABMenulist", window.arguments[0].addressBookId, true, false, true, false);
+			var ABList = document.getElementById('CardBookABMenulist');
+			var ABPopup = document.getElementById('CardBookABMenupopup');
+			cardbookElementTools.loadAddressBooks(ABPopup, ABList, window.arguments[0].addressBookId, true, false, true, false, false);
 		},
 		
 		loadContacts: function () {

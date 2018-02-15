@@ -1,4 +1,5 @@
 <!ENTITY persTitleLabel "Persönliche Informationen">
+<!ENTITY nameLabel "Name">
 <!ENTITY fnLabel "Anzeigename">
 <!ENTITY lastnameLabel "Nachname">
 <!ENTITY firstnameLabel "Vorname">
@@ -12,3 +13,4 @@
 <!ENTITY anniversaryLabel "Jahrestag">
 <!ENTITY deathdateLabel "Todestag">
 <!ENTITY deathplaceLabel "Sterbeort">
+<!ENTITY uidLabel "Uid">

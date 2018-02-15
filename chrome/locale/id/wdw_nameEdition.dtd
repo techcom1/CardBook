@@ -1,4 +1,5 @@
 <!ENTITY persTitleLabel "Informasi Pribadi">
+<!ENTITY nameLabel "Nama">
 <!ENTITY fnLabel "Nama Tampilan">
 <!ENTITY lastnameLabel "Nama Belakang">
 <!ENTITY firstnameLabel "Nama Depan">
@@ -12,3 +13,4 @@
 <!ENTITY anniversaryLabel "Ulang Tahu">
 <!ENTITY deathdateLabel "Tanggal Kematian">
 <!ENTITY deathplaceLabel "Tempat Meninggal">
+<!ENTITY uidLabel "Uid">

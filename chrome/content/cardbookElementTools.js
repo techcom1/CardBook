@@ -9,10 +9,13 @@ if ("undefined" == typeof(cardbookElementTools)) {
 		},
 
 		deleteRows: function (aObjectName) {
-			var aListRows = document.getElementById(aObjectName);
-			while (aListRows.firstChild) {
-				aListRows.removeChild(aListRows.firstChild);
-			}
+			// for anonid this does not work
+			try {
+				var aListRows = document.getElementById(aObjectName);
+				while (aListRows.firstChild) {
+					aListRows.removeChild(aListRows.firstChild);
+				}
+			} catch (e) {}
 		},
 
 		addCaption: function (aType, aParent) {
@@ -24,10 +27,14 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			aCaption.setAttribute('class', 'header');
 		},
 		
-		addTreeSplitter: function (aParent) {
+		addTreeSplitter: function (aParent, aParameters) {
 			var aSplitter = document.createElement('splitter');
 			aParent.appendChild(aSplitter);
 			aSplitter.setAttribute('class', 'tree-splitter');
+
+			for (var prop in aParameters) {
+				aSplitter.setAttribute(prop, aParameters[prop]);
+			}
 		},
 		
 		addTreecol: function (aParent, aId, aLabel, aParameters) {
@@ -193,9 +200,9 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			document.getElementById(aMenuName).selectedIndex = defaultIndex;
 		},
 
-		loadAddressBooks: function (aPopupName, aMenuName, aDefaultId, aExclusive, aAddAllABs, aIncludeReadOnly, aIncludeSearch, aInclRestrictionList, aExclRestrictionList) {
-			var myPopup = document.getElementById(aPopupName);
-			cardbookElementTools.deleteRows(aPopupName);
+		loadAddressBooks: function (aPopup, aMenu, aDefaultId, aExclusive, aAddAllABs, aIncludeReadOnly, aIncludeSearch, aIncludeDisabled,
+										aInclRestrictionList, aExclRestrictionList) {
+			cardbookElementTools.deleteRows(aPopup.id);
 			var defaultIndex = 0;
 			var j = 0;
 			if (aAddAllABs) {
@@ -203,7 +210,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 				var menuItem = document.createElement("menuitem");
 				menuItem.setAttribute("label", strBundle.GetStringFromName("allAddressBooks"));
 				menuItem.setAttribute("value", "allAddressBooks");
-				myPopup.appendChild(menuItem);
+				aPopup.appendChild(menuItem);
 				if ("allAddressBooks" == aDefaultId) {
 					defaultIndex=j;
 				}
@@ -211,8 +218,9 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			}
 			var sortedAddressBooks = [];
 			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
-				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && (aIncludeReadOnly || !cardbookRepository.cardbookAccounts[i][7])
-					 && (aIncludeSearch || (cardbookRepository.cardbookAccounts[i][6] !== "SEARCH"))) {
+				if (cardbookRepository.cardbookAccounts[i][1] && (aIncludeDisabled || cardbookRepository.cardbookAccounts[i][5])
+						&& (aIncludeReadOnly || !cardbookRepository.cardbookAccounts[i][7])
+						&& (aIncludeSearch || (cardbookRepository.cardbookAccounts[i][6] !== "SEARCH"))) {
 					if (aExclRestrictionList && aExclRestrictionList[cardbookRepository.cardbookAccounts[i][4]]) {
 						continue;
 					}
@@ -250,13 +258,13 @@ if ("undefined" == typeof(cardbookElementTools)) {
 				menuItem.setAttribute("value", sortedAddressBooks[i][1]);
 				menuItem.setAttribute("ABtype", sortedAddressBooks[i][2]);
 				menuItem.setAttribute("class", "menuitem-iconic");
-				myPopup.appendChild(menuItem);
+				aPopup.appendChild(menuItem);
 				if (sortedAddressBooks[i][1] == aDefaultId) {
 					defaultIndex=j;
 				}
 				j++;
 			}
-			document.getElementById(aMenuName).selectedIndex = defaultIndex;
+			aMenu.selectedIndex = defaultIndex;
 		},
 
 		loadCategories: function (aPopupName, aMenuName, aDefaultPrefId, aDefaultCatId, aAddAllCats, aAddOnlyCats, aAddNoCats, aAddEmptyCats, aInclRestrictionList, aExclRestrictionList) {

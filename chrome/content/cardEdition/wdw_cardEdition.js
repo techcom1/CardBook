@@ -773,8 +773,10 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 
 			wdw_cardEdition.workingCard = new cardbookCardParser();
 			cardbookUtils.cloneCard(window.arguments[0].cardIn, wdw_cardEdition.workingCard);
-			cardbookElementTools.loadAddressBooks("addressbookMenupopup", "addressbookMenulist", wdw_cardEdition.workingCard.dirPrefId, true, false,
-													(window.arguments[0].editionMode == "ViewContact" || window.arguments[0].editionMode == "ViewList"), false);
+			var ABList = document.getElementById('addressbookMenulist');
+			var ABPopup = document.getElementById('addressbookMenupopup');
+			cardbookElementTools.loadAddressBooks(ABPopup, ABList, wdw_cardEdition.workingCard.dirPrefId, true, false,
+													(window.arguments[0].editionMode == "ViewContact" || window.arguments[0].editionMode == "ViewList"), false, false);
 			if (wdw_cardEdition.workingCard.dirPrefId == "") {
 				wdw_cardEdition.workingCard.dirPrefId = document.getElementById('addressbookMenulist').selectedItem.value;
 			}

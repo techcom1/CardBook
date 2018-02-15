@@ -6,8 +6,6 @@ if ("undefined" == typeof(ovl_cardbookComposeMsg)) {
 		LoadIdentity: function() {
 			var outerID = GetCurrentEditorElement().outerWindowID;
 			cardbookRepository.composeMsgIdentity[outerID] = document.getElementById("msgIdentity").selectedItem.getAttribute("identitykey");
-			// this event is used only when the identity is changed, not for the initial start
-			cardbookUtils.notifyObservers("cardbook.identityChanged", outerID);
 		},
 
 		newInCardBook: function() {

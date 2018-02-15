@@ -1,4 +1,5 @@
 <!ENTITY persTitleLabel "Thông tin cá nhân">
+<!ENTITY nameLabel "Tên">
 <!ENTITY fnLabel "Hiển thị">
 <!ENTITY lastnameLabel "Họ">
 <!ENTITY firstnameLabel "Tên">
@@ -12,3 +13,4 @@
 <!ENTITY anniversaryLabel "Ngày kỷ niệm">
 <!ENTITY deathdateLabel "Ngày Chết">
 <!ENTITY deathplaceLabel "Nơi Chết">
+<!ENTITY uidLabel "Uid">

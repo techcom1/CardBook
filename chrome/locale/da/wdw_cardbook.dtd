@@ -61,53 +61,6 @@
 <!ENTITY technicalTabLabel "Teknisk">
 <!ENTITY vCardTabLabel "vCard">
 
-<!ENTITY cardIconColumnLabel "Ikon">
-<!ENTITY nameColumnLabel "Navn">
-<!ENTITY lastnameColumnLabel "Efternavn">
-<!ENTITY firstnameColumnLabel "Fornavn">
-<!ENTITY othernameColumnLabel "Andet navn">
-<!ENTITY prefixnameColumnLabel "Præfix">
-<!ENTITY suffixnameColumnLabel "Suffix">
-<!ENTITY fnColumnLabel "Vist navn">
-<!ENTITY nicknameColumnLabel "Kaldenavn">
-<!ENTITY genderColumnLabel "Køn">
-<!ENTITY bdayColumnLabel "Fødselsdag">
-<!ENTITY dispadrColumnLabel "Adresser">
-<!ENTITY disphomeadrColumnLabel "Hjemmeadresser">
-<!ENTITY dispworkadrColumnLabel "Arbejdsadresser">
-<!ENTITY disptelColumnLabel "Telefoner">
-<!ENTITY disphometelColumnLabel "Hjemmetelefoner">
-<!ENTITY dispworktelColumnLabel "Arbejdstelefoner">
-<!ENTITY dispcelltelColumnLabel "Mobiltelefoner">
-<!ENTITY dispemailColumnLabel "E-mails">
-<!ENTITY disphomeemailColumnLabel "Hjemme-e-mails">
-<!ENTITY dispworkemailColumnLabel "Arbejds-e-mails">
-<!ENTITY mailerColumnLabel "Mailer">
-<!ENTITY tzColumnLabel "Tidszone">
-<!ENTITY geoColumnLabel "Geo">
-<!ENTITY titleColumnLabel "Titel">
-<!ENTITY roleColumnLabel "Rolle">
-<!ENTITY orgColumnLabel "Organisation">
-<!ENTITY categoriesColumnLabel "Kategorier">
-<!ENTITY noteColumnLabel "Noter">
-<!ENTITY prodidColumnLabel "Prodid">
-<!ENTITY sortstringColumnLabel "Sorteringsstreng">
-<!ENTITY uidColumnLabel "Uid">
-<!ENTITY cbidColumnLabel "CardBook id">
-<!ENTITY dispurlColumnLabel "URL">
-<!ENTITY versionColumnLabel "Version">
-<!ENTITY class1ColumnLabel "Klasse">
-<!ENTITY dispimppColumnLabel "Instant Messaging">
-<!ENTITY cardurlColumnLabel "Kort-URL">
-<!ENTITY dirPrefIdColumnLabel "DirPrefId">
-<!ENTITY kindColumnLabel "Type">
-<!ENTITY revColumnLabel "Senest opdateret">
-<!ENTITY etagColumnLabel "Etag">
-<!ENTITY birthplaceColumnLabel "Fødselssted">
-<!ENTITY anniversaryColumnLabel "Mærkedag">
-<!ENTITY deathdateColumnLabel "Død dato">
-<!ENTITY deathplaceColumnLabel "Død sted">
-
 <!ENTITY categoriesGroupboxLabel "Kategorier">
 <!ENTITY noteTabLabel "Noter">
 <!ENTITY advancedTabLabel "Avanceret">

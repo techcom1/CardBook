@@ -321,15 +321,15 @@
 										hidecolumnpicker="false" persist="height sortDirection sortResource" sortDirection="ascending" sortResource="availableCardsName"
 										onclick="wdw_cardEdition.sortTrees(event, 'availableCards');">
 										<treecols id="availableCardsTreeCols">
-											<treecol id="availableCardsName" label="&nameColumnLabel;" flex="1" persist="width ordinal hidden" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending"/>
+											<treecol id="availableCardsName" label="&nameLabel;" flex="1" persist="width ordinal hidden" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending"/>
 											<splitter class="tree-splitter"/>
-											<treecol id="availableCardsUid" label="&uidColumnLabel;" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending"/>
+											<treecol id="availableCardsUid" label="&uidLabel;" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending"/>
 											<splitter class="tree-splitter"/>
-											<treecol id="availableCardsFn" label="&fnColumnLabel;" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending"/>
+											<treecol id="availableCardsFn" label="&fnLabel;" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending"/>
 											<splitter class="tree-splitter"/>
-											<treecol id="availableCardsLastname" label="&lastnameColumnLabel;" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending"/>
+											<treecol id="availableCardsLastname" label="&lastnameLabel;" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending"/>
 											<splitter class="tree-splitter"/>
-											<treecol id="availableCardsFirstname" label="&firstnameColumnLabel;" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending"/>
+											<treecol id="availableCardsFirstname" label="&firstnameLabel;" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending"/>
 										</treecols>
 										<treechildren id="availableCardsTreeChildren" ondblclick="wdw_cardEdition.modifyLists(this);"/>
 									</tree>
@@ -352,15 +352,15 @@
 										hidecolumnpicker="false" persist="height sortDirection sortResource" sortDirection="ascending" sortResource="addedCardsName"
 										onclick="wdw_cardEdition.sortTrees(event, 'addedCards');">
 										<treecols id="addedCardsTreeCols">
-											<treecol id="addedCardsName" label="&nameColumnLabel;" flex="1" persist="width ordinal hidden" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending"/>
+											<treecol id="addedCardsName" label="&nameLabel;" flex="1" persist="width ordinal hidden" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending"/>
 											<splitter class="tree-splitter"/>
-											<treecol id="addedCardsUid" label="&uidColumnLabel;" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending"/>
+											<treecol id="addedCardsUid" label="&uidLabel;" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending"/>
 											<splitter class="tree-splitter"/>
-											<treecol id="addedCardsFn" label="&fnColumnLabel;" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending"/>
+											<treecol id="addedCardsFn" label="&fnLabel;" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending"/>
 											<splitter class="tree-splitter"/>
-											<treecol id="addedCardsLastname" label="&lastnameColumnLabel;" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending"/>
+											<treecol id="addedCardsLastname" label="&lastnameLabel;" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending"/>
 											<splitter class="tree-splitter"/>
-											<treecol id="addedCardsFirstname" label="&firstnameColumnLabel;" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending"/>
+											<treecol id="addedCardsFirstname" label="&firstnameLabel;" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending"/>
 										</treecols>
 										<treechildren id="addedCardsTreeChildren" ondblclick="wdw_cardEdition.modifyLists(this);"/>
 									</tree>

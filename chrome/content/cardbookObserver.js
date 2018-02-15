@@ -290,7 +290,9 @@ if ("undefined" == typeof(cardBookObserver)) {
 				case "cardbook.preferencesChanged":
 					cardbookRepository.loadCustoms();
 					wdw_cardbook.loadCssRules();
-					wdw_cardbook.addCustomColumns();
+					var myColumns = cardbookUtils.getColumnsState().split(',');
+					wdw_cardbook.addTreeColumns();
+					cardbookUtils.setColumnsState(myColumns);
 					wdw_cardbook.refreshWindow();
 					break;
 				case "cardbook.catAddedDirect":
@@ -308,6 +310,21 @@ if ("undefined" == typeof(cardBookObserver)) {
 					wdw_cardbook.refreshWindow(aData);
 					break;
 			}
+		}
+	};
+
+	var cardBookWindowMutationObserver = {
+		register: function() {
+			var observer = new MutationObserver(function handleMutations(mutations) {
+				if (cardbookRepository.cardbookReorderMode == "NOREORDER") {
+					cardbookUtils.saveColumnsState();
+				}
+			});
+			observer.observe(document.getElementById("cardsTreecols"), {
+				attributes: true,
+				subtree: true,
+				attributeFilter: ["hidden", "ordinal"]
+			});
 		}
 	};
 };

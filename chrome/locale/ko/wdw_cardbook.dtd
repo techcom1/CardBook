@@ -61,53 +61,6 @@
 <!ENTITY technicalTabLabel "전문인">
 <!ENTITY vCardTabLabel "가상 카드">
 
-<!ENTITY cardIconColumnLabel "상">
-<!ENTITY nameColumnLabel "이름">
-<!ENTITY lastnameColumnLabel "성">
-<!ENTITY firstnameColumnLabel "이름">
-<!ENTITY othernameColumnLabel "다른 이름">
-<!ENTITY prefixnameColumnLabel "접두사">
-<!ENTITY suffixnameColumnLabel "접미사">
-<!ENTITY fnColumnLabel "표시 이름">
-<!ENTITY nicknameColumnLabel "애칭">
-<!ENTITY genderColumnLabel "성별">
-<!ENTITY bdayColumnLabel "생일">
-<!ENTITY dispadrColumnLabel "주소">
-<!ENTITY disphomeadrColumnLabel "집 주소">
-<!ENTITY dispworkadrColumnLabel "직장 주소">
-<!ENTITY disptelColumnLabel "전화">
-<!ENTITY disphometelColumnLabel "집 전화">
-<!ENTITY dispworktelColumnLabel "직장 전화">
-<!ENTITY dispcelltelColumnLabel "휴대 전 전화">
-<!ENTITY dispemailColumnLabel "이메일">
-<!ENTITY disphomeemailColumnLabel "개인 이메일">
-<!ENTITY dispworkemailColumnLabel "직장 이메일">
-<!ENTITY mailerColumnLabel "우편 발신인">
-<!ENTITY tzColumnLabel "시간대">
-<!ENTITY geoColumnLabel "지역">
-<!ENTITY titleColumnLabel "직위">
-<!ENTITY roleColumnLabel "역할">
-<!ENTITY orgColumnLabel "소속">
-<!ENTITY categoriesColumnLabel "카테고리">
-<!ENTITY noteColumnLabel "메모">
-<!ENTITY prodidColumnLabel "제품 신분증">
-<!ENTITY sortstringColumnLabel "문자열 정렬">
-<!ENTITY uidColumnLabel "사용자 번호">
-<!ENTITY cbidColumnLabel "??CardBook id??">
-<!ENTITY dispurlColumnLabel "URL 주소">
-<!ENTITY versionColumnLabel "버전">
-<!ENTITY class1ColumnLabel "수업">
-<!ENTITY dispimppColumnLabel "인스턴트 메시징">
-<!ENTITY cardurlColumnLabel "카드 URL">
-<!ENTITY dirPrefIdColumnLabel "디렉토리 환경 설정 신분증">
-<!ENTITY kindColumnLabel "종류">
-<!ENTITY revColumnLabel "마지막 업데이트">
-<!ENTITY etagColumnLabel "전자 태그">
-<!ENTITY birthplaceColumnLabel "출생지">
-<!ENTITY anniversaryColumnLabel "기념일">
-<!ENTITY deathdateColumnLabel "사망일">
-<!ENTITY deathplaceColumnLabel "사망 장소">
-
 <!ENTITY categoriesGroupboxLabel "카테고리">
 <!ENTITY noteTabLabel "메모">
 <!ENTITY advancedTabLabel "고급">

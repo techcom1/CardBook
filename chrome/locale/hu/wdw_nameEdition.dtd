@@ -1,4 +1,5 @@
 <!ENTITY persTitleLabel "Személyes adatok">
+<!ENTITY nameLabel "Név">
 <!ENTITY fnLabel "Megjelenítendő név">
 <!ENTITY lastnameLabel "Családnév">
 <!ENTITY firstnameLabel "Keresztnév">
@@ -12,3 +13,4 @@
 <!ENTITY anniversaryLabel "Évforduló">
 <!ENTITY deathdateLabel "Haláleset ideje">
 <!ENTITY deathplaceLabel "Haláleset helye">
+<!ENTITY uidLabel "Uid">

@@ -282,7 +282,9 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 		},
 
 		constructComplexSearch: function () {
-			cardbookElementTools.loadAddressBooks("addressbookMenupopup", "addressbookMenulist", wdw_addressbooksAdd.gSearchDefinition.searchAB, true, true, true, false);
+			var ABList = document.getElementById('addressbookMenulist');
+			var ABPopup = document.getElementById('addressbookMenupopup');
+			cardbookElementTools.loadAddressBooks(ABPopup, ABList, wdw_addressbooksAdd.gSearchDefinition.searchAB, true, true, true, false, false);
 			cardbookComplexSearch.loadMatchAll(wdw_addressbooksAdd.gSearchDefinition.matchAll);
 			cardbookComplexSearch.constructDynamicRows("searchTerms", wdw_addressbooksAdd.gSearchDefinition.rules, "3.0");
 			document.getElementById('searchTerms_0_valueBox').focus();

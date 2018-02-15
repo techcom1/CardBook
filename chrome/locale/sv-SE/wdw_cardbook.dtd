@@ -61,53 +61,6 @@
 <!ENTITY technicalTabLabel "Teknisk">
 <!ENTITY vCardTabLabel "vCard">
 
-<!ENTITY cardIconColumnLabel "Ikon">
-<!ENTITY nameColumnLabel "Namn">
-<!ENTITY lastnameColumnLabel "Efternamn">
-<!ENTITY firstnameColumnLabel "Förnamn">
-<!ENTITY othernameColumnLabel "Annat namn">
-<!ENTITY prefixnameColumnLabel "Prefix">
-<!ENTITY suffixnameColumnLabel "Suffix">
-<!ENTITY fnColumnLabel "Visningsnamn">
-<!ENTITY nicknameColumnLabel "Smeknamn">
-<!ENTITY genderColumnLabel "Kön">
-<!ENTITY bdayColumnLabel "Födelsedag">
-<!ENTITY dispadrColumnLabel "Adresser">
-<!ENTITY disphomeadrColumnLabel "Hem adresser">
-<!ENTITY dispworkadrColumnLabel "Arbets adresser">
-<!ENTITY disptelColumnLabel "Telefoner">
-<!ENTITY disphometelColumnLabel "Hemtelefon">
-<!ENTITY dispworktelColumnLabel "Arbetstelefon">
-<!ENTITY dispcelltelColumnLabel "Mobiltelefoner">
-<!ENTITY dispemailColumnLabel "Mejladresser">
-<!ENTITY disphomeemailColumnLabel "Hem Mejl">
-<!ENTITY dispworkemailColumnLabel "Arbets Mejl">
-<!ENTITY mailerColumnLabel "Mailer">
-<!ENTITY tzColumnLabel "TZ">
-<!ENTITY geoColumnLabel "Geo">
-<!ENTITY titleColumnLabel "Titel">
-<!ENTITY roleColumnLabel "Role">
-<!ENTITY orgColumnLabel "Organization">
-<!ENTITY categoriesColumnLabel "Grupper">
-<!ENTITY noteColumnLabel "Anteckningar">
-<!ENTITY prodidColumnLabel "Prodid">
-<!ENTITY sortstringColumnLabel "Sorterings stäng">
-<!ENTITY uidColumnLabel "Uid">
-<!ENTITY cbidColumnLabel "CardBook id">
-<!ENTITY dispurlColumnLabel "URL">
-<!ENTITY versionColumnLabel "Version">
-<!ENTITY class1ColumnLabel "Class">
-<!ENTITY dispimppColumnLabel "Instant messaging">
-<!ENTITY cardurlColumnLabel "Card URL">
-<!ENTITY dirPrefIdColumnLabel "DirPrefId">
-<!ENTITY kindColumnLabel "Kind">
-<!ENTITY revColumnLabel "Senast ändrad">
-<!ENTITY etagColumnLabel "Etag">
-<!ENTITY birthplaceColumnLabel "Födelseort">
-<!ENTITY anniversaryColumnLabel "Årsdag">
-<!ENTITY deathdateColumnLabel "Dödsdatum">
-<!ENTITY deathplaceColumnLabel "Dödsplats">
-
 <!ENTITY categoriesGroupboxLabel "Grupper">
 <!ENTITY noteTabLabel "Anteckningar">
 <!ENTITY advancedTabLabel "Avancerad">

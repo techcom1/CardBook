@@ -61,53 +61,6 @@
 <!ENTITY technicalTabLabel "Технические данные">
 <!ENTITY vCardTabLabel "vCard">
 
-<!ENTITY cardIconColumnLabel "Значок">
-<!ENTITY nameColumnLabel "Название">
-<!ENTITY lastnameColumnLabel "Фамилия">
-<!ENTITY firstnameColumnLabel "Имя">
-<!ENTITY othernameColumnLabel "Отчество">
-<!ENTITY prefixnameColumnLabel "Префикс">
-<!ENTITY suffixnameColumnLabel "Суффикс">
-<!ENTITY fnColumnLabel "Отображаемое имя">
-<!ENTITY nicknameColumnLabel "Прозвище">
-<!ENTITY genderColumnLabel "Пол">
-<!ENTITY bdayColumnLabel "День рождения">
-<!ENTITY dispadrColumnLabel "Адреса">
-<!ENTITY disphomeadrColumnLabel "Домашние адреса">
-<!ENTITY dispworkadrColumnLabel "Рабочие адреса">
-<!ENTITY disptelColumnLabel "Телефоны">
-<!ENTITY disphometelColumnLabel "Домашние телефоны">
-<!ENTITY dispworktelColumnLabel "Рабочие телефоны">
-<!ENTITY dispcelltelColumnLabel "Мобильные телефоны">
-<!ENTITY dispemailColumnLabel "Адреса email">
-<!ENTITY disphomeemailColumnLabel "Домашние email">
-<!ENTITY dispworkemailColumnLabel "Рабочие email">
-<!ENTITY mailerColumnLabel "Почтовая программа">
-<!ENTITY tzColumnLabel "Часовой пояс">
-<!ENTITY geoColumnLabel "Широта и долгота">
-<!ENTITY titleColumnLabel "Должность">
-<!ENTITY roleColumnLabel "Роль">
-<!ENTITY orgColumnLabel "Организация">
-<!ENTITY categoriesColumnLabel "Категории">
-<!ENTITY noteColumnLabel "Заметка">
-<!ENTITY prodidColumnLabel "Product ID">
-<!ENTITY sortstringColumnLabel "Строка для сортировки">
-<!ENTITY uidColumnLabel "Uid">
-<!ENTITY cbidColumnLabel "CardBook id">
-<!ENTITY dispurlColumnLabel "URL">
-<!ENTITY versionColumnLabel "Версия">
-<!ENTITY class1ColumnLabel "Классификатор доступа">
-<!ENTITY dispimppColumnLabel "Мгновенные сообщения">
-<!ENTITY cardurlColumnLabel "URL карточки">
-<!ENTITY dirPrefIdColumnLabel "DirPrefId">
-<!ENTITY kindColumnLabel "Вид">
-<!ENTITY revColumnLabel "Последнее обновление">
-<!ENTITY etagColumnLabel "Etag">
-<!ENTITY birthplaceColumnLabel "Место рождения">
-<!ENTITY anniversaryColumnLabel "Годовщина">
-<!ENTITY deathdateColumnLabel "Дата смерти">
-<!ENTITY deathplaceColumnLabel "Место смерти">
-
 <!ENTITY categoriesGroupboxLabel "Категории">
 <!ENTITY noteTabLabel "Заметка">
 <!ENTITY advancedTabLabel "Дополнительно">

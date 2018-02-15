@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- adapted from threadPaneColumnPickerBindings -->
+<!DOCTYPE dialog [
+	<!ENTITY % messengerDTD SYSTEM "chrome://messenger/locale/messenger.dtd"> %messengerDTD;
+]>
+
+<bindings id="cardbookTreeColPicker"
+	xmlns="http://www.mozilla.org/xbl"
+	xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:xbl="http://www.mozilla.org/xbl">
+
+	<binding id="cardsTreeColumnPicker" display="xul:button" role="xul:button"
+		extends="chrome://global/content/bindings/tree.xml#tree-base">
+		<resources>
+			<stylesheet src="chrome://cardbook/skin/cardbookAddressBooks.css"/>
+		</resources>
+		<content>
+			<xul:image class="tree-columnpicker-icon"/>
+			<xul:menupopup anonid="popup">
+				<xul:menuseparator anonid="menuseparator"/>
+				<xul:menuitem anonid="reset" label="&columnPicker.resetToInbox.label;"/>
+				<xul:menu anonid="applyToABMenulist" label="&columnPicker.applyTo.label;">
+					<xul:menupopup anonid="applyToABMenupopup" position="start_before"/>
+				</xul:menu>
+			</xul:menupopup>
+		</content>
+	
+		<implementation>
+			<method name="buildPopup">
+				<parameter name="aPopup"/>
+				<body><![CDATA[
+					while (aPopup.childNodes.length > 3) {
+						aPopup.firstChild.remove();
+					}
+					let refChild = aPopup.firstChild;
+					let tree = this.parentNode.parentNode;
+					for (let currCol = tree.columns.getFirstColumn(); currCol; currCol = currCol.getNext()) {
+						// Construct an entry for each column in the row, unless
+						// it is not being shown.
+						let currElement = currCol.element;
+						if (!currElement.hasAttribute("ignoreincolumnpicker")) {
+							let popupChild = document.createElement("menuitem");
+							popupChild.setAttribute("type", "checkbox");
+							let columnName = currElement.getAttribute("display") || currElement.getAttribute("label");
+							popupChild.setAttribute("label", columnName);
+							popupChild.setAttribute("colindex", currCol.index);
+							if (currElement.getAttribute("hidden") != "true") {
+								popupChild.setAttribute("checked", "true");
+							}
+							if (currCol.primary) {
+								popupChild.setAttribute("disabled", "true");
+							}
+							aPopup.insertBefore(popupChild, refChild);
+						}
+					}
+				]]>
+				</body>
+			</method>
+			<method name="showPopup">
+				<body><![CDATA[
+						let popup = document.getAnonymousElementByAttribute(this, "anonid", "popup");
+						this.buildPopup(popup);
+						popup.showPopup(this, -1, -1, "popup", "bottomright", "topright");
+					]]>
+				</body>
+			</method>
+			<method name="toggleColumn">
+				<parameter name="aColIndex"/>
+				<body><![CDATA[
+					let tree = this.parentNode.parentNode;
+					let column = tree.columns[aColIndex];
+					if (column) {
+						let element = column.element;
+						if (element.getAttribute("hidden") == "true") {
+							element.setAttribute("hidden", "false");
+						} else {
+							element.setAttribute("hidden", "true");
+						}
+					}
+					]]>
+				</body>
+			</method>
+			<method name="resetColumns">
+				<body><![CDATA[
+					cardbookUtils.setColumnsState(cardbookRepository.defaultDisplayedColumns.split(','));
+					]]>
+				</body>
+			</method>
+			<method name="buildApplyMenu">
+				<body><![CDATA[
+					let applyToABMenupopup = document.getAnonymousElementByAttribute(this, "anonid", "applyToABMenupopup");
+					let applyToABMenulist = document.getAnonymousElementByAttribute(this, "anonid", "applyToABMenulist");
+					while (applyToABMenupopup.firstChild) {
+						applyToABMenupopup.firstChild.remove();
+					}
+					cardbookElementTools.loadAddressBooks(applyToABMenupopup, applyToABMenulist, "", true, true, true, true, true);
+					]]>
+				</body>
+			</method>
+			<method name="applyColumns">
+				<parameter name="aDirPrefId"/>
+				<body><![CDATA[
+					var myColumns = cardbookUtils.getColumnsState();
+					for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
+						if (cardbookRepository.cardbookAccounts[i][1]) {
+							if ((cardbookRepository.cardbookAccounts[i][4] == aDirPrefId) || ("allAddressBooks" == aDirPrefId)) {
+								cardbookPreferences.setDisplayedColumns(cardbookRepository.cardbookAccounts[i][4], myColumns);
+							}
+						}
+					}
+					]]>
+				</body>
+			</method>
+		</implementation>
+
+		<handlers>
+			<handler event="command"><![CDATA[
+				// Are they clicking on our header to get us to show the column list?
+				if (event.originalTarget == this) {
+					this.showPopup();
+					this.buildApplyMenu();
+					return;
+				}
+				// Are they clicking on one of the columns in the list?
+				if (event.originalTarget.hasAttribute("colindex")) {
+					this.toggleColumn(event.originalTarget.getAttribute("colindex"));
+					return;
+				}
+
+				// Did they click the reset button?
+				let resetMenu = document.getAnonymousElementByAttribute(this, "anonid", "reset");
+				if (event.originalTarget == resetMenu) {
+					this.resetColumns();
+					return;
+				}
+
+				// Otherwise an exciting action has occurred!
+				let destAB = event.originalTarget.value;
+				let destABName = event.originalTarget.label;
+
+				// Confirm the action with the user.
+				let bundle = document.getElementById("bundle_messenger");
+				let stringBase = "threadPane.columnPicker.confirmFolder.noChildren.";
+				let confirmed = Services.prompt.confirm(null, bundle.getString(stringBase + "title"),
+															bundle.getFormattedString(stringBase + "message", [destABName]));
+				if (!confirmed) {
+					return;
+				}
+                
+				this.applyColumns(destAB);
+				]]>
+			</handler>
+		</handlers>
+	</binding>
+</bindings>

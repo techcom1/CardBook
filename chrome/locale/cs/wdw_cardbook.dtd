@@ -61,53 +61,6 @@
 <!ENTITY technicalTabLabel "Technické">
 <!ENTITY vCardTabLabel "vCard">
 
-<!ENTITY cardIconColumnLabel "Ikona">
-<!ENTITY nameColumnLabel "Název">
-<!ENTITY lastnameColumnLabel "Příjmení">
-<!ENTITY firstnameColumnLabel "Křestní jméno">
-<!ENTITY othernameColumnLabel "Další jméno">
-<!ENTITY prefixnameColumnLabel "Předpona">
-<!ENTITY suffixnameColumnLabel "Přípona">
-<!ENTITY fnColumnLabel "Zobrazované jméno">
-<!ENTITY nicknameColumnLabel "Přezdívka">
-<!ENTITY genderColumnLabel "Pohlaví">
-<!ENTITY bdayColumnLabel "Narozeniny">
-<!ENTITY dispadrColumnLabel "Adresy">
-<!ENTITY disphomeadrColumnLabel "Domácí adresy">
-<!ENTITY dispworkadrColumnLabel "Pracovní adresy">
-<!ENTITY disptelColumnLabel "Telefony">
-<!ENTITY disphometelColumnLabel "Domácí telefony">
-<!ENTITY dispworktelColumnLabel "Pracovní telefony">
-<!ENTITY dispcelltelColumnLabel "Mobilní telefony">
-<!ENTITY dispemailColumnLabel "E-maily">
-<!ENTITY disphomeemailColumnLabel "Domácí e-maily">
-<!ENTITY dispworkemailColumnLabel "Pracovní e-maily">
-<!ENTITY mailerColumnLabel "Mailer">
-<!ENTITY tzColumnLabel "TZ">
-<!ENTITY geoColumnLabel "Geo">
-<!ENTITY titleColumnLabel "Titul">
-<!ENTITY roleColumnLabel "Role">
-<!ENTITY orgColumnLabel "Organizace">
-<!ENTITY categoriesColumnLabel "Kategorie">
-<!ENTITY noteColumnLabel "Poznámky">
-<!ENTITY prodidColumnLabel "Prodid">
-<!ENTITY sortstringColumnLabel "Řadící řetězec">
-<!ENTITY uidColumnLabel "Uid">
-<!ENTITY cbidColumnLabel "CardBook id">
-<!ENTITY dispurlColumnLabel "URL">
-<!ENTITY versionColumnLabel "Verze">
-<!ENTITY class1ColumnLabel "Třída">
-<!ENTITY dispimppColumnLabel "Rychlé zprávy">
-<!ENTITY cardurlColumnLabel "URL kontaktu">
-<!ENTITY dirPrefIdColumnLabel "DirPrefId">
-<!ENTITY kindColumnLabel "Druh">
-<!ENTITY revColumnLabel "Poslední aktualizace">
-<!ENTITY etagColumnLabel "Etag">
-<!ENTITY birthplaceColumnLabel "Místo narození">
-<!ENTITY anniversaryColumnLabel "Výroèí">
-<!ENTITY deathdateColumnLabel "Den úmrtí">
-<!ENTITY deathplaceColumnLabel "Místo úmrtí">
-
 <!ENTITY categoriesGroupboxLabel "Kategorie">
 <!ENTITY noteTabLabel "Poznámky">
 <!ENTITY advancedTabLabel "Rozšířené">

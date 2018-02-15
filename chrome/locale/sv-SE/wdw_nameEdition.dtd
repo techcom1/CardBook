@@ -1,4 +1,5 @@
 <!ENTITY persTitleLabel "Personlig information">
+<!ENTITY nameLabel "Namn">
 <!ENTITY fnLabel "Visningsnamn">
 <!ENTITY lastnameLabel "Efternamn">
 <!ENTITY firstnameLabel "Förnamn">
@@ -12,3 +13,4 @@
 <!ENTITY anniversaryLabel "Årsdag">
 <!ENTITY deathdateLabel "Dödsdatum">
 <!ENTITY deathplaceLabel "Dödsplats">
+<!ENTITY uidLabel "Uid">

@@ -17,6 +17,15 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 			return result;
 		},
 
+		translateFields: function (aFieldList) {
+			var myFieldArray = aFieldList.split('|');
+			var result = [];
+			for (var i = 0; i < myFieldArray.length; i++) {
+				result.push(wdw_csvTranslator.getTranslatedField(myFieldArray[i]));
+			}
+			return cardbookUtils.cleanArray(result).join('|');
+		},
+
 		getTranslatedField: function (aField, aLocale) {
 			if (aLocale != null && aLocale !== undefined && aLocale != "") {
 				var strBundle = Services.strings.createBundle("resource://" + aLocale + "/cardbook.properties");

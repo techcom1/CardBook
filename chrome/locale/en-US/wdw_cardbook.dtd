@@ -61,53 +61,6 @@
 <!ENTITY technicalTabLabel "Technical">
 <!ENTITY vCardTabLabel "vCard">
 
-<!ENTITY cardIconColumnLabel "Icon">
-<!ENTITY nameColumnLabel "Name">
-<!ENTITY lastnameColumnLabel "Family Name">
-<!ENTITY firstnameColumnLabel "Given Name">
-<!ENTITY othernameColumnLabel "Other Name">
-<!ENTITY prefixnameColumnLabel "Prefix">
-<!ENTITY suffixnameColumnLabel "Suffix">
-<!ENTITY fnColumnLabel "Display Name">
-<!ENTITY nicknameColumnLabel "Nickname">
-<!ENTITY genderColumnLabel "Gender">
-<!ENTITY bdayColumnLabel "Birthday">
-<!ENTITY dispadrColumnLabel "Addresses">
-<!ENTITY disphomeadrColumnLabel "Home Addresses">
-<!ENTITY dispworkadrColumnLabel "Work Addresses">
-<!ENTITY disptelColumnLabel "Phones">
-<!ENTITY disphometelColumnLabel "Home Phones">
-<!ENTITY dispworktelColumnLabel "Work Phones">
-<!ENTITY dispcelltelColumnLabel "Cell Phones">
-<!ENTITY dispemailColumnLabel "Emails">
-<!ENTITY disphomeemailColumnLabel "Home Emails">
-<!ENTITY dispworkemailColumnLabel "Work Emails">
-<!ENTITY mailerColumnLabel "Mailer">
-<!ENTITY tzColumnLabel "Time Zone">
-<!ENTITY geoColumnLabel "Geo">
-<!ENTITY titleColumnLabel "Title">
-<!ENTITY roleColumnLabel "Role">
-<!ENTITY orgColumnLabel "Organization">
-<!ENTITY categoriesColumnLabel "Categories">
-<!ENTITY noteColumnLabel "Notes">
-<!ENTITY prodidColumnLabel "Prodid">
-<!ENTITY sortstringColumnLabel "Sort String">
-<!ENTITY uidColumnLabel "Uid">
-<!ENTITY cbidColumnLabel "CardBook id">
-<!ENTITY dispurlColumnLabel "URL">
-<!ENTITY versionColumnLabel "Version">
-<!ENTITY class1ColumnLabel "Class">
-<!ENTITY dispimppColumnLabel "Instant Messaging">
-<!ENTITY cardurlColumnLabel "Card URL">
-<!ENTITY dirPrefIdColumnLabel "DirPrefId">
-<!ENTITY kindColumnLabel "Kind">
-<!ENTITY revColumnLabel "Last Updated">
-<!ENTITY etagColumnLabel "Etag">
-<!ENTITY birthplaceColumnLabel "Birth Place">
-<!ENTITY anniversaryColumnLabel "Anniversary">
-<!ENTITY deathdateColumnLabel "Death Date">
-<!ENTITY deathplaceColumnLabel "Death Place">
-
 <!ENTITY categoriesGroupboxLabel "Categories">
 <!ENTITY noteTabLabel "Notes">
 <!ENTITY advancedTabLabel "Advanced">

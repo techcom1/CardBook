@@ -1,4 +1,5 @@
 <!ENTITY persTitleLabel "개인 정보">
+<!ENTITY nameLabel "이름">
 <!ENTITY fnLabel "표시 이름">
 <!ENTITY lastnameLabel "성">
 <!ENTITY firstnameLabel "이름">
@@ -12,3 +13,4 @@
 <!ENTITY anniversaryLabel "기념일">
 <!ENTITY deathdateLabel "사망일">
 <!ENTITY deathplaceLabel "사망 장소">
+<!ENTITY uidLabel "사용자 번호">

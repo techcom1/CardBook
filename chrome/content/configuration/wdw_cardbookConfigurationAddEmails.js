@@ -14,7 +14,9 @@ if ("undefined" == typeof(wdw_cardbookConfigurationAddEmails)) {
 			if (window.arguments[0].context === "Collection") {
 				aIncludeSearch = false;
 			}
-			cardbookElementTools.loadAddressBooks("CardBookABMenupopup", "CardBookABMenulist", window.arguments[0].addressBookId, true, false, true, aIncludeSearch);
+			var ABList = document.getElementById('CardBookABMenulist');
+			var ABPopup = document.getElementById('CardBookABMenupopup');
+			cardbookElementTools.loadAddressBooks(ABPopup, ABList, window.arguments[0].addressBookId, true, false, true, aIncludeSearch, false);
 		},
 		
 		loadCategories: function () {

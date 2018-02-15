@@ -6,6 +6,7 @@ if ("undefined" == typeof(wdw_addressbooksEdit)) {
 		initialDateFormat: "",
 
 		loadFnFormula: function () {
+			document.getElementById("fnFormulaTextBox").value = cardbookPreferences.getFnFormula(window.arguments[0].dirPrefId);
 			var strBundle = document.getElementById("cardbook-strings");
 			var orgStructure = cardbookPreferences.getStringPref("extensions.cardbook.orgStructure");
 			if (orgStructure != "") {
@@ -69,7 +70,6 @@ if ("undefined" == typeof(wdw_addressbooksEdit)) {
 				document.getElementById('syncTab').setAttribute("collapsed", true);
 			}
 			
-			document.getElementById("fnFormulaTextBox").value = cardbookPreferences.getFnFormula(window.arguments[0].dirPrefId);
 			wdw_addressbooksEdit.loadFnFormula();
 		},
 

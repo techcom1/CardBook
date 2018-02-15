@@ -1,4 +1,5 @@
 <!ENTITY persTitleLabel "Informatii personale">
+<!ENTITY nameLabel "Nume">
 <!ENTITY fnLabel "Numele afișat">
 <!ENTITY lastnameLabel "Nume de familie">
 <!ENTITY firstnameLabel "Prenume">
@@ -12,3 +13,4 @@
 <!ENTITY anniversaryLabel "Aniversare">
 <!ENTITY deathdateLabel "Data mortii">
 <!ENTITY deathplaceLabel "Locul decesului">
+<!ENTITY uidLabel "Uid">

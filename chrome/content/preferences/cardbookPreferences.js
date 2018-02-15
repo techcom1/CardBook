@@ -768,9 +768,13 @@ if ("undefined" == typeof(cardbookPreferences)) {
 		},
 
 		getFnFormula: function (aDirPrefId) {
-			let fnFormula = this.getStringPref(this.prefCardBookData + aDirPrefId + "." + "fnFormula");
-			if (fnFormula != null && fnFormula !== undefined && fnFormula != "") {
-				return fnFormula;
+			if (aDirPrefId != null && aDirPrefId !== undefined && aDirPrefId != "") {
+				let fnFormula = this.getStringPref(this.prefCardBookData + aDirPrefId + "." + "fnFormula");
+				if (fnFormula != null && fnFormula !== undefined && fnFormula != "") {
+					return fnFormula;
+				} else {
+					return cardbookRepository.defaultFnFormula;
+				}
 			} else {
 				return cardbookRepository.defaultFnFormula;
 			}
@@ -779,6 +783,25 @@ if ("undefined" == typeof(cardbookPreferences)) {
 		setFnFormula: function (aDirPrefId, aFnFormula) {
 			if (aFnFormula != null && aFnFormula !== undefined && aFnFormula != "") {
 				this.setStringPref(this.prefCardBookData + aDirPrefId + "." + "fnFormula", aFnFormula);
+			}
+		},
+
+		getDisplayedColumns: function (aDirPrefId) {
+			if (aDirPrefId != null && aDirPrefId !== undefined && aDirPrefId != "") {
+				let displayedColumns = this.getStringPref(this.prefCardBookData + aDirPrefId + "." + "displayedColumns");
+				if (displayedColumns != null && displayedColumns !== undefined && displayedColumns != "") {
+					return displayedColumns;
+				} else {
+					return cardbookRepository.defaultDisplayedColumns;
+				}
+			} else {
+				return cardbookRepository.defaultDisplayedColumns;
+			}
+		},
+
+		setDisplayedColumns: function (aDirPrefId, aDisplayedColumns) {
+			if (aDisplayedColumns != null && aDisplayedColumns !== undefined && aDisplayedColumns != "") {
+				this.setStringPref(this.prefCardBookData + aDirPrefId + "." + "displayedColumns", aDisplayedColumns);
 			}
 		},
 

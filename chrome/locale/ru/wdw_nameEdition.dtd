@@ -1,4 +1,5 @@
 <!ENTITY persTitleLabel "Персональная информация">
+<!ENTITY nameLabel "Название">
 <!ENTITY fnLabel "Отображаемое имя">
 <!ENTITY lastnameLabel "Фамилия">
 <!ENTITY firstnameLabel "Имя">
@@ -12,3 +13,4 @@
 <!ENTITY anniversaryLabel "Годовщина">
 <!ENTITY deathdateLabel "Дата смерти">
 <!ENTITY deathplaceLabel "Место смерти">
+<!ENTITY uidLabel "Uid">

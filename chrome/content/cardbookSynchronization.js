@@ -2649,6 +2649,8 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						k = 0;
 					}
 
+					// a final blank line
+					output = output + "\r\n";
 					cardbookSynchronization.writeContentToFile(aFileName, output, "UTF8");
 
 					if (aListofCard.length > 1) {

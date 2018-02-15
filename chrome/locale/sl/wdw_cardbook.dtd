@@ -61,53 +61,6 @@
 <!ENTITY technicalTabLabel "Tehnično">
 <!ENTITY vCardTabLabel "vCard">
 
-<!ENTITY cardIconColumnLabel "Ikona">
-<!ENTITY nameColumnLabel "Ime">
-<!ENTITY lastnameColumnLabel "Priimek">
-<!ENTITY firstnameColumnLabel "Ime">
-<!ENTITY othernameColumnLabel "Drugo ime">
-<!ENTITY prefixnameColumnLabel "Predpona">
-<!ENTITY suffixnameColumnLabel "Pripona">
-<!ENTITY fnColumnLabel "Prikazano ime">
-<!ENTITY nicknameColumnLabel "Vzdevek">
-<!ENTITY genderColumnLabel "Spol">
-<!ENTITY bdayColumnLabel "Rojstni dan">
-<!ENTITY dispadrColumnLabel "Naslovi">
-<!ENTITY disphomeadrColumnLabel "Domači naslovi">
-<!ENTITY dispworkadrColumnLabel "Službeni naslovi">
-<!ENTITY disptelColumnLabel "Tel. številke">
-<!ENTITY disphometelColumnLabel "Domače tel. številke">
-<!ENTITY dispworktelColumnLabel "Službene tel. številke">
-<!ENTITY dispcelltelColumnLabel "Mobilne tel. številke">
-<!ENTITY dispemailColumnLabel "E-pošte">
-<!ENTITY disphomeemailColumnLabel "Domače e-pošte">
-<!ENTITY dispworkemailColumnLabel "Službene e-pošte">
-<!ENTITY mailerColumnLabel "Mailer">
-<!ENTITY tzColumnLabel "TZ">
-<!ENTITY geoColumnLabel "Geo">
-<!ENTITY titleColumnLabel "Naziv">
-<!ENTITY roleColumnLabel "Vloga">
-<!ENTITY orgColumnLabel "Organizacija">
-<!ENTITY categoriesColumnLabel "Kategorije">
-<!ENTITY noteColumnLabel "Opombe">
-<!ENTITY prodidColumnLabel "Prodid">
-<!ENTITY sortstringColumnLabel "Niz za razvrščanje">
-<!ENTITY uidColumnLabel "Uid">
-<!ENTITY cbidColumnLabel "CardBook id">
-<!ENTITY dispurlColumnLabel "URL">
-<!ENTITY versionColumnLabel "Različica">
-<!ENTITY class1ColumnLabel "Razred">
-<!ENTITY dispimppColumnLabel "Takojšnje sporočanje">
-<!ENTITY cardurlColumnLabel "URL kartice">
-<!ENTITY dirPrefIdColumnLabel "DirPrefId">
-<!ENTITY kindColumnLabel "Vrsta">
-<!ENTITY revColumnLabel "Nazadnje posodobljeno">
-<!ENTITY etagColumnLabel "Etag">
-<!ENTITY birthplaceColumnLabel "??Birth Place??">
-<!ENTITY anniversaryColumnLabel "??Anniversary??">
-<!ENTITY deathdateColumnLabel "??Deathday??">
-<!ENTITY deathplaceColumnLabel "??Death Place??">
-
 <!ENTITY categoriesGroupboxLabel "Kategorije">
 <!ENTITY noteTabLabel "Opombe">
 <!ENTITY advancedTabLabel "Napredno">

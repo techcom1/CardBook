@@ -29,10 +29,10 @@ if ("undefined" == typeof(cardbookCardParser)) {
 			this.nickname = "";
 			this.bday = "";
 			this.gender = "";
-			this.birthplace= "";
-			this.anniversary= "";
-			this.deathdate= "";
-			this.deathplace= "";
+			this.birthplace = "";
+			this.anniversary = "";
+			this.deathdate = "";
+			this.deathplace = "";
 			this.adr = [];
 			this.tel = [];
 			this.email = [];
@@ -64,20 +64,6 @@ if ("undefined" == typeof(cardbookCardParser)) {
 	
 			this.kind = "";
 			this.member = [];
-	
-			this.dispadr = "";
-			this.disphomeadr = "";
-			this.dispworkadr = "";
-			this.disptel = "";
-			this.disphometel = "";
-			this.dispworktel = "";
-			this.dispcelltel = "";
-			this.dispemail = "";
-			this.disphomeemail = "";
-			this.dispworkemail = "";
-			this.dispimpp = "";
-			this.dispurl = "";
-			this.dispcategories = "";
 	
 			this.pgname = "";
 			this.pg = {};

@@ -23,10 +23,13 @@ var cardbookRepository = {
 						["url", ["url"] ] ],
 					"note": ["note"],
 					"calculated": ["age", "ABName"],
-					"technical": ["version", "rev"] },
+					"technical": ["version", "rev"],
+					"technicalForTree": ["cardIcon", "name", "dirPrefId", "uid", "cbid", "class1", "etag", "geo", "mailer",
+											"prodid", "tz", "sortstring", "kind"] },
 
 	dateFormats : ["YYYY-MM-DD", "YYYY.MM.DD", "YYYY/MM/DD", "YYYYMMDD", "DD-MM-YYYY", "DD.MM.YYYY", "DD/MM/YYYY", "DDMMYYYY", "MM-DD-YYYY", "MM.DD.YYYY", "MM/DD/YYYY", "MMDDYYYY"],
 
+	defaultDisplayedColumns : "cardIcon,fn,email.0.all,tel.0.all,bday,rev",
 	defaultAutocompleteRestrictSearchFields : "firstname|lastname",
 	defaultFnFormula : "({{1}} |)({{2}} |)({{3}} |)({{4}} |)({{5}} |)({{6}} |)",
 	defaultAdrFormula : "",
@@ -135,6 +138,7 @@ var cardbookRepository = {
 	
 	cardbookServerChangedPwd : {},
 	
+	cardbookReorderMode : "NOREORDER",
 	cardbookSearchMode : "NOSEARCH",
 	cardbookSearchValue : "",
 	cardbookComplexSearchMode : "NOSEARCH",

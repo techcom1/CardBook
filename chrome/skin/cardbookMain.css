@@ -67,9 +67,13 @@
 }
 
 menulist[type="cardbookPanelMenulist"] {
-   -moz-binding: url("chrome://cardbook/content/widgets/cardbookWidgets.xml#cardbookPanelMenulist");
+	-moz-binding: url("chrome://cardbook/content/widgets/cardbookCategoryPanel.xml#cardbookPanelMenulist");
 }
 
 panel[type="cardbookItemPanel"] {
-   -moz-binding: url("chrome://cardbook/content/widgets/cardbookWidgets.xml#cardbookItemPanel");
+	-moz-binding: url("chrome://cardbook/content/widgets/cardbookCategoryPanel.xml#cardbookItemPanel");
+}
+
+#cardsTreecols > treecolpicker {
+	-moz-binding: url("chrome://cardbook/content/widgets/cardbookTreeColPicker.xml#cardsTreeColumnPicker");
 }
