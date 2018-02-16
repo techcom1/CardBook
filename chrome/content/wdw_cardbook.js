@@ -161,7 +161,8 @@ if ("undefined" == typeof(wdw_cardbook)) {
 
 		clearCard: function () {
 			cardbookUtils.clearCard();
-			document.getElementById('categoriesTextBox').value = "";
+			document.getElementById('categoriesclassicalTextBox').value = "";
+			document.getElementById('categoriesmodernTextBox').value = "";
 			cardbookUtils.adjustFields();
 		},
 		
@@ -170,6 +171,14 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			cardbookUtils.displayCard(aCard, true, true);
 			document.getElementById('vcardTextBox').value = cardbookUtils.cardToVcardData(aCard, false);
 			document.getElementById('vcardTextBox').setAttribute('readonly', 'true');
+			var panesView = cardbookPreferences.getStringPref("extensions.cardbook.panesView");
+			document.getElementById('categories' + panesView + 'TextBox').value = cardbookUtils.formatCategories(aCard.categories);
+			document.getElementById('categories' + panesView + 'TextBox').setAttribute('readonly', 'true');
+			document.getElementById('note' + panesView + 'TextBox').value = aCard.note;
+			document.getElementById('note' + panesView + 'TextBox').setAttribute('readonly', 'true');
+			var re = /[\n\u0085\u2028\u2029]|\r\n?/;
+			var noteArray = aCard.note.split(re);
+			document.getElementById('note' + panesView + 'TextBox').setAttribute('rows', noteArray.length);
 			cardbookUtils.adjustFields();
 		},
 		

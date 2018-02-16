@@ -216,6 +216,26 @@
 														</hbox>
 													</groupbox>
 												</hbox>
+												<hbox flex="1">
+													<groupbox id="categoriesclassicalGroupbox">
+														<caption label="&categoriesGroupboxLabel;" class="header"/>
+														<hbox flex="1">
+															<image id="dummyCatclassicalPrefBox" class="cardbookNoPrefStarClass"/>
+															<textbox id="categoriesclassicalTextBox" flex="1"/>
+														</hbox>
+													</groupbox>
+												</hbox>
+												<hbox flex="1">
+													<groupbox id="noteclassicalGroupbox" flex="1">
+														<caption label="&noteTabLabel;" class="header"/>
+														<hbox flex="1">
+															<image id="dummyNoteclassicalPrefBox" class="cardbookNoPrefStarClass"/>
+															<vbox flex="1">
+																<textbox id="noteclassicalTextBox" multiline="true"/>
+															</vbox>
+														</hbox>
+													</groupbox>
+												</hbox>
 											</vbox>
 											<vbox id="imageBox" align="center" width="170px">
 												<hbox align="center" height="170px">
@@ -223,35 +243,32 @@
 													<image id="defaultCardImage"/>
 												</hbox>
 											</vbox>
+											<vbox align="center" flex="1">
+												<groupbox id="emailclassicalGroupbox" flex="1"/>
+												<groupbox id="telclassicalGroupbox" flex="1"/>
+												<groupbox id="adrclassicalGroupbox" flex="1"/>
+												<groupbox id="imppclassicalGroupbox" flex="1"/>
+												<groupbox id="urlclassicalGroupbox" flex="1"/>
+											</vbox>
 										</hbox>
 										<hbox align="center" flex="1">
 											<vbox flex="1">
-												<groupbox id="categoriesGroupbox">
+												<groupbox id="categoriesmodernGroupbox">
 													<caption label="&categoriesGroupboxLabel;" class="header"/>
 													<hbox flex="1">
-														<image id="dummyCatPrefBox" class="cardbookNoPrefStarClass"/>
-														<textbox id="categoriesTextBox" flex="1"/>
+														<image id="dummyCatmodernPrefBox" class="cardbookNoPrefStarClass"/>
+														<textbox id="categoriesmodernTextBox" flex="1"/>
 													</hbox>
 												</groupbox>
 											</vbox>
 										</hbox>
 										<hbox flex="1">
 											<vbox flex="1">
-												<grid align="center" flex="1">
-													<columns>
-														<column/>
-														<column/>
-														<column/>
-														<column flex="1"/>
-													</columns>
-													<rows>
-														<groupbox id="emailGroupbox" flex="1"/>
-														<groupbox id="telGroupbox" flex="1"/>
-														<groupbox id="adrGroupbox" flex="1"/>
-														<groupbox id="imppGroupbox" flex="1"/>
-														<groupbox id="urlGroupbox" flex="1"/>
-													</rows>
-												</grid>
+												<groupbox id="emailmodernGroupbox" flex="1"/>
+												<groupbox id="telmodernGroupbox" flex="1"/>
+												<groupbox id="adrmodernGroupbox" flex="1"/>
+												<groupbox id="imppmodernGroupbox" flex="1"/>
+												<groupbox id="urlmodernGroupbox" flex="1"/>
 											</vbox>
 										</hbox>
 										<hbox id="listGroupbox" flex="1">
@@ -268,12 +285,12 @@
 											</vbox>
 										</hbox>
 										<hbox flex="1">
-											<groupbox id="noteGroupbox" flex="1">
+											<groupbox id="notemodernGroupbox" flex="1">
 												<caption label="&noteTabLabel;" class="header"/>
 												<hbox flex="1">
-													<image id="dummyNotePrefBox" class="cardbookNoPrefStarClass"/>
+													<image id="dummyNotemodernPrefBox" class="cardbookNoPrefStarClass"/>
 													<vbox flex="1">
-														<textbox id="noteTextBox" multiline="true"/>
+														<textbox id="notemodernTextBox" multiline="true"/>
 													</vbox>
 												</hbox>
 											</groupbox>

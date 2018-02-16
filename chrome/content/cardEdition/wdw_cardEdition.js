@@ -600,7 +600,13 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			var aFollowLink = false;
 			cardbookUtils.displayCard(aCard, aReadOnly, aFollowLink);
 			
+			// specific
+			document.getElementById('noteTextBox').removeAttribute('readonly');
+			document.getElementById('noteTextBox').value = aCard.note;
+			document.getElementById('categoriesTextBox').removeAttribute('readonly');
+			document.getElementById('categoriesTextBox').value = cardbookUtils.formatCategories(aCard.categories);
 			wdw_cardEdition.loadCategories(aCard.categories);
+			
 			document.getElementById('photoExtensionTextBox').value = aCard.photo.extension;
 			if (!aReadOnly) {
 				cardbookTypes.display40(aCard.version);

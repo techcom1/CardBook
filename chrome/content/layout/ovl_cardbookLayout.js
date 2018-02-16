@@ -84,6 +84,10 @@ if ("undefined" == typeof(ovl_cardbookLayout)) {
 					document.getElementById("resultsSplitterModern").hidden=false;
 					document.getElementById("resultsSplitterClassical").hidden=true;
 				}
+				if (cardbookRepository.cardbookCards[document.getElementById('dirPrefIdTextBox').value+"::"+document.getElementById('uidTextBox').value]) {
+					var myCard = cardbookRepository.cardbookCards[document.getElementById('dirPrefIdTextBox').value+"::"+document.getElementById('uidTextBox').value];
+					wdw_cardbook.displayCard(myCard);
+				}
 			}
 		}
 

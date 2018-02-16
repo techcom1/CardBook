@@ -789,12 +789,21 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		clearCard: function () {
 			var fieldArray = [ "fn", "lastname", "firstname", "othername", "prefixname", "suffixname", "nickname", "gender",
-								"bday", "birthplace", "anniversary", "deathdate", "deathplace", "note", "mailer", "geo", "sortstring", "class1", "tz",
+								"bday", "birthplace", "anniversary", "deathdate", "deathplace", "mailer", "geo", "sortstring", "class1", "tz",
 								"agent", "key", "prodid", "uid", "version", "dirPrefId", "cardurl", "rev", "etag", "others", "vcard",
 								"photolocalURI", "logolocalURI", "soundlocalURI", "photoURI", "logoURI", "soundURI" ];
 			for (var i = 0; i < fieldArray.length; i++) {
 				if (document.getElementById(fieldArray[i] + 'TextBox')) {
 					document.getElementById(fieldArray[i] + 'TextBox').value = "";
+				}
+			}
+			var fieldArray = [ "note" ];
+			for (var i = 0; i < fieldArray.length; i++) {
+				if (document.getElementById(fieldArray[i] + 'modernTextBox')) {
+					document.getElementById(fieldArray[i] + 'modernTextBox').value = "";
+				}
+				if (document.getElementById(fieldArray[i] + 'classicalTextBox')) {
+					document.getElementById(fieldArray[i] + 'classicalTextBox').value = "";
 				}
 			}
 
@@ -822,18 +831,13 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		displayCard: function (aCard, aReadOnly, aFollowLink) {
 			var fieldArray = [ "fn", "lastname", "firstname", "othername", "prefixname", "suffixname", "nickname",
-								"birthplace", "deathplace", "note", "mailer", "geo", "sortstring",
+								"birthplace", "deathplace", "mailer", "geo", "sortstring",
 								"class1", "tz", "agent", "key", "prodid", "uid", "version", "dirPrefId", "cardurl", "rev", "etag" ];
 			for (var i = 0; i < fieldArray.length; i++) {
 				if (document.getElementById(fieldArray[i] + 'TextBox') && aCard[fieldArray[i]]) {
 					document.getElementById(fieldArray[i] + 'TextBox').value = aCard[fieldArray[i]];
 					if (aReadOnly) {
 						document.getElementById(fieldArray[i] + 'TextBox').setAttribute('readonly', 'true');
-						if (fieldArray[i] === "note") {
-							var re = /[\n\u0085\u2028\u2029]|\r\n?/;
-							var noteArray = aCard[fieldArray[i]].split(re);
-							document.getElementById(fieldArray[i] + 'TextBox').setAttribute('rows', noteArray.length);
-						}
 					} else {
 						document.getElementById(fieldArray[i] + 'TextBox').removeAttribute('readonly');
 					}
@@ -883,13 +887,6 @@ if ("undefined" == typeof(cardbookUtils)) {
 			wdw_imageEdition.displayImageCard(aCard, !aReadOnly);
 			wdw_cardEdition.display40(aCard.version, aReadOnly);
 			
-			document.getElementById('categoriesTextBox').value = cardbookUtils.formatCategories(aCard.categories);
-			if (aReadOnly) {
-				document.getElementById('categoriesTextBox').setAttribute('readonly', 'true');
-			} else {
-				document.getElementById('categoriesTextBox').removeAttribute('readonly');
-			}
-
 			var typesList = [ 'email', 'tel', 'impp', 'url', 'adr' ];
 			for (var i in typesList) {
 				if (aReadOnly) {
@@ -921,9 +918,13 @@ if ("undefined" == typeof(cardbookUtils)) {
 									};
 			for (var i in nullableFields) {
 				var found = false;
+				var found1 = false;
+				var found2 = false;
 				for (var j = 0; j < nullableFields[i].length; j++) {
 					var row = document.getElementById(nullableFields[i][j] + 'Row');
 					var textbox = document.getElementById(nullableFields[i][j] + 'TextBox');
+					var textbox1 = document.getElementById(nullableFields[i][j] + 'classicalTextBox');
+					var textbox2 = document.getElementById(nullableFields[i][j] + 'modernTextBox');
 					var label = document.getElementById(nullableFields[i][j] + 'Label');
 					if (textbox) {
 						var myTestValue = "";
@@ -955,6 +956,66 @@ if ("undefined" == typeof(cardbookUtils)) {
 							}
 						}
 					}
+					if (textbox1) {
+						var myTestValue = "";
+						if (textbox1.value) {
+							myTestValue = textbox1.value;
+						} else {
+							myTestValue = textbox1.getAttribute('value');
+						}
+						if (myTestValue != "") {
+							if (row) {
+								row.removeAttribute('hidden');
+							}
+							if (textbox1) {
+								textbox1.removeAttribute('hidden');
+							}
+							if (label) {
+								label.removeAttribute('hidden');
+							}
+							found1 = true;
+						} else {
+							if (row) {
+								row.setAttribute('hidden', 'true');
+							}
+							if (textbox1) {
+								textbox1.setAttribute('hidden', 'true');
+							}
+							if (label) {
+								label.setAttribute('hidden', 'true');
+							}
+						}
+					}
+					if (textbox2) {
+						var myTestValue = "";
+						if (textbox2.value) {
+							myTestValue = textbox2.value;
+						} else {
+							myTestValue = textbox2.getAttribute('value');
+						}
+						if (myTestValue != "") {
+							if (row) {
+								row.removeAttribute('hidden');
+							}
+							if (textbox2) {
+								textbox2.removeAttribute('hidden');
+							}
+							if (label) {
+								label.removeAttribute('hidden');
+							}
+							found2 = true;
+						} else {
+							if (row) {
+								row.setAttribute('hidden', 'true');
+							}
+							if (textbox2) {
+								textbox2.setAttribute('hidden', 'true');
+							}
+							if (label) {
+								label.setAttribute('hidden', 'true');
+							}
+						}
+					}
 				}
 				if (cardbookRepository.customFields[i]) {
 					for (var j = 0; j < cardbookRepository.customFields[i].length; j++) {
@@ -973,6 +1034,22 @@ if ("undefined" == typeof(cardbookUtils)) {
 						groupbox.setAttribute('hidden', 'true');
 					}
 				}
+				var groupbox1 = document.getElementById(i + 'classicalGroupbox');
+				if (groupbox1) {
+					if (found1) {
+						groupbox1.removeAttribute('hidden');
+					} else {
+						groupbox1.setAttribute('hidden', 'true');
+					}
+				}
+				var groupbox2 = document.getElementById(i + 'modernGroupbox');
+				if (groupbox2) {
+					if (found2) {
+						groupbox2.removeAttribute('hidden');
+					} else {
+						groupbox2.setAttribute('hidden', 'true');
+					}
+				}
 			}
 			
 			var groupbox = document.getElementById('orgGroupbox');
@@ -982,15 +1059,15 @@ if ("undefined" == typeof(cardbookUtils)) {
 				groupbox.setAttribute('hidden', 'true');
 			}
 			
-			var typesList = [ 'email', 'tel', 'impp', 'url', 'adr' ];
-			for (var i in typesList) {
-				var box = document.getElementById(typesList[i] + 'Groupbox');
-				if (document.getElementById(typesList[i] + '_0_valueBox')) {
-					box.removeAttribute('hidden');
-				} else {
-					box.setAttribute('hidden', 'true');
-				}
-			}
+			// test var typesList = [ 'email', 'tel', 'impp', 'url', 'adr' ];
+			// test for (var i in typesList) {
+			// test 	var box = document.getElementById(typesList[i] + panesView + 'Groupbox');
+			// test 	if (document.getElementById(typesList[i] + '_0_valueBox')) {
+			// test 		box.removeAttribute('hidden');
+			// test 	} else {
+			// test 		box.setAttribute('hidden', 'true');
+			// test 	}
+			// test }
 		},
 
 		setCalculatedFieldsWithoutRev: function(aCard) {

@@ -669,18 +669,22 @@ if ("undefined" == typeof(cardbookTypes)) {
 			if (aCardValue.join(" ") == "") {
 				return;
 			}
-			var strBundle = document.getElementById("cardbook-strings");
-			var aOrigBox = document.getElementById(aType + 'Groupbox');
-			
+			var panesView = cardbookPreferences.getStringPref("extensions.cardbook.panesView");
+			var aOrigBox = document.getElementById(aType + panesView + 'Groupbox');
+
 			if (aIndex == 0) {
 				cardbookElementTools.addCaption(aType, aOrigBox);
 			}
 			
-			var aRow = document.createElement('row');
-			aOrigBox.appendChild(aRow);
-			aRow.setAttribute('id', aType + '_' + aIndex + '_row');
-			aRow.setAttribute('flex', '1');
-			aRow.setAttribute('align', 'start');
+			var aGrid = cardbookElementTools.addGrid(aType, aOrigBox);
+			var aGridColumns = cardbookElementTools.addGridColumns(aType, aGrid, {flex: '1'});
+			cardbookElementTools.addGridColumn(aType, 0, aGridColumns);
+			cardbookElementTools.addGridColumn(aType, 1, aGridColumns);
+			cardbookElementTools.addGridColumn(aType, 2, aGridColumns);
+			cardbookElementTools.addGridColumn(aType, 3, aGridColumns, {flex: '1'});
+			var aGridRows = cardbookElementTools.addGridRows(aType, aGrid);
+			var aRow = cardbookElementTools.addGridRow(aType, aIndex, aGridRows, {align: 'start'});
+
 			var myInputTypes = [];
 			myInputTypes = cardbookUtils.getOnlyTypesFromTypes(aInputTypes);
 			var myDisplayedTypes = [];
