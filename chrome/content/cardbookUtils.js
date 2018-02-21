@@ -414,7 +414,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 		},
 	
 		escapeString1: function (vString) {
-			return vString.replace(/\\\(/g,"@ESCAPEDLEFTPARENTHESIS@").replace(/\\\)/g,"@ESCAPEDRIGHTPARENTHESIS@");
+			return vString.replace(/\\\(/g,"@ESCAPEDLEFTPARENTHESIS@").replace(/\\\)/g,"@ESCAPEDRIGHTPARENTHESIS@").replace(/\\\|/g,"@ESCAPEDPIPE@");
 		},
 	
 		escapeArray: function (vArray) {
@@ -483,7 +483,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 		},
 	
 		unescapeString1: function (vString) {
-			return vString.replace(/@ESCAPEDLEFTPARENTHESIS@/g,"(").replace(/@ESCAPEDRIGHTPARENTHESIS@/g,")");
+			return vString.replace(/@ESCAPEDLEFTPARENTHESIS@/g,"(").replace(/@ESCAPEDRIGHTPARENTHESIS@/g,")").replace(/@ESCAPEDPIPE@/g,"|");
 		},
 	
 		unescapeArray: function (vArray) {
