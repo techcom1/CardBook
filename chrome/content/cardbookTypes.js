@@ -320,9 +320,6 @@ if ("undefined" == typeof(cardbookTypes)) {
 			for (var i = 0; i < aArray.length; i++) {
 				cardbookTypes.loadStaticTypes(aType, i, aArray[i][1], aArray[i][2], aArray[i][3], aArray[i][0], aVersion, aFollowLink);
 			}
-			if (aArray.length == 0) {
-				cardbookTypes.loadStaticTypes(aType, 0, [], "", [], [""], aVersion, aFollowLink);
-			}
 		},
 
 		display40: function (aVersion) {
@@ -676,14 +673,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 				cardbookElementTools.addCaption(aType, aOrigBox);
 			}
 			
-			var aGrid = cardbookElementTools.addGrid(aType, aOrigBox);
-			var aGridColumns = cardbookElementTools.addGridColumns(aType, aGrid, {flex: '1'});
-			cardbookElementTools.addGridColumn(aType, 0, aGridColumns);
-			cardbookElementTools.addGridColumn(aType, 1, aGridColumns);
-			cardbookElementTools.addGridColumn(aType, 2, aGridColumns);
-			cardbookElementTools.addGridColumn(aType, 3, aGridColumns, {flex: '1'});
-			var aGridRows = cardbookElementTools.addGridRows(aType, aGrid);
-			var aRow = cardbookElementTools.addGridRow(aType, aIndex, aGridRows, {align: 'start'});
+			var aRow = cardbookElementTools.addGridRow(aType, aIndex, aOrigBox, {align: 'start'});
 
 			var myInputTypes = [];
 			myInputTypes = cardbookUtils.getOnlyTypesFromTypes(aInputTypes);

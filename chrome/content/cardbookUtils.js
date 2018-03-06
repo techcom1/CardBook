@@ -268,7 +268,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 				return aArray.sort(compare2);
 			}
 		},
-		
+
 		sortArrayByString: function (aArray, aIndex, aInvert) {
 			if (Services.locale.getApplicationLocale) {
 				var collator = Components.classes["@mozilla.org/intl/collation-factory;1"].getService(Components.interfaces.nsICollationFactory).CreateCollation(Services.locale.getApplicationLocale());
@@ -283,7 +283,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 				return aArray.sort(compare2);
 			}
 		},
-		
+
 		sortArrayByNumber: function (aArray, aIndex, aInvert) {
 			function compare1(a, b) { return (a[aIndex] - b[aIndex])*aInvert; };
 			function compare2(a, b) { return (a - b)*aInvert; };
@@ -293,7 +293,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 				return aArray.sort(compare2);
 			}
 		},
-		
+
 		arrayUnique2D: function (aArray) {
 			for (var i=0; i<aArray.length; i++) {
 				var listI = aArray[i];
@@ -309,7 +309,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			}
 			return aArray;
 		},
-		
+
 		splitLine: function (vString) {
 			var lLineLength = 75;
 			var lResult = "";
@@ -324,7 +324,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			}
 			return lResult;
 		},
-	
+
 		undefinedToBlank: function (vString1) {
 			if (vString1 != null && vString1 !== undefined && vString1 != "") {
 				return vString1;
@@ -367,7 +367,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			}
 			return aResultValue;
 		},
-		
+
 		appendToVcardData1: function (vString1, vString2, vBool1, vString3) {
 			var lResult = "";
 			if (vBool1) {
@@ -390,7 +390,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 			}
 			return lResult;
 		},
-		
+
 		appendToVcardData2: function (vString1, vString2, vBool1, vString3) {
 			var lResult = "";
 			if (vBool1) {
@@ -408,15 +408,15 @@ if ("undefined" == typeof(cardbookUtils)) {
 			}
 			return lResult;
 		},
-		
+
 		escapeString: function (vString) {
 			return vString.replace(/\\;/g,"@ESCAPEDSEMICOLON@").replace(/\\,/g,"@ESCAPEDCOMMA@");
 		},
-	
+
 		escapeString1: function (vString) {
-			return vString.replace(/\\\(/g,"@ESCAPEDLEFTPARENTHESIS@").replace(/\\\)/g,"@ESCAPEDRIGHTPARENTHESIS@").replace(/\\\|/g,"@ESCAPEDPIPE@");
+			return vString.replace(/\\\(/g,"@ESCAPEDLEFTPARENTHESIS@").replace(/\\\)/g,"@ESCAPEDRIGHTPARENTHESIS@").replace(/\\\|/g,"@ESCAPEDPIPE@"); 
 		},
-	
+
 		escapeArray: function (vArray) {
 			for (let i = 0; i<vArray.length; i++){
 				if (vArray[i] && vArray[i] != ""){
@@ -469,23 +469,23 @@ if ("undefined" == typeof(cardbookUtils)) {
 			}
 			return vArrayNew;
 		},
-	
+
 		escapeStringSemiColon: function (vString) {
 			return vString.replace(/;/g,"@ESCAPEDSEMICOLON@");
 		},
-	
+
 		unescapeStringSemiColon: function (vString) {
 			return vString.replace(/@ESCAPEDSEMICOLON@/g,"\\;");
 		},
-	
+
 		unescapeString: function (vString) {
 			return vString.replace(/@ESCAPEDSEMICOLON@/g,";").replace(/\\;/g,";").replace(/@ESCAPEDCOMMA@/g,",").replace(/\\,/g,",");
 		},
-	
+
 		unescapeString1: function (vString) {
 			return vString.replace(/@ESCAPEDLEFTPARENTHESIS@/g,"(").replace(/@ESCAPEDRIGHTPARENTHESIS@/g,")").replace(/@ESCAPEDPIPE@/g,"|");
 		},
-	
+
 		unescapeArray: function (vArray) {
 			for (let i = 0; i<vArray.length; i++){
 				if (vArray[i] && vArray[i] != ""){
@@ -809,11 +809,6 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 			cardbookElementTools.deleteRows('orgRows');
 			
-			var typesList = [ 'email', 'tel', 'impp', 'url', 'adr' ];
-			for (var i in typesList) {
-				cardbookElementTools.deleteRowsType(typesList[i]);
-			}
-
 			// need to remove the Custom from Pers
 			// for the Org, everything is cleared out
 			var aListRows = document.getElementById('persRows');
@@ -890,7 +885,11 @@ if ("undefined" == typeof(cardbookUtils)) {
 			var typesList = [ 'email', 'tel', 'impp', 'url', 'adr' ];
 			for (var i in typesList) {
 				if (aReadOnly) {
-					cardbookTypes.constructStaticRows(typesList[i], aCard[typesList[i]], aCard.version, aFollowLink);
+					if (aCard[typesList[i]].length > 0) {
+						cardbookTypes.constructStaticRows(typesList[i], aCard[typesList[i]], aCard.version, aFollowLink);
+					} else {
+						cardbookElementTools.deleteRowsAllTypes(typesList[i]);
+					}
 				} else {
 					if (typesList[i] === "impp") {
 						cardbookTypes.loadIMPPs(aCard[typesList[i]]);
@@ -1058,16 +1057,6 @@ if ("undefined" == typeof(cardbookUtils)) {
 			} else {
 				groupbox.setAttribute('hidden', 'true');
 			}
-			
-			// test var typesList = [ 'email', 'tel', 'impp', 'url', 'adr' ];
-			// test for (var i in typesList) {
-			// test 	var box = document.getElementById(typesList[i] + panesView + 'Groupbox');
-			// test 	if (document.getElementById(typesList[i] + '_0_valueBox')) {
-			// test 		box.removeAttribute('hidden');
-			// test 	} else {
-			// test 		box.setAttribute('hidden', 'true');
-			// test 	}
-			// test }
 		},
 
 		setCalculatedFieldsWithoutRev: function(aCard) {

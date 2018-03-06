@@ -94,7 +94,7 @@
 					</tree>
 				</vbox>
 
-				<splitter id="dirTreeSplitter" collapse="before" persist="state orient" class="cardbookVerticalSplitterClass" oncommand="ovl_cardbookLayout.changeResizePanes('viewABPane', true);"/>
+				<splitter id="dirTreeSplitter" collapse="before" persist="state orient" class="cardbookVerticalSplitterClass"/>
 
 				<box id="cardsBox" flex="1">
 					<hbox id="rightPaneUpHbox" flex="1" persist="width height collapsed">
@@ -105,9 +105,9 @@
 						</tree>
 					</hbox>
 					
-					<splitter id="resultsSplitterClassical" collapse="after" orient="horizontal" persist="state orient" class="cardbookVerticalSplitterClass" oncommand="ovl_cardbookLayout.changeResizePanes('viewABContact', true);"/>
+					<splitter id="resultsSplitterClassical" collapse="after" orient="horizontal" persist="state orient" class="cardbookVerticalSplitterClass"/>
 
-					<splitter id="resultsSplitterModern" collapse="after" orient="vertical" persist="state orient" class="cardbookHorizontalSplitterClass" oncommand="ovl_cardbookLayout.changeResizePanes('viewABContact', true);"/>
+					<splitter id="resultsSplitterModern" collapse="after" orient="vertical" persist="state orient" class="cardbookHorizontalSplitterClass"/>
 
 					<hbox id="rightPaneDownHbox" flex="1" context="" persist="width height collapsed" class="cardbookBackgroundColorClass">
 						<vbox flex="1">
@@ -243,12 +243,22 @@
 													<image id="defaultCardImage"/>
 												</hbox>
 											</vbox>
-											<vbox align="center" flex="1">
-												<groupbox id="emailclassicalGroupbox" flex="1"/>
-												<groupbox id="telclassicalGroupbox" flex="1"/>
-												<groupbox id="adrclassicalGroupbox" flex="1"/>
-												<groupbox id="imppclassicalGroupbox" flex="1"/>
-												<groupbox id="urlclassicalGroupbox" flex="1"/>
+											<vbox flex="1">
+												<grid align="center" flex="1">
+													<columns>
+														<column/>
+														<column/>
+														<column flex="1"/>
+														<column flex="1"/>
+													</columns>
+													<rows>
+														<groupbox id="emailclassicalGroupbox" flex="1"/>
+														<groupbox id="telclassicalGroupbox" flex="1"/>
+														<groupbox id="adrclassicalGroupbox" flex="1"/>
+														<groupbox id="imppclassicalGroupbox" flex="1"/>
+														<groupbox id="urlclassicalGroupbox" flex="1"/>
+													</rows>
+												</grid>
 											</vbox>
 										</hbox>
 										<hbox align="center" flex="1">
@@ -264,11 +274,21 @@
 										</hbox>
 										<hbox flex="1">
 											<vbox flex="1">
-												<groupbox id="emailmodernGroupbox" flex="1"/>
-												<groupbox id="telmodernGroupbox" flex="1"/>
-												<groupbox id="adrmodernGroupbox" flex="1"/>
-												<groupbox id="imppmodernGroupbox" flex="1"/>
-												<groupbox id="urlmodernGroupbox" flex="1"/>
+												<grid align="center" flex="1">
+													<columns>
+														<column/>
+														<column/>
+														<column flex="1"/>
+														<column flex="1"/>
+													</columns>
+													<rows>
+														<groupbox id="emailmodernGroupbox" flex="1"/>
+														<groupbox id="telmodernGroupbox" flex="1"/>
+														<groupbox id="adrmodernGroupbox" flex="1"/>
+														<groupbox id="imppmodernGroupbox" flex="1"/>
+														<groupbox id="urlmodernGroupbox" flex="1"/>
+													</rows>
+												</grid>
 											</vbox>
 										</hbox>
 										<hbox id="listGroupbox" flex="1">

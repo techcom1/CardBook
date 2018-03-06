@@ -624,6 +624,10 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 
 		clearCard: function () {
 			cardbookUtils.clearCard();
+			var typesList = [ 'email', 'tel', 'impp', 'url', 'adr' ];
+			for (var i in typesList) {
+				cardbookElementTools.deleteRows(typesList[i] + 'Groupbox');
+			}
 			wdw_cardEdition.loadCategories([]);
 		},
 
@@ -783,9 +787,8 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			var ABPopup = document.getElementById('addressbookMenupopup');
 			cardbookElementTools.loadAddressBooks(ABPopup, ABList, wdw_cardEdition.workingCard.dirPrefId, true, false,
 													(window.arguments[0].editionMode == "ViewContact" || window.arguments[0].editionMode == "ViewList"), false, false);
-			if (wdw_cardEdition.workingCard.dirPrefId == "") {
-				wdw_cardEdition.workingCard.dirPrefId = document.getElementById('addressbookMenulist').selectedItem.value;
-			}
+			// the dirPrefId may be different from the one loaded in case of a complex search
+			wdw_cardEdition.workingCard.dirPrefId = document.getElementById('addressbookMenulist').selectedItem.value;
 			wdw_cardEdition.loadSourceCategories(wdw_cardEdition.workingCard.dirPrefId);
 			
 			cardbookElementTools.loadGender("genderMenupopup", "genderMenulist", wdw_cardEdition.workingCard.gender);

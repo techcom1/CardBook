@@ -3,11 +3,13 @@ if ("undefined" == typeof(ovl_cardbookLayout)) {
 
 	var ovl_cardbookLayout = {
 
-		changeResizePanes: function(aPref, aValue) {
-			if (aValue) {
-				cardbookPreferences.setBoolPref("extensions.cardbook." + aPref, aValue);
+		changeResizePanes: function(aPref, aSplitter) {
+			if (aSplitter) {
+				// unpossible to fire a drag event on splitter
+				// don't know how to do
+				cardbookPreferences.setBoolPref("extensions.cardbook." + aPref, (aSplitter.getAttribute("state") == "open"));
 			} else {
-				cardbookPreferences.setBoolPref("extensions.cardbook." + aPref, !prefs.getBoolPref("extensions.cardbook." + aPref));
+				cardbookPreferences.setBoolPref("extensions.cardbook." + aPref, !cardbookPreferences.getBoolPref("extensions.cardbook." + aPref));
 			}
 		},
 

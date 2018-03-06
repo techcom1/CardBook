@@ -1552,18 +1552,16 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						}
 						cardbookRepository.cardbookServerDiscoveryResponse[aConnection.connPrefId]++;
 					} else if (responseXML && (status > 199 && status < 400)) {
-						var prefixs = ["x0", "card", "X0", "CARD"];
-						for (var i in prefixs) {
-							if (responseXML.getElementsByTagName(prefixs[i] + ":address-data-type")) {
-								var versions = responseXML.getElementsByTagName(prefixs[i] + ":address-data-type");
-							}
-							for (let j = 0; j < versions.length; j++) {
-								if (versions[j].getAttribute("content-type") == "text/vcard") {
-									if (versions[j].getAttribute("version")) {
-										var myVersion = versions[j].getAttribute("version");
-										wdw_cardbooklog.updateStatusProgressInformationWithDebug2(aConnection.connDescription + " : version found : " + myVersion + " (" + aConnection.connUrl + ")");
-										cardbookRepository.cardbookServerValidation[aConnection.connPrefId][aConnection.connUrl].version.push(myVersion);
-									}
+						var ns = "urn:ietf:params:xml:ns:carddav";
+						if (responseXML.getElementsByTagNameNS(ns, "address-data-type")) {
+							var versions = responseXML.getElementsByTagNameNS(ns, "address-data-type");
+						}
+						for (let j = 0; j < versions.length; j++) {
+							if (versions[j].getAttribute("content-type") == "text/vcard") {
+								if (versions[j].getAttribute("version")) {
+									var myVersion = versions[j].getAttribute("version");
+									wdw_cardbooklog.updateStatusProgressInformationWithDebug2(aConnection.connDescription + " : version found : " + myVersion + " (" + aConnection.connUrl + ")");
+									cardbookRepository.cardbookServerValidation[aConnection.connPrefId][aConnection.connUrl].version.push(myVersion);
 								}
 							}
 						}

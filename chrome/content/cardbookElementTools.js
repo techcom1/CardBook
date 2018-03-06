@@ -4,9 +4,13 @@ if ("undefined" == typeof(cardbookElementTools)) {
 
 	var cardbookElementTools = {
 		
-		deleteRowsType: function (aType) {
+		deleteRowsAllTypes: function (aType) {
 			cardbookElementTools.deleteRows(aType + 'classicalGroupbox');
 			cardbookElementTools.deleteRows(aType + 'modernGroupbox');
+		},
+
+		deleteRowsType: function (aType) {
+			cardbookElementTools.deleteRows(aType + 'Groupbox');
 		},
 
 		deleteRows: function (aObjectName) {

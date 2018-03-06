@@ -107,6 +107,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			var accountShown = cardbookPreferences.getStringPref("extensions.cardbook.accountShown");
 			cardbookUtils.setColumnsStateForAccount(accountShown);
 			cardbookUtils.setSelectedAccount(accountShown, wdw_cardbook.currentFirstVisibleRow, wdw_cardbook.currentLastVisibleRow);
+			wdw_cardbook.refreshWindow();
 		},
 
 		syncAccountFromAccountsOrCats: function () {
@@ -161,6 +162,10 @@ if ("undefined" == typeof(wdw_cardbook)) {
 
 		clearCard: function () {
 			cardbookUtils.clearCard();
+			var typesList = [ 'email', 'tel', 'impp', 'url', 'adr' ];
+			for (var i in typesList) {
+				cardbookElementTools.deleteRowsAllTypes(typesList[i]);
+			}
 			document.getElementById('categoriesclassicalTextBox').value = "";
 			document.getElementById('categoriesmodernTextBox').value = "";
 			cardbookUtils.adjustFields();

@@ -758,7 +758,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 						var vCardVersion = document.getElementById('vCardVersionPageName').value;
 						var readonly = document.getElementById('readonlyPageName').checked;
 						var dateFormat = document.getElementById('dateFormatMenuList').value;
-						var URL = document.getElementById('URLPageName').value;
+						var URL = wdw_addressbooksAdd.gAccountsFound[i][0];
 						var urnuuid = document.getElementById('urnuuidPageName').checked;
 						wdw_addressbooksAdd.gFinishParams.push({url: URL, name: name, username: username, color: color, vcard: vCardVersion, readonly: readonly, dirPrefId: aAddressbookId, dateFormat: dateFormat,
 																	urnuuid: urnuuid, DBcached: true, firstAction: false});

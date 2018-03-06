@@ -257,9 +257,13 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 	
 		_sendHTTPRequest: function(method, body, headers, aOverrideMime, aCleanBody) {
 			try {
-			let httpChannel = Components.classes["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Components.interfaces.nsIXMLHttpRequest);
-			httpChannel.loadFlags |= Components.interfaces.nsIRequest.LOAD_ANONYMOUS | Components.interfaces.nsIRequest.LOAD_BYPASS_CACHE | Components.interfaces.nsIRequest.INHIBIT_PERSISTENT_CACHING;
-			httpChannel.notificationCallbacks = this;
+				if (Services.vc.compare(Services.appinfo.version, "59") >= 0) {
+					var httpChannel = new XMLHttpRequest();
+				} else {
+					var httpChannel = Components.classes["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Components.interfaces.nsIXMLHttpRequest);
+				}
+				httpChannel.loadFlags |= Components.interfaces.nsIRequest.LOAD_ANONYMOUS | Components.interfaces.nsIRequest.LOAD_BYPASS_CACHE | Components.interfaces.nsIRequest.INHIBIT_PERSISTENT_CACHING;
+				httpChannel.notificationCallbacks = this;
 	
 				if (this.timeout != null && this.timeout !== undefined && this.timeout != "") {
 					httpChannel.timeout = this.timeout;
