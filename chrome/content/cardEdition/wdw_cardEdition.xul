@@ -81,7 +81,7 @@
 			<tab id="advancedTab" label="&advancedTabLabel;"/>
 			<tab id="mailPopularityTab" label="&mailPopularityTabLabel;"/>
 		</tabs>
-		
+
 		<tabpanels id="mainEditionBox" flex="1">
 			<tabpanel orient="vertical" style="overflow:auto">
 				<hbox>
@@ -97,7 +97,7 @@
 									</hbox>
 								</groupbox>
 								<groupbox id="categoriesReadOnlyGroupbox">
-									<caption label="&categoriesGroupboxLabel;" class="header"/>
+									<caption id="categoriesLabel" label="&categoriesGroupboxLabel;" class="header"/>
 									<textbox id="categoriesTextBox" flex="1" style="min-height:36px;"/>
 								</groupbox>
 								<groupbox id="categoriesReadWriteGroupbox" flex="1">
@@ -240,11 +240,27 @@
 					</groupbox>
 				</hbox>
 				<vbox id="contactGroupbox" flex="1">
-					<groupbox id="emailGroupbox" flex="1"/>
-					<groupbox id="telGroupbox" flex="1"/>
-					<groupbox id="adrGroupbox" flex="1"/>
-					<groupbox id="imppGroupbox" flex="1"/>
-					<groupbox id="urlGroupbox" flex="1"/>
+					<vbox id="readOnlyClassicalVbox" flex="1">
+						<groupbox id="emailclassicalGroupbox" flex="1"/>
+						<groupbox id="telclassicalGroupbox" flex="1"/>
+						<groupbox id="adrclassicalGroupbox" flex="1"/>
+						<groupbox id="imppclassicalGroupbox" flex="1"/>
+						<groupbox id="urlclassicalGroupbox" flex="1"/>
+					</vbox>
+					<vbox id="readOnlyModernVbox" flex="1">
+						<groupbox id="emailmodernGroupbox" flex="1"/>
+						<groupbox id="telmodernGroupbox" flex="1"/>
+						<groupbox id="adrmodernGroupbox" flex="1"/>
+						<groupbox id="imppmodernGroupbox" flex="1"/>
+						<groupbox id="urlmodernGroupbox" flex="1"/>
+					</vbox>
+					<vbox id="readWriteVbox" flex="1">
+						<groupbox id="emailGroupbox" flex="1"/>
+						<groupbox id="telGroupbox" flex="1"/>
+						<groupbox id="adrGroupbox" flex="1"/>
+						<groupbox id="imppGroupbox" flex="1"/>
+						<groupbox id="urlGroupbox" flex="1"/>
+					</vbox>
 					<panel id="adrPanel">
 						<hbox flex="1">
 							<vbox flex="1">

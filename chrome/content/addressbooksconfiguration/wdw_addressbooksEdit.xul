@@ -181,6 +181,11 @@
 									<label id="fnFormulaDescriptionLabel2"/>
 									<label value=""/>
 								</row>
+								<row align="center">
+									<label value=""/>
+									<label id="fnFormulaDescriptionLabel3"/>
+									<label value=""/>
+								</row>
 							</rows>
 						</grid>
 					</hbox>

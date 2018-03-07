@@ -86,7 +86,7 @@
 <!ENTITY versionLabel "Različica">
 <!ENTITY tzLabel "Časovni pas">
 
-<!ENTITY dirPrefIdLabel "dirPrefId">
+<!ENTITY dirPrefIdLabel "DirPrefId">
 <!ENTITY cardurlLabel "URL kartice">
 <!ENTITY cacheuriLabel "URI predpomnilnika">
 <!ENTITY revLabel "Nazadnje posodobljeno">

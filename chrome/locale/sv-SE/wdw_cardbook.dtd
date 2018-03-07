@@ -86,7 +86,7 @@
 <!ENTITY versionLabel "Version">
 <!ENTITY tzLabel "Timezone">
 
-<!ENTITY dirPrefIdLabel "dirPrefId">
+<!ENTITY dirPrefIdLabel "DirPrefId">
 <!ENTITY cardurlLabel "Card URL">
 <!ENTITY cacheuriLabel "Cache URI">
 <!ENTITY revLabel "Senast ändrad">

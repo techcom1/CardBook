@@ -86,7 +86,7 @@
 <!ENTITY versionLabel "Versie">
 <!ENTITY tzLabel "Tijdzone">
 
-<!ENTITY dirPrefIdLabel "dirPrefId">
+<!ENTITY dirPrefIdLabel "DirPrefId">
 <!ENTITY cardurlLabel "Contactpersoon URL">
 <!ENTITY cacheuriLabel "Bestand van vCard">
 <!ENTITY revLabel "Laatst bijgewerkt">

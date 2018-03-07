@@ -408,10 +408,12 @@ if ("undefined" == typeof(cardbookTypes)) {
 			} else {
 				currentRow = cardbookTypes.addRow(aOrigBox, 'titleRow');
 				cardbookTypes.addLabel(currentRow, 'titleLabel', strBundle.getString("titleLabel"), 'titleTextBox', {class: 'header'});
-				cardbookElementTools.addTextbox(currentRow, 'titleTextBox', aTitleValue, {flex: '1', type: 'autocomplete', autocompletesearch: 'form-history', autocompletesearchparam: 'titleTextBox', class:'padded'});
+				var myTextBox = cardbookElementTools.addTextbox(currentRow, 'titleTextBox', aTitleValue, {flex: '1', type: 'autocomplete', autocompletesearch: 'form-history', autocompletesearchparam: 'titleTextBox', class:'padded'});
+				myTextBox.addEventListener("input", wdw_cardEdition.setDisplayName, false);
 				currentRow = cardbookTypes.addRow(aOrigBox, 'roleRow');
 				cardbookTypes.addLabel(currentRow, 'roleLabel', strBundle.getString("roleLabel"), 'roleTextBox', {class: 'header'});
-				cardbookElementTools.addTextbox(currentRow, 'roleTextBox', aRoleValue, {flex: '1', type: 'autocomplete', autocompletesearch: 'form-history', autocompletesearchparam: 'roleTextBox', class:'padded'});
+				var myTextBox = cardbookElementTools.addTextbox(currentRow, 'roleTextBox', aRoleValue, {flex: '1', type: 'autocomplete', autocompletesearch: 'form-history', autocompletesearchparam: 'roleTextBox', class:'padded'});
+				myTextBox.addEventListener("input", wdw_cardEdition.setDisplayName, false);
 			}
 		},
 

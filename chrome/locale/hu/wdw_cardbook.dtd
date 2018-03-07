@@ -86,7 +86,7 @@
 <!ENTITY versionLabel "Változat">
 <!ENTITY tzLabel "Időzóna">
 
-<!ENTITY dirPrefIdLabel "dirPrefId">
+<!ENTITY dirPrefIdLabel "DirPrefId">
 <!ENTITY cardurlLabel "Névjegy webcím">
 <!ENTITY cacheuriLabel "Tárolt webcím">
 <!ENTITY revLabel "Utoljára frissítve">

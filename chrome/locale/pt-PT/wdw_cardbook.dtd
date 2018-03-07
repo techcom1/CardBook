@@ -86,7 +86,7 @@
 <!ENTITY versionLabel "Versão">
 <!ENTITY tzLabel "Fuso horário">
 
-<!ENTITY dirPrefIdLabel "dirPrefId">
+<!ENTITY dirPrefIdLabel "DirPrefId">
 <!ENTITY cardurlLabel "URL do cartão">
 <!ENTITY cacheuriLabel "Cache URI">
 <!ENTITY revLabel "Última atualização">

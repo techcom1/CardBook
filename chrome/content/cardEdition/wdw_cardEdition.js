@@ -319,6 +319,8 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('createEditionLabel').setAttribute('hidden', 'false');
 				document.getElementById('createAndReplaceEditionLabel').setAttribute('hidden', 'false');
 				document.getElementById('saveEditionLabel').setAttribute('hidden', 'true');
+				document.getElementById('readOnlyClassicalVbox').setAttribute('hidden', 'true');
+				document.getElementById('readOnlyModernVbox').setAttribute('hidden', 'true');
 			} else if (window.arguments[0].editionMode == "ViewResultHideCreate") {
 				document.getElementById('addressbookMenulist').setAttribute('hidden', 'true');
 				document.getElementById('addressbookMenulistLabel').setAttribute('hidden', 'true');
@@ -338,9 +340,11 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('anniversaryCardbookCalendar').setAttribute('hidden', 'true');
 				document.getElementById('deathdateCardbookCalendar').setAttribute('hidden', 'true');
 				document.getElementById('noteCardbookCalendar').setAttribute('hidden', 'true');
+				document.getElementById('readOnlyClassicalVbox').setAttribute('hidden', 'true');
+				document.getElementById('readOnlyModernVbox').setAttribute('hidden', 'true');
 			} else if (window.arguments[0].editionMode == "ViewContact" || window.arguments[0].editionMode == "ViewList") {
 				document.getElementById('addressbookMenulist').disabled = true;
-				document.getElementById('addressbookMenulistLabel').label = strBundle.getString("dirPrefIdLabel");
+				document.getElementById('addressbookMenulistLabel').label = strBundle.getString("ABLabel");
 				document.getElementById('existingDataGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('contactMenulist').setAttribute('hidden', 'true');
 				document.getElementById('categoriesReadOnlyGroupbox').removeAttribute('hidden');
@@ -358,9 +362,16 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('anniversaryCardbookCalendar').setAttribute('hidden', 'true');
 				document.getElementById('deathdateCardbookCalendar').setAttribute('hidden', 'true');
 				document.getElementById('noteCardbookCalendar').setAttribute('hidden', 'true');
+				var panesView = cardbookPreferences.getStringPref("extensions.cardbook.panesView");
+				if (panesView == "classical") {
+					document.getElementById('readOnlyModernVbox').setAttribute('hidden', 'true');
+				} else {
+					document.getElementById('readOnlyClassicalVbox').setAttribute('hidden', 'true');
+				}
+				document.getElementById('readWriteVbox').setAttribute('hidden', 'true');
 			} else if (window.arguments[0].editionMode == "EditContact" || window.arguments[0].editionMode == "EditList") {
 				document.getElementById('addressbookMenulist').disabled = false;
-				document.getElementById('addressbookMenulistLabel').label = strBundle.getString("dirPrefIdLabel");
+				document.getElementById('addressbookMenulistLabel').label = strBundle.getString("ABLabel");
 				document.getElementById('existingDataGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('contactMenulist').setAttribute('hidden', 'true');
 				document.getElementById('categoriesReadOnlyGroupbox').setAttribute('hidden', 'true');
@@ -369,6 +380,8 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('listReadWriteGroupbox').removeAttribute('hidden');
 				document.getElementById('createEditionLabel').setAttribute('hidden', 'true');
 				document.getElementById('createAndReplaceEditionLabel').setAttribute('hidden', 'true');
+				document.getElementById('readOnlyClassicalVbox').setAttribute('hidden', 'true');
+				document.getElementById('readOnlyModernVbox').setAttribute('hidden', 'true');
 			} else if (window.arguments[0].editionMode == "CreateContact" || window.arguments[0].editionMode == "CreateList") {
 				document.getElementById('addressbookMenulist').disabled = false;
 				document.getElementById('addressbookMenulistLabel').label = strBundle.getString("addToAddressbook");
@@ -380,6 +393,8 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('listReadWriteGroupbox').removeAttribute('hidden');
 				document.getElementById('createEditionLabel').setAttribute('hidden', 'true');
 				document.getElementById('createAndReplaceEditionLabel').setAttribute('hidden', 'true');
+				document.getElementById('readOnlyClassicalVbox').setAttribute('hidden', 'true');
+				document.getElementById('readOnlyModernVbox').setAttribute('hidden', 'true');
 			} else if (window.arguments[0].editionMode == "AddEmail") {
 				wdw_cardEdition.emailToAdd = wdw_cardEdition.workingCard.email[0];
 				document.getElementById('addressbookMenulist').disabled = false;
@@ -392,6 +407,8 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('listReadWriteGroupbox').removeAttribute('hidden');
 				document.getElementById('createEditionLabel').setAttribute('hidden', 'true');
 				document.getElementById('createAndReplaceEditionLabel').setAttribute('hidden', 'true');
+				document.getElementById('readOnlyClassicalVbox').setAttribute('hidden', 'true');
+				document.getElementById('readOnlyModernVbox').setAttribute('hidden', 'true');
 			}
 			if (window.arguments[0].cardIn.isAList) {
 				document.getElementById('contactGroupbox').setAttribute('hidden', 'true');
@@ -601,9 +618,6 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			cardbookUtils.displayCard(aCard, aReadOnly, aFollowLink);
 			
 			// specific
-			document.getElementById('noteTextBox').removeAttribute('readonly');
-			document.getElementById('noteTextBox').value = aCard.note;
-			document.getElementById('categoriesTextBox').removeAttribute('readonly');
 			document.getElementById('categoriesTextBox').value = cardbookUtils.formatCategories(aCard.categories);
 			wdw_cardEdition.loadCategories(aCard.categories);
 			
@@ -665,7 +679,9 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 																document.getElementById('othernameTextBox').value.trim(),
 																document.getElementById('lastnameTextBox').value.trim(),
 																document.getElementById('suffixnameTextBox').value.trim()],
-																myNewOrg);
+																[myNewOrg,
+																document.getElementById('titleTextBox').value.trim(),
+																document.getElementById('roleTextBox').value.trim()]);
 			document.getElementById('fnTextBox').value = myNewFn;
 			wdw_cardEdition.workingCard.lastname = document.getElementById('lastnameTextBox').value.trim();
 			wdw_cardEdition.workingCard.firstname = document.getElementById('firstnameTextBox').value.trim();

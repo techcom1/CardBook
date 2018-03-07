@@ -2358,9 +2358,9 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					cardbookRepository.importConflictChoicePersist = false;
 					cardbookRepository.importConflictChoice = "write";
 					for (let i = 0; i < fileContentArrayLength; i++) {
-						if (fileContentArray[i] == "BEGIN:VCARD") {
+						if (fileContentArray[i].startsWith("BEGIN:VCARD")) {
 							cardContent = fileContentArray[i];
-						} else if (fileContentArray[i] == "END:VCARD") {
+						} else if (fileContentArray[i].startsWith("END:VCARD")) {
 							cardContent = cardContent + "\r\n" + fileContentArray[i];
 							try {
 								var myCard = new cardbookCardParser(cardContent, "", "", aParams.aPrefId);
@@ -2484,7 +2484,8 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 								cardbookUtils.setCardUUID(myCard);
 								cardbookUtils.setCalculatedFields(myCard);
 								if (myCard.fn == "") {
-									myCard.fn = cardbookUtils.getDisplayedName(myCard.dirPrefId, [myCard.prefixname, myCard.firstname, myCard.othername, myCard.lastname, myCard.suffixname], myCard.org);
+									myCard.fn = cardbookUtils.getDisplayedName(myCard.dirPrefId, [myCard.prefixname, myCard.firstname, myCard.othername, myCard.lastname, myCard.suffixname],
+																				[myCard.org, myCard.title, myCard.role]);
 								}
 							}
 							catch (e) {

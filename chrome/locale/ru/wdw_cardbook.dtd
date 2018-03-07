@@ -86,7 +86,7 @@
 <!ENTITY versionLabel "Версия">
 <!ENTITY tzLabel "Часовой пояс">
 
-<!ENTITY dirPrefIdLabel "dirPrefId">
+<!ENTITY dirPrefIdLabel "DirPrefId">
 <!ENTITY cardurlLabel "URL карточки">
 <!ENTITY cacheuriLabel "URI в кеше">
 <!ENTITY revLabel "Последнее обновление">

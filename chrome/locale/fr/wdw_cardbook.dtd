@@ -86,7 +86,7 @@
 <!ENTITY versionLabel "Version">
 <!ENTITY tzLabel "Timezone">
 
-<!ENTITY dirPrefIdLabel "dirPrefId">
+<!ENTITY dirPrefIdLabel "Carnet id">
 <!ENTITY cardurlLabel "URL du contact">
 <!ENTITY cacheuriLabel "URI du cache">
 <!ENTITY revLabel "Dernière mise à jour">

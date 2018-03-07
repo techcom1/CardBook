@@ -1,6 +1,7 @@
 if ("undefined" == typeof(cardbookWebDAV)) {
 	Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.importGlobalProperties(["XMLHttpRequest"]);
 
 	function XMLToJSONParser(doc) {
 		this._buildTree(doc);
@@ -257,11 +258,7 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 	
 		_sendHTTPRequest: function(method, body, headers, aOverrideMime, aCleanBody) {
 			try {
-				if (Services.vc.compare(Services.appinfo.version, "59") >= 0) {
-					var httpChannel = new XMLHttpRequest();
-				} else {
-					var httpChannel = Components.classes["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Components.interfaces.nsIXMLHttpRequest);
-				}
+				var httpChannel = new XMLHttpRequest();
 				httpChannel.loadFlags |= Components.interfaces.nsIRequest.LOAD_ANONYMOUS | Components.interfaces.nsIRequest.LOAD_BYPASS_CACHE | Components.interfaces.nsIRequest.INHIBIT_PERSISTENT_CACHING;
 				httpChannel.notificationCallbacks = this;
 	

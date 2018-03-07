@@ -246,38 +246,26 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 
 		daysBetween: function (date1, date2) {
 			// The number of milliseconds in one day
-			var oneDay = 1000 * 60 * 60 * 24
+			var oneDay = 1000 * 60 * 60 * 24;
 			
-			date1.setHours(0);
-			date2.setHours(0);
-			date1.setMinutes(0);
-			date2.setMinutes(0);
-			date1.setSeconds(0);
-			date2.setSeconds(0);
-			
-			// Convert both dates to milliseconds
-			var date1_ms = date1.getTime()
-			var date2_ms = date2.getTime()
-			
-			// Calculate the difference in milliseconds
-			var difference_ms = date1_ms - date2_ms
-			
-			// Convert back to days and return
-			return Math.round(difference_ms/oneDay)
+			var newDate1 = new Date(date1.getUTCFullYear(), date1.getUTCMonth(), date1.getUTCDate());
+			var newDate2 = new Date(date2.getUTCFullYear(), date2.getUTCMonth(), date2.getUTCDate());
+			return Math.round((newDate1.getTime() - newDate2.getTime())/(oneDay));
 		},
 
 		calcDateOfNextBirthday: function (lDateRef, lDateOfBirth) {
-			var lDoB_Year = lDateOfBirth.getFullYear();
-			var lDoB_Month= lDateOfBirth.getMonth()+1;
-			var lDoB_Day = lDateOfBirth.getDate();
+			var lDoB_Year = lDateOfBirth.getUTCFullYear();
+			var lDoB_Month= lDateOfBirth.getUTCMonth();
+			var lDoB_Day = lDateOfBirth.getUTCDate();
 			
 			var lnextBirthday = new Date(lDateOfBirth);
-			lnextBirthday.setFullYear(lDateRef.getFullYear());
+			lnextBirthday.setUTCFullYear(lDateRef.getUTCFullYear());
 			
 			if (this.daysBetween(lnextBirthday, lDateRef)<0) {
-				lnextBirthday = new Date(lDateRef.getFullYear()+1, lDoB_Month-1, lDoB_Day);
+				return new Date(Date.UTC(lDateRef.getUTCFullYear()+1, lDoB_Month, lDoB_Day));
+			} else {
+				return new Date(Date.UTC(lDateRef.getUTCFullYear(), lDoB_Month, lDoB_Day));
 			}
-			return lnextBirthday;
 		},
 
 		getAllBirthdaysByName: function (aDateFormat, lDateOfBirth, lName, lNumberOfDays2, lDateOfBirthFound, lEmail, aDirPrefId) {
@@ -290,7 +278,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			var lDateOfBirthOld = lDateOfBirth;
 			lDateOfBirth = cardbookDates.convertDateStringToDate(lDateOfBirth, aDateFormat);
 
-			endDate.setDate(date_of_today.getDate()+parseInt(lNumberOfDays2));
+			endDate.setUTCDate(date_of_today.getUTCDate()+parseInt(lNumberOfDays2));
 			while (dateRef < endDate) {
 				lnextBirthday = this.calcDateOfNextBirthday(dateRef,lDateOfBirth);
 				if (lDateOfBirth.getFullYear() == "666") {

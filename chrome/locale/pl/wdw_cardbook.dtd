@@ -86,7 +86,7 @@
 <!ENTITY versionLabel "Wersja">
 <!ENTITY tzLabel "Strefa czasowa">
 
-<!ENTITY dirPrefIdLabel "dirPrefId">
+<!ENTITY dirPrefIdLabel "DirPrefId">
 <!ENTITY cardurlLabel "Card URL">
 <!ENTITY cacheuriLabel "Cache URI">
 <!ENTITY revLabel "Ostatnia aktualizacja">

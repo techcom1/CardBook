@@ -86,7 +86,7 @@
 <!ENTITY versionLabel "Verze">
 <!ENTITY tzLabel "Časové pásmo">
 
-<!ENTITY dirPrefIdLabel "dirPrefId">
+<!ENTITY dirPrefIdLabel "DirPrefId">
 <!ENTITY cardurlLabel "Card URL">
 <!ENTITY cacheuriLabel "Uložit URI do mezipaměti">
 <!ENTITY revLabel "Poslední aktualizace">

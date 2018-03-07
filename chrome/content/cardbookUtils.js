@@ -668,14 +668,21 @@ if ("undefined" == typeof(cardbookUtils)) {
 			var result =  "";
 			var myFnFormula = cardbookPreferences.getFnFormula(aDirPrefId);
 			var orgStructure = cardbookPreferences.getStringPref("extensions.cardbook.orgStructure");
+			var myOrg = aNewOrg[0];
 			if (orgStructure != "") {
-				var myOrgArray = cardbookUtils.unescapeArray(cardbookUtils.escapeString(aNewOrg).split(";"));
+				var myOrgArray = cardbookUtils.unescapeArray(cardbookUtils.escapeString(myOrg).split(";"));
+				var myOrgStructureArray = cardbookUtils.unescapeArray(cardbookUtils.escapeString(orgStructure).split(";"));
+				for (var i = myOrgArray.length; i < myOrgStructureArray.length; i++) {
+					myOrgArray.push("");
+				}
 			} else {
-				var myOrgArray = [cardbookUtils.unescapeString(cardbookUtils.escapeString(aNewOrg))];
+				var myOrgArray = [cardbookUtils.unescapeString(cardbookUtils.escapeString(myOrg))];
 			}
 			var myArray = [];
 			myArray = myArray.concat(aNewN);
 			myArray = myArray.concat(myOrgArray);
+			myArray = myArray.concat(aNewOrg[1]);
+			myArray = myArray.concat(aNewOrg[2]);
 			result = cardbookUtils.getStringFromFormula(myFnFormula, myArray);
 			return result.trim();
 		},
@@ -826,7 +833,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		displayCard: function (aCard, aReadOnly, aFollowLink) {
 			var fieldArray = [ "fn", "lastname", "firstname", "othername", "prefixname", "suffixname", "nickname",
-								"birthplace", "deathplace", "mailer", "geo", "sortstring",
+								"birthplace", "deathplace", "mailer", "geo", "sortstring", "note",
 								"class1", "tz", "agent", "key", "prodid", "uid", "version", "dirPrefId", "cardurl", "rev", "etag" ];
 			for (var i = 0; i < fieldArray.length; i++) {
 				if (document.getElementById(fieldArray[i] + 'TextBox') && aCard[fieldArray[i]]) {

@@ -501,7 +501,8 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					var myCard = myCards[i];
 					var myOutCard = new cardbookCardParser();
 					cardbookUtils.cloneCard(myCard, myOutCard);
-					var myFn = cardbookUtils.getDisplayedName(myOutCard.dirPrefId, [myOutCard.prefixname, myOutCard.firstname, myOutCard.othername, myOutCard.lastname, myOutCard.suffixname], myOutCard.org);
+					var myFn = cardbookUtils.getDisplayedName(myOutCard.dirPrefId, [myOutCard.prefixname, myOutCard.firstname, myOutCard.othername, myOutCard.lastname, myOutCard.suffixname],
+																[myOutCard.org, myOutCard.title, myOutCard.role]);
 					if (myFn != "" && myFn != myOutCard.fn) {
 						myOutCard.fn = myFn;
 						cardbookRepository.saveCard(myCard, myOutCard, "cardbook.cardModifiedDirect");

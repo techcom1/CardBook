@@ -24,14 +24,20 @@ if ("undefined" == typeof(wdw_addressbooksEdit)) {
 			myLabel = myLabel + "{{5}} : " + strBundle.getString("suffixnameLabel") + "    ";
 			var count = 6;
 			if (allOrg.length === 0) {
-				myLabel = myLabel + "{{6}} : " + strBundle.getString("orgLabel");
+				myLabel = myLabel + "{{" + count + "}} : " + strBundle.getString("orgLabel");
+				count++;
 			} else {
 				for (var i = 0; i < allOrg.length; i++) {
-					var index = count + i;
-					myLabel = myLabel + "{{" + index + "}} : " + allOrg[i] + "    ";
+					myLabel = myLabel + "{{" + count + "}} : " + allOrg[i] + "    ";
+					count++;
 				}
 			}
 			document.getElementById('fnFormulaDescriptionLabel2').value = myLabel.trim();
+			myLabel = "";
+			myLabel = myLabel + "{{" + count + "}} : " + strBundle.getString("titleLabel") + "    ";
+			count++;
+			myLabel = myLabel + "{{" + count + "}} : " + strBundle.getString("roleLabel") + "    ";
+			document.getElementById('fnFormulaDescriptionLabel3').value = myLabel.trim();
 		},
 
 		resetFnFormula: function () {
