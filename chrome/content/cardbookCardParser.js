@@ -159,7 +159,7 @@ if ("undefined" == typeof(cardbookCardParser)) {
 			this.dirPrefId = vDirPrefId;
 			
 			var re = /[\n\u0085\u2028\u2029]|\r\n?/;
-			var vCardDataArray = cardbookUtils.cleanArray(vCardData.split(re));
+			var vCardDataArray = cardbookUtils.cleanArrayWithoutTrim(vCardData.split(re));
 			if (vCardDataArray.indexOf("VERSION:3.0") >= 0 || vCardDataArray.indexOf("VERSION:4.0") >= 0) {
 				try {
 					// For multilines data

@@ -520,6 +520,16 @@ if ("undefined" == typeof(cardbookUtils)) {
 			return newArray;
 		},
 		
+		cleanArrayWithoutTrim: function (vArray) {
+			var newArray = [];
+			for(let i = 0; i<vArray.length; i++){
+				if (vArray[i] && vArray[i] != ""){
+					newArray.push(vArray[i]);
+				}
+			}
+			return newArray;
+		},
+		
 		parseArray: function (vArray) {
 			var lTemp = "";
 			for (let vArrayIndex = 0; vArrayIndex < vArray.length; vArrayIndex++) {
