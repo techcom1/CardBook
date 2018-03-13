@@ -227,7 +227,7 @@
 <!ENTITY deleteVCardLabel "Löschen">
 <!ENTITY deleteVCardAccesskey "L">
 
-<!ENTITY birthdayListWarn "Geburtstage werden nur in Adressbüchern von CardBook gesucht. Das Format für Geburtstage wird unten den Eigenschaften des Adressbuchs festgelegt.">
+<!ENTITY birthdayListWarn "Geburtstage werden nur in Adressbüchern von CardBook gesucht. Das Format für Geburtstage wird unter den Eigenschaften des Adressbuchs festgelegt.">
 <!ENTITY addressBooksGroupboxLabel "Adressbücher">
 <!ENTITY calendarsGroupboxLabel "Kalender">
 <!ENTITY searchGroupboxLabel "Suchen">
