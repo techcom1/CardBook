@@ -21,7 +21,7 @@
 <!ENTITY autoSyncIntervalAccesskey "N">
 
 <!ENTITY miscTabLabel "Sonstiges">
-<!ENTITY fnLabelExplanation "Es ist möglich, die Generierung des Anzeigenamens in Cardbook anzupassen. Die Formel besteht aus Blöcken, die in „()” eingeschlossen sind. In diesen Blöcken sind zwei Teile getrennt durch „|”. Der erste Teil wird verwendet, falls der Ausdruck, z.B. {{1}} nicht „null” ist; der zweite Teil wird verwendet, falls der Ausdruck „null” ist.">
+<!ENTITY fnLabelExplanation "Es ist möglich, die Generierung des Anzeigenamens in CardBook anzupassen. Die Formel besteht aus Blöcken, die in „()” eingeschlossen sind. In diesen Blöcken sind zwei Teile getrennt durch „|”. Der erste Teil wird verwendet, falls der Ausdruck, z.B. {{1}} nicht „null” ist; der zweite Teil wird verwendet, falls der Ausdruck „null” ist.">
 <!ENTITY fnFormulaLabel "Generiere Anzeigenamen">
 <!ENTITY fnFormulaAccesskey "e">
 <!ENTITY resetFnFormulaLabel "Zurücksetzen auf Standard">
