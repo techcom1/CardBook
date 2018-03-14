@@ -681,10 +681,11 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				}
 				cardbookSynchronization.initMultipleOperations(myDirPrefId);
 				cardbookRepository.cardbookFileRequest[myDirPrefId]++;
+				wdw_cardbook.bulkOperation();
 				if (cardbookUtils.getFileNameExtension(aFile.leafName).toLowerCase() == "csv") {
 					cardbookSynchronization.loadCSVFile(aFile, myTarget, "WINDOW", "cardbook.cardImportedFromFile");
 				} else {
-					cardbookSynchronization.loadFile(aFile, myTarget, "WINDOW", "IMPORT", "cardbook.cardImportedFromFile");
+					cardbookSynchronization.loadFile(aFile, myTarget, "WINDOW", "IMPORTFILE", "cardbook.cardImportedFromFile");
 				}
 				cardbookSynchronization.waitForImportFinished(myDirPrefId, myDirPrefIdName);
 			}
@@ -717,7 +718,8 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				}
 				cardbookSynchronization.initMultipleOperations(myDirPrefId);
 				cardbookRepository.cardbookDirRequest[myDirPrefId]++;
-				cardbookSynchronization.loadDir(aDirectory, myTarget, "WINDOW", "IMPORT", "cardbook.cardImportedFromFile");
+				wdw_cardbook.bulkOperation();
+				cardbookSynchronization.loadDir(aDirectory, myTarget, "WINDOW", "IMPORTDIR", "cardbook.cardImportedFromFile");
 				cardbookSynchronization.waitForImportFinished(myDirPrefId, myDirPrefIdName);
 			}
 			catch (e) {
@@ -855,12 +857,14 @@ if ("undefined" == typeof(wdw_cardbook)) {
 												myCreatedEvent = "cardbook.cardPasted";
 												myDeletedEvent = "cardbook.cardRemovedIndirect";
 											}
-											cardbookSynchronization.importCard(myCard, myTarget, askUser, myCreatedEvent);
-											if (myDirPrefId != myCard.dirPrefId) {
-												if (wdw_cardbook.cutAndPaste != "") {
-													cardbookRepository.deleteCards([myCard], myDeletedEvent);
+											Services.tm.currentThread.dispatch({ run: function() {
+												cardbookSynchronization.importCard(myCard, myTarget, askUser, myCreatedEvent);
+												if (myDirPrefId != myCard.dirPrefId) {
+													if (wdw_cardbook.cutAndPaste != "") {
+														cardbookRepository.deleteCards([myCard], myDeletedEvent);
+													}
 												}
-											}
+											}}, Components.interfaces.nsIEventTarget.DISPATCH_SYNC);
 										} else {
 											cardbookUtils.formatStringForOutput("clipboardWrong");
 										}
@@ -886,6 +890,11 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			catch (e) {
 				wdw_cardbooklog.updateStatusProgressInformation("wdw_cardbook.pasteCards error : " + e, "Error");
 			}
+		},
+
+		bulkOperation: function () {
+			var myArgs = {};
+			openDialog("chrome://cardbook/content/wdw_bulkOperation.xul", "", cardbookRepository.windowParams, myArgs);
 		},
 
 		chooseActionTreeForClick: function (aEvent) {
@@ -1452,12 +1461,14 @@ if ("undefined" == typeof(wdw_cardbook)) {
 										myCreatedEvent = "cardbook.cardDragged";
 										myDeletedEvent = "cardbook.cardRemovedIndirect";
 									}
-									cardbookSynchronization.importCard(myCard, myTarget, askUser, myCreatedEvent);
-									if (myDirPrefId != myCard.dirPrefId) {
-										if (!aEvent.ctrlKey) {
-											cardbookRepository.deleteCards([myCard], myDeletedEvent);
+									Services.tm.currentThread.dispatch({ run: function() {
+										cardbookSynchronization.importCard(myCard, myTarget, askUser, myCreatedEvent);
+										if (myDirPrefId != myCard.dirPrefId) {
+											if (!aEvent.ctrlKey) {
+												cardbookRepository.deleteCards([myCard], myDeletedEvent);
+											}
 										}
-									}
+									}}, Components.interfaces.nsIEventTarget.DISPATCH_SYNC);
 								} else {
 									cardbookUtils.formatStringForOutput("draggableWrong");
 								}
@@ -2343,7 +2354,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 
 		cardbookAccountMenuContextShowing: function () {
 			var myTree = document.getElementById('accountsOrCatsTree');
-			if (cardbookRepository.cardbookAccounts.length == 0) {
+			if (cardbookDirTree.visibleData.length == 0) {
 				wdw_cardbook.enableOrDisableElement(['cardbookAccountMenuEditServer', 'cardbookAccountMenuCloseServer', 'cardbookAccountMenuEnableOrDisableAddressbook',
 													'cardbookAccountMenuReadOnlyOrReadWriteAddressbook', 'cardbookAccountMenuSync', 'cardbookAccountMenuExportToFile', 'cardbookAccountMenuImportFromFile',
 													'cardbookAccountMenuExportToDir', 'cardbookAccountMenuImportFromDir'], true);
@@ -2484,7 +2495,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			wdw_cardbook.setElementLabelWithBundle('enableOrDisableFromAccountsOrCats', "disableFromAccountsOrCats");
 			wdw_cardbook.setElementLabelWithBundle('readOnlyOrReadWriteFromAccountsOrCats', "readOnlyFromAccountsOrCats");
 			var myTree = document.getElementById('accountsOrCatsTree');
-			if (cardbookRepository.cardbookAccounts.length != 0) {
+			if (cardbookDirTree.visibleData.length != 0 && myTree.currentIndex != -1) {
 				var myAccountId = myTree.view.getCellText(myTree.currentIndex, {id: "accountId"});
 				var myPrefId = cardbookUtils.getAccountId(myAccountId);
 				if (cardbookPreferences.getEnabled(myPrefId)) {

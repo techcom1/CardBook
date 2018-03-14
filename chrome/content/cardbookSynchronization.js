@@ -440,11 +440,11 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 		},
 
 		getFileDataAsync: function (aFilePath, aCallback, aParams) {
-			function readFile(aFile, aCallback, aParams) {
-				NetUtil.asyncFetch(aFile, function (inputStream, status) {
+			function readFile(aChannel, aCallback, aParams) {
+				NetUtil.asyncFetch(aChannel, function (inputStream, status) {
 					if (!Components.isSuccessCode(status)) {
 						if (aParams.showError) {
-							wdw_cardbooklog.updateStatusProgressInformation("cardbookSynchronization.getFileDataAsync error : filename : " + aFile.path, "Error");
+							wdw_cardbooklog.updateStatusProgressInformation("cardbookSynchronization.getFileDataAsync error : filename : " + aChannel.URI.path, "Error");
 						}
 						aCallback("", aParams);
 						return;
@@ -470,8 +470,16 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					aCallback(dataConverted, aParams);
 				});
 			}
-			var myFile = FileUtils.File(aFilePath);
-			readFile(myFile, aCallback, aParams);
+			var myFileURISpec = "file:///" + aFilePath;
+			var myFileURI = Services.io.newURI(myFileURISpec, null, null);
+			var myChannel = Services.io.newChannelFromURI2(myFileURI,
+															 null,
+															 Services.scriptSecurityManager.getSystemPrincipal(),
+															 null,
+															 Components.interfaces.nsILoadInfo.SEC_REQUIRE_SAME_ORIGIN_DATA_INHERITS,
+															 Components.interfaces.nsIContentPolicy.TYPE_OTHER);
+
+			readFile(myChannel, aCallback, aParams);
 		},
 
 		writeFileDataAsync: function (aFilePath, aData, aCallback, aParams) {
@@ -1068,15 +1076,24 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			var myDirPrefId = cardbookUtils.getAccountId(aTarget);
 			var aListOfFileName = [];
 			aListOfFileName = cardbookSynchronization.getFilesFromDir(aDir.path);
-			for (var i = 0; i < aListOfFileName.length; i++) {
-				var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
-				myFile.initWithPath(aDir.path);
-				myFile.append(aListOfFileName[i]);
-				if (myFile.exists() && myFile.isFile()) {
-					cardbookRepository.cardbookFileRequest[myDirPrefId]++;
-					cardbookSynchronization.loadFile(myFile, aTarget, aMode, aImportMode, aSource);
+			cardbookRepository.cardbookServerSyncTotal[myDirPrefId] = aListOfFileName.length;
+			// load dir in background
+			Services.tm.currentThread.dispatch({ run: function() {
+				for (var i = 0; i < aListOfFileName.length; i++) {
+					var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
+					myFile.initWithPath(aDir.path);
+					myFile.append(aListOfFileName[i]);
+					if (myFile.exists() && myFile.isFile()) {
+						cardbookRepository.cardbookFileRequest[myDirPrefId]++;
+						// then load the files one by one to avoid freeze
+						Services.tm.currentThread.dispatch({ run: function() {
+								cardbookSynchronization.loadFile(myFile, aTarget, aMode, aImportMode, aSource);
+						}}, Components.interfaces.nsIEventTarget.DISPATCH_SYNC);
+					} else {
+						cardbookRepository.cardbookServerSyncDone[myDirPrefId]++;
+					}
 				}
-			}
+			}}, Components.interfaces.nsIEventTarget.DISPATCH_NORMAL);
 			cardbookRepository.cardbookDirResponse[myDirPrefId]++;
 		},
 
@@ -2308,19 +2325,19 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					cardbookRepository.cardbookFileRequest[aDirPrefId]++;
 					var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 					myFile.initWithPath(myPrefUrl);
-					cardbookSynchronization.loadFile(myFile, aDirPrefId, aMode, "NOIMPORT", "");
+					cardbookSynchronization.loadFile(myFile, aDirPrefId, aMode, "NOIMPORTFILE", "");
 					cardbookSynchronization.waitForDirFinished(aDirPrefId, myPrefName, aMode);
 				} else if (myPrefType === "DIRECTORY") {
 					cardbookRepository.cardbookDirRequest[aDirPrefId]++;
 					var myDir = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 					myDir.initWithPath(myPrefUrl);
-					cardbookSynchronization.loadDir(myDir, aDirPrefId, aMode, "NOIMPORT", "");
+					cardbookSynchronization.loadDir(myDir, aDirPrefId, aMode, "NOIMPORTDIR", "");
 					cardbookSynchronization.waitForDirFinished(aDirPrefId, myPrefName, aMode);
 				} else if (myPrefType === "CACHE") {
 					cardbookRepository.cardbookDirRequest[aDirPrefId]++;
 					var myDir = cardbookRepository.getLocalDirectory();
 					myDir.append("Collected");
-					cardbookSynchronization.loadDir(myDir, aDirPrefId, aMode, "NOIMPORT", "");
+					cardbookSynchronization.loadDir(myDir, aDirPrefId, aMode, "NOIMPORTDIR", "");
 					cardbookSynchronization.waitForDirFinished(aDirPrefId, myPrefName, aMode);
 				}
 			}
@@ -2346,79 +2363,87 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 		loadFileAsync: function (aContent, aParams) {
 			try {
 				if (aContent != null && aContent !== undefined && aContent != "") {
-					var re = /[\n\u0085\u2028\u2029]|\r\n?/;
-					var fileContentArray = aContent.split(re);
-
-					var fileContentArrayLength = fileContentArray.length
-					for (let i = 0; i < fileContentArrayLength; i++) {
-						if (fileContentArray[i] == "BEGIN:VCARD") {
-							cardbookRepository.cardbookServerSyncTotal[aParams.aPrefId]++;
-						}
-					}
-					cardbookRepository.importConflictChoicePersist = false;
-					cardbookRepository.importConflictChoice = "write";
-					for (let i = 0; i < fileContentArrayLength; i++) {
-						if (fileContentArray[i].startsWith("BEGIN:VCARD")) {
-							cardContent = fileContentArray[i];
-						} else if (fileContentArray[i].startsWith("END:VCARD")) {
-							cardContent = cardContent + "\r\n" + fileContentArray[i];
-							try {
-								var myCard = new cardbookCardParser(cardContent, "", "", aParams.aPrefId);
-							}
-							catch (e) {
-								cardbookRepository.cardbookServerSyncError[aParams.aPrefId]++;
-								cardbookRepository.cardbookServerSyncDone[aParams.aPrefId]++;
-								if (e.message == "") {
-									var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
-									cardbookUtils.formatStringForOutput("parsingCardError", [aParams.aPrefIdName, strBundle.GetStringFromName(e.code), fileContentArray[i]], "Error");
-								} else {
-									cardbookUtils.formatStringForOutput("parsingCardError", [aParams.aPrefIdName, e.message, fileContentArray[i]], "Error");
+					// Services.tm.currentThread.dispatch({ run: function() {
+						var re = /[\n\u0085\u2028\u2029]|\r\n?/;
+						var fileContentArray = aContent.split(re);
+	
+						var fileContentArrayLength = fileContentArray.length
+						if (aParams.aImportMode.endsWith("FILE")) {
+							for (let i = 0; i < fileContentArrayLength; i++) {
+								if (fileContentArray[i] == "BEGIN:VCARD") {
+									cardbookRepository.cardbookServerSyncTotal[aParams.aPrefId]++;
 								}
-								continue;
 							}
-							if (myCard.version == "") {
-								if (aParams.aImportMode == "NOIMPORT") {
+						}
+						cardbookRepository.importConflictChoicePersist = false;
+						cardbookRepository.importConflictChoice = "write";
+						for (let i = 0; i < fileContentArrayLength; i++) {
+							if (fileContentArray[i].startsWith("BEGIN:VCARD")) {
+								cardContent = fileContentArray[i];
+							} else if (fileContentArray[i].startsWith("END:VCARD")) {
+								cardContent = cardContent + "\r\n" + fileContentArray[i];
+								try {
+									var myCard = new cardbookCardParser(cardContent, "", "", aParams.aPrefId);
+									Services.tm.currentThread.dispatch({ run: function() {
+										if (myCard.version == "") {
+											if (aParams.aImportMode.startsWith("NOIMPORT")) {
+												cardbookRepository.cardbookServerSyncError[aParams.aPrefId]++;
+												cardbookRepository.cardbookServerSyncDone[aParams.aPrefId]++;
+											}
+										} else {
+											if (aParams.aImportMode.startsWith("NOIMPORT")) {
+												if (cardbookRepository.cardbookCards[myCard.dirPrefId+"::"+myCard.uid]) {
+													var myOldCard = cardbookRepository.cardbookCards[myCard.dirPrefId+"::"+myCard.uid];
+													// if aCard and aModifiedCard have the same cached medias
+													cardbookUtils.changeMediaFromFileToContent(myCard);
+													cardbookRepository.removeCardFromRepository(myOldCard, true);
+												}
+												if (aParams.aPrefIdType === "CACHE" || aParams.aPrefIdType === "DIRECTORY") {
+													cardbookRepository.addCardToRepository(myCard, aParams.aMode, aParams.aFile.leafName);
+												} else if (aParams.aPrefIdType === "FILE") {
+													myCard.cardurl = "";
+													cardbookRepository.addCardToRepository(myCard, aParams.aMode);
+												}
+											} else {
+												// performance reason
+												// update the UI only at the end
+												if (i == fileContentArrayLength - 1) {
+													cardbookSynchronization.importCard(myCard, aParams.aTarget, true, aParams.aSource);
+												} else {
+													cardbookSynchronization.importCard(myCard, aParams.aTarget, true);
+												}
+											}
+											cardbookRepository.cardbookServerSyncDone[aParams.aPrefId]++;
+										}
+									}}, Components.interfaces.nsIEventTarget.DISPATCH_SYNC);
+								}
+								catch (e) {
+									if (e.message == "") {
+										var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
+										cardbookUtils.formatStringForOutput("parsingCardError", [aParams.aPrefIdName, strBundle.GetStringFromName(e.code), cardContent], "Error");
+									} else {
+										cardbookUtils.formatStringForOutput("parsingCardError", [aParams.aPrefIdName, e.message, cardContent], "Error");
+									}
 									cardbookRepository.cardbookServerSyncError[aParams.aPrefId]++;
 									cardbookRepository.cardbookServerSyncDone[aParams.aPrefId]++;
 								}
+								cardContent = "";
+							} else if (fileContentArray[i] == "") {
+								continue;
 							} else {
-								if (aParams.aImportMode == "NOIMPORT") {
-									if (cardbookRepository.cardbookCards[myCard.dirPrefId+"::"+myCard.uid]) {
-										var myOldCard = cardbookRepository.cardbookCards[myCard.dirPrefId+"::"+myCard.uid];
-										// if aCard and aModifiedCard have the same cached medias
-										cardbookUtils.changeMediaFromFileToContent(myCard);
-										cardbookRepository.removeCardFromRepository(myOldCard, true);
-									}
-									if (aParams.aPrefIdType === "CACHE" || aParams.aPrefIdType === "DIRECTORY") {
-										cardbookRepository.addCardToRepository(myCard, aParams.aMode, aParams.aFile.leafName);
-									} else if (aParams.aPrefIdType === "FILE") {
-										myCard.cardurl = "";
-										cardbookRepository.addCardToRepository(myCard, aParams.aMode);
-									}
-								} else {
-									// performance reason
-									// update the UI only at the end
-									if (i == fileContentArrayLength - 1) {
-										cardbookSynchronization.importCard(myCard, aParams.aTarget, true, aParams.aSource);
-									} else {
-										cardbookSynchronization.importCard(myCard, aParams.aTarget, true);
-									}
-								}
-								cardbookRepository.cardbookServerSyncDone[aParams.aPrefId]++;
+								cardContent = cardContent + "\r\n" + fileContentArray[i];
 							}
-							cardContent = "";
-						} else if (fileContentArray[i] == "") {
-							continue;
-						} else {
-							cardContent = cardContent + "\r\n" + fileContentArray[i];
 						}
-					}
-					if (aParams.aImportMode == "IMPORT") {
-						if (aParams.aPrefIdType === "FILE") {
-							cardbookRepository.reWriteFiles([aParams.aPrefId]);
+						if (aParams.aImportMode.startsWith("IMPORT")) {
+							if (aParams.aPrefIdType === "FILE") {
+								cardbookRepository.reWriteFiles([aParams.aPrefId]);
+							}
 						}
-					}
+					// }}, Components.interfaces.nsIEventTarget.DISPATCH_SYNC);
 				} else {
+					if (aParams.aImportMode.endsWith("DIR")) {
+						cardbookRepository.cardbookServerSyncDone[aParams.aPrefId]++;
+					}
 					cardbookUtils.formatStringForOutput("fileEmpty", [aParams.aFile.path]);
 				}
 				cardbookRepository.cardbookFileResponse[aParams.aPrefId]++;
@@ -2678,16 +2703,22 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 		writeCardsToDir: function (aDirName, aListofCard, aMediaConversion) {
 			try {
 				var myDirectory = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
-				for (var i = 0; i < aListofCard.length; i++) {
-					var myCard = aListofCard[i];
-					myDirectory.initWithPath(aDirName);
-					var myFile = myDirectory;
-					myFile.append(cardbookUtils.getFileNameForCard(aDirName, myCard.fn, myCard.uid));
-					if (myFile.exists() == false){
-						myFile.create( Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420 );
+				// write dir in background
+				Services.tm.currentThread.dispatch({ run: function() {
+					for (var i = 0; i < aListofCard.length; i++) {
+						var myCard = aListofCard[i];
+						myDirectory.initWithPath(aDirName);
+						var myFile = myDirectory;
+						myFile.append(cardbookUtils.getFileNameForCard(aDirName, myCard.fn, myCard.uid));
+						if (myFile.exists() == false){
+							myFile.create( Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420 );
+						}
+						// then write the files one by one to avoid freeze
+						Services.tm.currentThread.dispatch({ run: function() {
+								cardbookSynchronization.writeContentToFile(myFile.path, cardbookUtils.cardToVcardData(myCard, aMediaConversion), "UTF8");
+						}}, Components.interfaces.nsIEventTarget.DISPATCH_SYNC);
 					}
-					cardbookSynchronization.writeContentToFile(myFile.path, cardbookUtils.cardToVcardData(myCard, aMediaConversion), "UTF8");
-				}
+				}}, Components.interfaces.nsIEventTarget.DISPATCH_NORMAL);
 			}
 			catch (e) {
 				wdw_cardbooklog.updateStatusProgressInformation("cardbookSynchronization.writeCardsToDir error : " + e, "Error");

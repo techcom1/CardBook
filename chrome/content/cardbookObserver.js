@@ -295,13 +295,14 @@ if ("undefined" == typeof(cardBookObserver)) {
 					cardbookUtils.setColumnsState(myColumns);
 					wdw_cardbook.refreshWindow();
 					break;
+				case "cardbook.ABAddedDirect":
+				case "cardbook.ABRemovedDirect":
+					wdw_cardbook.clearCard();
 				case "cardbook.catAddedDirect":
 				case "cardbook.catRemovedIndirect":
 				case "cardbook.catRemovedDirect":
 				case "cardbook.catModifiedIndirect":
 				case "cardbook.catModifiedDirect":
-				case "cardbook.ABAddedDirect":
-				case "cardbook.ABRemovedDirect":
 				case "cardbook.ABModifiedDirect":
 				case "cardbook.cardAddedDirect":
 				case "cardbook.cardModifiedDirect":

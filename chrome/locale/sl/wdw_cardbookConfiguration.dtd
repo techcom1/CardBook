@@ -12,7 +12,7 @@
 <!ENTITY integrationGroupboxLabel "Vgradnja v Thunderbird">
 <!ENTITY autocompletionLabel "Samodokončevanje e-poštnih naslovov">
 <!ENTITY autocompletionAccesskey "S">
-<!ENTITY autocompletionTooltip "Razširi običajno samodokončevanje stikov iz Thunderbirdovih imenikov s samodokončevanjem stikov iz Cardbookovih imenikov.">
+<!ENTITY autocompletionTooltip "Razširi običajno samodokončevanje stikov iz Thunderbirdovih imenikov s samodokončevanjem stikov iz CardBookovih imenikov.">
 <!ENTITY autocompleteSortByPopularityLabel "Razvrsti e-poštne naslove po priljubljenosti">
 <!ENTITY autocompleteSortByPopularityAccesskey "R">
 <!ENTITY autocompleteProposeConcatEmailsLabel "??Propose concatenated emails per contact??">

@@ -368,13 +368,13 @@ if ("undefined" == typeof(cardbookTypes)) {
 					}
 					if (aReadOnly) {
 						if (myValue != "") {
-							currentRow = cardbookTypes.addRow(aOrigBox, 'orgRow_' + i);
-							cardbookTypes.addLabel(currentRow, 'orgLabel_' + i, myOrgStructure[i], 'orgTextBox_' + i, {class: 'header'});
+							currentRow = cardbookElementTools.addGridRow(aOrigBox, 'orgRow_' + i, {align: 'center'});
+							cardbookElementTools.addLabel(currentRow, 'orgLabel_' + i, myOrgStructure[i], 'orgTextBox_' + i, {class: 'header'});
 							cardbookElementTools.addTextbox(currentRow, 'orgTextBox_' + i, myValue, {flex: '1', readonly: 'true'});
 						}
 					} else {
-						currentRow = cardbookTypes.addRow(aOrigBox, 'orgRow_' + i);
-						cardbookTypes.addLabel(currentRow, 'orgLabel_' + i, myOrgStructure[i], 'orgTextBox_' + i, {class: 'header'});
+						currentRow = cardbookElementTools.addGridRow(aOrigBox, 'orgRow_' + i, {align: 'center'});
+						cardbookElementTools.addLabel(currentRow, 'orgLabel_' + i, myOrgStructure[i], 'orgTextBox_' + i, {class: 'header'});
 						var myTextBox = cardbookElementTools.addTextbox(currentRow, 'orgTextBox_' + i, myValue, {flex: '1', type: 'autocomplete', autocompletesearch: 'form-history', autocompletesearchparam: 'orgTextBox_' + i, class:'padded'});
 						myTextBox.addEventListener("input", wdw_cardEdition.setDisplayName, false);
 					}
@@ -383,35 +383,35 @@ if ("undefined" == typeof(cardbookTypes)) {
 				var myOrgValue = cardbookUtils.unescapeString(cardbookUtils.escapeString(aOrgValue));
 				if (aReadOnly) {
 					if (myOrgValue != "") {
-						currentRow = cardbookTypes.addRow(aOrigBox, 'orgRow_0');
-						cardbookTypes.addLabel(currentRow, 'orgLabel', strBundle.getString("orgLabel"), 'orgTextBox_0', {class: 'header'});
+						currentRow = cardbookElementTools.addGridRow(aOrigBox, 'orgRow_0', {align: 'center'});
+						cardbookElementTools.addLabel(currentRow, 'orgLabel', strBundle.getString("orgLabel"), 'orgTextBox_0', {class: 'header'});
 						cardbookElementTools.addTextbox(currentRow, 'orgTextBox_0', myOrgValue, {flex: '1', readonly: 'true'});
 					}
 				} else {
-					currentRow = cardbookTypes.addRow(aOrigBox, 'orgRow_0');
-					cardbookTypes.addLabel(currentRow, 'orgLabel', strBundle.getString("orgLabel"), 'orgTextBox_0', {class: 'header'});
+					currentRow = cardbookElementTools.addGridRow(aOrigBox, 'orgRow_0', {align: 'center'});
+					cardbookElementTools.addLabel(currentRow, 'orgLabel', strBundle.getString("orgLabel"), 'orgTextBox_0', {class: 'header'});
 					var myTextBox = cardbookElementTools.addTextbox(currentRow, 'orgTextBox_0', myOrgValue, {flex: '1', type: 'autocomplete', autocompletesearch: 'form-history', autocompletesearchparam: 'orgTextBox_0', class:'padded'});
 					myTextBox.addEventListener("input", wdw_cardEdition.setDisplayName, false);
 				}
 			}
 			if (aReadOnly) {
 				if (aTitleValue != "") {
-					currentRow = cardbookTypes.addRow(aOrigBox, 'titleRow');
-					cardbookTypes.addLabel(currentRow, 'titleLabel', strBundle.getString("titleLabel"), 'titleTextBox', {class: 'header'});
+					currentRow = cardbookElementTools.addGridRow(aOrigBox, 'titleRow', {align: 'center'});
+					cardbookElementTools.addLabel(currentRow, 'titleLabel', strBundle.getString("titleLabel"), 'titleTextBox', {class: 'header'});
 					cardbookElementTools.addTextbox(currentRow, 'titleTextBox', aTitleValue, {flex: '1', readonly: 'true'});
 				}
 				if (aRoleValue != "") {
-					currentRow = cardbookTypes.addRow(aOrigBox, 'roleRow');
-					cardbookTypes.addLabel(currentRow, 'roleLabel', strBundle.getString("roleLabel"), 'roleTextBox', {class: 'header'});
+					currentRow = cardbookElementTools.addGridRow(aOrigBox, 'roleRow', {align: 'center'});
+					cardbookElementTools.addLabel(currentRow, 'roleLabel', strBundle.getString("roleLabel"), 'roleTextBox', {class: 'header'});
 					cardbookElementTools.addTextbox(currentRow, 'roleTextBox', aRoleValue, {flex: '1', readonly: 'true'});
 				}
 			} else {
-				currentRow = cardbookTypes.addRow(aOrigBox, 'titleRow');
-				cardbookTypes.addLabel(currentRow, 'titleLabel', strBundle.getString("titleLabel"), 'titleTextBox', {class: 'header'});
+				currentRow = cardbookElementTools.addGridRow(aOrigBox, 'titleRow', {align: 'center'});
+				cardbookElementTools.addLabel(currentRow, 'titleLabel', strBundle.getString("titleLabel"), 'titleTextBox', {class: 'header'});
 				var myTextBox = cardbookElementTools.addTextbox(currentRow, 'titleTextBox', aTitleValue, {flex: '1', type: 'autocomplete', autocompletesearch: 'form-history', autocompletesearchparam: 'titleTextBox', class:'padded'});
 				myTextBox.addEventListener("input", wdw_cardEdition.setDisplayName, false);
-				currentRow = cardbookTypes.addRow(aOrigBox, 'roleRow');
-				cardbookTypes.addLabel(currentRow, 'roleLabel', strBundle.getString("roleLabel"), 'roleTextBox', {class: 'header'});
+				currentRow = cardbookElementTools.addGridRow(aOrigBox, 'roleRow', {align: 'center'});
+				cardbookElementTools.addLabel(currentRow, 'roleLabel', strBundle.getString("roleLabel"), 'roleTextBox', {class: 'header'});
 				var myTextBox = cardbookElementTools.addTextbox(currentRow, 'roleTextBox', aRoleValue, {flex: '1', type: 'autocomplete', autocompletesearch: 'form-history', autocompletesearchparam: 'roleTextBox', class:'padded'});
 				myTextBox.addEventListener("input", wdw_cardEdition.setDisplayName, false);
 			}
@@ -440,36 +440,17 @@ if ("undefined" == typeof(cardbookTypes)) {
 				j--;
 				if (aReadOnly) {
 					if (myValue != "") {
-						currentRow = cardbookTypes.addRow(aOrigBox, myField + 'Row');
-						cardbookTypes.addLabel(currentRow, myField + 'Label', myLabel, myField + 'TextBox', {class: 'header'});
+						currentRow = cardbookElementTools.addGridRow(aOrigBox, myField + 'Row', {align: 'center'});
+						cardbookElementTools.addLabel(currentRow, myField + 'Label', myLabel, myField + 'TextBox', {class: 'header'});
 						cardbookElementTools.addTextbox(currentRow, myField + 'TextBox', myValue, {flex: '1', readonly: 'true'});
 					}
 				} else {
-					currentRow = cardbookTypes.addRow(aOrigBox, myField + 'Row');
-					cardbookTypes.addLabel(currentRow, myField + 'Label', myLabel, myField + 'TextBox', {class: 'header'});
+					currentRow = cardbookElementTools.addGridRow(aOrigBox, myField + 'Row', {align: 'center'});
+					cardbookElementTools.addLabel(currentRow, myField + 'Label', myLabel, myField + 'TextBox', {class: 'header'});
 					cardbookElementTools.addTextbox(currentRow, myField + 'TextBox', myValue, {flex: '1'});
 				}
 			}
 			return othersTemp;
-		},
-
-		addRow: function (aOrigBox, aId) {
-			var aRow = document.createElement('row');
-			aOrigBox.appendChild(aRow);
-			aRow.setAttribute('id', aId);
-			aRow.setAttribute('align', 'center');
-			return aRow;
-		},
-
-		addLabel: function (aOrigBox, aId, aValue, aControl, aParameters) {
-			var aLabel = document.createElement('label');
-			aOrigBox.appendChild(aLabel);
-			aLabel.setAttribute('id', aId);
-			aLabel.setAttribute('value', aValue);
-			aLabel.setAttribute('control', aControl);
-			for (var prop in aParameters) {
-				aLabel.setAttribute(prop, aParameters[prop]);
-			}
 		},
 
 		loadDynamicTypes: function (aType, aIndex, aInputTypes, aPgName, aPgType, aCardValue, aVersion) {
@@ -490,7 +471,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 			
 			var aPrefButton = cardbookElementTools.addPrefStar(aHBox, aType, aIndex, cardbookUtils.getPrefBooleanFromTypes(aInputTypes))
 			
-			cardbookTypes.addLabel(aHBox, aType + '_' + aIndex + '_prefWeightBoxLabel', cardbookPreferences.getPrefValueLabel(), aType + '_' + aIndex + '_prefWeightBox', {tooltip: strBundle.getString("prefWeightTooltip")});
+			cardbookElementTools.addLabel(aHBox, aType + '_' + aIndex + '_prefWeightBoxLabel', cardbookPreferences.getPrefValueLabel(), aType + '_' + aIndex + '_prefWeightBox', {tooltip: strBundle.getString("prefWeightTooltip")});
 			cardbookElementTools.addTextbox(aHBox, aType + '_' + aIndex + '_prefWeightBox', cardbookUtils.getPrefValueFromTypes(aInputTypes, document.getElementById('versionTextBox').value), {size: "5"});
 			if (aPrefButton.getAttribute('haspref')) {
 				document.getElementById(aType + '_' + aIndex + '_prefWeightBoxLabel').disabled = false;
@@ -675,7 +656,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 				cardbookElementTools.addCaption(aType, aOrigBox);
 			}
 			
-			var aRow = cardbookElementTools.addGridRow(aType, aIndex, aOrigBox, {align: 'start'});
+			var aRow = cardbookElementTools.addGridRow(aOrigBox, aType + '_' + aIndex + '_gridRow', {align: 'start'});
 
 			var myInputTypes = [];
 			myInputTypes = cardbookUtils.getOnlyTypesFromTypes(aInputTypes);

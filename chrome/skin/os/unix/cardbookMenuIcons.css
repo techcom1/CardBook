@@ -26,6 +26,10 @@
 #removeAccountFromAccountsOrCats {
   list-style-image: url("moz-icon://stock/gtk-close?size=menu");
 }
+#cardbookAccountMenuCloseServer[disabled],
+#removeAccountFromAccountsOrCats[disabled] {
+  list-style-image: url("moz-icon://stock/gtk-close?size=menu&state=disabled");
+}
 
 #deleteCard,
 #removeCatFromAccountsOrCats,

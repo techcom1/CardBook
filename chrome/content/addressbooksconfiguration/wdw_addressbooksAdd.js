@@ -901,7 +901,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 						myFile.create( Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420 );
 					}
 					var myMode = "WINDOW";
-					cardbookSynchronization.loadFile(myFile, wdw_addressbooksAdd.gFinishParams[i].dirPrefId, myMode, "NOIMPORT", "");
+					cardbookSynchronization.loadFile(myFile, wdw_addressbooksAdd.gFinishParams[i].dirPrefId, myMode, "NOIMPORTFILE", "");
 					cardbookSynchronization.waitForDirFinished(wdw_addressbooksAdd.gFinishParams[i].dirPrefId, wdw_addressbooksAdd.gFinishParams[i].name, myMode);
 				}
 			} else if (wdw_addressbooksAdd.gType === "DIRECTORY") {
@@ -947,7 +947,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 					cardbookSynchronization.initMultipleOperations(wdw_addressbooksAdd.gFinishParams[i].dirPrefId);
 					cardbookRepository.cardbookDirRequest[wdw_addressbooksAdd.gFinishParams[i].dirPrefId]++;
 					var myMode = "WINDOW";
-					cardbookSynchronization.loadDir(myDir, wdw_addressbooksAdd.gFinishParams[i].dirPrefId, myMode, "NOIMPORT", "");
+					cardbookSynchronization.loadDir(myDir, wdw_addressbooksAdd.gFinishParams[i].dirPrefId, myMode, "NOIMPORTDIR", "");
 					cardbookSynchronization.waitForDirFinished(wdw_addressbooksAdd.gFinishParams[i].dirPrefId, wdw_addressbooksAdd.gFinishParams[i].name, myMode);
 				}
 			}

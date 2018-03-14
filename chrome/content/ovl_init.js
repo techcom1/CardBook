@@ -89,7 +89,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 			prefs.setCharPref("accountsShown", "all");
 			prefs.setCharPref("accountShown", "");
 			prefs.setCharPref("uncategorizedCards", "");
-			prefs.setCharPref("addonVersion", "27.2");
+			prefs.setCharPref("addonVersion", "27.3");
 		},
 
 		lEventTimerSync : { notify: function(lTimerSync) {
@@ -113,7 +113,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 				// setting addonVersion, userAgent and prodid
 				cardbookRepository.addonVersion = cardbookPreferences.getStringPref("extensions.cardbook.addonVersion");
 				cardbookRepository.userAgent = "Thunderbird CardBook/" + cardbookRepository.addonVersion;
-				cardbookRepository.prodid = "-//Thunderbird.org/NONSGML Thunderbird CardBook V"+ cardbookRepository.addonVersion + "//EN";
+				cardbookRepository.prodid = "-//Thunderbird.net/NONSGML Thunderbird CardBook V"+ cardbookRepository.addonVersion + "//EN";
 
 				// setting autocompleteRestrictSearch and autocompleteRestrictSearchFields
 				cardbookRepository.autocompleteRestrictSearch = cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteRestrictSearch");

@@ -1452,35 +1452,39 @@ var cardbookRepository = {
 
 	deleteCards: function (aListOfCards, aSource) {
 		try {
-			var listOfFileToRewrite = [];
-			for (var i = 0; i < aListOfCards.length; i++) {
-				if (!cardbookPreferences.getReadOnly(aListOfCards[i].dirPrefId)) {
-					var myDirPrefIdName = cardbookPreferences.getName(aListOfCards[i].dirPrefId);
-					var myDirPrefIdType = cardbookPreferences.getType(aListOfCards[i].dirPrefId);
-					if (myDirPrefIdType === "FILE") {
-						listOfFileToRewrite.push(aListOfCards[i].dirPrefId);
-						cardbookRepository.removeCardFromRepository(aListOfCards[i], false);
-					} else if (myDirPrefIdType === "CACHE" || myDirPrefIdType === "DIRECTORY" || myDirPrefIdType === "LOCALDB") {
-						cardbookRepository.removeCardFromRepository(aListOfCards[i], true);
-					} else {
-						if (cardbookUtils.searchTagCreated(aListOfCards[i])) {
-							cardbookRepository.removeCardFromRepository(aListOfCards[i], true);
-						} else {
-							cardbookUtils.addTagDeleted(aListOfCards[i]);
-							cardbookRepository.addCardToCache(aListOfCards[i], "WINDOW", cardbookUtils.getFileCacheNameFromCard(aListOfCards[i]));
-							cardbookRepository.removeCardFromRepository(aListOfCards[i], false);
+			Services.tm.currentThread.dispatch({ run: function() {
+				var listOfFileToRewrite = [];
+				for (var i = 0; i < aListOfCards.length; i++) {
+					Services.tm.currentThread.dispatch({ run: function() {
+						if (!cardbookPreferences.getReadOnly(aListOfCards[i].dirPrefId)) {
+							var myDirPrefIdName = cardbookPreferences.getName(aListOfCards[i].dirPrefId);
+							var myDirPrefIdType = cardbookPreferences.getType(aListOfCards[i].dirPrefId);
+							if (myDirPrefIdType === "FILE") {
+								listOfFileToRewrite.push(aListOfCards[i].dirPrefId);
+								cardbookRepository.removeCardFromRepository(aListOfCards[i], false);
+							} else if (myDirPrefIdType === "CACHE" || myDirPrefIdType === "DIRECTORY" || myDirPrefIdType === "LOCALDB") {
+								cardbookRepository.removeCardFromRepository(aListOfCards[i], true);
+							} else {
+								if (cardbookUtils.searchTagCreated(aListOfCards[i])) {
+									cardbookRepository.removeCardFromRepository(aListOfCards[i], true);
+								} else {
+									cardbookUtils.addTagDeleted(aListOfCards[i]);
+									cardbookRepository.addCardToCache(aListOfCards[i], "WINDOW", cardbookUtils.getFileCacheNameFromCard(aListOfCards[i]));
+									cardbookRepository.removeCardFromRepository(aListOfCards[i], false);
+								}
+							}
+							cardbookUtils.formatStringForOutput("cardDeletedOK", [myDirPrefIdName, aListOfCards[i].fn]);
+							wdw_cardbooklog.addActivity("cardDeletedOK", [myDirPrefIdName, aListOfCards[i].fn], "deleteMail");
+							// performance reason
+							// update the UI only at the end
+							if (i == aListOfCards.length - 1) {
+								cardbookUtils.notifyObservers(aSource);
+							}
 						}
-					}
-					cardbookUtils.formatStringForOutput("cardDeletedOK", [myDirPrefIdName, aListOfCards[i].fn]);
-					wdw_cardbooklog.addActivity("cardDeletedOK", [myDirPrefIdName, aListOfCards[i].fn], "deleteMail");
-					// performance reason
-					// update the UI only at the end
-					if (i == aListOfCards.length - 1) {
-						cardbookUtils.notifyObservers(aSource);
-					}
+					}}, Components.interfaces.nsIEventTarget.DISPATCH_SYNC);
 				}
-			}
-			cardbookRepository.reWriteFiles(listOfFileToRewrite);
+				cardbookRepository.reWriteFiles(listOfFileToRewrite);
+			}}, Components.interfaces.nsIEventTarget.DISPATCH_NORMAL);
 		}
 		catch (e) {
 			wdw_cardbooklog.updateStatusProgressInformation("cardbookRepository.deleteCards error : " + e, "Error");

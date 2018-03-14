@@ -53,6 +53,16 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			}
 		},
 
+		addProgressmeter: function (aParent, aId, aParameters) {
+			var aProgressmeter = document.createElement('progressmeter');
+			aParent.appendChild(aProgressmeter);
+			aProgressmeter.setAttribute('id', aId);
+
+			for (var prop in aParameters) {
+				aProgressmeter.setAttribute(prop, aParameters[prop]);
+			}
+		},
+
 		addHBox: function (aType, aIndex, aParent) {
 			var aHBox = document.createElement('hbox');
 			aParent.appendChild(aHBox);
@@ -64,56 +74,26 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			return aHBox;
 		},
 		
-		addGrid: function (aType, aParent) {
-			var aGrid = document.createElement('grid');
-			aParent.appendChild(aGrid);
-			aGrid.setAttribute('id', aType + '_grid');
-			aGrid.setAttribute('flex', '1');
-			return aGrid;
-		},
-		
-		addGridColumns: function (aType, aParent, aParameters) {
-			var aGridColumns = document.createElement('columns');
-			aParent.appendChild(aGridColumns);
-			aGridColumns.setAttribute('id', aType + '_gridColumns');
-
-			for (var prop in aParameters) {
-				aGridColumns.setAttribute(prop, aParameters[prop]);
-			}
-			return aGridColumns;
-		},
-		
-		addGridRows: function (aType, aParent, aParameters) {
-			var aGridRows = document.createElement('rows');
-			aParent.appendChild(aGridRows);
-			aGridRows.setAttribute('id', aType + '_gridRows');
-
-			for (var prop in aParameters) {
-				aGridRows.setAttribute(prop, aParameters[prop]);
-			}
-			return aGridRows;
-		},
-		
-		addGridColumn: function (aType, aIndex, aParent, aParameters) {
-			var aGridColumn = document.createElement('column');
-			aParent.appendChild(aGridColumn);
-			aGridColumn.setAttribute('id', aType + '_' + aIndex + '_gridColumn');
-
-			for (var prop in aParameters) {
-				aGridColumn.setAttribute(prop, aParameters[prop]);
-			}
-			return aGridColumn;
-		},
-
-		addGridRow: function (aType, aIndex, aParent, aParameters) {
+		addGridRow: function (aParent, aId, aParameters) {
 			var aGridRow = document.createElement('row');
 			aParent.appendChild(aGridRow);
-			aGridRow.setAttribute('id', aType + '_' + aIndex + '_gridRow');
+			aGridRow.setAttribute('id', aId);
 
 			for (var prop in aParameters) {
 				aGridRow.setAttribute(prop, aParameters[prop]);
 			}
 			return aGridRow;
+		},
+
+		addLabel: function (aOrigBox, aId, aValue, aControl, aParameters) {
+			var aLabel = document.createElement('label');
+			aOrigBox.appendChild(aLabel);
+			aLabel.setAttribute('id', aId);
+			aLabel.setAttribute('value', aValue);
+			aLabel.setAttribute('control', aControl);
+			for (var prop in aParameters) {
+				aLabel.setAttribute(prop, aParameters[prop]);
+			}
 		},
 
 		addKeyTextbox: function (aParent, aId, aValue, aParameters, aVersion, aIndex) {

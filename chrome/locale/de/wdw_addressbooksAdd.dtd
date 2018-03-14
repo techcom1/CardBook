@@ -2,7 +2,7 @@
 <!ENTITY wizard.label "Neues Adressbuch hinzufügen">
 
 <!ENTITY welcomePage.wizard.description "Willkommen">
-<!ENTITY welcomePage.description "Anscheinend verwenden Sie Cardbook zum ersten Mal. Deshalb werden die Kontakte aus den Standard Adressbüchern von Thunderbird in die Adressbücher von Cardbook importiert.">
+<!ENTITY welcomePage.description "Anscheinend verwenden Sie CardBook zum ersten Mal. Deshalb werden die Kontakte aus den Standard Adressbüchern von Thunderbird in die Adressbücher von CardBook importiert.">
 
 <!ENTITY initialPage.wizard.description "Ort des neuen Adressbuchs">
 <!ENTITY initialPage.description "Ist das Adressbuch lokal oder im Netzwerk gespeichert?">

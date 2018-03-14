@@ -91,12 +91,21 @@ if ("undefined" == typeof(cardbookIndexedDB)) {
 			var db = cardbookRepository.cardbookDatabase.db;
 			var transaction = db.transaction(["cards"], "readonly");
 			var store = transaction.objectStore("cards");
+			var countRequest = store.count(aKeyRange);
 			var cursorRequest = store.openCursor(aKeyRange);
 		
 			transaction.oncomplete = function() {
 				cb(aDirPrefId);
 			};
-		
+
+			countRequest.onsuccess = function(e) {
+				cardbookRepository.cardbookServerSyncTotal[aDirPrefId] = countRequest.result;
+			};
+
+			countRequest.onerror = function(e) {
+				cardbookRepository.cardbookDatabase.onerror();
+			};
+
 			cursorRequest.onsuccess = function(e) {
 				var result = e.target.result;
 				if (result) {
@@ -112,11 +121,10 @@ if ("undefined" == typeof(cardbookIndexedDB)) {
 						}
 					}
 					cardbookRepository.cardbookServerSyncDone[aDirPrefId]++;
-					cardbookRepository.cardbookServerSyncTotal[aDirPrefId]++;
 					result.continue();
 				}
 			};
-			
+
 			cursorRequest.onerror = function(e) {
 				cardbookRepository.cardbookDatabase.onerror();
 			};

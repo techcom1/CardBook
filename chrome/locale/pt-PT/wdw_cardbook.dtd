@@ -21,9 +21,9 @@
 <!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "Procurar duplicados na agenda actual">
 <!ENTITY cardbookToolsMenuPrefsLabel "Preferências do CardBook">
 
-<!ENTITY cardbookToolbarLabel "Barra de ferramentas do Cardbook">
+<!ENTITY cardbookToolbarLabel "Barra de ferramentas do CardBook">
 <!ENTITY cardbookToolbarAccesskey "C">
-<!ENTITY cardbookABPaneToolbarLabel "Barra de ferramentas Cardbook">
+<!ENTITY cardbookABPaneToolbarLabel "Barra de ferramentas CardBook">
 <!ENTITY cardbookABPaneToolbarAccesskey "d">
 <!ENTITY CustomizeCardBookToolbarLabel "Personalizar…">
 <!ENTITY CustomizeCardBookToolbarAccesskey "P">

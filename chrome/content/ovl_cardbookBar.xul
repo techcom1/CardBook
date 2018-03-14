@@ -171,7 +171,6 @@
 							<menuitem id="cardbookToolsBirthdayList" label="&cardbookToolsMenuBirthdayListLabel;" oncommand="wdw_cardbook.displayBirthdayList();"/>
 							<menuitem id="cardbookToolsSyncLightning" label="&cardbookToolsMenuSyncLightningLabel;" oncommand="wdw_cardbook.displaySyncList();"/>
 							<menuseparator/>
-							<menuitem id="cardbookToolsMenuComplexSearch" label="&cardbookToolbarComplexSearchLabel;" oncommand="wdw_cardbook.editComplexSearch();"/>
 							<menuitem id="cardbookToolsMenuFindSingleDuplicates" label="&cardbookToolsMenuFindSingleDuplicatesLabel;" oncommand="wdw_cardbook.findDuplicatesFromAccountsOrCats();"/>
 							<menuitem id="cardbookToolsMenuFindDuplicates" label="&cardbookToolsMenuFindAllDuplicatesLabel;" oncommand="wdw_cardbook.findDuplicates();"/>
 							<menuseparator/>

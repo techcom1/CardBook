@@ -82,7 +82,7 @@ if ("undefined" == typeof(wdw_addressbooksEdit)) {
 		save: function () {
 			if (document.getElementById('dateFormatMenuList').value != wdw_addressbooksEdit.initialDateFormat) {
 				cardbookDates.convertAddressBookDate(window.arguments[0].dirPrefId, document.getElementById('nameTextBox').value,
-													wdw_addressbooksEdit.initialDateFormat, document.getElementById('dateFormatMenuList').value);
+														wdw_addressbooksEdit.initialDateFormat, document.getElementById('dateFormatMenuList').value);
 			}
 			cardbookPreferences.setName(window.arguments[0].dirPrefId, document.getElementById('nameTextBox').value);
 			cardbookPreferences.setColor(window.arguments[0].dirPrefId, document.getElementById('colorInput').value);

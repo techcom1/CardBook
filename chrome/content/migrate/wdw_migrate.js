@@ -199,7 +199,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 								var myLowerEmail = myEmail.toLowerCase();
 								var myName = myABCard.getProperty("DisplayName","");
 								try {
-									// within a standard list all members are simple cards... weird...
+									// within a standard list all members are simple cards… weird…
 									if ((myName == myEmail) && wdw_migrate.allLists[myName] && wdw_migrate.allLists[myName].solved) {
 										myTargetMembers.push(["urn:uuid:" + wdw_migrate.allLists[myName].uid, myName]);
 									} else if (cardbookRepository.cardbookCardEmails[aDirPrefIdTarget][myLowerEmail]) {
@@ -275,7 +275,9 @@ if ("undefined" == typeof(wdw_migrate)) {
 						myABCard = myABCard.QueryInterface(Components.interfaces.nsIAbCard);
 						if (!myABCard.isMailList) {
 							cardbookRepository.cardbookServerSyncTotal[aDirPrefIdTarget]++;
-							wdw_migrate.translateStandardCards(aDirPrefIdTarget, aDirPrefIdTargetName, myABCard, aVersion, aDateFormat, aMode);
+							Services.tm.currentThread.dispatch({ run: function() {
+								wdw_migrate.translateStandardCards(aDirPrefIdTarget, aDirPrefIdTargetName, myABCard, aVersion, aDateFormat, aMode);
+							}}, Components.interfaces.nsIEventTarget.DISPATCH_SYNC);
 						}
 					}
 					var abCardsEnumerator = contact.childCards;

@@ -62,7 +62,7 @@ if ("undefined" == typeof(ovl_attachments)) {
 					OnStopRunningUrl: function (aUrl, aStatus) {
 						if (aStatus == 0) {
 							wdw_cardbooklog.updateStatusProgressInformationWithDebug2("debug mode : attachment successfully downloaded");
-							cardbookSynchronization.loadFile(this.mFile, this.myDirPrefId, "WINDOW", "IMPORT", "");
+							cardbookSynchronization.loadFile(this.mFile, this.myDirPrefId, "WINDOW", "IMPORTFILE", "");
 						} else {
 							wdw_cardbooklog.updateStatusProgressInformationWithDebug2("debug mode : attachment not successfully downloaded, status : " + aStatus);
 						}

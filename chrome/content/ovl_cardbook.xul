@@ -14,7 +14,6 @@
 	<script src="cardbookUtils.js"/>
 	<script src="cardbookSynchronization.js"/>
 	<script src="cardbookIndexedDB.js"/>
-	<script src="cardbookCountries.js"/>
 	<script src="ovl_init.js"/>
 	<script src="cardbookMailPopularity.js"/>
 	<script src="ovl_mailPopularity.js"/>

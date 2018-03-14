@@ -9,7 +9,7 @@
 <!ENTITY cardbookTabButtonLabel "CardBook">
 <!ENTITY cardbookTabButtonTooltip "Seleccionar tab do CardBook">
 
-<!ENTITY newCardBookCardMenuLabel "Contacto Cardbook…">
+<!ENTITY newCardBookCardMenuLabel "Contacto CardBook…">
 <!ENTITY newCardBookCardMenuAccesskey "C">
 <!ENTITY newCardBookCardMenuKey "N">
 <!ENTITY newCardBookSearchMenuLabel "Procura CardBook…">
@@ -18,7 +18,7 @@
 <!ENTITY addToCardBookMenuAccesskey "d">
 <!ENTITY editInCardBookMenuLabel "Modificar com o CardBook">
 <!ENTITY editInCardBookMenuAccesskey "o">
-<!ENTITY deleteInCardBookMenuLabel "Apagar contacto Cardbook">
+<!ENTITY deleteInCardBookMenuLabel "Apagar contacto CardBook">
 <!ENTITY deleteInCardBookMenuAccesskey "p">
 <!ENTITY IMPPMenuLabel "Ligar">
 <!ENTITY IMPPMenuAccesskey "L">
