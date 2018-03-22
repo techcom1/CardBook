@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet href="chrome://cardbook-osversion/skin/mainToolbarButton.css" type="text/css"?>
+<?xml-stylesheet href="chrome://cardbook-toolbar/skin/mainToolbarButton.css" type="text/css"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xul-overlay href="chrome://cardbook/content/ovl_cardbookStringBundle.xul"?>
-<!DOCTYPE overlay SYSTEM "chrome://cardbook/locale/ovl_cardbook.dtd">
+<!DOCTYPE window [
+	<!ENTITY % ovl_cardbookDTD SYSTEM "chrome://cardbook/locale/ovl_cardbook.dtd"> %ovl_cardbookDTD;
+]>
 
 <overlay id="ovl_cardbook"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
@@ -14,6 +16,7 @@
 	<script src="cardbookUtils.js"/>
 	<script src="cardbookSynchronization.js"/>
 	<script src="cardbookIndexedDB.js"/>
+	<script src="chrome://cardbook/content/standalone/ovl_winTaskBar.js"/>
 	<script src="ovl_init.js"/>
 	<script src="cardbookMailPopularity.js"/>
 	<script src="ovl_mailPopularity.js"/>
@@ -21,13 +24,12 @@
 	<script src="cardbookElementTools.js"/>
 	<script src="wdw_cardbook.js"/>
 	<script src="chrome://cardbook/content/formatEmailCorrespondents/ovl_formatEmailCorrespondents.js"/>
-	<script src="chrome://cardbook/content/mailContact/ovl_cardbookMailContacts.js"/>
 	<script src="chrome://cardbook/content/layout/ovl_cardbookLayout.js"/>
 	<script src="ovl_cardbook.js"/>
 	
 	<window id="messengerWindow">
 		<broadcasterset id="cardbookBroadcasters">
-			<broadcaster id="cardboookModeBroadcaster" mode="mail"/>
+			<broadcaster id="cardboookModeBroadcasterTab" mode="mail"/>
 		</broadcasterset>
 	</window>
 

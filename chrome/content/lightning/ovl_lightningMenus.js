@@ -11,7 +11,7 @@
 			var rv = _original.apply(null, arguments);
 			
 			// Execute some action afterwards.
-			if (document.getElementById('cardboookModeBroadcaster').getAttribute('mode') == 'cardbook') {
+			if (cardbookUtils.getBroadcasterOnCardBook()) {
 				onViewToolbarsPopupShowing(arguments[0], ["navigation-toolbox", "cardbook-toolbox"], arguments[1]);
 			}
 			
@@ -35,7 +35,7 @@
 			var rv = _original.apply(null, arguments);
 			
 			// Execute some action afterwards.
-			if (document.getElementById('cardboookModeBroadcaster').getAttribute('mode') == 'cardbook') {
+			if (cardbookUtils.getBroadcasterOnCardBook()) {
 				onViewToolbarsPopupShowing(arguments[0], ["navigation-toolbox", "cardbook-toolbox"], arguments[1]);
 			}
 			

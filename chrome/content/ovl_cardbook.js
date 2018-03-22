@@ -14,7 +14,7 @@ if ("undefined" == typeof(cardbookTabType)) {
 		},
 		onTabClosing: function(aTab) {
 			if (aTab.mode.name == "cardbook") {
-				document.getElementById("cardboookModeBroadcaster").setAttribute("mode", "mail");
+				document.getElementById("cardboookModeBroadcasterTab").setAttribute("mode", "mail");
 				document.getElementById("unreadMessageCount").hidden=false;
 			}
 		},
@@ -23,10 +23,10 @@ if ("undefined" == typeof(cardbookTabType)) {
 		onTabSwitched: function(aNewTab, aOldTab) {
 			var strBundle = document.getElementById("cardbook-strings");
 			if (aNewTab.mode.name == "cardbook") {
-				document.getElementById("cardboookModeBroadcaster").setAttribute("mode", "cardbook");
+				document.getElementById("cardboookModeBroadcasterTab").setAttribute("mode", "cardbook");
 				document.getElementById("totalMessageCount").setAttribute("tooltiptext", strBundle.getString("statusProgressInformationTooltip"));
 			} else {
-				document.getElementById("cardboookModeBroadcaster").setAttribute("mode", "mail");
+				document.getElementById("cardboookModeBroadcasterTab").setAttribute("mode", "mail");
 				document.getElementById("totalMessageCount").removeAttribute("tooltiptext");
 				wdw_cardbook.setElementLabel('statusText', "");
 				document.getElementById("unreadMessageCount").hidden=false;
@@ -174,7 +174,7 @@ if ("undefined" == typeof(ovl_cardbook)) {
 						var myMenu = document.getElementById(menus[i]);
 						myMenu.removeEventListener('popupshowing', arguments.callee, true);
 						myMenu.addEventListener("popupshowing", function(event) {
-							if (document.getElementById('cardboookModeBroadcaster').getAttribute('mode') == 'cardbook') {
+							if (cardbookUtils.getBroadcasterOnCardBook()) {
 								onViewToolbarsPopupShowing(event, ["navigation-toolbox", "cardbook-toolbox"]);
 							}
 						});

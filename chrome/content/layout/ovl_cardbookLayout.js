@@ -33,7 +33,7 @@ if ("undefined" == typeof(ovl_cardbookLayout)) {
 		},
 
 		setCheckboxes: function() {
-			if (document.getElementById("cardboookModeBroadcaster").getAttribute("mode") == "cardbook") {
+			if (cardbookUtils.getBroadcasterOnCardBook()) {
 				document.getElementById("cardbookABPaneItem").hidden=false;
 				document.getElementById("cardbookContactPaneItem").hidden=false;
 				document.getElementById("menu_showFolderPane").hidden=true;
@@ -48,6 +48,11 @@ if ("undefined" == typeof(ovl_cardbookLayout)) {
 				document.getElementById("menu_showFolderPaneCols").hidden=false;
 				document.getElementById("menu_showMessage").hidden=false;
 			}
+		},
+
+		setCheckboxesForWindow: function() {
+			document.getElementById("cardbookABPaneItem").setAttribute('checked', cardbookPreferences.getBoolPref("extensions.cardbook.viewABPane"));
+			document.getElementById("cardbookContactPaneItem").setAttribute('checked', cardbookPreferences.getBoolPref("extensions.cardbook.viewABContact"));
 		},
 
 		setBoxes: function(aEvent) {
@@ -102,20 +107,23 @@ if ("undefined" == typeof(ovl_cardbookLayout)) {
 // for the displayed name of emails
 // InitViewLayoutStyleMenu
 (function() {
-	// Keep a reference to the original function.
-	var _original = InitViewLayoutStyleMenu;
-	
-	// Override a function.
-	InitViewLayoutStyleMenu = function() {
+	// for the standalone window, does not exist
+	if ("undefined" != typeof(InitViewLayoutStyleMenu)) {
+		// Keep a reference to the original function.
+		var _original = InitViewLayoutStyleMenu;
 		
-		ovl_cardbookLayout.setCheckboxes();
-		// Execute some action afterwards.
-		if (document.getElementById("cardboookModeBroadcaster").getAttribute("mode") == "cardbook") {
-			ovl_cardbookLayout.setBoxes(arguments[0]);
-		} else {
-			// Execute original function.
-			_original.apply(null, arguments);
-		}
-	};
+		// Override a function.
+		InitViewLayoutStyleMenu = function() {
+			
+			ovl_cardbookLayout.setCheckboxes();
+			// Execute some action afterwards.
+			if (document.getElementById("cardboookModeBroadcaster").getAttribute("mode") == "cardbook") {
+				ovl_cardbookLayout.setBoxes(arguments[0]);
+			} else {
+				// Execute original function.
+				_original.apply(null, arguments);
+			}
+		};
+	}
 
 })();

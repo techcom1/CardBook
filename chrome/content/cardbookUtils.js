@@ -234,6 +234,20 @@ if ("undefined" == typeof(cardbookUtils)) {
 			}
 		},
 
+		getCardFromEmail: function(aEmail) {
+			var myTestString = aEmail.toLowerCase();
+			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
+				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && (cardbookRepository.cardbookAccounts[i][6] != "SEARCH")) {
+					var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
+					if (cardbookRepository.cardbookCardEmails[myDirPrefId]) {
+						if (cardbookRepository.cardbookCardEmails[myDirPrefId][myTestString]) {
+							return cardbookRepository.cardbookCardEmails[myDirPrefId][myTestString][0];
+						}
+					}
+				}
+			}
+		},
+
 		sortCardsTreeArrayByString: function (aArray, aIndex, aInvert) {
 			if (Services.locale.getApplicationLocale) {
 				var collator = Components.classes["@mozilla.org/intl/collation-factory;1"].getService(Components.interfaces.nsICollationFactory).CreateCollation(Services.locale.getApplicationLocale());
@@ -2863,6 +2877,19 @@ if ("undefined" == typeof(cardbookUtils)) {
 				var myAccountId = cardbookUtils.getAccountId(myTree.view.getCellText(myTree.currentIndex, {id: "accountId"}));
 				cardbookPreferences.setDisplayedColumns(myAccountId, cardbookUtils.getColumnsState());
 			}
+		},
+
+		getBroadcasterOnCardBook: function () {
+			if (document.getElementById('cardboookModeBroadcasterTab')) {
+				if (document.getElementById('cardboookModeBroadcasterTab').getAttribute('mode') == 'cardbook') {
+					return true;
+				}
+			} else if (document.getElementById('cardboookModeBroadcasterWindow')) {
+				if (document.getElementById('cardboookModeBroadcasterWindow').getAttribute('mode') == 'cardbook') {
+					return true;
+				}
+			}
+			return false;
 		},
 
 		formatStringForOutput: function(aStringCode, aValuesArray, aErrorCode) {

@@ -278,9 +278,10 @@ if ("undefined" == typeof(cardBookObserver)) {
 				case "cardbook.syncRunning":
 					wdw_cardbook.refreshWindow(aData);
 					break;
+				case "cardbook.cardRemovedDirect":
+					wdw_cardbook.clearCard();
 				case "cardbook.cardAddedIndirect":
 				case "cardbook.cardRemovedIndirect":
-				case "cardbook.cardRemovedDirect":
 				case "cardbook.cardModifiedIndirect":
 				case "cardbook.cardPasted":
 				case "cardbook.cardDragged":
@@ -297,10 +298,10 @@ if ("undefined" == typeof(cardBookObserver)) {
 					break;
 				case "cardbook.ABAddedDirect":
 				case "cardbook.ABRemovedDirect":
+				case "cardbook.catRemovedDirect":
 					wdw_cardbook.clearCard();
 				case "cardbook.catAddedDirect":
 				case "cardbook.catRemovedIndirect":
-				case "cardbook.catRemovedDirect":
 				case "cardbook.catModifiedIndirect":
 				case "cardbook.catModifiedDirect":
 				case "cardbook.ABModifiedDirect":

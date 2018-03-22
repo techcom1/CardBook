@@ -6,7 +6,7 @@
 <?xml-stylesheet href="chrome://cardbook/skin/cardbookCheckboxes.css" type="text/css"?>
 <?xul-overlay href="chrome://cardbook/content/ovl_cardbookStringBundle.xul"?>
 <!-- for the preference star -->
-<?xml-stylesheet href="chrome://cardbook-os/skin/cardbookPrefStar.css" type="text/css"?>
+<?xml-stylesheet href="chrome://cardbook-pref/skin/cardbookPrefStar.css" type="text/css"?>
 <!DOCTYPE window [
 	<!ENTITY % configurationDTD SYSTEM "chrome://cardbook/locale/wdw_cardbookConfiguration.dtd"> %configurationDTD;
 	<!ENTITY % namesDTD SYSTEM "chrome://cardbook/locale/wdw_nameEdition.dtd"> %namesDTD;

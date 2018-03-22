@@ -89,7 +89,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 			prefs.setCharPref("accountsShown", "all");
 			prefs.setCharPref("accountShown", "");
 			prefs.setCharPref("uncategorizedCards", "");
-			prefs.setCharPref("addonVersion", "27.3");
+			prefs.setCharPref("addonVersion", "27.4");
 		},
 
 		lEventTimerSync : { notify: function(lTimerSync) {
@@ -133,6 +133,9 @@ if ("undefined" == typeof(ovl_synchro)) {
 				// observers are needed not only UI but also for synchro
 				// there is no unregister launched
 				cardBookObserver.register();
+				
+				// add Cardbook into taskbar
+				ovl_winTaskBar.add();
 				
 				// once openDB is finished, it will fire an event
 				// and then load the cache and maybe sync the accounts

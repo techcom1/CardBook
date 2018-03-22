@@ -4,19 +4,16 @@ if ("undefined" == typeof(wdw_migrate)) {
 
 	var wdw_migrate = {
 		
-		customMap : [ ["1", false], ["2", false], ["3", false], ["4", false] ],
+		customMap : { "X-CUSTOM1": {add: false, number:"1"}, "X-CUSTOM2": {add: false, number:"2"}, "X-CUSTOM3": {add: false, number:"3"}, "X-CUSTOM4": {add: false, number:"4"} },
 		allLists : {},
 
 		writeCustomToPreference: function () {
 			var myType = 'pers';
-			var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
-			var customLabel = strBundle.GetStringFromName("customLabel");
 			result = cardbookRepository.customFields[myType];
 			var myCount = result.length;
-			for (var i = 0; i < wdw_migrate.customMap.length; i++) {
-				if (wdw_migrate.customMap[i][1]) {
+			for (var myCode in wdw_migrate.customMap) {
+				if (wdw_migrate.customMap[myCode].add) {
 					var found = false
-					var myCode = "X-CUSTOM" + wdw_migrate.customMap[i][0];
 					for (var j = 0; j < result.length; j++) {
 						if (result[j][0] == myCode) {
 							found = true;
@@ -24,7 +21,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 						}
 					}
 					if (!found) {
-						cardbookPreferences.setCustomFields(myType, myCount, myCode + ":" + customLabel + wdw_migrate.customMap[i][0]);
+						cardbookPreferences.setCustomFields(myType, myCount, myCode + ":" + wdw_migrate.customMap[myCode].label);
 						myCount++;
 					}
 				}
@@ -34,6 +31,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 
 		translateStandardCards: function (aDirPrefIdTarget, aDirPrefIdTargetName, aABCard, aVersion, aDateFormat, aMode) {
 			try {
+				var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 				var myCard = new cardbookCardParser();
 				myCard.dirPrefId = aDirPrefIdTarget;
 				cardbookUtils.setCardUUID(myCard);
@@ -43,15 +41,29 @@ if ("undefined" == typeof(wdw_migrate)) {
 					var myMapData = aABCard.getProperty(myMap[i][0],"");
 					myCard[myMap[i][1]] = myMapData;
 				}
-				for (var i = 0; i < wdw_migrate.customMap.length; i++) {
-					var myMapData = aABCard.getProperty("Custom" + wdw_migrate.customMap[i][0],"");
+				for (var myCode in wdw_migrate.customMap) {
+					var myMapData = aABCard.getProperty("Custom" + wdw_migrate.customMap[myCode].number,"");
 					if (myMapData != "") {
-						myCard.others.push("X-CUSTOM" + wdw_migrate.customMap[i][0] + ":" + myMapData);
-						if (!wdw_migrate.customMap[i][1]) {
-							wdw_migrate.customMap[i][1] = true;
+						myCard.others.push(myCode + ":" + myMapData);
+						if (!wdw_migrate.customMap[myCode].add) {
+							wdw_migrate.customMap[myCode].add = true;
+							wdw_migrate.customMap[myCode].label = strBundle.GetStringFromName("customLabel") + wdw_migrate.customMap[myCode].number;
 						}
 					}
 				}
+				var myMapForCustom = [ ["PhoneticFirstName", "X-PHONETIC-FIRST-NAME"], ["PhoneticLastName", "X-PHONETIC-LAST-NAME"] ];
+				for (var i = 0; i < myMapForCustom.length; i++) {
+					var myMapData = aABCard.getProperty(myMapForCustom[i][0],"");
+					if (myMapData != "") {
+						myCard.others.push(myMapForCustom[i][1] + ":" + myMapData);
+						if (!wdw_migrate.customMap[myMapForCustom[i][1]]) {
+							wdw_migrate.customMap[myMapForCustom[i][1]] = {}
+							wdw_migrate.customMap[myMapForCustom[i][1]].add = true;
+							wdw_migrate.customMap[myMapForCustom[i][1]].label = strBundle.GetStringFromName(myMapForCustom[i][0] + "Label");
+						}
+					}
+				}
+								
 				var myDep = aABCard.getProperty("Department","");
 				var myOrg = aABCard.getProperty("Company","");
 				if (myDep != "") {

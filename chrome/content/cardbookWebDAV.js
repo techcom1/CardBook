@@ -1,7 +1,9 @@
 if ("undefined" == typeof(cardbookWebDAV)) {
 	Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 	Components.utils.import("resource://gre/modules/Services.jsm");
-	Components.utils.importGlobalProperties(["XMLHttpRequest"]);
+	if (Services.vc.compare(Services.appinfo.version, "61") >= 0) {
+		Components.utils.importGlobalProperties(["XMLHttpRequest"]);
+	}
 
 	function XMLToJSONParser(doc) {
 		this._buildTree(doc);

@@ -20,6 +20,8 @@
 	<script src="cardbookElementTools.js"/>
 	<script src="wdw_cardbook.js"/>
 	<script src="chrome://cardbook/content/mailContact/ovl_cardbookMailContacts.js"/>
+	<script src="chrome://cardbook/content/mailContact/ovl_cardbookFindEmails.js"/>
+	<script src="chrome://cardbook/content/mailContact/ovl_cardbookFindEvents.js"/>
 	<script src="chrome://cardbook/content/layout/ovl_cardbookLayout.js"/>
 	
 	<menupopup id="emailAddressPopup">
@@ -35,13 +37,13 @@
 		</menu>
 		<menuseparator id="findCardBookSeparator1" insertafter="IMPPCards"/>
 		<menuitem id="findEmailsFromEmailMessenger" label="&findEmailsFromEmailMessengerLabel;" accesskey="&findEmailsFromEmailMessengerAccesskey;"
-			oncommand="ovl_cardbookMailContacts.findEmailsFromEmail();" insertafter="findCardBookSeparator1"/>
+			oncommand="ovl_cardbookFindEmails.findEmailsFromEmail();" insertafter="findCardBookSeparator1"/>
 		<menuitem id="findAllEmailsFromContactMessenger" label="&findAllEmailsFromContactMessengerLabel;" accesskey="&findAllEmailsFromContactMessengerAccesskey;"
-			oncommand="ovl_cardbookMailContacts.findAllEmailsFromContact();" insertafter="findEmailsFromEmailMessenger"/>
+			oncommand="ovl_cardbookFindEmails.findAllEmailsFromContact();" insertafter="findEmailsFromEmailMessenger"/>
 		<menuitem id="findEventsFromEmailMessenger" label="&findEventsFromEmailMessengerLabel;" accesskey="&findEventsFromEmailMessengerAccesskey;"
-			oncommand="ovl_cardbookMailContacts.findEventsFromEmail();" insertafter="findAllEmailsFromContactMessenger"/>
+			oncommand="ovl_cardbookFindEvents.findEventsFromEmail();" insertafter="findAllEmailsFromContactMessenger"/>
 		<menuitem id="findAllEventsFromContactMessenger" label="&findAllEventsFromContactMessengerLabel;" accesskey="&findAllEventsFromContactMessengerAccesskey;"
-			oncommand="ovl_cardbookMailContacts.findAllEventsFromContact();" insertafter="findEventsFromEmailMessenger"/>
+			oncommand="ovl_cardbookFindEvents.findAllEventsFromContact();" insertafter="findEventsFromEmailMessenger"/>
 		<menuseparator id="findCardBookSeparator2" insertafter="findAllEventsFromContactMessenger"/>
 	</menupopup>
 

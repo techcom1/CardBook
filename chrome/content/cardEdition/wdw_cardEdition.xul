@@ -9,7 +9,7 @@
 <?xml-stylesheet href="chrome://calendar/content/widgets/calendar-widget-bindings.css" type="text/css"?>
 <?xml-stylesheet href="chrome://calendar-common/skin/widgets/minimonth.css" type="text/css"?>
 <!-- for the preference star -->
-<?xml-stylesheet href="chrome://cardbook-os/skin/cardbookPrefStar.css" type="text/css"?>
+<?xml-stylesheet href="chrome://cardbook-pref/skin/cardbookPrefStar.css" type="text/css"?>
 <?xml-stylesheet href="chrome://cardbook-os/skin/cardbookExpandedClass.css" type="text/css"?>
 
 <?xul-overlay href="chrome://cardbook/content/ovl_cardbookStringBundle.xul"?>

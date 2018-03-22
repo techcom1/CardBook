@@ -57,9 +57,9 @@ if ("undefined" == typeof(cardbookDiscovery)) {
 
 		stopDiscovery: function (aDirPrefId, aState) {
 			cardbookSynchronization.finishMultipleOperations(aDirPrefId);
-			var total = cardbookSynchronization.getRequest() + cardbookSynchronization.getTotal() + cardbookSynchronization.getResponse() + cardbookSynchronization.getDone();
-			if (total === 0) {
-				if (aState) {
+			if (aState) {
+				var total = cardbookSynchronization.getRequest() + cardbookSynchronization.getTotal() + cardbookSynchronization.getResponse() + cardbookSynchronization.getDone();
+				if (total === 0) {
 					wdw_cardbooklog.updateStatusProgressInformationWithDebug1(cardbookDiscovery.gDiscoveryDescription + " : debug mode : cardbookRepository.cardbookServerValidation : ", cardbookRepository.cardbookServerValidation);
 					var myAccountsToAdd = [];
 					var myAccountsToRemove = [];
@@ -74,9 +74,6 @@ if ("undefined" == typeof(cardbookDiscovery)) {
 					
 					// find all accounts that should be added and removed
 					for (var dirPrefId in cardbookRepository.cardbookServerValidation) {
-						if (dirPrefId != aDirPrefId) {
-							continue;
-						}
 						if (cardbookRepository.cardbookServerValidation[dirPrefId].length != 0) {
 							for (var url in cardbookRepository.cardbookServerValidation[dirPrefId]) {
 								if (url == "length" || url == "user") {
@@ -107,9 +104,6 @@ if ("undefined" == typeof(cardbookDiscovery)) {
 						var myCurrentUser = cardbookPreferences.getUser(myCurrentAccountsNotFound[i][4]);
 						var myCurrentShortUrl = cardbookSynchronization.getShortUrl(myCurrentUrl);
 						for (var dirPrefId in cardbookRepository.cardbookServerValidation) {
-							if (dirPrefId != aDirPrefId) {
-								continue;
-							}
 							for (var url in cardbookRepository.cardbookServerValidation[dirPrefId]) {
 								if (url == "length" || url == "user") {
 									continue;
@@ -121,21 +115,29 @@ if ("undefined" == typeof(cardbookDiscovery)) {
 							}
 						}
 					}
-
+	
 					for (var i = 0; i < myAccountsToAdd.length; i++) {
 						cardbookDiscovery.addAddressbook(myAccountsToAdd[i]);
 					}
 					for (var i = 0; i < myAccountsToRemove.length; i++) {
 						cardbookDiscovery.removeAddressbook(myAccountsToRemove[i]);
 					}
+					for (var dirPrefId in cardbookRepository.cardbookServerValidation) {
+						cardbookSynchronization.stopDiscovery(dirPrefId);
+					}
 				}
+			} else {
+				cardbookSynchronization.stopDiscovery(aDirPrefId);
 			}
-			cardbookSynchronization.stopDiscovery(aDirPrefId);
 		},
 
 		addAddressbook: function (aAccountsToAdd) {
-			var myArgs = {action: "discovery", accountsToAdd: aAccountsToAdd};
-			openDialog("chrome://cardbook/content/addressbooksconfiguration/wdw_addressbooksAdd.xul", "", cardbookRepository.windowParams, myArgs);
+			// this function is luckily not always available
+			// especially after having added an address book, a new discovery does not reask for adding 
+			if (openDialog) {
+				var myArgs = {action: "discovery", accountsToAdd: aAccountsToAdd};
+				openDialog("chrome://cardbook/content/addressbooksconfiguration/wdw_addressbooksAdd.xul", "", cardbookRepository.windowParams, myArgs);
+			}
 		},
 
 		removeAddressbook: function (aDirPrefId) {

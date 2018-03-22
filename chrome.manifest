@@ -1,10 +1,17 @@
+# autocompletion
 manifest components/cardbookAutocompleteSearch.manifest
+
+# startup with -cardbook
+component  {823f4516-885f-492d-b8d3-d5e8c8316be1}  components/cmd-line-handler.js
+contract   @mozilla.org/commandlinehandler/general-startup;1?type=cardbook  {823f4516-885f-492d-b8d3-d5e8c8316be1}
+category   command-line-handler   m-cardbook   @mozilla.org/commandlinehandler/general-startup;1?type=cardbook
 
 resource cardbook-modules    modules/
 resource cardbook-locale-US  chrome/locale/en-US/
 
 content  cardbook       chrome/content/
 
+# locale
 locale   cardbook cs    chrome/locale/cs/
 locale   cardbook da    chrome/locale/da/
 locale   cardbook de    chrome/locale/de/
@@ -25,23 +32,33 @@ locale   cardbook sl    chrome/locale/sl/
 locale   cardbook sv-SE chrome/locale/sv-SE/
 locale   cardbook vi    chrome/locale/vi/
 
+# skin
 skin   cardbook             classic/1.0   chrome/skin/
 skin   cardbook-config      classic/1.0   chrome/skin/configuration/
-skin   cardbook-osversion   classic/1.0   chrome/skin/osversion/unix/        os=Linux
-skin   cardbook-osversion   classic/1.0   chrome/skin/osversion/unix58/      os=Linux      appversion>=57.*
-skin   cardbook-osversion   classic/1.0   chrome/skin/osversion/windows/     os=WINNT
-skin   cardbook-osversion   classic/1.0   chrome/skin/osversion/windows58/   os=WINNT      appversion>=57.*
-skin   cardbook-osversion   classic/1.0   chrome/skin/osversion/mac/         os=Darwin
-skin   cardbook-osversion   classic/1.0   chrome/skin/osversion/mac58/       os=Darwin     appversion>=57.*
+
+skin   cardbook-pref   classic/1.0   chrome/skin/osversion/unix/        os=Linux
+skin   cardbook-pref   classic/1.0   chrome/skin/osversion/windows/     os=WINNT
+skin   cardbook-pref   classic/1.0   chrome/skin/osversion/mac/         os=Darwin
+skin   cardbook-pref   classic/1.0   chrome/skin/osversion/unix61/      os=Linux      appversion>=61.0a1
+skin   cardbook-pref   classic/1.0   chrome/skin/osversion/windows61/   os=WINNT      appversion>=61.0a1
+skin   cardbook-pref   classic/1.0   chrome/skin/osversion/mac61/       os=Darwin     appversion>=61.0a1
+
+skin   cardbook-toolbar   classic/1.0   chrome/skin/osversion/unix/        os=Linux
+skin   cardbook-toolbar   classic/1.0   chrome/skin/osversion/windows/     os=WINNT
+skin   cardbook-toolbar   classic/1.0   chrome/skin/osversion/mac/         os=Darwin
+skin   cardbook-toolbar   classic/1.0   chrome/skin/osversion/unix58/      os=Linux      appversion>=58.0a1
+skin   cardbook-toolbar   classic/1.0   chrome/skin/osversion/windows58/   os=WINNT      appversion>=58.0a1
+skin   cardbook-toolbar   classic/1.0   chrome/skin/osversion/mac58/       os=Darwin     appversion>=58.0a1
+
 skin   cardbook-os          classic/1.0   chrome/skin/os/unix/               os=Linux
 skin   cardbook-os          classic/1.0   chrome/skin/os/windows/            os=WINNT
 skin   cardbook-os          classic/1.0   chrome/skin/os/mac/                os=Darwin
 
 # support for customizing toolbars
-style    chrome://global/content/customizeToolbar.xul chrome://cardbook-osversion/skin/mainToolbarButton.css        appversion<59.0a1
-style    chrome://messenger/content/customizeToolbar.xul chrome://cardbook-osversion/skin/mainToolbarButton.css        appversion>=59.0a1
-style    chrome://global/content/customizeToolbar.xul chrome://cardbook-osversion/skin/cardbookToolbarButtons.css   appversion<59.0a1
-style    chrome://messenger/content/customizeToolbar.xul chrome://cardbook-osversion/skin/cardbookToolbarButtons.css   appversion>=59.0a1
+style    chrome://global/content/customizeToolbar.xul chrome://cardbook-toolbar/skin/mainToolbarButton.css        appversion<59.0a1
+style    chrome://messenger/content/customizeToolbar.xul chrome://cardbook-toolbar/skin/mainToolbarButton.css        appversion>=59.0a1
+style    chrome://global/content/customizeToolbar.xul chrome://cardbook-toolbar/skin/cardbookToolbarButtons.css   appversion<59.0a1
+style    chrome://messenger/content/customizeToolbar.xul chrome://cardbook-toolbar/skin/cardbookToolbarButtons.css   appversion>=59.0a1
 
 # support for CardBook, yellow stars, creation from emails, formatting email fields
 overlay  chrome://messenger/content/messenger.xul chrome://cardbook/content/ovl_cardbook.xul

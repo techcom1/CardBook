@@ -1,0 +1,7 @@
+.cardbookPrefStarClass {
+	list-style-image: url("chrome://messenger/skin/starContact.png");
+	-moz-image-region: rect(0, 16px, 16px, 0);
+}
+.cardbookPrefStarClass[haspref="true"] {
+	list-style-image: url("chrome://messenger/skin/contactStarred.png");
+}

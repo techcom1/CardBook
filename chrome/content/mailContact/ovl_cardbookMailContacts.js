@@ -28,20 +28,6 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 			return cardbookRepository.isEmailRegistered(aEmail, ovl_cardbookMailContacts.getIdentityKey());
 		},
 
-		getCardFromEmail: function(aEmail) {
-			var myTestString = aEmail.toLowerCase();
-			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
-				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && (cardbookRepository.cardbookAccounts[i][6] != "SEARCH")) {
-					var myDirPrefId = cardbookRepository.cardbookAccounts[i][4];
-					if (cardbookRepository.cardbookCardEmails[myDirPrefId]) {
-						if (cardbookRepository.cardbookCardEmails[myDirPrefId][myTestString]) {
-							return cardbookRepository.cardbookCardEmails[myDirPrefId][myTestString][0];
-						}
-					}
-				}
-			}
-		},
-
 		addToCardBook: function(aDirPrefId) {
 			try {
 				var myNewCard = new cardbookCardParser();
@@ -94,7 +80,7 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 			var isEmailRegistered = ovl_cardbookMailContacts.isEmailRegistered(myEmail);
 	
 			if (isEmailRegistered) {
-				var myCard = ovl_cardbookMailContacts.getCardFromEmail(myEmail);
+				var myCard = cardbookUtils.getCardFromEmail(myEmail);
 				var myOutCard = new cardbookCardParser();
 				cardbookUtils.cloneCard(myCard, myOutCard);
 				if (myOutCard.isAList) {
@@ -118,103 +104,10 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 			var isEmailRegistered = ovl_cardbookMailContacts.isEmailRegistered(myEmail);
 	
 			if (isEmailRegistered) {
-				var myCard = ovl_cardbookMailContacts.getCardFromEmail(myEmail);
+				var myCard = cardbookUtils.getCardFromEmail(myEmail);
 				wdw_cardbook.deleteCardsAndValidate("cardbook.cardRemovedIndirect", [myCard]);
 				UpdateEmailNodeDetails(myEmail, myEmailNode);
 			}
-		},
-
-		findEmailsFromEmail: function() {
-			var myPopupNode = document.popupNode;
-			var myEmailNode = findEmailNodeFromPopupNode(myPopupNode, 'emailAddressPopup');
-			var myEmail = myEmailNode.getAttribute('emailAddress');
-			ovl_cardbookMailContacts.findEmails(null, [myEmail]);
-		},
-
-		findAllEmailsFromContact: function() {
-			var myPopupNode = document.popupNode;
-			var myEmailNode = findEmailNodeFromPopupNode(myPopupNode, 'emailAddressPopup');
-			var myEmail = myEmailNode.getAttribute('emailAddress');
-			var isEmailRegistered = ovl_cardbookMailContacts.isEmailRegistered(myEmail);
-	
-			if (isEmailRegistered) {
-				var myCard = ovl_cardbookMailContacts.getCardFromEmail(myEmail);
-				ovl_cardbookMailContacts.findEmails([myCard], null);
-			}
-		},
-
-		findEmails: function (aListOfSelectedCard, aListOfSelectedEmails) {
-			var listOfEmail = [];
-			if (aListOfSelectedCard != null && aListOfSelectedCard !== undefined && aListOfSelectedCard != "") {
-				for (var i = 0; i < aListOfSelectedCard.length; i++) {
-					if (!aListOfSelectedCard[i].isAList) {
-						for (var j = 0; j < aListOfSelectedCard[i].email.length; j++) {
-							listOfEmail.push(aListOfSelectedCard[i].email[j][0][0].toLowerCase());
-						}
-					} else {
-						listOfEmail.push(aListOfSelectedCard[i].fn.replace('"', '\"'));
-					}
-				}
-			} else if (aListOfSelectedEmails != null && aListOfSelectedEmails !== undefined && aListOfSelectedEmails != "") {
-				listOfEmail = JSON.parse(JSON.stringify(aListOfSelectedEmails));
-			}
-			
-			var tabmail = document.getElementById("tabmail");
-			if (!tabmail) {
-				// Try opening new tabs in an existing 3pane window
-				let mail3PaneWindow = Services.wm.getMostRecentWindow("mail:3pane");
-				if (mail3PaneWindow) {
-					tabmail = mail3PaneWindow.document.getElementById("tabmail");
-					mail3PaneWindow.focus();
-				}
-			}
-			// gloda is not defined when used from an independant window
-			tabmail.openTab("glodaFacet", {searcher: new GlodaMsgSearcher(null, '"' + listOfEmail.join('" "') + '"', false)});
-		},
-
-		findEventsFromEmail: function() {
-			var myPopupNode = document.popupNode;
-			var myEmailNode = findEmailNodeFromPopupNode(myPopupNode, 'emailAddressPopup');
-			var myEmail = myEmailNode.getAttribute('emailAddress');
-			var isEmailRegistered = ovl_cardbookMailContacts.isEmailRegistered(myEmail);
-			if (isEmailRegistered) {
-				var myCard = ovl_cardbookMailContacts.getCardFromEmail(myEmail);
-				ovl_cardbookMailContacts.findEvents(null, [myEmail], myEmail, "mailto:" + myEmail, myCard.fn);
-			} else {
-				var myDisplayName = myEmailNode.getAttribute('displayName');
-				ovl_cardbookMailContacts.findEvents(null, [myEmail], myEmail, "mailto:" + myEmail, myDisplayName);
-			}
-		},
-
-		findAllEventsFromContact: function() {
-			var myPopupNode = document.popupNode;
-			var myEmailNode = findEmailNodeFromPopupNode(myPopupNode, 'emailAddressPopup');
-			var myEmail = myEmailNode.getAttribute('emailAddress');
-			var isEmailRegistered = ovl_cardbookMailContacts.isEmailRegistered(myEmail);
-	
-			if (isEmailRegistered) {
-				var myCard = ovl_cardbookMailContacts.getCardFromEmail(myEmail);
-				ovl_cardbookMailContacts.findEvents([myCard], null, myCard.fn, "mailto:" + myEmail, myCard.fn);
-			}
-		},
-
-		findEvents: function (aListOfSelectedCard, aListOfSelectedEmails, aDisplayName, aAttendeeId, aAttendeeName) {
-			var listOfEmail = [];
-			if (aListOfSelectedCard != null && aListOfSelectedCard !== undefined && aListOfSelectedCard != "") {
-				for (var i = 0; i < aListOfSelectedCard.length; i++) {
-					if (!aListOfSelectedCard[i].isAList) {
-						for (var j = 0; j < aListOfSelectedCard[i].email.length; j++) {
-							listOfEmail.push(aListOfSelectedCard[i].email[j][0][0].toLowerCase());
-						}
-					} else {
-						listOfEmail.push(aListOfSelectedCard[i].fn.replace('"', '\"'));
-					}
-				}
-			} else if (aListOfSelectedEmails != null && aListOfSelectedEmails !== undefined && aListOfSelectedEmails != "") {
-				listOfEmail = JSON.parse(JSON.stringify(aListOfSelectedEmails));
-			}
-			var myArgs = {listOfEmail: listOfEmail, displayName: aDisplayName, attendeeId: aAttendeeId, attendeeName: aAttendeeName};
-			var myWindow = window.openDialog("chrome://cardbook/content/lightning/wdw_cardbookEventContacts.xul", "", cardbookRepository.modalWindowParams, myArgs);
 		},
 
 		hideOldAddressbook: function (aExclusive) {
@@ -290,7 +183,7 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 		ovl_cardbookMailContacts.hideOrShowNewAddressbook(isEmailRegistered);
 
 		if (isEmailRegistered) {
-			var myCard = ovl_cardbookMailContacts.getCardFromEmail(myEmail);
+			var myCard = cardbookUtils.getCardFromEmail(myEmail);
 			var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
 			document.getElementById("editInCardBookMenu").setAttribute("cardbookId", myCard.dirPrefId+"::"+myCard.uid);
 			if (cardbookPreferences.getReadOnly(myCard.dirPrefId)) {
