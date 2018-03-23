@@ -307,7 +307,7 @@
 		<menuitem id="importCardsFromDirFromAccountsOrCats" label="&importCardFromDirLabel;" oncommand="wdw_cardbook.importCardsFromDir();"/>
 	</menupopup>
 
-	<menupopup id="cardsTreeContextMenu" onpopupshowing="return wdw_cardbook.cardsTreeContextShowing();">
+	<menupopup id="cardsTreeContextMenu" onpopupshowing="return wdw_cardbook.cardsTreeContextShowing(event);">
 		<menuitem id="addContactFromCards" label="&cardbookToolbarAddContactButtonLabel;" oncommand="wdw_cardbook.newKey();"/>
 		<menuitem id="addListFromCards" label="&cardbookToolbarAddListButtonLabel;" oncommand="wdw_cardbook.createList();"/>
 		<menuitem id="editCardFromCards" label="&cardbookToolbarEditButtonLabel;" oncommand="wdw_cardbook.editCard();"/>

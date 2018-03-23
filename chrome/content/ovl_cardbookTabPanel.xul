@@ -56,7 +56,7 @@
 					class="cardbookTreeClass cardbookAccountTreeClass"
 					seltype="single"
 					flex="1" editable="true" context="accountsOrCatsTreeContextMenu" enableColumnDrag="false"
-					hidecolumnpicker="true" onkeyup="wdw_cardbook.selectAccountOrCatInNoSearch();">
+					hidecolumnpicker="true" onkeyup="wdw_cardbook.selectAccountOrCatInNoSearch();" onclick="wdw_cardbook.selectAccountOrCatInNoSearch();">
 					<treecols>
 						<treecol id="accountEnabled" type="checkbox" editable="true" width="17" hideheader="true" persist="width ordinal hidden" tooltiptext="&enableAccountsTooltip;"/>
 						<treecol id="accountTypeCheckbox" type="checkbox" editable="false" width="20" hideheader="true" persist="width ordinal hidden"/>
@@ -68,7 +68,7 @@
 						<treecol id="dummyForScroll" type="checkbox" persist="width ordinal hidden" width="17" hideheader="true"/>
 					</treecols>
 					<treechildren id="accountsOrCatsTreeChildren" flex="1" ondragstart="wdw_cardbook.startDrag(event, this);" ondrop="wdw_cardbook.dragCards(event);"
-								 onclick="wdw_cardbook.selectAccountOrCatInNoSearch();" ondblclick="wdw_cardbook.doubleClickAccountOrCat(event);"/>
+								 ondblclick="wdw_cardbook.doubleClickAccountOrCat(event);"/>
 				</tree>
 			</vbox>
 

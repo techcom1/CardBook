@@ -166,43 +166,6 @@
 		</groupbox>
 
 		<groupbox>
-			<caption label="&emailsCollectionLabel;" tooltiptext="&emailsCollectionTooltip;"/>
-			<hbox flex="1">
-				<vbox flex="1">
-					<hbox flex="1">
-						<tree id="emailsCollectionTree" class="cardbookTreeChildrenConfigClass" hidecolumnpicker="true" flex="1" seltype="single" enableColumnDrag="false" editable="true" onselect="wdw_cardbookConfiguration.selectEmailsCollection();" sortDirection="ascending" sortResource="emailsCollectionMailName">
-							<treecols id="emailsCollectionTreeCols">
-								<treecol id="emailsCollectionEnabled" label="&emailsCollectionEnabledLabel;" type="checkbox" persist="width ordinal hidden" style="text-align:center" editable="true"/>
-								<splitter class="tree-splitter"/>
-								<treecol id="emailsCollectionId" flex="1" hidden="true" persist="width ordinal hidden" style="text-align:left" editable="false"/>
-								<splitter class="tree-splitter"/>
-								<treecol id="emailsCollectionMailName" label="&emailsCollectionMailNameLabel;" flex="1" persist="width ordinal hidden" onclick="wdw_cardbookConfiguration.sortTreesFromCol(event, this, 'emailsCollectionTree');" style="text-align:left" editable="false"/>
-								<splitter class="tree-splitter"/>
-								<treecol id="emailsCollectionMailId" flex="1" hidden="true" persist="width ordinal hidden" style="text-align:left" editable="false"/>
-								<splitter class="tree-splitter"/>
-								<treecol id="emailsCollectionABName" label="&emailsCollectionABNameLabel;" flex="1" onclick="wdw_cardbookConfiguration.sortTreesFromCol(event, this, 'emailsCollectionTree');" persist="width ordinal hidden" style="text-align:left" editable="false"/>
-								<splitter class="tree-splitter"/>
-								<treecol id="emailsCollectionDirPrefId" flex="1" hidden="true" persist="width ordinal hidden" style="text-align:left" editable="false"/>
-								<splitter class="tree-splitter"/>
-								<treecol id="emailsCollectionCatName" label="&emailsCollectionCatNameLabel;" flex="1" onclick="wdw_cardbookConfiguration.sortTreesFromCol(event, this, 'emailsCollectionTree');" hidden="false" persist="width ordinal hidden" style="text-align:left" editable="false"/>
-								<splitter class="tree-splitter"/>
-								<treecol id="emailsCollectionCatId" flex="1" hidden="true" persist="width ordinal hidden" style="text-align:left" editable="false"/>
-							</treecols>
-							<treechildren id="emailsCollectionTreeChildren" ondblclick="wdw_cardbookConfiguration.doubleClickTree(event, 'emailsCollectionTree');"/>
-						</tree>
-					</hbox>
-				</vbox>
-				<hbox align="top">
-					<vbox flex="1">
-						<button id="addEmailsCollectionLabel" label="&addEmailsCollectionLabel;" accesskey="&addEmailsCollectionAccesskey;" oncommand="wdw_cardbookConfiguration.addEmailsCollection();"/>
-						<button id="renameEmailsCollectionLabel" label="&renameEmailsCollectionLabel;" accesskey="&renameEmailsCollectionAccesskey;" oncommand="wdw_cardbookConfiguration.renameEmailsCollection();" disabled="true"/>
-						<button id="deleteEmailsCollectionLabel" label="&deleteEmailsCollectionLabel;" accesskey="&deleteEmailsCollectionAccesskey;" oncommand="wdw_cardbookConfiguration.deleteEmailsCollection();" disabled="true"/>
-					</vbox>
-				</hbox>
-			</hbox>
-		</groupbox>
-
-		<groupbox>
 			<caption label="&logGroupboxLabel;"/>
 			<hbox align="center">
 				<checkbox id="debugModeCheckBox" label="&debugModeLabel;"
@@ -707,7 +670,7 @@
 				accesskey="&useOnlyEmailAccesskey;"
 				preference="extensions.cardbook.useOnlyEmail"/>
 		</groupbox>
-		<separator class="thin"/>
+
 		<groupbox flex="1">
 			<caption label="&attachVCardGroupboxLabel;"/>
 			<separator class="thin"/>
@@ -743,6 +706,43 @@
 						<button id="addVCardLabel" label="&addVCardLabel;" accesskey="&addVCardAccesskey;" oncommand="wdw_cardbookConfiguration.addVCard();"/>
 						<button id="renameVCardLabel" label="&renameVCardLabel;" accesskey="&renameVCardAccesskey;" oncommand="wdw_cardbookConfiguration.renameVCard();" disabled="true"/>
 						<button id="deleteVCardLabel" label="&deleteVCardLabel;" accesskey="&deleteVCardAccesskey;" oncommand="wdw_cardbookConfiguration.deleteVCard();" disabled="true"/>
+					</vbox>
+				</hbox>
+			</hbox>
+		</groupbox>
+
+		<groupbox flex="1">
+			<caption label="&emailsCollectionLabel;" tooltiptext="&emailsCollectionTooltip;"/>
+			<hbox flex="1">
+				<vbox flex="1">
+					<hbox flex="1">
+						<tree id="emailsCollectionTree" class="cardbookTreeChildrenConfigClass" hidecolumnpicker="true" flex="1" seltype="single" enableColumnDrag="false" editable="true" onselect="wdw_cardbookConfiguration.selectEmailsCollection();" sortDirection="ascending" sortResource="emailsCollectionMailName">
+							<treecols id="emailsCollectionTreeCols">
+								<treecol id="emailsCollectionEnabled" label="&emailsCollectionEnabledLabel;" type="checkbox" persist="width ordinal hidden" style="text-align:center" editable="true"/>
+								<splitter class="tree-splitter"/>
+								<treecol id="emailsCollectionId" flex="1" hidden="true" persist="width ordinal hidden" style="text-align:left" editable="false"/>
+								<splitter class="tree-splitter"/>
+								<treecol id="emailsCollectionMailName" label="&emailsCollectionMailNameLabel;" flex="1" persist="width ordinal hidden" onclick="wdw_cardbookConfiguration.sortTreesFromCol(event, this, 'emailsCollectionTree');" style="text-align:left" editable="false"/>
+								<splitter class="tree-splitter"/>
+								<treecol id="emailsCollectionMailId" flex="1" hidden="true" persist="width ordinal hidden" style="text-align:left" editable="false"/>
+								<splitter class="tree-splitter"/>
+								<treecol id="emailsCollectionABName" label="&emailsCollectionABNameLabel;" flex="1" onclick="wdw_cardbookConfiguration.sortTreesFromCol(event, this, 'emailsCollectionTree');" persist="width ordinal hidden" style="text-align:left" editable="false"/>
+								<splitter class="tree-splitter"/>
+								<treecol id="emailsCollectionDirPrefId" flex="1" hidden="true" persist="width ordinal hidden" style="text-align:left" editable="false"/>
+								<splitter class="tree-splitter"/>
+								<treecol id="emailsCollectionCatName" label="&emailsCollectionCatNameLabel;" flex="1" onclick="wdw_cardbookConfiguration.sortTreesFromCol(event, this, 'emailsCollectionTree');" hidden="false" persist="width ordinal hidden" style="text-align:left" editable="false"/>
+								<splitter class="tree-splitter"/>
+								<treecol id="emailsCollectionCatId" flex="1" hidden="true" persist="width ordinal hidden" style="text-align:left" editable="false"/>
+							</treecols>
+							<treechildren id="emailsCollectionTreeChildren" ondblclick="wdw_cardbookConfiguration.doubleClickTree(event, 'emailsCollectionTree');"/>
+						</tree>
+					</hbox>
+				</vbox>
+				<hbox align="top">
+					<vbox flex="1">
+						<button id="addEmailsCollectionLabel" label="&addEmailsCollectionLabel;" accesskey="&addEmailsCollectionAccesskey;" oncommand="wdw_cardbookConfiguration.addEmailsCollection();"/>
+						<button id="renameEmailsCollectionLabel" label="&renameEmailsCollectionLabel;" accesskey="&renameEmailsCollectionAccesskey;" oncommand="wdw_cardbookConfiguration.renameEmailsCollection();" disabled="true"/>
+						<button id="deleteEmailsCollectionLabel" label="&deleteEmailsCollectionLabel;" accesskey="&deleteEmailsCollectionAccesskey;" oncommand="wdw_cardbookConfiguration.deleteEmailsCollection();" disabled="true"/>
 					</vbox>
 				</hbox>
 			</hbox>
