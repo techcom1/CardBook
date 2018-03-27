@@ -15,8 +15,12 @@
 
 You can get CardBook from the [official Thunderbird Add-On page](https://addons.mozilla.org/thunderbird/addon/cardbook/)!
 
+Once CardBook is installed, you can also run CardBook as a standalone program:<br>
+Windows `thunderbird.exe -cardbook`<br>
+OSX `TBA`<br>
+Linux `thunderbird -cardbook`
 
-### Compatible and complementary add-ons:
+### Compatible and complementary add-ons
 * [Mail Merge](https://addons.mozilla.org/thunderbird/addon/mail-merge/)
 * [Mail Redirect](https://addons.mozilla.org/thunderbird/addon/mailredirect/)
 
