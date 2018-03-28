@@ -1,0 +1,59 @@
+<!ENTITY wizard.title "新しいアドレス帳を追加する">
+<!ENTITY wizard.label "新しいアドレス帳を追加する">
+
+<!ENTITY welcomePage.wizard.description "ようこそ">
+<!ENTITY welcomePage.description "連絡先「CardBook」を初めて使用するようですので、Thunderbirdの標準アドレス帳から連絡先を連絡先「CardBook」にインポートしようとします。">
+
+<!ENTITY initialPage.wizard.description "新しいアドレス帳の場所。">
+<!ENTITY initialPage.description "アドレス帳の場所：">
+<!ENTITY initialPage.computer.label "地元">
+<!ENTITY initialPage.network.label "リモート">
+<!ENTITY initialPage.standard.label "Thunderbirdの標準アドレス帳をインポートする">
+<!ENTITY initialPage.search.label "既存のアドレス帳を検索する">
+
+<!ENTITY localPage.wizard.description "新しいローカルアドレス帳のタイプと場所。">
+<!ENTITY localPage.type.description "ローカルアドレス帳のタイプ：">
+<!ENTITY localPage.type.label "タイプ">
+<!ENTITY localPage.createDB.label "新しいアドレス帳を作成する">
+<!ENTITY localPage.createDirectory.label "新しいアドレス帳を作成する〈ディレクトリ〉">
+<!ENTITY localPage.createFile.label "新しいアドレス帳を作成する〈ファイル〉">
+<!ENTITY localPage.openDirectory.label "既存のアドレス帳を開く〈ディレクトリ〉">
+<!ENTITY localPage.openFile.label "既存のアドレス帳を開く〈ファイル〉">
+<!ENTITY localPage.uri.label "ディレクトリまたはファイル">
+<!ENTITY localPage.uri.description "ブラウザを使用して、新しいローカルアドレス帳の場所を選択します。新しいファイルを作成する場合は、ファイル拡張子として.vcfを指定します。">
+<!ENTITY localPage.uributton.label "参照">
+
+<!ENTITY remotePage.wizard.description "新しいリモートアドレス帳の種類と場所。">
+<!ENTITY remotePage.description "あなたのリモートアドレス帳の種類は何ですか？〈注意：グーグルは仮想カード「vCard」標準に準拠していません〉">
+<!ENTITY remotePage.type.label "タイプ">
+<!ENTITY remotePage.carddav.label "カード分散オーサリングとバージョン管理「CardDAV」">
+<!ENTITY remotePage.google.label "グーグル">
+<!ENTITY remotePage.apple.label "リンゴ">
+<!ENTITY remotePage.connection.label "接続">
+<!ENTITY remotePage.url.description "カード分散オーサリングとバージョン管理「CardDAV」タイプの場合は、リモートアドレス帳のユニフォームリソースロケータ「URL」を入力します〈例：http〈s〉：//carddav.example.or.jp〉。グーグルアドレス帳の場合は、このフィールドを指定しないでください。">
+<!ENTITY remotePage.url.label "ユニフォームリソースロケータ「URL」">
+<!ENTITY remotePage.credentials.description "アドレス帳にアクセスするための認証情報を入力します。グーグルアドレス帳の場合、ユーザー名はグーグルのメールアドレスにする必要があります。">
+<!ENTITY remotePage.validatebutton.label "検証">
+
+<!ENTITY locationSearchPage.wizard.description "保存された検索の定義。">
+<!ENTITY locationSearchPage.label "検索フオルダー">
+
+<!ENTITY googleOauthPage.wizard.description "グーグル認証">
+
+<!ENTITY namePage.wizard.description "アドレス帳のプロパティ">
+<!ENTITY namePage.selected.label "選択された">
+<!ENTITY namePage.name.label "名">
+<!ENTITY namePage.color.label "色">
+<!ENTITY namePage.urnuuid.label "urn：uuidを使う">
+<!ENTITY namePage.readonly.label "読み取り専用モード">
+<!ENTITY namePage.vCardVersion.label "仮想カード「vCard」">
+
+<!ENTITY namesPage.wizard.description "アドレス帳のプロパティ">
+<!ENTITY namesPage.name.label "名">
+<!ENTITY namesPage.name.description "複数のアドレス帳が発見されました。開くアドレス帳とその名前を選択します：">
+
+<!ENTITY finishPage.wizard.description "アドレス帳を構成">
+<!ENTITY finishPage.description "新しいアドレス帳が正常に設定されました。">
+
+<!ENTITY finishsPage.wizard.description "アドレス帳を構成">
+<!ENTITY finishsPage.description "新しいアドレス帳が正常に設定されました。">

@@ -82,7 +82,7 @@
 <!ENTITY soundURILabel "Sound">
 <!ENTITY prodidLabel "Prodid">
 <!ENTITY sortstringLabel "Sort String">
-<!ENTITY uidLabel "UID">
+<!ENTITY uidLabel "Contact id">
 <!ENTITY versionLabel "Version">
 <!ENTITY tzLabel "Time Zone">
 

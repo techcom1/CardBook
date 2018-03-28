@@ -4,7 +4,9 @@
 <!ENTITY editAddrBookCard.accesskey "R">
 <!ENTITY searchContacts.label "Sök efter:">
 <!ENTITY searchContacts.accesskey "S">
-<!ENTITY name.label "Namn">
+<!ENTITY nameLabel "Namn">
+<!ENTITY ABLabel "Adressbok">
+<!ENTITY emailLabel "Mejl">
 <!ENTITY addtoReplytoFieldMenu.label "Lägg till i Svara-Till fältet">
 <!ENTITY addtoReplytoFieldMenu.accesskey "l">
 <!ENTITY replytoButton.label ">> Svara-Till:">

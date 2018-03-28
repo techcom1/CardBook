@@ -1,0 +1,28 @@
+<!ENTITY wdw_addressbooksEditTitle "アドレス帳のプロパティ">
+
+<!ENTITY colorLabel "色">
+<!ENTITY colorAccesskey "C">
+<!ENTITY nameLabel "名">
+<!ENTITY nameAccesskey "N">
+<!ENTITY typeLabel "タイプ">
+<!ENTITY urlLabel "ユニフォームリソースロケータ「URL」">
+<!ENTITY readonlyLabel "読み取り専用モード">
+<!ENTITY readonlyAccesskey "R">
+<!ENTITY vCardVersionLabel "仮想カード「vCard」">
+<!ENTITY dateFormatLabel "予想される日付の形式">
+<!ENTITY dateFormatAccesskey "E">
+<!ENTITY urnuuidLabel "urn：uuidを使う">
+<!ENTITY urnuuidAccesskey "U">
+
+<!ENTITY autoSyncGroupboxLabel "定期的な同期">
+<!ENTITY autoSyncLabel "定期的な同期を有効にする">
+<!ENTITY autoSyncAccesskey "E">
+<!ENTITY autoSyncIntervalLabel "定期的な同期の間隔〈分〉">
+<!ENTITY autoSyncIntervalAccesskey "I">
+
+<!ENTITY miscTabLabel "雑多">
+<!ENTITY fnLabelExplanation "連絡先 が表示名を生成する方法をカスタマイズすることができます。この式は 「（）」で囲まれたブロックで構成されています。これらのブロックには、「|」で区切られた2つの部分があります。最初の部分は、例えば{{1}}などの用語がヌルでない場合に適用され、2番目の部分は関連する用語がヌルの場合に適用されます。">
+<!ENTITY fnFormulaLabel "表示名式">
+<!ENTITY fnFormulaAccesskey "Y">
+<!ENTITY resetFnFormulaLabel "デフォルトに戻す">
+<!ENTITY resetFnFormulaAccesskey "R">

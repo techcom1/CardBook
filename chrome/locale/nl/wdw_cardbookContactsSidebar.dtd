@@ -4,7 +4,9 @@
 <!ENTITY editAddrBookCard.accesskey "W">
 <!ENTITY searchContacts.label "Zoeken naar:">
 <!ENTITY searchContacts.accesskey "Z">
-<!ENTITY name.label "Naam">
+<!ENTITY nameLabel "Naam">
+<!ENTITY ABLabel "Adresboek">
+<!ENTITY emailLabel "Emails">
 <!ENTITY addtoReplytoFieldMenu.label "Toevoegen aan Antwoord-veld">
 <!ENTITY addtoReplytoFieldMenu.accesskey "A">
 <!ENTITY replytoButton.label "Antwoord:">

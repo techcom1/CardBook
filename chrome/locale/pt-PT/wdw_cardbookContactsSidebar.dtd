@@ -4,7 +4,9 @@
 <!ENTITY editAddrBookCard.accesskey "E">
 <!ENTITY searchContacts.label "Pesquisar por:">
 <!ENTITY searchContacts.accesskey "o">
-<!ENTITY name.label "Nome">
+<!ENTITY nameLabel "Nome">
+<!ENTITY ABLabel "Agenda">
+<!ENTITY emailLabel "Emails">
 <!ENTITY addtoReplytoFieldMenu.label "Adicionar ao campo Responder a">
 <!ENTITY addtoReplytoFieldMenu.accesskey "R">
 <!ENTITY replytoButton.label "Adicionar a Responder a:">

@@ -9,7 +9,6 @@
 
 <!DOCTYPE page [
 	<!ENTITY % abContactsPanelDTD SYSTEM "chrome://messenger/locale/addressbook/abContactsPanel.dtd"> %abContactsPanelDTD;
-	<!ENTITY % abResultsPaneOverlayDTD SYSTEM "chrome://messenger/locale/addressbook/abResultsPaneOverlay.dtd"> %abResultsPaneOverlayDTD;
 	<!ENTITY % cardbookContactsSidebarDTD SYSTEM "chrome://cardbook/locale/wdw_cardbookContactsSidebar.dtd"> %cardbookContactsSidebarDTD;
 	<!ENTITY % nameDTD SYSTEM "chrome://cardbook/locale/wdw_nameEdition.dtd"> %nameDTD;
 ]>
@@ -91,14 +90,14 @@
 		
 		<separator class="thin"/>
 		
-		<tree id="abResultsTree" class="plain" flex="1" context="cardProperties" persist="height sortDirection sortResource" sortDirection="ascending" sortResource="GeneratedName"
+		<tree id="abResultsTree" class="plain" flex="1" context="cardProperties" persist="height sortDirection sortResource" sortDirection="ascending" sortResource="Fn"
 				 onclick="wdw_cardbookContactsSidebar.sortTrees(event);">
 			<treecols id="abResultsTreeCols">
-				<treecol id="GeneratedName" label="&name.label;" flex="1" persist="width ordinal hidden" editable="false"/>
+				<treecol id="Fn" label="&nameLabel;" flex="1" persist="width ordinal hidden" editable="false"/>
 				<splitter class="tree-splitter"/>
-				<treecol id="addrbook" label="&Addrbook.label;" flex="1" hidden="true" persist="width ordinal hidden" editable="false"/>
+				<treecol id="AB" label="&ABLabel;" flex="1" hidden="true" persist="width ordinal hidden" editable="false"/>
 				<splitter class="tree-splitter"/>
-				<treecol id="PrimaryEmail" label="&PrimaryEmail.label;" flex="1" hidden="true" persist="width ordinal hidden" editable="false"/>
+				<treecol id="Emails" label="&emailLabel;" flex="1" persist="width ordinal hidden" editable="false"/>
 				<splitter class="tree-splitter"/>
 			</treecols>
 			<treechildren id="abResultsTreeChildren" ondblclick="wdw_cardbookContactsSidebar.doubleClickCardsTree(event);" ondragstart="nsDragAndDrop.startDrag(event, CardBookResultsPaneObserver);"/>

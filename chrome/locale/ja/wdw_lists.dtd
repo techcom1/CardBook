@@ -1,0 +1,8 @@
+<!ENTITY listTabLabel "リスト">
+<!ENTITY kindLabel "種類">
+<!ENTITY kindAccesskey "K">
+<!ENTITY availableCardsGroupboxLabel "利用可能な連絡先">
+<!ENTITY addedCardsGroupboxLabel "連絡先リスト">
+<!ENTITY appendlistTreeLabel "リストに追加する">
+<!ENTITY deletelistTreeLabel "リストから削除する">
+<!ENTITY editCardFromListLabel "この連絡先を編集">

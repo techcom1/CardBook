@@ -67,13 +67,13 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 				columnName = myTree.getAttribute("sortResource");
 			}
 			switch(columnName) {
-				case "GeneratedName":
+				case "Fn":
 					columnArray=0;
 					break;
-				case "addrbook":
+				case "AB":
 					columnArray=1;
 					break;
-				case "PrimaryEmail":
+				case "Emails":
 					columnArray=2;
 					break;
 			}
@@ -116,9 +116,9 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 				cycleHeader: function(idx) { return false },
 				isEditable: function(idx, column) { return false },
 				getCellText: function(idx, column) {
-					if (column.id == "GeneratedName") return wdw_cardbookContactsSidebar.searchResults[idx][0];
-					else if (column.id == "addrbook") return wdw_cardbookContactsSidebar.searchResults[idx][1];
-					else if (column.id == "PrimaryEmail") return wdw_cardbookContactsSidebar.searchResults[idx][2];
+					if (column.id == "Fn") return wdw_cardbookContactsSidebar.searchResults[idx][0];
+					else if (column.id == "AB") return wdw_cardbookContactsSidebar.searchResults[idx][1];
+					else if (column.id == "Emails") return wdw_cardbookContactsSidebar.searchResults[idx][2];
 				},
 				getRowProperties: function(idx) {
 					if (wdw_cardbookContactsSidebar.searchResults[idx] && wdw_cardbookContactsSidebar.searchResults[idx][3]) {
@@ -421,21 +421,21 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 						while (abCardsEnumerator.hasMoreElements()) {
 							var myABCard = abCardsEnumerator.getNext();
 							myABCard = myABCard.QueryInterface(Components.interfaces.nsIAbCard);
-							var myPrimaryEmail = myABCard.getProperty("PrimaryEmail","");
+							var myEmails = myABCard.getProperty("PrimaryEmail","");
 							var myDisplayName = myABCard.getProperty("DisplayName","");
 							if (!myABCard.isMailList) {
-								if (myPrimaryEmail != "") {
-									var lSearchString = myABCard.getProperty("FirstName","") + myABCard.getProperty("LastName","") + myDisplayName + myABCard.getProperty("NickName","") + myPrimaryEmail;
+								if (myEmails != "") {
+									var lSearchString = myABCard.getProperty("FirstName","") + myABCard.getProperty("LastName","") + myDisplayName + myABCard.getProperty("NickName","") + myEmails;
 									lSearchString = lSearchString.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase();
 									if (lSearchString.includes(searchInput) || searchInput == "") {
 										if (myDisplayName == "") {
-											var delim = myPrimaryEmail.indexOf("@",0);
-											myDisplayName = myPrimaryEmail.substr(0,delim);
+											var delim = myEmails.indexOf("@",0);
+											myDisplayName = myEmails.substr(0,delim);
 										}
 										if (useOnlyEmail) {
-											wdw_cardbookContactsSidebar.searchResults.push([myDisplayName, contact.dirName, myPrimaryEmail, false, "CARDCORE", myABCard, myPrimaryEmail, contact.dirPrefId]);
+											wdw_cardbookContactsSidebar.searchResults.push([myDisplayName, contact.dirName, myEmails, false, "CARDCORE", myABCard, myEmails, contact.dirPrefId]);
 										} else {
-											wdw_cardbookContactsSidebar.searchResults.push([myDisplayName, contact.dirName, myPrimaryEmail, false, "CARDCORE", myABCard, MailServices.headerParser.makeMimeAddress(myDisplayName, myPrimaryEmail), contact.dirPrefId]);
+											wdw_cardbookContactsSidebar.searchResults.push([myDisplayName, contact.dirName, myEmails, false, "CARDCORE", myABCard, MailServices.headerParser.makeMimeAddress(myDisplayName, myEmails), contact.dirPrefId]);
 										}
 									}
 								}
@@ -729,7 +729,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 				mySyncCondition = true;
 			}
 			if (mySyncCondition) {
-				var addrbookColumn = document.getElementById("addrbook");
+				var addrbookColumn = document.getElementById("AB");
 				if (document.getElementById('CardBookABMenulist').selectedItem.value != "allAddressBooks" && document.getElementById('CardBookABMenulist').selectedItem.getAttribute("ABtype") != "search") {
 					addrbookColumn.setAttribute('hidden', 'true');
 					addrbookColumn.setAttribute('ignoreincolumnpicker', "true");

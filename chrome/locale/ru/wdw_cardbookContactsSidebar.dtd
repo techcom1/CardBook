@@ -4,7 +4,9 @@
 <!ENTITY editAddrBookCard.accesskey "П">
 <!ENTITY searchContacts.label "Искать:">
 <!ENTITY searchContacts.accesskey "И">
-<!ENTITY name.label "Имя">
+<!ENTITY nameLabel "Имя">
+<!ENTITY ABLabel "Адресная книга">
+<!ENTITY emailLabel "Email">
 <!ENTITY addtoReplytoFieldMenu.label "Добавить в поле «Адрес для ответа»">
 <!ENTITY addtoReplytoFieldMenu.accesskey "Д">
 <!ENTITY replytoButton.label "Добавить в «Адрес для ответа»:">

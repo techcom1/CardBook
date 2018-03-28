@@ -4,7 +4,9 @@
 <!ENTITY editAddrBookCard.accesskey "C">
 <!ENTITY searchContacts.label "Tìm kiếm:">
 <!ENTITY searchContacts.accesskey "T">
-<!ENTITY name.label "Tên">
+<!ENTITY nameLabel "Tên">
+<!ENTITY ABLabel "Sổ Địa Chỉ">
+<!ENTITY emailLabel "Email">
 <!ENTITY addtoReplytoFieldMenu.label "Thêm vào trường Trả lời Tới">
 <!ENTITY addtoReplytoFieldMenu.accesskey "l">
 <!ENTITY replytoButton.label "Thêm vào Trả lời Tới:">

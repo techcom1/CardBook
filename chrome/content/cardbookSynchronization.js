@@ -1337,11 +1337,12 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 									}
 								}
 							}
-						cardbookSynchronization.handleRemainingCache(aPrefIdType, aConnection, aMode);
+							cardbookSynchronization.handleRemainingCache(aPrefIdType, aConnection, aMode);
 						}
 						catch(e) {
 							wdw_cardbooklog.updateStatusProgressInformation(aConnection.connDescription + " : cardbookSynchronization.googleSyncCards error : " + e, "Error");
 							cardbookRepository.cardbookServerSyncError[aConnection.connPrefId]++;
+							cardbookRepository.cardbookServerSyncHandleRemainingTotal[aConnection.connPrefId] = cardbookRepository.cardbookServerSyncHandleRemainingDone[aConnection.connPrefId];
 						}
 						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 					} else {
@@ -1433,11 +1434,12 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 									}
 								}
 							}
-						cardbookSynchronization.handleRemainingCache(aPrefIdType, aConnection, aMode);
+							cardbookSynchronization.handleRemainingCache(aPrefIdType, aConnection, aMode);
 						}
 						catch(e) {
 							wdw_cardbooklog.updateStatusProgressInformation(aConnection.connDescription + " : cardbookSynchronization.serverSyncCards error : " + e, "Error");
 							cardbookRepository.cardbookServerSyncError[aConnection.connPrefId]++;
+							cardbookRepository.cardbookServerSyncHandleRemainingTotal[aConnection.connPrefId] = cardbookRepository.cardbookServerSyncHandleRemainingDone[aConnection.connPrefId];
 						}
 						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 					} else {

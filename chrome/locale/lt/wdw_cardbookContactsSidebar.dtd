@@ -4,7 +4,9 @@
 <!ENTITY editAddrBookCard.accesskey "K">
 <!ENTITY searchContacts.label "Ieškoti:">
 <!ENTITY searchContacts.accesskey "l">
-<!ENTITY name.label "Vardas">
+<!ENTITY nameLabel "Vardas">
+<!ENTITY ABLabel "Adresų knyga">
+<!ENTITY emailLabel "Elektroninio pašto adresai">
 <!ENTITY addtoReplytoFieldMenu.label "Pridėti į „Atgalinio adreso“ lauką">
 <!ENTITY addtoReplytoFieldMenu.accesskey "t">
 <!ENTITY replytoButton.label "Pridėti prie „Atgalinio adreso“">

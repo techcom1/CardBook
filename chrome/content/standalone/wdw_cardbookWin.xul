@@ -54,9 +54,6 @@
 	<script src="chrome://cardbook/content/standalone/ovl_winTaskBar.js"/>
 	<script src="chrome://cardbook/content/ovl_init.js"/>
 	
-	<!-- for the function CustomizeMailToolbar -->
-	<menubar id="mail-menubar"/>
-
 	<broadcasterset id="cardbookBroadcasters">
 		<broadcaster id="cardboookModeBroadcasterWindow" mode="mail"/>
 	</broadcasterset>

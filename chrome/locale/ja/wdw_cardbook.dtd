@@ -1,0 +1,141 @@
+<!ENTITY wdw_cardbookWindowLabel "連絡先">
+
+<!ENTITY enableAccountsTooltip "アドレス帳の検索と同期を有効または無効にします。">
+<!ENTITY colorAccountsTooltip "カラーアドレス帳の検索結果〈検索が複数のアドレス帳にまたがる場合に使用〉。">
+<!ENTITY readonlyAccountsTooltip "アドレス帳を読み取り専用または読み取り/書き込みモードに設定します。">
+
+<!ENTITY cardbookAccountMenuLabel "アドレス帳">
+
+<!ENTITY cardbookAccountMenuAddServerLabel "新しいアドレス帳">
+<!ENTITY cardbookAccountMenuEditServerLabel "アドレス帳を編集する">
+<!ENTITY cardbookAccountMenuCloseServerLabel "アドレス帳を削除する">
+<!ENTITY cardbookAccountMenuSyncLabel "アドレス帳を同期する">
+<!ENTITY cardbookAccountMenuSyncsLabel "すべてのアドレス帳を同期する">
+
+<!ENTITY cardbookContactsMenuLabel "連絡先">
+
+<!ENTITY cardbookToolsMenuLabel "ツール">
+<!ENTITY cardbookToolsMenuBirthdayListLabel "記念日リストを見る">
+<!ENTITY cardbookToolsMenuSyncLightningLabel "カレンダーに記念日を追加する">
+<!ENTITY cardbookToolsMenuFindAllDuplicatesLabel "すべてのアドレス帳で連絡先を重複して検索する">
+<!ENTITY cardbookToolsMenuFindSingleDuplicatesLabel "現在のアドレス帳に重複している連絡先を見つける">
+<!ENTITY cardbookToolsMenuPrefsLabel "連絡先の設定">
+
+<!ENTITY cardbookToolbarLabel "連絡先ツールバー">
+<!ENTITY cardbookToolbarAccesskey "A">
+<!ENTITY cardbookABPaneToolbarLabel "アドレス帳ーペイン">
+<!ENTITY cardbookABPaneToolbarAccesskey "D">
+<!ENTITY CustomizeCardBookToolbarLabel "カスタマイズ…">
+<!ENTITY CustomizeCardBookToolbarAccesskey "C">
+<!ENTITY cardbookToolbarAddServerButtonLabel "新しいアドレス帳">
+<!ENTITY cardbookToolbarAddServerButtonTooltip "リモートまたはローカルのアドレス帳を追加する">
+<!ENTITY cardbookToolbarSyncButtonLabel "同期する">
+<!ENTITY cardbookToolbarSyncButtonTooltip "すべてのリモートアドレス帳を同期する">
+<!ENTITY cardbookToolbarWriteButtonLabel "作成">
+<!ENTITY cardbookToolbarWriteButtonTooltip "新しいメッセージを作成します">
+<!ENTITY cardbookToolbarChatButtonLabel "に接続します">
+<!ENTITY cardbookToolbarChatButtonTooltip "インスタントメッセージまたはチャットを送信する">
+<!ENTITY cardbookToolbarConfigurationButtonLabel "設定">
+<!ENTITY cardbookToolbarConfigurationButtonTooltip "連絡先の設定">
+<!ENTITY cardbookToolbarAddContactButtonLabel "新しい連絡先">
+<!ENTITY cardbookToolbarAddContactButtonTooltip "新しいアドレス帳の連絡先を作成する">
+<!ENTITY cardbookToolbarAddListButtonLabel "新しいリスト">
+<!ENTITY cardbookToolbarAddListButtonTooltip "新しいリスト">
+<!ENTITY cardbookToolbarEditButtonLabel "編集">
+<!ENTITY cardbookToolbarEditButtonTooltip "選択した連絡先を編集する">
+<!ENTITY cardbookToolbarRemoveButtonLabel "削除">
+<!ENTITY cardbookToolbarRemoveButtonTooltip "選択した連絡先を削除">
+<!ENTITY cardbookToolbarPrintButtonLabel "印刷プレビュー">
+<!ENTITY cardbookToolbarPrintButtonTooltip "選択の印刷プレビュー">
+<!ENTITY cardbookToolbarAppMenuButtonLabel "連絡先メニュー">
+<!ENTITY cardbookToolbarAppMenuButtonTooltip "連絡先メニュー">
+<!ENTITY cardbookToolbarSearchBoxLabel "連絡先を検索">
+<!ENTITY cardbookToolbarSearchBoxTooltip "連絡先を検索">
+<!ENTITY cardbookToolbarComplexSearchLabel "検索フオルダー">
+<!ENTITY cardbookToolbarComplexSearchTooltip "新しい保存された検索フォルダを作成する">
+<!ENTITY cardbookToolbarThMenuButtonLabel "アプリメニュー">
+<!ENTITY cardbookToolbarThMenuButtonTooltip "&brandShortName;のメニューを表示します">
+
+<!ENTITY generalTabLabel "一般">
+<!ENTITY mailPopularityTabLabel "メールの人気">
+<!ENTITY technicalTabLabel "テクニカル">
+<!ENTITY vCardTabLabel "仮想カード「vCard」">
+
+<!ENTITY categoriesGroupboxLabel "カテゴリー">
+<!ENTITY noteTabLabel "メモ">
+<!ENTITY advancedTabLabel "詳練">
+
+<!ENTITY miscGroupboxLabel "雑多">
+<!ENTITY othersGroupboxLabel "その他">
+<!ENTITY techGroupboxLabel "テクニカル">
+<!ENTITY labelGroupboxLabel "ラベル">
+<!ENTITY class1Label "クラス">
+<!ENTITY geoLabel "ジオ">
+<!ENTITY mailerLabel "メーラー">
+<!ENTITY agentLabel "エージェント">
+<!ENTITY keyLabel "キー">
+<!ENTITY photolocalURILabel "地元顔写真">
+<!ENTITY logolocalURILabel "地元ロゴ">
+<!ENTITY soundlocalURILabel "地元音">
+<!ENTITY photoURILabel "顔写真">
+<!ENTITY logoURILabel "ロゴ">
+<!ENTITY soundURILabel "音">
+<!ENTITY prodidLabel "製品身元">
+<!ENTITY sortstringLabel "ソート文字列">
+<!ENTITY uidLabel "連絡先身元">
+<!ENTITY versionLabel "バージョン">
+<!ENTITY tzLabel "タイムゾーン">
+
+<!ENTITY dirPrefIdLabel "ディレクトリ嗜好体元">
+<!ENTITY cardurlLabel "カードのユニフォームリソースロケータ「URL」">
+<!ENTITY cacheuriLabel "キャッシュユニフォームリソース識別子「URI」">
+<!ENTITY revLabel "最終更新">
+<!ENTITY etagLabel "エタグ">
+
+<!ENTITY localizeadrTreeLabel "地図上に表示">
+<!ENTITY toEmailEmailTreeLabel "新しいメッセージを作成します">
+<!ENTITY ccEmailEmailTreeLabel "新しいメッセージを作成します〈参照〉">
+<!ENTITY bccemailemailTreeLabel "新しいメッセージを作成します〈潜在的な参照〉">
+<!ENTITY findemailemailTreeLabel "このメールアドレスに関連するメールを検索する">
+<!ENTITY findeventemailTreeLabel "このメールアドレスに関連するカレンダーイベントを検索する">
+<!ENTITY openURLTreeLabel "ユニフォームリソースロケータ「URL」を開く">
+
+<!ENTITY copyCardTreeLabel "エントリをコピーす">
+<!ENTITY pasteCardTreeLabel "エントリを貼り付け">
+
+<!ENTITY toEmailCardFromAccountsOrCatsLabel "新しいメッセージを作成します">
+<!ENTITY toEmailCardFromCardsLabel "新しいメッセージを作成します">
+<!ENTITY ccEmailCardFromAccountsOrCatsLabel "新しいメッセージを作成します〈参照〉">
+<!ENTITY ccEmailCardFromCardsLabel "新しいメッセージを作成します〈参照〉">
+<!ENTITY bccEmailCardFromAccountsOrCatsLabel "新しいメッセージを作成します〈潜在的な参照〉">
+<!ENTITY bccEmailCardFromCardsLabel "新しいメッセージを作成します〈潜在的な参照〉">
+<!ENTITY shareCardByEmailFromAccountsOrCatsLabel "メールで共有">
+<!ENTITY shareCardByEmailFromCardsLabel "メールで共有">
+<!ENTITY categoryLabel "カテゴリー">
+<!ENTITY findEmailsFromCardsLabel "この連絡先に関連する電子メールを検索する">
+<!ENTITY findEventsFromCardsLabel "この連絡先に関連するカレンダーイベントを検索する">
+<!ENTITY localizeCardFromCardsLabel "地図上に表示">
+<!ENTITY openURLCardFromCardsLabel "ユニフォームリソースロケータ「URL」を開く">
+<!ENTITY cutCardFromAccountsOrCatsLabel "切り取り">
+<!ENTITY cutCardFromCardsLabel "切り取り">
+<!ENTITY copyCardFromAccountsOrCatsLabel "コピー">
+<!ENTITY copyCardFromCardsLabel "コピー">
+<!ENTITY pasteCardFromAccountsOrCatsLabel "貼り付け">
+<!ENTITY pasteCardFromCardsLabel "貼り付け">
+<!ENTITY exportCardToFileLabel "ファイルにエクスポートする">
+<!ENTITY exportCardToDirLabel "ディレクトリにエクスポートする">
+<!ENTITY importCardFromFileLabel "ファイルから連絡先をインポートする">
+<!ENTITY importCardFromDirLabel "連絡先をディレクトリからインポートする">
+<!ENTITY renameCatFromAccountsOrCatsLabel "名前の変更カテゴリ">
+<!ENTITY convertCatFromAccountsOrCatsLabel "カテゴリをリストに変換する">
+<!ENTITY removeCatFromAccountsOrCatsLabel "カテゴリを削除">
+<!ENTITY findDuplicatesFromAccountsOrCatsLabel "現在のアドレス帳に重複している連絡先を見つける">
+<!ENTITY generateFnFromAccountsOrCatsLabel "表示名を生成する">
+<!ENTITY mergeCardsFromCardsLabel "連絡先をマージする">
+<!ENTITY duplicateCardFromCardsLabel "重複連絡先">
+<!ENTITY convertListToCategoryFromCardsLabel "リストをカテゴリに変換する">
+<!ENTITY editAccountFromAccountsOrCatsLabel "アドレス帳を編集する">
+<!ENTITY syncAccountFromAccountsOrCatsLabel "アドレス帳を同期する">
+<!ENTITY removeAccountFromAccountsOrCatsLabel "アドレス帳を削除する">
+
+<!ENTITY IMPPMenuLabel "に接続します">

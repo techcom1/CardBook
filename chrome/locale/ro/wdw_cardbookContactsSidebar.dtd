@@ -4,7 +4,9 @@
 <!ENTITY editAddrBookCard.accesskey "E">
 <!ENTITY searchContacts.label "Căutare:">
 <!ENTITY searchContacts.accesskey "C">
-<!ENTITY name.label "Nume">
+<!ENTITY nameLabel "Nume">
+<!ENTITY ABLabel "Carte de adrese">
+<!ENTITY emailLabel "Poştă electronică">
 <!ENTITY addtoReplytoFieldMenu.label "Adaugă la câmpul Răspuns către">
 <!ENTITY addtoReplytoFieldMenu.accesskey "R">
 <!ENTITY replytoButton.label "Adaugă la Răspuns către:">

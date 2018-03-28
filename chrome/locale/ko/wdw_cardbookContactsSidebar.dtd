@@ -4,7 +4,9 @@
 <!ENTITY editAddrBookCard.accesskey "E">
 <!ENTITY searchContacts.label "검색:">
 <!ENTITY searchContacts.accesskey "o">
-<!ENTITY name.label "이름">
+<!ENTITY nameLabel "이름">
+<!ENTITY ABLabel "주소록">
+<!ENTITY emailLabel "이메일">
 <!ENTITY addtoReplytoFieldMenu.label "회신 주소에 추가">
 <!ENTITY addtoReplytoFieldMenu.accesskey "l">
 <!ENTITY replytoButton.label "회신 주소에 추가">

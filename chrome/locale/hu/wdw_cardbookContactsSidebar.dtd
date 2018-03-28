@@ -4,7 +4,9 @@
 <!ENTITY editAddrBookCard.accesskey "E">
 <!ENTITY searchContacts.label "Névjegy keresése:">
 <!ENTITY searchContacts.accesskey "N">
-<!ENTITY name.label "Név">
+<!ENTITY nameLabel "Név">
+<!ENTITY ABLabel "Névjegytár">
+<!ENTITY emailLabel "E-mailek">
 <!ENTITY addtoReplytoFieldMenu.label "Hozzáadás a Válaszcím mezőhöz">
 <!ENTITY addtoReplytoFieldMenu.accesskey "V">
 <!ENTITY replytoButton.label "Válaszcím:">

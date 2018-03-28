@@ -1,0 +1,13 @@
+<!ENTITY categoriesPicker.label "カテゴリフィルタ：">
+<!ENTITY categoriesPicker.accesskey "T">
+<!ENTITY editAddrBookCard.label "編集">
+<!ENTITY editAddrBookCard.accesskey "E">
+<!ENTITY searchContacts.label "検索：">
+<!ENTITY searchContacts.accesskey "O">
+<!ENTITY nameLabel "名">
+<!ENTITY ABLabel "アドレス帳">
+<!ENTITY emailLabel "メール">
+<!ENTITY addtoReplytoFieldMenu.label "に返信フィールドに追加">
+<!ENTITY addtoReplytoFieldMenu.accesskey "L">
+<!ENTITY replytoButton.label "に返信に追加：">
+<!ENTITY replytoButton.accesskey "L">

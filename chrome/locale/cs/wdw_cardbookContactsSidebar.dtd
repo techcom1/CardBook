@@ -4,7 +4,9 @@
 <!ENTITY editAddrBookCard.accesskey "U">
 <!ENTITY searchContacts.label "Hledat:">
 <!ENTITY searchContacts.accesskey "H">
-<!ENTITY name.label "Jméno">
+<!ENTITY nameLabel "Jméno">
+<!ENTITY ABLabel "Adresář">
+<!ENTITY emailLabel "E-maily">
 <!ENTITY addtoReplytoFieldMenu.label "Přidat do Odpověd">
 <!ENTITY addtoReplytoFieldMenu.accesskey "O">
 <!ENTITY replytoButton.label "Odpověd">

@@ -1,0 +1,28 @@
+<!ENTITY wdw_addressbooksEditTitle "Ιδιότητες βιβλίο διευθύνσεων">
+
+<!ENTITY colorLabel "Χρώμα">
+<!ENTITY colorAccesskey "Χ">
+<!ENTITY nameLabel "Όνομα">
+<!ENTITY nameAccesskey "ν">
+<!ENTITY typeLabel "Τύπος">
+<!ENTITY urlLabel "Παγκόσμιο εντοπισμό πόρων">
+<!ENTITY readonlyLabel "Λειτουργία μόνο για ανάγνωση">
+<!ENTITY readonlyAccesskey "Λ">
+<!ENTITY vCardVersionLabel "εικονική κάρτα (vCard)">
+<!ENTITY dateFormatLabel "Αναμενόμενη μορφή ημερομηνίας">
+<!ENTITY dateFormatAccesskey "μ">
+<!ENTITY urnuuidLabel "Χρησιμοποιήστε το urn:uuid">
+<!ENTITY urnuuidAccesskey "ρ">
+
+<!ENTITY autoSyncGroupboxLabel "Περιοδικός συγχρονισμός">
+<!ENTITY autoSyncLabel "Ενεργοποιήστε τον περιοδικό συγχρονισμό">
+<!ENTITY autoSyncAccesskey "Ε">
+<!ENTITY autoSyncIntervalLabel "Διάστημα μεταξύ περιοδικών συγχρονισμών (λεπτό)">
+<!ENTITY autoSyncIntervalAccesskey "Δ">
+
+<!ENTITY miscTabLabel "Διάφορα">
+<!ENTITY fnLabelExplanation "Είναι δυνατό να προσαρμόσετε τον τρόπο με τον οποίο οι επαφές δημιουργούν το εμφανιζόμενο όνομα. Αυτός ο τύπος συνίσταται σε μπλοκ που περικλείονται από το «()». Σε αυτά τα μπλοκ, υπάρχουν δύο τμήματα που οριοθετούνται από το «|». Το πρώτο μέρος ισχύει όταν ο όρος που περιλαμβάνεται, για παράδειγμα {{1}}, δεν είναι άκυρος, το δεύτερο μέρος ισχύει όταν ο όρος είναι null.">
+<!ENTITY fnFormulaLabel "Φόρμα εφάνιση">
+<!ENTITY fnFormulaAccesskey "Φ">
+<!ENTITY resetFnFormulaLabel "Επαναφέρετε τις προεπιλογές">
+<!ENTITY resetFnFormulaAccesskey "ρ">

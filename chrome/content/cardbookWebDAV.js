@@ -1,7 +1,7 @@
 if ("undefined" == typeof(cardbookWebDAV)) {
 	Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 	Components.utils.import("resource://gre/modules/Services.jsm");
-	if (Services.vc.compare(Services.appinfo.version, "61") >= 0) {
+	if (Services.vc.compare(Services.appinfo.version, "52.7.0") >= 0) {
 		Components.utils.importGlobalProperties(["XMLHttpRequest"]);
 	}
 

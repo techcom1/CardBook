@@ -1,0 +1,5 @@
+<!ENTITY calendarNameLabel "カレンダー">
+<!ENTITY calendarIdLabel "カレンダーアイデンティティ">
+<!ENTITY existingLabel "既存">
+<!ENTITY failedLabel "失敗">
+<!ENTITY succeededLabel "成功した">

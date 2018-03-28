@@ -2944,6 +2944,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 	
 				// select cards back
 				if (listOfSelectedCard.length == 1) {
+					var myTree = document.getElementById('cardsTree');
 					cardbookUtils.setSelectedCards(listOfSelectedCard, myTree.boxObject.getFirstVisibleRow(), myTree.boxObject.getLastVisibleRow());
 					if (cardbookRepository.cardbookCards[listOfSelectedCard[0].cbid]) {
 						wdw_cardbook.displayCard(listOfSelectedCard[0]);
