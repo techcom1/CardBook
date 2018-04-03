@@ -2794,8 +2794,10 @@ if ("undefined" == typeof(cardbookUtils)) {
 		cleanWebObject: function (aObject) {
 			var cleanObjectArray = [];
 			for (var key in aObject) {
-				if (key == "Authorization" || key == "access_token") {
+				if (key == "access_token") {
 					cleanObjectArray.push(key + ': "*****"');
+				} else if (key == "Authorization") {
+					cleanObjectArray.push(key + ': "' + aObject[key].replace(/^Basic (.*)/, 'Basic ').replace(/^Digest (.*)/, 'Digest ') + '"*****"');
 				} else {
 					cleanObjectArray.push(key + ': "' + aObject[key] + '"');
 				}

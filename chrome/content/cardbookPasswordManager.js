@@ -23,12 +23,17 @@ if ("undefined" == typeof(cardbookPasswordManager)) {
 			var myUrl = cardbookPreferences.getUrl(aPrefId);
 			var result = cardbookPasswordManager.getPassword(aUsername, myUrl);
 			if (result == "") {
-				var myArgs = {site: myUrl, username: aUsername, password: "", context: "Missing", action: ""};
-				var myWindow = window.openDialog("chrome://cardbook/content/wdw_password.xul", "", cardbookRepository.modalWindowParams, myArgs);
-				if (myArgs.action == "SAVE") {
+				var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
+				var myTitle = strBundle.GetStringFromName("wdw_passwordMissingTitle");
+				var commonStrBundle = Services.strings.createBundle("chrome://global/locale/commonDialogs.properties");
+				var myText = commonStrBundle.formatStringFromName("EnterPasswordFor", [aUsername, myUrl], 2);
+				var myPassword = {value: ""};
+				var check = {value: true};
+				var prompter = Services.ww.getNewPrompter(null);
+				if (prompter.promptPassword(myTitle, myText, myPassword, null, check)) {
 					cardbookPasswordManager.removeAccount(aUsername, myUrl);
-					cardbookPasswordManager.addAccount(aUsername, myUrl, myArgs.password);
-					return myArgs.password;
+					cardbookPasswordManager.addAccount(aUsername, myUrl, myPassword.value);
+					return myPassword.value;
 				}
 			}
 			return result;
@@ -36,12 +41,17 @@ if ("undefined" == typeof(cardbookPasswordManager)) {
 		
 		getChangedPassword: function (aUsername, aPrefId) {
 			var myUrl = cardbookPreferences.getUrl(aPrefId);
-			var myArgs = {site: myUrl, username: aUsername, password: "", context: "Wrong", action: ""};
-			var myWindow = window.openDialog("chrome://cardbook/content/wdw_password.xul", "", cardbookRepository.modalWindowParams, myArgs);
-			if (myArgs.action == "SAVE") {
+			var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
+			var myTitle = strBundle.GetStringFromName("wdw_passwordWrongTitle");
+			var commonStrBundle = Services.strings.createBundle("chrome://global/locale/commonDialogs.properties");
+			var myText = commonStrBundle.formatStringFromName("EnterPasswordFor", [aUsername, myUrl], 2);
+			var myPassword = {value: ""};
+			var check = {value: true};
+			var prompter = Services.ww.getNewPrompter(null);
+			if (prompter.promptPassword(myTitle, myText, myPassword, null, check)) {
 				cardbookPasswordManager.removeAccount(aUsername, myUrl);
-				cardbookPasswordManager.addAccount(aUsername, myUrl, myArgs.password);
-				return myArgs.password;
+				cardbookPasswordManager.addAccount(aUsername, myUrl, myPassword.value);
+				return myPassword.value;
 			}
 			return "";
 		},

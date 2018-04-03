@@ -89,7 +89,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 			prefs.setCharPref("accountsShown", "all");
 			prefs.setCharPref("accountShown", "");
 			prefs.setCharPref("uncategorizedCards", "");
-			prefs.setCharPref("addonVersion", "27.9");
+			prefs.setCharPref("addonVersion", "28.0");
 		},
 
 		lEventTimerSync : { notify: function(lTimerSync) {
