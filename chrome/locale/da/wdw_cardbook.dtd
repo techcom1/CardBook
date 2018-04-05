@@ -82,7 +82,7 @@
 <!ENTITY soundURILabel "Lyd">
 <!ENTITY prodidLabel "Prodid">
 <!ENTITY sortstringLabel "Sorteringsstreng">
-<!ENTITY uidLabel "UID">
+<!ENTITY uidLabel "Kontakt-id">
 <!ENTITY versionLabel "Version">
 <!ENTITY tzLabel "Tidszone">
 
