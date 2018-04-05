@@ -37,6 +37,7 @@
 	<keyset id="viewZoomKeys">
 		<key id="CardBookKey" key="&cardbookMenuItemKey;" modifiers="accel, shift" oncommand="ovl_cardbook.open();"/>
 		<key id="CardBookNewContactKey" key="&newCardBookCardMenuKey;" modifiers="accel, shift" oncommand="wdw_cardbook.newKey();"/>
+		<key id="CardBookMenuKey" keycode="VK_F9" oncommand="wdw_cardbook.F9Key();"/>
 	</keyset>
 
 	<menupopup id="menu_NewPopup">

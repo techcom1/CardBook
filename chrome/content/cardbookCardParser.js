@@ -439,7 +439,7 @@ if ("undefined" == typeof(cardbookCardParser)) {
 					}
 					
 					if (this.fn == "") {
-						this.fn = cardbookUtils.getDisplayedName(this.dirPrefId, [this.prefixname, this.firstname, this.othername, this.lastname, this.suffixname],
+						cardbookUtils.getDisplayedName(this, this.dirPrefId, [this.prefixname, this.firstname, this.othername, this.lastname, this.suffixname, this.nickname],
 																	[this.org, this.title, this.role]);
 					}
 					

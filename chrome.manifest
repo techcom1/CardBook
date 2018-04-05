@@ -41,9 +41,9 @@ skin   cardbook-config      classic/1.0   chrome/skin/configuration/
 skin   cardbook-pref   classic/1.0   chrome/skin/osversion/unix/        os=Linux
 skin   cardbook-pref   classic/1.0   chrome/skin/osversion/windows/     os=WINNT
 skin   cardbook-pref   classic/1.0   chrome/skin/osversion/mac/         os=Darwin
-skin   cardbook-pref   classic/1.0   chrome/skin/osversion/unix61/      os=Linux      appversion>=61.0a1
-skin   cardbook-pref   classic/1.0   chrome/skin/osversion/windows61/   os=WINNT      appversion>=61.0a1
-skin   cardbook-pref   classic/1.0   chrome/skin/osversion/mac61/       os=Darwin     appversion>=61.0a1
+skin   cardbook-pref   classic/1.0   chrome/skin/osversion/unix61/      os=Linux      appversion>=60.0
+skin   cardbook-pref   classic/1.0   chrome/skin/osversion/windows61/   os=WINNT      appversion>=60.0
+skin   cardbook-pref   classic/1.0   chrome/skin/osversion/mac61/       os=Darwin     appversion>=60.0
 
 skin   cardbook-toolbar   classic/1.0   chrome/skin/osversion/unix/        os=Linux
 skin   cardbook-toolbar   classic/1.0   chrome/skin/osversion/windows/     os=WINNT

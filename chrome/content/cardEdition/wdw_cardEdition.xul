@@ -173,7 +173,7 @@
 								</row>
 								<row align="center">
 									<label id="nicknameLabel" value="&nicknameLabel;" control="nicknameTextBox" class="header"/>
-									<textbox id="nicknameTextBox"/>
+									<textbox id="nicknameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
 								</row>
 								<row align="center">
 									<hbox flex="1" align="center">

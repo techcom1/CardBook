@@ -2511,8 +2511,9 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 								cardbookUtils.setCardUUID(myCard);
 								cardbookUtils.setCalculatedFields(myCard);
 								if (myCard.fn == "") {
-									myCard.fn = cardbookUtils.getDisplayedName(myCard.dirPrefId, [myCard.prefixname, myCard.firstname, myCard.othername, myCard.lastname, myCard.suffixname],
-																				[myCard.org, myCard.title, myCard.role]);
+									cardbookUtils.getDisplayedName(myCard, myCard.dirPrefId,
+																		[myCard.prefixname, myCard.firstname, myCard.othername, myCard.lastname, myCard.suffixname, myCard.nickname],
+																		[myCard.org, myCard.title, myCard.role]);
 								}
 							}
 							catch (e) {

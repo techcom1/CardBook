@@ -674,11 +674,12 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 
 		setDisplayName: function () {
 			var myNewOrg = wdw_cardEdition.getOrg(false);
-			var myNewFn = cardbookUtils.getDisplayedName(document.getElementById('dirPrefIdTextBox').value, [document.getElementById('prefixnameTextBox').value.trim(),
+			var myNewFn = cardbookUtils.getDisplayedNameFromFormula(document.getElementById('dirPrefIdTextBox').value, [document.getElementById('prefixnameTextBox').value.trim(),
 																document.getElementById('firstnameTextBox').value.trim(),
 																document.getElementById('othernameTextBox').value.trim(),
 																document.getElementById('lastnameTextBox').value.trim(),
-																document.getElementById('suffixnameTextBox').value.trim()],
+																document.getElementById('suffixnameTextBox').value.trim(),
+																document.getElementById('nicknameTextBox').value.trim()],
 																[myNewOrg,
 																document.getElementById('titleTextBox').value.trim(),
 																document.getElementById('roleTextBox').value.trim()]);
@@ -688,6 +689,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			wdw_cardEdition.workingCard.othername = document.getElementById('othernameTextBox').value.trim();
 			wdw_cardEdition.workingCard.suffixname = document.getElementById('suffixnameTextBox').value.trim();
 			wdw_cardEdition.workingCard.prefixname = document.getElementById('prefixnameTextBox').value.trim();
+			wdw_cardEdition.workingCard.nickname = document.getElementById('nicknameTextBox').value.trim();
 			wdw_cardEdition.workingCard.org = myNewOrg;
 			wdw_cardEdition.workingCard.fn = myNewFn;
 		},
@@ -909,6 +911,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			aCard.role = document.getElementById('roleTextBox').value.trim();
 
 			aCard.fn = document.getElementById('fnTextBox').value.trim();
+			
 			aCard.lastname = document.getElementById('lastnameTextBox').value.trim();
 			aCard.firstname = document.getElementById('firstnameTextBox').value.trim();
 			aCard.othername = document.getElementById('othernameTextBox').value.trim();
@@ -956,6 +959,19 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			}
 			aCard.others = othersTemp1.concat(othersTemp3);
 
+			// trying desesperately to find a Fn
+			if (aCard.fn == "") {
+				cardbookUtils.getDisplayedName(aCard, document.getElementById('dirPrefIdTextBox').value, [document.getElementById('prefixnameTextBox').value.trim(),
+																document.getElementById('firstnameTextBox').value.trim(),
+																document.getElementById('othernameTextBox').value.trim(),
+																document.getElementById('lastnameTextBox').value.trim(),
+																document.getElementById('suffixnameTextBox').value.trim(),
+																document.getElementById('nicknameTextBox').value.trim()],
+																[wdw_cardEdition.getOrg(false),
+																document.getElementById('titleTextBox').value.trim(),
+																document.getElementById('roleTextBox').value.trim()]);
+			}
+					
 			cardbookUtils.setCalculatedFields(aCard);
 
 			var myMembers = [];

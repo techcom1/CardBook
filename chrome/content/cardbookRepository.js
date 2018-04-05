@@ -31,7 +31,7 @@ var cardbookRepository = {
 
 	defaultDisplayedColumns : "cardIcon,fn,email.0.all,tel.0.all,bday,rev",
 	defaultAutocompleteRestrictSearchFields : "firstname|lastname",
-	defaultFnFormula : "({{1}} |)({{2}} |)({{3}} |)({{4}} |)({{5}} |)({{6}} |)",
+	defaultFnFormula : "({{1}} |)({{2}} |)({{3}} |)({{4}} |)({{5}} |)({{6}} |)({{7}}|)",
 	defaultAdrFormula : "",
 	defaultKindCustom : "X-ADDRESSBOOKSERVER-KIND",
 	defaultMemberCustom : "X-ADDRESSBOOKSERVER-MEMBER",
@@ -391,6 +391,35 @@ var cardbookRepository = {
 					cardbookPreferences.setStringPref("extensions.cardbook.calendarEntryAlarm", parseInt(calendarEntryAlarm) * 24);
 				}
 				cardbookPreferences.setBoolPref("extensions.cardbook.calendarEntryAlarmMigrated", true);
+			}
+		}
+		catch (e) {
+			return "";
+		}
+	},
+
+	migrateFnFormula: function() {
+		try {
+			// for file opened with version <= 28.0
+			var fnFormulaMigrated = cardbookPreferences.getBoolPref("extensions.cardbook.fnFormulaMigrated");
+			if (!fnFormulaMigrated) {
+				var result = [];
+				result = cardbookPreferences.getAllPrefIds();
+				for (let i = 0; i < result.length; i++) {
+					var myFnFormula = cardbookPreferences.getFnFormula(result[i]);
+					if (myFnFormula == "({{1}} |)({{2}} |)({{3}} |)({{4}} |)({{5}} |)({{6}} |)") {
+						cardbookPreferences.setFnFormula(result[i], cardbookRepository.defaultFnFormula);
+					} else {
+						for (var j = 30; j >= 6; j--) {
+							var k = j + 1;
+							if (myFnFormula.includes("{{" + j + "}}")) {
+								myFnFormula = myFnFormula.replace("{{" + j + "}}", "{{" + k + "}}");
+							}
+						}
+						cardbookPreferences.setFnFormula(result[i], myFnFormula);
+					}
+				}
+				cardbookPreferences.setBoolPref("extensions.cardbook.fnFormulaMigrated", true);
 			}
 		}
 		catch (e) {

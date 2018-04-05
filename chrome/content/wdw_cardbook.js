@@ -511,10 +511,11 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					var myCard = myCards[i];
 					var myOutCard = new cardbookCardParser();
 					cardbookUtils.cloneCard(myCard, myOutCard);
-					var myFn = cardbookUtils.getDisplayedName(myOutCard.dirPrefId, [myOutCard.prefixname, myOutCard.firstname, myOutCard.othername, myOutCard.lastname, myOutCard.suffixname],
-																[myOutCard.org, myOutCard.title, myOutCard.role]);
-					if (myFn != "" && myFn != myOutCard.fn) {
-						myOutCard.fn = myFn;
+					var myFn = myOutCard.fn;
+					cardbookUtils.getDisplayedName(myOutCard, myOutCard.dirPrefId,
+														[myOutCard.prefixname, myOutCard.firstname, myOutCard.othername, myOutCard.lastname, myOutCard.suffixname, myOutCard.nickname],
+														[myOutCard.org, myOutCard.title, myOutCard.role]);
+					if (myFn != myOutCard.fn && myOutCard.fn != "") {
 						cardbookRepository.saveCard(myCard, myOutCard, "cardbook.cardModifiedDirect");
 					}
 				}

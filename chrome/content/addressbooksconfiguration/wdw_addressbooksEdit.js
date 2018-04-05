@@ -22,7 +22,8 @@ if ("undefined" == typeof(wdw_addressbooksEdit)) {
 			document.getElementById('fnFormulaDescriptionLabel1').value = myLabel.trim();
 			myLabel = "";
 			myLabel = myLabel + "{{5}} : " + strBundle.getString("suffixnameLabel") + "    ";
-			var count = 6;
+			myLabel = myLabel + "{{6}} : " + strBundle.getString("nicknameLabel") + "    ";
+			var count = 7;
 			if (allOrg.length === 0) {
 				myLabel = myLabel + "{{" + count + "}} : " + strBundle.getString("orgLabel");
 				count++;

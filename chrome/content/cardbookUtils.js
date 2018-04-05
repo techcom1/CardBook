@@ -688,7 +688,35 @@ if ("undefined" == typeof(cardbookUtils)) {
 			}
 		},
 
-		getDisplayedName: function(aDirPrefId, aNewN, aNewOrg) {
+		getDisplayedName: function(aCard, aDirPrefId, aNewN, aNewOrg) {
+			aCard.fn = cardbookUtils.getDisplayedNameFromFormula(aDirPrefId, aNewN, aNewOrg);
+			if (aCard.fn == "") {
+				cardbookUtils.getDisplayedNameFromRest(aCard);
+			}
+		},
+
+		getDisplayedNameFromRest: function(aCard) {
+			var typesList = [ 'email', 'tel', 'impp', 'url', 'adr' ];
+			for (var i in typesList) {
+				if (aCard[typesList[i]][0]) {
+					aCard.fn = aCard[typesList[i]][0][0][0];
+					if (aCard.fn != "") {
+						return;
+					}
+				}
+			}
+			var fieldsList = [ 'personal', 'org' ];
+			for (var i in fieldsList) {
+				for (var j in cardbookRepository.allColumns[fieldsList[i]]) {
+					if (aCard[cardbookRepository.allColumns[fieldsList[i]][j]] && aCard[cardbookRepository.allColumns[fieldsList[i]][j]] != "") {
+						aCard.fn = aCard[cardbookRepository.allColumns[fieldsList[i]][j]];
+						return;
+					}
+				}
+			}
+		},
+
+		getDisplayedNameFromFormula: function(aDirPrefId, aNewN, aNewOrg) {
 			var result =  "";
 			var myFnFormula = cardbookPreferences.getFnFormula(aDirPrefId);
 			var orgStructure = cardbookPreferences.getStringPref("extensions.cardbook.orgStructure");

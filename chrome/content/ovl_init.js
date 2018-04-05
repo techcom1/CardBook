@@ -56,7 +56,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 			prefs.setCharPref("localizeEngine", "OpenStreetMap");
 			prefs.setCharPref("localizeTarget", "out");
 			prefs.setCharPref("showNameAs", "LF");
-			prefs.setCharPref("fnFormula", "({{1}} |)({{2}} |)({{3}} |)({{4}} |)({{5}} |)({{6}} |)");
+			prefs.setBoolPref("fnFormulaMigrated", false);
 			
 			// localized
 			cardbookRepository.defaultAdrFormula = strBundle.GetStringFromName("addressFormatFormula");
@@ -89,7 +89,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 			prefs.setCharPref("accountsShown", "all");
 			prefs.setCharPref("accountShown", "");
 			prefs.setCharPref("uncategorizedCards", "");
-			prefs.setCharPref("addonVersion", "28.0");
+			prefs.setCharPref("addonVersion", "28.1");
 		},
 
 		lEventTimerSync : { notify: function(lTimerSync) {
@@ -129,6 +129,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 				cardbookRepository.loadCustoms();
 				cardbookRepository.setCalendarEntryAlarm();
 				cardbookRepository.setEventEntryTitle();
+				cardbookRepository.migrateFnFormula();
 				
 				// observers are needed not only UI but also for synchro
 				// there is no unregister launched
