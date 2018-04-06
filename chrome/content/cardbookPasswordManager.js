@@ -1,5 +1,10 @@
 if ("undefined" == typeof(cardbookPasswordManager)) {
-	Components.utils.import("resource://gre/modules/Services.jsm");
+	try {
+		ChromeUtils.import("resource://gre/modules/Services.jsm");
+	}
+	catch(e) {
+		Components.utils.import("resource://gre/modules/Services.jsm");
+	}
 
 	var cardbookPasswordManager = {
 

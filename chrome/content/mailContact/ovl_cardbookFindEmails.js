@@ -1,7 +1,14 @@
 if ("undefined" == typeof(ovl_cardbookFindEmails)) {
-	Components.utils.import("resource:///modules/gloda/msg_search.js");
-	Components.utils.import("resource://gre/modules/Services.jsm");
-	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	try {
+		ChromeUtils.import("resource:///modules/gloda/msg_search.js");
+		ChromeUtils.import("resource://gre/modules/Services.jsm");
+		ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
+	catch(e) {
+		Components.utils.import("resource:///modules/gloda/msg_search.js");
+		Components.utils.import("resource://gre/modules/Services.jsm");
+		Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
 
 	var ovl_cardbookFindEmails = {
 

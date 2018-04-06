@@ -1,7 +1,14 @@
 if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
-	Components.utils.import("resource:///modules/mailServices.js");
-	Components.utils.import("resource://gre/modules/Services.jsm");
-	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	try {
+		ChromeUtils.import("resource:///modules/mailServices.js");
+		ChromeUtils.import("resource://gre/modules/Services.jsm");
+		ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
+	catch(e) {
+		Components.utils.import("resource:///modules/mailServices.js");
+		Components.utils.import("resource://gre/modules/Services.jsm");
+		Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
 
 	var CardBookResultsPaneObserver = {
 		onDragStart: function (aEvent, aXferData, aDragAction) {

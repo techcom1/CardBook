@@ -1,8 +1,16 @@
 if ("undefined" == typeof(ovl_cardbookMailContacts)) {
-	Components.utils.import("resource:///modules/gloda/msg_search.js");
-	Components.utils.import("resource://gre/modules/Services.jsm");
-	Components.utils.import("resource://gre/modules/AddonManager.jsm");
-	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	try {
+		ChromeUtils.import("resource:///modules/gloda/msg_search.js");
+		ChromeUtils.import("resource://gre/modules/Services.jsm");
+		ChromeUtils.import("resource://gre/modules/AddonManager.jsm");
+		ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
+	catch(e) {
+		Components.utils.import("resource:///modules/gloda/msg_search.js");
+		Components.utils.import("resource://gre/modules/Services.jsm");
+		Components.utils.import("resource://gre/modules/AddonManager.jsm");
+		Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
 
 	var ovl_cardbookMailContacts = {
 		knownContacts: false,
@@ -28,12 +36,16 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 			return cardbookRepository.isEmailRegistered(aEmail, ovl_cardbookMailContacts.getIdentityKey());
 		},
 
-		addToCardBook: function(aDirPrefId) {
+		addToCardBook: function(aDirPrefId, aEmailNode) {
 			try {
 				var myNewCard = new cardbookCardParser();
 				myNewCard.dirPrefId = aDirPrefId;
-				var myPopupNode = document.popupNode;
-				var myEmailNode = findEmailNodeFromPopupNode(myPopupNode, 'emailAddressPopup');
+				if (aEmailNode != null && aEmailNode !== undefined && aEmailNode != "") {
+					var myEmailNode = aEmailNode;
+				} else {
+					var myPopupNode = document.popupNode;
+					var myEmailNode = findEmailNodeFromPopupNode(myPopupNode, 'emailAddressPopup');
+				}
 				var myEmail = myEmailNode.getAttribute('emailAddress');
 				myNewCard.email.push([[myEmail], [], "", []]);
 				myNewCard.fn = myEmailNode.getAttribute('displayName');
@@ -47,10 +59,6 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 					myNewCard.firstname = myDisplayNameArray.join(" ");
 				}
 				cardbookUtils.openEditionWindow(myNewCard, "AddEmail", "cardbook.cardAddedIndirect");
-
-				var myEmailNode = findEmailNodeFromPopupNode(myPopupNode, 'emailAddressPopup');
-				var myEmail = myEmailNode.getAttribute('emailAddress');
-				UpdateEmailNodeDetails(myEmail, myEmailNode);
 			}
 			catch (e) {
 				var errorTitle = "addToCardBook";
@@ -73,9 +81,13 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 			}
 		},
 
-		editOrViewContact: function() {
-			var myPopupNode = document.popupNode;
-			var myEmailNode = findEmailNodeFromPopupNode(myPopupNode, 'emailAddressPopup');
+		editOrViewContact: function(aEmailNode) {
+			if (aEmailNode != null && aEmailNode !== undefined && aEmailNode != "") {
+				var myEmailNode = aEmailNode;
+			} else {
+				var myPopupNode = document.popupNode;
+				var myEmailNode = findEmailNodeFromPopupNode(myPopupNode, 'emailAddressPopup');
+			}
 			var myEmail = myEmailNode.getAttribute('emailAddress');
 			var isEmailRegistered = ovl_cardbookMailContacts.isEmailRegistered(myEmail);
 	
@@ -93,7 +105,6 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 				} else {
 					cardbookUtils.openEditionWindow(myOutCard, "Edit" + myType, "cardbook.cardModifiedIndirect");
 				}
-				UpdateEmailNodeDetails(myEmail, myEmailNode);
 			}
 		},
 
@@ -253,7 +264,21 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 	
 	// Override a function.
 	onClickEmailStar = function() {
-		return;
+		
+		if (arguments[1].getAttribute("hascard") == "true") {
+			if (ovl_cardbookMailContacts.isEmailRegistered(arguments[1].getAttribute('emailAddress'))) {
+				ovl_cardbookMailContacts.editOrViewContact(arguments[1]);
+			} else {
+				var rv = _original.apply(null, arguments);
+			}
+		} else {
+			var myAccount = cardbookUtils.getFirstAvailableAccount();
+			if (myAccount != "-1") {
+				ovl_cardbookMailContacts.addToCardBook(myAccount, arguments[1]);
+			} else {
+				var rv = _original.apply(null, arguments);
+			}
+		}
 	};
 
 })();
@@ -274,8 +299,7 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 		if (gContextMenu.onMailtoLink && !gContextMenu.inThreadPane) {
 			var loader = Services.scriptloader;
 			loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");
-			var exclusive = cardbookPreferences.getBoolPref("extensions.cardbook.exclusive");
-			if (exclusive) {
+			if (cardbookPreferences.getBoolPref("extensions.cardbook.exclusive")) {
 				gContextMenu.showItem("mailContext-addemail", false);
 			}
 		}

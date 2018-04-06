@@ -1,7 +1,14 @@
 if ("undefined" == typeof(cardbookBirthdaysUtils)) {
-	Components.utils.import("resource://gre/modules/Services.jsm");
-	Components.utils.import("resource://gre/modules/AddonManager.jsm");
-	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	try {
+		ChromeUtils.import("resource://gre/modules/Services.jsm");
+		ChromeUtils.import("resource://gre/modules/AddonManager.jsm");
+		ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
+	catch(e) {
+		Components.utils.import("resource://gre/modules/Services.jsm");
+		Components.utils.import("resource://gre/modules/AddonManager.jsm");
+		Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
 
 	var cardbookBirthdaysUtils = {
 		lBirthdayList : [],
@@ -152,7 +159,12 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 				var calICalendar = Components.interfaces.calICalendar;
 				var startRange = new Date(lBirthdayDate.getTime() - (24 * 60 * 60 * 1000));
 				var endRange = new Date(lBirthdayDate.getTime() + (24 * 60 * 60 * 1000));
-				Components.utils.import("resource://calendar/modules/calUtils.jsm");
+				try {
+					ChromeUtils.import("resource://calendar/modules/calUtils.jsm");
+				}
+				catch(e) {
+					Components.utils.import("resource://calendar/modules/calUtils.jsm");
+				}
 				startRange = cal.jsDateToDateTime(startRange);
 				endRange = cal.jsDateToDateTime(endRange);
 				aCalendar1.getItems(calICalendar.ITEM_FILTER_TYPE_EVENT, 0, startRange, endRange, getListener);

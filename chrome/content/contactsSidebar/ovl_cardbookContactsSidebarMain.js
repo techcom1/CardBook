@@ -1,5 +1,10 @@
 // toggleAddressPicker
-Components.utils.import("resource://gre/modules/Services.jsm");
+try {
+	ChromeUtils.import("resource://gre/modules/Services.jsm");
+}
+catch(e) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+}
 (function() {
 	// Keep a reference to the original function.
 	var _original = toggleAddressPicker;

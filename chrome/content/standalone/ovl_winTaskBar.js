@@ -1,6 +1,12 @@
 if ("undefined" == typeof(ovl_winTaskBar)) {
-	Components.utils.import("resource://gre/modules/Services.jsm");
-	Components.utils.import("resource:///modules/windowsJumpLists.js");
+	try {
+		ChromeUtils.import("resource://gre/modules/Services.jsm");
+		ChromeUtils.import("resource:///modules/windowsJumpLists.js");
+	}
+	catch(e) {
+		Components.utils.import("resource://gre/modules/Services.jsm");
+		Components.utils.import("resource:///modules/windowsJumpLists.js");
+	}
 
 	var ovl_winTaskBar = {
 

@@ -98,7 +98,7 @@
 								</groupbox>
 								<groupbox id="categoriesReadOnlyGroupbox">
 									<caption id="categoriesLabel" label="&categoriesGroupboxLabel;" class="header"/>
-									<textbox id="categoriesTextBox" flex="1" style="min-height:36px;"/>
+									<textbox id="categoriesTextBox" flex="1" style="min-height:36px;" readonly="true"/>
 								</groupbox>
 								<groupbox id="categoriesReadWriteGroupbox" flex="1">
 									<caption label="&categoriesGroupboxLabel;" class="header"/>

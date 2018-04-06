@@ -1,6 +1,12 @@
 if ("undefined" == typeof(ovl_birthdays)) {
-	Components.utils.import("resource://gre/modules/AddonManager.jsm");
-	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	try {
+		ChromeUtils.import("resource://gre/modules/AddonManager.jsm");
+		ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
+	catch(e) {
+		Components.utils.import("resource://gre/modules/AddonManager.jsm");
+		Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
 
 	var ovl_birthdays = {
 		lTimerPopup : null,

@@ -1,5 +1,10 @@
 if ("undefined" == typeof(wdw_cardbookPrint)) {
-	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	try {
+		ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
+	catch(e) {
+		Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
 
 	var wdw_cardbookPrint = {
 		

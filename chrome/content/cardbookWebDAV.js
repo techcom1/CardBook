@@ -1,7 +1,13 @@
 if ("undefined" == typeof(cardbookWebDAV)) {
-	Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
-	Components.utils.import("resource://gre/modules/Services.jsm");
-	if (Services.vc.compare(Services.appinfo.version, "60.0") <= 0) {
+	try {
+		ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+		ChromeUtils.import("resource://gre/modules/Services.jsm");
+	}
+	catch(e) {
+		Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
+		Components.utils.import("resource://gre/modules/Services.jsm");
+	}
+	if (Services.vc.compare(Services.appinfo.version, "60.0") < 0) {
 		Components.utils.importGlobalProperties(["XMLHttpRequest"]);
 	}
 

@@ -1,5 +1,10 @@
 if ("undefined" == typeof(wdw_birthdaySync)) {
-	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	try {
+		ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
+	catch(e) {
+		Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
 
 	var wdw_birthdaySync = {
 		lTimerSync : null,

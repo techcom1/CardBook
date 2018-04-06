@@ -1,5 +1,10 @@
 if ("undefined" == typeof(ovl_synchro)) {
-	Components.utils.import("resource://gre/modules/Services.jsm");
+	try {
+		ChromeUtils.import("resource://gre/modules/Services.jsm");
+	}
+	catch(e) {
+		Components.utils.import("resource://gre/modules/Services.jsm");
+	}
 
 	var ovl_synchro = {
 
@@ -89,7 +94,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 			prefs.setCharPref("accountsShown", "all");
 			prefs.setCharPref("accountShown", "");
 			prefs.setCharPref("uncategorizedCards", "");
-			prefs.setCharPref("addonVersion", "28.1");
+			prefs.setCharPref("addonVersion", "28.2");
 		},
 
 		lEventTimerSync : { notify: function(lTimerSync) {

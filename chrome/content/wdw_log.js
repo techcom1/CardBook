@@ -1,6 +1,12 @@
 if ("undefined" == typeof(wdw_cardbooklog)) {
-	Components.utils.import("resource://gre/modules/Services.jsm");
-	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	try {
+		ChromeUtils.import("resource://gre/modules/Services.jsm");
+		ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
+	catch(e) {
+		Components.utils.import("resource://gre/modules/Services.jsm");
+		Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
 
 	var wdw_cardbooklog = {
 
@@ -29,7 +35,6 @@ if ("undefined" == typeof(wdw_cardbooklog)) {
 			} else {
 				cardbookRepository.statusInformation.push([wdw_cardbooklog.getTime() + " : " + aLogLine, "Normal"]);
 			}
-			// Components.utils.import("resource://gre/modules/Services.jsm");
 			// Services.console.logStringMessage(wdw_cardbooklog.getTime() + " : " + aLogLine);
 		},
 

@@ -1,6 +1,12 @@
 if ("undefined" == typeof(wdw_cardbookEventContacts)) {
-	Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
-	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	try {
+		ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+		ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
+	catch(e) {
+		Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
+		Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
 
 	var wdw_cardbookEventContacts = {
 		allEvents: [],
@@ -275,7 +281,12 @@ if ("undefined" == typeof(wdw_cardbookEventContacts)) {
 		},
 
 		load: function () {
-			Components.utils.import("resource://calendar/modules/calUtils.jsm");
+			try {
+				ChromeUtils.import("resource://calendar/modules/calUtils.jsm");
+			}
+			catch(e) {
+				Components.utils.import("resource://calendar/modules/calUtils.jsm");
+			}
 			var strBundle = document.getElementById("cardbook-strings");
 			wdw_cardbookEventContacts.emailArray = window.arguments[0].listOfEmail;
 			wdw_cardbookEventContacts.attendeeId = window.arguments[0].attendeeId;

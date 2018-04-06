@@ -1,6 +1,12 @@
 if ("undefined" == typeof(ovl_collected)) {
-	Components.utils.import("resource:///modules/jsmime.jsm");
-	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	try {
+		ChromeUtils.import("resource:///modules/jsmime.jsm");
+		ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
+	catch(e) {
+		Components.utils.import("resource:///modules/jsmime.jsm");
+		Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
 
 	var ovl_collected = {
 		

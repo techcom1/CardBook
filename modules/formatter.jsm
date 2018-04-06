@@ -4,8 +4,14 @@
 
 var EXPORTED_SYMBOLS = ["LDAPAbCardFormatter"];
 
-Components.utils.import("resource:///modules/mailServices.js");
-Components.utils.import("resource://gre/modules/Services.jsm");
+try {
+	ChromeUtils.import("resource:///modules/mailServices.js");
+	ChromeUtils.import("resource://gre/modules/Services.jsm");
+}
+catch(e) {
+	Components.utils.import("resource:///modules/mailServices.js");
+	Components.utils.import("resource://gre/modules/Services.jsm");
+}
 
 var parser = MailServices.headerParser;
 

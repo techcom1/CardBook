@@ -1,5 +1,10 @@
 if ("undefined" == typeof(ovl_cardbookLayout)) {
-	Components.utils.import("resource://gre/modules/Services.jsm");
+	try {
+		ChromeUtils.import("resource://gre/modules/Services.jsm");
+	}
+	catch(e) {
+		Components.utils.import("resource://gre/modules/Services.jsm");
+	}
 
 	var ovl_cardbookLayout = {
 

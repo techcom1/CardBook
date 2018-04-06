@@ -1,6 +1,12 @@
 if ("undefined" == typeof(cardbookUtils)) {
-	Components.utils.import("resource:///modules/mailServices.js");
-	Components.utils.import("resource://gre/modules/Services.jsm");
+	try {
+		ChromeUtils.import("resource:///modules/mailServices.js");
+		ChromeUtils.import("resource://gre/modules/Services.jsm");
+	}
+	catch(e) {
+		Components.utils.import("resource:///modules/mailServices.js");
+		Components.utils.import("resource://gre/modules/Services.jsm");
+	}
 
 	var cardbookUtils = {
 		
@@ -1674,6 +1680,15 @@ if ("undefined" == typeof(cardbookUtils)) {
 				}
 			}
 			return result;
+		},
+
+		getFirstAvailableAccount: function() {
+			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
+				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] != "SEARCH") {
+					return cardbookRepository.cardbookAccounts[i][4];
+				}
+			}
+			return "-1";
 		},
 
 		isFileAlreadyOpen: function(aAccountPath) {

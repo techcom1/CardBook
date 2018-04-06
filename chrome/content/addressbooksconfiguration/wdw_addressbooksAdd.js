@@ -1,6 +1,12 @@
 if ("undefined" == typeof(wdw_addressbooksAdd)) {
-	Components.utils.import("resource:///modules/mailServices.js");
-	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	try {
+		ChromeUtils.import("resource:///modules/mailServices.js");
+		ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
+	catch(e) {
+		Components.utils.import("resource:///modules/mailServices.js");
+		Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
 
 	var wdw_addressbooksAdd = {
 

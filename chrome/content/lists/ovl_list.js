@@ -1,7 +1,14 @@
 if ("undefined" == typeof(cardbookListConversion)) {
-	Components.utils.import("resource:///modules/jsmime.jsm");
-	Components.utils.import("resource://gre/modules/Services.jsm");
-	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	try {
+		ChromeUtils.import("resource:///modules/jsmime.jsm");
+		ChromeUtils.import("resource://gre/modules/Services.jsm");
+		ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
+	catch(e) {
+		Components.utils.import("resource:///modules/jsmime.jsm");
+		Components.utils.import("resource://gre/modules/Services.jsm");
+		Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
 
 	function cardbookListConversion(aEmails, aIdentity) {
 		this.emailResult = [];

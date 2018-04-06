@@ -1,4 +1,9 @@
-Components.utils.import("resource://gre/modules/Services.jsm");
+try {
+	ChromeUtils.import("resource://gre/modules/Services.jsm");
+}
+catch(e) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+}
 
 window.addEventListener("focus", function() {
 	document.getElementById("cardboookModeBroadcasterWindow").setAttribute("mode", "cardbook");

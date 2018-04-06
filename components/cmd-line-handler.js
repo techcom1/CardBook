@@ -1,5 +1,11 @@
-Components.utils.import("resource://gre/modules/Services.jsm");
-Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
+try {
+	ChromeUtils.import("resource://gre/modules/Services.jsm");
+	ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+}
+catch(e) {
+	Components.utils.import("resource://gre/modules/Services.jsm");
+	Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
+}
 
 function CardBookCmdLineHandler() {}
 

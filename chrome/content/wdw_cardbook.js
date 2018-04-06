@@ -1,9 +1,18 @@
 if ("undefined" == typeof(wdw_cardbook)) {
-	Components.utils.import("resource:///modules/mailServices.js");
-	Components.utils.import("resource://gre/modules/Services.jsm");
-	Components.utils.import("resource://gre/modules/PluralForm.jsm");
-	Components.utils.import("resource://gre/modules/AddonManager.jsm");
-	Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	try {
+		ChromeUtils.import("resource:///modules/mailServices.js");
+		ChromeUtils.import("resource://gre/modules/Services.jsm");
+		ChromeUtils.import("resource://gre/modules/PluralForm.jsm");
+		ChromeUtils.import("resource://gre/modules/AddonManager.jsm");
+		ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
+	catch(e) {
+		Components.utils.import("resource:///modules/mailServices.js");
+		Components.utils.import("resource://gre/modules/Services.jsm");
+		Components.utils.import("resource://gre/modules/PluralForm.jsm");
+		Components.utils.import("resource://gre/modules/AddonManager.jsm");
+		Components.utils.import("chrome://cardbook/content/cardbookRepository.js");
+	}
 
 	var wdw_cardbook = {
 		
