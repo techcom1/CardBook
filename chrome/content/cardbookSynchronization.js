@@ -2608,7 +2608,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					case "overwrite":
 						if (cardbookRepository.cardbookCards[myTargetPrefId+"::"+aNewCard.uid]) {
 							var myTargetCard = cardbookRepository.cardbookCards[myTargetPrefId+"::"+aNewCard.uid];
-							cardbookRepository.deleteCards([myTargetCard]);
+							cardbookRepository.deleteCard(myTargetCard);
 						}
 						cardbookRepository.saveCard(myNullCard, aNewCard, aSource);
 						break;
@@ -2722,7 +2722,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						var myFile = myDirectory;
 						myFile.append(cardbookUtils.getFileNameForCard(aDirName, myCard.fn, myCard.uid));
 						if (myFile.exists() == false){
-							myFile.create( Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420 );
+							myFile.create(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420);
 						}
 						// then write the files one by one to avoid freeze
 						Services.tm.currentThread.dispatch({ run: function() {
@@ -2742,7 +2742,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 				myFile.initWithPath(aFileName);
 
 				if (myFile.exists() == false){
-					myFile.create( Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420 );
+					myFile.create(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420);
 				}
 				
 				var outputStream = Components.classes["@mozilla.org/network/file-output-stream;1"].createInstance(Components.interfaces.nsIFileOutputStream);

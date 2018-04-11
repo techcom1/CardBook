@@ -81,13 +81,12 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			var strBundle = document.getElementById("cardbook-strings");
 			var date_of_today = new Date();
 			for (var i = 0; i < cardbookBirthdaysUtils.lBirthdayList.length; i++) {
-
 				var ldaysUntilNextBirthday = cardbookBirthdaysUtils.lBirthdayList[i][0];
 				var lBirthdayName  = cardbookBirthdaysUtils.lBirthdayList[i][1];
 				var lBirthdayAge = cardbookBirthdaysUtils.lBirthdayList[i][2];
 
 				var lBirthdayDate = new Date();
-				lBirthdayDate.setDate(date_of_today.getDate()+parseInt(ldaysUntilNextBirthday));
+				lBirthdayDate.setDate(date_of_today.getUTCDate()+parseInt(ldaysUntilNextBirthday));
 
 				// generate Date as Ical compatible text string
 				var lYear = lBirthdayDate.getFullYear();
@@ -120,7 +119,8 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 				var lBirthdayId = cardbookUtils.getUUID();
 
 				var leventEntryTitle = cardbookPreferences.getStringPref("extensions.cardbook.eventEntryTitle");
-				var lBirthdayTitle = leventEntryTitle.replace("%1$S", lBirthdayName).replace("%2$S",lBirthdayAge).replace("%3$S",lYear).replace("%S", lBirthdayName).replace("%S",lBirthdayAge);
+				var leventDate = cardbookDates.convertDateStringToDate(cardbookBirthdaysUtils.lBirthdayList[i][3], cardbookBirthdaysUtils.lBirthdayList[i][7]);
+				var lBirthdayTitle = leventEntryTitle.replace("%1$S", lBirthdayName).replace("%2$S",lBirthdayAge).replace("%3$S",leventDate.getFullYear()).replace("%S", lBirthdayName).replace("%S",lBirthdayAge);
 
 				// prepare Listener
 				var getListener = {
@@ -165,8 +165,13 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 				catch(e) {
 					Components.utils.import("resource://calendar/modules/calUtils.jsm");
 				}
-				startRange = cal.jsDateToDateTime(startRange);
-				endRange = cal.jsDateToDateTime(endRange);
+				if (cal.dtz) {
+					startRange = cal.dtz.jsDateToDateTime(startRange);
+					endRange = cal.dtz.jsDateToDateTime(endRange);
+				} else {
+					startRange = cal.jsDateToDateTime(startRange);
+					endRange = cal.jsDateToDateTime(endRange);
+				}
 				aCalendar1.getItems(calICalendar.ITEM_FILTER_TYPE_EVENT, 0, startRange, endRange, getListener);
 			}
 		},

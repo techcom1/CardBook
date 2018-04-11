@@ -13,7 +13,7 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 			if (aFile.exists()) {
 				aFile.remove(true);
 			}
-			aFile.create( Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420 );
+			aFile.create(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420);
 			var outStream = Components.classes["@mozilla.org/network/file-output-stream;1"].createInstance(Components.interfaces.nsIFileOutputStream);
 			outStream.init(aFile, 0x04 | 0x08 | 0x20, -1, 0); // readwrite, create, truncate
 			var inputStream = aDataValue.QueryInterface(Components.interfaces.nsIInputStream)

@@ -49,7 +49,7 @@ if ("undefined" == typeof(cardbookMailPopularity)) {
 			
 			if (!cacheDir.exists()) {
 				// read and write permissions to owner and group, read-only for others.
-				cacheDir.create( Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420 );
+				cacheDir.create(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420);
 			}
 			if (cacheDir.exists()) {
 				var sortable = [];

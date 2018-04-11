@@ -470,7 +470,7 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 		saveTemplateNext: function (aFile) {
 			try {
 				if (!(aFile.exists())) {
-					aFile.create( Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420 );
+					aFile.create(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420);
 				}
 
 				var result = [];

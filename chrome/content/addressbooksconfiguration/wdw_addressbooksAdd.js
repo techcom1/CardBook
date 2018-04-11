@@ -849,7 +849,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 					if (myFile.exists()) {
 						myFile.remove(true);
 					}
-					myFile.create( Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420 );
+					myFile.create(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420);
 					cardbookSynchronization.writeContentToFile(myFile.path, wdw_addressbooksAdd.gFinishParams[i].searchDef, "UTF8");
 					cardbookRepository.addAccountToRepository(wdw_addressbooksAdd.gFinishParams[i].dirPrefId, wdw_addressbooksAdd.gFinishParams[i].name, wdw_addressbooksAdd.gType, myFile.path, wdw_addressbooksAdd.gFinishParams[i].username, wdw_addressbooksAdd.gFinishParams[i].color,
 																wdw_addressbooksAdd.gFinishParams[i].enabled, true, wdw_addressbooksAdd.gFinishParams[i].vcard, false, null, null, wdw_addressbooksAdd.gFinishParams[i].DBcached, true, "60", true);
@@ -904,7 +904,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 						if (myFile.exists()) {
 							myFile.remove(true);
 						}
-						myFile.create( Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420 );
+						myFile.create(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420);
 					}
 					var myMode = "WINDOW";
 					cardbookSynchronization.loadFile(myFile, wdw_addressbooksAdd.gFinishParams[i].dirPrefId, myMode, "NOIMPORTFILE", "");

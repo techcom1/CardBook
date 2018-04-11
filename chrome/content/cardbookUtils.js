@@ -572,6 +572,13 @@ if ("undefined" == typeof(cardbookUtils)) {
 			vCardData = this.appendToVcardData2(vCardData,"PRODID",false,vCard.prodid);
 			vCardData = this.appendToVcardData2(vCardData,"UID",false,vCard.uid);
 			vCardData = this.appendToVcardData2(vCardData,"CATEGORIES",false,this.unescapeArrayComma(this.escapeArrayComma(vCard.categories)).join(","));
+			// FN required
+			if (vCard.fn == "") {
+				vCardData = vCardData + "FN:" + "\r\n";
+			} else {
+				vCardData = this.appendToVcardData2(vCardData,"FN",false,this.escapeStrings(vCard.fn));
+			}
+			// N required in 3.0
 			if (vCard.version == "3.0") {
 				vCardData = this.appendToVcardData2(vCardData,"N",false,this.escapeStrings(vCard.lastname) + ";" + this.escapeStrings(vCard.firstname) + ";" +
 														this.escapeStrings(vCard.othername) + ";" + this.escapeStrings(vCard.prefixname) + ";" + this.escapeStrings(vCard.suffixname));
@@ -579,7 +586,6 @@ if ("undefined" == typeof(cardbookUtils)) {
 				vCardData = this.appendToVcardData2(vCardData,"N",false,this.escapeStrings(vCard.lastname) + ";" + this.escapeStrings(vCard.firstname) + ";" +
 														this.escapeStrings(vCard.othername) + ";" + this.escapeStrings(vCard.prefixname) + ";" + this.escapeStrings(vCard.suffixname));
 			}
-			vCardData = this.appendToVcardData2(vCardData,"FN",false,this.escapeStrings(vCard.fn));
 			vCardData = this.appendToVcardData2(vCardData,"NICKNAME",false,this.escapeStrings(vCard.nickname));
 			vCardData = this.appendToVcardData2(vCardData,"SORT-STRING",false,vCard.sortstring);
 			vCardData = this.appendToVcardData2(vCardData,"BDAY",false,vCard.bday);

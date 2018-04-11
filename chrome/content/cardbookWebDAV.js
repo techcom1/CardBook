@@ -7,9 +7,10 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 		Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 		Components.utils.import("resource://gre/modules/Services.jsm");
 	}
-	if (Services.vc.compare(Services.appinfo.version, "60.0") < 0) {
+	try {
 		Components.utils.importGlobalProperties(["XMLHttpRequest"]);
 	}
+	catch(e) {}
 
 	function XMLToJSONParser(doc) {
 		this._buildTree(doc);
@@ -396,7 +397,7 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 			return httpChannel;
 		},
 	
-		sendHTTPRequest: function(method, body, headers, aCleanBody, aXhrOrig) {
+		sendHTTPRequest: function(method, body, headers, aCleanBody, aXhrOrig, aOverrideMime) {
 			try {
 				var xhr = this.makeHTTPRequest(method, body, headers, aCleanBody, aXhrOrig);
 	
@@ -421,6 +422,9 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 					}
 				};
 	
+				if (aOverrideMime) {
+					xhr.overrideMimeType('text/plain; charset=x-user-defined');
+				}
 				if (body) {
 					xhr.send(body);
 				} else {
@@ -481,7 +485,7 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 				if (parameters.accept !== null) {
 					headers.accept = parameters.accept;
 				}
-				this.sendHTTPRequest("GET", null, headers, "override");
+				this.sendHTTPRequest("GET", null, headers, null, null, true);
 			} else if (operation == "PUT") {
 				if ((this.etag != null && this.etag !== undefined && this.etag != "") && (this.etag != "0")) {
 					this.sendHTTPRequest(operation, parameters.data, { "content-type": parameters.contentType,

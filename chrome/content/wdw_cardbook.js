@@ -120,6 +120,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			wdw_cardbook.addTreeColumns();
 			wdw_cardbook.refreshAccountsInDirTree();
 			var accountShown = cardbookPreferences.getStringPref("extensions.cardbook.accountShown");
+			wdw_cardbook.currentAccountId = accountShown;
 			cardbookUtils.setColumnsStateForAccount(accountShown);
 			cardbookUtils.setSelectedAccount(accountShown, wdw_cardbook.currentFirstVisibleRow, wdw_cardbook.currentLastVisibleRow);
 			wdw_cardbook.refreshWindow();
@@ -458,12 +459,13 @@ if ("undefined" == typeof(wdw_cardbook)) {
 
 				cardbookRepository.importConflictChoice = "duplicate";
 				cardbookRepository.importConflictChoicePersist = true;
+				var askUser = false;
 				var dataLength = listOfSelectedCard.length;
 				for (var i = 0; i < dataLength; i++) {
 					if (i == dataLength - 1) {
-						cardbookSynchronization.importCard(listOfSelectedCard[i], listOfSelectedCard[i].dirPrefId, false, "cardbook.cardAddedDirect");
+						cardbookSynchronization.importCard(listOfSelectedCard[i], listOfSelectedCard[i].dirPrefId, askUser, "cardbook.cardAddedDirect");
 					} else {
-						cardbookSynchronization.importCard(listOfSelectedCard[i], listOfSelectedCard[i].dirPrefId, false);
+						cardbookSynchronization.importCard(listOfSelectedCard[i], listOfSelectedCard[i].dirPrefId, askUser);
 					}
 				}
 				cardbookRepository.reWriteFiles(listOfFileToRewrite);
@@ -618,7 +620,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		exportCardsToFileNext: function (aFile, aListOfSelectedCard) {
 			try {
 				if (!(aFile.exists())) {
-					aFile.create( Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420 );
+					aFile.create(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420);
 				}
 
 				if (cardbookUtils.isFileAlreadyOpen(aFile.path)) {
@@ -655,7 +657,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			try {
 				if (aDirectory != null && aDirectory !== undefined && aDirectory != "") {
 					if (aDirectory.exists() == false){
-						aDirectory.create( Components.interfaces.nsIFile.DIRECTORY_TYPE, 0o774 );
+						aDirectory.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0o774);
 					}
 	
 					if (cardbookUtils.isDirectoryAlreadyOpen(aDirectory.path)) {
@@ -842,6 +844,8 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					if (myDirPrefIdType !== "SEARCH") {
 						if (myDirPrefIdEnabled) {
 							if (!myDirPrefIdReadOnly) {
+								cardbookRepository.importConflictChoicePersist = false;
+								cardbookRepository.importConflictChoice = "overwrite";
 								var dataArray = str.split("@@@@@");
 								if (dataArray.length) {
 									var dataLength = dataArray.length
@@ -854,21 +858,16 @@ if ("undefined" == typeof(wdw_cardbook)) {
 											}
 											if (myDirPrefId == myCard.dirPrefId) {
 												if (myCategory != "" && myCard.categories.includes(myCategory)) {
-													cardbookRepository.importConflictChoicePersist = true;
 													cardbookRepository.importConflictChoice = "duplicate";
 													var askUser = false;
 												} else if (myCategory == "") {
-													cardbookRepository.importConflictChoicePersist = true;
 													cardbookRepository.importConflictChoice = "duplicate";
 													var askUser = false;
 												} else {
-													cardbookRepository.importConflictChoicePersist = true;
 													cardbookRepository.importConflictChoice = "update";
 													var askUser = false;
 												}
 											} else {
-												cardbookRepository.importConflictChoicePersist = false;
-												cardbookRepository.importConflictChoice = "overwrite";
 												var askUser = true;
 											}
 											// performance reason
@@ -1450,6 +1449,8 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			if (myDirPrefIdType !== "SEARCH") {
 				if (myDirPrefIdEnabled) {
 					if (!myDirPrefIdReadOnly) {
+						cardbookRepository.importConflictChoicePersist = false;
+						cardbookRepository.importConflictChoice = "overwrite";
 						aEvent.preventDefault();
 						var dataArray = aEvent.dataTransfer.getData("text/plain").split("@@@@@");
 						if (dataArray.length) {
@@ -1463,13 +1464,10 @@ if ("undefined" == typeof(wdw_cardbook)) {
 										} else if (myCategory == "") {
 											continue;
 										} else {
-											cardbookRepository.importConflictChoicePersist = true;
 											cardbookRepository.importConflictChoice = "update";
 											var askUser = false;
 										}
 									} else {
-										cardbookRepository.importConflictChoicePersist = false;
-										cardbookRepository.importConflictChoice = "overwrite";
 										var askUser = true;
 									}
 									// performance reason
@@ -1682,7 +1680,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			if (myFile.exists()) {
 				myFile.remove(true);
 			}
-			myFile.create( Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420 );
+			myFile.create(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420);
 			cardbookSynchronization.writeContentToFile(myFile.path, aSearchDef, "UTF8");
 			cardbookUtils.formatStringForOutput("addressbookModified", [aName]);
 			wdw_cardbooklog.addActivity("addressbookModified", [aName], "editItem");

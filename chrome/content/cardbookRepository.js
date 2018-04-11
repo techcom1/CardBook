@@ -1484,6 +1484,35 @@ var cardbookRepository = {
 		}
 	},
 
+	deleteCard: function (aCard, aSource) {
+		try {
+			if (!cardbookPreferences.getReadOnly(aCard.dirPrefId)) {
+				var myDirPrefIdName = cardbookPreferences.getName(aCard.dirPrefId);
+				var myDirPrefIdType = cardbookPreferences.getType(aCard.dirPrefId);
+				if (myDirPrefIdType === "FILE") {
+					listOfFileToRewrite.push(aCard.dirPrefId);
+					cardbookRepository.removeCardFromRepository(aCard, false);
+				} else if (myDirPrefIdType === "CACHE" || myDirPrefIdType === "DIRECTORY" || myDirPrefIdType === "LOCALDB") {
+					cardbookRepository.removeCardFromRepository(aCard, true);
+				} else {
+					if (cardbookUtils.searchTagCreated(aCard)) {
+						cardbookRepository.removeCardFromRepository(aCard, true);
+					} else {
+						cardbookUtils.addTagDeleted(aCard);
+						cardbookRepository.addCardToCache(aCard, "WINDOW", cardbookUtils.getFileCacheNameFromCard(aCard));
+						cardbookRepository.removeCardFromRepository(aCard, false);
+					}
+				}
+				cardbookUtils.formatStringForOutput("cardDeletedOK", [myDirPrefIdName, aCard.fn]);
+				wdw_cardbooklog.addActivity("cardDeletedOK", [myDirPrefIdName, aCard.fn], "deleteMail");
+				cardbookUtils.notifyObservers(aSource);
+			}
+		}
+		catch (e) {
+			wdw_cardbooklog.updateStatusProgressInformation("cardbookRepository.deleteCard error : " + e, "Error");
+		}
+	},
+
 	deleteCards: function (aListOfCards, aSource) {
 		try {
 			Services.tm.currentThread.dispatch({ run: function() {
