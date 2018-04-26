@@ -106,6 +106,8 @@ Translations by:
 * Loan ([vi](https://github.com/CardBook/CardBook/tree/master/chrome/locale/vi)) [Tải xuống ngay](https://addons.mozilla.org/vi/thunderbird/addon/cardbook/)
 * Nguyễn ([vi](https://github.com/CardBook/CardBook/tree/master/chrome/locale/vi)) [Tải xuống ngay](https://addons.mozilla.org/vi/thunderbird/addon/cardbook/)
 * Thanh ([vi](https://github.com/CardBook/CardBook/tree/master/chrome/locale/vi)) [Tải xuống ngay](https://addons.mozilla.org/vi/thunderbird/addon/cardbook/)
+* [Transvision](https://transvision.mozfr.org/)
+* [KDE Localization](https://l10n.kde.org/dictionary/search-translations.php)
 
 
 Trailblazer:
