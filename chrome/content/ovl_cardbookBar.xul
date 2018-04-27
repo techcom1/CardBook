@@ -22,6 +22,7 @@
 	<!ENTITY % orgDTD SYSTEM "chrome://cardbook/locale/wdw_orgEdition.dtd"> %orgDTD;
 	<!ENTITY % adrDTD SYSTEM "chrome://cardbook/locale/wdw_adrEdition.dtd"> %adrDTD;
 	<!ENTITY % listsDTD SYSTEM "chrome://cardbook/locale/wdw_lists.dtd"> %listsDTD;
+	<!ENTITY % imagesDTD SYSTEM "chrome://cardbook/locale/wdw_images.dtd"> %imagesDTD;
 	<!ENTITY % logDTD SYSTEM "chrome://cardbook/locale/wdw_logEdition.dtd"> %logDTD;
 	<!ENTITY % configurationDTD SYSTEM "chrome://cardbook/locale/wdw_cardbookConfiguration.dtd"> %configurationDTD;
 ]>
@@ -353,8 +354,12 @@
 		<menuitem id="exportCardsToDirFromCards" label="&exportCardToDirLabel;" oncommand="wdw_cardbook.exportCardsFromCards(this);"/>
 	</menupopup>
 
+	<menupopup id="imageCardContextMenu">
+		<menuitem id="saveImageCard" label="&saveImageCardLabel;" oncommand="wdw_imageEdition.saveImageCard();"/>
+		<menuitem id="copyImageCard" label="&copyImageCardLabel;" oncommand="wdw_imageEdition.copyImageCard();"/>
+	</menupopup>
+
 	<menupopup id="listsContextMenu" onpopupshowing="wdw_cardbook.cardListContextShowing(event);">
 		<menuitem id="editCardFromList" label="&editCardFromListLabel;" oncommand="wdw_cardbook.editCardFromList();"/>
 	</menupopup>
-
 </overlay>

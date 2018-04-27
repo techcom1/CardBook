@@ -90,10 +90,10 @@
 		
 		<separator class="thin"/>
 		
-		<tree id="abResultsTree" class="plain" flex="1" context="cardProperties" persist="height sortDirection sortResource" sortDirection="ascending" sortResource="Fn"
+		<tree id="abResultsTree" class="plain" flex="1" context="cardProperties" persist="height sortDirection sortResource" sortDirection="ascending" sortResource="GeneratedName"
 				 onclick="wdw_cardbookContactsSidebar.sortTrees(event);">
 			<treecols id="abResultsTreeCols">
-				<treecol id="Fn" label="&nameLabel;" flex="1" persist="width ordinal hidden" editable="false"/>
+				<treecol id="GeneratedName" label="&nameLabel;" flex="1" persist="width ordinal hidden" editable="false"/>
 				<splitter class="tree-splitter"/>
 				<treecol id="AB" label="&ABLabel;" flex="1" hidden="true" persist="width ordinal hidden" editable="false"/>
 				<splitter class="tree-splitter"/>

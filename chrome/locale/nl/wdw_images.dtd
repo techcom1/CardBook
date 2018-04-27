@@ -1,5 +1,5 @@
 <!ENTITY addImageCardFromFileLabel "Afbeelding toevoegen uit bestand">
-<!ENTITY addImageCardFromClipboardLabel "Afbeelding toevoegen van prikbord">
-<!ENTITY addImageCardFromUrlLabel "Afbeelding toevoegen van URL op prikbord">
+<!ENTITY pasteImageCardLabel "Afbeelding plakken">
 <!ENTITY saveImageCardLabel "Afbeelding opslaan">
+<!ENTITY copyImageCardLabel "Afbeelding kopiëren">
 <!ENTITY deleteImageCardLabel "Afbeelding verwijderen">

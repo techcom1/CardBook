@@ -1,5 +1,5 @@
 <!ENTITY addImageCardFromFileLabel "Pridėti nuotrauką iš failo">
-<!ENTITY addImageCardFromClipboardLabel "Įtraukti vaizdą iš iškarpinės">
-<!ENTITY addImageCardFromUrlLabel "Pridėti vaizdą iš iškarpinės URL">
+<!ENTITY pasteImageCardLabel "Įklijuoti paveikslėlį">
 <!ENTITY saveImageCardLabel "Išsaugoti paveikslėlį">
+<!ENTITY copyImageCardLabel "Kopijuoti paveikslą">
 <!ENTITY deleteImageCardLabel "Pašalinti vaizdą">

@@ -1,5 +1,5 @@
 <!ENTITY addImageCardFromFileLabel "Kép hozzáadása fájlból">
-<!ENTITY addImageCardFromClipboardLabel "Kép hozzáadása a vágólapról">
-<!ENTITY addImageCardFromUrlLabel "Kép hozzáadása vágólapra webcímet">
+<!ENTITY pasteImageCardLabel "Kép beillesztése">
 <!ENTITY saveImageCardLabel "Kép mentése">
+<!ENTITY copyImageCardLabel "Kép másolása">
 <!ENTITY deleteImageCardLabel "Kép törlése">

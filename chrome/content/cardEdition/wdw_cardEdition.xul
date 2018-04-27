@@ -2,6 +2,8 @@
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://cardbook/skin/cardbookMain.css" type="text/css"?>
 <?xml-stylesheet href="chrome://cardbook/skin/cardbookAddressBooks.css" type="text/css"?>
+<!-- for the icons of the CardBook menus -->
+<?xml-stylesheet href="chrome://cardbook-os/skin/cardbookMenuIcons.css" type="text/css"?>
 <!-- for the small-button class -->
 <?xml-stylesheet href="chrome://messenger/skin/searchDialog.css" type="text/css"?>
 <!-- for the minimonth class -->
@@ -59,9 +61,9 @@
 
 	<menupopup id="imageCardContextMenu" onpopupshowing="wdw_imageEdition.imageCardContextShowing();">
 		<menuitem id="addImageCardFromFile" label="&addImageCardFromFileLabel;" oncommand="wdw_imageEdition.addImageCardFromFile();"/>
-		<menuitem id="addImageCardFromClipboard" label="&addImageCardFromClipboardLabel;" oncommand="wdw_imageEdition.addImageCardFromClipboard();"/>
-		<menuitem id="addImageCardFromUrl" label="&addImageCardFromUrlLabel;" oncommand="wdw_imageEdition.addImageCardFromUrl();"/>
+		<menuitem id="pasteImageCard" label="&pasteImageCardLabel;" oncommand="wdw_imageEdition.pasteImageCard();"/>
 		<menuitem id="saveImageCard" label="&saveImageCardLabel;" oncommand="wdw_imageEdition.saveImageCard();"/>
+		<menuitem id="copyImageCard" label="&copyImageCardLabel;" oncommand="wdw_imageEdition.copyImageCard();"/>
 		<menuitem id="deleteImageCard" label="&deleteImageCardLabel;" oncommand="wdw_imageEdition.deleteImageCard();"/>
 	</menupopup>
 
@@ -127,7 +129,9 @@
 					<vbox align="center" width="170px">
 						<hbox id="imageBox" align="center" height="170px">
 							<html:img id="imageForSizing" hidden="true"/>
-							<image id="defaultCardImage" context="imageCardContextMenu" ondblclick="wdw_imageEdition.addImageCardFromFile();"/>
+							<image id="defaultCardImage" context="imageCardContextMenu" ondblclick="wdw_imageEdition.addImageCardFromFile();" 
+								ondrop="wdw_imageEdition.dragImageCard(event);" ondragenter="wdw_imageEdition.checkDragImageCard(event);"
+								ondragover="wdw_imageEdition.checkDragImageCard(event);"/>
 						</hbox>
 					</vbox>
 				</hbox>

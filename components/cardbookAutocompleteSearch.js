@@ -547,95 +547,95 @@ cardbookAutocompleteSearch.prototype = {
 	},
 
 	startSearchFor: function startSearchFor(aSearchString, aDirEntry, aStyle) {
-		try {
-			var uri = aDirEntry.uri;
-			var context;
-			if (uri in this.LDAPContexts) {
-				context = this.LDAPContexts[uri];
-			} else {
-				context = {};
+		var uri = aDirEntry.uri;
+		var context;
+		if (uri in this.LDAPContexts) {
+			context = this.LDAPContexts[uri];
+		} else {
+			context = {};
+			
+			context.style = aStyle;
+			context.showAddressbookComments = cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteShowAddressbook");
+			
+			context.bookName = aDirEntry.name;
+			context.book = MailServices.ab.getDirectory(uri).QueryInterface(Components.interfaces.nsIAbLDAPDirectory);
+			
+			context.numQueries = 0;
+			context.query = Components.classes["@mozilla.org/addressbook/ldap-directory-query;1"]
+					.createInstance(Components.interfaces.nsIAbDirectoryQuery);
+			context.attributes = Components.classes["@mozilla.org/addressbook/ldap-attribute-map;1"]
+					.createInstance(Components.interfaces.nsIAbLDAPAttributeMap);
+			context.attributes.setAttributeList("DisplayName", context.book.attributeMap.getAttributeList("DisplayName", {}), true);
+			context.attributes.setAttributeList("PrimaryEmail", context.book.attributeMap.getAttributeList("PrimaryEmail", {}), true);
+			LDAPAbCardFormatter.requiredPropertiesFromBook(context.book).forEach(function(aProperty) {
+				var alreadyMapped = context.attributes.getAttributeList(aProperty);
+				if (alreadyMapped) {
+					return;
+				}
+				context.attributes.setAttributeList(aProperty, context.book.attributeMap.getAttributeList(aProperty, {}), true);
+			}, this);
+			
+			context.listener = {
+				// nsIAbDirSearchListener
 				
-				context.style = aStyle;
-				context.showAddressbookComments = cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteShowAddressbook");
-				
-				context.bookName = aDirEntry.name;
-				context.book = MailServices.ab.getDirectory(uri).QueryInterface(Components.interfaces.nsIAbLDAPDirectory);
-				
-				context.numQueries = 0;
-				context.query = Components.classes["@mozilla.org/addressbook/ldap-directory-query;1"]
-						.createInstance(Components.interfaces.nsIAbDirectoryQuery);
-				context.attributes = Components.classes["@mozilla.org/addressbook/ldap-attribute-map;1"]
-						.createInstance(Components.interfaces.nsIAbLDAPAttributeMap);
-				context.attributes.setAttributeList("DisplayName", context.book.attributeMap.getAttributeList("DisplayName", {}), true);
-				context.attributes.setAttributeList("PrimaryEmail", context.book.attributeMap.getAttributeList("PrimaryEmail", {}), true);
-				LDAPAbCardFormatter.requiredPropertiesFromBook(context.book).forEach(function(aProperty) {
-					var alreadyMapped = context.attributes.getAttributeList(aProperty);
-					if (alreadyMapped) {
+				onSearchFinished: (function onSearchFinished(aResult, aErrorMsg) {
+					context.numQueries--;
+					if (!context || context.stopped || context.numQueries > 0) {
 						return;
 					}
-					context.attributes.setAttributeList(aProperty, context.book.attributeMap.getAttributeList(aProperty, {}), true);
-				}, this);
+
+					context.finished = true;
+					context.result = aResult;
+					context.errorMsg = aErrorMsg;
+
+					if (Object.keys(this.LDAPContexts).some(function(aURI) {
+							return !this.LDAPContexts[aURI].finished;
+						}, this)) {
+						return;
+					}
+
+					return this.onSearchFinished(aResult, aErrorMsg, context);
+				}).bind(this),
 				
-				context.listener = {
-					// nsIAbDirSearchListener
-					
-					onSearchFinished: (function onSearchFinished(aResult, aErrorMsg) {
-						context.numQueries--;
-						if (!context || context.stopped || context.numQueries > 0) {
-							return;
-						}
+				onSearchFoundCard: (function onSearchFoundCard(aCard) {
+					if (!context || context.stopped) {
+						return;
+					}
+					return this.onSearchFoundCard(aCard, context);
+				}).bind(this)
+			};
+			
+			this.LDAPContexts[uri] = context;
+		}
 
-						context.finished = true;
-						context.result = aResult;
-						context.errorMsg = aErrorMsg;
+		let args = Components.classes["@mozilla.org/addressbook/directory/query-arguments;1"]
+				.createInstance(Components.interfaces.nsIAbDirectoryQueryArguments);
 
-						if (Object.keys(this.LDAPContexts).some(function(aURI) {
-								return !this.LDAPContexts[aURI].finished;
-							}, this)) {
-							return;
-						}
+		let filterTemplate = context.book.getStringValue("autoComplete.filterTemplate", "");
+		if (!filterTemplate) {
+			filterTemplate = "(|(cn=%v1*%v2-*)(mail=%v1*%v2-*)(sn=%v1*%v2-*))";
+		}
 
-						return this.onSearchFinished(aResult, aErrorMsg, context);
-					}).bind(this),
-					
-					onSearchFoundCard: (function onSearchFoundCard(aCard) {
-						if (!context || context.stopped) {
-							return;
-						}
-						return this.onSearchFoundCard(aCard, context);
-					}).bind(this)
-				};
-				
-				this.LDAPContexts[uri] = context;
-			}
+		let ldapSvc = Components.classes["@mozilla.org/network/ldap-service;1"]
+				.getService(Components.interfaces.nsILDAPService);
+		let filter = ldapSvc.createFilter(1024, filterTemplate, "", "", "", aSearchString);
+		if (!filter) {
+			throw new Error("Filter string is empty, check if filterTemplate variable is valid in prefs.js.");
+		}
+		args.typeSpecificArg = context.attributes;
+		args.querySubDirectories = true;
+		args.filter = filter;
 
-			let args = Components.classes["@mozilla.org/addressbook/directory/query-arguments;1"]
-					.createInstance(Components.interfaces.nsIAbDirectoryQueryArguments);
-
-			let filterTemplate = context.book.getStringValue("autoComplete.filterTemplate", "");
-			if (!filterTemplate) {
-				filterTemplate = "(|(cn=%v1*%v2-*)(mail=%v1*%v2-*)(sn=%v1*%v2-*))";
-			}
-
-			let ldapSvc = Components.classes["@mozilla.org/network/ldap-service;1"]
-					.getService(Components.interfaces.nsILDAPService);
-			let filter = ldapSvc.createFilter(1024, filterTemplate, "", "", "", aSearchString);
-			if (!filter) {
-				throw new Error("Filter string is empty, check if filterTemplate variable is valid in prefs.js.");
-			}
-			args.typeSpecificArg = context.attributes;
-			args.querySubDirectories = true;
-			args.filter = filter;
-
-			context.finished = false;
-			context.stopped = false;
-			context.result = null;
-			context.errorMsg = null;
-			context.numQueries++;
+		context.finished = false;
+		context.stopped = false;
+		context.result = null;
+		context.errorMsg = null;
+		context.numQueries++;
+		try {
 			context.contextId = context.query.doQuery(context.book, args, context.listener, context.book.maxHits, 0);
 		} catch(error) {
-			Components.utils.reportError("cardbookAutocompleteSearch.startSearchFor : " + error);
-			// throw error;
+			Components.utils.reportError("cardbookAutocompleteSearch.startSearchFor context.query.doQuery : " + error);
+			context.listener.onSearchFinished(context.result, error);
 		}
 	},
 	

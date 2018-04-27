@@ -74,7 +74,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 				columnName = myTree.getAttribute("sortResource");
 			}
 			switch(columnName) {
-				case "Fn":
+				case "GeneratedName":
 					columnArray=0;
 					break;
 				case "AB":
@@ -123,7 +123,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 				cycleHeader: function(idx) { return false },
 				isEditable: function(idx, column) { return false },
 				getCellText: function(idx, column) {
-					if (column.id == "Fn") return wdw_cardbookContactsSidebar.searchResults[idx][0];
+					if (column.id == "GeneratedName") return wdw_cardbookContactsSidebar.searchResults[idx][0];
 					else if (column.id == "AB") return wdw_cardbookContactsSidebar.searchResults[idx][1];
 					else if (column.id == "Emails") return wdw_cardbookContactsSidebar.searchResults[idx][2];
 				},

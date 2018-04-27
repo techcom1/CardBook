@@ -233,7 +233,9 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 					changed = true;
 				}
 				if (changed) {
-					wdw_findDuplicates.load();
+					wdw_findDuplicates.gResults.splice(myId, 1)
+					wdw_findDuplicates.loadCssRules();
+					wdw_findDuplicates.displayResults();
 				}
 			};
 			aButton.addEventListener("click", fireButton, false);

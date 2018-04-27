@@ -36,6 +36,7 @@
 		<menupopup id="urlTreeContextMenu"/>
 		<menupopup id="accountsOrCatsTreeContextMenu"/>
 		<menupopup id="cardsTreeContextMenu"/>
+		<menupopup id="imageCardContextMenu"/>
 		<menupopup id="listsContextMenu"/>
 		
 		<hbox id="mainHbox" flex="1">
@@ -218,7 +219,7 @@
 										<vbox id="imageBox" align="center" width="170px">
 											<hbox align="center" height="170px">
 												<html:img id="imageForSizing" hidden="true"/>
-												<image id="defaultCardImage"/>
+												<image id="defaultCardImage" context="imageCardContextMenu"/>
 											</hbox>
 										</vbox>
 										<vbox flex="1">

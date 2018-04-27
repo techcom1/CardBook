@@ -1,5 +1,5 @@
 <!ENTITY addImageCardFromFileLabel "Aggiungi immagine da file">
-<!ENTITY addImageCardFromClipboardLabel "Aggiungi immagine da appunti">
-<!ENTITY addImageCardFromUrlLabel "Aggiungi immagine da URL negli appunti">
+<!ENTITY pasteImageCardLabel "Incolla immagine">
 <!ENTITY saveImageCardLabel "Salva immagine">
+<!ENTITY copyImageCardLabel "Copia immagine">
 <!ENTITY deleteImageCardLabel "Elimina immagine">

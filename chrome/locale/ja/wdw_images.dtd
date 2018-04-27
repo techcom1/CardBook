@@ -1,5 +1,5 @@
 <!ENTITY addImageCardFromFileLabel "ファイルからイメージを追加する">
-<!ENTITY addImageCardFromClipboardLabel "クリップボードから画像を追加する">
-<!ENTITY addImageCardFromUrlLabel "クリップボードのユニフォームリソースロケータ「URL」から画像を追加する">
+<!ENTITY pasteImageCardLabel "画像を貼り付け">
 <!ENTITY saveImageCardLabel "画像を保存">
+<!ENTITY copyImageCardLabel "画像をコピー">
 <!ENTITY deleteImageCardLabel "画像を削除する">

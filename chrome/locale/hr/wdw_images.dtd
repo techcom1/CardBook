@@ -1,5 +1,5 @@
 <!ENTITY addImageCardFromFileLabel "Dodaj sliku iz dosjea">
-<!ENTITY addImageCardFromClipboardLabel "Dodaj sliku iz isječaka">
-<!ENTITY addImageCardFromUrlLabel "Dodaj sliku s URL isječka">
+<!ENTITY pasteImageCardLabel "Zalijepite sliku">
 <!ENTITY saveImageCardLabel "Sašuvaj sliku">
+<!ENTITY copyImageCardLabel "Kopiraj sliku">
 <!ENTITY deleteImageCardLabel "Izbriši sliku">

@@ -1,5 +1,5 @@
 <!ENTITY addImageCardFromFileLabel "Προσθήκη εικόνας από ένα αρχείο">
-<!ENTITY addImageCardFromClipboardLabel "Προσθέστε εικόνα από το πρόχειρο">
-<!ENTITY addImageCardFromUrlLabel "Προσθήκη εικόνας από μια διεύθυνση παγκόσμιο εντοπισμό πόρων πρόχειρου">
+<!ENTITY pasteImageCardLabel "Επικόλληση εικόνας">
 <!ENTITY saveImageCardLabel "Αποθήκευση εικόνας">
+<!ENTITY copyImageCardLabel "Αντιγραφή εικόνας">
 <!ENTITY deleteImageCardLabel "Διαγράψτε την εικόνα">

@@ -890,7 +890,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 				}
 			}
 
-			document.getElementById('defaultCardImage').src = "";
+			wdw_imageEdition.clearImageCard();
 			cardbookElementTools.deleteRows('addedCardsGroupbox');
 			cardbookElementTools.deleteRows('mailPopularityGroupbox');
 		},
@@ -1899,12 +1899,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		clipboardSet: function (aText, aMessage) {
 			let ss = Components.classes['@mozilla.org/supports-string;1'].createInstance(Components.interfaces.nsISupportsString);
-			if (!ss)
-				return;
-	
 			let trans = Components.classes['@mozilla.org/widget/transferable;1'].createInstance(Components.interfaces.nsITransferable);
-			if (!trans)
-				return;
 	
 			let clipid = Components.interfaces.nsIClipboard;
 			let clipboard   = Components.classes['@mozilla.org/widget/clipboard;1'].getService(clipid);
@@ -1924,7 +1919,6 @@ if ("undefined" == typeof(cardbookUtils)) {
 		clipboardGet: function () {
 			try {
 				let clipboard = Services.clipboard;
-	
 				let trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
 				trans.addDataFlavor("text/unicode");
 	
@@ -2034,7 +2028,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 
 		cleanEtag: function (aEtag) {
 			if (aEtag) {
-				if (aEtag.indexOf("https://") == 0 || aEtag.indexOf("http://") == 0 ) {
+				if (aEtag.startsWith("https://") || aEtag.startsWith("http://") ) {
 					// for open-exchange
 					var myEtagArray = aEtag.split("/");
 					aEtag = myEtagArray[myEtagArray.length - 1];
@@ -2744,7 +2738,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 					cardbookUtils.setCardUUID(aCard);
 				}
 				var windowsList = Services.wm.getEnumerator("CardBook:contactEditionWindow");
-				var found = false
+				var found = false;
 				while (windowsList.hasMoreElements()) {
 					var myWindow = windowsList.getNext();
 					if (myWindow.arguments[0] && myWindow.arguments[0].cardIn && myWindow.arguments[0].cardIn.cbid == aCard.cbid) {

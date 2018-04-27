@@ -11,6 +11,7 @@
 	onclose="wdw_logEdition.cancel();"
 	id="wdw_logEdition" title="&wdw_logEditionTitle;"
 	persist="screenX screenY width height"
+	windowtype="CardBook:logEditionWindow"
 	style="min-width:400px;min-height:100px;">
 	
 	<stringbundleset id="stringbundleset"/>

@@ -75,8 +75,9 @@ if ("undefined" == typeof(ovl_filters)) {
 			}
 			if (aSearchOp == Components.interfaces.nsMsgSearchOp.IsntInAB) {
 				return !matches;
+			} else {
+				return matches;
 			}
-			return matches;
 		},
 
 		onLoad: function () {
@@ -199,10 +200,17 @@ if ("undefined" == typeof(ovl_filters)) {
 				// true && false => false
 				// true || false => true
 				match: function (aMsgHdr, aSearchValue, aSearchOp) {
-					return (ovl_filters._matchEmails(aMsgHdr.author, aSearchValue, aSearchOp) ||
-							ovl_filters._matchEmails(aMsgHdr.recipients, aSearchValue, aSearchOp) ||
-							ovl_filters._matchEmails(aMsgHdr.ccList, aSearchValue, aSearchOp) ||
-							ovl_filters._matchEmails(aMsgHdr.bccList, aSearchValue, aSearchOp));
+					if (aSearchOp == Components.interfaces.nsMsgSearchOp.IsntInAB) {
+						return (ovl_filters._matchEmails(aMsgHdr.author, aSearchValue, aSearchOp) &&
+								ovl_filters._matchEmails(aMsgHdr.recipients, aSearchValue, aSearchOp) &&
+								ovl_filters._matchEmails(aMsgHdr.ccList, aSearchValue, aSearchOp) &&
+								ovl_filters._matchEmails(aMsgHdr.bccList, aSearchValue, aSearchOp));
+					} else {
+						return (ovl_filters._matchEmails(aMsgHdr.author, aSearchValue, aSearchOp) ||
+								ovl_filters._matchEmails(aMsgHdr.recipients, aSearchValue, aSearchOp) ||
+								ovl_filters._matchEmails(aMsgHdr.ccList, aSearchValue, aSearchOp) ||
+								ovl_filters._matchEmails(aMsgHdr.bccList, aSearchValue, aSearchOp));
+					}
 				}
 			};
 			MailServices.filters.addCustomTerm(searchAll);

@@ -243,8 +243,16 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			if (cardbookPreferences.getType(myCurrentDirPrefId) == "SEARCH" && cardbookPreferences.getEnabled(myCurrentDirPrefId)) {
 				wdw_cardbook.setComplexSearchMode(myCurrentDirPrefId);
 			}
-
+			
 			cardbookUtils.setSelectedAccount(aAccountOrCat, wdw_cardbook.currentFirstVisibleRow, wdw_cardbook.currentLastVisibleRow);
+
+			// for the columns
+			if (wdw_cardbook.currentAccountId == aAccountOrCat) {
+				return;
+			}
+			wdw_cardbook.currentAccountId = aAccountOrCat;
+			cardbookPreferences.setStringPref("extensions.cardbook.accountShown", myCurrentDirPrefId);
+			cardbookUtils.setColumnsStateForAccount(myCurrentDirPrefId);
 		},
 
 		displaySearch: function (aListOfCards) {
@@ -1601,7 +1609,17 @@ if ("undefined" == typeof(wdw_cardbook)) {
 
 		openLogEdition: function () {
 			if (cardbookUtils.getBroadcasterOnCardBook()) {
-				var myWindow = window.openDialog("chrome://cardbook/content/wdw_logEdition.xul", "", cardbookRepository.windowParams);
+				var windowsList = Services.wm.getEnumerator("CardBook:logEditionWindow");
+				var found = false;
+				while (windowsList.hasMoreElements()) {
+					var myWindow = windowsList.getNext();
+					myWindow.focus();
+					found = true;
+					break;
+				}
+				if (!found) {
+					var myWindow = window.openDialog("chrome://cardbook/content/wdw_logEdition.xul", "", cardbookRepository.windowParams);
+				}
 			}
 		},
 

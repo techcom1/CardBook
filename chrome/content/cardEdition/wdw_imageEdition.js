@@ -1,40 +1,30 @@
 if ("undefined" == typeof(wdw_imageEdition)) {
 	try {
 		ChromeUtils.import("resource://gre/modules/Services.jsm");
+		ChromeUtils.import("resource://gre/modules/NetUtil.jsm");
+		ChromeUtils.import("resource://gre/modules/FileUtils.jsm");
 	}
 	catch(e) {
 		Components.utils.import("resource://gre/modules/Services.jsm");
+		Components.utils.import("resource://gre/modules/NetUtil.jsm");
+		Components.utils.import("resource://gre/modules/FileUtils.jsm");
 	}
-
+	
 	var wdw_imageEdition = {
 
-		writeImageToFile: function (aFile, aDataValue) {
+		writeImageToFile: function (aFile, aDataValue, aExtension) {
 			// remove an existing image (overwrite)
 			if (aFile.exists()) {
 				aFile.remove(true);
 			}
-			aFile.create(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420);
-			var outStream = Components.classes["@mozilla.org/network/file-output-stream;1"].createInstance(Components.interfaces.nsIFileOutputStream);
-			outStream.init(aFile, 0x04 | 0x08 | 0x20, -1, 0); // readwrite, create, truncate
-			var inputStream = aDataValue.QueryInterface(Components.interfaces.nsIInputStream)
-			var binInputStream = Components.classes["@mozilla.org/binaryinputstream;1"].createInstance(Components.interfaces.nsIBinaryInputStream);
-			binInputStream.setInputStream(inputStream);
-			try {
-				while(true) {
-					var len = Math.min(512,binInputStream.available());
-					if (len == 0) break;
-					var data = binInputStream.readBytes(len);
-					if (!data || !data.length) break; outStream.write(data, data.length);
+			var ostream = FileUtils.openSafeFileOutputStream(aFile)
+			NetUtil.asyncCopy(aDataValue, ostream, function (status) {
+				if (Components.isSuccessCode(status)) {
+					wdw_imageEdition.addImageCard(aFile, wdw_cardEdition.workingCard, aExtension);
+				} else {
+					wdw_cardbooklog.updateStatusProgressInformation("cardbookSynchronization.writeImageToFile error : filename : " + aFile.path, "Error");
 				}
-			}
-			catch(e) { return false; }
-			try {
-				inputStream.close();
-				binInputStream.close();
-				outStream.close();
-			}
-			catch(e) { return false; }
-			return true;
+			});
 		},
 
 		getEditionPhotoTempFile: function (aExtension) {
@@ -48,20 +38,43 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 			return myFile;
 		},
 
-		clipboardGetImage: function(aFile) {
-			var extension = "png";
-			var clip = Components.classes["@mozilla.org/widget/clipboard;1"].createInstance(Components.interfaces.nsIClipboard);
+		clipboardGetSupportedFlavors: function() {
+			var flavors = [];
+			flavors.push("image/jpeg");
+			flavors.push("image/jpg");
+			flavors.push("image/png");
+			flavors.push("image/gif");
+			flavors.push("application/x-moz-file");
+			flavors.push("text/unicode");
+			flavors.push("text/plain");
+			return flavors;
+		},
+
+		clipboardCanPaste: function() {
+            var clipboard = Services.clipboard;
+            var flavors = wdw_imageEdition.clipboardGetSupportedFlavors();
+            return clipboard.hasDataMatchingFlavors(flavors, flavors.length, clipboard.kGlobalClipboard);
+		},
+
+		clipboardGetData: function() {
 			var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
-			trans.addDataFlavor("image/" + extension);
-			clip.getData(trans,clip.kGlobalClipboard);
-			var data = {};
-			var dataLength = {};
-			trans.getTransferData("image/" + extension,data,dataLength);
-			if (data && data.value) {
-				return wdw_imageEdition.writeImageToFile(aFile, data.value);
-			} else {
-				return false;
+			var flavors = wdw_imageEdition.clipboardGetSupportedFlavors();
+			for (i = 0; i < flavors.length; i++) {
+				trans.addDataFlavor(flavors[i]);
 			}
+			Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);
+
+			var flavor = {};
+			var data = {};
+			var len = {};
+			trans.getAnyTransferData(flavor, data, len);
+			return { flavor: flavor.value, data: data.value, length: len.value }; 
+		},
+
+		clearImageCard: function () {
+			document.getElementById('defaultCardImage').src = "";
+			document.getElementById('imageForSizing').src = "";
+			document.getElementById('imageBox').setAttribute('hidden', 'true');
 		},
 
 		displayImageCard: function (aCard, aDisplayDefault) {
@@ -112,13 +125,10 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 				cardbookUtils.adjustFields();
 				wdw_imageEdition.resizeImageCard("chrome://cardbook/skin/missing_photo_200_214.png");
 			}
-
 		},
 
 		addImageCardFromFile: function () {
-			if (document.getElementById('photolocalURITextBox').value == "") {
-				cardbookUtils.callFilePicker("imageSelectionTitle", "OPEN", "IMAGES", "", wdw_imageEdition.addImageCardFromFileNext);
-			}
+			cardbookUtils.callFilePicker("imageSelectionTitle", "OPEN", "IMAGES", "", wdw_imageEdition.addImageCardFromFileNext);
 		},
 
 		addImageCardFromFileNext: function (aFile) {
@@ -136,50 +146,90 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 			}
 		},
 
-		addImageCardFromUrl: function () {
-			if (document.getElementById('photolocalURITextBox').value == "") {
-				var myUrl = cardbookUtils.clipboardGet();
-				var myExtension = cardbookUtils.getFileExtension(myUrl);
-				if (myExtension != "") {
-					var myCard = wdw_cardEdition.workingCard;
-					myExtension = cardbookUtils.formatExtension(myExtension, myCard.version);
-					var targetFile = wdw_imageEdition.getEditionPhotoTempFile(myExtension);
-					try {
-						var listener_getimage = {
-							onDAVQueryComplete: function(status, response, askCertificate, etag) {
-								if (status > 199 && status < 400) {
-									cardbookUtils.formatStringForOutput("urlDownloaded", [myUrl]);
-									cardbookSynchronization.writeContentToFile(targetFile.path, response, "NOUTF8");
-									wdw_imageEdition.addImageCard(targetFile, myCard, myExtension);
-								} else {
-									cardbookUtils.formatStringForOutput("imageErrorWithMessage", [e]);
-								}
+		addImageCardFromUrl: function (aUrl) {
+			var myExtension = cardbookUtils.getFileExtension(aUrl);
+			if (myExtension != "") {
+				var myCard = wdw_cardEdition.workingCard;
+				myExtension = cardbookUtils.formatExtension(myExtension, myCard.version);
+				var targetFile = wdw_imageEdition.getEditionPhotoTempFile(myExtension);
+				try {
+					var listener_getimage = {
+						onDAVQueryComplete: function(status, response, askCertificate, etag) {
+							if (status > 199 && status < 400) {
+								cardbookUtils.formatStringForOutput("urlDownloaded", [aUrl]);
+								cardbookSynchronization.writeContentToFile(targetFile.path, response, "NOUTF8");
+								wdw_imageEdition.addImageCard(targetFile, myCard, myExtension);
+							} else {
+								cardbookUtils.formatStringForOutput("imageErrorWithMessage", [status]);
 							}
-						};
-						var aDescription = cardbookUtils.getPrefNameFromPrefId(myCard.dirPrefId);
-						var aImageConnection = {connPrefId: myCard.dirPrefId, connUrl: myUrl, connDescription: aDescription};
-						var request = new cardbookWebDAV(aImageConnection, listener_getimage);
-						cardbookUtils.formatStringForOutput("serverCardGettingImage", [aImageConnection.connDescription, myCard.fn]);
-						request.getimage();
-					}
-					catch(e) {
-						cardbookUtils.formatStringForOutput("imageErrorWithMessage", [e]);
+						}
+					};
+					var aDescription = cardbookUtils.getPrefNameFromPrefId(myCard.dirPrefId);
+					var aImageConnection = {connPrefId: myCard.dirPrefId, connUrl: aUrl, connDescription: aDescription};
+					var request = new cardbookWebDAV(aImageConnection, listener_getimage);
+					cardbookUtils.formatStringForOutput("serverCardGettingImage", [aImageConnection.connDescription, myCard.fn]);
+					request.getimage();
+				}
+				catch(e) {
+					cardbookUtils.formatStringForOutput("imageErrorWithMessage", [e]);
+				}
+			}
+		},
+
+		checkDragImageCard: function (aEvent) {
+			aEvent.preventDefault();
+		},
+
+		dragImageCard: function (aEvent) {
+			aEvent.preventDefault();
+			var myFile = aEvent.dataTransfer.mozGetDataAt("application/x-moz-file", 0);
+			if (myFile instanceof Components.interfaces.nsIFile) {
+				wdw_imageEdition.addImageCardFromFileNext(myFile);
+			} else {
+				var link = aEvent.dataTransfer.getData("URL");
+				if (link) {
+					wdw_imageEdition.addImageCardFromUrl(link);
+				} else {
+					link = aEvent.dataTransfer.getData("text/plain");
+					if (link.startsWith("https://") || link.startsWith("http://") ) {
+						wdw_imageEdition.addImageCardFromUrl(link);
 					}
 				}
 			}
 		},
 
-		addImageCardFromClipboard: function () {
-			if (document.getElementById('photolocalURITextBox').value == "") {
-				var myExtension = "png";
-				var myCard = wdw_cardEdition.workingCard;
-				var targetFile = wdw_imageEdition.getEditionPhotoTempFile(myExtension);
-				var myResult = wdw_imageEdition.clipboardGetImage(targetFile);
-				if (myResult) {
-					wdw_imageEdition.addImageCard(targetFile, myCard, myExtension);
-				} else {
-					cardbookUtils.formatStringForOutput("imageError");
-				}
+		pasteImageCard: function () {
+			try {
+                if (wdw_imageEdition.clipboardCanPaste()) {
+                    var data = wdw_imageEdition.clipboardGetData();
+
+                    if (data.flavor.startsWith("image/")) {
+                        var myExtension = data.flavor == "image/png" ? "png" : (data.flavor == "image/gif" ? "gif" : "jpg");
+                        var targetFile = wdw_imageEdition.getEditionPhotoTempFile(myExtension);
+						wdw_imageEdition.writeImageToFile(targetFile, data.data, myExtension);
+                    } else if (data.flavor == "application/x-moz-file") {
+						var myFile = data.data.QueryInterface(Components.interfaces.nsIFile);
+						wdw_imageEdition.addImageCardFromFileNext(myFile);
+                    } else if (data.flavor === "text/unicode" || data.flavor === "text/plain") {
+                        var myText = data.data.QueryInterface(Components.interfaces.nsISupportsString).data;
+						if (myText.startsWith("https://") || myText.startsWith("http://")) {
+							wdw_imageEdition.addImageCardFromUrl(myText);
+						} else if (myText.startsWith("file:///")) {
+							var myFileURISpec = myText;
+							var myFileURI = Services.io.newURI(myFileURISpec, null, null);
+							var myFile = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
+							wdw_imageEdition.addImageCardFromFileNext(myFile);
+						} else if (myText.startsWith("/")) {
+							var myFileURISpec = "file://" + myText;
+							var myFileURI = Services.io.newURI(myFileURISpec, null, null);
+							var myFile = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
+							wdw_imageEdition.addImageCardFromFileNext(myFile);
+						}
+                    }
+                }
+			}
+			catch (e) {
+				wdw_cardbooklog.updateStatusProgressInformation("wdw_imageEdition.pasteImageCard error : " + e, "Error");
 			}
 		},
 
@@ -201,9 +251,10 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 		},
 
 		saveImageCard: function () {
-			if (document.getElementById('photolocalURITextBox').value !== "") {
-				cardbookUtils.callFilePicker("imageSaveTitle", "SAVE", "IMAGES", "", wdw_imageEdition.saveImageCardNext);
-			}
+			var myFileURISpec = document.getElementById('photolocalURITextBox').value;
+			var myFileURI = Services.io.newURI(myFileURISpec, null, null);
+			var myFile = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
+			cardbookUtils.callFilePicker("imageSaveTitle", "SAVE", "IMAGES", myFile.leafName, wdw_imageEdition.saveImageCardNext);
 		},
 
 		saveImageCardNext: function (aFile) {
@@ -212,6 +263,57 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 			var myFile1 = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
 			myFile1.copyToFollowingLinks(aFile.parent,aFile.leafName);
 			cardbookUtils.formatStringForOutput("imageSavedToFile", [aFile.path]);
+		},
+
+		copyImageCard: function () {
+			try {
+				// OK copy to image but not on Linux
+				var myFileURISpec = document.getElementById('photolocalURITextBox').value;
+				var myExtension = cardbookUtils.getFileNameExtension(myFileURISpec);
+				var myFileURI = Services.io.newURI(myFileURISpec, null, null);
+                
+				var imagedata = 'data:image/' + myExtension + ';base64,' + btoa(cardbookSynchronization.getFileBinary(myFileURI));
+				var io = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
+				var channel = io.newChannel(imagedata, null, null);
+				var input = channel.open();
+				var imgTools = Components.classes["@mozilla.org/image/tools;1"].getService(Components.interfaces.imgITools);
+				var container = {};
+				// not known on Linux
+				if (!imgTools.decodeImageData) {
+					return;
+				}
+				imgTools.decodeImageData(input, channel.contentType, container);
+				
+				var wrapped = Components.classes["@mozilla.org/supports-interface-pointer;1"].createInstance(Components.interfaces.nsISupportsInterfacePointer);
+				wrapped.data = container.value;
+				
+				var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
+				trans.addDataFlavor(channel.contentType);
+				trans.setTransferData(channel.contentType, wrapped, -1);
+				
+				var clipid = Components.interfaces.nsIClipboard;
+				var clipboard = Components.classes["@mozilla.org/widget/clipboard;1"].getService(clipid);
+				clipboard.setData(trans, null, clipid.kGlobalClipboard);
+
+				// OK copy to file but not on Linux
+				/*
+				var myFileURISpec = document.getElementById('photolocalURITextBox').value;
+				var myFileURI = Services.io.newURI(myFileURISpec, null, null);
+				var myFile = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
+                
+				var trans = Components.classes['@mozilla.org/widget/transferable;1'].createInstance(Components.interfaces.nsITransferable);
+				var clipid = Components.interfaces.nsIClipboard;
+				var clipboard   = Components.classes['@mozilla.org/widget/clipboard;1'].getService(clipid);
+				if (!clipboard)
+					return;
+				trans.addDataFlavor("application/x-moz-file");
+				trans.setTransferData("application/x-moz-file", myFile, 0);
+				clipboard.setData(trans, null, clipid.kGlobalClipboard);
+				*/
+			}
+			catch (e) {
+				wdw_cardbooklog.updateStatusProgressInformation("wdw_imageEdition.copyImageCard error : " + e, "Error");
+			}
 		},
 
 		deleteImageCard: function () {
@@ -227,16 +329,12 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 
 		imageCardContextShowing: function () {
 			if (document.getElementById('defaultCardImage').src == "chrome://cardbook/skin/missing_photo_200_214.png") {
-				document.getElementById('addImageCardFromFile').disabled=false;
-				document.getElementById('addImageCardFromClipboard').disabled=false;
-				document.getElementById('addImageCardFromUrl').disabled=false;
 				document.getElementById('saveImageCard').disabled=true;
+				document.getElementById('copyImageCard').disabled=true;
 				document.getElementById('deleteImageCard').disabled=true;
 			} else {
-				document.getElementById('addImageCardFromFile').disabled=true;
-				document.getElementById('addImageCardFromClipboard').disabled=true;
-				document.getElementById('addImageCardFromUrl').disabled=true;
 				document.getElementById('saveImageCard').disabled=false;
+				document.getElementById('copyImageCard').disabled=false;
 				document.getElementById('deleteImageCard').disabled=false;
 			}
 		}
