@@ -54,7 +54,7 @@ You are welcomed to contribute to this project by:
 * creating [issues](https://github.com/CardBook/CardBook/issues) about possible improvements,
 * helping people who have problems or questions,
 * improving the documentation,
-* working on the code,
+* working on the code ([Mozilla Coding Style Guide](https://developer.mozilla.org/docs/Mozilla_Coding_Style_Guide)),
 * or simply spreading the word about this great add-on.
 
 
