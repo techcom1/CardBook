@@ -357,6 +357,7 @@
 	<menupopup id="imageCardContextMenu">
 		<menuitem id="saveImageCard" label="&saveImageCardLabel;" oncommand="wdw_imageEdition.saveImageCard();"/>
 		<menuitem id="copyImageCard" label="&copyImageCardLabel;" oncommand="wdw_imageEdition.copyImageCard();"/>
+		<menuitem id="copyImageLocationCard" label="&copyImageLocationCardLabel;" oncommand="wdw_imageEdition.copyImageLocationCard();"/>
 	</menupopup>
 
 	<menupopup id="listsContextMenu" onpopupshowing="wdw_cardbook.cardListContextShowing(event);">

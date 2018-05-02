@@ -1,5 +1,6 @@
 <!ENTITY addImageCardFromFileLabel "Adăugați o imagine din fișier">
 <!ENTITY pasteImageCardLabel "Lipiți imaginea">
-<!ENTITY saveImageCardLabel "Salvează imaginea">
+<!ENTITY saveImageCardLabel "Salvează imaginea ca…">
 <!ENTITY copyImageCardLabel "Copiază imaginea">
+<!ENTITY copyImageLocationCardLabel "Copiază locația imaginii">
 <!ENTITY deleteImageCardLabel "Ștergeți imaginea">

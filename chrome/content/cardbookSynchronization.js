@@ -430,10 +430,10 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			}
 		},
 		
-		getFileBinary: function (afileURI) {
+		getFileBinary: function (aFileURI) {
 			var content = "";
 			var data = "";
-			var file = afileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
+			var file = aFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
 
 			if (file.exists() && file.isReadable()) {
 				var fstream = Components.classes["@mozilla.org/network/file-input-stream;1"].createInstance(Components.interfaces.nsIFileInputStream);

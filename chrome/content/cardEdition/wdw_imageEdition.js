@@ -267,52 +267,72 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 
 		copyImageCard: function () {
 			try {
-				// OK copy to image but not on Linux
-				var myFileURISpec = document.getElementById('photolocalURITextBox').value;
-				var myExtension = cardbookUtils.getFileNameExtension(myFileURISpec);
-				var myFileURI = Services.io.newURI(myFileURISpec, null, null);
-                
-				var imagedata = 'data:image/' + myExtension + ';base64,' + btoa(cardbookSynchronization.getFileBinary(myFileURI));
-				var io = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
-				var channel = io.newChannel(imagedata, null, null);
-				var input = channel.open();
 				var imgTools = Components.classes["@mozilla.org/image/tools;1"].getService(Components.interfaces.imgITools);
-				var container = {};
-				// not known on Linux
-				if (!imgTools.decodeImageData) {
-					return;
-				}
-				imgTools.decodeImageData(input, channel.contentType, container);
-				
-				var wrapped = Components.classes["@mozilla.org/supports-interface-pointer;1"].createInstance(Components.interfaces.nsISupportsInterfacePointer);
-				wrapped.data = container.value;
-				
-				var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
-				trans.addDataFlavor(channel.contentType);
-				trans.setTransferData(channel.contentType, wrapped, -1);
-				
-				var clipid = Components.interfaces.nsIClipboard;
-				var clipboard = Components.classes["@mozilla.org/widget/clipboard;1"].getService(clipid);
-				clipboard.setData(trans, null, clipid.kGlobalClipboard);
-
-				// OK copy to file but not on Linux
-				/*
 				var myFileURISpec = document.getElementById('photolocalURITextBox').value;
 				var myFileURI = Services.io.newURI(myFileURISpec, null, null);
-				var myFile = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
-                
-				var trans = Components.classes['@mozilla.org/widget/transferable;1'].createInstance(Components.interfaces.nsITransferable);
-				var clipid = Components.interfaces.nsIClipboard;
-				var clipboard   = Components.classes['@mozilla.org/widget/clipboard;1'].getService(clipid);
-				if (!clipboard)
-					return;
-				trans.addDataFlavor("application/x-moz-file");
-				trans.setTransferData("application/x-moz-file", myFile, 0);
-				clipboard.setData(trans, null, clipid.kGlobalClipboard);
-				*/
+
+				// Thunderbird 52 and Linux
+				if (imgTools.decodeImageData) {
+					var myExtension = cardbookUtils.getFileNameExtension(myFileURISpec);
+					var imagedata = 'data:image/' + myExtension + ';base64,' + btoa(cardbookSynchronization.getFileBinary(myFileURI));
+					var io = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
+					var channel = io.newChannel(imagedata, null, null);
+					var input = channel.open();
+					var container = {};
+					imgTools.decodeImageData(input, channel.contentType, container);
+					var wrapped = Components.classes["@mozilla.org/supports-interface-pointer;1"].createInstance(Components.interfaces.nsISupportsInterfacePointer);
+					wrapped.data = container.value;
+					var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
+					trans.addDataFlavor(channel.contentType);
+					trans.setTransferData(channel.contentType, wrapped, -1);
+					var clipid = Components.interfaces.nsIClipboard;
+					var clipboard = Components.classes["@mozilla.org/widget/clipboard;1"].getService(clipid);
+					clipboard.setData(trans, null, clipid.kGlobalClipboard);
+				// Thunderbird 60
+				} else if (imgTools.decodeImageFromArrayBuffer) {
+					var myChannel = Services.io.newChannelFromURI2(myFileURI,
+																	 null,
+																	 Services.scriptSecurityManager.getSystemPrincipal(),
+																	 null,
+																	 Components.interfaces.nsILoadInfo.SEC_REQUIRE_SAME_ORIGIN_DATA_INHERITS,
+																	 Components.interfaces.nsIContentPolicy.TYPE_OTHER);
+					NetUtil.asyncFetch(myChannel, function (inputStream, status) {
+						if (!Components.isSuccessCode(status)) {
+							return;
+						}
+						var octetArray = [];
+						var binaryIS = Components.classes["@mozilla.org/binaryinputstream;1"].createInstance(Components.interfaces.nsIBinaryInputStream);
+						binaryIS.setInputStream(inputStream);
+						octetArray = binaryIS.readByteArray(binaryIS.available());
+						var arrayBuffer = (new Int8Array(octetArray)).buffer;
+						var container = imgTools.decodeImageFromArrayBuffer(arrayBuffer, myChannel.contentType);
+						var wrapped = Components.classes["@mozilla.org/supports-interface-pointer;1"].createInstance(Components.interfaces.nsISupportsInterfacePointer);
+						wrapped.data = container;
+						var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
+						trans.addDataFlavor(myChannel.contentType);
+						trans.setTransferData(myChannel.contentType, wrapped, -1);
+						var clipid = Components.interfaces.nsIClipboard;
+						var clipboard = Components.classes["@mozilla.org/widget/clipboard;1"].getService(clipid);
+						clipboard.setData(trans, null, clipid.kGlobalClipboard);
+					});
+				}
 			}
 			catch (e) {
 				wdw_cardbooklog.updateStatusProgressInformation("wdw_imageEdition.copyImageCard error : " + e, "Error");
+			}
+		},
+
+		copyImageLocationCard: function () {
+			try {
+				var myFileURISpec = document.getElementById('photolocalURITextBox').value;
+				var myExtension = cardbookUtils.getFileNameExtension(myFileURISpec);
+				var myFileURI = Services.io.newURI(myFileURISpec, null, null);
+				var myFile = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
+				
+				cardbookUtils.clipboardSet(myFile.path);
+			}
+			catch (e) {
+				wdw_cardbooklog.updateStatusProgressInformation("wdw_imageEdition.copyImageLocationCard error : " + e, "Error");
 			}
 		},
 
