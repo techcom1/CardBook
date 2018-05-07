@@ -8,7 +8,7 @@ if ("undefined" == typeof(cardbookPasswordManager)) {
 
 	var cardbookPasswordManager = {
 
-		googleHostname : "chrome://cardbook/oauth",
+		oauthPrefix : "chrome://cardbook/oauth",
 		
 		getRootUrl: function (aUrl) {
 			try {
@@ -63,11 +63,10 @@ if ("undefined" == typeof(cardbookPasswordManager)) {
 		
 		getPassword: function (aUsername, aUrl) {
 			var myLoginManager = Services.logins;
-			if (aUrl.indexOf(cardbookRepository.cardbookgdata.GOOGLE_API) === -1) {
-				var logins = myLoginManager.findLogins({}, cardbookPasswordManager.getRootUrl(aUrl), "User login", null);
+			if (aUrl.startsWith(cardbookRepository.cardbookOAuthData.GOOGLE.ROOT_API) || aUrl.startsWith(cardbookRepository.cardbookOAuthData.YAHOO.ROOT_API)) {
+				var logins = myLoginManager.findLogins({}, this.oauthPrefix, "User Refresh Token", null);
 			} else {
-				// google case
-				var logins = myLoginManager.findLogins({}, this.googleHostname, "User Refresh Token", null);
+				var logins = myLoginManager.findLogins({}, cardbookPasswordManager.getRootUrl(aUrl), "User login", null);
 			}
 			for (var i = 0; i < logins.length; i++) {
 				if (logins[i].username == aUsername) {
@@ -83,8 +82,8 @@ if ("undefined" == typeof(cardbookPasswordManager)) {
 			if (aUrl != null && aUrl !== undefined && aUrl != "") {
 				var login_info = new nsLoginInfo(cardbookPasswordManager.getRootUrl(aUrl), "User login", null, aUsername, aPassword, "", "");
 			} else {
-				// google case
-				var login_info = new nsLoginInfo(this.googleHostname, "User Refresh Token", null, aUsername, aPassword, "", "");
+				// google and yahoo cases
+				var login_info = new nsLoginInfo(this.oauthPrefix, "User Refresh Token", null, aUsername, aPassword, "", "");
 			}
 			myLoginManager.addLogin(login_info);
 			return true;
@@ -95,8 +94,8 @@ if ("undefined" == typeof(cardbookPasswordManager)) {
 			if (aUrl != null && aUrl !== undefined && aUrl != "") {
 				var logins = myLoginManager.findLogins({}, cardbookPasswordManager.getRootUrl(aUrl), "User login", null);
 			} else {
-				// google case
-				var logins = myLoginManager.findLogins({}, this.googleHostname, "User Refresh Token", null);
+				// google and yahoo cases
+				var logins = myLoginManager.findLogins({}, this.oauthPrefix, "User Refresh Token", null);
 			}
 			for (var i = 0; i < logins.length; i++) {
 				if (logins[i].username == aUsername) {

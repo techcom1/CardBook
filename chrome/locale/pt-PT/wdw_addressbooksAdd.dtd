@@ -29,6 +29,7 @@
 <!ENTITY remotePage.carddav.label "CardDAV">
 <!ENTITY remotePage.google.label "Google">
 <!ENTITY remotePage.apple.label "Apple">
+<!ENTITY remotePage.yahoo.label "Yahoo!">
 <!ENTITY remotePage.connection.label "Ligação">
 <!ENTITY remotePage.url.description "Para CardDAV, insira o URL da agenda remota. Deve tentar usar um URL deste tipo (ex: http(s)://carddav.example.org). Para agenda do Google, não coloque nada neste campo.">
 <!ENTITY remotePage.url.label "URL">

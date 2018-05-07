@@ -9,6 +9,8 @@
 }
 #cardbookToolbarChatButton {
 	list-style-image: url("chrome://messenger/skin/icons/chat.svg");
+	-moz-context-properties: fill, fill-opacity, stroke-opacity;
+	stroke-opacity: 0;
 }
 #cardbookToolbarConfigurationButton {
 	list-style-image: url("chrome://messenger/skin/icons/compact.svg");

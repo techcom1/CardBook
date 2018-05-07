@@ -29,6 +29,7 @@
 <!ENTITY remotePage.carddav.label "CardDAV">
 <!ENTITY remotePage.google.label "Google">
 <!ENTITY remotePage.apple.label "Apple">
+<!ENTITY remotePage.yahoo.label "Yahoo!">
 <!ENTITY remotePage.connection.label "Veza">
 <!ENTITY remotePage.url.description "Za vrstu CardDAV, unesite URL za svoj udaljeni adresar. Možete pokušati djelomični URL (na primjer : http(s)://carddav.example.org). za  Googleov adresar, nemojte odrediti ovo polje.">
 <!ENTITY remotePage.url.label "URL">

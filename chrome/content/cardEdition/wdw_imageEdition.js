@@ -275,8 +275,7 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 				if (imgTools.decodeImageData) {
 					var myExtension = cardbookUtils.getFileNameExtension(myFileURISpec);
 					var imagedata = 'data:image/' + myExtension + ';base64,' + btoa(cardbookSynchronization.getFileBinary(myFileURI));
-					var io = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
-					var channel = io.newChannel(imagedata, null, null);
+					var channel = Services.io.newChannel2(imagedata, null, null, null, null, null, null, null);
 					var input = channel.open();
 					var container = {};
 					imgTools.decodeImageData(input, channel.contentType, container);
@@ -284,12 +283,12 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 					wrapped.data = container.value;
 					var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
 					trans.addDataFlavor(channel.contentType);
-					trans.setTransferData(channel.contentType, wrapped, -1);
+					trans.setTransferData(channel.contentType, wrapped, 0);
 					var clipid = Components.interfaces.nsIClipboard;
 					var clipboard = Components.classes["@mozilla.org/widget/clipboard;1"].getService(clipid);
 					clipboard.setData(trans, null, clipid.kGlobalClipboard);
 				// Thunderbird 60
-				} else if (imgTools.decodeImageFromArrayBuffer) {
+				} else if (imgTools.decodeImageFromBuffer) {
 					var myChannel = Services.io.newChannelFromURI2(myFileURI,
 																	 null,
 																	 Services.scriptSecurityManager.getSystemPrincipal(),
@@ -300,17 +299,13 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 						if (!Components.isSuccessCode(status)) {
 							return;
 						}
-						var octetArray = [];
-						var binaryIS = Components.classes["@mozilla.org/binaryinputstream;1"].createInstance(Components.interfaces.nsIBinaryInputStream);
-						binaryIS.setInputStream(inputStream);
-						octetArray = binaryIS.readByteArray(binaryIS.available());
-						var arrayBuffer = (new Int8Array(octetArray)).buffer;
-						var container = imgTools.decodeImageFromArrayBuffer(arrayBuffer, myChannel.contentType);
+						var buffer = NetUtil.readInputStreamToString(inputStream, inputStream.available());
+						var container = imgTools.decodeImageFromBuffer(buffer, buffer.length, myChannel.contentType);
 						var wrapped = Components.classes["@mozilla.org/supports-interface-pointer;1"].createInstance(Components.interfaces.nsISupportsInterfacePointer);
 						wrapped.data = container;
 						var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
 						trans.addDataFlavor(myChannel.contentType);
-						trans.setTransferData(myChannel.contentType, wrapped, -1);
+						trans.setTransferData(myChannel.contentType, wrapped, 0);
 						var clipid = Components.interfaces.nsIClipboard;
 						var clipboard = Components.classes["@mozilla.org/widget/clipboard;1"].getService(clipid);
 						clipboard.setData(trans, null, clipid.kGlobalClipboard);

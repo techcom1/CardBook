@@ -29,6 +29,7 @@
 <!ENTITY remotePage.carddav.label "카드 분산 저작 및 버전 관리">
 <!ENTITY remotePage.google.label "구글">
 <!ENTITY remotePage.apple.label "사과">
+<!ENTITY remotePage.yahoo.label "??Yahoo!??">
 <!ENTITY remotePage.connection.label "연결">
 <!ENTITY remotePage.url.description "카드 암호 및 버전 관리 (CardDAV) 유형의 경우 원격 주소록의 URL을 입력하십시오. 부분 URL (예: http(s)://carddav.example.or.kr)을 사용해보십시오. 구글 주소록의 경우 이 입력란을 지정하지 마십시오.">
 <!ENTITY remotePage.url.label "URL 주소">

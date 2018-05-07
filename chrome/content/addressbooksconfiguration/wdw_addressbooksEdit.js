@@ -73,7 +73,8 @@ if ("undefined" == typeof(wdw_addressbooksEdit)) {
 			cardbookElementTools.loadDateFormats("dateFormatMenuPopup", "dateFormatMenuList", wdw_addressbooksEdit.initialDateFormat);
 			document.getElementById("urnuuidCheckBox").setAttribute('checked', cardbookPreferences.getUrnuuid(window.arguments[0].dirPrefId));
 
-			if (document.getElementById("typeTextBox").value === "GOOGLE" || document.getElementById("typeTextBox").value === "APPLE" || document.getElementById("typeTextBox").value === "CARDDAV") {
+			if (document.getElementById("typeTextBox").value == "GOOGLE" || document.getElementById("typeTextBox").value == "APPLE"
+					|| document.getElementById("typeTextBox").value == "CARDDAV" || document.getElementById("typeTextBox").value == "YAHOO") {
 				document.getElementById('syncTab').setAttribute("collapsed", false);
 				document.getElementById("autoSyncCheckBox").setAttribute('checked', cardbookPreferences.getAutoSyncEnabled(window.arguments[0].dirPrefId));
 				document.getElementById("autoSyncIntervalTextBox").value = cardbookPreferences.getAutoSyncInterval(window.arguments[0].dirPrefId);

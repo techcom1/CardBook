@@ -5,6 +5,8 @@
 <?xml-stylesheet href="chrome://cardbook-config/skin/cardbookConfiguration.css" type="text/css"?>
 <?xml-stylesheet href="chrome://cardbook/skin/cardbookCheckboxes.css" type="text/css"?>
 <?xul-overlay href="chrome://cardbook/content/ovl_cardbookStringBundle.xul"?>
+<!-- for the toolbarbutton-icon-fill-attention var -->
+<?xml-stylesheet href="chrome://messenger/skin/messenger.css" type="text/css"?>
 <!-- for the preference star -->
 <?xml-stylesheet href="chrome://cardbook-pref/skin/cardbookPrefStar.css" type="text/css"?>
 <!DOCTYPE window [
@@ -19,7 +21,7 @@
 	ondialogcancel="wdw_cardbookConfiguration.cancel();"
 	ondialogaccept="wdw_cardbookConfiguration.accept();"
 	ondialogdisclosure="wdw_cardbookConfiguration.cancel();"
-	id="wdw_cardbookConfigurationWindow">
+	id="wdw_cardbookConfigurationWindow" flex="1">
 
 	<stringbundleset id="stringbundleset"/>
 
@@ -253,7 +255,9 @@
 
 		<groupbox>
 			<caption label="&adrFormulaLabel;"/>
-			<description>&adrLabelExplanation;</description>
+			<separator class="thin"/>
+			<description flex="1">&adrLabelExplanation;</description>
+			<separator class="thin"/>
 			<grid align="center" flex="1">
 				<columns>
 					<column/>
@@ -324,7 +328,7 @@
 				name="extensions.cardbook.preferenceValueLabel" type="string"/>
 		</preferences>
 
-		<groupbox flex="1">
+		<groupbox>
 			<caption label="&typesGroupboxLabel;"/>
 			<hbox align="center">
 				<radiogroup id="typesCategoryRadiogroup" orient="horizontal" onselect="wdw_cardbookConfiguration.sortTrees(null, 'typesTree');">
@@ -385,10 +389,11 @@
 				name="extensions.cardbook.preferIMPPPref" type="bool"/>
 		</preferences>
 
-		<description>&IMPPGroupboxWarn;</description>
-		<separator class="thin"/>
-		<groupbox flex="1">
+		<groupbox>
 			<caption label="&IMPPGroupboxLabel;"/>
+			<separator class="thin"/>
+			<description flex="1">&IMPPGroupboxWarn;</description>
+			<separator class="thin"/>
 			<hbox align="center">
 				<checkbox id="preferIMPPPrefCheckBox" label="&preferIMPPPrefLabel;"
 					accesskey="&preferIMPPPrefAccesskey;"
@@ -436,7 +441,7 @@
 
 	<prefpane id="customFieldsTab" label="&customFieldsTabLabel;" index="customFields">
 
-		<groupbox flex="1">
+		<groupbox>
 			<caption label="&customFieldsTabLabel;"/>
 			<hbox align="center">
 				<radiogroup id="customFieldsCategoryRadiogroup" orient="horizontal" onselect="wdw_cardbookConfiguration.sortTrees(null, 'customFields');">
@@ -475,7 +480,7 @@
 		<groupbox>
 			<caption label="&orgTitleLabel;"/>
 			<separator class="thin"/>
-			<description>&orgWarn;</description>
+			<description flex="1">&orgWarn;</description>
 			<separator class="thin"/>
 			<hbox flex="1">
 				<vbox flex="1">
@@ -503,9 +508,11 @@
 				name="extensions.cardbook.memberCustom" type="string"/>
 		</preferences>
 
-		<description>&listPanelLabel;</description>
 		<groupbox>
 			<caption label="&listGroupboxLabel;"/>
+			<separator class="thin"/>
+			<description flex="1">&listPanelLabel;</description>
+			<separator class="thin"/>
 			<hbox flex="1">
 				<vbox flex="1">
 					<grid align="center" flex="1">
@@ -562,10 +569,11 @@
 				name="extensions.cardbook.decodeReport" type="bool"/>
 		</preferences>
 
-		<description>&syncWarn;</description>
-		<separator class="thin"/>
 		<groupbox>
 			<caption label="&syncGroupboxLabel;"/>
+			<separator class="thin"/>
+			<description>&syncWarn;</description>
+			<separator class="thin"/>
 			<hbox align="center">
 				<checkbox id="initialSyncCheckBox" label="&initialSyncLabel;"
 					accesskey="&initialSyncAccesskey;" oncommand="wdw_cardbookConfiguration.showInitialSyncDelay();"
@@ -618,7 +626,7 @@
 		<groupbox>
 			<caption label="&discoveryGroupboxLabel;"/>
 			<separator class="thin"/>
-			<description>&discoveryWarn;</description>
+			<description flex="1">&discoveryWarn;</description>
 			<separator class="thin"/>
 			<groupbox id="discoveryAccountsNameListGoupbox">
 				<caption>
@@ -671,10 +679,10 @@
 				preference="extensions.cardbook.useOnlyEmail"/>
 		</groupbox>
 
-		<groupbox flex="1">
+		<groupbox>
 			<caption label="&attachVCardGroupboxLabel;"/>
 			<separator class="thin"/>
-			<description>&attachVCardWarn;</description>
+			<description flex="1">&attachVCardWarn;</description>
 			<separator class="thin"/>
 			<hbox flex="1">
 				<vbox flex="1">
@@ -711,7 +719,7 @@
 			</hbox>
 		</groupbox>
 
-		<groupbox flex="1">
+		<groupbox>
 			<caption label="&emailsCollectionLabel;" tooltiptext="&emailsCollectionTooltip;"/>
 			<hbox flex="1">
 				<vbox flex="1">
@@ -760,7 +768,10 @@
 				name="extensions.cardbook.searchInNote" type="bool"/>
 		</preferences>
 
-		<description>&birthdayListWarn;</description>
+		<hbox>
+			<description flex="1">&birthdayListWarn;</description>
+		</hbox>
+		<separator class="thin"/>
 		<groupbox id="addressBooksNameListGoupbox">
 			<caption>
 				<checkbox id="addressBooksNameListCheckbox" oncommand="wdw_cardbookConfiguration.changeAddressBooksPref(this.id);" label="&addressBooksGroupboxLabel;"/>
@@ -783,8 +794,8 @@
 					preference="extensions.cardbook.searchInNote"/>
 			</hbox>
 			<separator class="thin"/>
-			<description>&searchInNoteTooltip1;</description>
-			<description>&searchInNoteTooltip2;</description>
+			<description flex="1">&searchInNoteTooltip1;</description>
+			<description flex="1">&searchInNoteTooltip2;</description>
 		</groupbox>
 	</prefpane>
 

@@ -29,6 +29,7 @@
 <!ENTITY remotePage.carddav.label "CardDAV">
 <!ENTITY remotePage.google.label "Google">
 <!ENTITY remotePage.apple.label "Apple">
+<!ENTITY remotePage.yahoo.label "Yahoo!">
 <!ENTITY remotePage.connection.label "Kapcsolat">
 <!ENTITY remotePage.url.description "CardDAV-re, írjál be a távoli névjegytár mappa webcímet. Megpróbálja használni részleges webcímet (például http(s)://carddav.például.hu). Google névjegytár: hagyja üresen a mezőt.">
 <!ENTITY remotePage.url.label "Webcím">

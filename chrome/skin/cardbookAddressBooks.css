@@ -1,15 +1,14 @@
 menuitem[ABtype="local"] {
-	list-style-image: url("chrome://messenger/skin/icons/server.png");
-	-moz-image-region: rect(0 48px 16px 32px);
+	list-style-image: url("chrome://cardbook/skin/ABLocal.png");
 }
 menuitem[ABtype="remote"] {
-	list-style-image: url("chrome://messenger/skin/addressbook/icons/remote-addrbook.png");
+	list-style-image: url("chrome://cardbook/skin/ABRemote.png");
 }
 /* as the file Search-glass.png disappeared in Th 55 */
 /* and as before Th 55 it is not possible to display svg file */
 /* need to package one png file */
 menuitem[ABtype="search"] {
-	list-style-image: url("chrome://cardbook/skin/search-glass.png");
+	list-style-image: url("chrome://cardbook/skin/ABSearch.png");
 	/* list-style-image: url("chrome://global/skin/icons/Search-glass.png"); */
 	/* -moz-image-region: rect(0, 16px, 16px, 0); */
 	/* list-style-image: url("chrome://messenger/skin/icons/search-glass.svg"); */

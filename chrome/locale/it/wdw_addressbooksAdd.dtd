@@ -29,6 +29,7 @@
 <!ENTITY remotePage.carddav.label "CardDAV">
 <!ENTITY remotePage.google.label "Google">
 <!ENTITY remotePage.apple.label "Apple">
+<!ENTITY remotePage.yahoo.label "Yahoo!">
 <!ENTITY remotePage.connection.label "Connessione">
 <!ENTITY remotePage.url.description "Per rubriche CardDAV, inserisci l'URL della tua rubrica remota. Puoi provare a utilizzare un URL parziale (esempio: http(s)://carddav.example.org). Per rubriche Google, NON riempire questo campo.">
 <!ENTITY remotePage.url.label "URL">

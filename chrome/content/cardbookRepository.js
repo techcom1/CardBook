@@ -84,12 +84,12 @@ var cardbookRepository = {
 	
 	cardbookServerValidation : {},
 
-	cardbookGoogleAccessTokenRequest : {},
-	cardbookGoogleAccessTokenResponse : {},
-	cardbookGoogleAccessTokenError : {},
-	cardbookGoogleRefreshTokenRequest : {},
-	cardbookGoogleRefreshTokenResponse : {},
-	cardbookGoogleRefreshTokenError : {},
+	cardbookAccessTokenRequest : {},
+	cardbookAccessTokenResponse : {},
+	cardbookAccessTokenError : {},
+	cardbookRefreshTokenRequest : {},
+	cardbookRefreshTokenResponse : {},
+	cardbookRefreshTokenError : {},
 	cardbookServerDiscoveryRequest : {},
 	cardbookServerDiscoveryResponse : {},
 	cardbookServerDiscoveryError : {},
@@ -182,28 +182,37 @@ var cardbookRepository = {
 									
 	statusInformation : [],
 
-	cardbookgdata : {
-		CLIENT_ID:                  "779554755808-957jloa2c3c8n0rrm1a5304fkik7onf0.apps.googleusercontent.com",
-		CLIENT_SECRET:              "h3NUkhofCKAW2E1X_NKSn4C_",
-		REDIRECT_URI:               "urn:ietf:wg:oauth:2.0:oob",
-		REDIRECT_TITLE:             "Success code=",
-		RESPONSE_TYPE:              "code",
-		SCOPE:                      "https://www.googleapis.com/auth/carddav",
-		OAUTH_URL:                  "https://accounts.google.com/o/oauth2/auth",
-		TOKEN_REQUEST_URL:          "https://accounts.google.com/o/oauth2/token",
-		TOKEN_REQUEST_TYPE:         "POST",
-		TOKEN_REQUEST_GRANT_TYPE:   "authorization_code",
-		REFRESH_REQUEST_URL:        "https://accounts.google.com/o/oauth2/token",
-		REFRESH_REQUEST_TYPE:       "POST",
-		REFRESH_REQUEST_GRANT_TYPE: "refresh_token",
-		AUTH_URL:                   "https://www.google.com/accounts/ClientLogin",
-		AUTH_REQUEST_TYPE:          "POST",
-		AUTH_SUB_SESSION_URL:       "https://www.google.com/accounts/AuthSubSessionToken",
-		AUTH_SUB_SESSION_TYPE:      "GET",
-		AUTH_SUB_REVOKE_URL:        "https://www.google.com/accounts/AuthSubRevokeToken",
-		AUTH_SUB_REVOKE_TYPE:       "GET",
-		GOOGLE_API:                 "https://www.googleapis.com",
-	},
+	cardbookOAuthData : {"GOOGLE": {
+							CLIENT_ID:                  "779554755808-957jloa2c3c8n0rrm1a5304fkik7onf0.apps.googleusercontent.com",
+							CLIENT_SECRET:              "h3NUkhofCKAW2E1X_NKSn4C_",
+							REDIRECT_URI:               "urn:ietf:wg:oauth:2.0:oob",
+							REDIRECT_TITLE:             "Success code=",
+							RESPONSE_TYPE:              "code",
+							SCOPE:                      "https://www.googleapis.com/auth/carddav",
+							OAUTH_URL:                  "https://accounts.google.com/o/oauth2/auth",
+							TOKEN_REQUEST_URL:          "https://accounts.google.com/o/oauth2/token",
+							TOKEN_REQUEST_TYPE:         "POST",
+							TOKEN_REQUEST_GRANT_TYPE:   "authorization_code",
+							REFRESH_REQUEST_URL:        "https://accounts.google.com/o/oauth2/token",
+							REFRESH_REQUEST_TYPE:       "POST",
+							REFRESH_REQUEST_GRANT_TYPE: "refresh_token",
+							ROOT_API:                   "https://www.googleapis.com"},
+						"YAHOO": {
+							CLIENT_ID:                  "dj0yJmk9eWRXYWc2QmNYWndYJmQ9WVdrOVZuVkdlazl3TXpZbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD0xOQ--",
+							CLIENT_SECRET:              "a2d17e955c6c96e4d3ec08cff76f4c39fe084f78",
+							REDIRECT_URI:               "oob",
+							REDIRECT_TITLE:             "Sharing approval",
+							RESPONSE_TYPE:              "code",
+							LANGUAGE:                   "en-us",
+							OAUTH_URL:                  "https://api.login.yahoo.com/oauth2/request_auth",
+							TOKEN_REQUEST_URL:          "https://api.login.yahoo.com/oauth2/get_token",
+							TOKEN_REQUEST_TYPE:         "POST",
+							TOKEN_REQUEST_GRANT_TYPE:   "authorization_code",
+							REFRESH_REQUEST_URL:        "https://api.login.yahoo.com/oauth2/get_token",
+							REFRESH_REQUEST_TYPE:       "POST",
+							REFRESH_REQUEST_GRANT_TYPE: "refresh_token",
+							ROOT_API:                   "https://carddav.address.yahoo.com"}
+						},
 
 	APPLE_API : "https://contacts.icloud.com",
 	
@@ -856,7 +865,7 @@ var cardbookRepository = {
 				}
 			} else if (myDirPrefIdType === "FILE" || myDirPrefIdType === "SEARCH") {
 				return;
-			} else if (myDirPrefIdType === "GOOGLE" || myDirPrefIdType === "APPLE" || myDirPrefIdType === "CARDDAV" || myDirPrefIdType === "LOCALDB") {
+			} else if (myDirPrefIdType === "GOOGLE" || myDirPrefIdType === "APPLE" || myDirPrefIdType === "YAHOO" || myDirPrefIdType === "CARDDAV" || myDirPrefIdType === "LOCALDB") {
 				aCard.cacheuri = aFileName;
 				if (cardbookRepository.cardbookFileCacheCards[aCard.dirPrefId]) {
 					cardbookRepository.cardbookFileCacheCards[aCard.dirPrefId][aFileName] = aCard;
@@ -916,7 +925,7 @@ var cardbookRepository = {
 				}
 			} else if (myDirPrefIdType === "FILE" || myDirPrefIdType === "SEARCH") {
 				return;
-			} else if (myDirPrefIdType === "GOOGLE" || myDirPrefIdType === "APPLE" || myDirPrefIdType === "CARDDAV" || myDirPrefIdType === "LOCALDB") {
+			} else if (myDirPrefIdType === "GOOGLE" || myDirPrefIdType === "APPLE" || myDirPrefIdType === "YAHOO" || myDirPrefIdType === "CARDDAV" || myDirPrefIdType === "LOCALDB") {
 				cardbookIndexedDB.removeItem(myDirPrefIdName, aCard);
 				if (cardbookRepository.cardbookFileCacheCards[aCard.dirPrefId][aCard.cacheuri]) {
 					delete cardbookRepository.cardbookFileCacheCards[aCard.dirPrefId][aCard.cacheuri];
@@ -1652,6 +1661,7 @@ var cardbookRepository = {
 			case "APPLE":
 			case "CARDDAV":
 			case "GOOGLE":
+			case "YAHOO":
 				return "remote";
 				break;
 			case "SEARCH":

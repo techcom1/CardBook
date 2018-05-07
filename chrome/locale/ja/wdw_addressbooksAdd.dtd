@@ -29,6 +29,7 @@
 <!ENTITY remotePage.carddav.label "カード分散オーサリングとバージョン管理「CardDAV」">
 <!ENTITY remotePage.google.label "グーグル">
 <!ENTITY remotePage.apple.label "リンゴ">
+<!ENTITY remotePage.yahoo.label "??Yahoo!??">
 <!ENTITY remotePage.connection.label "接続">
 <!ENTITY remotePage.url.description "カード分散オーサリングとバージョン管理「CardDAV」タイプの場合は、リモートアドレス帳のユニフォームリソースロケータ「URL」を入力します〈例：http〈s〉：//carddav.example.or.jp〉。グーグルアドレス帳の場合は、このフィールドを指定しないでください。">
 <!ENTITY remotePage.url.label "ユニフォームリソースロケータ「URL」">
