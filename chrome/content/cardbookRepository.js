@@ -149,6 +149,10 @@ var cardbookRepository = {
 	cardbookComplexSearchMode : "NOSEARCH",
 	cardbookComplexSearchPrefId : "",
 
+	autoSync : {},
+	autoSyncInterval : {},
+	autoSyncId : {},
+
 	lTimerLoadCacheAll : {},
 	lTimerDirAll : {},
 	lTimerSyncAll : {},

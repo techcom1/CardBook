@@ -48,7 +48,8 @@
 		</vbox>
    </hbox>
 
-	<hbox>
+	<hbox align="center">
+		<description id="numberContactsFoundDesc" flex="1"/>
 		<spacer flex="1"/>
 		<button id="hideOrShowForgottenLabel" oncommand="wdw_findDuplicates.hideOrShowForgotten();"/>
 		<button id="cancelEditionLabel" label="&cancelEditionLabel;" accesskey="&cancelEditionAccesskey;" oncommand="wdw_findDuplicates.cancel();"/>

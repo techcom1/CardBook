@@ -119,8 +119,12 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 				var lBirthdayId = cardbookUtils.getUUID();
 
 				var leventEntryTitle = cardbookPreferences.getStringPref("extensions.cardbook.eventEntryTitle");
-				var leventDate = cardbookDates.convertDateStringToDate(cardbookBirthdaysUtils.lBirthdayList[i][3], cardbookBirthdaysUtils.lBirthdayList[i][7]);
-				var lBirthdayTitle = leventEntryTitle.replace("%1$S", lBirthdayName).replace("%2$S",lBirthdayAge).replace("%3$S",leventDate.getFullYear()).replace("%S", lBirthdayName).replace("%S",lBirthdayAge);
+				if (cardbookBirthdaysUtils.lBirthdayList[i][3] != "?") {
+					var lEventDate = cardbookDates.convertDateStringToDate(cardbookBirthdaysUtils.lBirthdayList[i][3], cardbookBirthdaysUtils.lBirthdayList[i][7]);
+					var lBirthdayTitle = leventEntryTitle.replace("%1$S", lBirthdayName).replace("%2$S", lBirthdayAge).replace("%3$S", lEventDate.getFullYear()).replace("%S", lBirthdayName).replace("%S", lBirthdayAge);
+				} else {
+					var lBirthdayTitle = leventEntryTitle.replace("%1$S", lBirthdayName).replace("%2$S", lBirthdayAge).replace("%3$S", "?").replace("%S", lBirthdayName).replace("%S", lBirthdayAge);
+				}
 
 				// prepare Listener
 				var getListener = {

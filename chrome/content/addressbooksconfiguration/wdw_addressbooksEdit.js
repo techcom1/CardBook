@@ -101,6 +101,16 @@ if ("undefined" == typeof(wdw_addressbooksEdit)) {
 			cardbookPreferences.setAutoSyncInterval(window.arguments[0].dirPrefId, document.getElementById('autoSyncIntervalTextBox').value);
 			cardbookPreferences.setFnFormula(window.arguments[0].dirPrefId, document.getElementById('fnFormulaTextBox').value);
 			
+			if (document.getElementById('autoSyncCheckBox').checked) {
+				if (!(cardbookRepository.autoSyncId[window.arguments[0].dirPrefId] != null && cardbookRepository.autoSyncId[window.arguments[0].dirPrefId] !== undefined && cardbookRepository.autoSyncId[window.arguments[0].dirPrefId] != "")) {
+					cardbookSynchronization.addPeriodicSync(window.arguments[0].dirPrefId, document.getElementById('nameTextBox').value, document.getElementById('autoSyncIntervalTextBox').value);
+				}
+			} else {
+				if (cardbookRepository.autoSyncId[window.arguments[0].dirPrefId] != null && cardbookRepository.autoSyncId[window.arguments[0].dirPrefId] !== undefined && cardbookRepository.autoSyncId[window.arguments[0].dirPrefId] != "") {
+					cardbookSynchronization.removePeriodicSync(window.arguments[0].dirPrefId, document.getElementById('nameTextBox').value);
+				}
+			}
+			
 			window.arguments[0].serverCallback("SAVE", window.arguments[0].dirPrefId, document.getElementById('nameTextBox').value,
 												document.getElementById('readonlyCheckBox').checked);
 			close();

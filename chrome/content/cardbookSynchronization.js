@@ -14,10 +14,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 
 	var cardbookSynchronization = {
 
-		autoSync: {},
-		autoSyncInterval: {},
-		autoSyncId: {},
-
 		initDiscovery: function(aPrefId) {
 			cardbookRepository.cardbookServerValidation[aPrefId] = {};
 		},
@@ -1892,8 +1888,8 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					var dirPrefName = cardbookRepository.cardbookAccounts[i][0];
 					var autoSync = cardbookPreferences.getAutoSyncEnabled(dirPrefId);
 					var autoSyncInterval = cardbookPreferences.getAutoSyncInterval(dirPrefId);
-					if ((!(cardbookSynchronization.autoSync[dirPrefId] != null && cardbookSynchronization.autoSync[dirPrefId] !== undefined && cardbookSynchronization.autoSync[dirPrefId] != "")) ||
-						(autoSync && cardbookSynchronization.autoSyncInterval[dirPrefId] != autoSyncInterval)) {
+					if ((!(cardbookRepository.autoSync[dirPrefId] != null && cardbookRepository.autoSync[dirPrefId] !== undefined && cardbookRepository.autoSync[dirPrefId] != "")) ||
+						(autoSync && cardbookRepository.autoSyncInterval[dirPrefId] != autoSyncInterval)) {
 						cardbookSynchronization.removePeriodicSync(dirPrefId, dirPrefName);
 						if (autoSync) {
 							cardbookSynchronization.addPeriodicSync(dirPrefId, dirPrefName, autoSyncInterval);
@@ -1904,24 +1900,24 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 		},
 
 		removePeriodicSync: function(aDirPrefId, aDirPrefName) {
-			if (cardbookSynchronization.autoSyncId[aDirPrefId]) {
+			if (cardbookRepository.autoSyncId[aDirPrefId]) {
 				if (!(aDirPrefName != null && aDirPrefName !== undefined && aDirPrefName != "")) {
 					aDirPrefName = cardbookPreferences.getName(aDirPrefId);
 				}
-				cardbookUtils.formatStringForOutput("periodicSyncDeleting", [aDirPrefName, cardbookSynchronization.autoSyncId[aDirPrefId]]);
-				clearInterval(cardbookSynchronization.autoSyncId[aDirPrefId]);
-				delete cardbookSynchronization.autoSyncId[aDirPrefId];
-				delete cardbookSynchronization.autoSync[aDirPrefId];
-				delete cardbookSynchronization.autoSyncInterval[aDirPrefId];
+				cardbookUtils.formatStringForOutput("periodicSyncDeleting", [aDirPrefName, cardbookRepository.autoSyncId[aDirPrefId]]);
+				clearInterval(cardbookRepository.autoSyncId[aDirPrefId]);
+				delete cardbookRepository.autoSyncId[aDirPrefId];
+				delete cardbookRepository.autoSync[aDirPrefId];
+				delete cardbookRepository.autoSyncInterval[aDirPrefId];
 			}
 		},
 		
 		addPeriodicSync: function(aDirPrefId, aDirPrefName, aAutoSyncInterval) {
 			var autoSyncIntervalMs = aAutoSyncInterval * 60 * 1000;
-			cardbookSynchronization.autoSyncId[aDirPrefId] = setInterval(cardbookSynchronization.runPeriodicSync, autoSyncIntervalMs, aDirPrefId, aDirPrefName);
-			cardbookSynchronization.autoSync[aDirPrefId] = true;
-			cardbookSynchronization.autoSyncInterval[aDirPrefId] = aAutoSyncInterval;
-			cardbookUtils.formatStringForOutput("periodicSyncSetting", [aDirPrefName, autoSyncIntervalMs, cardbookSynchronization.autoSyncId[aDirPrefId]]);
+			cardbookRepository.autoSyncId[aDirPrefId] = setInterval(cardbookSynchronization.runPeriodicSync, autoSyncIntervalMs, aDirPrefId, aDirPrefName);
+			cardbookRepository.autoSync[aDirPrefId] = true;
+			cardbookRepository.autoSyncInterval[aDirPrefId] = aAutoSyncInterval;
+			cardbookUtils.formatStringForOutput("periodicSyncSetting", [aDirPrefName, autoSyncIntervalMs, cardbookRepository.autoSyncId[aDirPrefId]]);
 		},
 		
 		runPeriodicSync: function (aDirPrefId, aDirPrefName) {
