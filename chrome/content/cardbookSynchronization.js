@@ -2266,83 +2266,81 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 		loadFileAsync: function (aContent, aParams) {
 			try {
 				if (aContent != null && aContent !== undefined && aContent != "") {
-					// Services.tm.currentThread.dispatch({ run: function() {
-						var re = /[\n\u0085\u2028\u2029]|\r\n?/;
-						var fileContentArray = aContent.split(re);
-	
-						var fileContentArrayLength = fileContentArray.length
-						if (aParams.aImportMode.endsWith("FILE")) {
-							for (let i = 0; i < fileContentArrayLength; i++) {
-								if (fileContentArray[i] == "BEGIN:VCARD") {
-									cardbookRepository.cardbookServerSyncTotal[aParams.aPrefId]++;
-								}
+					var re = /[\n\u0085\u2028\u2029]|\r\n?/;
+					var fileContentArray = cardbookUtils.cleanArrayWithoutTrim(aContent.split(re));
+
+					var fileContentArrayLength = fileContentArray.length
+					if (aParams.aImportMode.endsWith("FILE")) {
+						for (let i = 0; i < fileContentArrayLength; i++) {
+							if (fileContentArray[i] == "BEGIN:VCARD") {
+								cardbookRepository.cardbookServerSyncTotal[aParams.aPrefId]++;
 							}
 						}
-						cardbookRepository.importConflictChoicePersist = false;
-						cardbookRepository.importConflictChoice = "write";
-						for (let i = 0; i < fileContentArrayLength; i++) {
-							if (fileContentArray[i].startsWith("BEGIN:VCARD")) {
-								cardContent = fileContentArray[i];
-							} else if (fileContentArray[i].startsWith("END:VCARD")) {
-								cardContent = cardContent + "\r\n" + fileContentArray[i];
-								try {
-									var myCard = new cardbookCardParser(cardContent, "", "", aParams.aPrefId);
-									Services.tm.currentThread.dispatch({ run: function() {
-										if (myCard.version == "") {
-											if (aParams.aImportMode.startsWith("NOIMPORT")) {
-												cardbookRepository.cardbookServerSyncError[aParams.aPrefId]++;
-												cardbookRepository.cardbookServerSyncDone[aParams.aPrefId]++;
-											}
-										} else {
-											if (aParams.aImportMode.startsWith("NOIMPORT")) {
-												if (cardbookRepository.cardbookCards[myCard.dirPrefId+"::"+myCard.uid]) {
-													var myOldCard = cardbookRepository.cardbookCards[myCard.dirPrefId+"::"+myCard.uid];
-													// if aCard and aModifiedCard have the same cached medias
-													cardbookUtils.changeMediaFromFileToContent(myCard);
-													cardbookRepository.removeCardFromRepository(myOldCard, true);
-												}
-												if (aParams.aPrefIdType === "CACHE" || aParams.aPrefIdType === "DIRECTORY") {
-													cardbookRepository.addCardToRepository(myCard, aParams.aMode, aParams.aFile.leafName);
-												} else if (aParams.aPrefIdType === "FILE") {
-													myCard.cardurl = "";
-													cardbookRepository.addCardToRepository(myCard, aParams.aMode);
-												}
-											} else {
-												// performance reason
-												// update the UI only at the end
-												if (i == fileContentArrayLength - 1) {
-													cardbookSynchronization.importCard(myCard, aParams.aTarget, true, aParams.aSource);
-												} else {
-													cardbookSynchronization.importCard(myCard, aParams.aTarget, true);
-												}
-											}
+					}
+					cardbookRepository.importConflictChoicePersist = false;
+					cardbookRepository.importConflictChoice = "write";
+					for (let i = 0; i < fileContentArrayLength; i++) {
+						if (fileContentArray[i].startsWith("BEGIN:VCARD")) {
+							cardContent = fileContentArray[i];
+						} else if (fileContentArray[i].startsWith("END:VCARD")) {
+							cardContent = cardContent + "\r\n" + fileContentArray[i];
+							try {
+								var myCard = new cardbookCardParser(cardContent, "", "", aParams.aPrefId);
+								Services.tm.currentThread.dispatch({ run: function() {
+									if (myCard.version == "") {
+										if (aParams.aImportMode.startsWith("NOIMPORT")) {
+											cardbookRepository.cardbookServerSyncError[aParams.aPrefId]++;
 											cardbookRepository.cardbookServerSyncDone[aParams.aPrefId]++;
 										}
-									}}, Components.interfaces.nsIEventTarget.DISPATCH_SYNC);
-								}
-								catch (e) {
-									if (e.message == "") {
-										var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
-										cardbookUtils.formatStringForOutput("parsingCardError", [aParams.aPrefIdName, strBundle.GetStringFromName(e.code), cardContent], "Error");
 									} else {
-										cardbookUtils.formatStringForOutput("parsingCardError", [aParams.aPrefIdName, e.message, cardContent], "Error");
+										if (aParams.aImportMode.startsWith("NOIMPORT")) {
+											if (cardbookRepository.cardbookCards[myCard.dirPrefId+"::"+myCard.uid]) {
+												var myOldCard = cardbookRepository.cardbookCards[myCard.dirPrefId+"::"+myCard.uid];
+												// if aCard and aModifiedCard have the same cached medias
+												cardbookUtils.changeMediaFromFileToContent(myCard);
+												cardbookRepository.removeCardFromRepository(myOldCard, true);
+											}
+											if (aParams.aPrefIdType === "CACHE" || aParams.aPrefIdType === "DIRECTORY") {
+												cardbookRepository.addCardToRepository(myCard, aParams.aMode, aParams.aFile.leafName);
+											} else if (aParams.aPrefIdType === "FILE") {
+												myCard.cardurl = "";
+												cardbookRepository.addCardToRepository(myCard, aParams.aMode);
+											}
+										} else {
+											// performance reason
+											// update the UI only at the end
+											if (i == fileContentArrayLength - 1) {
+												cardbookSynchronization.importCard(myCard, aParams.aTarget, true, aParams.aSource);
+											} else {
+												cardbookSynchronization.importCard(myCard, aParams.aTarget, true);
+											}
+										}
+										cardbookRepository.cardbookServerSyncDone[aParams.aPrefId]++;
 									}
-									cardbookRepository.cardbookServerSyncError[aParams.aPrefId]++;
-									cardbookRepository.cardbookServerSyncDone[aParams.aPrefId]++;
+								}}, Components.interfaces.nsIEventTarget.DISPATCH_SYNC);
+							}
+							catch (e) {
+								if (e.message == "") {
+									var strBundle = Services.strings.createBundle("chrome://cardbook/locale/cardbook.properties");
+									cardbookUtils.formatStringForOutput("parsingCardError", [aParams.aPrefIdName, strBundle.GetStringFromName(e.code), cardContent], "Error");
+								} else {
+									cardbookUtils.formatStringForOutput("parsingCardError", [aParams.aPrefIdName, e.message, cardContent], "Error");
 								}
-								cardContent = "";
-							} else if (fileContentArray[i] == "") {
-								continue;
-							} else {
-								cardContent = cardContent + "\r\n" + fileContentArray[i];
+								cardbookRepository.cardbookServerSyncError[aParams.aPrefId]++;
+								cardbookRepository.cardbookServerSyncDone[aParams.aPrefId]++;
 							}
+							cardContent = "";
+						} else if (fileContentArray[i] == "") {
+							continue;
+						} else {
+							cardContent = cardContent + "\r\n" + fileContentArray[i];
 						}
-						if (aParams.aImportMode.startsWith("IMPORT")) {
-							if (aParams.aPrefIdType === "FILE") {
-								cardbookRepository.reWriteFiles([aParams.aPrefId]);
-							}
+					}
+					if (aParams.aImportMode.startsWith("IMPORT")) {
+						if (aParams.aPrefIdType === "FILE") {
+							cardbookRepository.reWriteFiles([aParams.aPrefId]);
 						}
-					// }}, Components.interfaces.nsIEventTarget.DISPATCH_SYNC);
+					}
 				} else {
 					if (aParams.aImportMode.endsWith("DIR")) {
 						cardbookRepository.cardbookServerSyncDone[aParams.aPrefId]++;

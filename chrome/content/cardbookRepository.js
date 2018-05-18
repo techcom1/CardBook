@@ -504,44 +504,46 @@ var cardbookRepository = {
 	
 	getLongSearchString: function(aCard) {
 		var lResult = "";
-		lResult = lResult + aCard.lastname;
-		lResult = lResult + aCard.firstname;
-		lResult = lResult + aCard.othername;
-		lResult = lResult + aCard.prefixname;
-		lResult = lResult + aCard.suffixname;
-		lResult = lResult + aCard.fn;
-		lResult = lResult + aCard.nickname;
-		lResult = lResult + aCard.bday;
+		var sep = "|";
+		lResult = lResult + aCard.lastname + sep;
+		lResult = lResult + aCard.firstname + sep;
+		lResult = lResult + aCard.othername + sep;
+		lResult = lResult + aCard.prefixname + sep;
+		lResult = lResult + aCard.suffixname + sep;
+		lResult = lResult + aCard.fn + sep;
+		lResult = lResult + aCard.nickname + sep;
+		lResult = lResult + aCard.bday + sep;
 		// lResult = lResult + aCard.categories.join();
 		for (let i = 0; i < aCard.adr.length; i++) {
-			lResult = lResult + aCard.adr[i][0].join();
+			lResult = lResult + aCard.adr[i][0].join() + sep;
 		}
 		for (let i = 0; i < aCard.tel.length; i++) {
-			lResult = lResult + aCard.tel[i][0].join();
+			lResult = lResult + aCard.tel[i][0].join() + sep;
 		}
 		for (let i = 0; i < aCard.email.length; i++) {
-			lResult = lResult + aCard.email[i][0].join();
+			lResult = lResult + aCard.email[i][0].join() + sep;
 		}
-		lResult = lResult + aCard.title;
-		lResult = lResult + aCard.role;
-		lResult = lResult + aCard.org;
-		lResult = lResult + aCard.note;
+		lResult = lResult + aCard.title + sep;
+		lResult = lResult + aCard.role + sep;
+		lResult = lResult + aCard.org + sep;
+		lResult = lResult + aCard.note + sep;
 		for (let i = 0; i < aCard.url.length; i++) {
-			lResult = lResult + aCard.url[i][0].join();
+			lResult = lResult + aCard.url[i][0].join() + sep;
 		}
 		for (let i = 0; i < aCard.impp.length; i++) {
-			lResult = lResult + aCard.impp[i][0].join();
+			lResult = lResult + aCard.impp[i][0].join() + sep;
 		}
-		lResult = lResult.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase();
+		lResult = lResult.replace(/[\s+\-+\.+\,+\;+]/g, "").slice(0, -1).toUpperCase();
 		return lResult;
 	},
 
 	getShortSearchString: function(aCard) {
 		var lResult = "";
+		var sep = "|";
 		for (let i = 0; i < cardbookRepository.autocompleteRestrictSearchFields.length; i++) {
-			lResult = lResult + cardbookUtils.getCardValueByField(aCard, cardbookRepository.autocompleteRestrictSearchFields[i]).join();
+			lResult = lResult + cardbookUtils.getCardValueByField(aCard, cardbookRepository.autocompleteRestrictSearchFields[i]).join() + sep;
 		}
-		lResult = lResult.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase();
+		lResult = lResult.replace(/[\s+\-+\.+\,+\;+]/g, "").slice(0, -1).toUpperCase();
 		return lResult;
 	},
 
@@ -600,7 +602,6 @@ var cardbookRepository = {
 	},
 
 	removeAccountFromRepository: function(aAccountId) {
-		cardbookSynchronization.removePeriodicSync(aAccountId);
 		cardbookRepository.removeAccountFromCollected(aAccountId);
 		cardbookRepository.removeAccountFromBirthday(aAccountId);
 		cardbookRepository.removeAccountFromDiscovery(aAccountId);
