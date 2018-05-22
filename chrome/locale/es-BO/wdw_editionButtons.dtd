@@ -1,0 +1,24 @@
+<!ENTITY viewResultEditionLabel "Ver el resultado">
+<!ENTITY viewResultEditionAccesskey "V">
+<!ENTITY createEditionLabel "Crear">
+<!ENTITY createEditionAccesskey "C">
+<!ENTITY createAndReplaceEditionLabel "Crear y remplazar">
+<!ENTITY createAndReplaceEditionAccesskey "R">
+<!ENTITY saveEditionLabel "Guardar">
+<!ENTITY saveEditionAccesskey "S">
+<!ENTITY validateEditionLabel "Validar">
+<!ENTITY validateEditionAccesskey "V">
+<!ENTITY cancelEditionLabel "Cancelar">
+<!ENTITY cancelEditionAccesskey "A">
+<!ENTITY closeEditionLabel "Cerrar">
+<!ENTITY closeEditionAccesskey "F">
+<!ENTITY buttonAppendToListLabel "Añadir">
+<!ENTITY buttonAppendToListAccesskey "J">
+<!ENTITY buttonRemoveFromListLabel "Eliminar">
+<!ENTITY buttonRemoveFromListAccesskey "P">
+<!ENTITY buttonGuessFromListLabel "Adevinar">
+<!ENTITY buttonGuessFromListAccesskey "D">
+<!ENTITY loadTemplateLabel "Seleccionar un modelo">
+<!ENTITY loadTemplateAccesskey "m">
+<!ENTITY saveTemplateLabel "Guardar el modelo">
+<!ENTITY saveTemplateAccesskey "o">

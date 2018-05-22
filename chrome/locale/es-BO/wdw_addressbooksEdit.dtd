@@ -1,0 +1,28 @@
+<!ENTITY wdw_addressbooksEditTitle "Propiedades del directorio">
+
+<!ENTITY colorLabel "Color">
+<!ENTITY colorAccesskey "C">
+<!ENTITY nameLabel "Nombre">
+<!ENTITY nameAccesskey "N">
+<!ENTITY typeLabel "Tipo">
+<!ENTITY urlLabel "URL">
+<!ENTITY readonlyLabel "Modo solo lectura">
+<!ENTITY readonlyAccesskey "M">
+<!ENTITY vCardVersionLabel "vCard">
+<!ENTITY dateFormatLabel "Formato de fecha">
+<!ENTITY dateFormatAccesskey "F">
+<!ENTITY urnuuidLabel "Usar urn:uuid">
+<!ENTITY urnuuidAccesskey "U">
+
+<!ENTITY autoSyncGroupboxLabel "Sincronización periódica">
+<!ENTITY autoSyncLabel "Activar la sincronización periódica">
+<!ENTITY autoSyncAccesskey "A">
+<!ENTITY autoSyncIntervalLabel "Intervalo para la sincronización periódica (minutos)">
+<!ENTITY autoSyncIntervalAccesskey "I">
+
+<!ENTITY miscTabLabel "Diversos">
+<!ENTITY fnLabelExplanation "Es posible elegir cómo CardBook genera los Nombres mostrados. Esta formula es una sucesión de bloques delimitados por « () ». En estos bloques, hay dos partes delimitadas por « | ». La primera parte se aplica cuando el término implicado, por ejemplo {{1}}, no es nulo, la segunda parte se aplica cuando el término implicado es nulo.">
+<!ENTITY fnFormulaLabel "Generación del nombre mostrado">
+<!ENTITY fnFormulaAccesskey "m">
+<!ENTITY resetFnFormulaLabel "Inicializar de nuevo">
+<!ENTITY resetFnFormulaAccesskey "R">
