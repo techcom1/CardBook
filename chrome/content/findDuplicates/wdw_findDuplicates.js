@@ -219,23 +219,17 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 				var myId = this.id.replace(/Merge$/, "");
 				var myArgs = {cardsIn: wdw_findDuplicates.gResults[myId], cardsOut: [], hideCreate: false, action: ""};
 				var myWindow = window.openDialog("chrome://cardbook/content/wdw_mergeCards.xul", "", cardbookRepository.modalWindowParams, myArgs);
-				var changed = false;
 				if (myArgs.action == "CREATE") {
 					var myNullCard = new cardbookCardParser();
 					cardbookRepository.saveCard(myNullCard, myArgs.cardsOut[0], "cardbook.cardAddedIndirect");
 					cardbookRepository.reWriteFiles([myArgs.cardsOut[0].dirPrefId]);
-					changed = true;
+					wdw_findDuplicates.finishAction(myId);
 				} else if (myArgs.action == "CREATEANDREPLACE") {
 					var myNullCard = new cardbookCardParser();
 					cardbookRepository.saveCard(myNullCard, myArgs.cardsOut[0], "cardbook.cardAddedIndirect");
 					cardbookRepository.deleteCards(myArgs.cardsIn, "cardbook.cardRemovedDirect");
 					cardbookRepository.reWriteFiles([myArgs.cardsOut[0].dirPrefId]);
-					changed = true;
-				}
-				if (changed) {
-					wdw_findDuplicates.gResults.splice(myId, 1)
-					wdw_findDuplicates.loadCssRules();
-					wdw_findDuplicates.displayResults();
+					wdw_findDuplicates.finishAction(myId);
 				}
 			};
 			aButton.addEventListener("click", fireButton, false);
@@ -251,10 +245,19 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 			function fireButton(event) {
 				var myId = this.id.replace(/Forget$/, "");
 				cardbookDuplicate.updateDuplicate(wdw_findDuplicates.gResults[myId]);
-				wdw_findDuplicates.load();
+				wdw_findDuplicates.finishAction(myId);
+				document.getElementById(myId + 'Row').hidden = true;
 			};
 			aButton.addEventListener("click", fireButton, false);
 			aButton.addEventListener("input", fireButton, false);
+		},
+
+		finishAction: function (aId) {
+			wdw_findDuplicates.gResults.splice(aId, 1);
+			document.getElementById(aId + 'Row').hidden = true;
+			var strBundle = document.getElementById("cardbook-strings");
+			document.getElementById('numberContactsFoundDesc').value = strBundle.getFormattedString("numberLines", [wdw_findDuplicates.gResults.length]);
+			document.getElementById('numberContactsFoundDesc').hidden = false;
 		},
 
 		displayResults: function () {
@@ -317,8 +320,11 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 			if (noContacts) {
 				document.getElementById('noContactsFoundDesc').value = strBundle.getString("noContactsDuplicated");
 				document.getElementById('noContactsFoundDesc').hidden = false;
+				document.getElementById('numberContactsFoundDesc').hidden = true;
 			} else {
 				document.getElementById('noContactsFoundDesc').hidden = true;
+				document.getElementById('numberContactsFoundDesc').value = strBundle.getFormattedString("numberLines", [wdw_findDuplicates.gResults.length]);
+				document.getElementById('numberContactsFoundDesc').hidden = false;
 			}
 			if (wdw_findDuplicates.gHideForgotten) {
 				document.getElementById('hideOrShowForgottenLabel').setAttribute('label', strBundle.getString("showForgottenLabel"));

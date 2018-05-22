@@ -14,68 +14,6 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 		celltextRuleStrings: {},
 		textRuleStrings: {},
 		
-		defineMsgIconsRules: function () {
-			cardbookAutocomplete.iconRuleStrings["local"] = {};
-			cardbookAutocomplete.iconRuleStrings["local"]["LINUX"] = "treechildren::-moz-tree-image(local treecolAutoCompleteValue) {\
-				margin-inline-start: 3px;\
-				margin-inline-end: 2px;\
-				list-style-image: url('chrome://messenger/skin/icons/server.png');\
-				-moz-image-region: rect(0 48px 16px 32px);\
-				}";
-			cardbookAutocomplete.iconRuleStrings["local"]["WIN"] = "treechildren::-moz-tree-image(local treecolAutoCompleteValue) {\
-				margin-inline-start: 2px;\
-				margin-inline-end: 5px;\
-				list-style-image: url('chrome://messenger/skin/icons/server.png');\
-				-moz-image-region: rect(0 48px 16px 32px);\
-				}";
-			cardbookAutocomplete.iconRuleStrings["local"]["OSX"] = "treechildren::-moz-tree-image(local treecolAutoCompleteValue) {\
-				margin-top: 2px;\
-				margin-bottom: 2px;\
-				margin-inline-start: 4px;\
-				margin-inline-end: -1px;\
-				list-style-image: url('chrome://messenger/skin/icons/server.png');\
-				-moz-image-region: rect(0 48px 16px 32px);\
-				}";
-
-			cardbookAutocomplete.iconRuleStrings["remote"] = {};
-			cardbookAutocomplete.iconRuleStrings["remote"]["LINUX"] = "treechildren::-moz-tree-image(remote treecolAutoCompleteValue) {\
-				margin-inline-start: 3px;\
-				margin-inline-end: 2px;\
-				list-style-image: url('chrome://messenger/skin/addressbook/icons/remote-addrbook.png');\
-				}";
-			cardbookAutocomplete.iconRuleStrings["remote"]["WIN"] = "treechildren::-moz-tree-image(remote treecolAutoCompleteValue) {\
-				margin-inline-start: 2px;\
-				margin-inline-end: 5px;\
-				list-style-image: url('chrome://messenger/skin/addressbook/icons/remote-addrbook.png');\
-				}";
-			cardbookAutocomplete.iconRuleStrings["remote"]["OSX"] = "treechildren::-moz-tree-image(remote treecolAutoCompleteValue) {\
-				margin-top: 2px;\
-				margin-bottom: 2px;\
-				margin-inline-start: 4px;\
-				margin-inline-end: -1px;\
-				list-style-image: url('chrome://messenger/skin/addressbook/icons/remote-addrbook.png');\
-				}";
-				
-			cardbookAutocomplete.iconRuleStrings["standard-abook"] = {};
-			cardbookAutocomplete.iconRuleStrings["standard-abook"]["LINUX"] = "treechildren::-moz-tree-image(standard-abook treecolAutoCompleteValue) {\
-				margin-inline-start: 3px;\
-				margin-inline-end: 2px;\
-				list-style-image: url('chrome://messenger/skin/addressbook/icons/addrbook.png');\
-				}";
-			cardbookAutocomplete.iconRuleStrings["standard-abook"]["WIN"] = "treechildren::-moz-tree-image(standard-abook treecolAutoCompleteValue) {\
-				margin-inline-start: 2px;\
-				margin-inline-end: 5px;\
-				list-style-image: url('chrome://messenger/skin/addressbook/icons/addrbook.png');\
-				}";
-			cardbookAutocomplete.iconRuleStrings["standard-abook"]["OSX"] = "treechildren::-moz-tree-image(standard-abook treecolAutoCompleteValue) {\
-				margin-top: 2px;\
-				margin-bottom: 2px;\
-				margin-inline-start: 4px;\
-				margin-inline-end: -1px;\
-				list-style-image: url('chrome://messenger/skin/addressbook/icons/addrbook.png');\
-				}";
-		},
-
 		createCssMsgIconsRules: function (aStyleSheet, aOSName) {
 			var ruleIndex = aStyleSheet.insertRule(cardbookAutocomplete.iconRuleStrings["local"][aOSName], aStyleSheet.cssRules.length);
 			cardbookRepository.cardbookDynamicCssRules[aStyleSheet.href].push(ruleIndex);
@@ -114,6 +52,22 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 			}
 		},
 
+		createCssMsgAccountRules60: function (aStyleSheet, aStyle, aColor, aOSName, aUseColor, aTreeCellProperty, aColorProperty) {
+			if (aUseColor) {
+				cardbookAutocomplete.textRuleStrings["LINUX"] = ".autocomplete-richlistitem[type=\"" + aStyle + "\"]{\
+					" + aColorProperty + ": " + aColor + ";\
+					}";
+				cardbookAutocomplete.textRuleStrings["WIN"] = ".autocomplete-richlistitem[type=\"" + aStyle + "\"]{\
+					" + aColorProperty + ": " + aColor + ";\
+					}";
+				cardbookAutocomplete.textRuleStrings["OSX"] = ".autocomplete-richlistitem[type=\"" + aStyle + "\"]{\
+					" + aColorProperty + ": " + aColor + ";\
+					}";
+				var ruleIndex = aStyleSheet.insertRule(cardbookAutocomplete.textRuleStrings[aOSName], aStyleSheet.cssRules.length);
+				cardbookRepository.cardbookDynamicCssRules[aStyleSheet.href].push(ruleIndex);
+			}
+		},
+
 		loadCssRules: function () {
 			try {
 				if (navigator.appVersion.includes("Win")) {
@@ -123,7 +77,6 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 				} else {
 					var OSName="LINUX";
 				}
-				cardbookAutocomplete.defineMsgIconsRules();
 				var autocompleteWithColor = cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteWithColor");
 				var useColor = cardbookPreferences.getStringPref("extensions.cardbook.useColor");
 				if (useColor == "text") {
@@ -144,8 +97,12 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 							if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] != "SEARCH") {
 								var dirPrefId = cardbookRepository.cardbookAccounts[i][4];
 								var myColor = cardbookPreferences.getColor(dirPrefId)
-								var myStyle = cardbookRepository.getABIconType(cardbookRepository.cardbookAccounts[i][6]) + " color_" + dirPrefId;
-								cardbookAutocomplete.createCssMsgAccountRules(styleSheet, myStyle, myColor, OSName, autocompleteWithColor, treeCellProperty, colorProperty);
+								var myStyle = cardbookRepository.getABIconType(cardbookRepository.cardbookAccounts[i][6]) + "_color_" + dirPrefId;
+								if (Services.vc.compare(Services.appinfo.version, "60") >= 0) {
+									cardbookAutocomplete.createCssMsgAccountRules60(styleSheet, myStyle, myColor, OSName, autocompleteWithColor, treeCellProperty, colorProperty);
+								} else {
+									cardbookAutocomplete.createCssMsgAccountRules(styleSheet, myStyle, myColor, OSName, autocompleteWithColor, treeCellProperty, colorProperty);
+								}
 							}
 						}
 						cardbookAutocomplete.createCssMsgIconsRules(styleSheet, OSName);

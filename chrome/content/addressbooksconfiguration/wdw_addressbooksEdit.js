@@ -73,7 +73,8 @@ if ("undefined" == typeof(wdw_addressbooksEdit)) {
 			cardbookElementTools.loadDateFormats("dateFormatMenuPopup", "dateFormatMenuList", wdw_addressbooksEdit.initialDateFormat);
 			document.getElementById("urnuuidCheckBox").setAttribute('checked', cardbookPreferences.getUrnuuid(window.arguments[0].dirPrefId));
 
-			if (document.getElementById("typeTextBox").value === "GOOGLE" || document.getElementById("typeTextBox").value === "APPLE" || document.getElementById("typeTextBox").value === "CARDDAV") {
+			if (document.getElementById("typeTextBox").value == "GOOGLE" || document.getElementById("typeTextBox").value == "APPLE"
+					|| document.getElementById("typeTextBox").value == "CARDDAV" || document.getElementById("typeTextBox").value == "YAHOO") {
 				document.getElementById('syncTab').setAttribute("collapsed", false);
 				document.getElementById("autoSyncCheckBox").setAttribute('checked', cardbookPreferences.getAutoSyncEnabled(window.arguments[0].dirPrefId));
 				document.getElementById("autoSyncIntervalTextBox").value = cardbookPreferences.getAutoSyncInterval(window.arguments[0].dirPrefId);
@@ -99,6 +100,16 @@ if ("undefined" == typeof(wdw_addressbooksEdit)) {
 			cardbookPreferences.setAutoSyncEnabled(window.arguments[0].dirPrefId, document.getElementById('autoSyncCheckBox').checked);
 			cardbookPreferences.setAutoSyncInterval(window.arguments[0].dirPrefId, document.getElementById('autoSyncIntervalTextBox').value);
 			cardbookPreferences.setFnFormula(window.arguments[0].dirPrefId, document.getElementById('fnFormulaTextBox').value);
+			
+			if (document.getElementById('autoSyncCheckBox').checked) {
+				if (!(cardbookRepository.autoSyncId[window.arguments[0].dirPrefId] != null && cardbookRepository.autoSyncId[window.arguments[0].dirPrefId] !== undefined && cardbookRepository.autoSyncId[window.arguments[0].dirPrefId] != "")) {
+					cardbookSynchronization.addPeriodicSync(window.arguments[0].dirPrefId, document.getElementById('nameTextBox').value, document.getElementById('autoSyncIntervalTextBox').value);
+				}
+			} else {
+				if (cardbookRepository.autoSyncId[window.arguments[0].dirPrefId] != null && cardbookRepository.autoSyncId[window.arguments[0].dirPrefId] !== undefined && cardbookRepository.autoSyncId[window.arguments[0].dirPrefId] != "") {
+					cardbookSynchronization.removePeriodicSync(window.arguments[0].dirPrefId, document.getElementById('nameTextBox').value);
+				}
+			}
 			
 			window.arguments[0].serverCallback("SAVE", window.arguments[0].dirPrefId, document.getElementById('nameTextBox').value,
 												document.getElementById('readonlyCheckBox').checked);

@@ -29,6 +29,7 @@
 <!ENTITY remotePage.carddav.label "CardDAV">
 <!ENTITY remotePage.google.label "Google">
 <!ENTITY remotePage.apple.label "Apple">
+<!ENTITY remotePage.yahoo.label "Yahoo!">
 <!ENTITY remotePage.connection.label "Koneksi">
 <!ENTITY remotePage.url.description "Untuk tipe CardDAV, masukkan URL buku alamat jauh Anda. Anda dapat mencoba menggunakan sebagian Alamat URL (sebagai contoh: http(s)://carddav.contoh.or.id). Untuk buku alamat Google, jangan tentukan bidang ini.">
 <!ENTITY remotePage.url.label "Alamat URL">

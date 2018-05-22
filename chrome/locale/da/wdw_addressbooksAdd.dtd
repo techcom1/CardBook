@@ -29,6 +29,7 @@
 <!ENTITY remotePage.carddav.label "CardDAV">
 <!ENTITY remotePage.google.label "Google">
 <!ENTITY remotePage.apple.label "Apple">
+<!ENTITY remotePage.yahoo.label "Yahoo!">
 <!ENTITY remotePage.connection.label "Forbindelse">
 <!ENTITY remotePage.url.description "For en CardDAV-type, indtast din fjerne adressebogs URL. Du kan prøve at bruge en delvis URL (eksempel : http(s)://carddav.example.org). Specificer ikke dette felt for en Google-adressebog.">
 <!ENTITY remotePage.url.label "URL">

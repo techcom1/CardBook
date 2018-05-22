@@ -29,6 +29,7 @@
 <!ENTITY remotePage.carddav.label "CardDAV">
 <!ENTITY remotePage.google.label "Google">
 <!ENTITY remotePage.apple.label "Apple">
+<!ENTITY remotePage.yahoo.label "Yahoo!">
 <!ENTITY remotePage.connection.label "Verbindung">
 <!ENTITY remotePage.url.description "Adresse für das CardDAV-Adressbuch. Sie können versuchen, Teil-URLs anzugeben (z.B. http(s)://carddav.example.org). Für Google-Adressbücher muss keine URL angegeben werden.">
 <!ENTITY remotePage.url.label "URL">

@@ -29,6 +29,7 @@
 <!ENTITY remotePage.carddav.label "CardDAV">
 <!ENTITY remotePage.google.label "Γκούγκλαρε">
 <!ENTITY remotePage.apple.label "Apple">
+<!ENTITY remotePage.yahoo.label "Yahoo!">
 <!ENTITY remotePage.connection.label "Σύνδεση">
 <!ENTITY remotePage.url.description "Για τύπο CardDAV, πληκτρολογήστε τη διεύθυνση URL του απομακρυσμένου βιβλίου διευθύνσεών σας. Μπορεί να προσπαθήσετε να χρησιμοποιήσετε ένα μερικό παγκόσμιο εντοπισμό πόρων (URL) (παράδειγμα: http(s)://carddav.παράδειγμα.org.gr). Για ένα βιβλίο διευθύνσεων Google, δεν καθορίζετε αυτό το πεδίο.">
 <!ENTITY remotePage.url.label "Παγκόσμιο εντοπισμό πόρων">

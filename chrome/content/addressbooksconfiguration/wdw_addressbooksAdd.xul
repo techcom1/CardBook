@@ -35,7 +35,9 @@
 	<script src="chrome://cardbook/content/cardbookCardParser.js"/>
 	<script src="chrome://cardbook/content/cardbookPasswordManager.js"/>
 	<script src="chrome://cardbook/content/cardbookSynchronization.js"/>
-	<script src="wdw_newGoogleToken.js"/>
+	<script src="chrome://cardbook/content/cardbookSynchronizationGoogle.js"/>
+	<script src="chrome://cardbook/content/cardbookSynchronizationYahoo.js"/>
+	<script src="wdw_newToken.js"/>
 	<script src="chrome://cardbook/content/cardbookElementTools.js"/>
 	<script src="chrome://cardbook/content/cardbookTypes.js"/>
 	<script src="chrome://cardbook/content/complexSearch/cardbookComplexSearch.js"/>
@@ -139,6 +141,7 @@
 							<radio value="CARDDAV" label="&remotePage.carddav.label;" selected="true"/>
 							<radio value="GOOGLE" label="&remotePage.google.label;"/>
 							<radio value="APPLE" label="&remotePage.apple.label;"/>
+							<radio value="YAHOO" label="&remotePage.yahoo.label;"/>
 						</radiogroup>
 					</row>
 				</rows>

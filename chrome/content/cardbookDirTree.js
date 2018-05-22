@@ -143,7 +143,7 @@ if ("undefined" == typeof(cardbookDirTreeUtils)) {
 					break;
 				case "remote":
 					function remoteAccount(element) {
-						return (element[6] === "GOOGLE" || element[6] === "CARDDAV" || element[6] === "APPLE");
+						return (element[6] === "GOOGLE" || element[6] === "CARDDAV" || element[6] === "APPLE" || element[6] === "YAHOO");
 					}
 					cardbookDirTreeUtils.newArray = cardbookDirTreeUtils.newArray.filter(remoteAccount);
 					typeColumn.setAttribute('hidden', 'true');

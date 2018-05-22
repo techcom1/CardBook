@@ -142,6 +142,18 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			var accountsOrCatsTreeView = {
 				get rowCount() { return aCardList.length; },
 				isContainer: function(row) { return false },
+				canDrop: function(row) {
+					if (cardbookRepository.cardbookSearchMode === "SEARCH" || cardbookRepository.cardbookComplexSearchMode === "SEARCH") {
+						return false;
+					} else {
+						var myDirPrefId = cardbookUtils.getAccountId(wdw_cardbook.currentAccountId);
+						if (cardbookPreferences.getEnabled(myDirPrefId) && !cardbookPreferences.getReadOnly(myDirPrefId)) {
+							return true;
+						} else {
+							return false;
+						}
+					}
+				},
 				cycleHeader: function(row) { return false },
 				getRowProperties: function(row) {
 					if (cardbookRepository.cardbookSearchMode === "SEARCH" || cardbookRepository.cardbookComplexSearchMode === "SEARCH") {
@@ -1364,151 +1376,191 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			cardbookUtils.setSelectedCards(listOfSelectedCard, myFirstVisibleRow, myLastVisibleRow);
 		},
 
-		startDrag: function (aEvent, aTreeChildren) {
-			try {
-				var listOfUid = [];
-				cardbookDirTree.dragMode = "dragMode";
-				if (aTreeChildren.id == "cardsTreeChildren") {
-					var myTree = document.getElementById('cardsTree');
-					var numRanges = myTree.view.selection.getRangeCount();
-					var start = new Object();
-					var end = new Object();
-					for (var i = 0; i < numRanges; i++) {
-						myTree.view.selection.getRangeAt(i,start,end);
-						for (var j = start.value; j <= end.value; j++){
-							var myId = myTree.view.getCellText(j, {id: "cbid"});
-							listOfUid.push(myId);
-						}
-					}
-				} else if (aTreeChildren.id == "accountsOrCatsTreeChildren") {
-					var myTree = document.getElementById('accountsOrCatsTree');
-					if (cardbookRepository.cardbookSearchMode === "SEARCH") {
-						var myAccountPrefId = cardbookRepository.cardbookSearchValue;
-					} else {
-						var myAccountPrefId = myTree.view.getCellText(myTree.currentIndex, {id: "accountId"});
-					}
-					for (var i = 0; i < cardbookRepository.cardbookDisplayCards[myAccountPrefId].length; i++) {
-						var myId = cardbookRepository.cardbookDisplayCards[myAccountPrefId][i].cbid;
+		startDrag: function (aEvent) {
+			function CardBookDataProvider() {}
+			CardBookDataProvider.prototype = {
+				QueryInterface: XPCOMUtils.generateQI([Components.interfaces.nsIFlavorDataProvider]),
+			
+				getFlavorData: function(aTransferable, aFlavor, aData, aDataLen) {
+					//don't know why, this function is never called 
+					// if (aFlavor == 'application/x-moz-file-promise') {
+					// 	var primitive = {};
+					// 	aTransferable.getTransferData("text/vcard", primitive, {});
+					// 	var vCard = primitive.value.QueryInterface(Components.interfaces.nsISupportsString);
+					// 	aTransferable.getTransferData("application/x-moz-file-promise-dest-filename", primitive, {});
+					// 	var leafName = primitive.value.QueryInterface(Components.interfaces.nsISupportsString).data;
+					// 	aTransferable.getTransferData("application/x-moz-file-promise-dir", primitive, {});
+					// 	var localFile = primitive.value.QueryInterface(Components.interfaces.nsIFile).clone();
+					// 	localFile.append(leafName);
+					// 	var ofStream = Components.classes["@mozilla.org/network/file-output-stream;1"].createInstance(Components.interfaces.nsIFileOutputStream);
+					// 	ofStream.init(localFile, -1, -1, 0);
+					// 	var converter = Components.classes["@mozilla.org/intl/converter-output-stream;1"].createInstance(Components.interfaces.nsIConverterOutputStream);
+					// 	converter.init(ofStream, null);
+					// 	converter.writeString(vCard);
+					// 	converter.close();
+					// 	// cardbookSynchronization.writeContentToFile(localFile.path, vCard, "UTF8");
+					// }
+				}
+			};
+			
+			var aTreeChildren = aEvent.target;
+			var listOfUid = [];
+			var myCount = 0;
+			var useOnlyEmail = cardbookPreferences.getBoolPref("extensions.cardbook.useOnlyEmail");
+			if (aTreeChildren.id == "cardsTreeChildren") {
+				var myTree = document.getElementById('cardsTree');
+				var numRanges = myTree.view.selection.getRangeCount();
+				var start = new Object();
+				var end = new Object();
+				for (var i = 0; i < numRanges; i++) {
+					myTree.view.selection.getRangeAt(i,start,end);
+					for (var j = start.value; j <= end.value; j++){
+						var myId = myTree.view.getCellText(j, {id: "cbid"});
 						listOfUid.push(myId);
+						var myCard = cardbookRepository.cardbookCards[myId];
+						var vCard = encodeURIComponent(cardbookUtils.getvCardForEmail(myCard));
+						var emails = cardbookUtils.getMimeEmailsFromCardsAndLists([myCard], useOnlyEmail);
+						aEvent.dataTransfer.mozSetDataAt("text/vcard", vCard, myCount);
+						aEvent.dataTransfer.mozSetDataAt("text/unicode", emails.notEmptyResults.join(" , "), myCount);
+						aEvent.dataTransfer.mozSetDataAt("text/x-moz-address", emails.notEmptyResults.join(" , "), myCount);
+						aEvent.dataTransfer.mozSetDataAt("text/x-moz-cardbook-id", myId, myCount);
+						aEvent.dataTransfer.mozSetDataAt("application/x-moz-file-promise-dest-filename", myCard.fn + ".vcf", myCount);
+						aEvent.dataTransfer.mozSetDataAt("application/x-moz-file-promise-url","data:text/vcard," + vCard, myCount);
+						aEvent.dataTransfer.mozSetDataAt("application/x-moz-file-promise", new CardBookDataProvider(), myCount);
+						myCount++;
 					}
 				}
-				aEvent.dataTransfer.setData("text/plain", listOfUid.join("@@@@@"));
-				// aEvent.dataTransfer.effectAllowed = "copy";
-				// aEvent.dataTransfer.dropEffect = "copy";
-
-				var myCanvas = document.createElementNS('http://www.w3.org/1999/xhtml', 'canvas');
-				var myContext = myCanvas.getContext('2d');
-				var myImage = new Image();
-				var myIconMaxSize = 26;
-				var myIconMaxNumber = 5;
-				myCanvas.id = 'dragCanvas';
-				myCanvas.height = myIconMaxSize;
-				// need to know the canvas size before
-				if (listOfUid.length >= myIconMaxNumber) {
-					var myLength = myIconMaxNumber;
+			} else if (aTreeChildren.id == "accountsOrCatsTreeChildren") {
+				var myTree = document.getElementById('accountsOrCatsTree');
+				if (cardbookRepository.cardbookSearchMode === "SEARCH") {
+					var myAccountPrefId = cardbookRepository.cardbookSearchValue;
 				} else {
-					var myLength = listOfUid.length;
+					var myAccountPrefId = myTree.view.getCellText(myTree.currentIndex, {id: "accountId"});
 				}
-				myCanvas.width = (myLength + 1) * myIconMaxSize;
-				// concatenate images
-				for (var i = 0; i < myLength; i++) {
-					var myId = listOfUid[i];
-					var myPhoto = cardbookRepository.cardbookCards[myId].photo.localURI;
-					if (myPhoto != null && myPhoto !== undefined && myPhoto != "") {
-						myImage.src = myPhoto;
-					} else {
-						myImage.src = "chrome://cardbook/skin/missing_photo_200_214.png";
-					}
-					myContext.drawImage(myImage, i*myIconMaxSize, 0, myIconMaxSize, myIconMaxSize);
+				for (var i = 0; i < cardbookRepository.cardbookDisplayCards[myAccountPrefId].length; i++) {
+					var myId = cardbookRepository.cardbookDisplayCards[myAccountPrefId][i].cbid;
+					listOfUid.push(myId);
+					var myCard = cardbookRepository.cardbookDisplayCards[myAccountPrefId][i];
+					var vCard = encodeURIComponent(cardbookUtils.getvCardForEmail(myCard));
+					var emails = cardbookUtils.getMimeEmailsFromCardsAndLists([myCard], useOnlyEmail);
+					aEvent.dataTransfer.mozSetDataAt("text/vcard", vCard, myCount);
+					aEvent.dataTransfer.mozSetDataAt("text/unicode", emails.notEmptyResults.join(" , "), myCount);
+					aEvent.dataTransfer.mozSetDataAt("text/x-moz-address", emails.notEmptyResults.join(" , "), myCount);
+					aEvent.dataTransfer.mozSetDataAt("text/x-moz-cardbook-id", myId, myCount);
+					aEvent.dataTransfer.mozSetDataAt("application/x-moz-file-promise-dest-filename", myCard.fn + ".vcf", myCount);
+					aEvent.dataTransfer.mozSetDataAt("application/x-moz-file-promise-url","data:text/vcard," + vCard, myCount);
+					aEvent.dataTransfer.mozSetDataAt("application/x-moz-file-promise", new CardBookDataProvider(), myCount);
+					myCount++;
 				}
-				if (listOfUid.length > myIconMaxNumber) {
-					// Concatenate a triangle
-					var path=new Path2D();
-					path.moveTo(myIconMaxSize*myIconMaxNumber,0);
-					path.lineTo(myIconMaxSize*(myIconMaxNumber+1),myIconMaxSize/2);
-					path.lineTo(myIconMaxSize*myIconMaxNumber,myIconMaxSize);
-					myContext.fill(path);
-				}
-				aEvent.dataTransfer.setDragImage(myCanvas, 0, 0);
 			}
-			catch (e) {
-				wdw_cardbooklog.updateStatusProgressInformation("wdw_cardbook.startDrag error : " + e, "Error");
+			
+			// add a little image
+			var myCanvas = document.createElementNS('http://www.w3.org/1999/xhtml', 'canvas');
+			var myContext = myCanvas.getContext('2d');
+			var myImage = new Image();
+			var myIconMaxSize = 26;
+			var myIconMaxNumber = 5;
+			myCanvas.id = 'dragCanvas';
+			myCanvas.height = myIconMaxSize;
+			// need to know the canvas size before
+			if (listOfUid.length >= myIconMaxNumber) {
+				var myLength = myIconMaxNumber;
+			} else {
+				var myLength = listOfUid.length;
 			}
+			myCanvas.width = (myLength + 1) * myIconMaxSize;
+			// concatenate images
+			for (var i = 0; i < myLength; i++) {
+				var myId = listOfUid[i];
+				var myPhoto = cardbookRepository.cardbookCards[myId].photo.localURI;
+				if (myPhoto != null && myPhoto !== undefined && myPhoto != "") {
+					myImage.src = myPhoto;
+				} else {
+					myImage.src = "chrome://cardbook/skin/missing_photo_200_214.png";
+				}
+				myContext.drawImage(myImage, i*myIconMaxSize, 0, myIconMaxSize, myIconMaxSize);
+			}
+			if (listOfUid.length > myIconMaxNumber) {
+				// Concatenate a triangle
+				var path=new Path2D();
+				path.moveTo(myIconMaxSize*myIconMaxNumber,0);
+				path.lineTo(myIconMaxSize*(myIconMaxNumber+1),myIconMaxSize/2);
+				path.lineTo(myIconMaxSize*myIconMaxNumber,myIconMaxSize);
+				myContext.fill(path);
+			}
+			aEvent.dataTransfer.setDragImage(myCanvas, 0, 0);
 		},
-
+		
 		dragCards: function (aEvent) {
-			cardbookDirTree.dragMode = "";
-			var myTree = document.getElementById('accountsOrCatsTree');
-			var row = { }, col = { }, child = { };
-			myTree.treeBoxObject.getCellAt(aEvent.clientX, aEvent.clientY, row, col, child);
-			var myTarget = myTree.view.getCellText(row.value, {id: "accountId"});
+			var aTreeChildren = aEvent.target;
+			if (aTreeChildren.id == "cardsTreeChildren") {
+				var myTarget = wdw_cardbook.currentAccountId;
+			} else {
+				var myTree = document.getElementById('accountsOrCatsTree');
+				var row = { }, col = { }, child = { };
+				myTree.treeBoxObject.getCellAt(aEvent.clientX, aEvent.clientY, row, col, child);
+				var myTarget = myTree.view.getCellText(row.value, {id: "accountId"});
+			}
 			var mySepPosition = myTarget.indexOf("::",0);
 			var myCategory = "";
 			if (mySepPosition != -1) {
 				myCategory = myTarget.substr(mySepPosition+2, myTarget.length);
 			}
+
 			var myDirPrefId = cardbookUtils.getAccountId(myTarget);
-			var myDirPrefIdType = cardbookPreferences.getType(myDirPrefId);
-			var myDirPrefIdEnabled = cardbookPreferences.getEnabled(myDirPrefId);
-			var myDirPrefIdReadOnly = cardbookPreferences.getReadOnly(myDirPrefId);
 			var myCreatedEvent = "";
 			var myDeletedEvent = "";
-
-			if (myDirPrefIdType !== "SEARCH") {
-				if (myDirPrefIdEnabled) {
-					if (!myDirPrefIdReadOnly) {
-						cardbookRepository.importConflictChoicePersist = false;
-						cardbookRepository.importConflictChoice = "overwrite";
-						aEvent.preventDefault();
-						var dataArray = aEvent.dataTransfer.getData("text/plain").split("@@@@@");
-						if (dataArray.length) {
-							var dataLength = dataArray.length
-							for (var i = 0; i < dataLength; i++) {
-								if (cardbookRepository.cardbookCards[dataArray[i]]) {
-									var myCard = cardbookRepository.cardbookCards[dataArray[i]];
-									if (myDirPrefId == myCard.dirPrefId) {
-										if (myCategory != "" && myCard.categories.includes(myCategory)) {
-											continue;
-										} else if (myCategory == "") {
-											continue;
-										} else {
-											cardbookRepository.importConflictChoice = "update";
-											var askUser = false;
-										}
-									} else {
-										var askUser = true;
-									}
-									// performance reason
-									// update the UI only at the end
-									if (i == dataLength - 1) {
-										myCreatedEvent = "cardbook.cardDragged";
-										myDeletedEvent = "cardbook.cardRemovedIndirect";
-									}
-									Services.tm.currentThread.dispatch({ run: function() {
-										cardbookSynchronization.importCard(myCard, myTarget, askUser, myCreatedEvent);
-										if (myDirPrefId != myCard.dirPrefId) {
-											if (!aEvent.ctrlKey) {
-												cardbookRepository.deleteCards([myCard], myDeletedEvent);
-											}
-										}
-									}}, Components.interfaces.nsIEventTarget.DISPATCH_SYNC);
-								} else {
-									cardbookUtils.formatStringForOutput("draggableWrong");
+			cardbookRepository.importConflictChoicePersist = false;
+			cardbookRepository.importConflictChoice = "overwrite";
+			aEvent.preventDefault();
+			for (var i = 0; i < aEvent.dataTransfer.mozItemCount; i++) {
+				var types = aEvent.dataTransfer.mozTypesAt(i);
+				for (var j = 0; j < types.length; j++) {
+					if (types[j] == "text/x-moz-cardbook-id") {
+						var myId = aEvent.dataTransfer.mozGetDataAt("text/x-moz-cardbook-id", i);
+						var myCard = cardbookRepository.cardbookCards[myId];
+						if (myDirPrefId == myCard.dirPrefId) {
+							if (myCategory != "" && myCard.categories.includes(myCategory)) {
+								continue;
+							} else if (myCategory == "") {
+								continue;
+							} else {
+								cardbookRepository.importConflictChoice = "update";
+								var askUser = false;
+							}
+						} else {
+							var askUser = true;
+						}
+						// performance reason
+						// update the UI only at the end
+						if (i == aEvent.dataTransfer.mozItemCount - 1) {
+							myCreatedEvent = "cardbook.cardDragged";
+							myDeletedEvent = "cardbook.cardRemovedIndirect";
+						}
+						Services.tm.currentThread.dispatch({ run: function() {
+							cardbookSynchronization.importCard(myCard, myTarget, askUser, myCreatedEvent);
+							if (myDirPrefId != myCard.dirPrefId) {
+								if (!aEvent.ctrlKey) {
+									cardbookRepository.deleteCards([myCard], myDeletedEvent);
 								}
 							}
-							cardbookRepository.reWriteFiles([myDirPrefId]);
-						} else {
-							cardbookUtils.formatStringForOutput("draggableWrong");
+						}}, Components.interfaces.nsIEventTarget.DISPATCH_SYNC);
+					} else if (types[j] == "application/x-moz-file") {
+						var myFile1 = aEvent.dataTransfer.mozGetDataAt("application/x-moz-file", i);
+						var myFile = myFile1.QueryInterface(Components.interfaces.nsIFile);
+						if (cardbookUtils.getFileExtension(myFile.path).toLowerCase() == "vcf" ) {
+							// performance reason
+							// update the UI only at the end
+							if (i == aEvent.dataTransfer.mozItemCount - 1) {
+								cardbookSynchronization.loadFile(myFile, myTarget, "WINDOW", "IMPORTFILE", "cardbook.cardDragged");
+							} else {
+								cardbookSynchronization.loadFile(myFile, myTarget, "WINDOW", "IMPORTFILE");
+							}
 						}
-					} else {
-						var myDirPrefIdName = cardbookPreferences.getName(myDirPrefId);
-						cardbookUtils.formatStringForOutput("addressbookReadOnly", [myDirPrefIdName]);
 					}
-				} else {
-					var myDirPrefIdName = cardbookPreferences.getName(myDirPrefId);
-					cardbookUtils.formatStringForOutput("addressbookDisabled", [myDirPrefIdName]);
 				}
 			}
+			cardbookRepository.reWriteFiles([myDirPrefId]);
 		},
 
 		editComplexSearch: function () {
@@ -1753,6 +1805,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 							wdw_cardbook.setNoComplexSearchMode();
 							wdw_cardbook.setNoSearchMode();
 							if (myParentAccountType !== "SEARCH") {
+								cardbookSynchronization.removePeriodicSync(myParentAccountId);
 								cardbookRepository.removeAccountFromComplexSearch(myParentAccountId);
 								cardbookRepository.removeAccountFromRepository(myParentAccountId);
 								// cannot be launched from cardbookRepository

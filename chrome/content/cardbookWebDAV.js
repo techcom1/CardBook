@@ -542,6 +542,16 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 			this.sendHTTPRequest(aType, paramsArray.join("&"), aHeaders, cardbookUtils.cleanWebArray(paramsArray));
 		},
 		
+		yahooToken: function(aType, aParams, aHeaders, aClientId, aClientSecret) {
+			this.hideResponse = true;
+			var paramsArray = [];
+			for (var param in aParams) {
+				paramsArray.push(param + "=" + encodeURIComponent(aParams[param]));
+			}
+			aHeaders["Authorization"] = "Basic " + this.b64EncodeUnicode(aClientId + ':' + aClientSecret);
+			this.sendHTTPRequest(aType, paramsArray.join("&"), aHeaders, cardbookUtils.cleanWebArray(paramsArray));
+		},
+		
 		delete: function() {
 			this.load("DELETE");
 		},

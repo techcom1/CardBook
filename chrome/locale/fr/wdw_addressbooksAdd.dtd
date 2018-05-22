@@ -29,6 +29,7 @@
 <!ENTITY remotePage.carddav.label "CardDAV">
 <!ENTITY remotePage.google.label "Google">
 <!ENTITY remotePage.apple.label "Apple">
+<!ENTITY remotePage.yahoo.label "Yahoo!">
 <!ENTITY remotePage.connection.label "Connection">
 <!ENTITY remotePage.url.description "Pour un type CardDAV, entrez l'URL de votre carnet d'adresses distant. Vous pouvez utiliser une URL partielle (par exemple : http(s)://carddav.example.org). Pour un type Google, ce champ ne doit pas être rempli.">
 <!ENTITY remotePage.url.label "URL">
