@@ -1,0 +1,9 @@
+<!ENTITY wdw_adrEditionTitle "Modificación de dirección">
+
+<!ENTITY adrPostOfficeLabel "Casilla postal">
+<!ENTITY adrExtendedAddrLabel "Dpto">
+<!ENTITY adrStreetLabel "Calle">
+<!ENTITY adrLocalityLabel "Ciudad">
+<!ENTITY adrRegionLabel "Departamento">
+<!ENTITY adrPostalCodeLabel "Código postal">
+<!ENTITY adrCountryLabel "País">

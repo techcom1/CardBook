@@ -1,0 +1,4 @@
+<!ENTITY existingDataGroupboxLabel "Añadir a este contacto">
+<!ENTITY cardbookSwitchButtonTooltip "Invertir nombres y apellidos">
+<!ENTITY cardbookCalendarButtonTooltip "Insertar un evento">
+<!ENTITY descriptionTextbox "Descripción">

@@ -1,0 +1,13 @@
+<!ENTITY categoriesPicker.label "Filtro sobre las categorías:">
+<!ENTITY categoriesPicker.accesskey "t">
+<!ENTITY editAddrBookCard.label "Modificar">
+<!ENTITY editAddrBookCard.accesskey "M">
+<!ENTITY searchContacts.label "Buscar:">
+<!ENTITY searchContacts.accesskey "C">
+<!ENTITY nameLabel "Nombre">
+<!ENTITY ABLabel "Directorio">
+<!ENTITY emailLabel "Direcciones de correo electrónico">
+<!ENTITY addtoReplytoFieldMenu.label "Añadir al campo Responder a">
+<!ENTITY addtoReplytoFieldMenu.accesskey "R">
+<!ENTITY replytoButton.label "Añadir Responder a:">
+<!ENTITY replytoButton.accesskey "R">
