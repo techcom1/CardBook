@@ -52,7 +52,7 @@ if ("undefined" == typeof(wdw_logEdition)) {
 						myLogArray.push(myTree.view.getCellText(i, {id: "logEditionValue"}));
 					}
 				}
-				cardbookUtils.clipboardSet(myLogArray.join("\n"));
+				cardbookClipboard.clipboardSetText('text/unicode', myLogArray.join("\n"));
 			}
 			catch (e) {
 				var errorTitle = "clipboard error";

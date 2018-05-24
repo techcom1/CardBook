@@ -1897,47 +1897,6 @@ if ("undefined" == typeof(cardbookUtils)) {
 			}
 		},
 
-		clipboardSet: function (aText, aMessage) {
-			let ss = Components.classes['@mozilla.org/supports-string;1'].createInstance(Components.interfaces.nsISupportsString);
-			let trans = Components.classes['@mozilla.org/widget/transferable;1'].createInstance(Components.interfaces.nsITransferable);
-	
-			let clipid = Components.interfaces.nsIClipboard;
-			let clipboard   = Components.classes['@mozilla.org/widget/clipboard;1'].getService(clipid);
-			if (!clipboard)
-				return;
-	
-			ss.data = aText;
-			trans.addDataFlavor('text/unicode');
-			trans.setTransferData('text/unicode', ss, aText.length * 2);
-			clipboard.setData(trans, null, clipid.kGlobalClipboard);
-			
-			if (aMessage != null && aMessage !== undefined && aMessage != "") {
-				wdw_cardbooklog.updateStatusProgressInformation(aMessage);
-			}
-		},
-
-		clipboardGet: function () {
-			try {
-				let clipboard = Services.clipboard;
-				let trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
-				trans.addDataFlavor("text/unicode");
-	
-				clipboard.getData(trans, clipboard.kGlobalClipboard);
-	
-				let str = {};
-				let strLength = {};
-	
-				trans.getTransferData("text/unicode", str, strLength);
-				if (str)
-					str = str.value.QueryInterface(Components.interfaces.nsISupportsString);
-	
-				return str ? str.data.substring(0, strLength.value / 2) : null;
-			}
-			catch (e) {
-				wdw_cardbooklog.updateStatusProgressInformation("cardbookUtils.clipboardGet error : " + e, "Error");
-			}
-		},
-
 		callFilePicker: function (aTitle, aMode, aType, aDefaultFileName, aCallback, aCallbackParam) {
 			try {
 				var strBundle = document.getElementById("cardbook-strings");

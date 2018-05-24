@@ -47,3 +47,29 @@ toolbarbutton.focusbutton {
   -moz-box-flex: 1;
 }
 
+.ruleactiontarget[type="cardbook#removeFrom"] {
+  -moz-binding: url("chrome://cardbook/content/filters/bindings.xml#abPickerAction");
+  -moz-box-flex: 1;
+}
+
+.ruleactiontarget[type="cardbook#removeTo"] {
+  -moz-binding: url("chrome://cardbook/content/filters/bindings.xml#abPickerAction");
+  -moz-box-flex: 1;
+}
+
+.ruleactiontarget[type="cardbook#removeCc"] {
+  -moz-binding: url("chrome://cardbook/content/filters/bindings.xml#abPickerAction");
+  -moz-box-flex: 1;
+}
+
+.ruleactiontarget[type="cardbook#removeBcc"] {
+  -moz-binding: url("chrome://cardbook/content/filters/bindings.xml#abPickerAction");
+  -moz-box-flex: 1;
+}
+
+.ruleactiontarget[type="cardbook#removeAll"] {
+  -moz-binding: url("chrome://cardbook/content/filters/bindings.xml#abPickerAction");
+  -moz-box-flex: 1;
+}
+
+

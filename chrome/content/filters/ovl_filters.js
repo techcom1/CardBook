@@ -28,10 +28,10 @@ if ("undefined" == typeof(ovl_filters)) {
 
 		_addEmails: function(aMsgHdrs, aActionValue, aField) {
 			if (!cardbookPreferences.getEnabled(aActionValue)) {
-				cardbookUtils.formatStringForOutput("errorFiltersAddEmailsABNotEnabled", [aField, aActionValue], "Error");
+				cardbookUtils.formatStringForOutput("errorFiltersAddEmailsABDisabled", [aField, aActionValue], "Error");
 				return;
 			}
-			
+
 			let count = aMsgHdrs.length;
 			for (var i = 0; i < count; i++) {
 				let hdr = aMsgHdrs.queryElementAt(i, Components.interfaces.nsIMsgDBHdr);
@@ -43,9 +43,32 @@ if ("undefined" == typeof(ovl_filters)) {
 			}
 		},
 
+		_removeEmails: function(aMsgHdrs, aActionValue, aField) {
+			if (!cardbookPreferences.getEnabled(aActionValue)) {
+				cardbookUtils.formatStringForOutput("errorFiltersRemoveEmailsABDisabled", [aField, aActionValue], "Error");
+				return;
+			}
+			
+			let count = aMsgHdrs.length;
+			for (var i = 0; i < count; i++) {
+				let hdr = aMsgHdrs.queryElementAt(i, Components.interfaces.nsIMsgDBHdr);
+				var addresses = {}, names = {}, fullAddresses = {};
+				MailServices.headerParser.parseHeadersWithArray(hdr[aField], addresses, names, fullAddresses);
+				for (var j = 0; j < addresses.value.length; j++) {
+					var myEmail = addresses.value[j].toLowerCase();
+					if (cardbookRepository.cardbookCardEmails[aActionValue]) {
+						if (cardbookRepository.cardbookCardEmails[aActionValue][myEmail]) {
+							var myCard = cardbookRepository.cardbookCardEmails[aActionValue][myEmail][0];
+							cardbookRepository.deleteCards([myCard], "cardbook.cardRemovedIndirect");
+						}
+					}
+				}
+			}
+		},
+
 		_matchEmails: function(aMsgHdrEmails, aSearchValue, aSearchOp) {
 			if (!cardbookPreferences.getEnabled(aSearchValue)) {
-				cardbookUtils.formatStringForOutput("errorFiltersMatchEmailsABNotEnabled", [aSearchValue], "Error");
+				cardbookUtils.formatStringForOutput("errorFiltersMatchEmailsABDisabled", [aSearchValue], "Error");
 				return false;
 			}
 			var addresses = {}, names = {}, fullAddresses = {};
@@ -282,6 +305,74 @@ if ("undefined" == typeof(ovl_filters)) {
 				}
 			};
 			MailServices.filters.addCustomAction(addAll);
+
+			var removeFrom = {
+				id: "cardbook#removeFrom",
+				name: strBundle.GetStringFromName("cardbook.removeFrom.name"),
+				isValidForType: function(type, scope) {return true;},
+				validateActionValue: function(value, folder, type) { return null;},
+				allowDuplicates: true,
+				needsBody: false,
+				apply: function (aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
+					ovl_filters._removeEmails(aMsgHdrs, aActionValue, "author");
+				}
+			};
+			MailServices.filters.addCustomAction(removeFrom);
+
+			var removeTo = {
+				id: "cardbook#removeTo",
+				name: strBundle.GetStringFromName("cardbook.removeTo.name"),
+				isValidForType: function(type, scope) {return true;},
+				validateActionValue: function(value, folder, type) { return null;},
+				allowDuplicates: true,
+				needsBody: false,
+				apply: function (aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
+					ovl_filters._removeEmails(aMsgHdrs, aActionValue, "recipients");
+				}
+			};
+			MailServices.filters.addCustomAction(removeTo);
+
+			var removeCc = {
+				id: "cardbook#removeCc",
+				name: strBundle.GetStringFromName("cardbook.removeCc.name"),
+				isValidForType: function(type, scope) {return true;},
+				validateActionValue: function(value, folder, type) { return null;},
+				allowDuplicates: true,
+				needsBody: false,
+				apply: function (aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
+					ovl_filters._removeEmails(aMsgHdrs, aActionValue, "ccList");
+				}
+			};
+			MailServices.filters.addCustomAction(removeCc);
+
+			var removeBcc = {
+				id: "cardbook#removeBcc",
+				name: strBundle.GetStringFromName("cardbook.removeBcc.name"),
+				isValidForType: function(type, scope) {return true;},
+				validateActionValue: function(value, folder, type) { return null;},
+				allowDuplicates: true,
+				needsBody: false,
+				apply: function (aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
+					ovl_filters._removeEmails(aMsgHdrs, aActionValue, "bccList");
+				}
+			};
+			MailServices.filters.addCustomAction(removeBcc);
+
+			var removeAll = {
+				id: "cardbook#removeAll",
+				name: strBundle.GetStringFromName("cardbook.removeAll.name"),
+				isValidForType: function(type, scope) {return true;},
+				validateActionValue: function(value, folder, type) { return null;},
+				allowDuplicates: true,
+				needsBody: false,
+				apply: function (aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
+					ovl_filters._removeEmails(aMsgHdrs, aActionValue, "author");
+					ovl_filters._removeEmails(aMsgHdrs, aActionValue, "recipients");
+					ovl_filters._removeEmails(aMsgHdrs, aActionValue, "ccList");
+					ovl_filters._removeEmails(aMsgHdrs, aActionValue, "bccList");
+				}
+			};
+			MailServices.filters.addCustomAction(removeAll);
 
 			window.removeEventListener('load', arguments.callee, true);
 		}

@@ -40,6 +40,7 @@
 
 	<script src="chrome://cardbook/content/cardbookObserver.js"/>
 	<script src="chrome://cardbook/content/preferences/cardbookPreferences.js"/>
+	<script src="chrome://cardbook/content/cardbookClipboard.js"/>
 	<script src="chrome://cardbook/content/cardbookUtils.js"/>
 	<script src="chrome://cardbook/content/cardbookDates.js"/>
 	<script src="chrome://cardbook/content/cardbookElementTools.js"/>

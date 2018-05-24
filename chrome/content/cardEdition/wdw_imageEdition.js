@@ -38,39 +38,6 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 			return myFile;
 		},
 
-		clipboardGetSupportedFlavors: function() {
-			var flavors = [];
-			flavors.push("image/jpeg");
-			flavors.push("image/jpg");
-			flavors.push("image/png");
-			flavors.push("image/gif");
-			flavors.push("application/x-moz-file");
-			flavors.push("text/unicode");
-			flavors.push("text/plain");
-			return flavors;
-		},
-
-		clipboardCanPaste: function() {
-            var clipboard = Services.clipboard;
-            var flavors = wdw_imageEdition.clipboardGetSupportedFlavors();
-            return clipboard.hasDataMatchingFlavors(flavors, flavors.length, clipboard.kGlobalClipboard);
-		},
-
-		clipboardGetData: function() {
-			var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
-			var flavors = wdw_imageEdition.clipboardGetSupportedFlavors();
-			for (i = 0; i < flavors.length; i++) {
-				trans.addDataFlavor(flavors[i]);
-			}
-			Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);
-
-			var flavor = {};
-			var data = {};
-			var len = {};
-			trans.getAnyTransferData(flavor, data, len);
-			return { flavor: flavor.value, data: data.value, length: len.value }; 
-		},
-
 		clearImageCard: function () {
 			document.getElementById('defaultCardImage').src = "";
 			document.getElementById('imageForSizing').src = "";
@@ -200,8 +167,9 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 
 		pasteImageCard: function () {
 			try {
-                if (wdw_imageEdition.clipboardCanPaste()) {
-                    var data = wdw_imageEdition.clipboardGetData();
+				var myType = "IMAGES";
+                if (cardbookClipboard.clipboardCanPaste(myType)) {
+                    var data = cardbookClipboard.clipboardGetData(myType);
 
                     if (data.flavor.startsWith("image/")) {
                         var myExtension = data.flavor == "image/png" ? "png" : (data.flavor == "image/gif" ? "gif" : "jpg");
@@ -267,50 +235,7 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 
 		copyImageCard: function () {
 			try {
-				var imgTools = Components.classes["@mozilla.org/image/tools;1"].getService(Components.interfaces.imgITools);
-				var myFileURISpec = document.getElementById('photolocalURITextBox').value;
-				var myFileURI = Services.io.newURI(myFileURISpec, null, null);
-
-				// Thunderbird 52 and Linux
-				if (imgTools.decodeImageData) {
-					var myExtension = cardbookUtils.getFileNameExtension(myFileURISpec);
-					var imagedata = 'data:image/' + myExtension + ';base64,' + btoa(cardbookSynchronization.getFileBinary(myFileURI));
-					var channel = Services.io.newChannel2(imagedata, null, null, null, null, null, null, null);
-					var input = channel.open();
-					var container = {};
-					imgTools.decodeImageData(input, channel.contentType, container);
-					var wrapped = Components.classes["@mozilla.org/supports-interface-pointer;1"].createInstance(Components.interfaces.nsISupportsInterfacePointer);
-					wrapped.data = container.value;
-					var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
-					trans.addDataFlavor(channel.contentType);
-					trans.setTransferData(channel.contentType, wrapped, 0);
-					var clipid = Components.interfaces.nsIClipboard;
-					var clipboard = Components.classes["@mozilla.org/widget/clipboard;1"].getService(clipid);
-					clipboard.setData(trans, null, clipid.kGlobalClipboard);
-				// Thunderbird 60
-				} else if (imgTools.decodeImageFromBuffer) {
-					var myChannel = Services.io.newChannelFromURI2(myFileURI,
-																	 null,
-																	 Services.scriptSecurityManager.getSystemPrincipal(),
-																	 null,
-																	 Components.interfaces.nsILoadInfo.SEC_REQUIRE_SAME_ORIGIN_DATA_INHERITS,
-																	 Components.interfaces.nsIContentPolicy.TYPE_OTHER);
-					NetUtil.asyncFetch(myChannel, function (inputStream, status) {
-						if (!Components.isSuccessCode(status)) {
-							return;
-						}
-						var buffer = NetUtil.readInputStreamToString(inputStream, inputStream.available());
-						var container = imgTools.decodeImageFromBuffer(buffer, buffer.length, myChannel.contentType);
-						var wrapped = Components.classes["@mozilla.org/supports-interface-pointer;1"].createInstance(Components.interfaces.nsISupportsInterfacePointer);
-						wrapped.data = container;
-						var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
-						trans.addDataFlavor(myChannel.contentType);
-						trans.setTransferData(myChannel.contentType, wrapped, 0);
-						var clipid = Components.interfaces.nsIClipboard;
-						var clipboard = Components.classes["@mozilla.org/widget/clipboard;1"].getService(clipid);
-						clipboard.setData(trans, null, clipid.kGlobalClipboard);
-					});
-				}
+				cardbookClipboard.clipboardSetImage(document.getElementById('photolocalURITextBox').value);
 			}
 			catch (e) {
 				wdw_cardbooklog.updateStatusProgressInformation("wdw_imageEdition.copyImageCard error : " + e, "Error");
@@ -324,7 +249,7 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 				var myFileURI = Services.io.newURI(myFileURISpec, null, null);
 				var myFile = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
 				
-				cardbookUtils.clipboardSet(myFile.path);
+				cardbookClipboard.clipboardSetText('text/unicode', myFile.path);
 			}
 			catch (e) {
 				wdw_cardbooklog.updateStatusProgressInformation("wdw_imageEdition.copyImageLocationCard error : " + e, "Error");

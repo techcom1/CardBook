@@ -20,6 +20,7 @@
 	<script src="wdw_cardbook.js"/>
 	<script src="chrome://cardbook/content/preferences/cardbookPreferences.js"/>
 	<script src="cardbookSynchronization.js"/>
+	<script src="cardbookClipboard.js"/>
 	<script src="cardbookUtils.js"/>
 	<script src="cardbookObserver.js"/>
 	<script src="wdw_log.js"/>

@@ -17,6 +17,7 @@ locale   cardbook da    chrome/locale/da/
 locale   cardbook de    chrome/locale/de/
 locale   cardbook el    chrome/locale/el/
 locale   cardbook en-US chrome/locale/en-US/
+locale   cardbook es-ES chrome/locale/es-ES/
 locale   cardbook fr    chrome/locale/fr/
 locale   cardbook hr    chrome/locale/hr/
 locale   cardbook hu    chrome/locale/hu/

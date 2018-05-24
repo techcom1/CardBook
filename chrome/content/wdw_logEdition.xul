@@ -16,6 +16,7 @@
 	
 	<stringbundleset id="stringbundleset"/>
 
+	<script src="cardbookClipboard.js"/>
 	<script src="cardbookUtils.js"/>
 	<script src="wdw_log.js"/>
 	<script src="wdw_logEdition.js"/>
