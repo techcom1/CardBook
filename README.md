@@ -84,6 +84,7 @@ Translations by:
 * Μαρία ([el](https://github.com/CardBook/CardBook/tree/master/chrome/locale/el)) [Λήψη τώρα](https://addons.mozilla.org/el/thunderbird/addon/cardbook/)
 * Timothe Litt ([en-US](https://github.com/CardBook/CardBook/tree/master/chrome/locale/en-US)) [Download Now](https://addons.mozilla.org/en-US/thunderbird/addon/cardbook/)
 * Óvári ([en-US](https://github.com/CardBook/CardBook/tree/master/chrome/locale/en-US)) [Download Now](https://addons.mozilla.org/en-US/thunderbird/addon/cardbook/)
+* Sylvain Lesage ([es-ES](https://github.com/CardBook/CardBook/tree/master/chrome/locale/es-ES)) [Descargar ahora](https://addons.mozilla.org/es-ES/thunderbird/addon/cardbook/)
 * Philippe Vigneau ([fr](https://github.com/CardBook/CardBook/tree/master/chrome/locale/fr)) [Télécharger maintenant](https://addons.mozilla.org/fr/thunderbird/addon/cardbook/)
 * Meri ([hr](https://github.com/CardBook/CardBook/tree/master/chrome/locale/hr)) [Preuzeti sada](https://addons.mozilla.org/hr/thunderbird/addon/cardbook/)
 * Óvári ([hu](https://github.com/CardBook/CardBook/tree/master/chrome/locale/hu)) [Letöltés most](https://addons.mozilla.org/hu/thunderbird/addon/cardbook/)
